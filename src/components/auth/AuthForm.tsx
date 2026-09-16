@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
 
 type Mode = "login" | "signup";
@@ -174,6 +174,17 @@ export default function AuthForm() {
                 className={inputClassName}
               />
             </div>
+
+            {mode === "login" && (
+              <div className="text-right">
+                <Link
+                  href="/auth/reset"
+                  className="text-xs text-champagne underline-offset-4 transition-colors hover:text-bone hover:underline"
+                >
+                  {t("forgotPassword")}
+                </Link>
+              </div>
+            )}
 
             {errorKey && (
               <p className="text-sm text-red-400">
