@@ -1,0 +1,28 @@
+{
+  "name": "doccys",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Doccys — minimalistisk, reklamefri streamingtjeneste for uafhængige dokumentarer.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.116.0",
+    "next": "^15.4.5",
+    "next-intl": "^4.14.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.0"
+  }
+}

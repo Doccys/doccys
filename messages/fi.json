@@ -1,0 +1,286 @@
+{
+  "header": {
+    "nav": {
+      "home": "Etusivu",
+      "creators": "Tekijät",
+      "creator": "Studio",
+      "profile": "Oma profiili"
+    },
+    "language": "Vaihda kieltä"
+  },
+  "auth": {
+    "loginTitle": "Kirjaudu sisään",
+    "loginSubtitle": "Tervetuloa takaisin. Elokuvasi odottavat.",
+    "signupTitle": "Luo tili",
+    "signupSubtitle": "Yksi tilaus. Ei koskaan mainoksia.",
+    "email": "Sähköposti",
+    "emailPlaceholder": "sinä@esimerkki.fi",
+    "password": "Salasana",
+    "login": "Kirjaudu sisään",
+    "signup": "Luo tili",
+    "noAccount": "Eikö sinulla ole tiliä?",
+    "hasAccount": "Onko sinulla jo tili?",
+    "checkEmail": "Tili on luotu. Tarkista postilaatikkosi ja vahvista sähköpostiosoitteesi ennen sisäänkirjautumista.",
+    "loggedInAs": "Kirjautuneena",
+    "logout": "Kirjaudu ulos",
+    "working": "Hetkinen…",
+    "errors": {
+      "invalidCredentials": "Virheellinen sähköposti tai salasana.",
+      "emailExists": "Kyseisellä sähköpostilla on jo tili.",
+      "emailNotConfirmed": "Vahvista sähköpostiosoitteesi ennen sisäänkirjautumista.",
+      "weakPassword": "Salasana on liian heikko — käytä vähintään 6 merkkiä.",
+      "generic": "Jotain meni pieleen. Yritä uudelleen."
+    }
+  },
+  "footer": {
+    "tagline": "Itsenäiset dokumentit. Ei mainoksia. Koskaan."
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Kuukauden valikoima dokumentti",
+      "by": "tekijältä {name}",
+      "watchNow": "Katso nyt",
+      "aboutCreator": "Tietoa tekijästä"
+    },
+    "catalog": {
+      "eyebrow": "Katalogi",
+      "title": "Itsenäiset dokumentit",
+      "subtitle": "Huolella valitut elokuvat ilman ainuttakaan mainoskatkoa. Maksat vain siitä, minkä katsot loppuun."
+    },
+    "how": {
+      "eyebrow": "Näin Doccys toimii",
+      "title": "Tekijä ensin. Aina."
+    },
+    "features": {
+      "noAds": {
+        "title": "Ei mainoksia",
+        "body": "Ei alku-mainoksia, ei keskeytyksiä, ei sponsoroitua sisältöä. Katalogi rahoitetaan kokonaan tilauksilla."
+      },
+      "payPerCompletion": {
+        "title": "Maksu katsotun mukaan",
+        "body": "Tekijä saa maksun vasta, kun olet katsonut elokuvan loppuun — ja petostentorjuntajärjestelmämme on vahvistanut katselusi aidoiksi."
+      },
+      "community": {
+        "title": "Keskustelu elokuvan alla",
+        "body": "Jokaisella elokuvalla on oma keskustelunsa. Ei algoritmeja tiellä — vain ihmisiä, jotka katsoivat saman kuin sinä."
+      }
+    }
+  },
+  "creators": {
+    "eyebrow": "Yhteisö",
+    "title": "Doccysin tekijät",
+    "subtitle": "Itsenäiset tuotantoyhtiöt ja kollektiivit, jotka täyttävät katalogin.",
+    "films": "{count} elokuvaa",
+    "views": "{count} katselukertaa"
+  },
+  "creatorProfile": {
+    "eyebrow": "Tekijäprofiili",
+    "founded": "Perustettu {year}",
+    "statViews": "Toistokerrat",
+    "statCompletions": "Loppuunkatsotut",
+    "completionsSub": "{rate}% kaikista katseluista",
+    "statValid": "Kelvolliset katsomiset",
+    "validSub": "Petostentorjunnan vahvistama",
+    "statEarnings": "Tulot yhteensä",
+    "earningsSub": "Pay-per-completion",
+    "earningsHeading": "Tulot",
+    "filmographyHeading": "Filmografia ja tilastot"
+  },
+  "earningsPanel": {
+    "eyebrow": "Pay-per-completion",
+    "explainer": "Tulot = kelvolliset loppuunkatsomiset × elokuvan maksuprosentti. Anti-fraud-tarkistuksen hylkäämiä katsomisia (botit, kaveripiirit, manipulointi) ei koskaan makseta. Näin varmistetaan, että raha menee aidolle yleisölle.",
+    "validCompletions": "Kelvolliset katsomiset",
+    "rejected": "Tarkistuksen hylkäämät",
+    "payout": "Maksu"
+  },
+  "filmography": {
+    "film": "Elokuva",
+    "year": "Vuosi",
+    "views": "Katselukerrat",
+    "completions": "Loppuun katsotut",
+    "valid": "Kelvolliset",
+    "payout": "Maksu"
+  },
+  "watch": {
+    "creator": "Tekijä",
+    "discussionEyebrow": "Yhteisö",
+    "discussionTitle": "Kommentit ja keskustelu",
+    "discussionSubtitle": "Keskustelu elokuvasta jatkuu suoraan soittimen alla."
+  },
+  "saveButton": {
+    "loginToSave": "Kirjaudu sisään tallentaaksesi elokuvan",
+    "saved": "Tallennettu ✓",
+    "save": "Tallenna elokuva"
+  },
+  "comments": {
+    "title": "Keskustelu",
+    "subtitle": "Jaa ajatuksesi elokuvasta muiden katsojien kanssa — ei spoilereita ilman varoitusta, kiitos.",
+    "postingAs": "Kommentoijana",
+    "namePlaceholder": "Nimesi",
+    "bodyPlaceholder": "Kirjoita kommenttisi…",
+    "submit": "Kirjoita kommentti",
+    "submitting": "Lähetetään…",
+    "loggedInNote": "Kommenttisi julkaistaan profiilillasi.",
+    "guestNote": "Kirjaudu sisään kommentoidaksesi omalla nimelläsi — muuten nimi on vapaa.",
+    "loading": "Ladataan keskustelua…",
+    "empty": "Ei vielä kommentteja — ole ensimmäinen, joka pukee elokuvan sanoiksi.",
+    "loadError": "Kommentteja ei voitu ladata.",
+    "submitError": "Kommenttia ei voitu lähettää. Yritä uudelleen.",
+    "likeAria": "Tykkää tästä kommentista",
+    "likeGuestHint": "Kirjaudu sisään tykkätäksesi kommenteista.",
+    "likeError": "Tykkäystä ei voitu tallentaa. Yritä uudelleen."
+  },
+  "creatorApply": {
+    "eyebrow": "Tekijät",
+    "loginTitle": "Kirjaudu sisään hakeaksesi",
+    "loginSubtitle": "Tekijähakemukset vaativat tilin — luominen vie vain hetken.",
+    "loginCta": "Kirjaudu sisään",
+    "title": "Tule Doccys-tekijäksi",
+    "subtitle": "Doccys on kuratoitu: jokainen tekijä hyväksytään toimituksen toimesta, ennen kuin heidän elokuvansa voidaan näyttää. Kerro meille, keitä olette ja mitä teette.",
+    "nameLabel": "Tekijän nimi",
+    "handleLabel": "Handle (URL)",
+    "handleHint": "Pienet kirjaimet, numerot ja väliviivat, esim. \"nordlys-film\". Hyväksynnän jälkeen profiilinne löytyy osoitteesta /creator/{handle}.",
+    "countryLabel": "Maa",
+    "foundedYearLabel": "Perustamisvuosi",
+    "bioLabel": "Lyhyt kuvaus",
+    "motivationLabel": "Motivaatio",
+    "motivationHint": "Miksi elokuvanne pitäisi olla Doccyssä? Muutama konkreettinen lause riittää.",
+    "submit": "Lähetä hakemus",
+    "resubmit": "Lähetä uudelleen",
+    "working": "Lähetetään…",
+    "statusPending": "Hakemuksesi odottaa hyväksyntää.",
+    "statusPendingSub": "Lähetetty {date}. Toimitus vastaa täällä — tila päivittyy automaattisesti.",
+    "statusApproved": "Onneksi olkoon — sinut on hyväksytty tekijäksi!",
+    "statusApprovedSub": "Profiilisi on luotu ja studiosi on auki. Voit nyt ladata elokuvia (ne näkyvät julkisesti vasta, kun toimitus hyväksyy ne).",
+    "statusApprovedCta": "Avaa studio",
+    "statusRejected": "Hakemustasi ei hyväksytty tällä kertaa.",
+    "statusRejectedSub": "Ratkaistu {date}. Voit muokata hakemusta ja lähettää sen uudelleen.",
+    "errors": {
+      "handleTaken": "Handle on jo käytössä — valitse toinen.",
+      "reserved": "Handle on varattu — valitse toinen.",
+      "stale": "Hakemuksen tila on muuttunut — lataa sivu uudelleen.",
+      "generic": "Tarkista kaikki kentät ja yritä uudelleen."
+    }
+  },
+  "creatorStudio": {
+    "eyebrow": "Tekijästudio",
+    "loginTitle": "Kirjaudu sisään avataksesi studion",
+    "loginSubtitle": "Studio on vain hyväksytyille tekijöille.",
+    "loginCta": "Kirjaudu sisään",
+    "uploadHeading": "Lataa uusi elokuva",
+    "uploadSubtitle": "Elokuva tallennetaan luonnoksena ja näkyy julkisesti vasta, kun toimitus hyväksyy sen.",
+    "titleLabel": "Nimi",
+    "yearLabel": "Vuosi",
+    "genresLabel": "Tyylilajit (valitse enintään 5)",
+    "synopsisLabel": "Synopsis",
+    "gradientLabel": "Julisteen liukuväri",
+    "posterLabel": "Kansikuva",
+    "posterHint": "Valinnainen (jpg/png/webp, enintään 10 Mt, vähintään 640×360 pikseliä) — näkyy liukuvärin sijaan.",
+    "posterDetected": "Kuva: {width}×{height} pikseliä",
+    "fileLabel": "Videotiedosto (mp4, enint. 2 Gt)",
+    "durationDetected": "Elokuvan kesto: {seconds} sekuntia",
+    "submit": "Lataa elokuva",
+    "working": "Työskentelee…",
+    "probing": "Luetaan tiedoston metatietoja…",
+    "uploading": "Ladataan videota…",
+    "saving": "Luodaan elokuvaa…",
+    "success": "Ladattu! Elokuva on nyt luonnos, joka odottaa hyväksyntää.",
+    "creatorNote": "Elokuva liitetään tekijäprofiiliisi @{handle}.",
+    "errors": {
+      "notMp4": "Vain mp4-tiedostoja voi ladata.",
+      "notPoster": "Vain jpg-, png- ja webp-kuvia voi käyttää.",
+      "posterProbe": "Kuvaa ei voitu lukea — onko se kelvollinen kuva?",
+      "posterTooSmall": "Kuva on liian pieni — vähintään 640×360 pikseliä.",
+      "posterTooBig": "Kuva on liian suuri — enintään 10 Mt.",
+      "posterFailed": "Kansikuvaa ei voitu ladata — yritä uudelleen.",
+      "probe": "Tiedoston metatietoja ei voitu lukea — onko kyseessä kelvollinen mp4?",
+      "missingFields": "Täytä nimi ja synopsis, valitse vähintään yksi tyylilaji ja videotiedosto.",
+      "notLoggedIn": "Et ole enää kirjautunut sisään — kirjaudu sisään ja yritä uudelleen.",
+      "uploadFailed": "Lataus epäonnistui — yritä uudelleen.",
+      "rowFailed": "Elokuvaa ei voitu luoda — yritä uudelleen."
+    },
+    "filmsHeading": "Elokuvasi",
+    "statusDraft": "Luonnos — odottaa hyväksyntää",
+    "statusPublished": "Julkaistu",
+    "draftNote": "Luonnoksen voi poistaa; julkaistu elokuva kuuluu toimitukselle.",
+    "delete": "Poista luonnos",
+    "deleteConfirm": "Poistetaanko tämä luonnos? Video poistetaan myös.",
+    "empty": "Ei vielä elokuvia — lataa ensimmäinen yllä."
+  },
+  "profile": {
+    "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",
+    "loginSubtitle": "Sähköpostisi, tilauksesi ja tallennetut elokuvasi odottavat kirjautumisen takana.",
+    "loginCta": "Kirjaudu sisään",
+    "eyebrow": "Oma tili",
+    "memberSince": "Jäsenenä {date} alkaen",
+    "subscriptionHeading": "Tilaus",
+    "historyHeading": "Katseluhistoriani",
+    "historySubtitle": "Jatka siitä, mihin jäit — tai katu vanha suosikki.",
+    "historyEmpty": "Ei vielä katsottuja elokuvia. Katso dokumentti loppuun, niin se ilmestyy tähän — vain kelvolliset katsomiset tallennetaan.",
+    "savedHeading": "Tallennetut elokuvat",
+    "savedSubtitle": "Yksityinen listasi.",
+    "savedEmpty": "Ei vielä tallennettuja elokuvia. Paina \"Tallenna elokuva\" soittimen alla, niin elokuva ilmestyy tähän.",
+    "creatorHeading": "Tekijä",
+    "creatorSub": "Hae tekijäksi ja saat pääsyn dokumentariesi lataamiseen.",
+    "creatorOwnedSub": "Sinut on hyväksytty tekijäksi — studio on auki.",
+    "creatorApplyCta": "Tule tekijäksi",
+    "creatorStudioCta": "Avaa studio"
+  },
+  "subscriptionCard": {
+    "label": "Tilaus",
+    "memberSince": "Jäsenenä {date} alkaen",
+    "free": "Ilmainen",
+    "perMonth": "/kk"
+  },
+  "watchHistory": {
+    "completed": "Katsottu loppuun",
+    "progress": "{watched} / {total}"
+  },
+  "plans": {
+    "free": {
+      "name": "Ilmainen",
+      "perks": [
+        "Katso kolme elokuvaa kuussa",
+        "Kommentoi elokuvien alla",
+        "Ei mainoksia — ei täälläkään"
+      ]
+    },
+    "doccys-plus": {
+      "name": "Doccys+",
+      "perks": [
+        "Rajaton pääsy koko katalogiin",
+        "Tallenna elokuvia ja jatka siitä, mihin jäit",
+        "Tue tekijöitä suoraan pay-per-completionin kautta",
+        "Ei mainoksia — koskaan"
+      ]
+    },
+    "patron": {
+      "name": "Patron",
+      "perks": [
+        "Kaikki Doccys+:n sisältö",
+        "Aikainen pääsy uusiin ensi-iltiin",
+        "Kulissien takainen materiaali ja ohjaajan kommentit",
+        "Nimesi valittujen elokuvien lopputeksteissä"
+      ]
+    }
+  },
+  "genres": {
+    "Klima": "Ilmasto",
+    "Portræt": "Potretti",
+    "Kunst": "Taide",
+    "Historie": "Historia",
+    "Byrum": "Kaupunkitila",
+    "Fællesskab": "Yhteisö",
+    "Natur": "Luonto",
+    "Eksperimentel": "Kokeellinen",
+    "Teknologi": "Teknologia"
+  },
+  "countries": {
+    "Island": "Islanti",
+    "Danmark": "Tanska"
+  },
+  "meta": {
+    "title": "Doccys — Itsenäiset dokumentit ilman mainoksia",
+    "description": "Doccys on minimalistinen, mainokseton suoratoistopalvelu itsenäisille dokumenteille. Maksat katsotusta elokuvasta — tekijä saa osuutensa, sinä saat rauhan."
+  }
+}

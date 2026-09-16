@@ -1,0 +1,286 @@
+{
+  "header": {
+    "nav": {
+      "home": "Startseite",
+      "creators": "Creators",
+      "creator": "Studio",
+      "profile": "Mein Profil"
+    },
+    "language": "Sprache wechseln"
+  },
+  "auth": {
+    "loginTitle": "Anmelden",
+    "loginSubtitle": "Willkommen zurück. Deine Filme warten.",
+    "signupTitle": "Konto erstellen",
+    "signupSubtitle": "Ein Abo. Nie Werbung.",
+    "email": "E-Mail",
+    "emailPlaceholder": "du@beispiel.de",
+    "password": "Passwort",
+    "login": "Anmelden",
+    "signup": "Konto erstellen",
+    "noAccount": "Noch kein Konto?",
+    "hasAccount": "Schon ein Konto?",
+    "checkEmail": "Konto erstellt. Prüfe deinen Posteingang und bestätige deine E-Mail, bevor du dich anmeldest.",
+    "loggedInAs": "Angemeldet als",
+    "logout": "Abmelden",
+    "working": "Einen Moment…",
+    "errors": {
+      "invalidCredentials": "E-Mail oder Passwort ungültig.",
+      "emailExists": "Mit dieser E-Mail existiert bereits ein Konto.",
+      "emailNotConfirmed": "Bestätige deine E-Mail, bevor du dich anmeldest.",
+      "weakPassword": "Passwort zu schwach — mindestens 6 Zeichen.",
+      "generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
+    }
+  },
+  "footer": {
+    "tagline": "Unabhängige Dokumentarfilme. Keine Werbung. Niemals."
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Dokumentarfilm des Monats",
+      "by": "von {name}",
+      "watchNow": "Jetzt ansehen",
+      "aboutCreator": "Über den Creator"
+    },
+    "catalog": {
+      "eyebrow": "Der Katalog",
+      "title": "Unabhängige Dokumentarfilme",
+      "subtitle": "Handverlesene Filme ohne eine einzige Werbepause. Zahlen Sie nur für das, was Sie zu Ende ansehen."
+    },
+    "how": {
+      "eyebrow": "So funktioniert Doccys",
+      "title": "Der Creator zuerst. Immer."
+    },
+    "features": {
+      "noAds": {
+        "title": "Keine Werbung",
+        "body": "Keine Pre-Rolls, keine Unterbrechungen, kein gesponserter Inhalt. Der Katalog wird ausschließlich durch Abonnements finanziert."
+      },
+      "payPerCompletion": {
+        "title": "Pay-per-Completion",
+        "body": "Creators werden erst bezahlt, wenn Sie den Film zu Ende ansehen — und unser Anti-Fraud-System Ihre Ansicht als echt bestätigt hat."
+      },
+      "community": {
+        "title": "Das Gespräch unter dem Film",
+        "body": "Jeder Film hat seine eigene Diskussion. Keine Algorithmen im Weg — nur Menschen, die dasselbe gesehen haben wie Sie."
+      }
+    }
+  },
+  "creators": {
+    "eyebrow": "Die Community",
+    "title": "Creator auf Doccys",
+    "subtitle": "Die unabhängigen Filmproduktionen und Kollektive, die den Katalog füllen.",
+    "films": "{count} Filme",
+    "views": "{count} Aufrufe"
+  },
+  "creatorProfile": {
+    "eyebrow": "Creator-Profil",
+    "founded": "Gegründet {year}",
+    "statViews": "Wiedergaben",
+    "statCompletions": "Fertigstellungen",
+    "completionsSub": "{rate}% aller Wiedergaben",
+    "statValid": "Gültige Fertigstellungen",
+    "validSub": "Von der Anti-Fraud-Prüfung verifiziert",
+    "statEarnings": "Gesamteinnahmen",
+    "earningsSub": "Pay-per-completion",
+    "earningsHeading": "Einnahmen",
+    "filmographyHeading": "Filmografie & Statistik"
+  },
+  "earningsPanel": {
+    "eyebrow": "Pay-per-completion",
+    "explainer": "Einnahmen = gültige Fertigstellungen × die Auszahlungsrate des Films. Fertigstellungen, die die Anti-Fraud-Prüfung ablehnt (Bots, Freundschafts-Schleifen, Manipulation), werden nie ausgezahlt. So bleibt sichergestellt, dass das Geld an ein echtes Publikum geht.",
+    "validCompletions": "Gültige Fertigstellungen",
+    "rejected": "Von der Prüfung abgelehnt",
+    "payout": "Auszahlung"
+  },
+  "filmography": {
+    "film": "Film",
+    "year": "Jahr",
+    "views": "Aufrufe",
+    "completions": "Beendet",
+    "valid": "Gültig",
+    "payout": "Auszahlung"
+  },
+  "watch": {
+    "creator": "Creator",
+    "discussionEyebrow": "Die Community",
+    "discussionTitle": "Kommentare & Diskussion",
+    "discussionSubtitle": "Das Gespräch über den Film geht direkt unter dem Player weiter."
+  },
+  "saveButton": {
+    "loginToSave": "Zum Speichern des Films anmelden",
+    "saved": "Gespeichert ✓",
+    "save": "Film speichern"
+  },
+  "comments": {
+    "title": "Diskussion",
+    "subtitle": "Teile deine Gedanken zum Film mit anderen Zuschauern — keine Spoiler ohne Vorwarnung, bitte.",
+    "postingAs": "Kommentierst als",
+    "namePlaceholder": "Dein Name",
+    "bodyPlaceholder": "Schreibe deinen Kommentar…",
+    "submit": "Kommentar schreiben",
+    "submitting": "Wird gesendet…",
+    "loggedInNote": "Dein Kommentar wird mit deinem Profil veröffentlicht.",
+    "guestNote": "Melde dich an, um unter deinem eigenen Namen zu kommentieren — sonst ist der Name frei wählbar.",
+    "loading": "Diskussion wird geladen…",
+    "empty": "Noch keine Kommentare — sei die erste Stimme zu diesem Film.",
+    "loadError": "Die Kommentare konnten nicht geladen werden.",
+    "submitError": "Der Kommentar konnte nicht gesendet werden. Bitte erneut versuchen.",
+    "likeAria": "Kommentar liken",
+    "likeGuestHint": "Melde dich an, um Kommentare zu liken.",
+    "likeError": "Das Like konnte nicht gespeichert werden. Bitte erneut versuchen."
+  },
+  "creatorApply": {
+    "eyebrow": "Schöpfer",
+    "loginTitle": "Melde dich an, um dich zu bewerben",
+    "loginSubtitle": "Schöpfer-Bewerbungen erfordern ein Konto — die Erstellung dauert nur einen Moment.",
+    "loginCta": "Anmelden",
+    "title": "Werde Doccys-Schöpfer",
+    "subtitle": "Doccys ist kuratiert: Jeder Schöpfer wird vom Redaktionsteam geprüft, bevor seine Filme gezeigt werden. Erzähl uns, wer ihr seid und was ihr macht.",
+    "nameLabel": "Name des Schöpfers",
+    "handleLabel": "Handle (URL)",
+    "handleHint": "Kleinbuchstaben, Zahlen und Bindestriche, z. B. \"nordlys-film\". Nach der Zulassung liegt dein Profil unter /creator/{handle}.",
+    "countryLabel": "Land",
+    "foundedYearLabel": "Gründungsjahr",
+    "bioLabel": "Kurze Bio",
+    "motivationLabel": "Motivation",
+    "motivationHint": "Warum sollten eure Filme auf Doccys sein? Ein paar konkrete Sätze genügen.",
+    "submit": "Bewerbung senden",
+    "resubmit": "Erneut senden",
+    "working": "Wird gesendet…",
+    "statusPending": "Deine Bewerbung wartet auf Prüfung.",
+    "statusPendingSub": "Eingereicht am {date}. Das Redaktionsteam antwortet hier — der Status aktualisiert sich automatisch.",
+    "statusApproved": "Glückwunsch — du bist als Schöpfer zugelassen!",
+    "statusApprovedSub": "Dein Profil wurde erstellt und dein Studio ist offen. Du kannst nun Filme hochladen (sie erscheinen erst öffentlich, wenn das Redaktionsteam sie freigibt).",
+    "statusApprovedCta": "Studio öffnen",
+    "statusRejected": "Deine Bewerbung wurde diesmal nicht zugelassen.",
+    "statusRejectedSub": "Entschieden am {date}. Du kannst die Bewerbung bearbeiten und erneut senden.",
+    "errors": {
+      "handleTaken": "Dieser Handle ist bereits vergeben — wähle einen anderen.",
+      "reserved": "Dieser Handle ist reserviert — wähle einen anderen.",
+      "stale": "Der Status der Bewerbung hat sich geändert — lade die Seite neu.",
+      "generic": "Prüfe alle Felder und versuche es erneut."
+    }
+  },
+  "creatorStudio": {
+    "eyebrow": "Schöpfer-Studio",
+    "loginTitle": "Melde dich an, um das Studio zu öffnen",
+    "loginSubtitle": "Das Studio ist nur für zugelassene Schöpfer.",
+    "loginCta": "Anmelden",
+    "uploadHeading": "Neuen Film hochladen",
+    "uploadSubtitle": "Der Film wird als Entwurf gespeichert und erscheint erst öffentlich, wenn das Redaktionsteam ihn freigibt.",
+    "titleLabel": "Titel",
+    "yearLabel": "Jahr",
+    "genresLabel": "Genres (bis zu 5 wählen)",
+    "synopsisLabel": "Synopsis",
+    "gradientLabel": "Poster-Farbverlauf",
+    "posterLabel": "Titelbild",
+    "posterHint": "Optional (jpg/png/webp, max 10 MB, mindestens 640×360 Pixel) — wird statt des Farbverlaufs angezeigt.",
+    "posterDetected": "Bild: {width}×{height} Pixel",
+    "fileLabel": "Videodatei (mp4, max. 2 GB)",
+    "durationDetected": "Filmlänge: {seconds} Sekunden",
+    "submit": "Film hochladen",
+    "working": "Arbeitet…",
+    "probing": "Lese die Metadaten der Datei…",
+    "uploading": "Video wird hochgeladen…",
+    "saving": "Film wird erstellt…",
+    "success": "Hochgeladen! Der Film liegt jetzt als Entwurf und wartet auf Freigabe.",
+    "creatorNote": "Der Film wird deinem Schöpfer-Profil @{handle} zugeordnet.",
+    "errors": {
+      "notMp4": "Es können nur mp4-Dateien hochgeladen werden.",
+      "notPoster": "Nur jpg-, png- und webp-Bilder können verwendet werden.",
+      "posterProbe": "Das Bild konnte nicht gelesen werden — ist es ein gültiges Bild?",
+      "posterTooSmall": "Das Bild ist zu klein — mindestens 640×360 Pixel.",
+      "posterTooBig": "Das Bild ist zu groß — max. 10 MB.",
+      "posterFailed": "Das Titelbild konnte nicht hochgeladen werden — versuch es erneut.",
+      "probe": "Die Metadaten der Datei konnten nicht gelesen werden — ist es eine gültige mp4?",
+      "missingFields": "Fülle Titel und Synopsis aus, wähle mindestens ein Genre und eine Videodatei.",
+      "notLoggedIn": "Du bist nicht mehr angemeldet — melde dich an und versuche es erneut.",
+      "uploadFailed": "Der Upload ist fehlgeschlagen — versuche es erneut.",
+      "rowFailed": "Der Film konnte nicht erstellt werden — versuche es erneut."
+    },
+    "filmsHeading": "Deine Filme",
+    "statusDraft": "Entwurf — wartet auf Freigabe",
+    "statusPublished": "Veröffentlicht",
+    "draftNote": "Ein Entwurf kann gelöscht werden; ein veröffentlichter Film gehört dem Redaktionsteam.",
+    "delete": "Entwurf löschen",
+    "deleteConfirm": "Diesen Entwurf löschen? Das Video wird ebenfalls entfernt.",
+    "empty": "Noch keine Filme — lade oben deinen ersten hoch."
+  },
+  "profile": {
+    "loginTitle": "Melde dich an, um dein Profil zu sehen",
+    "loginSubtitle": "Deine E-Mail, dein Abo und deine gespeicherten Filme warten hinter dem Login.",
+    "loginCta": "Anmelden",
+    "eyebrow": "Mein Konto",
+    "memberSince": "Mitglied seit {date}",
+    "subscriptionHeading": "Abo",
+    "historyHeading": "Mein Sehverlauf",
+    "historySubtitle": "Mach dort weiter, wo du aufgehört hast — oder sieh einen alten Favorit erneut an.",
+    "historyEmpty": "Noch keine Filme gesehen. Schau einen Dokumentarfilm zu Ende, und er erscheint hier — nur gültige Fertigstellungen werden erfasst.",
+    "savedHeading": "Gespeicherte Filme",
+    "savedSubtitle": "Deine private Merkliste.",
+    "savedEmpty": "Noch keine gespeicherten Filme. Drücke unter einem Player auf \"Film speichern\", dann landet der Film hier.",
+    "creatorHeading": "Schöpfer",
+    "creatorSub": "Bewirb dich als Schöpfer und erhalte Zugang zum Upload deiner Dokumentarfilme.",
+    "creatorOwnedSub": "Du bist ein zugelassener Schöpfer — das Studio ist offen.",
+    "creatorApplyCta": "Schöpfer werden",
+    "creatorStudioCta": "Studio öffnen"
+  },
+  "subscriptionCard": {
+    "label": "Abo",
+    "memberSince": "Mitglied seit {date}",
+    "free": "Kostenlos",
+    "perMonth": "/Mon."
+  },
+  "watchHistory": {
+    "completed": "Fertig gesehen",
+    "progress": "{watched} von {total}"
+  },
+  "plans": {
+    "free": {
+      "name": "Kostenlos",
+      "perks": [
+        "Drei Filme pro Monat ansehen",
+        "Unter den Filmen kommentieren",
+        "Keine Werbung — auch hier nicht"
+      ]
+    },
+    "doccys-plus": {
+      "name": "Doccys+",
+      "perks": [
+        "Unbegrenzter Zugang zum gesamten Katalog",
+        "Filme speichern und dort weitersehen, wo du aufgehört hast",
+        "Creator direkt über Pay-per-Completion unterstützen",
+        "Keine Werbung — niemals"
+      ]
+    },
+    "patron": {
+      "name": "Patron",
+      "perks": [
+        "Alles aus Doccys+",
+        "Früher Zugang zu neuen Premieren",
+        "Behind-the-Scenes-Material und Regiekommentare",
+        "Dein Name im Abspann ausgewählter Filme"
+      ]
+    }
+  },
+  "genres": {
+    "Klima": "Klima",
+    "Portræt": "Porträt",
+    "Kunst": "Kunst",
+    "Historie": "Geschichte",
+    "Byrum": "Stadtraum",
+    "Fællesskab": "Gemeinschaft",
+    "Natur": "Natur",
+    "Eksperimentel": "Experimentell",
+    "Teknologi": "Technologie"
+  },
+  "countries": {
+    "Island": "Island",
+    "Danmark": "Dänemark"
+  },
+  "meta": {
+    "title": "Doccys — Unabhängige Dokumentarfilme ohne Werbung",
+    "description": "Doccys ist ein minimalistischer, werbefreier Streamingdienst für unabhängige Dokumentarfilme. Bezahlen Sie pro fertig gesehenem Film — der Creator erhält seinen Teil, Sie die Ruhe."
+  }
+}

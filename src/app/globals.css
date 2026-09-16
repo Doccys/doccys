@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/*
+ * Doccys' design-tokens (Tailwind v4-tema).
+ * Mørk, filmisk palet: dyb noir-baggrund, varm champagne-accent,
+ * serif-display til titler og en ren grotesk til brødtekst.
+ */
+@theme inline {
+  --color-noir: #08080a; /* sidebaggrund */
+  --color-onyx: #101014; /* kort/flader */
+  --color-smoke: #1e1e26; /* kanter og afgrænsninger */
+  --color-ash: #9a9aa8; /* dæmpet sekundær tekst */
+  --color-bone: #efece5; /* primær tekst */
+  --color-champagne: #d4b678; /* accent: guld/champagne */
+  --color-champagne-dark: #9c7f4e; /* accent i svagere tilstande */
+
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-inter);
+}
+
+/* Diskret, filmisk scrollbar der matcher den mørke stil */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #08080a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e26;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a34;
+}
+
+::selection {
+  background: #d4b678;
+  color: #08080a;
+}

@@ -1,0 +1,286 @@
+{
+  "header": {
+    "nav": {
+      "home": "Hem",
+      "creators": "Skapare",
+      "creator": "Studio",
+      "profile": "Min profil"
+    },
+    "language": "Byt språk"
+  },
+  "auth": {
+    "loginTitle": "Logga in",
+    "loginSubtitle": "Välkommen tillbaka. Dina filmer väntar.",
+    "signupTitle": "Skapa konto",
+    "signupSubtitle": "Ett abonnemang. Aldrig reklam.",
+    "email": "E-post",
+    "emailPlaceholder": "du@exempel.se",
+    "password": "Lösenord",
+    "login": "Logga in",
+    "signup": "Skapa konto",
+    "noAccount": "Har du inget konto?",
+    "hasAccount": "Har du redan ett konto?",
+    "checkEmail": "Kontot är skapat. Kolla inkorgen och bekräfta din e-post innan du loggar in.",
+    "loggedInAs": "Inloggad som",
+    "logout": "Logga ut",
+    "working": "Ett ögonblick…",
+    "errors": {
+      "invalidCredentials": "Ogiltig e-post eller lösenord.",
+      "emailExists": "Det finns redan ett konto med den e-posten.",
+      "emailNotConfirmed": "Bekräfta din e-post innan du loggar in.",
+      "weakPassword": "Lösenordet är för svagt — använd minst 6 tecken.",
+      "generic": "Något gick fel. Försök igen."
+    }
+  },
+  "footer": {
+    "tagline": "Oberoende dokumentärer. Inga annonser. Aldrig."
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Månadens utvalda dokumentär",
+      "by": "av {name}",
+      "watchNow": "Se nu",
+      "aboutCreator": "Om skaparen"
+    },
+    "catalog": {
+      "eyebrow": "Katalogen",
+      "title": "Oberoende dokumentärer",
+      "subtitle": "Handplockade filmer utan ett enda reklaminslag. Betala bara för det du ser klart."
+    },
+    "how": {
+      "eyebrow": "Så fungerar Doccys",
+      "title": "Skaparen först. Alltid."
+    },
+    "features": {
+      "noAds": {
+        "title": "Inga annonser",
+        "body": "Ingen pre-roll, inga avbrott, inget sponsrat innehåll. Katalogen finansieras enbart av prenumerationer."
+      },
+      "payPerCompletion": {
+        "title": "Betalning per fullföljd visning",
+        "body": "Skaparen får utbetalning först när du har sett filmen klart — och anti-fraud-systemet har validerat din visning som äkta."
+      },
+      "community": {
+        "title": "Samtalet under filmen",
+        "body": "Varje film har sin egen diskussion. Inga algoritmer i vägen — bara människor som sett samma sak som du."
+      }
+    }
+  },
+  "creators": {
+    "eyebrow": "Gemenskapen",
+    "title": "Skapare på Doccys",
+    "subtitle": "De oberoende filmbolagen och kollektiven som fyller katalogen.",
+    "films": "{count} filmer",
+    "views": "{count} visningar"
+  },
+  "creatorProfile": {
+    "eyebrow": "Skaparprofil",
+    "founded": "Grundat {year}",
+    "statViews": "Uppspelningar",
+    "statCompletions": "Färdigvisningar",
+    "completionsSub": "{rate}% av alla visningar",
+    "statValid": "Giltiga fullföljda visningar",
+    "validSub": "Validerade av anti-fraud",
+    "statEarnings": "Intäkter totalt",
+    "earningsSub": "Pay-per-completion",
+    "earningsHeading": "Intäkter",
+    "filmographyHeading": "Filmografi och statistik"
+  },
+  "earningsPanel": {
+    "eyebrow": "Pay-per-completion",
+    "explainer": "Intäkter = giltiga fullföljda visningar × filmens utbetalningsgrad. Visningar som avvisas av anti-fraud-valideringen (bots, vänskapsloopar, manipulation) betalas aldrig ut. Det säkerställer att pengarna går till en verklig publik.",
+    "validCompletions": "Giltiga fullföljda visningar",
+    "rejected": "Avvisade av valideringen",
+    "payout": "Utbetalning"
+  },
+  "filmography": {
+    "film": "Film",
+    "year": "År",
+    "views": "Visningar",
+    "completions": "Färdigvisade",
+    "valid": "Giltiga",
+    "payout": "Utbetalning"
+  },
+  "watch": {
+    "creator": "Skapare",
+    "discussionEyebrow": "Gemenskapen",
+    "discussionTitle": "Kommentarer och diskussion",
+    "discussionSubtitle": "Samtalet om filmen fortsätter direkt under spelaren."
+  },
+  "saveButton": {
+    "loginToSave": "Logga in för att spara filmen",
+    "saved": "Sparad ✓",
+    "save": "Spara film"
+  },
+  "comments": {
+    "title": "Diskussion",
+    "subtitle": "Dela dina tankar om filmen med andra tittare — inga spoilers utan förvarning, tack.",
+    "postingAs": "Kommenterar som",
+    "namePlaceholder": "Ditt namn",
+    "bodyPlaceholder": "Skriv din kommentar…",
+    "submit": "Skriv kommentar",
+    "submitting": "Skickar…",
+    "loggedInNote": "Din kommentar publiceras med din profil.",
+    "guestNote": "Logga in för att kommentera som dig själv — annars är namnet fritt.",
+    "loading": "Hämtar diskussionen…",
+    "empty": "Inga kommentarer än — var den första att sätta ord på filmen.",
+    "loadError": "Kommentarerna kunde inte hämtas.",
+    "submitError": "Kommentaren kunde inte skickas. Försök igen.",
+    "likeAria": "Gilla den här kommentaren",
+    "likeGuestHint": "Logga in för att gilla kommentarer.",
+    "likeError": "Gillandet kunde inte registreras. Försök igen."
+  },
+  "creatorApply": {
+    "eyebrow": "Skapare",
+    "loginTitle": "Logga in för att ansöka",
+    "loginSubtitle": "Skaparansökningar kräver ett konto — det tar bara ett ögonblick att skapa ett.",
+    "loginCta": "Logga in",
+    "title": "Bli skapare på Doccys",
+    "subtitle": "Doccys är kurerat: alla skapare godkänns av redaktionen innan deras filmer kan visas. Berätta vem ni är och vad ni gör.",
+    "nameLabel": "Skaparens namn",
+    "handleLabel": "Handle (URL)",
+    "handleHint": "Små bokstäver, siffror och bindestreck, t.ex. \"nordlys-film\". Blir ni godkända ligger profilen på /creator/{handle}.",
+    "countryLabel": "Land",
+    "foundedYearLabel": "Grundat år",
+    "bioLabel": "Kort bio",
+    "motivationLabel": "Motivation",
+    "motivationHint": "Varför ska era filmer finnas på Doccys? Ett par konkreta meningar räcker.",
+    "submit": "Skicka ansökan",
+    "resubmit": "Skicka igen",
+    "working": "Skickar…",
+    "statusPending": "Din ansökan väntar på godkännande.",
+    "statusPendingSub": "Ansökt d. {date}. Redaktionen svarar här — statusen uppdateras automatiskt.",
+    "statusApproved": "Grattis — du är godkänd som skapare!",
+    "statusApprovedSub": "Din profil är skapad och studion är öppen. Du kan nu ladda upp filmer (de visas offentligt först när redaktionen godkänner dem).",
+    "statusApprovedCta": "Öppna studion",
+    "statusRejected": "Din ansökan blev inte godkänd den här gången.",
+    "statusRejectedSub": "Avgjort d. {date}. Du kan ändra ansökan och skicka den igen.",
+    "errors": {
+      "handleTaken": "Handlen är redan använd — välj en annan.",
+      "reserved": "Handlen är reserverad — välj en annan.",
+      "stale": "Ansökningens status har ändrats — ladda om sidan.",
+      "generic": "Kolla alla fält och försök igen."
+    }
+  },
+  "creatorStudio": {
+    "eyebrow": "Skaparstudio",
+    "loginTitle": "Logga in för att öppna studion",
+    "loginSubtitle": "Studion är endast för godkända skapare.",
+    "loginCta": "Logga in",
+    "uploadHeading": "Ladda upp ny film",
+    "uploadSubtitle": "Filmen sparas som utkast och visas offentligt först när redaktionen godkänner den.",
+    "titleLabel": "Titel",
+    "yearLabel": "Årtal",
+    "genresLabel": "Genrer (välj upp till 5)",
+    "synopsisLabel": "Synopsis",
+    "gradientLabel": "Affisch-gradient",
+    "posterLabel": "Omslagsbild",
+    "posterHint": "Valfritt (jpg/png/webp, max 10 MB, minst 640×360 pixlar) — visas i stället för gradienten.",
+    "posterDetected": "Bild: {width}×{height} pixlar",
+    "fileLabel": "Videofil (mp4, max 2 GB)",
+    "durationDetected": "Filens längd: {seconds} sekunder",
+    "submit": "Ladda upp film",
+    "working": "Arbetar…",
+    "probing": "Läser filens metadata…",
+    "uploading": "Laddar upp video…",
+    "saving": "Skapar filmen…",
+    "success": "Uppladdad! Filmen ligger nu som utkast och väntar på godkännande.",
+    "creatorNote": "Filmen kopplas till din skaparprofil @{handle}.",
+    "errors": {
+      "notMp4": "Endast mp4-filer kan laddas upp.",
+      "notPoster": "Endast jpg-, png- och webp-bilder kan användas.",
+      "posterProbe": "Bilden kunde inte läsas — är det en giltig bild?",
+      "posterTooSmall": "Bilden är för liten — minst 640×360 pixlar.",
+      "posterTooBig": "Bilden är för stor — max 10 MB.",
+      "posterFailed": "Omslagsbilden kunde inte laddas upp — försök igen.",
+      "probe": "Filens metadata kunde inte läsas — är det en giltig mp4?",
+      "missingFields": "Fyll i titel och synopsis, välj minst en genre och välj en videofil.",
+      "notLoggedIn": "Du är inte längre inloggad — logga in och försök igen.",
+      "uploadFailed": "Uppladdningen misslyckades — försök igen.",
+      "rowFailed": "Filmen kunde inte skapas — försök igen."
+    },
+    "filmsHeading": "Dina filmer",
+    "statusDraft": "Utkast — väntar på godkännande",
+    "statusPublished": "Publicerad",
+    "draftNote": "Ett utkast kan raderas; en publicerad film tillhör redaktionen.",
+    "delete": "Radera utkast",
+    "deleteConfirm": "Radera det här utkastet? Videon tas också bort.",
+    "empty": "Inga filmer än — ladda upp din första ovan."
+  },
+  "profile": {
+    "loginTitle": "Logga in för att se din profil",
+    "loginSubtitle": "Din e-post, ditt abonnemang och dina sparade filmer väntar bakom inloggningen.",
+    "loginCta": "Logga in",
+    "eyebrow": "Mitt konto",
+    "memberSince": "Medlem sedan {date}",
+    "subscriptionHeading": "Abonnemang",
+    "historyHeading": "Min visningshistorik",
+    "historySubtitle": "Fortsätt där du slutade — eller se en gammal favorit igen.",
+    "historyEmpty": "Inga filmer tittade än. Se klart en dokumentär och den dyker upp här — endast giltiga fullföljda visningar registreras.",
+    "savedHeading": "Sparade filmer",
+    "savedSubtitle": "Din privata watchlist.",
+    "savedEmpty": "Inga sparade filmer än. Tryck \"Spara film\" under en spelare, så hamnar filmen här.",
+    "creatorHeading": "Skapare",
+    "creatorSub": "Ansök om att bli skapare och få möjlighet att ladda upp dina dokumentärer.",
+    "creatorOwnedSub": "Du är en godkänd skapare — studion är öppen.",
+    "creatorApplyCta": "Bli skapare",
+    "creatorStudioCta": "Öppna studion"
+  },
+  "subscriptionCard": {
+    "label": "Abonnemang",
+    "memberSince": "Medlem sedan {date}",
+    "free": "Gratis",
+    "perMonth": "/mån"
+  },
+  "watchHistory": {
+    "completed": "Färdigvisad",
+    "progress": "{watched} av {total}"
+  },
+  "plans": {
+    "free": {
+      "name": "Gratis",
+      "perks": [
+        "Se tre filmer per månad",
+        "Kommentera under filmerna",
+        "Inga annonser — inte här heller"
+      ]
+    },
+    "doccys-plus": {
+      "name": "Doccys+",
+      "perks": [
+        "Obegränsad tillgång till hela katalogen",
+        "Spara filmer och fortsätt där du slutade",
+        "Stöd skaparna direkt via pay-per-completion",
+        "Inga annonser — aldrig"
+      ]
+    },
+    "patron": {
+      "name": "Patron",
+      "perks": [
+        "Allt i Doccys+",
+        "Tidig tillgång till nya premiärer",
+        "Material bakom kulisserna och regissörskommentarer",
+        "Ditt namn i eftertexterna på utvalda filmer"
+      ]
+    }
+  },
+  "genres": {
+    "Klima": "Klimat",
+    "Portræt": "Porträtt",
+    "Kunst": "Konst",
+    "Historie": "Historia",
+    "Byrum": "Stadsrum",
+    "Fællesskab": "Gemenskap",
+    "Natur": "Natur",
+    "Eksperimentel": "Experimentell",
+    "Teknologi": "Teknologi"
+  },
+  "countries": {
+    "Island": "Island",
+    "Danmark": "Danmark"
+  },
+  "meta": {
+    "title": "Doccys — Oberoende dokumentärer utan annonser",
+    "description": "Doccys är en minimalistisk, annonsfri streamingtjänst för oberoende dokumentärer. Betala per färdigvisad film — skaparen får sin del, du får stillheten."
+  }
+}

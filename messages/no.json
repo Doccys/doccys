@@ -1,0 +1,286 @@
+{
+  "header": {
+    "nav": {
+      "home": "Forside",
+      "creators": "Skapere",
+      "creator": "Studio",
+      "profile": "Min profil"
+    },
+    "language": "Bytt språk"
+  },
+  "auth": {
+    "loginTitle": "Logg inn",
+    "loginSubtitle": "Velkommen tilbake. Filmene dine venter.",
+    "signupTitle": "Opprett konto",
+    "signupSubtitle": "Ett abonnement. Aldri reklame.",
+    "email": "E-post",
+    "emailPlaceholder": "du@eksempel.no",
+    "password": "Passord",
+    "login": "Logg inn",
+    "signup": "Opprett konto",
+    "noAccount": "Har du ikke konto?",
+    "hasAccount": "Har du allerede konto?",
+    "checkEmail": "Kontoen er opprettet. Sjekk innboksen og bekreft e-posten din før du logger inn.",
+    "loggedInAs": "Logget inn som",
+    "logout": "Logg ut",
+    "working": "Et øyeblikk…",
+    "errors": {
+      "invalidCredentials": "Ugyldig e-post eller passord.",
+      "emailExists": "Det finnes allerede en konto med denne e-posten.",
+      "emailNotConfirmed": "Bekreft e-posten din før du logger inn.",
+      "weakPassword": "Passordet er for svakt — bruk minst 6 tegn.",
+      "generic": "Noe gikk galt. Prøv igjen."
+    }
+  },
+  "footer": {
+    "tagline": "Uavhengige dokumentarer. Ingen reklamer. Aldri."
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Månedens utvalgte dokumentar",
+      "by": "av {name}",
+      "watchNow": "Se nå",
+      "aboutCreator": "Om skaperen"
+    },
+    "catalog": {
+      "eyebrow": "Katalogen",
+      "title": "Uavhengige dokumentarer",
+      "subtitle": "Håndplukkede filmer uten en eneste reklamepause. Betal bare for det du ser ferdig."
+    },
+    "how": {
+      "eyebrow": "Slik fungerer Doccys",
+      "title": "Skaperen først. Alltid."
+    },
+    "features": {
+      "noAds": {
+        "title": "Ingen reklamer",
+        "body": "Ingen pre-roll, ingen avbrudd, ingen sponset innhold. Katalogen finansieres utelukkende av abonnementer."
+      },
+      "payPerCompletion": {
+        "title": "Betaling per fullførte visning",
+        "body": "Skaperen utbetales først når du har sett filmen ferdig — og anti-fraud-systemet har validert visningen din som ekte."
+      },
+      "community": {
+        "title": "Samtalen under filmen",
+        "body": "Hver film har sin egen diskusjon. Ingen algoritmer i veien — bare folk som har sett det samme som deg."
+      }
+    }
+  },
+  "creators": {
+    "eyebrow": "Fellesskapet",
+    "title": "Skapere på Doccys",
+    "subtitle": "De uavhengige filmselskapene og kollektivene som fyller katalogen.",
+    "films": "{count} filmer",
+    "views": "{count} visninger"
+  },
+  "creatorProfile": {
+    "eyebrow": "Skaperprofil",
+    "founded": "Grunnlagt {year}",
+    "statViews": "Avspillinger",
+    "statCompletions": "Fullføringer",
+    "completionsSub": "{rate}% av alle visninger",
+    "statValid": "Gyldige fullføringer",
+    "validSub": "Validert av anti-fraud",
+    "statEarnings": "Inntjening totalt",
+    "earningsSub": "Pay-per-completion",
+    "earningsHeading": "Inntjening",
+    "filmographyHeading": "Filmografi og statistikk"
+  },
+  "earningsPanel": {
+    "eyebrow": "Pay-per-completion",
+    "explainer": "Inntjening = gyldige fullføringer × filmens utbetalingsrate. Fullføringer som avvises av anti-fraud-valideringen (boter, venneløkker, manipulasjon), utbetales aldri. Det sikrer at pengene går til et ekte publikum.",
+    "validCompletions": "Gyldige fullføringer",
+    "rejected": "Avvist av validering",
+    "payout": "Utbetaling"
+  },
+  "filmography": {
+    "film": "Film",
+    "year": "År",
+    "views": "Visninger",
+    "completions": "Fullførte",
+    "valid": "Gyldige",
+    "payout": "Utbetaling"
+  },
+  "watch": {
+    "creator": "Skaper",
+    "discussionEyebrow": "Fellesskapet",
+    "discussionTitle": "Kommentarer og diskusjon",
+    "discussionSubtitle": "Samtalen om filmen fortsetter rett under avspilleren."
+  },
+  "saveButton": {
+    "loginToSave": "Logg inn for å lagre filmen",
+    "saved": "Lagret ✓",
+    "save": "Lagre film"
+  },
+  "comments": {
+    "title": "Diskusjon",
+    "subtitle": "Del tankene om filmen med andre seere — ingen spoilere uten forvarsel, takk.",
+    "postingAs": "Kommenterer som",
+    "namePlaceholder": "Ditt navn",
+    "bodyPlaceholder": "Skriv kommentaren din…",
+    "submit": "Skriv kommentar",
+    "submitting": "Sender…",
+    "loggedInNote": "Kommentaren din postes med profilen din.",
+    "guestNote": "Logg inn for å kommentere som deg selv — ellers er navnet fritt.",
+    "loading": "Henter diskusjonen…",
+    "empty": "Ingen kommentarer ennå — vær den første til å sette ord på filmen.",
+    "loadError": "Kommentarene kunne ikke hentes.",
+    "submitError": "Kommentaren kunne ikke sendes. Prøv igjen.",
+    "likeAria": "Lik denne kommentaren",
+    "likeGuestHint": "Logg inn for å like kommentarer.",
+    "likeError": "Liket kunne ikke registreres. Prøv igjen."
+  },
+  "creatorApply": {
+    "eyebrow": "Skapere",
+    "loginTitle": "Logg inn for å søke",
+    "loginSubtitle": "Skaper-søknader krever en konto — det tar bare et øyeblikk å opprette en.",
+    "loginCta": "Logg inn",
+    "title": "Bli skaper på Doccys",
+    "subtitle": "Doccys er kuratert: alle skapere godkjennes av redaksjonen før filmene deres kan vises. Fortell oss hvem dere er, og hva dere lager.",
+    "nameLabel": "Skaperens navn",
+    "handleLabel": "Handle (URL)",
+    "handleHint": "Små bokstaver, tall og bindestreker, f.eks. \"nordlys-film\". Blir dere godkjent, ligger profilen på /creator/{handle}.",
+    "countryLabel": "Land",
+    "foundedYearLabel": "Grunnlagt år",
+    "bioLabel": "Kort bio",
+    "motivationLabel": "Motivasjon",
+    "motivationHint": "Hvorfor bør filmene deres være på Doccys? Et par konkrete setninger holder.",
+    "submit": "Send søknad",
+    "resubmit": "Send igjen",
+    "working": "Sender…",
+    "statusPending": "Søknaden din venter på godkjenning.",
+    "statusPendingSub": "Søkt d. {date}. Redaksjonen svarer her — statusen oppdaterer seg automatisk.",
+    "statusApproved": "Gratulerer — du er godkjent som skaper!",
+    "statusApprovedSub": "Profilen din er opprettet, og studioet er åpent. Du kan nå laste opp filmer (de vises offentlig først når redaksjonen godkjenner dem).",
+    "statusApprovedCta": "Åpne studioet",
+    "statusRejected": "Søknaden din ble ikke godkjent denne gangen.",
+    "statusRejectedSub": "Avgjort d. {date}. Du kan rette søknaden og sende den på nytt.",
+    "errors": {
+      "handleTaken": "Handle er allerede i bruk — velg en annen.",
+      "reserved": "Handle er reservert — velg en annen.",
+      "stale": "Søknadens status er endret — last siden på nytt.",
+      "generic": "Sjekk alle feltene og prøv igjen."
+    }
+  },
+  "creatorStudio": {
+    "eyebrow": "Skaper-studio",
+    "loginTitle": "Logg inn for å åpne studioet",
+    "loginSubtitle": "Studioet er kun for godkjente skapere.",
+    "loginCta": "Logg inn",
+    "uploadHeading": "Last opp ny film",
+    "uploadSubtitle": "Filmen lagres som kladd og vises offentlig først når redaksjonen godkjenner den.",
+    "titleLabel": "Tittel",
+    "yearLabel": "Årstall",
+    "genresLabel": "Sjanger (velg opptil 5)",
+    "synopsisLabel": "Synopsi",
+    "gradientLabel": "Plakat-gradient",
+    "posterLabel": "Forsidebilde",
+    "posterHint": "Valgfritt (jpg/png/webp, maks 10 MB, minst 640×360 piksler) — vises i stedet for gradienten.",
+    "posterDetected": "Bilde: {width}×{height} piksler",
+    "fileLabel": "Videofil (mp4, maks 2 GB)",
+    "durationDetected": "Filens lengde: {seconds} sekunder",
+    "submit": "Last opp film",
+    "working": "Arbeider…",
+    "probing": "Leser filens metadata…",
+    "uploading": "Laster opp video…",
+    "saving": "Oppretter filmen…",
+    "success": "Lastet opp! Filmen ligger nå som kladd og venter på godkjenning.",
+    "creatorNote": "Filmen knyttes til skaperprofilen din @{handle}.",
+    "errors": {
+      "notMp4": "Kun mp4-filer kan lastes opp.",
+      "notPoster": "Kun jpg-, png- og webp-bilder kan brukes.",
+      "posterProbe": "Bildet kunne ikke leses — er det et gyldig bilde?",
+      "posterTooSmall": "Bildet er for lite — minst 640×360 piksler.",
+      "posterTooBig": "Bildet er for stort — maks 10 MB.",
+      "posterFailed": "Forsidebildet kunne ikke lastes opp — prøv igjen.",
+      "probe": "Filens metadata kunne ikke leses — er det en gyldig mp4?",
+      "missingFields": "Fyll ut tittel og synopsi, velg minst én sjanger og velg en videofil.",
+      "notLoggedIn": "Du er ikke lenger logget inn — logg inn og prøv igjen.",
+      "uploadFailed": "Opplastingen feilet — prøv igjen.",
+      "rowFailed": "Filmen kunne ikke opprettes — prøv igjen."
+    },
+    "filmsHeading": "Filmene dine",
+    "statusDraft": "Kladd — venter på godkjenning",
+    "statusPublished": "Utgitt",
+    "draftNote": "En kladd kan slettes; en utgitt film tilhører redaksjonen.",
+    "delete": "Slett kladd",
+    "deleteConfirm": "Slette denne kladden? Videoen fjernes også.",
+    "empty": "Ingen filmer ennå — last opp din første ovenfor."
+  },
+  "profile": {
+    "loginTitle": "Logg inn for å se profilen din",
+    "loginSubtitle": "E-posten din, abonnementet ditt og de lagrede filmene venter bak innloggingen.",
+    "loginCta": "Logg inn",
+    "eyebrow": "Min konto",
+    "memberSince": "Medlem siden {date}",
+    "subscriptionHeading": "Abonnement",
+    "historyHeading": "Min seerhistorikk",
+    "historySubtitle": "Fortsett der du slapp — eller se en gammel favoritt på nytt.",
+    "historyEmpty": "Ingen filmer sett ennå. Se en dokumentar ferdig, og den dukker opp her — bare gyldige fullføringer registreres.",
+    "savedHeading": "Lagrede filmer",
+    "savedSubtitle": "Din private watchlist.",
+    "savedEmpty": "Ingen lagrede filmer ennå. Trykk \"Lagre film\" under en avspiller, så havner filmen her.",
+    "creatorHeading": "Skaper",
+    "creatorSub": "Søk om å bli skaper og få tilgang til å laste opp dokumentarene dine.",
+    "creatorOwnedSub": "Du er en godkjent skaper — studioet er åpent.",
+    "creatorApplyCta": "Bli skaper",
+    "creatorStudioCta": "Åpne studioet"
+  },
+  "subscriptionCard": {
+    "label": "Abonnement",
+    "memberSince": "Medlem siden {date}",
+    "free": "Gratis",
+    "perMonth": "/md."
+  },
+  "watchHistory": {
+    "completed": "Fullført",
+    "progress": "{watched} av {total}"
+  },
+  "plans": {
+    "free": {
+      "name": "Gratis",
+      "perks": [
+        "Se tre filmer per måned",
+        "Kommenter under filmene",
+        "Ingen reklamer — heller ikke her"
+      ]
+    },
+    "doccys-plus": {
+      "name": "Doccys+",
+      "perks": [
+        "Ubegrenset tilgang til hele katalogen",
+        "Lagre filmer og fortsett der du slapp",
+        "Støtt skaperne direkte via pay-per-completion",
+        "Ingen reklamer — aldri"
+      ]
+    },
+    "patron": {
+      "name": "Patron",
+      "perks": [
+        "Alt i Doccys+",
+        "Tidlig tilgang til nye premierer",
+        "Bak kulissene-materiale og regissørkommentarer",
+        "Navnet ditt i rulleteksten på utvalgte filmer"
+      ]
+    }
+  },
+  "genres": {
+    "Klima": "Klima",
+    "Portræt": "Portrett",
+    "Kunst": "Kunst",
+    "Historie": "Historie",
+    "Byrum": "Byrom",
+    "Fællesskab": "Fellesskap",
+    "Natur": "Natur",
+    "Eksperimentel": "Eksperimentell",
+    "Teknologi": "Teknologi"
+  },
+  "countries": {
+    "Island": "Island",
+    "Danmark": "Danmark"
+  },
+  "meta": {
+    "title": "Doccys — Uavhengige dokumentarer uten reklame",
+    "description": "Doccys er en minimalistisk, reklamefri strømmetjeneste for uavhengige dokumentarer. Betal per fullførte film — skaperen får sin del, du får roen."
+  }
+}

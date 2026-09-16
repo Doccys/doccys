@@ -1,0 +1,237 @@
+/* ============================================================
+ * Doccys — kernetyper
+ *
+ * Filen er opdelt i to domæner:
+ *   1. Kerne-domænet (film, skabere, brugere, kommentarer)
+ *   2. View-validation / anti-fraud (ML-klar rådata + features)
+ * ============================================================ */
+
+/* ---------- 1. Kerne-domæne ---------- */
+
+export type SubscriptionTier = "free" | "doccys-plus" | "patron";
+
+export interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  tier: SubscriptionTier;
+  memberSince: number; // ms epoch
+}
+
+export interface SubscriptionPlan {
+  tier: SubscriptionTier;
+  name: string;
+  priceDkkPerMonth: number;
+  perks: string[];
+}
+
+export interface Creator {
+  id: string;
+  handle: string; // URL-identifikator, f.eks. "nordlys-film"
+  name: string;
+  bio: string;
+  foundedYear: number;
+  country: string;
+  /**
+   * Kontoen der ejer profilen (null = redaktionel/seedet skaber).
+   * Sættes af godkendelses-triggeren — en bruger kan kun uploade
+   * film til sin EGEN skaber-profil.
+   */
+  ownerUserId: string | null;
+}
+
+/** Pr. film fastsat udbetalingsrate for én *valideret* færdigsetning. */
+export interface DocumentaryStats {
+  totalViews: number;
+  totalCompletions: number;
+  validCompletions: number; // kun validerede completions tæller til udbetaling
+  payoutRateDkk: number; // pay-per-completion: DKK pr. gyldig completion
+}
+
+export type DocumentaryStatus = "draft" | "published";
+
+export interface Documentary {
+  id: string;
+  slug: string;
+  title: string;
+  synopsis: string;
+  year: number;
+  durationSec: number;
+  genres: string[];
+  creatorHandle: string;
+  /** Tailwind-gradient-klasse brugt som plakat indtil rigtige assets findes */
+  gradient: string;
+  /** Uploadet plakat-billede (film-posters) — null = gradienten bruges */
+  posterUrl: string | null;
+  /** Placeholder-video indtil medie-server/CDN kobles på */
+  videoUrl: string;
+  /**
+   * Kladde/offentlig: nye uploads oprettes altid som 'draft' og
+   * vises først offentligt, når redaktionen godkender dem.
+   */
+  status: DocumentaryStatus;
+  stats: DocumentaryStats;
+}
+
+export interface Comment {
+  id: string;
+  documentarySlug: string;
+  authorName: string;
+  /** Sættes server-side, når kommentaren kommer fra en logget-in bruger. */
+  userId?: string | null;
+  body: string;
+  createdAt: number; // ms epoch
+  /** Samlet antal likes — likes kræver en logget-ind konto. */
+  likeCount: number;
+  /** Har DENNE seer (logget ind) liket kommentaren? */
+  likedByMe: boolean;
+}
+
+export interface WatchHistoryEntry {
+  documentarySlug: string;
+  watchedAtMs: number;
+  /** 0–1: hvor stor en del af filmen der er set */
+  progressRatio: number;
+  completed: boolean;
+}
+
+export type CreatorApplicationStatus = "pending" | "approved" | "rejected";
+
+/**
+ * Én skaber-ansøgning, bundet til kontoen (én pr. konto — unikt i DB).
+ * Status kan kun ændres af redaktionen i Supabase-dashboardet;
+ * en afvist ansøgning kan rettes og genafsendes (status → 'pending').
+ */
+export interface CreatorApplication {
+  id: string;
+  userId: string;
+  name: string;
+  handle: string;
+  bio: string;
+  foundedYear: number;
+  country: string;
+  motivation: string;
+  status: CreatorApplicationStatus;
+  createdAt: number; // ms epoch
+  decidedAt: number | null; // ms epoch; null mens den afventer
+}
+
+/** Aggregeret skaberstatistik — bl.a. pay-per-completion-indtjening. */
+export interface CreatorStats {
+  totalViews: number;
+  totalCompletions: number;
+  validCompletions: number;
+  totalEarningsDkk: number;
+  avgCompletionRate: number;
+}
+
+/* ---------- 2. View-validation / anti-fraud ---------- */
+
+/**
+ * Rå hændelsestyper fra afspilleren. Alle logges uændret server-side,
+ * så en fremtidig model kan trænes på den komplette adfærd.
+ */
+export type PlaybackEventType =
+  | "session_start"
+  | "play"
+  | "pause"
+  | "seek"
+  | "heartbeat" // fast interval-hjerteslag mens filmen afspilles
+  | "complete"
+  | "session_end"
+  | "error";
+
+/** Enheds- og klientmetadata, indsamlet ved sessionens start. */
+export interface DeviceMetadata {
+  userAgent: string;
+  platform?: string;
+  screenWidth?: number;
+  screenHeight?: number;
+  timezone?: string;
+  language?: string;
+  hardwareConcurrency?: number;
+  touchPoints?: number;
+}
+
+/**
+ * EN rå afspilningshændelse. `raw` opbevarer alle ekstra felter fra
+ * klienten ustruktureret — intet kasseres, alt er ML-ready.
+ */
+export interface PlaybackEvent {
+  type: PlaybackEventType;
+  clientTimestamp: number; // ms epoch (klientens ur — beholdes uændret)
+  videoTimeSec: number; // position i filmen da hændelsen skete
+  playbackRate?: number;
+  seekFromSec?: number;
+  seekToSec?: number;
+  raw?: Record<string, unknown>;
+}
+
+export type SessionStatus = "active" | "completed" | "abandoned";
+
+/**
+ * Én samlet afspilningssession. `events` er den append-only rålog,
+ * som både heuristikker og fremtidige modeller læser fra.
+ */
+export interface ViewSession {
+  id: string;
+  documentarySlug: string;
+  userId: string | null;
+  startedAt: number; // ms epoch (serverur)
+  endedAt: number | null;
+  status: SessionStatus;
+  device: DeviceMetadata;
+  events: PlaybackEvent[];
+  verdict: SessionVerdict | null;
+}
+
+export type ViewVerdict = "valid" | "suspicious" | "invalid";
+
+/**
+ * ML-klar feature-vektor for én session.
+ * Alle felter er numeriske og kan sendes direkte til en model
+ * (anomaly detection / klassifikation) uden yderligere forarbejde.
+ */
+export interface ViewFeatures {
+  totalEvents: number;
+  sessionDurationSec: number;
+  estimatedWatchedSec: number;
+  watchedRatio: number; // estimeret set tid / filmens længde
+  uniqueWatchedRatio: number; // dækkede 10-sek-spande / filmens længde
+  pauseCount: number;
+  pausesPerHour: number;
+  seekCount: number;
+  seeksPerHour: number;
+  forwardSeekRatio: number;
+  avgSeekDistanceSec: number;
+  maxSeekDistanceSec: number;
+  heartbeatCount: number;
+  heartbeatJitterSec: number; // std.afv. på hjerteslagsintervaller (bots ≈ 0)
+  identicalIntervalRatio: number; // andel identiske intervaller (scripted playback ≈ 1)
+  eventsPerMinute: number;
+  playbackRateChanges: number;
+  /** 1 hvis påstået set tid overstiger vægurstiden — umuligt uden manipulation */
+  timelineAnomaly: number;
+  /** 0–1: samlet mistanke-score ud fra enhedsmetadata */
+  deviceSuspicionScore: number;
+}
+
+export type SignalSeverity = "low" | "medium" | "high";
+
+/** En enkelt, menneskelig læsbar mistanke i sessionen. */
+export interface FraudSignal {
+  code: string;
+  description: string;
+  severity: SignalSeverity;
+}
+
+/** Heuristik-domæne: validering af én session og resultat heraf. */
+export interface SessionVerdict {
+  verdict: ViewVerdict;
+  trustScore: number; // 0–100
+  signals: FraudSignal[];
+  features: ViewFeatures;
+  decidedAt: number;
+  /** Angiver hvilken model der traf beslutningen ("heuristics-v1" indtil ML trænes) */
+  modelVersion: string;
+}
