@@ -99,19 +99,21 @@
     "filmographyHeading": "Filmografi & statistik"
   },
   "earningsPanel": {
-    "eyebrow": "Pay-per-completion",
-    "explainer": "Indtjening = gyldige færdigsetninger × filmens udbetalingsrate. Completions, der afvises af anti-fraud-valideringen (bots, venne-loops, manipulation), udbetales aldrig. Det sikrer, at pengene går til ægte publikum.",
-    "validCompletions": "Gyldige completions",
-    "rejected": "Afvist af validering",
-    "payout": "Udbetaling"
+    "eyebrow": "Indtjening",
+    "rate": "2 kr pr. 100 sete minutter",
+    "explainer": "Du optjener {rate} på Doccys. Kun loggede afspilninger, som anti-fraud-valideringen godkender, tæller med — manipulation udbetales aldrig.",
+    "earned": "Optjent i alt",
+    "paidOut": "Udbetalt",
+    "watchedMinutes": "Gyldige sete minutter",
+    "threshold": "Udbetales, når den tilgængelige saldo når 150 kr."
   },
   "filmography": {
     "film": "Film",
     "year": "År",
     "views": "Visninger",
     "completions": "Færdigsete",
-    "valid": "Gyldige",
-    "payout": "Udbetaling"
+    "watchedMinutes": "Sete min.",
+    "earnings": "Optjent"
   },
   "watch": {
     "creator": "Skaber",
@@ -221,11 +223,10 @@
   },
   "profile": {
     "loginTitle": "Log ind for at se din profil",
-    "loginSubtitle": "Din e-mail, dit abonnement og dine gemte film venter bag login.",
+    "loginSubtitle": "Din e-mail, din minut-saldo og dine gemte film venter bag login.",
     "loginCta": "Log ind",
     "eyebrow": "Min konto",
     "memberSince": "Medlem siden {date}",
-    "subscriptionHeading": "Abonnement",
     "historyHeading": "Min seerhistorik",
     "historySubtitle": "Fortsæt hvor du slap — eller gense en gammel favorit.",
     "historyEmpty": "Ingen film set endnu. Færdigset en dokumentar, og den dukker op her — kun gyldige completions registreres.",
@@ -238,43 +239,9 @@
     "creatorApplyCta": "Bliv skaber",
     "creatorStudioCta": "Åbn studiet"
   },
-  "subscriptionCard": {
-    "label": "Abonnement",
-    "memberSince": "Medlem siden {date}",
-    "free": "Gratis",
-    "perMonth": "/md."
-  },
   "watchHistory": {
     "completed": "Færdigset",
     "progress": "{watched} af {total}"
-  },
-  "plans": {
-    "free": {
-      "name": "Gratis",
-      "perks": [
-        "Se tre film om måneden",
-        "Kommentér under filmene",
-        "Ingen reklamer — heller ikke her"
-      ]
-    },
-    "doccys-plus": {
-      "name": "Doccys+",
-      "perks": [
-        "Ubegrænset adgang til hele kataloget",
-        "Gem film og fortsæt hvor du slap",
-        "Støt skaberne direkte via pay-per-completion",
-        "Ingen reklamer — nogensinde"
-      ]
-    },
-    "patron": {
-      "name": "Patron",
-      "perks": [
-        "Alt i Doccys+",
-        "Tidlig adgang til nye premiere",
-        "Bag-scenen-materiale og instruktørkommentarer",
-        "Dit navn i rulleteksterne på udvalgte film"
-      ]
-    }
   },
   "genres": {
     "Klima": "Klima",
@@ -294,5 +261,32 @@
   "meta": {
     "title": "Doccys — Uafhængige dokumentarer uden reklamer",
     "description": "Doccys er en minimalistisk, reklamefri streamingtjeneste for uafhængige dokumentarer. Betal pr. færdigset film — skaberen får delen, du får roen."
+  },
+  "paywall": {
+    "loginTitle": "Log ind for at se filmen",
+    "loginBody": "Opret en konto eller log ind — og køb en minutpakke, når du er klar til at se.",
+    "loginCta": "Log ind",
+    "buyTitle": "Ikke minutter nok på saldoen",
+    "buyBody": "Filmen kræver {minutes} minutter, og din saldo er {balance}. Køb en pakke for at starte afspilningen.",
+    "buyCta": "Køb minutter"
+  },
+  "minutes": {
+    "heading": "Minutter",
+    "balanceLabel": "Din saldo",
+    "balanceValue": "{minutes} min",
+    "packMinutes": "{minutes} min",
+    "packPrice": "{price}",
+    "vatNote": "ekskl. moms",
+    "packBuy": "Køb",
+    "purchaseSuccess": "Tak for købet! Minutterne lander på din saldo, så snart betalingen er bekræftet.",
+    "purchaseError": "Købet kunne ikke gennemføres — prøv igen.",
+    "referralUnavailable": "Dit henvisningslink kunne ikke vises lige nu."
+  },
+  "affiliate": {
+    "explainer": "Del dit link med venner. Køber en ven sin første minutpakke via dit link, får du 250 minutter på saldoen.",
+    "yourLink": "Dit link",
+    "copy": "Kopiér",
+    "copied": "Kopieret!",
+    "reward": "250 min pr. ven, der køber sin første pakke."
   }
 }

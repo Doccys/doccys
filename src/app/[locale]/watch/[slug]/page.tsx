@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import VideoPlayer from "@/components/player/VideoPlayer";
+import PaywallCard from "@/components/watch/PaywallCard";
 import CommentSection from "@/components/player/CommentSection";
 import SaveFilmButton from "@/components/documentary/SaveFilmButton";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -10,6 +12,8 @@ import {
   getCreatorByHandle,
   getDocumentaryBySlug,
 } from "@/lib/data/catalog";
+import { getBalanceSeconds } from "@/lib/data/credits";
+import { createClient } from "@/lib/supabase/server";
 import { formatDuration } from "@/lib/utils/format";
 import { localizedGenres } from "@/lib/i18n/content";
 
@@ -36,12 +40,41 @@ export default async function WatchPage({ params }: WatchPageProps) {
   const creator = await getCreatorByHandle(documentary.creatorHandle, locale);
   const genres = await localizedGenres(documentary.genres, locale);
 
+  // Paywall-gate: afspilning kræver en konto OG saldo der dækker
+  // filmens HELE længde ("fuld dækning"). Saldoen kan blive negativ
+  // ved flere samtidige tabs — nye film blokeres til genopfyldning.
+  // Alt andet indhold (info, creator, kommentarer) vises stadig.
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  let player: ReactNode;
+  if (!user) {
+    player = <PaywallCard mode="login" />;
+  } else {
+    const balanceSeconds = await getBalanceSeconds();
+    if (balanceSeconds < documentary.durationSec) {
+      player = (
+        <PaywallCard
+          mode="buy"
+          requiredMinutes={Math.ceil(documentary.durationSec / 60)}
+          balanceMinutes={Math.max(Math.floor(balanceSeconds / 60), 0)}
+        />
+      );
+    } else {
+      player = (
+        <VideoPlayer
+          documentarySlug={documentary.slug}
+          videoUrl={documentary.videoUrl}
+        />
+      );
+    }
+  }
+
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
-      <VideoPlayer
-        documentarySlug={documentary.slug}
-        videoUrl={documentary.videoUrl}
-      />
+      {player}
 
       <header className="mt-10">
         <h1 className="font-display text-4xl text-bone">{documentary.title}</h1>

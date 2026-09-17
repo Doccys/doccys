@@ -99,19 +99,21 @@
     "filmographyHeading": "Filmografi och statistik"
   },
   "earningsPanel": {
-    "eyebrow": "Pay-per-completion",
-    "explainer": "Intäkter = giltiga fullföljda visningar × filmens utbetalningsgrad. Visningar som avvisas av anti-fraud-valideringen (bots, vänskapsloopar, manipulation) betalas aldrig ut. Det säkerställer att pengarna går till en verklig publik.",
-    "validCompletions": "Giltiga fullföljda visningar",
-    "rejected": "Avvisade av valideringen",
-    "payout": "Utbetalning"
+    "eyebrow": "Intäkter",
+    "rate": "2 kr per 100 sedda minuter",
+    "explainer": "Du tjänar {rate} på Doccys. Endast inloggade visningar som anti-fraud-valideringen godkänner räknas — manipulation betalas aldrig ut.",
+    "earned": "Intjänat totalt",
+    "paidOut": "Utbetalt",
+    "watchedMinutes": "Giltiga sedda minuter",
+    "threshold": "Utbetaras när tillgängligt saldo når 150 kr."
   },
   "filmography": {
     "film": "Film",
     "year": "År",
     "views": "Visningar",
-    "completions": "Färdigvisade",
-    "valid": "Giltiga",
-    "payout": "Utbetalning"
+    "completions": "Färdigsedda",
+    "watchedMinutes": "Sedda min.",
+    "earnings": "Intjänat"
   },
   "watch": {
     "creator": "Skapare",
@@ -221,11 +223,10 @@
   },
   "profile": {
     "loginTitle": "Logga in för att se din profil",
-    "loginSubtitle": "Din e-post, ditt abonnemang och dina sparade filmer väntar bakom inloggningen.",
+    "loginSubtitle": "Din e-post, ditt minutsaldo och dina sparade filmer väntar bakom inloggningen.",
     "loginCta": "Logga in",
     "eyebrow": "Mitt konto",
     "memberSince": "Medlem sedan {date}",
-    "subscriptionHeading": "Abonnemang",
     "historyHeading": "Min visningshistorik",
     "historySubtitle": "Fortsätt där du slutade — eller se en gammal favorit igen.",
     "historyEmpty": "Inga filmer tittade än. Se klart en dokumentär och den dyker upp här — endast giltiga fullföljda visningar registreras.",
@@ -238,43 +239,9 @@
     "creatorApplyCta": "Bli skapare",
     "creatorStudioCta": "Öppna studion"
   },
-  "subscriptionCard": {
-    "label": "Abonnemang",
-    "memberSince": "Medlem sedan {date}",
-    "free": "Gratis",
-    "perMonth": "/mån"
-  },
   "watchHistory": {
     "completed": "Färdigvisad",
     "progress": "{watched} av {total}"
-  },
-  "plans": {
-    "free": {
-      "name": "Gratis",
-      "perks": [
-        "Se tre filmer per månad",
-        "Kommentera under filmerna",
-        "Inga annonser — inte här heller"
-      ]
-    },
-    "doccys-plus": {
-      "name": "Doccys+",
-      "perks": [
-        "Obegränsad tillgång till hela katalogen",
-        "Spara filmer och fortsätt där du slutade",
-        "Stöd skaparna direkt via pay-per-completion",
-        "Inga annonser — aldrig"
-      ]
-    },
-    "patron": {
-      "name": "Patron",
-      "perks": [
-        "Allt i Doccys+",
-        "Tidig tillgång till nya premiärer",
-        "Material bakom kulisserna och regissörskommentarer",
-        "Ditt namn i eftertexterna på utvalda filmer"
-      ]
-    }
   },
   "genres": {
     "Klima": "Klimat",
@@ -294,5 +261,32 @@
   "meta": {
     "title": "Doccys — Oberoende dokumentärer utan annonser",
     "description": "Doccys är en minimalistisk, annonsfri streamingtjänst för oberoende dokumentärer. Betala per färdigvisad film — skaparen får sin del, du får stillheten."
+  },
+  "paywall": {
+    "loginTitle": "Logga in för att se filmen",
+    "loginBody": "Skapa ett konto eller logga in — och köp ett minutpaket när du är redo att titta.",
+    "loginCta": "Logga in",
+    "buyTitle": "Inte tillräckligt med minuter på saldot",
+    "buyBody": "Filmen kräver {minutes} minuter och ditt saldo är {balance}. Köp ett paket för att starta uppspelningen.",
+    "buyCta": "Köp minuter"
+  },
+  "minutes": {
+    "heading": "Minuter",
+    "balanceLabel": "Ditt saldo",
+    "balanceValue": "{minutes} min",
+    "packMinutes": "{minutes} min",
+    "packPrice": "{price}",
+    "vatNote": "exkl. moms",
+    "packBuy": "Köp",
+    "purchaseSuccess": "Tack för ditt köp! Minuterna hamnar på ditt saldo så snart betalningen är bekräftad.",
+    "purchaseError": "Köpet kunde inte genomföras — försök igen.",
+    "referralUnavailable": "Din hänvisningslänk kunde inte visas just nu."
+  },
+  "affiliate": {
+    "explainer": "Dela din länk med dina vänner. Köper en vän sitt första minutpaket via din länk får du 250 minuter på ditt saldo.",
+    "yourLink": "Din länk",
+    "copy": "Kopiera",
+    "copied": "Kopierad!",
+    "reward": "250 minuter per vän som köper sitt första paket."
   }
 }

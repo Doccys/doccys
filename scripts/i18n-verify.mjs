@@ -1,8 +1,9 @@
-// Verifikation af i18n-wiring mod en kørende server på localhost:3000.
-// Tjekker UI-strenge, genrer, lande og fanetitel på flere sprog — samt at
-// der ikke lækker dansk tekst på de udenlandske sider. Kør med:
+// Verifikation af i18n-wiring mod en kørende server. Tjekker UI-strenge,
+// genrer, lande og fanetitel på flere sprog — samt at der ikke lækker
+// dansk tekst på de udenlandske sider. Kør med:
 //   node scripts/i18n-verify.mjs
-const BASE = "http://localhost:3000";
+// (BASE-URL kan overstyres: BASE=http://localhost:3002 node …)
+const BASE = process.env.BASE ?? "http://localhost:3000";
 
 const checks = [
   {

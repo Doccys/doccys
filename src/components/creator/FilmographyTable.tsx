@@ -1,9 +1,18 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import type { Documentary } from "@/lib/types";
+import type { CreatorFilmEarnings, Documentary } from "@/lib/types";
 import { formatCurrency, formatNumber } from "@/lib/utils/format";
 
-export default async function FilmographyTable({ films }: { films: Documentary[] }) {
+interface FilmographyTableProps {
+  films: Documentary[];
+  /** per-film sete minutter + optjent kr fra creator_indtjening-RPC'en */
+  earningsBySlug?: Record<string, CreatorFilmEarnings>;
+}
+
+export default async function FilmographyTable({
+  films,
+  earningsBySlug,
+}: FilmographyTableProps) {
   const t = await getTranslations("filmography");
   const locale = await getLocale();
 
@@ -16,13 +25,13 @@ export default async function FilmographyTable({ films }: { films: Documentary[]
             <th className="px-5 py-3">{t("year")}</th>
             <th className="px-5 py-3 text-right">{t("views")}</th>
             <th className="px-5 py-3 text-right">{t("completions")}</th>
-            <th className="px-5 py-3 text-right">{t("valid")}</th>
-            <th className="px-5 py-3 text-right">{t("payout")}</th>
+            <th className="px-5 py-3 text-right">{t("watchedMinutes")}</th>
+            <th className="px-5 py-3 text-right">{t("earnings")}</th>
           </tr>
         </thead>
         <tbody>
           {films.map((film) => {
-            const earnings = film.stats.validCompletions * film.stats.payoutRateDkk;
+            const filmEarnings = earningsBySlug?.[film.slug];
             return (
               <tr
                 key={film.id}
@@ -44,10 +53,10 @@ export default async function FilmographyTable({ films }: { films: Documentary[]
                   {formatNumber(film.stats.totalCompletions, locale)}
                 </td>
                 <td className="px-5 py-4 text-right tabular-nums text-champagne">
-                  {formatNumber(film.stats.validCompletions, locale)}
+                  {formatNumber(filmEarnings?.watchedMinutes ?? 0, locale)}
                 </td>
                 <td className="px-5 py-4 text-right tabular-nums text-bone">
-                  {formatCurrency(earnings, locale)}
+                  {formatCurrency(filmEarnings?.earnedDkk ?? 0, locale)}
                 </td>
               </tr>
             );

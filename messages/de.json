@@ -99,19 +99,21 @@
     "filmographyHeading": "Filmografie & Statistik"
   },
   "earningsPanel": {
-    "eyebrow": "Pay-per-completion",
-    "explainer": "Einnahmen = gültige Fertigstellungen × die Auszahlungsrate des Films. Fertigstellungen, die die Anti-Fraud-Prüfung ablehnt (Bots, Freundschafts-Schleifen, Manipulation), werden nie ausgezahlt. So bleibt sichergestellt, dass das Geld an ein echtes Publikum geht.",
-    "validCompletions": "Gültige Fertigstellungen",
-    "rejected": "Von der Prüfung abgelehnt",
-    "payout": "Auszahlung"
+    "eyebrow": "Einnahmen",
+    "rate": "2 kr je 100 gesehene Minuten",
+    "explainer": "Du verdienst {rate} auf Doccys. Nur angemeldete Wiedergaben, die die Anti-Fraud-Prüfung akzeptiert, zählen — Manipulation wird nie ausgezahlt.",
+    "earned": "Insgesamt verdient",
+    "paidOut": "Ausgezahlt",
+    "watchedMinutes": "Gültige gesehene Minuten",
+    "threshold": "Wird ausgezahlt, wenn das verfügbare Guthaben 150 kr erreicht."
   },
   "filmography": {
     "film": "Film",
     "year": "Jahr",
     "views": "Aufrufe",
-    "completions": "Beendet",
-    "valid": "Gültig",
-    "payout": "Auszahlung"
+    "completions": "Fertiggesehen",
+    "watchedMinutes": "Gesehene Min.",
+    "earnings": "Verdient"
   },
   "watch": {
     "creator": "Creator",
@@ -221,11 +223,10 @@
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",
-    "loginSubtitle": "Deine E-Mail, dein Abo und deine gespeicherten Filme warten hinter dem Login.",
+    "loginSubtitle": "Deine E-Mail, dein Minutenguthaben und deine gespeicherten Filme warten hinter dem Login.",
     "loginCta": "Anmelden",
     "eyebrow": "Mein Konto",
     "memberSince": "Mitglied seit {date}",
-    "subscriptionHeading": "Abo",
     "historyHeading": "Mein Sehverlauf",
     "historySubtitle": "Mach dort weiter, wo du aufgehört hast — oder sieh einen alten Favorit erneut an.",
     "historyEmpty": "Noch keine Filme gesehen. Schau einen Dokumentarfilm zu Ende, und er erscheint hier — nur gültige Fertigstellungen werden erfasst.",
@@ -238,43 +239,9 @@
     "creatorApplyCta": "Schöpfer werden",
     "creatorStudioCta": "Studio öffnen"
   },
-  "subscriptionCard": {
-    "label": "Abo",
-    "memberSince": "Mitglied seit {date}",
-    "free": "Kostenlos",
-    "perMonth": "/Mon."
-  },
   "watchHistory": {
     "completed": "Fertig gesehen",
     "progress": "{watched} von {total}"
-  },
-  "plans": {
-    "free": {
-      "name": "Kostenlos",
-      "perks": [
-        "Drei Filme pro Monat ansehen",
-        "Unter den Filmen kommentieren",
-        "Keine Werbung — auch hier nicht"
-      ]
-    },
-    "doccys-plus": {
-      "name": "Doccys+",
-      "perks": [
-        "Unbegrenzter Zugang zum gesamten Katalog",
-        "Filme speichern und dort weitersehen, wo du aufgehört hast",
-        "Creator direkt über Pay-per-Completion unterstützen",
-        "Keine Werbung — niemals"
-      ]
-    },
-    "patron": {
-      "name": "Patron",
-      "perks": [
-        "Alles aus Doccys+",
-        "Früher Zugang zu neuen Premieren",
-        "Behind-the-Scenes-Material und Regiekommentare",
-        "Dein Name im Abspann ausgewählter Filme"
-      ]
-    }
   },
   "genres": {
     "Klima": "Klima",
@@ -294,5 +261,32 @@
   "meta": {
     "title": "Doccys — Unabhängige Dokumentarfilme ohne Werbung",
     "description": "Doccys ist ein minimalistischer, werbefreier Streamingdienst für unabhängige Dokumentarfilme. Bezahlen Sie pro fertig gesehenem Film — der Creator erhält seinen Teil, Sie die Ruhe."
+  },
+  "paywall": {
+    "loginTitle": "Melde dich an, um den Film zu sehen",
+    "loginBody": "Erstelle ein Konto oder melde dich an — und kaufe ein Minutenpaket, wenn du bereit bist.",
+    "loginCta": "Anmelden",
+    "buyTitle": "Nicht genug Minuten auf dem Guthaben",
+    "buyBody": "Der Film erfordert {minutes} Minuten, dein Guthaben beträgt {balance}. Kaufe ein Paket, um die Wiedergabe zu starten.",
+    "buyCta": "Minuten kaufen"
+  },
+  "minutes": {
+    "heading": "Minuten",
+    "balanceLabel": "Dein Guthaben",
+    "balanceValue": "{minutes} Min.",
+    "packMinutes": "{minutes} Min.",
+    "packPrice": "{price}",
+    "vatNote": "ohne MwSt.",
+    "packBuy": "Kaufen",
+    "purchaseSuccess": "Danke für deinen Kauf! Die Minuten landen auf deinem Guthaben, sobald die Zahlung bestätigt ist.",
+    "purchaseError": "Der Kauf konnte nicht abgeschlossen werden — versuch es noch einmal.",
+    "referralUnavailable": "Dein Empfehlungslink kann gerade nicht angezeigt werden."
+  },
+  "affiliate": {
+    "explainer": "Teile deinen Link mit Freunden. Kauft ein Freund über deinen Link sein erstes Minutenpaket, bekommst du 250 Minuten aufs Guthaben.",
+    "yourLink": "Dein Link",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "reward": "250 Minuten pro Freund, der sein erstes Paket kauft."
   }
 }

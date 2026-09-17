@@ -99,19 +99,21 @@
     "filmographyHeading": "Filmography & statistics"
   },
   "earningsPanel": {
-    "eyebrow": "Pay-per-completion",
-    "explainer": "Earnings = valid completions × the film's payout rate. Completions rejected by the anti-fraud validation (bots, friend-loops, manipulation) are never paid out. That ensures the money goes to a real audience.",
-    "validCompletions": "Valid completions",
-    "rejected": "Rejected by validation",
-    "payout": "Payout"
+    "eyebrow": "Earnings",
+    "rate": "DKK 2 per 100 watched minutes",
+    "explainer": "You earn {rate} on Doccys. Only logged-in viewings approved by the anti-fraud validation count — manipulation is never paid out.",
+    "earned": "Total earned",
+    "paidOut": "Paid out",
+    "watchedMinutes": "Valid watched minutes",
+    "threshold": "Paid out when the available balance reaches DKK 150."
   },
   "filmography": {
     "film": "Film",
     "year": "Year",
     "views": "Views",
     "completions": "Completions",
-    "valid": "Valid",
-    "payout": "Payout"
+    "watchedMinutes": "Watched min.",
+    "earnings": "Earned"
   },
   "watch": {
     "creator": "Creator",
@@ -221,11 +223,10 @@
   },
   "profile": {
     "loginTitle": "Log in to see your profile",
-    "loginSubtitle": "Your e-mail, your subscription and your saved films are waiting behind the login.",
+    "loginSubtitle": "Your email, your minute balance and your saved films wait behind login.",
     "loginCta": "Log in",
     "eyebrow": "My account",
     "memberSince": "Member since {date}",
-    "subscriptionHeading": "Subscription",
     "historyHeading": "My watch history",
     "historySubtitle": "Pick up where you left off — or revisit an old favourite.",
     "historyEmpty": "No films watched yet. Finish a documentary and it will appear here — only valid completions are recorded.",
@@ -238,43 +239,9 @@
     "creatorApplyCta": "Become a creator",
     "creatorStudioCta": "Open the studio"
   },
-  "subscriptionCard": {
-    "label": "Subscription",
-    "memberSince": "Member since {date}",
-    "free": "Free",
-    "perMonth": "/mo."
-  },
   "watchHistory": {
     "completed": "Completed",
     "progress": "{watched} of {total}"
-  },
-  "plans": {
-    "free": {
-      "name": "Free",
-      "perks": [
-        "Watch three films a month",
-        "Comment under the films",
-        "No ads — not here either"
-      ]
-    },
-    "doccys-plus": {
-      "name": "Doccys+",
-      "perks": [
-        "Unlimited access to the entire catalog",
-        "Save films and pick up where you left off",
-        "Support creators directly via pay-per-completion",
-        "No ads — ever"
-      ]
-    },
-    "patron": {
-      "name": "Patron",
-      "perks": [
-        "Everything in Doccys+",
-        "Early access to new premieres",
-        "Behind-the-scenes material and director's commentary",
-        "Your name in the credits of selected films"
-      ]
-    }
   },
   "genres": {
     "Klima": "Climate",
@@ -294,5 +261,32 @@
   "meta": {
     "title": "Doccys — Independent documentaries without ads",
     "description": "Doccys is a minimalist, ad-free streaming service for independent documentaries. Pay per film you finish — the creator gets their share, you get the quiet."
+  },
+  "paywall": {
+    "loginTitle": "Log in to watch the film",
+    "loginBody": "Create an account or log in — and buy a minute pack when you're ready to watch.",
+    "loginCta": "Log in",
+    "buyTitle": "Not enough minutes on your balance",
+    "buyBody": "The film requires {minutes} minutes, and your balance is {balance}. Buy a pack to start playing.",
+    "buyCta": "Buy minutes"
+  },
+  "minutes": {
+    "heading": "Minutes",
+    "balanceLabel": "Your balance",
+    "balanceValue": "{minutes} min",
+    "packMinutes": "{minutes} min",
+    "packPrice": "{price}",
+    "vatNote": "excl. VAT",
+    "packBuy": "Buy",
+    "purchaseSuccess": "Thanks for your purchase! The minutes land on your balance as soon as the payment is confirmed.",
+    "purchaseError": "The purchase could not be completed — try again.",
+    "referralUnavailable": "Your referral link could not be shown right now."
+  },
+  "affiliate": {
+    "explainer": "Share your link with friends. When a friend buys their first minute pack via your link, you get 250 minutes on your balance.",
+    "yourLink": "Your link",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "reward": "250 minutes per friend who buys their first pack."
   }
 }

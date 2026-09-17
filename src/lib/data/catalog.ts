@@ -69,7 +69,6 @@ function toDocumentary(row: DocumentaryRow, locale?: string): Documentary {
       totalViews: row.total_views,
       totalCompletions: row.total_completions,
       validCompletions: row.valid_completions,
-      payoutRateDkk: Number(row.payout_rate_dkk),
     },
   };
 }
@@ -204,7 +203,7 @@ export async function getCreatorFilmsIncludingDrafts(
   return (data ?? []).map((row) => toDocumentary(row, locale));
 }
 
-/** Aggregeret skaberstatistik — bl.a. pay-per-completion-indtjening. */
+/** Aggregeret skaberstatistik — redaktionelle tal, display-only. */
 export async function getCreatorStats(handle: string): Promise<CreatorStats> {
   const films = await getFilmsByCreator(handle);
   const totalViews = films.reduce((sum, f) => sum + f.stats.totalViews, 0);
@@ -216,15 +215,10 @@ export async function getCreatorStats(handle: string): Promise<CreatorStats> {
     (sum, f) => sum + f.stats.validCompletions,
     0,
   );
-  const totalEarningsDkk = films.reduce(
-    (sum, f) => sum + f.stats.validCompletions * f.stats.payoutRateDkk,
-    0,
-  );
   return {
     totalViews,
     totalCompletions,
     validCompletions,
-    totalEarningsDkk,
     avgCompletionRate: totalViews > 0 ? totalCompletions / totalViews : 0,
   };
 }

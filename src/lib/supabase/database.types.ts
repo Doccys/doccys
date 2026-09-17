@@ -218,6 +218,8 @@ export type ViewSessionRow = {
   started_at: string;
   ended_at: string | null;
   status: string;
+  /** reelt sete sekunder — skrives af afregn_session, aldrig af klienter */
+  watched_seconds: number;
   /** jsonb: SessionVerdict (features, signals, modelVersion) */
   verdict: unknown;
 };
@@ -230,12 +232,15 @@ export type ViewSessionInsert = {
   started_at?: string;
   ended_at?: string | null;
   status?: string;
+  watched_seconds?: number;
   verdict?: unknown;
 };
 
 export type ViewSessionUpdate = {
   ended_at?: string | null;
   status?: string;
+  /** skrives kun af afregn_session (security definer) — aldrig direkte */
+  watched_seconds?: number;
   verdict?: unknown;
 };
 
@@ -307,6 +312,99 @@ export type CommentLikeInsert = {
 /** likes er insert/delete-only — de opdateres aldrig */
 export type CommentLikeUpdate = never;
 
+/* ---------- credit_ledger (append-only minut-saldo) ---------- */
+
+export type CreditLedgerRow = {
+  id: string;
+  user_id: string;
+  /** positiv = kredit (køb/affiliate/admin), negativ = forbrug */
+  seconds: number;
+  reason: string;
+  /** 'koeb:{purchaseId}' | 'affiliate:{purchaseId}' | 'forbrug:{sessionId}' | 'admin:{uuid}' */
+  source_key: string;
+  created_at: string;
+};
+
+/**
+ * Insert/Update sker KUN via service-role (webhook) eller
+ * security definer-RPC'er — der findes ingen klient-policy,
+ * så Insert/Update er `never` for app-klienter.
+ */
+export type CreditLedgerInsert = never;
+export type CreditLedgerUpdate = never;
+
+/* ---------- credit_purchases (engangs-køb af minutpakker) ---------- */
+
+export type CreditPurchaseRow = {
+  id: string;
+  user_id: string;
+  pack_id: string;
+  minutes: number;
+  /** numeric → string fra Postgres — mappes med Number() */
+  price_dkk_excl: string;
+  stripe_session_id: string;
+  status: string;
+  /** koderens ejer hvis købet indfri en affiliate-henvisning */
+  referrer_user_id: string | null;
+  created_at: string;
+  paid_at: string | null;
+};
+
+/** appen indsætter kun pending-rækker; paid/failed sker via webhook */
+export type CreditPurchaseInsert = {
+  id?: string;
+  user_id: string;
+  pack_id: string;
+  minutes: number;
+  price_dkk_excl: string | number;
+  stripe_session_id: string;
+  status?: string;
+  referrer_user_id?: string | null;
+  created_at?: string;
+};
+
+/**
+ * Der findes ingen update-policy — typen findes kun fordi
+ * webhook-ruten (service-role) markerer udløbne køb 'failed'.
+ */
+export type CreditPurchaseUpdate = {
+  status?: string;
+};
+
+/* ---------- user_referral_codes (affiliate) ---------- */
+
+export type UserReferralCodeRow = {
+  user_id: string;
+  code: string;
+  created_at: string;
+};
+
+export type UserReferralCodeInsert = {
+  user_id: string;
+  code: string;
+  created_at?: string;
+};
+
+/** koden er permanent — der opdateres aldrig */
+export type UserReferralCodeUpdate = never;
+
+/* ---------- creator_payouts (manuelle udbetalinger) ---------- */
+
+export type CreatorPayoutRow = {
+  id: string;
+  user_id: string;
+  /** numeric → string fra Postgres — mappes med Number() */
+  amount_dkk: string;
+  note: string | null;
+  paid_at: string;
+};
+
+/** indsættes kun manuelt i dashboardet — aldrig af app-klienter */
+export type CreatorPayoutInsert = never;
+
+/** udbetalinger korrigeres aldrig fra app'en */
+export type CreatorPayoutUpdate = never;
+
 export type Database = {
   public: {
     Tables: {
@@ -373,12 +471,54 @@ export type Database = {
         Update: CreatorApplicationUpdate;
         Relationships: [];
       };
+      credit_ledger: {
+        Row: CreditLedgerRow;
+        Insert: CreditLedgerInsert;
+        Update: CreditLedgerUpdate;
+        Relationships: [];
+      };
+      credit_purchases: {
+        Row: CreditPurchaseRow;
+        Insert: CreditPurchaseInsert;
+        Update: CreditPurchaseUpdate;
+        Relationships: [];
+      };
+      user_referral_codes: {
+        Row: UserReferralCodeRow;
+        Insert: UserReferralCodeInsert;
+        Update: UserReferralCodeUpdate;
+        Relationships: [];
+      };
+      creator_payouts: {
+        Row: CreatorPayoutRow;
+        Insert: CreatorPayoutInsert;
+        Update: CreatorPayoutUpdate;
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      saldo_sekunder: {
+        Args: Record<string, never>;
+        Returns: number;
+      };
+      afregn_session: {
+        Args: { p_session_id: string };
+        /** jsonb: { watched_seconds } | { allerede_afregnet } */
+        Returns: unknown;
+      };
+      indfri_koeb: {
+        Args: { p_stripe_session_id: string };
+        /** jsonb: { fundet, indfriet? } — kaldes kun af webhook-ruten */
+        Returns: unknown;
+      };
+      creator_indtjening: {
+        Args: { p_creator_handle: string };
+        /** jsonb: { optjent_dkk, udbetalt_dkk, tilgaengelig_dkk, sete_minutter, film } */
+        Returns: unknown;
+      };
     };
     Enums: {
       [_ in never]: never;

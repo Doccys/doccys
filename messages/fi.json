@@ -99,19 +99,21 @@
     "filmographyHeading": "Filmografia ja tilastot"
   },
   "earningsPanel": {
-    "eyebrow": "Pay-per-completion",
-    "explainer": "Tulot = kelvolliset loppuunkatsomiset × elokuvan maksuprosentti. Anti-fraud-tarkistuksen hylkäämiä katsomisia (botit, kaveripiirit, manipulointi) ei koskaan makseta. Näin varmistetaan, että raha menee aidolle yleisölle.",
-    "validCompletions": "Kelvolliset katsomiset",
-    "rejected": "Tarkistuksen hylkäämät",
-    "payout": "Maksu"
+    "eyebrow": "Tulot",
+    "rate": "2 kr / 100 katsottua minuuttia",
+    "explainer": "Ansaitset {rate} Doccysissa. Vain kirjautuneiden katselut, jotka anti-fraud-tarkistus hyväksyy, lasketaan mukaan — manipulointia ei koskaan makseta.",
+    "earned": "Ansaittu yhteensä",
+    "paidOut": "Maksettu",
+    "watchedMinutes": "Kelvolliset katsotut minuutit",
+    "threshold": "Maksetaan, kun käytettävissä oleva saldo saavuttaa 150 kr."
   },
   "filmography": {
     "film": "Elokuva",
     "year": "Vuosi",
     "views": "Katselukerrat",
-    "completions": "Loppuun katsotut",
-    "valid": "Kelvolliset",
-    "payout": "Maksu"
+    "completions": "Loppuunkatsotut",
+    "watchedMinutes": "Katsotut min.",
+    "earnings": "Ansaittu"
   },
   "watch": {
     "creator": "Tekijä",
@@ -221,11 +223,10 @@
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",
-    "loginSubtitle": "Sähköpostisi, tilauksesi ja tallennetut elokuvasi odottavat kirjautumisen takana.",
+    "loginSubtitle": "Sähköpostisi, minuuttisaldosi ja tallentamasi elokuvat odottavat kirjautumisen takana.",
     "loginCta": "Kirjaudu sisään",
     "eyebrow": "Oma tili",
     "memberSince": "Jäsenenä {date} alkaen",
-    "subscriptionHeading": "Tilaus",
     "historyHeading": "Katseluhistoriani",
     "historySubtitle": "Jatka siitä, mihin jäit — tai katu vanha suosikki.",
     "historyEmpty": "Ei vielä katsottuja elokuvia. Katso dokumentti loppuun, niin se ilmestyy tähän — vain kelvolliset katsomiset tallennetaan.",
@@ -238,43 +239,9 @@
     "creatorApplyCta": "Tule tekijäksi",
     "creatorStudioCta": "Avaa studio"
   },
-  "subscriptionCard": {
-    "label": "Tilaus",
-    "memberSince": "Jäsenenä {date} alkaen",
-    "free": "Ilmainen",
-    "perMonth": "/kk"
-  },
   "watchHistory": {
     "completed": "Katsottu loppuun",
     "progress": "{watched} / {total}"
-  },
-  "plans": {
-    "free": {
-      "name": "Ilmainen",
-      "perks": [
-        "Katso kolme elokuvaa kuussa",
-        "Kommentoi elokuvien alla",
-        "Ei mainoksia — ei täälläkään"
-      ]
-    },
-    "doccys-plus": {
-      "name": "Doccys+",
-      "perks": [
-        "Rajaton pääsy koko katalogiin",
-        "Tallenna elokuvia ja jatka siitä, mihin jäit",
-        "Tue tekijöitä suoraan pay-per-completionin kautta",
-        "Ei mainoksia — koskaan"
-      ]
-    },
-    "patron": {
-      "name": "Patron",
-      "perks": [
-        "Kaikki Doccys+:n sisältö",
-        "Aikainen pääsy uusiin ensi-iltiin",
-        "Kulissien takainen materiaali ja ohjaajan kommentit",
-        "Nimesi valittujen elokuvien lopputeksteissä"
-      ]
-    }
   },
   "genres": {
     "Klima": "Ilmasto",
@@ -294,5 +261,32 @@
   "meta": {
     "title": "Doccys — Itsenäiset dokumentit ilman mainoksia",
     "description": "Doccys on minimalistinen, mainokseton suoratoistopalvelu itsenäisille dokumenteille. Maksat katsotusta elokuvasta — tekijä saa osuutensa, sinä saat rauhan."
+  },
+  "paywall": {
+    "loginTitle": "Kirjaudu sisään katsoaksesi elokuvan",
+    "loginBody": "Luo tili tai kirjaudu sisään — ja osta minuuttipaketti, kun olet valmis katsomaan.",
+    "loginCta": "Kirjaudu sisään",
+    "buyTitle": "Saldo ei riitä",
+    "buyBody": "Elokuva vaatii {minutes} minuuttia ja saldosi on {balance} minuuttia. Osta paketti aloittaaksesi toiston.",
+    "buyCta": "Osta minuutteja"
+  },
+  "minutes": {
+    "heading": "Minuutit",
+    "balanceLabel": "Saldosi",
+    "balanceValue": "{minutes} min",
+    "packMinutes": "{minutes} min",
+    "packPrice": "{price}",
+    "vatNote": "ei sis. ALV",
+    "packBuy": "Osta",
+    "purchaseSuccess": "Kiitos ostosta! Minuutit ilmestyvät saldoillesi, kun maksu on vahvistettu.",
+    "purchaseError": "Osto ei onnistunut — yritä uudelleen.",
+    "referralUnavailable": "Suosittelulinkkiäsi ei voi nyt näyttää."
+  },
+  "affiliate": {
+    "explainer": "Jaa linkkisi ystävien kanssa. Kun ystävä ostaa ensimmäisen minuuttipakettinsa linkkisi kautta, saat 250 minuuttia saldoosi.",
+    "yourLink": "Linkkisi",
+    "copy": "Kopioi",
+    "copied": "Kopioitu!",
+    "reward": "250 minuuttia joka ystävältä, joka ostaa ensimmäisen pakettinsa."
   }
 }

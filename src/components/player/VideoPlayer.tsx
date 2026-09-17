@@ -113,11 +113,21 @@ export default function VideoPlayer({ documentarySlug, videoUrl }: VideoPlayerPr
     };
   }, [documentarySlug]);
 
-  // 2) Ved side-lukning: log session_end og skyl bufferen med sendBeacon.
+  // 2) Ved side-lukning: log session_end, skyl bufferen og send en
+  //    validate-beacon, så forbruget afregnes selv når taben lukkes
+  //    midt i filmen. Validate-ruten er idempotent (RPC-guard), så
+  //    en senere handleEnded efter et afbrudt beacon er et no-op.
   useEffect(() => {
     const handlePageHide = () => {
       recordEvent("session_end");
       void flushEvents(true);
+      const sessionId = sessionRef.current;
+      if (sessionId && typeof navigator.sendBeacon === "function") {
+        navigator.sendBeacon(
+          `/api/views/sessions/${sessionId}/validate`,
+          new Blob([], { type: "application/json" }),
+        );
+      }
     };
     window.addEventListener("pagehide", handlePageHide);
     return () => window.removeEventListener("pagehide", handlePageHide);

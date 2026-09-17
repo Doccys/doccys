@@ -2,33 +2,40 @@ import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import SectionHeading from "@/components/ui/SectionHeading";
-import SubscriptionCard from "@/components/profile/SubscriptionCard";
+import MinutesSection from "@/components/profile/MinutesSection";
 import WatchHistoryList from "@/components/profile/WatchHistoryList";
 import DocumentaryGrid from "@/components/documentary/DocumentaryGrid";
 import { createClient } from "@/lib/supabase/server";
-import { SUBSCRIPTION_PLANS } from "@/lib/data/plans";
+import {
+  getBalanceSeconds,
+  getOrCreateReferralCode,
+} from "@/lib/data/credits";
 import {
   getDocumentaryBySlug,
   getOwnedCreator,
   getSavedFilms,
   getWatchHistory,
 } from "@/lib/data/catalog";
-import type { Documentary, UserProfile, WatchHistoryEntry } from "@/lib/types";
+import type { Documentary, WatchHistoryEntry } from "@/lib/types";
 import { formatDate } from "@/lib/utils/format";
 
 export const metadata: Metadata = { title: "Min profil" };
 
 interface ProfilePageProps {
   params: Promise<{ locale: string }>;
+  /** ?koeb=ok efter redirect tilbage fra Stripe Checkout */
+  searchParams: Promise<{ koeb?: string }>;
 }
 
 /**
  * Brugerprofil. Identiteten læses server-side fra Supabase-sessionen
  * (cookies), og seerhistorik + gemte film hentes fra databasen —
- * RLS sikrer, at kun brugerens egne rækker kan læses.
+ * RLS sikrer, at kun brugerens egne rækker kan læses. Minut-saldoen
+ * er summen af den append-only credit_ledger (via saldo_sekunder-RPC).
  */
-export default async function ProfilePage({ params }: ProfilePageProps) {
+export default async function ProfilePage({ params, searchParams }: ProfilePageProps) {
   const { locale } = await params;
+  const { koeb } = await searchParams;
   setRequestLocale(locale);
 
   const t = await getTranslations("profile");
@@ -60,17 +67,6 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
   const memberSince = Date.parse(user.created_at);
   const displayName =
     (user.user_metadata?.full_name as string | undefined) ?? user.email ?? t("eyebrow");
-  const email = user.email ?? "";
-
-  // Abonnementer findes endnu ikke i databasen — alle rigtige konti
-  // starter på den gratis plan.
-  const profile: UserProfile = {
-    id: user.id,
-    name: displayName,
-    email,
-    tier: "free",
-    memberSince,
-  };
 
   const history = await getWatchHistory(user.id);
   const historyEntries = await Promise.all(
@@ -90,6 +86,11 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
   // kortet til studiet — ellers til ansøgningssiden.
   const ownedCreator = await getOwnedCreator(user.id);
 
+  // Minut-økonomi: saldo + henvisningskode (oprettes lazy ved
+  // første besøg i profilen)
+  const balanceSeconds = await getBalanceSeconds();
+  const referralCode = await getOrCreateReferralCode(user.id);
+
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
       <SectionHeading
@@ -98,12 +99,12 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
         subtitle={t("memberSince", { date: formatDate(memberSince, locale) })}
       />
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl text-bone">{t("subscriptionHeading")}</h2>
-        <div className="mt-5">
-          <SubscriptionCard user={profile} plan={SUBSCRIPTION_PLANS.free} />
-        </div>
-      </section>
+      <MinutesSection
+        locale={locale}
+        balanceSeconds={balanceSeconds}
+        referralCode={referralCode}
+        purchaseSuccess={koeb === "ok"}
+      />
 
       <section className="mt-16">
         <h2 className="font-display text-2xl text-bone">{t("creatorHeading")}</h2>

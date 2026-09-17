@@ -99,19 +99,21 @@
     "filmographyHeading": "Filmographie et statistiques"
   },
   "earningsPanel": {
-    "eyebrow": "Pay-per-completion",
-    "explainer": "Revenus = fins de visionnage valides × le taux de rémunération du film. Les fins de visionnage rejetées par la validation anti-fraude (bots, boucles d'amis, manipulation) ne sont jamais payées. Cela garantit que l'argent va à une vraie audience.",
-    "validCompletions": "Fins de visionnage valides",
-    "rejected": "Rejetées par la validation",
-    "payout": "Versement"
+    "eyebrow": "Revenus",
+    "rate": "2 kr par 100 minutes regardées",
+    "explainer": "Vous gagnez {rate} sur Doccys. Seuls les visionnages connectés approuvés par la validation anti-fraude comptent — la manipulation n'est jamais payée.",
+    "earned": "Total gagné",
+    "paidOut": "Versé",
+    "watchedMinutes": "Minutes regardées valides",
+    "threshold": "Versement lorsque le solde disponible atteint 150 kr."
   },
   "filmography": {
     "film": "Film",
     "year": "Année",
     "views": "Vues",
     "completions": "Terminés",
-    "valid": "Valides",
-    "payout": "Versement"
+    "watchedMinutes": "Min. regardées",
+    "earnings": "Gagné"
   },
   "watch": {
     "creator": "Créateur",
@@ -221,11 +223,10 @@
   },
   "profile": {
     "loginTitle": "Connectez-vous pour voir votre profil",
-    "loginSubtitle": "Votre e-mail, votre abonnement et vos films enregistrés vous attendent après la connexion.",
+    "loginSubtitle": "Votre e-mail, votre solde de minutes et vos films enregistrés vous attendent derrière la connexion.",
     "loginCta": "Se connecter",
     "eyebrow": "Mon compte",
     "memberSince": "Membre depuis le {date}",
-    "subscriptionHeading": "Abonnement",
     "historyHeading": "Mon historique de visionnage",
     "historySubtitle": "Reprenez où vous vous êtes arrêté — ou revisitez un vieux favori.",
     "historyEmpty": "Aucun film vu pour l'instant. Terminez un documentaire et il apparaîtra ici — seules les fins de visionnage valides sont enregistrées.",
@@ -238,43 +239,9 @@
     "creatorApplyCta": "Devenir créateur",
     "creatorStudioCta": "Ouvrir le studio"
   },
-  "subscriptionCard": {
-    "label": "Abonnement",
-    "memberSince": "Membre depuis le {date}",
-    "free": "Gratuit",
-    "perMonth": "/mois"
-  },
   "watchHistory": {
     "completed": "Terminé",
     "progress": "{watched} sur {total}"
-  },
-  "plans": {
-    "free": {
-      "name": "Gratuit",
-      "perks": [
-        "Regarder trois films par mois",
-        "Commenter sous les films",
-        "Pas de publicité — pas ici non plus"
-      ]
-    },
-    "doccys-plus": {
-      "name": "Doccys+",
-      "perks": [
-        "Accès illimité à tout le catalogue",
-        "Enregistrez des films et reprenez où vous en étiez",
-        "Soutenez les créateurs directement via le pay-per-completion",
-        "Pas de publicité — jamais"
-      ]
-    },
-    "patron": {
-      "name": "Patron",
-      "perks": [
-        "Tout le contenu de Doccys+",
-        "Accès anticipé aux premières",
-        "Contenus des coulisses et commentaires du réalisateur",
-        "Votre nom au générique de films sélectionnés"
-      ]
-    }
   },
   "genres": {
     "Klima": "Climat",
@@ -294,5 +261,32 @@
   "meta": {
     "title": "Doccys — Documentaires indépendants sans publicité",
     "description": "Doccys est un service de streaming minimaliste et sans publicité pour documentaires indépendants. Payez par film terminé — le créateur reçoit sa part, vous recevez le calme."
+  },
+  "paywall": {
+    "loginTitle": "Connectez-vous pour voir le film",
+    "loginBody": "Créez un compte ou connectez-vous — et achetez un pack de minutes quand vous êtes prêt à regarder.",
+    "loginCta": "Se connecter",
+    "buyTitle": "Pas assez de minutes sur votre solde",
+    "buyBody": "Le film nécessite {minutes} minutes et votre solde est de {balance}. Achetez un pack pour lancer la lecture.",
+    "buyCta": "Acheter des minutes"
+  },
+  "minutes": {
+    "heading": "Minutes",
+    "balanceLabel": "Votre solde",
+    "balanceValue": "{minutes} min",
+    "packMinutes": "{minutes} min",
+    "packPrice": "{price}",
+    "vatNote": "hors TVA",
+    "packBuy": "Acheter",
+    "purchaseSuccess": "Merci pour votre achat ! Les minutes arrivent sur votre solde dès que le paiement est confirmé.",
+    "purchaseError": "L'achat n'a pas pu être finalisé — réessayez.",
+    "referralUnavailable": "Votre lien de parrainage ne peut pas être affiché pour le moment."
+  },
+  "affiliate": {
+    "explainer": "Partagez votre lien avec vos amis. Quand un ami achète son premier pack de minutes via votre lien, vous recevez 250 minutes sur votre solde.",
+    "yourLink": "Votre lien",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "reward": "250 minutes par ami qui achète son premier pack."
   }
 }

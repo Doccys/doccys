@@ -8,23 +8,6 @@
 
 /* ---------- 1. Kerne-domæne ---------- */
 
-export type SubscriptionTier = "free" | "doccys-plus" | "patron";
-
-export interface UserProfile {
-  id: string;
-  name: string;
-  email: string;
-  tier: SubscriptionTier;
-  memberSince: number; // ms epoch
-}
-
-export interface SubscriptionPlan {
-  tier: SubscriptionTier;
-  name: string;
-  priceDkkPerMonth: number;
-  perks: string[];
-}
-
 export interface Creator {
   id: string;
   handle: string; // URL-identifikator, f.eks. "nordlys-film"
@@ -40,12 +23,11 @@ export interface Creator {
   ownerUserId: string | null;
 }
 
-/** Pr. film fastsat udbetalingsrate for én *valideret* færdigsetning. */
+/** Redaktionelle seertal — display-only, indtjeningen beregnes separat. */
 export interface DocumentaryStats {
   totalViews: number;
   totalCompletions: number;
-  validCompletions: number; // kun validerede completions tæller til udbetaling
-  payoutRateDkk: number; // pay-per-completion: DKK pr. gyldig completion
+  validCompletions: number;
 }
 
 export type DocumentaryStatus = "draft" | "published";
@@ -116,13 +98,31 @@ export interface CreatorApplication {
   decidedAt: number | null; // ms epoch; null mens den afventer
 }
 
-/** Aggregeret skaberstatistik — bl.a. pay-per-completion-indtjening. */
+/** Aggregeret skaberstatistik — redaktionelle tal, display-only. */
 export interface CreatorStats {
   totalViews: number;
   totalCompletions: number;
   validCompletions: number;
-  totalEarningsDkk: number;
   avgCompletionRate: number;
+}
+
+/**
+ * Creator-økonomi fra creator_indtjening-RPC'en: 2 kr pr. 100
+ * gyldigt sete minutter, udbetalt manuelt i dashboardet ved
+ * tilgængelig saldo ≥ 150 kr.
+ */
+export interface CreatorFilmEarnings {
+  slug: string;
+  watchedMinutes: number;
+  earnedDkk: number;
+}
+
+export interface CreatorEarnings {
+  earnedDkk: number;
+  paidDkk: number;
+  availableDkk: number;
+  validWatchedMinutes: number;
+  films: CreatorFilmEarnings[];
 }
 
 /* ---------- 2. View-validation / anti-fraud ---------- */

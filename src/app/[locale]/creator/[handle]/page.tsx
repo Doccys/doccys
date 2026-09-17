@@ -10,6 +10,8 @@ import {
   getCreatorStats,
   getFilmsByCreator,
 } from "@/lib/data/catalog";
+import { getCreatorEarnings } from "@/lib/data/credits";
+import type { CreatorFilmEarnings } from "@/lib/types";
 import { formatCurrency, formatNumber } from "@/lib/utils/format";
 import { localizedCountry } from "@/lib/i18n/content";
 
@@ -33,11 +35,24 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
   const creator = await getCreatorByHandle(handle, locale);
   if (!creator) notFound();
 
-  const [films, stats, country] = await Promise.all([
+  const [films, stats, country, earnings] = await Promise.all([
     getFilmsByCreator(creator.handle, locale),
     getCreatorStats(creator.handle),
     localizedCountry(creator.country, locale),
+    getCreatorEarnings(creator.handle),
   ]);
+
+  // Fald tilbage til et tomt aggregat hvis RPC'en ikke kan kaldes
+  // (fx før migrationen er kørt) — panelet viser så 0'er
+  const creatorEarnings = earnings ?? {
+    earnedDkk: 0,
+    paidDkk: 0,
+    availableDkk: 0,
+    validWatchedMinutes: 0,
+    films: [],
+  };
+  const earningsBySlug: Record<string, CreatorFilmEarnings> =
+    Object.fromEntries(creatorEarnings.films.map((f) => [f.slug, f]));
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
@@ -65,7 +80,7 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
         />
         <StatCard
           label={t("statEarnings")}
-          value={formatCurrency(stats.totalEarningsDkk, locale)}
+          value={formatCurrency(creatorEarnings.availableDkk, locale)}
           sub={t("earningsSub")}
         />
       </div>
@@ -73,14 +88,14 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
       <section className="mt-14">
         <h2 className="font-display text-2xl text-bone">{t("earningsHeading")}</h2>
         <div className="mt-5">
-          <EarningsPanel stats={stats} />
+          <EarningsPanel earnings={creatorEarnings} />
         </div>
       </section>
 
       <section className="mt-14">
         <h2 className="font-display text-2xl text-bone">{t("filmographyHeading")}</h2>
         <div className="mt-5">
-          <FilmographyTable films={films} />
+          <FilmographyTable films={films} earningsBySlug={earningsBySlug} />
         </div>
       </section>
     </div>
