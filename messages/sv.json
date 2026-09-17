@@ -276,7 +276,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "exkl. moms",
+    "vatNote": "inkl. moms",
     "packBuy": "Köp",
     "purchaseSuccess": "Tack för ditt köp! Minuterna hamnar på ditt saldo så snart betalningen är bekräftad.",
     "purchaseError": "Köpet kunde inte genomföras — försök igen.",

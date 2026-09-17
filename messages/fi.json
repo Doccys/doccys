@@ -276,7 +276,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "ei sis. ALV",
+    "vatNote": "sis. ALV",
     "packBuy": "Osta",
     "purchaseSuccess": "Kiitos ostosta! Minuutit ilmestyvät saldoillesi, kun maksu on vahvistettu.",
     "purchaseError": "Osto ei onnistunut — yritä uudelleen.",

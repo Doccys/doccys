@@ -276,7 +276,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "eks. mva",
+    "vatNote": "inkl. mva",
     "packBuy": "Kjøp",
     "purchaseSuccess": "Takk for kjøpet! Minuttene lander på saldoen din så snart betalingen er bekreftet.",
     "purchaseError": "Kjøpet kunne ikke gjennomføres — prøv igjen.",

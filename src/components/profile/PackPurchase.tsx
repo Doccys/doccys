@@ -58,7 +58,9 @@ export default function PackPurchase({ locale }: PackPurchaseProps) {
                 {t("packMinutes", { minutes: pack.minutes })}
               </p>
               <p className="mt-1 text-sm text-champagne">
-                {t("packPrice", { price: formatCurrency(pack.priceDkkExcl, locale) })}
+                {t("packPrice", {
+                  price: formatCurrency(pack.priceDkkInclDkVat, locale),
+                })}
               </p>
               <p className="mt-1 text-xs text-ash">{t("vatNote")}</p>
             </div>

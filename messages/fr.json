@@ -276,7 +276,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "hors TVA",
+    "vatNote": "TVA incl.",
     "packBuy": "Acheter",
     "purchaseSuccess": "Merci pour votre achat ! Les minutes arrivent sur votre solde dès que le paiement est confirmé.",
     "purchaseError": "L'achat n'a pas pu être finalisé — réessayez.",

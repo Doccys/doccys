@@ -276,7 +276,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "IVA no incl.",
+    "vatNote": "IVA incl.",
     "packBuy": "Comprar",
     "purchaseSuccess": "¡Gracias por tu compra! Los minutos se añaden a tu saldo en cuanto se confirme el pago.",
     "purchaseError": "La compra no se pudo completar — inténtalo de nuevo.",

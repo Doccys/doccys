@@ -85,8 +85,9 @@ export async function POST(request: NextRequest) {
           quantity: 1,
           price_data: {
             currency: "dkk",
-            // DKK → øre
-            unit_amount: pack.priceDkkExcl * 100,
+            // DKK → øre (afrundet: komma-priser som 39,20 giver ikke
+            // heltals-øre i flydende komma)
+            unit_amount: Math.round(pack.priceDkkExcl * 100),
             product_data: {
               name: `${pack.minutes} minutter — Doccys`,
             },

@@ -276,7 +276,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "excl. VAT",
+    "vatNote": "incl. VAT",
     "packBuy": "Buy",
     "purchaseSuccess": "Thanks for your purchase! The minutes land on your balance as soon as the payment is confirmed.",
     "purchaseError": "The purchase could not be completed — try again.",
