@@ -120,12 +120,13 @@ alter table public.view_sessions
     check (watched_seconds >= 0);
 
 -- Backfill fra eksisterende domme (features.estimatedWatchedSec
--- gemmes i verdict-jsonb af valideringen). Guard: kun rækker
--- der endnu ikke er afregnet (watched_seconds = 0 og verdict findes).
+-- gemmes i verdict-jsonb af valideringen — som kommatal, derfor
+-- ::numeric før ::int). Guard: kun rækker der endnu ikke er
+-- afregnet (watched_seconds = 0 og verdict findes).
 update public.view_sessions s
-   set watched_seconds = least(
-         coalesce((s.verdict -> 'features' ->> 'estimatedWatchedSec')::int, 0),
-         d.duration_sec)
+   set watched_seconds = greatest(0, least(
+         coalesce((s.verdict -> 'features' ->> 'estimatedWatchedSec')::numeric::int, 0),
+         d.duration_sec))
   from public.documentaries d
  where d.slug = s.documentary_slug
    and s.verdict is not null
