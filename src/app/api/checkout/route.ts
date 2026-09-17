@@ -80,6 +80,9 @@ export async function POST(request: NextRequest) {
       mode: "payment",
       locale: "auto",
       customer_email: user.email,
+      // moms beregnes ud fra kundens faktureringsland — pålideligere
+      // end IP-geolokalisering (og kræves for korrekt EU-moms)
+      billing_address_collection: "required",
       line_items: [
         {
           quantity: 1,
