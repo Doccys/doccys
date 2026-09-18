@@ -227,7 +227,17 @@
     "draftNote": "Luonnoksen voi poistaa; julkaistu elokuva kuuluu toimitukselle.",
     "delete": "Poista luonnos",
     "deleteConfirm": "Poistetaanko tämä luonnos? Video poistetaan myös.",
-    "empty": "Ei vielä elokuvia — lataa ensimmäinen yllä."
+    "empty": "Ei vielä elokuvia — lataa ensimmäinen yllä.",
+    "subtitlesHeading": "Tekstitykset",
+    "subtitlesIntro": "Tekoäly luo tanskalaisen transkription elokuvan äänestä ja kääntää sen kaikille alustan kielille.",
+    "subtitlesGenerate": "Luo tekstitykset",
+    "subtitlesRegenerate": "Luo uudelleen",
+    "subtitlesWorking": "Luodaan tekstityksiä — pitkistä elokuvista voi mennä useita minuutteja.",
+    "subtitlesReady": "Valmis",
+    "subtitlesProcessing": "Luodaan…",
+    "subtitlesFailed": "Epäonnistui",
+    "subtitlesMissing": "Ei luotu",
+    "subtitlesError": "Tekstityksiä ei saatu luotua kokonaan — yritä uudelleen. Epäonnistuneita kieliä voi yrittää uudelleen samalla painikkeella."
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",

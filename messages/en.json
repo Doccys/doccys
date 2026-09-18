@@ -227,7 +227,17 @@
     "draftNote": "A draft can be deleted; a published film belongs to the editorial team.",
     "delete": "Delete draft",
     "deleteConfirm": "Delete this draft? The video is removed as well.",
-    "empty": "No films yet — upload your first one above."
+    "empty": "No films yet — upload your first one above.",
+    "subtitlesHeading": "Subtitles",
+    "subtitlesIntro": "AI generates a Danish transcript of the film's audio and translates it into every platform language.",
+    "subtitlesGenerate": "Generate subtitles",
+    "subtitlesRegenerate": "Generate again",
+    "subtitlesWorking": "Generating subtitles — this can take several minutes for long films.",
+    "subtitlesReady": "Ready",
+    "subtitlesProcessing": "Generating…",
+    "subtitlesFailed": "Failed",
+    "subtitlesMissing": "Not generated",
+    "subtitlesError": "The subtitles could not be fully generated — try again. Failed languages can be retried with the same button."
   },
   "profile": {
     "loginTitle": "Log in to see your profile",

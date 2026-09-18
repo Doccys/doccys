@@ -227,7 +227,17 @@
     "draftNote": "Ett utkast kan raderas; en publicerad film tillhör redaktionen.",
     "delete": "Radera utkast",
     "deleteConfirm": "Radera det här utkastet? Videon tas också bort.",
-    "empty": "Inga filmer än — ladda upp din första ovan."
+    "empty": "Inga filmer än — ladda upp din första ovan.",
+    "subtitlesHeading": "Undertexter",
+    "subtitlesIntro": "AI skapar en dansk utskrift av filmens ljud och översätter den till alla plattformsspråk.",
+    "subtitlesGenerate": "Generera undertexter",
+    "subtitlesRegenerate": "Generera igen",
+    "subtitlesWorking": "Genererar undertexter — det kan ta flera minuter för långa filmer.",
+    "subtitlesReady": "Klar",
+    "subtitlesProcessing": "Genereras…",
+    "subtitlesFailed": "Misslyckades",
+    "subtitlesMissing": "Inte skapat",
+    "subtitlesError": "Undertexterna kunde inte genereras helt — försök igen. Språk som misslyckades kan prövas igen med samma knapp."
   },
   "profile": {
     "loginTitle": "Logga in för att se din profil",

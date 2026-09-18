@@ -227,7 +227,17 @@
     "draftNote": "Ein Entwurf kann gelöscht werden; ein veröffentlichter Film gehört dem Redaktionsteam.",
     "delete": "Entwurf löschen",
     "deleteConfirm": "Diesen Entwurf löschen? Das Video wird ebenfalls entfernt.",
-    "empty": "Noch keine Filme — lade oben deinen ersten hoch."
+    "empty": "Noch keine Filme — lade oben deinen ersten hoch.",
+    "subtitlesHeading": "Untertitel",
+    "subtitlesIntro": "Die KI erstellt ein dänisches Transkript des Filmtons und übersetzt es in alle Plattformsprachen.",
+    "subtitlesGenerate": "Untertitel erstellen",
+    "subtitlesRegenerate": "Erneut erstellen",
+    "subtitlesWorking": "Untertitel werden erstellt — das kann bei langen Filmen einige Minuten dauern.",
+    "subtitlesReady": "Fertig",
+    "subtitlesProcessing": "Wird erstellt…",
+    "subtitlesFailed": "Fehlgeschlagen",
+    "subtitlesMissing": "Nicht erstellt",
+    "subtitlesError": "Die Untertitel konnten nicht vollständig erstellt werden — versuche es erneut. Fehlgeschlagene Sprachen lassen sich mit derselben Taste erneut versuchen."
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",

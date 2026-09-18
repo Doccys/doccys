@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import StudioDeleteFilmButton from "@/components/creator/StudioDeleteFilmButton";
 import StudioSubtitleGenerator from "@/components/creator/StudioSubtitleGenerator";
-import { LOCALE_LANGUAGE_NAMES, getFilmSubtitleStatuses } from "@/lib/data/subtitles";
+import { getFilmSubtitleStatuses } from "@/lib/data/subtitles";
+import { LOCALE_LANGUAGE_NAMES } from "@/lib/i18n/languageNames";
 import type { Documentary } from "@/lib/types";
 
 /**

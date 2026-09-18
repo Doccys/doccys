@@ -8,7 +8,7 @@ import type {
   PlaybackEventType,
   SessionVerdict,
 } from "@/lib/types";
-import { LOCALE_LANGUAGE_NAMES } from "@/lib/data/subtitles";
+import { LOCALE_LANGUAGE_NAMES } from "@/lib/i18n/languageNames";
 
 const HEARTBEAT_INTERVAL_SEC = 10;
 

@@ -227,7 +227,17 @@
     "draftNote": "Un borrador puede eliminarse; una película publicada pertenece al equipo editorial.",
     "delete": "Eliminar borrador",
     "deleteConfirm": "¿Eliminar este borrador? El vídeo también se eliminará.",
-    "empty": "Aún no hay películas — sube la primera arriba."
+    "empty": "Aún no hay películas — sube la primera arriba.",
+    "subtitlesHeading": "Subtítulos",
+    "subtitlesIntro": "La IA genera una transcripción en danés del audio de la película y la traduce a todos los idiomas de la plataforma.",
+    "subtitlesGenerate": "Generar subtítulos",
+    "subtitlesRegenerate": "Generar de nuevo",
+    "subtitlesWorking": "Generando subtítulos — puede tardar varios minutos en películas largas.",
+    "subtitlesReady": "Listo",
+    "subtitlesProcessing": "Generando…",
+    "subtitlesFailed": "Falló",
+    "subtitlesMissing": "No generado",
+    "subtitlesError": "No se pudieron generar todos los subtítulos — inténtalo de nuevo. Los idiomas fallidos pueden reintentarse con el mismo botón."
   },
   "profile": {
     "loginTitle": "Inicia sesión para ver tu perfil",

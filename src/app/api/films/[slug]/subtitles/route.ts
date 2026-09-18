@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { createClient } from "@/lib/supabase/server";
-import { LOCALE_LANGUAGE_NAMES } from "@/lib/data/subtitles";
+import { LOCALE_LANGUAGE_NAMES } from "@/lib/i18n/languageNames";
 import { FILM_SUBTITLES_BUCKET } from "@/lib/storage/filmSubtitles";
 import { buildVtt, type SubtitleSegment } from "@/lib/subtitles/vtt";
 import {

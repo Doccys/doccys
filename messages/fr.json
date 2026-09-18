@@ -227,7 +227,17 @@
     "draftNote": "Un brouillon peut être supprimé ; un film publié appartient à l'équipe éditoriale.",
     "delete": "Supprimer le brouillon",
     "deleteConfirm": "Supprimer ce brouillon ? La vidéo sera également supprimée.",
-    "empty": "Pas encore de films — envoyez votre premier ci-dessus."
+    "empty": "Pas encore de films — envoyez votre premier ci-dessus.",
+    "subtitlesHeading": "Sous-titres",
+    "subtitlesIntro": "L'IA génère une transcription danoise de la bande sonore et la traduit dans toutes les langues de la plateforme.",
+    "subtitlesGenerate": "Générer les sous-titres",
+    "subtitlesRegenerate": "Générer de nouveau",
+    "subtitlesWorking": "Génération des sous-titres — cela peut prendre plusieurs minutes pour les longs films.",
+    "subtitlesReady": "Prêt",
+    "subtitlesProcessing": "Génération…",
+    "subtitlesFailed": "Échoué",
+    "subtitlesMissing": "Non généré",
+    "subtitlesError": "Les sous-titres n'ont pas pu être entièrement générés — réessayez. Les langues en échec peuvent être relancées avec le même bouton."
   },
   "profile": {
     "loginTitle": "Connectez-vous pour voir votre profil",

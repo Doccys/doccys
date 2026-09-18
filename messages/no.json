@@ -227,7 +227,17 @@
     "draftNote": "En kladd kan slettes; en utgitt film tilhører redaksjonen.",
     "delete": "Slett kladd",
     "deleteConfirm": "Slette denne kladden? Videoen fjernes også.",
-    "empty": "Ingen filmer ennå — last opp din første ovenfor."
+    "empty": "Ingen filmer ennå — last opp din første ovenfor.",
+    "subtitlesHeading": "Undertekster",
+    "subtitlesIntro": "AI genererer en dansk utskrift av filmens lyd og oversetter den til alle plattformsspråk.",
+    "subtitlesGenerate": "Generer undertekster",
+    "subtitlesRegenerate": "Generer på nytt",
+    "subtitlesWorking": "Genererer undertekster — det kan ta flere minutter for lange filmer.",
+    "subtitlesReady": "Klar",
+    "subtitlesProcessing": "Genereres…",
+    "subtitlesFailed": "Feilet",
+    "subtitlesMissing": "Ikke generert",
+    "subtitlesError": "Undertekstene kunne ikke genereres helt — prøv igjen. Språk som feilet, kan prøves igjen med samme knapp."
   },
   "profile": {
     "loginTitle": "Logg inn for å se profilen din",

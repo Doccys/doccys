@@ -9,27 +9,14 @@
  *   i studiet. RLS sikrer i sig selv, at kun ejeren har skrivning;
  *   select er offentlig, men en fremmed ser aldrig andet end 'ready'
  *   i praksis — badgene renderes kun for ejeren.
+ *
+ * NB: LOCALE_LANGUAGE_NAMES ligger i i18n/languageNames.ts — det
+ * modul må også bruges fra klient-komponenter (VideoPlayer), hvilket
+ * denne fil ikke må (den trækker supabase-server-klienten ind).
  */
 import { createClient } from "@/lib/supabase/server";
 import type { FilmSubtitleRow } from "@/lib/supabase/database.types";
 import type { FilmSubtitleStatus, FilmSubtitleTrack } from "@/lib/types";
-
-/**
- * Sprogets EGET navn — bruges til <track label> og studio-badges.
- * Bevidst uden i18n-maskine: en seer skal altid se sit sprogs navn
- * som det stavest på sproget, uanset appens locale (samme konvention
- * som Netflix/YouTube's CC-menu).
- */
-export const LOCALE_LANGUAGE_NAMES: Record<string, string> = {
-  da: "Dansk",
-  en: "English",
-  de: "Deutsch",
-  es: "Español",
-  fr: "Français",
-  fi: "Suomi",
-  no: "Norsk",
-  sv: "Svenska",
-};
 
 /** Række → status-objekt til studio-badgene. */
 export interface FilmSubtitleStatusEntry {
