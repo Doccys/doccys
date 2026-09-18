@@ -1,5 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import StudioDeleteFilmButton from "@/components/creator/StudioDeleteFilmButton";
+import StudioSubtitleGenerator from "@/components/creator/StudioSubtitleGenerator";
+import { LOCALE_LANGUAGE_NAMES, getFilmSubtitleStatuses } from "@/lib/data/subtitles";
 import type { Documentary } from "@/lib/types";
 
 /**
@@ -16,13 +18,29 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
       <p className="rounded-xl border border-smoke bg-onyx px-6 py-8 text-sm leading-relaxed text-ash">
         {t("empty")}
       </p>
-    );
+      );
   }
+
+  // Undertekst-status hentes pr. film ÉN gang her — badges, knap og
+  // sletning deler samme data. Kun ejeren ser studiet, så alle
+  // rækker (også failed med fejlbesked) er relevante her.
+  const filmsWithSubtitles = await Promise.all(
+    films.map(async (film) => ({
+      film,
+      subtitleStatuses: await getFilmSubtitleStatuses(film.slug),
+    })),
+  );
 
   return (
     <ul className="space-y-4">
-      {films.map((film) => {
+      {filmsWithSubtitles.map(({ film, subtitleStatuses }) => {
         const draft = film.status === "draft";
+        const statusByLocale = new Map(
+          subtitleStatuses.map((entry) => [entry.locale, entry]),
+        );
+        const subtitleVttUrls = subtitleStatuses
+          .map((entry) => entry.vttUrl)
+          .filter((url): url is string => url !== null);
         return (
           <li
             key={film.id}
@@ -53,12 +71,61 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
               className="mt-4 aspect-video w-full max-w-xl rounded-lg border border-smoke"
             />
 
+            {/* Undertekster: AI-pipelinen pr. film — 8 sprog-badges
+                (kode, ikke oversatte navne — koderne er genkendelige
+                på alle sprog) + generér-knap. */}
+            <div className="mt-4 max-w-xl">
+              <p className="text-xs uppercase tracking-[0.3em] text-ash">
+                {t("subtitlesHeading")}
+              </p>
+              <p className="mt-1 text-xs leading-relaxed text-ash/70">
+                {t("subtitlesIntro")}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {Object.keys(LOCALE_LANGUAGE_NAMES).map((locale) => {
+                  const entry = statusByLocale.get(locale);
+                  const statusText = !entry
+                    ? t("subtitlesMissing")
+                    : entry.status === "ready"
+                      ? t("subtitlesReady")
+                      : entry.status === "failed"
+                        ? t("subtitlesFailed")
+                        : t("subtitlesProcessing");
+                  const badgeClass = !entry
+                    ? "border-smoke text-ash/70"
+                    : entry.status === "ready"
+                      ? "border-champagne/60 text-champagne"
+                      : entry.status === "failed"
+                        ? "border-red-400/60 text-red-400"
+                        : "border-smoke text-ash";
+                  return (
+                    <span
+                      key={locale}
+                      title={
+                        entry?.error ??
+                        LOCALE_LANGUAGE_NAMES[locale] ??
+                        locale
+                      }
+                      className={`rounded-full border px-2.5 py-0.5 text-[11px] ${badgeClass}`}
+                    >
+                      {locale.toUpperCase()} · {statusText}
+                    </span>
+                  );
+                })}
+              </div>
+              <StudioSubtitleGenerator
+                slug={film.slug}
+                hasExisting={subtitleStatuses.length > 0}
+              />
+            </div>
+
             {draft && (
               <div className="mt-4 flex items-center gap-4">
                 <StudioDeleteFilmButton
                   documentaryId={film.id}
                   videoUrl={film.videoUrl}
                   posterUrl={film.posterUrl}
+                  subtitleVttUrls={subtitleVttUrls}
                 />
                 <span className="text-xs text-ash/70">{t("draftNote")}</span>
               </div>

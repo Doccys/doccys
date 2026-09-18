@@ -12,22 +12,30 @@ import {
   FILM_POSTERS_BUCKET,
   posterPublicUrlToStoragePath,
 } from "@/lib/storage/filmPosters";
+import {
+  FILM_SUBTITLES_BUCKET,
+  subtitlePublicUrlToStoragePath,
+} from "@/lib/storage/filmSubtitles";
 
 /**
  * Sletter en KLADDE — direkte via browser-klienten ala SaveFilmButton:
  * RLS tillader kun sletning af egne kladder (publicerede film er
- * redaktionens). Storage-objekterne (video + forsidebillede)
- * fjernes bedst muligt først; dør klienten imellem kaldene, bliver
- * objekterne forældreløse — usynlige og harmløse.
+ * redaktionens). Storage-objekterne (video + forsidebillede +
+ * undertekst-VTT'er) fjernes bedst muligt først; dør klienten
+ * imellem kaldene, bliver objekterne forældreløse — usynlige og
+ * harmløse.
  */
 export default function StudioDeleteFilmButton({
   documentaryId,
   videoUrl,
   posterUrl,
+  subtitleVttUrls,
 }: {
   documentaryId: string;
   videoUrl: string;
   posterUrl: string | null;
+  /** Public-URL'er på filmens VTT-filer — ryddes sammen med resten. */
+  subtitleVttUrls: string[];
 }) {
   const t = useTranslations("creatorStudio");
   const router = useRouter();
@@ -48,6 +56,14 @@ export default function StudioDeleteFilmButton({
         : null;
       if (posterPath) {
         await supabase.storage.from(FILM_POSTERS_BUCKET).remove([posterPath]);
+      }
+      const subtitlePaths = subtitleVttUrls
+        .map((url) => subtitlePublicUrlToStoragePath(url))
+        .filter((p): p is string => p !== null);
+      if (subtitlePaths.length > 0) {
+        await supabase.storage
+          .from(FILM_SUBTITLES_BUCKET)
+          .remove(subtitlePaths);
       }
       const { error } = await supabase
         .from("documentaries")
