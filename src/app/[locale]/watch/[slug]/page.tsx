@@ -13,6 +13,7 @@ import {
   getDocumentaryBySlug,
 } from "@/lib/data/catalog";
 import { getBalanceSeconds } from "@/lib/data/credits";
+import { getFilmSubtitles } from "@/lib/data/subtitles";
 import { createClient } from "@/lib/supabase/server";
 import { formatDuration } from "@/lib/utils/format";
 import { localizedGenres } from "@/lib/i18n/content";
@@ -63,10 +64,24 @@ export default async function WatchPage({ params }: WatchPageProps) {
         />
       );
     } else {
+      // Undertekster: kun 'ready'-rækker når afspilleren. Default er
+      // seererens eget sprog; findes det ikke, dansk, ellers første
+      // track (alphabetisk da-først). Tom liste = ingen CC-menu,
+      // præcis som før pipelinen kørte.
+      const subtitleTracks = await getFilmSubtitles(slug);
+      const defaultTrack =
+        subtitleTracks.find((track) => track.locale === locale) ??
+        subtitleTracks.find((track) => track.locale === "da") ??
+        subtitleTracks[0];
+      const tracksWithDefault = subtitleTracks.map((track) => ({
+        ...track,
+        isDefault: track.locale === defaultTrack?.locale,
+      }));
       player = (
         <VideoPlayer
           documentarySlug={documentary.slug}
           videoUrl={documentary.videoUrl}
+          subtitleTracks={tracksWithDefault}
         />
       );
     }

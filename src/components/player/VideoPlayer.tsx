@@ -3,16 +3,24 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type {
   DeviceMetadata,
+  FilmSubtitleTrack,
   PlaybackEvent,
   PlaybackEventType,
   SessionVerdict,
 } from "@/lib/types";
+import { LOCALE_LANGUAGE_NAMES } from "@/lib/data/subtitles";
 
 const HEARTBEAT_INTERVAL_SEC = 10;
 
 interface VideoPlayerProps {
   documentarySlug: string;
   videoUrl: string;
+  /**
+   * Klar-undertekster (kun 'ready'-rækker). Native <track>-elementer
+   * giver browserens egen CC-menu gratis — ingen afspiller-UI at
+   * vedligeholde. Tomt/undefined = ingen undertekster, som før.
+   */
+  subtitleTracks?: FilmSubtitleTrack[];
 }
 
 type EventExtra = Partial<
@@ -39,7 +47,11 @@ function collectDeviceMetadata(): DeviceMetadata {
  * enhedsmetadata) til anti-fraud-API'et, så en completion kan valideres,
  * før den udbetales til skaberen via pay-per-completion.
  */
-export default function VideoPlayer({ documentarySlug, videoUrl }: VideoPlayerProps) {
+export default function VideoPlayer({
+  documentarySlug,
+  videoUrl,
+  subtitleTracks,
+}: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const sessionRef = useRef<string | null>(null);
   const eventBufferRef = useRef<PlaybackEvent[]>([]);
@@ -207,7 +219,18 @@ export default function VideoPlayer({ documentarySlug, videoUrl }: VideoPlayerPr
           onError={() => {
             recordEvent("error", { raw: { reason: "video-load-failed" } });
           }}
-        />
+        >
+          {subtitleTracks?.map((track) => (
+            <track
+              key={track.locale}
+              kind="captions"
+              src={track.vttUrl}
+              srcLang={track.locale}
+              label={LOCALE_LANGUAGE_NAMES[track.locale] ?? track.locale}
+              default={track.isDefault}
+            />
+          ))}
+        </video>
       </div>
       <p className="mt-3 text-xs leading-relaxed text-ash">
         {status ??
