@@ -84,6 +84,7 @@ function toComment(
     createdAt: Date.parse(row.created_at),
     likeCount,
     likedByMe,
+    pinned: row.pinned,
   };
 }
 
@@ -252,6 +253,7 @@ class SupabaseStore implements DoccysStore {
       .from("comments")
       .select("*, comment_likes(count)")
       .eq("documentary_slug", documentarySlug)
+      .order("pinned", { ascending: false })
       .order("created_at", { ascending: false });
     if (error) {
       console.warn("listComments:", error.message);
@@ -353,6 +355,72 @@ class SupabaseStore implements DoccysStore {
 
     const withLikes = row as CommentRowWithLikes;
     return toComment(withLikes, likeCountOf(withLikes), Boolean(mine));
+  }
+
+  async pinComment(input: {
+    commentId: string;
+    pinned: boolean;
+  }): Promise<Comment | "konflikt" | undefined> {
+    const supabase = await createClient();
+
+    // 404 afgøres i API-ruten — findes kommentaren ikke (eller ejes
+    // filmen ikke af den kaldende konto, hvormed RLS skjuler den),
+    // er der intet at fastgøre.
+    const { data: existing } = await supabase
+      .from("comments")
+      .select("id, documentary_slug")
+      .eq("id", input.commentId)
+      .maybeSingle();
+    if (!existing) return undefined;
+
+    // Fastgør: frigør først filmens øvrige pinned-kommentarer —
+    // ét fastgjort indlæg pr. film håndhæves af partial unique index,
+    // som fanger en evt. race (→ "konflikt").
+    if (input.pinned) {
+      const { error: unpinError } = await supabase
+        .from("comments")
+        .update({ pinned: false })
+        .eq("documentary_slug", existing.documentary_slug)
+        .eq("pinned", true)
+        .neq("id", input.commentId);
+      if (unpinError) {
+        console.warn("pinComment (unpin):", unpinError.message);
+        throw new Error("Kunne ikke fastgøre kommentaren");
+      }
+    }
+
+    const { data, error } = await supabase
+      .from("comments")
+      .update({ pinned: input.pinned })
+      .eq("id", input.commentId)
+      .select("*, comment_likes(count)")
+      .maybeSingle();
+    if (error) {
+      // Race: en anden kommentar blev fastgjort i samme øjeblik.
+      if (error.code === "23505") return "konflikt";
+      console.warn("pinComment:", error.message);
+      throw new Error("Kunne ikke fastgøre kommentaren");
+    }
+    if (!data) return undefined;
+
+    // Triggeren trg_comment_pin_kun låser alt undtagen pinned —
+    // ordlyden kan aldrig have ændret sig, men likes kan have.
+    const withLikes = data as CommentRowWithLikes;
+    return toComment(withLikes, likeCountOf(withLikes), false);
+  }
+
+  async deleteComment(commentId: string): Promise<boolean> {
+    const supabase = await createClient();
+    // RLS (slet_som_creator_ejer) afviser ikke-ejere — de svarer false.
+    const { error } = await supabase
+      .from("comments")
+      .delete()
+      .eq("id", commentId);
+    if (error) {
+      console.warn("deleteComment:", error.message);
+      return false;
+    }
+    return true;
   }
 
   async listCreatorPosts(creatorId: string): Promise<CreatorPost[]> {

@@ -9,12 +9,14 @@ export const dynamic = "force-dynamic";
  * POST /api/comments — opretter en kommentar.
  *
  * Forfatter-identiteten afgøres server-side ud fra Supabase-sessionen i
- * requestens cookies: er brugeren logget ind, bruges dennes e-mail (eller
- * gemte fulde navn) og bruger-id — et authorName fra klienten ignoreres
- * og kan ikke forfalskes. Er brugeren gæst, kræves stadig et frit navn.
+ * requestens cookies: e-mail (eller gemte fulde navn) og bruger-id kan
+ * ikke opgives fra klienten. Gæster kan ikke kommentere — felterne er
+ * kun for folk der HAR SET filmen (se POST nedenfor).
  *
- * Likes kan kun afgives af loggede brugere; likedByMe i svaret afgøres
- * derfor ud fra sessionen på samme måde.
+ * GET-svaret bærer desuden `viewer.canComment`: serverens afgørelse af
+ * hvorvidt DENNE seer må skrive (logget ind + har_set_film-RPC'en, som
+ * læser den append-only credit_ledger og ikke kan forfalskes).
+ * Like-identiteten (likedByMe) afgøres samme sted.
  */
 export async function GET(request: NextRequest) {
   const slug = new URL(request.url).searchParams.get("slug");
@@ -25,13 +27,29 @@ export async function GET(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  // Må seeren skrive? Kun kendte konti, der har set filmen.
+  let canComment = false;
+  if (user) {
+    const { data: hasWatched, error: watchError } = await supabase.rpc(
+      "har_set_film",
+      { p_slug: slug },
+    );
+    if (watchError) {
+      console.warn("har_set_film:", watchError.message);
+    } else {
+      canComment = Boolean(hasWatched);
+    }
+  }
+
   return NextResponse.json({
     comments: await doccysStore.listComments(slug, user?.id ?? null),
+    viewer: { canComment },
   });
 }
 
 export async function POST(request: NextRequest) {
-  let body: { documentarySlug?: string; authorName?: string; body?: string };
+  let body: { documentarySlug?: string; body?: string };
   try {
     body = await request.json();
   } catch {
@@ -39,7 +57,6 @@ export async function POST(request: NextRequest) {
   }
 
   const { documentarySlug, body: text } = body;
-  const trimmedGuestName = body.authorName?.trim() ?? "";
   const trimmedBody = text?.trim() ?? "";
 
   if (!documentarySlug || !trimmedBody) {
@@ -52,26 +69,47 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Kommentaren er for lang (max 2000 tegn)" }, { status: 400 });
   }
 
-  // Sessionen læses fra cookies — serveren er eneste autoritet for identiteten.
+  // Sessionen læses fra cookies — serveren er eneste autoritet for
+  // identiteten. Gæstekommentarer er lukket (DB'en håndhæver det også).
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
-  const authorName = user
-    ? ((user.user_metadata?.full_name as string | undefined) ?? user.email ?? "")
-    : trimmedGuestName;
-  if (!authorName) {
+  if (!user) {
     return NextResponse.json(
-      { error: "authorName er påkrævet for gæster" },
-      { status: 400 },
+      { error: "Log ind for at kommentere" },
+      { status: 401 },
     );
   }
+
+  // Kvalitetsfilteret: kun seere må kommentere. Tjekket går mod den
+  // append-only credit_ledger (har_set_film-RPC'en) — forbruget kan
+  // ikke forfalskes af klienten.
+  const { data: hasWatched, error: watchError } = await supabase.rpc(
+    "har_set_film",
+    { p_slug: documentarySlug },
+  );
+  if (watchError) {
+    console.warn("har_set_film:", watchError.message);
+    return NextResponse.json(
+      { error: "Kommentaren kunne ikke sendes. Prøv igen." },
+      { status: 500 },
+    );
+  }
+  if (!hasWatched) {
+    return NextResponse.json(
+      { error: "Se filmen først — kommentarfeltet er kun for seere" },
+      { status: 403 },
+    );
+  }
+
+  const authorName =
+    (user.user_metadata?.full_name as string | undefined) ?? user.email ?? "";
 
   const comment = await doccysStore.addComment({
     documentarySlug,
     authorName,
-    userId: user?.id ?? null,
+    userId: user.id,
     body: trimmedBody,
   });
 

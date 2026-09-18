@@ -72,6 +72,12 @@ export default async function WatchPage({ params }: WatchPageProps) {
     }
   }
 
+  // Er den besøgende filmens creator-ejer? Serveren er autoritet —
+  // kun ejeren ser fastgør/slet-knapperne i diskussionen.
+  const isCreatorOwner = Boolean(
+    user && creator && creator.ownerUserId === user.id,
+  );
+
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
       {player}
@@ -111,7 +117,7 @@ export default async function WatchPage({ params }: WatchPageProps) {
           subtitle={t("discussionSubtitle")}
         />
       </div>
-      <CommentSection slug={documentary.slug} />
+      <CommentSection slug={documentary.slug} isCreatorOwner={isCreatorOwner} />
     </div>
   );
 }

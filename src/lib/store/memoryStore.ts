@@ -64,6 +64,17 @@ export interface DoccysStore {
     userId: string;
     liked: boolean;
   }): Promise<Comment | undefined>;
+  /**
+   * Fastgør/frigør en kommentar på vegne af filmens creator-ejer.
+   * Returnerer den opdaterede kommentar, "konflikt" hvis et andet
+   * indlæg allerede er fastgjort, eller undefined hvis den ikke findes.
+   */
+  pinComment(input: {
+    commentId: string;
+    pinned: boolean;
+  }): Promise<Comment | "konflikt" | undefined>;
+  /** Sletter en kommentar på vegne af filmens creator-ejer. */
+  deleteComment(commentId: string): Promise<boolean>;
 
   // — Creator-opslag (opslagstavlen på creatorsiden) —
   listCreatorPosts(creatorId: string): Promise<CreatorPost[]>;
@@ -92,6 +103,7 @@ class MemoryStore implements DoccysStore {
       createdAt: Date.parse("2026-09-08"),
       likeCount: 0,
       likedByMe: false,
+      pinned: false,
     },
     {
       id: "c-seed-02",
@@ -101,6 +113,7 @@ class MemoryStore implements DoccysStore {
       createdAt: Date.parse("2026-09-11"),
       likeCount: 0,
       likedByMe: false,
+      pinned: false,
     },
     {
       id: "c-seed-03",
@@ -110,6 +123,7 @@ class MemoryStore implements DoccysStore {
       createdAt: Date.parse("2026-09-02"),
       likeCount: 0,
       likedByMe: false,
+      pinned: false,
     },
     {
       id: "c-seed-04",
@@ -119,6 +133,7 @@ class MemoryStore implements DoccysStore {
       createdAt: Date.parse("2026-08-30"),
       likeCount: 0,
       likedByMe: false,
+      pinned: false,
     },
   ];
   /** commentId → sæt af bruger-id'er der har liket (én like pr. konto). */
@@ -193,7 +208,10 @@ class MemoryStore implements DoccysStore {
   ): Promise<Comment[]> {
     return this.comments
       .filter((c) => c.documentarySlug === documentarySlug)
-      .sort((a, b) => b.createdAt - a.createdAt)
+      .sort(
+        (a, b) =>
+          Number(b.pinned) - Number(a.pinned) || b.createdAt - a.createdAt,
+      )
       .map((c) => ({
         ...c,
         likeCount: this.commentLikes.get(c.id)?.size ?? 0,
@@ -216,6 +234,7 @@ class MemoryStore implements DoccysStore {
       createdAt: Date.now(),
       likeCount: 0,
       likedByMe: false,
+      pinned: false,
     };
     this.comments.unshift(comment);
     return comment;
@@ -245,6 +264,35 @@ class MemoryStore implements DoccysStore {
       likeCount: likers.size,
       likedByMe: likers.has(input.userId),
     };
+  }
+
+  async pinComment(input: {
+    commentId: string;
+    pinned: boolean;
+  }): Promise<Comment | "konflikt" | undefined> {
+    const comment = this.comments.find((c) => c.id === input.commentId);
+    if (!comment) return undefined;
+
+    if (input.pinned) {
+      const existing = this.comments.find(
+        (c) =>
+          c.documentarySlug === comment.documentarySlug &&
+          c.pinned &&
+          c.id !== comment.id,
+      );
+      if (existing) return "konflikt";
+    }
+
+    comment.pinned = input.pinned;
+    return { ...comment };
+  }
+
+  async deleteComment(commentId: string): Promise<boolean> {
+    const index = this.comments.findIndex((c) => c.id === commentId);
+    if (index === -1) return false;
+    this.comments.splice(index, 1);
+    this.commentLikes.delete(commentId);
+    return true;
   }
 
   async listCreatorPosts(creatorId: string): Promise<CreatorPost[]> {

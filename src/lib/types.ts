@@ -67,6 +67,8 @@ export interface Comment {
   likeCount: number;
   /** Har DENNE seer (logget ind) liket kommentaren? */
   likedByMe: boolean;
+  /** Fremhævet af creatoren — ét fastgjort indlæg pr. film. */
+  pinned: boolean;
 }
 
 export interface WatchHistoryEntry {

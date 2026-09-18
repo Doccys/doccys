@@ -273,11 +273,13 @@ export type ViewEventInsert = {
 export type CommentRow = {
   id: string;
   documentary_slug: string;
-  /** null = gæst; identiteten afgøres altid server-side */
+  /** null = historisk gæstekommentar — nye kræver en kendt konto */
   user_id: string | null;
   author_name: string;
   body: string;
   created_at: string;
+  /** fremhævet af filmens creator-ejer (ét pr. film, DB-håndhævet) */
+  pinned: boolean;
 };
 
 export type CommentInsert = {
@@ -287,11 +289,12 @@ export type CommentInsert = {
   author_name: string;
   body: string;
   created_at?: string;
+  pinned?: boolean;
 };
 
+/** triggeren trg_comment_pin_kun låser alt undtagen pinned */
 export type CommentUpdate = {
-  author_name?: string;
-  body?: string;
+  pinned?: boolean;
 };
 
 /* ---------- comment_likes ---------- */
@@ -562,6 +565,11 @@ export type Database = {
         Args: { p_creator_handle: string };
         /** jsonb: { optjent_dkk, udbetalt_dkk, tilgaengelig_dkk, sete_minutter, film } */
         Returns: unknown;
+      };
+      har_set_film: {
+        Args: { p_slug: string };
+        /** true hvis auth.uid() har afregnet seertid på filmen (kvalitetsfilter for kommentarer) */
+        Returns: boolean;
       };
     };
     Enums: {

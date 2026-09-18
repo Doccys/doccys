@@ -3,29 +3,48 @@
 import { useEffect, useState, type FormEvent } from "react";
 import type { User } from "@supabase/supabase-js";
 import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import type { Comment } from "@/lib/types";
 import { createClient } from "@/lib/supabase/client";
 import { formatDate } from "@/lib/utils/format";
 
+interface CommentSectionProps {
+  slug: string;
+  /** Er den besøgende filmens creator-ejer? (afgøres server-side) */
+  isCreatorOwner: boolean;
+}
+
+/** GET-svaret fra /api/comments — seerens skrive-ret afgøres server-side. */
+interface CommentsResponse {
+  comments: Comment[];
+  viewer: { canComment: boolean };
+}
+
 /**
  * Diskussion under afspilleren.
  *
- * Er seeren logget ind (supabase.auth), kommenteres der med profilens
- * identitet — navnefeltet er væk, og API'en sætter forfatteren ud fra
- * sessionen server-side. Gæster kan stadig skrive under et frit navn.
+ * Kvalitetsfilteret: kun kendte konti, der HAR SET filmen, kan skrive
+ * (serveren afgør det mod den manipulationssikre forbrugs-ledger via
+ * har_set_film-RPC'en). Gæster og ikke-seere ser en gate-boks i stedet
+ * for formularen — kommentar-dataen forbliver guld for creatoren.
+ *
+ * Er seeren filmens creator-ejer, vises fastgør/slet-knapper pr. indlæg
+ * (ét fastgjort indlæg pr. film, DB-håndhævet; 409 ved race).
  */
-export default function CommentSection({ slug }: { slug: string }) {
+export default function CommentSection({ slug, isCreatorOwner }: CommentSectionProps) {
   const t = useTranslations("comments");
   const locale = useLocale();
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
-  const [name, setName] = useState("");
+  const [canComment, setCanComment] = useState(false);
   const [body, setBody] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   /** Kortfattet besked under én kommentars like-knap (login-hint/fejl). */
   const [likeHint, setLikeHint] = useState<{ id: string; message: string } | null>(null);
+  /** Moderation: id på det indlæg, der er i arbejde (deaktiverer knapperne). */
+  const [workingId, setWorkingId] = useState<string | null>(null);
 
   useEffect(() => {
     const supabase = createClient();
@@ -45,8 +64,11 @@ export default function CommentSection({ slug }: { slug: string }) {
     (async () => {
       try {
         const res = await fetch(`/api/comments?slug=${encodeURIComponent(slug)}`);
-        const data = (await res.json()) as { comments: Comment[] };
-        if (!cancelled) setComments(data.comments);
+        const data = (await res.json()) as CommentsResponse;
+        if (!cancelled) {
+          setComments(data.comments);
+          setCanComment(data.viewer.canComment);
+        }
       } catch {
         if (!cancelled) setError(t("loadError"));
       } finally {
@@ -58,7 +80,7 @@ export default function CommentSection({ slug }: { slug: string }) {
     };
   }, [slug, t]);
 
-  const canSubmit = body.trim().length > 0 && (user !== null || name.trim().length > 0);
+  const canSubmit = body.trim().length > 0;
 
   /**
    * Likes kan kun afgives af loggede brugere — gæster får et login-hint.
@@ -103,18 +125,14 @@ export default function CommentSection({ slug }: { slug: string }) {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!body.trim() || (!user && !name.trim())) return;
+    if (!body.trim()) return;
     setSubmitting(true);
     setError(null);
     try {
       const res = await fetch("/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(
-          user
-            ? { documentarySlug: slug, body: body.trim() }
-            : { documentarySlug: slug, authorName: name.trim(), body: body.trim() },
-        ),
+        body: JSON.stringify({ documentarySlug: slug, body: body.trim() }),
       });
       if (!res.ok) throw new Error();
       const data = (await res.json()) as { comment: Comment };
@@ -127,96 +145,185 @@ export default function CommentSection({ slug }: { slug: string }) {
     }
   };
 
+  /** Fastgør/frigør — 409 hvis et andet indlæg netop blev fastgjort. */
+  const handlePinToggle = async (comment: Comment) => {
+    setWorkingId(comment.id);
+    setError(null);
+    try {
+      const res = await fetch(`/api/comments/${comment.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pinned: !comment.pinned }),
+      });
+      if (!res.ok) {
+        setError(res.status === 409 ? t("pinError") : t("deleteError"));
+        return;
+      }
+      const data = (await res.json()) as { comment: Comment };
+      setComments((prev) => {
+        const updated = prev.map((c) => (c.id === data.comment.id ? data.comment : c));
+        // fastgjorte øverst, derefter nyeste først — én sorterings-sandhed
+        return [...updated].sort(
+          (a, b) => Number(b.pinned) - Number(a.pinned) || b.createdAt - a.createdAt,
+        );
+      });
+    } catch {
+      setError(t("pinError"));
+    } finally {
+      setWorkingId(null);
+    }
+  };
+
+  const handleDelete = async (comment: Comment) => {
+    if (!confirm(t("deleteConfirm"))) return;
+    setWorkingId(comment.id);
+    setError(null);
+    try {
+      const res = await fetch(`/api/comments/${comment.id}`, { method: "DELETE" });
+      if (!res.ok) {
+        setError(t("deleteError"));
+        return;
+      }
+      setComments((prev) => prev.filter((c) => c.id !== comment.id));
+    } catch {
+      setError(t("deleteError"));
+    } finally {
+      setWorkingId(null);
+    }
+  };
+
+  const gateBox = (
+    <div className="mt-8 rounded-lg border border-smoke bg-onyx px-6 py-5 text-sm text-ash">
+      {user ? (
+        <p>{t("gateWatch")}</p>
+      ) : (
+        <p>
+          <Link
+            href="/login"
+            className="text-champagne underline underline-offset-4 transition-colors hover:text-bone"
+          >
+            {t("gateLogin")}
+          </Link>{" "}
+          {t("gateLoginSuffix")}
+        </p>
+      )}
+    </div>
+  );
+
   return (
     <section className="mt-16">
       <h2 className="font-display text-3xl text-bone">{t("title")}</h2>
       <p className="mt-2 text-sm text-ash">{t("subtitle")}</p>
 
-      <form onSubmit={handleSubmit} className="mt-8 space-y-3">
-        {user ? (
+      {canComment ? (
+        <form onSubmit={handleSubmit} className="mt-8 space-y-3">
           <div className="flex items-center gap-2.5 text-sm text-ash">
             <span className="flex h-6 w-6 items-center justify-center rounded-full border border-champagne/50 text-[11px] font-medium text-champagne">
-              {(user.email ?? "?").charAt(0).toUpperCase()}
+              {(user?.email ?? "?").charAt(0).toUpperCase()}
             </span>
             <span>
               {t("postingAs")}{" "}
-              <span className="break-all text-champagne">{user.email}</span>
+              <span className="break-all text-champagne">{user?.email}</span>
             </span>
           </div>
-        ) : (
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder={t("namePlaceholder")}
-            maxLength={60}
-            className="w-full max-w-xs rounded-lg border border-smoke bg-onyx px-4 py-2.5 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none"
+          <textarea
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            placeholder={t("bodyPlaceholder")}
+            rows={3}
+            maxLength={2000}
+            className="w-full rounded-lg border border-smoke bg-onyx px-4 py-3 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none"
           />
-        )}
-        <textarea
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          placeholder={t("bodyPlaceholder")}
-          rows={3}
-          maxLength={2000}
-          className="w-full rounded-lg border border-smoke bg-onyx px-4 py-3 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none"
-        />
-        {error && <p className="text-sm text-red-400">{error}</p>}
-        <div className="flex items-center gap-4">
-          <button
-            type="submit"
-            disabled={submitting || !canSubmit}
-            className="rounded-full bg-champagne px-6 py-2.5 text-sm font-medium text-noir transition-colors hover:bg-bone disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            {submitting ? t("submitting") : t("submit")}
-          </button>
-          <span className="text-xs text-ash/70">
-            {user ? t("loggedInNote") : t("guestNote")}
-          </span>
-        </div>
-      </form>
+          {error && <p className="text-sm text-red-400">{error}</p>}
+          <div className="flex items-center gap-4">
+            <button
+              type="submit"
+              disabled={submitting || !canSubmit}
+              className="rounded-full bg-champagne px-6 py-2.5 text-sm font-medium text-noir transition-colors hover:bg-bone disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              {submitting ? t("submitting") : t("submit")}
+            </button>
+            <span className="text-xs text-ash/70">{t("loggedInNote")}</span>
+          </div>
+        </form>
+      ) : (
+        gateBox
+      )}
 
       <div className="mt-10 space-y-4">
         {loading && <p className="text-sm text-ash">{t("loading")}</p>}
         {!loading && comments.length === 0 && (
           <p className="text-sm text-ash">{t("empty")}</p>
         )}
-        {comments.map((comment) => (
-          <article
-            key={comment.id}
-            className="rounded-lg border border-smoke bg-onyx p-5"
-          >
-            <div className="flex items-baseline justify-between gap-4">
-              <p className="break-all font-medium text-champagne">
-                {comment.authorName}
-              </p>
-              <p className="shrink-0 text-xs text-ash/70">
-                {formatDate(comment.createdAt, locale)}
-              </p>
-            </div>
-            <p className="mt-2 leading-relaxed text-bone/90">{comment.body}</p>
-
-            <div className="mt-3 flex items-center gap-3">
-              <button
-                type="button"
-                onClick={() => handleToggleLike(comment)}
-                aria-label={t("likeAria")}
-                aria-pressed={comment.likedByMe}
-                className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition-colors ${
-                  comment.likedByMe
-                    ? "border-champagne/60 text-champagne"
-                    : "border-smoke text-ash hover:border-champagne/60 hover:text-champagne"
-                }`}
-              >
-                <HeartIcon filled={comment.likedByMe} />
-                {comment.likeCount > 0 && <span>{comment.likeCount}</span>}
-              </button>
-              {likeHint?.id === comment.id && (
-                <span className="text-xs text-ash/80">{likeHint.message}</span>
+        {comments.map((comment) => {
+          const isWorking = workingId === comment.id;
+          return (
+            <article
+              key={comment.id}
+              className="rounded-lg border border-smoke bg-onyx p-5"
+            >
+              <div className="flex items-baseline justify-between gap-4">
+                <p className="break-all font-medium text-champagne">
+                  {comment.authorName}
+                </p>
+                <div className="flex shrink-0 items-center gap-2">
+                  {isCreatorOwner && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => void handlePinToggle(comment)}
+                        disabled={isWorking}
+                        aria-label={comment.pinned ? t("unpin") : t("pin")}
+                        className="rounded-full border border-smoke px-3 py-1 text-xs text-ash transition-colors hover:border-champagne/60 hover:text-champagne disabled:cursor-not-allowed disabled:opacity-40"
+                      >
+                        {comment.pinned ? t("unpin") : t("pin")}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => void handleDelete(comment)}
+                        disabled={isWorking}
+                        className="rounded-full border border-smoke px-3 py-1 text-xs text-red-400/80 transition-colors hover:border-red-400/60 disabled:cursor-not-allowed disabled:opacity-40"
+                      >
+                        {t("delete")}
+                      </button>
+                    </>
+                  )}
+                  <p className="text-xs text-ash/70">
+                    {formatDate(comment.createdAt, locale)}
+                  </p>
+                </div>
+              </div>
+              {comment.pinned && (
+                <p className="mt-2">
+                  <span className="rounded-full border border-champagne/60 px-2 py-0.5 text-xs font-medium text-champagne">
+                    📌 {t("pinnedLabel")}
+                  </span>
+                </p>
               )}
-            </div>
-          </article>
-        ))}
+              <p className="mt-2 leading-relaxed text-bone/90">{comment.body}</p>
+
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => handleToggleLike(comment)}
+                  aria-label={t("likeAria")}
+                  aria-pressed={comment.likedByMe}
+                  className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition-colors ${
+                    comment.likedByMe
+                      ? "border-champagne/60 text-champagne"
+                      : "border-smoke text-ash hover:border-champagne/60 hover:text-champagne"
+                  }`}
+                >
+                  <HeartIcon filled={comment.likedByMe} />
+                  {comment.likeCount > 0 && <span>{comment.likeCount}</span>}
+                </button>
+                {likeHint?.id === comment.id && (
+                  <span className="text-xs text-ash/80">{likeHint.message}</span>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
