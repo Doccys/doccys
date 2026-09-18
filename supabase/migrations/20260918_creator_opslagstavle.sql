@@ -17,9 +17,11 @@
 -- "old" kun id'et, og sletninger når aldrig frem til abonnenter).
 
 -- 1) creator_posts — opslag fra creatoren til dens seere.
+--    NB: creators.id er text (slug-agtigt id), ikke uuid — creator_id
+--    følger samme type, så fremmednøglen kan implementeres.
 create table if not exists public.creator_posts (
   id uuid primary key default gen_random_uuid(),
-  creator_id uuid not null
+  creator_id text not null
     references public.creators (id) on delete cascade,
   body text not null
     check (length(trim(body)) between 1 and 2000),
