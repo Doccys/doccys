@@ -17,12 +17,14 @@
 import { createClient } from "@/lib/supabase/server";
 import type {
   CommentRow,
+  CreatorPostRow,
   ViewEventRow,
   ViewSessionRow,
 } from "@/lib/supabase/database.types";
 import type { DoccysStore } from "@/lib/store/memoryStore";
 import type {
   Comment,
+  CreatorPost,
   DeviceMetadata,
   PlaybackEvent,
   SessionStatus,
@@ -92,6 +94,17 @@ type CommentRowWithLikes = CommentRow & {
 
 function likeCountOf(row: CommentRowWithLikes): number {
   return row.comment_likes?.[0]?.count ?? 0;
+}
+
+function toCreatorPost(row: CreatorPostRow): CreatorPost {
+  return {
+    id: row.id,
+    creatorId: row.creator_id,
+    body: row.body,
+    pinned: row.pinned,
+    createdAt: Date.parse(row.created_at),
+    updatedAt: Date.parse(row.updated_at),
+  };
 }
 
 /* ---------- Store ---------- */
@@ -340,6 +353,103 @@ class SupabaseStore implements DoccysStore {
 
     const withLikes = row as CommentRowWithLikes;
     return toComment(withLikes, likeCountOf(withLikes), Boolean(mine));
+  }
+
+  async listCreatorPosts(creatorId: string): Promise<CreatorPost[]> {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("creator_posts")
+      .select("*")
+      .eq("creator_id", creatorId)
+      .order("pinned", { ascending: false })
+      .order("created_at", { ascending: false });
+    if (error) {
+      console.warn("listCreatorPosts:", error.message);
+      return [];
+    }
+    return (data ?? []).map(toCreatorPost);
+  }
+
+  async addCreatorPost(input: {
+    creatorId: string;
+    body: string;
+  }): Promise<CreatorPost> {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("creator_posts")
+      .insert({ creator_id: input.creatorId, body: input.body })
+      .select("*")
+      .single();
+    if (error || !data) {
+      console.warn("addCreatorPost:", error?.message);
+      throw new Error("Kunne ikke gemme opslaget");
+    }
+    return toCreatorPost(data);
+  }
+
+  async updateCreatorPost(input: {
+    postId: string;
+    body?: string;
+    pinned?: boolean;
+  }): Promise<CreatorPost | "konflikt" | undefined> {
+    const supabase = await createClient();
+
+    // 404 afgøres i API-ruten — findes opslaget ikke (eller ejes det ikke
+    // af den kaldende konto, hvormed RLS skjuler det), er der intet at rette.
+    const { data: existing } = await supabase
+      .from("creator_posts")
+      .select("*")
+      .eq("id", input.postId)
+      .maybeSingle();
+    if (!existing) return undefined;
+
+    // Fastgør: frigør først de øvrige pinned-rækker for creatoren —
+    // ét pinned opslag pr. creator håndhæves af partial unique index,
+    // som fanger en evt. race (→ "konflikt").
+    if (input.pinned === true) {
+      const { error: unpinError } = await supabase
+        .from("creator_posts")
+        .update({ pinned: false })
+        .eq("creator_id", existing.creator_id)
+        .eq("pinned", true)
+        .neq("id", input.postId);
+      if (unpinError) {
+        console.warn("updateCreatorPost (unpin):", unpinError.message);
+        throw new Error("Kunne ikke gemme opslaget");
+      }
+    }
+
+    const patch: { body?: string; pinned?: boolean } = {};
+    if (input.body !== undefined) patch.body = input.body;
+    if (input.pinned !== undefined) patch.pinned = input.pinned;
+    const { data, error } = await supabase
+      .from("creator_posts")
+      .update(patch)
+      .eq("id", input.postId)
+      .select("*")
+      .maybeSingle();
+
+    // 23505 = unique-violation på pin-indexet (race med et andet
+    // pinned-opslag) — API-ruten oversætter til en dansk 409.
+    if (error) {
+      if (error.code === "23505") return "konflikt";
+      console.warn("updateCreatorPost:", error.message);
+      throw new Error("Kunne ikke gemme opslaget");
+    }
+    return data ? toCreatorPost(data) : undefined;
+  }
+
+  async deleteCreatorPost(postId: string): Promise<boolean> {
+    const supabase = await createClient();
+    const { error } = await supabase
+      .from("creator_posts")
+      .delete()
+      .eq("id", postId);
+    if (error) {
+      console.warn("deleteCreatorPost:", error.message);
+      return false;
+    }
+    return true;
   }
 }
 

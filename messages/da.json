@@ -288,5 +288,29 @@
     "copy": "Kopiér",
     "copied": "Kopieret!",
     "reward": "250 min pr. ven, der køber sin første pakke."
+  },
+  "bulletinBoard": {
+    "title": "Nyt fra skaberen",
+    "subtitle": "Beskeder og annonceringer direkte fra skaberen.",
+    "placeholder": "Skriv et opslag til dine seere…",
+    "submit": "Slå op",
+    "submitting": "Sender…",
+    "edit": "Rediger",
+    "editingPlaceholder": "Rediger opslaget…",
+    "save": "Gem ændringer",
+    "saving": "Gemmer…",
+    "cancel": "Fortryd",
+    "delete": "Slet",
+    "deleteConfirm": "Slet opslaget? Det kan ikke fortrydes.",
+    "pin": "Fastgør",
+    "unpin": "Frigør",
+    "pinnedLabel": "Fastgjort",
+    "editedLabel": "Redigeret",
+    "empty": "Skaberen har endnu ikke slået noget op.",
+    "emptyOwner": "Slå dit første opslag op — dine seere ser det her.",
+    "submitError": "Opslaget kunne ikke sendes. Prøv igen.",
+    "updateError": "Opslaget kunne ikke gemmes. Prøv igen.",
+    "deleteError": "Opslaget kunne ikke slettes. Prøv igen.",
+    "pinError": "Kunne ikke fastgøre opslaget — der er allerede ét fastgjort. Prøv igen."
   }
 }

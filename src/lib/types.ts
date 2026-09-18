@@ -77,6 +77,21 @@ export interface WatchHistoryEntry {
   completed: boolean;
 }
 
+/**
+ * Ét opslag fra en creator til dens seere (opslagstavlen på
+ * creatorsiden). Kun creatorens ejer-konto kan skrive — seere
+ * læser. `pinned`-opslag vises øverst (ét pr. creator).
+ */
+export interface CreatorPost {
+  id: string;
+  creatorId: string;
+  body: string;
+  pinned: boolean;
+  createdAt: number; // ms epoch
+  /** > createdAt, hvis opslaget er redigeret (DB-trigger) */
+  updatedAt: number; // ms epoch
+}
+
 export type CreatorApplicationStatus = "pending" | "approved" | "rejected";
 
 /**

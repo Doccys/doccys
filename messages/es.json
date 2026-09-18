@@ -288,5 +288,29 @@
     "copy": "Copiar",
     "copied": "¡Copiado!",
     "reward": "250 minutos por cada amigo que compre su primer paquete."
+  },
+  "bulletinBoard": {
+    "title": "Novedades del creador",
+    "subtitle": "Mensajes y anuncios directamente del creador.",
+    "placeholder": "Escribe un mensaje a tus espectadores…",
+    "submit": "Publicar",
+    "submitting": "Publicando…",
+    "edit": "Editar",
+    "editingPlaceholder": "Edita el mensaje…",
+    "save": "Guardar cambios",
+    "saving": "Guardando…",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "deleteConfirm": "¿Eliminar el mensaje? No se puede deshacer.",
+    "pin": "Fijar",
+    "unpin": "Quitar fijado",
+    "pinnedLabel": "Fijado",
+    "editedLabel": "Editado",
+    "empty": "El creador aún no ha publicado nada.",
+    "emptyOwner": "Publica tu primer mensaje — tus espectadores lo verán aquí.",
+    "submitError": "No se pudo publicar el mensaje. Inténtalo de nuevo.",
+    "updateError": "No se pudo guardar el mensaje. Inténtalo de nuevo.",
+    "deleteError": "No se pudo eliminar el mensaje. Inténtalo de nuevo.",
+    "pinError": "No se pudo fijar el mensaje — ya hay otro fijado. Inténtalo de nuevo."
   }
 }

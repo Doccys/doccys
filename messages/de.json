@@ -288,5 +288,29 @@
     "copy": "Kopieren",
     "copied": "Kopiert!",
     "reward": "250 Minuten pro Freund, der sein erstes Paket kauft."
+  },
+  "bulletinBoard": {
+    "title": "Neues von den Machern",
+    "subtitle": "Nachrichten und Ankündigungen direkt von den Machern.",
+    "placeholder": "Schreibe eine Nachricht an deine Zuschauer…",
+    "submit": "Veröffentlichen",
+    "submitting": "Wird gesendet…",
+    "edit": "Bearbeiten",
+    "editingPlaceholder": "Nachricht bearbeiten…",
+    "save": "Änderungen speichern",
+    "saving": "Speichern…",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "deleteConfirm": "Nachricht löschen? Das kann nicht rückgängig gemacht werden.",
+    "pin": "Anpinnen",
+    "unpin": "Lösen",
+    "pinnedLabel": "Angepinnt",
+    "editedLabel": "Bearbeitet",
+    "empty": "Die Maker haben noch nichts gepostet.",
+    "emptyOwner": "Veröffentliche deine erste Nachricht — deine Zuschauer sehen sie hier.",
+    "submitError": "Die Nachricht konnte nicht gesendet werden. Bitte erneut versuchen.",
+    "updateError": "Die Nachricht konnte nicht gespeichert werden. Bitte erneut versuchen.",
+    "deleteError": "Die Nachricht konnte nicht gelöscht werden. Bitte erneut versuchen.",
+    "pinError": "Nachricht konnte nicht angepinnt werden — eine andere ist bereits angepinnt. Bitte erneut versuchen."
   }
 }

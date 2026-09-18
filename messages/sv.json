@@ -288,5 +288,29 @@
     "copy": "Kopiera",
     "copied": "Kopierad!",
     "reward": "250 minuter per vän som köper sitt första paket."
+  },
+  "bulletinBoard": {
+    "title": "Nytt från skaparen",
+    "subtitle": "Meddelanden och tillkännagivanden direkt från skaparen.",
+    "placeholder": "Skriv ett inlägg till dina tittare…",
+    "submit": "Publicera",
+    "submitting": "Skickar…",
+    "edit": "Redigera",
+    "editingPlaceholder": "Redigera inlägget…",
+    "save": "Spara ändringar",
+    "saving": "Sparar…",
+    "cancel": "Avbryt",
+    "delete": "Ta bort",
+    "deleteConfirm": "Ta bort inlägget? Det går inte att ångra.",
+    "pin": "Fäst",
+    "unpin": "Lossa",
+    "pinnedLabel": "Fäst",
+    "editedLabel": "Redigerat",
+    "empty": "Skaparen har inte publicerat något än.",
+    "emptyOwner": "Publicera ditt första inlägg — dina tittare ser det här.",
+    "submitError": "Inlägget kunde inte skickas. Försök igen.",
+    "updateError": "Inlägget kunde inte sparas. Försök igen.",
+    "deleteError": "Inlägget kunde inte tas bort. Försök igen.",
+    "pinError": "Kunde inte fästa inlägget — ett annat är redan fäst. Försök igen."
   }
 }

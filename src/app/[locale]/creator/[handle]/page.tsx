@@ -5,12 +5,15 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import StatCard from "@/components/creator/StatCard";
 import EarningsPanel from "@/components/creator/EarningsPanel";
 import FilmographyTable from "@/components/creator/FilmographyTable";
+import BulletinBoard from "@/components/creator/BulletinBoard";
 import {
   getCreatorByHandle,
   getCreatorStats,
   getFilmsByCreator,
 } from "@/lib/data/catalog";
 import { getCreatorEarnings } from "@/lib/data/credits";
+import { doccysStore } from "@/lib/store/supabaseStore";
+import { createClient } from "@/lib/supabase/server";
 import type { CreatorFilmEarnings } from "@/lib/types";
 import { formatCurrency, formatNumber } from "@/lib/utils/format";
 import { localizedCountry } from "@/lib/i18n/content";
@@ -35,12 +38,22 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
   const creator = await getCreatorByHandle(handle, locale);
   if (!creator) notFound();
 
-  const [films, stats, country, earnings] = await Promise.all([
-    getFilmsByCreator(creator.handle, locale),
-    getCreatorStats(creator.handle),
-    localizedCountry(creator.country, locale),
-    getCreatorEarnings(creator.handle),
-  ]);
+  const [films, stats, country, earnings, posts, supabaseAuth] =
+    await Promise.all([
+      getFilmsByCreator(creator.handle, locale),
+      getCreatorStats(creator.handle),
+      localizedCountry(creator.country, locale),
+      getCreatorEarnings(creator.handle),
+      doccysStore.listCreatorPosts(creator.id),
+      createClient(),
+    ]);
+
+  // Er den besøgende creatorens ejer-konto? Serveren er autoritet —
+  // kun ejeren ser opslag-formularen og rediger/slet/fastgør-knapper.
+  const {
+    data: { user },
+  } = await supabaseAuth.auth.getUser();
+  const isOwner = Boolean(user && creator.ownerUserId === user.id);
 
   // Fald tilbage til et tomt aggregat hvis RPC'en ikke kan kaldes
   // (fx før migrationen er kørt) — panelet viser så 0'er
@@ -84,6 +97,14 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
           sub={t("earningsSub")}
         />
       </div>
+
+      <section className="mt-14">
+        <BulletinBoard
+          creatorId={creator.id}
+          initialPosts={posts}
+          isOwner={isOwner}
+        />
+      </section>
 
       <section className="mt-14">
         <h2 className="font-display text-2xl text-bone">{t("earningsHeading")}</h2>

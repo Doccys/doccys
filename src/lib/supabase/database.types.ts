@@ -405,6 +405,36 @@ export type CreatorPayoutInsert = never;
 /** udbetalinger korrigeres aldrig fra app'en */
 export type CreatorPayoutUpdate = never;
 
+/* ---------- creator_posts (opslagstavle på creatorsiden) ---------- */
+
+export type CreatorPostRow = {
+  id: string;
+  creator_id: string;
+  /** 1..2000 tegn efter trim — håndhæves af check-constraint */
+  body: string;
+  /** fastgjort øverst på tavlen; ét pr. creator (partial unique index) */
+  pinned: boolean;
+  created_at: string;
+  /** røres automatisk af trg_creator_post_touch ved UPDATE */
+  updated_at: string;
+};
+
+export type CreatorPostInsert = {
+  id?: string;
+  creator_id: string;
+  body: string;
+  pinned?: boolean;
+  created_at?: string;
+  updated_at?: string;
+};
+
+export type CreatorPostUpdate = {
+  body?: string;
+  pinned?: boolean;
+  /** sættes normalt af DB-triggeren, men accepteres ved insert */
+  updated_at?: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -494,6 +524,20 @@ export type Database = {
         Insert: CreatorPayoutInsert;
         Update: CreatorPayoutUpdate;
         Relationships: [];
+      };
+      creator_posts: {
+        Row: CreatorPostRow;
+        Insert: CreatorPostInsert;
+        Update: CreatorPostUpdate;
+        Relationships: [
+          {
+            foreignKeyName: "creator_posts_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+        ];
       };
     };
     Views: {

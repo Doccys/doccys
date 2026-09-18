@@ -288,5 +288,29 @@
     "copy": "Kopioi",
     "copied": "Kopioitu!",
     "reward": "250 minuuttia joka ystävältä, joka ostaa ensimmäisen pakettinsa."
+  },
+  "bulletinBoard": {
+    "title": "Tekijän uutiset",
+    "subtitle": "Viestit ja ilmoitukset suoraan tekijältä.",
+    "placeholder": "Kirjoita viesti katsojillesi…",
+    "submit": "Julkaise",
+    "submitting": "Julkaistaan…",
+    "edit": "Muokkaa",
+    "editingPlaceholder": "Muokkaa viestiä…",
+    "save": "Tallenna muutokset",
+    "saving": "Tallennetaan…",
+    "cancel": "Peruuta",
+    "delete": "Poista",
+    "deleteConfirm": "Poistetaanko viesti? Tätä ei voi kumota.",
+    "pin": "Kiinnitä",
+    "unpin": "Irrota",
+    "pinnedLabel": "Kiinnitetty",
+    "editedLabel": "Muokattu",
+    "empty": "Tekijä ei ole vielä julkaissut mitään.",
+    "emptyOwner": "Julkaise ensimmäinen viestisi — katsojasi näkevät sen täällä.",
+    "submitError": "Viestiä ei voitu julkaista. Yritä uudelleen.",
+    "updateError": "Viestiä ei voitu tallentaa. Yritä uudelleen.",
+    "deleteError": "Viestiä ei voitu poistaa. Yritä uudelleen.",
+    "pinError": "Viestiä ei voitu kiinnittää — toinen on jo kiinnitetty. Yritä uudelleen."
   }
 }

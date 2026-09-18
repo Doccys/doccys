@@ -288,5 +288,29 @@
     "copy": "Copier",
     "copied": "Copié !",
     "reward": "250 minutes par ami qui achète son premier pack."
+  },
+  "bulletinBoard": {
+    "title": "Nouvelles du créateur",
+    "subtitle": "Messages et annonces directement du créateur.",
+    "placeholder": "Écrivez un message à vos spectateurs…",
+    "submit": "Publier",
+    "submitting": "Envoi…",
+    "edit": "Modifier",
+    "editingPlaceholder": "Modifiez le message…",
+    "save": "Enregistrer les modifications",
+    "saving": "Enregistrement…",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "deleteConfirm": "Supprimer ce message ? Cette action est irréversible.",
+    "pin": "Épingler",
+    "unpin": "Désépingler",
+    "pinnedLabel": "Épinglé",
+    "editedLabel": "Modifié",
+    "empty": "Le créateur n'a encore rien publié.",
+    "emptyOwner": "Publiez votre premier message — vos spectateurs le verront ici.",
+    "submitError": "Le message n'a pas pu être publié. Réessayez.",
+    "updateError": "Le message n'a pas pu être enregistré. Réessayez.",
+    "deleteError": "Le message n'a pas pu être supprimé. Réessayez.",
+    "pinError": "Impossible d'épingler le message — un autre est déjà épinglé. Réessayez."
   }
 }

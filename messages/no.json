@@ -288,5 +288,29 @@
     "copy": "Kopier",
     "copied": "Kopiert!",
     "reward": "250 minutter per venn som kjøper sin første pakke."
+  },
+  "bulletinBoard": {
+    "title": "Nytt fra skaperen",
+    "subtitle": "Meldinger og kunngjøringer direkte fra skaperen.",
+    "placeholder": "Skriv et oppslag til seerne dine…",
+    "submit": "Publiser",
+    "submitting": "Sender…",
+    "edit": "Rediger",
+    "editingPlaceholder": "Rediger oppslaget…",
+    "save": "Lagre endringer",
+    "saving": "Lagrer…",
+    "cancel": "Avbryt",
+    "delete": "Slett",
+    "deleteConfirm": "Slette oppslaget? Det kan ikke angres.",
+    "pin": "Fest",
+    "unpin": "Løsne",
+    "pinnedLabel": "Festet",
+    "editedLabel": "Redigert",
+    "empty": "Skaperen har ikke publisert noe ennå.",
+    "emptyOwner": "Publiser ditt første oppslag — seerne dine ser det her.",
+    "submitError": "Oppslaget kunne ikke sendes. Prøv igjen.",
+    "updateError": "Oppslaget kunne ikke lagres. Prøv igjen.",
+    "deleteError": "Oppslaget kunne ikke slettes. Prøv igjen.",
+    "pinError": "Kunne ikke feste oppslaget — et annet er allerede festet. Prøv igjen."
   }
 }

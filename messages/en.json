@@ -288,5 +288,29 @@
     "copy": "Copy",
     "copied": "Copied!",
     "reward": "250 minutes per friend who buys their first pack."
+  },
+  "bulletinBoard": {
+    "title": "News from the creator",
+    "subtitle": "Messages and announcements straight from the creator.",
+    "placeholder": "Write a message to your viewers…",
+    "submit": "Post",
+    "submitting": "Posting…",
+    "edit": "Edit",
+    "editingPlaceholder": "Edit the message…",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this message? This cannot be undone.",
+    "pin": "Pin",
+    "unpin": "Unpin",
+    "pinnedLabel": "Pinned",
+    "editedLabel": "Edited",
+    "empty": "The creator hasn't posted anything yet.",
+    "emptyOwner": "Post your first message — your viewers will see it here.",
+    "submitError": "The message could not be posted. Try again.",
+    "updateError": "The message could not be saved. Try again.",
+    "deleteError": "The message could not be deleted. Try again.",
+    "pinError": "Could not pin the message — another one is already pinned. Try again."
   }
 }

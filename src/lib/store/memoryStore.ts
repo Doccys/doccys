@@ -11,6 +11,7 @@
  */
 import type {
   Comment,
+  CreatorPost,
   DeviceMetadata,
   PlaybackEvent,
   SessionStatus,
@@ -63,6 +64,21 @@ export interface DoccysStore {
     userId: string;
     liked: boolean;
   }): Promise<Comment | undefined>;
+
+  // — Creator-opslag (opslagstavlen på creatorsiden) —
+  listCreatorPosts(creatorId: string): Promise<CreatorPost[]>;
+  addCreatorPost(input: { creatorId: string; body: string }): Promise<CreatorPost>;
+  /**
+   * Redigerer eller fastgør/frigør et opslag. Returnerer det
+   * opdaterede opslag, "konflikt" hvis et andet opslag allerede
+   * er fastgjort, eller undefined hvis opslaget ikke findes.
+   */
+  updateCreatorPost(input: {
+    postId: string;
+    body?: string;
+    pinned?: boolean;
+  }): Promise<CreatorPost | "konflikt" | undefined>;
+  deleteCreatorPost(postId: string): Promise<boolean>;
 }
 
 class MemoryStore implements DoccysStore {
@@ -107,6 +123,7 @@ class MemoryStore implements DoccysStore {
   ];
   /** commentId → sæt af bruger-id'er der har liket (én like pr. konto). */
   private commentLikes = new Map<string, Set<string>>();
+  private creatorPosts: CreatorPost[] = [];
 
   async createSession(input: {
     documentarySlug: string;
@@ -228,6 +245,56 @@ class MemoryStore implements DoccysStore {
       likeCount: likers.size,
       likedByMe: likers.has(input.userId),
     };
+  }
+
+  async listCreatorPosts(creatorId: string): Promise<CreatorPost[]> {
+    return this.creatorPosts
+      .filter((p) => p.creatorId === creatorId)
+      .sort((a, b) => Number(b.pinned) - Number(a.pinned) || b.createdAt - a.createdAt);
+  }
+
+  async addCreatorPost(input: {
+    creatorId: string;
+    body: string;
+  }): Promise<CreatorPost> {
+    const now = Date.now();
+    const post: CreatorPost = {
+      id: crypto.randomUUID(),
+      creatorId: input.creatorId,
+      body: input.body,
+      pinned: false,
+      createdAt: now,
+      updatedAt: now,
+    };
+    this.creatorPosts.push(post);
+    return post;
+  }
+
+  async updateCreatorPost(input: {
+    postId: string;
+    body?: string;
+    pinned?: boolean;
+  }): Promise<CreatorPost | "konflikt" | undefined> {
+    const post = this.creatorPosts.find((p) => p.id === input.postId);
+    if (!post) return undefined;
+    if (input.pinned === true) {
+      // ét fastgjort opslag pr. creator — frigør de øvrige først
+      this.creatorPosts
+        .filter((p) => p.creatorId === post.creatorId && p.pinned && p.id !== post.id)
+        .forEach((p) => {
+          p.pinned = false;
+        });
+    }
+    if (input.body !== undefined) post.body = input.body;
+    if (input.pinned !== undefined) post.pinned = input.pinned;
+    post.updatedAt = Date.now();
+    return post;
+  }
+
+  async deleteCreatorPost(postId: string): Promise<boolean> {
+    const before = this.creatorPosts.length;
+    this.creatorPosts = this.creatorPosts.filter((p) => p.id !== postId);
+    return this.creatorPosts.length < before;
   }
 }
 
