@@ -76,10 +76,33 @@ export async function POST(request: NextRequest) {
     const stripe = getStripe();
     const origin =
       request.headers.get("origin") ?? request.nextUrl.origin;
+
+    // Find/opret Stripe-kunde, så checkouten kan forudfylde e-mail og
+    // faktureringsland. Uden forudfyldt land står momslinjen på 0,00 kr,
+    // indtil kunden selv har valgt land — med DK som udgangspunkt ser
+    // danske kunder 49/75/99 kr inkl. moms fra første sekund. Kunder i
+    // andre lande retter selv landet ved køb, og totalen tilpasser sig.
+    let customerId: string | undefined;
+    if (user.email) {
+      const existing = await stripe.customers.list({
+        email: user.email,
+        limit: 1,
+      });
+      customerId = existing.data[0]?.id;
+    }
+    if (!customerId) {
+      const customer = await stripe.customers.create({
+        email: user.email ?? undefined,
+        address: { country: "DK" },
+        metadata: { doccys_user_id: user.id },
+      });
+      customerId = customer.id;
+    }
+
     session = await stripe.checkout.sessions.create({
       mode: "payment",
       locale: "auto",
-      customer_email: user.email,
+      customer: customerId,
       // moms beregnes ud fra kundens faktureringsland — pålideligere
       // end IP-geolokalisering (og kræves for korrekt EU-moms)
       billing_address_collection: "required",
