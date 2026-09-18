@@ -96,6 +96,20 @@ export interface CreatorPost {
 
 export type CreatorApplicationStatus = "pending" | "approved" | "rejected";
 
+/** Pipeline-status pr. (film, sprog) i film_subtitles. */
+export type FilmSubtitleStatus = "processing" | "ready" | "failed";
+
+/**
+ * Ét undertekstspor til afspilleren. Kun rækker med status 'ready'
+ * bliver til tracks — processing/failed nårer aldrig ud til seerne.
+ */
+export interface FilmSubtitleTrack {
+  locale: string;
+  vttUrl: string;
+  /** Seererens foretrukne sprog vælges som default i CC-menuen. */
+  isDefault: boolean;
+}
+
 /**
  * Én skaber-ansøgning, bundet til kontoen (én pr. konto — unikt i DB).
  * Status kan kun ændres af redaktionen i Supabase-dashboardet;

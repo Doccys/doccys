@@ -438,6 +438,45 @@ export type CreatorPostUpdate = {
   updated_at?: string;
 };
 
+/* ---------- film_subtitles (AI-undertekster pr. film+sprog) ---------- */
+
+export type FilmSubtitleRow = {
+  id: string;
+  documentary_slug: string;
+  /** en af de 8 platformssprog — håndhæves af check-constraint */
+  locale: string;
+  /** public Storage-URL på VTT'en; null mens status ikke er 'ready' */
+  vtt_url: string | null;
+  /** 'processing' | 'ready' | 'failed' — håndhæves af check-constraint */
+  status: string;
+  /** 'ai' = pipeline-genereret; 'manual' reserveret til fremtidig upload */
+  source: string;
+  /** fejlbesked når status = 'failed' */
+  error: string | null;
+  created_at: string;
+  /** røres automatisk af trg_film_subtitle_touch ved UPDATE */
+  updated_at: string;
+};
+
+export type FilmSubtitleInsert = {
+  id?: string;
+  documentary_slug: string;
+  locale: string;
+  vtt_url?: string | null;
+  status?: string;
+  source?: string;
+  error?: string | null;
+  created_at?: string;
+  updated_at?: string;
+};
+
+export type FilmSubtitleUpdate = {
+  vtt_url?: string | null;
+  status?: string;
+  error?: string | null;
+  updated_at?: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -539,6 +578,20 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "creators";
             referencedColumns: ["id"];
+          },
+        ];
+      };
+      film_subtitles: {
+        Row: FilmSubtitleRow;
+        Insert: FilmSubtitleInsert;
+        Update: FilmSubtitleUpdate;
+        Relationships: [
+          {
+            foreignKeyName: "film_subtitles_documentary_slug_fkey";
+            columns: ["documentary_slug"];
+            isOneToOne: false;
+            referencedRelation: "documentaries";
+            referencedColumns: ["slug"];
           },
         ];
       };
