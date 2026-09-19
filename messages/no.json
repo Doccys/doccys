@@ -127,6 +127,7 @@
     "button": "Betal ut {amount}",
     "requesting": "Sender…",
     "requestError": "Kunne ikke opprette forespørselen.",
+    "receipt": "Kvittering (PDF)",
     "history": "Tidligere forespørsler",
     "empty": "Ingen utbetalinger ennå.",
     "pendingLabel": "Venter",

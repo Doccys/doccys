@@ -127,6 +127,7 @@
     "button": "Pay out {amount}",
     "requesting": "Sending…",
     "requestError": "Could not create the request.",
+    "receipt": "Receipt (PDF)",
     "history": "Previous requests",
     "empty": "No payouts yet.",
     "pendingLabel": "Pending",

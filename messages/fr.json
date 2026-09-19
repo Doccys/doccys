@@ -127,6 +127,7 @@
     "button": "Verser {amount}",
     "requesting": "Envoi…",
     "requestError": "Impossible de créer la demande.",
+    "receipt": "Reçu (PDF)",
     "history": "Demandes précédentes",
     "empty": "Aucun versement pour le moment.",
     "pendingLabel": "En attente",

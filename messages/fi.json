@@ -127,6 +127,7 @@
     "button": "Maksa {amount}",
     "requesting": "Lähetetään…",
     "requestError": "Pyyntöä ei voitu luoda.",
+    "receipt": "Kuitti (PDF)",
     "history": "Aiemmat pyynnöt",
     "empty": "Ei vielä maksuja.",
     "pendingLabel": "Käynnissä",

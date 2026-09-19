@@ -236,6 +236,33 @@ ANMODNING — den faktiske pengeoverførsel er fortsat manuel
   -LocalPort 3000, Stop-Process, og kør evt. verify med
   $env:BASE="http://localhost:3001". Efter drab af zombien var
   ALLE TJEK GRÆNNE (også /fi — oversættelserne var i orden).
+- PDF-KVITTERING I "INDBAKKE" (19/9, samme dag): creatorens ind-
+  bakke ER anmodningshistorikken — hver 'paid'-række får et
+  "Kvittering (PDF)"-link. PDF'en genereres ON-THE-FLY af
+  GET /api/payouts/{id}/kvittering — ingen ny tabel, ingen
+  storage, intet manuelt arbejde pr. udbetaling (data var allerede
+  i creator_payout_requests + creator_payout_methods). VIGTIGT:
+  dokumentet er en KVITTERING (bekræfter overført beløb), ikke en
+  "faktura" (den går teknisk-set fra creatoren TIL Doccys). altid
+  dansk (DKK-kontrakten), uanset UI-sprog.
+  - src/lib/pdf/kvittering.ts: HÅNDBYGGET PDF, ingen npm-afhængig-
+    hed — Helvetica + WinAnsiEncoding (æøå = latin1-bytes), xref-
+    tabel samles med byte-aktige offsets. Beløb "237,50 DKK",
+    datoer da-DK, modtager + @handle + IBAN + kvitteringsnummer.
+    Verificeret programmatisk (xref 6/6, alle nøgletekster OK,
+    æ=230 ø=248 å=229) — pdftoppm findes ikke på maskinen, så
+    visuel gennmåling mangler (se test herunder).
+  - Rute: login + .eq(user_id) → 404 på fremmede rækker (RLS er
+    anden linje), uuid-tjek FØR Postgres (ulovlig streng = fejl,
+    ikke tomt), status != 'paid' → 409. Beløbet er ANMODNINGENS —
+    redaktionens arbejdsgang kvitterer med samme beløb, altid i
+    overensstemmelse.
+  - i18n: receipt-nøgle x8 (da/no "Kvittering (PDF)", fi "Kuitti"…).
+    tsc + i18n-verify ALLE TJEK GRÆNNE.
+  - Test (afventer brugeren): som ejer på egen profil → en 'paid'-
+    række i historikken → klik "Kvittering (PDF)" → filen hentes og
+    åbner med æøå, beløb og IBAN rigtigt. Prøv også en pending-række
+    (intet link) og URL-manipulation med en fremmed request-id → 404.
 
 DELING (share) — BYGGET 19/9, dc14c53
 Watch-siden har nu en Del-række under Gem-knappen: Facebook,

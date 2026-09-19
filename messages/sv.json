@@ -127,6 +127,7 @@
     "button": "Betala ut {amount}",
     "requesting": "Skickar…",
     "requestError": "Kunde inte skapa begäran.",
+    "receipt": "Kvitto (PDF)",
     "history": "Tidigare begäranden",
     "empty": "Inga utbetalningar än.",
     "pendingLabel": "Pågår",

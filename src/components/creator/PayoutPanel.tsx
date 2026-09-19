@@ -201,20 +201,32 @@ export default function PayoutPanel({
                         {formatDate(Date.parse(r.createdAt), locale)}
                       </span>
                     </span>
-                    <span
-                      className={
-                        r.status === "paid"
-                          ? "text-champagne"
+                    <span className="flex items-baseline gap-4">
+                      {/* kvittering = "indbakken": PDF genereres on-the-fly
+                          pr. gennemført udbetaling, intet gemmes */}
+                      {r.status === "paid" && (
+                        <a
+                          href={`/api/payouts/${r.id}/kvittering`}
+                          className="text-champagne underline decoration-champagne/40 underline-offset-4 transition-colors hover:decoration-champagne"
+                        >
+                          {t("receipt")}
+                        </a>
+                      )}
+                      <span
+                        className={
+                          r.status === "paid"
+                            ? "text-champagne"
+                            : r.status === "rejected"
+                              ? "text-red-400"
+                              : "text-ash"
+                        }
+                      >
+                        {r.status === "paid"
+                          ? t("paidLabel")
                           : r.status === "rejected"
-                            ? "text-red-400"
-                            : "text-ash"
-                      }
-                    >
-                      {r.status === "paid"
-                        ? t("paidLabel")
-                        : r.status === "rejected"
-                          ? t("rejectedLabel")
-                          : t("pendingLabel")}
+                            ? t("rejectedLabel")
+                            : t("pendingLabel")}
+                      </span>
                     </span>
                   </li>
                 ))}

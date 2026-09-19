@@ -127,6 +127,7 @@
     "button": "{amount} auszahlen",
     "requesting": "Senden…",
     "requestError": "Anfrage konnte nicht erstellt werden.",
+    "receipt": "Beleg (PDF)",
     "history": "Frühere Anfragen",
     "empty": "Noch keine Auszahlungen.",
     "pendingLabel": "Offen",

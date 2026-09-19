@@ -127,6 +127,7 @@
     "button": "Pagar {amount}",
     "requesting": "Enviando…",
     "requestError": "No se pudo crear la solicitud.",
+    "receipt": "Recibo (PDF)",
     "history": "Solicitudes anteriores",
     "empty": "Todavía no hay pagos.",
     "pendingLabel": "Pendiente",

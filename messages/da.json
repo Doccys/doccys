@@ -127,6 +127,7 @@
     "button": "Udbetal {amount}",
     "requesting": "Sender…",
     "requestError": "Kunne ikke oprette anmodningen.",
+    "receipt": "Kvittering (PDF)",
     "history": "Tidligere anmodninger",
     "empty": "Ingen udbetalinger endnu.",
     "pendingLabel": "Afventer",
