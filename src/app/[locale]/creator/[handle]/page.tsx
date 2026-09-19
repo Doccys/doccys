@@ -4,6 +4,10 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StatCard from "@/components/creator/StatCard";
 import EarningsPanel from "@/components/creator/EarningsPanel";
+import PayoutPanel, {
+  type PayoutMethod,
+  type PayoutRequest,
+} from "@/components/creator/PayoutPanel";
 import FilmographyGrid from "@/components/creator/FilmographyGrid";
 import BulletinBoard from "@/components/creator/BulletinBoard";
 import {
@@ -75,6 +79,49 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
     (creatorEarnings?.films ?? []).map((f) => [f.slug, f]),
   );
 
+  // Selvbetjent udbetaling (kun ejeren): bankoplysninger + egne
+  // anmodninger hentes med seerens session — RLS er anden linje.
+  // Fald tilbage til null/[] hvis migrationen endnu ikke er kørt.
+  let payoutMethod: PayoutMethod | null = null;
+  let payoutRequests: PayoutRequest[] = [];
+  if (isOwner && user) {
+    try {
+      const [methodRes, requestsRes] = await Promise.all([
+        supabaseAuth
+          .from("creator_payout_methods")
+          .select("bank_reg_nr, bank_account_nr, iban")
+          .eq("user_id", user.id)
+          .maybeSingle(),
+        supabaseAuth
+          .from("creator_payout_requests")
+          .select("id, amount_dkk, status, created_at, processed_at")
+          .eq("user_id", user.id)
+          .order("created_at", { ascending: false })
+          .limit(20),
+      ]);
+      if (methodRes.data) {
+        payoutMethod = {
+          bankRegNr: methodRes.data.bank_reg_nr,
+          bankAccountNr: methodRes.data.bank_account_nr,
+          iban: methodRes.data.iban,
+        };
+      }
+      payoutRequests = (requestsRes.data ?? []).map((r) => ({
+        id: r.id,
+        amountDkk: Number(r.amount_dkk), // numeric → string fra Postgres
+        status: (["pending", "paid", "rejected"] as const).includes(
+          r.status as PayoutRequest["status"],
+        )
+          ? (r.status as PayoutRequest["status"])
+          : "pending",
+        createdAt: r.created_at,
+        processedAt: r.processed_at,
+      }));
+    } catch {
+      // tabellerne findes ikke endnu — panelet åbner med tomt fald
+    }
+  }
+
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
       <SectionHeading
@@ -121,6 +168,14 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
           <h2 className="font-display text-2xl text-bone">{t("earningsHeading")}</h2>
           <div className="mt-5">
             <EarningsPanel earnings={creatorEarnings} />
+          </div>
+          <div className="mt-5">
+            <PayoutPanel
+              creatorHandle={creator.handle}
+              availableDkk={creatorEarnings.availableDkk}
+              initialMethod={payoutMethod}
+              initialRequests={payoutRequests}
+            />
           </div>
         </section>
       )}

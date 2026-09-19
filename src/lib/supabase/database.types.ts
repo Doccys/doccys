@@ -414,6 +414,61 @@ export type CreatorPayoutInsert = never;
 /** udbetalinger korrigeres aldrig fra app'en */
 export type CreatorPayoutUpdate = never;
 
+/* ---------- creator_payout_methods (selvbetjente bankoplysninger) ---------- */
+
+export type CreatorPayoutMethodRow = {
+  user_id: string;
+  /** dansk bank: registreringsnummer — null hvis IBAN bruges */
+  bank_reg_nr: string | null;
+  bank_account_nr: string | null;
+  /** udenlandsk konto — check-constraint kræver parret ELLER IBAN */
+  iban: string | null;
+  /** røres automatisk af trg_payout_method_touch ved UPDATE */
+  updated_at: string;
+};
+
+export type CreatorPayoutMethodInsert = {
+  user_id: string;
+  bank_reg_nr?: string | null;
+  bank_account_nr?: string | null;
+  iban?: string | null;
+  updated_at?: string;
+};
+
+export type CreatorPayoutMethodUpdate = {
+  bank_reg_nr?: string | null;
+  bank_account_nr?: string | null;
+  iban?: string | null;
+  updated_at?: string;
+};
+
+/* ---------- creator_payout_requests (selvbetjente udbetalinger) ---------- */
+
+export type CreatorPayoutRequestRow = {
+  id: string;
+  user_id: string;
+  /** numeric → string fra Postgres — mappes med Number(); >= 150 (DB-check) */
+  amount_dkk: string;
+  /** 'pending' | 'paid' | 'rejected' — kun service role kan ændre */
+  status: string;
+  note: string | null;
+  created_at: string;
+  processed_at: string | null;
+};
+
+export type CreatorPayoutRequestInsert = {
+  id?: string;
+  user_id: string;
+  amount_dkk: string | number;
+  status?: string;
+  note?: string | null;
+  created_at?: string;
+  processed_at?: string | null;
+};
+
+/** ingen update-policy — status ændres kun i dashboardet */
+export type CreatorPayoutRequestUpdate = never;
+
 /* ---------- creator_posts (opslagstavle på creatorsiden) ---------- */
 
 export type CreatorPostRow = {
@@ -571,6 +626,18 @@ export type Database = {
         Row: CreatorPayoutRow;
         Insert: CreatorPayoutInsert;
         Update: CreatorPayoutUpdate;
+        Relationships: [];
+      };
+      creator_payout_methods: {
+        Row: CreatorPayoutMethodRow;
+        Insert: CreatorPayoutMethodInsert;
+        Update: CreatorPayoutMethodUpdate;
+        Relationships: [];
+      };
+      creator_payout_requests: {
+        Row: CreatorPayoutRequestRow;
+        Insert: CreatorPayoutRequestInsert;
+        Update: CreatorPayoutRequestUpdate;
         Relationships: [];
       };
       creator_posts: {
