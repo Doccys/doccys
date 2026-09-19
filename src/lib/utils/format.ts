@@ -23,6 +23,12 @@ export function formatCurrency(value: number, locale?: string): string {
   return new Intl.NumberFormat(intlLocale(locale), {
     style: "currency",
     currency: "DKK",
+    // Beløbet er ALTID DKK — der omregnes aldrig til lokal valuta
+    // (optjeningen er defineret og udbetales i kroner; en omregnet
+    // visning ville aldrig matche udbetalingen). Kun dansk bruger
+    // det native "kr." — alle andre sprog ser ISO-koden DKK, så en
+    // svensk/norsk seer ikke forveksler den med SEK/NOK.
+    currencyDisplay: locale === "da" ? "symbol" : "code",
     maximumFractionDigits: Math.abs(value) < 10 ? 2 : 0,
   }).format(value);
 }
