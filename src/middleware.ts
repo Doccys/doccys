@@ -28,6 +28,22 @@ export async function middleware(request: Parameters<typeof handleI18nRouting>[0
     response.cookies.set(name, value, options);
   }
 
+  // 4 — affiliate: delte links bærer ?ref={kode} (se ShareButtons).
+  // Koden valideres her KUN syntaktisk — om den findes, afgør checkout
+  // (som allerede slår koden op i user_referral_codes), så en
+  // opfundet kode er en harmløs cookie, der aldrig krediterer nogen.
+  // Samme cookie-semantik som /api/ref/[code]: 30 dage, httpOnly.
+  const ref = request.nextUrl.searchParams.get("ref");
+  if (ref !== null && /^[a-z0-9]{8}$/.test(ref)) {
+    response.cookies.set("doccys_ref", ref, {
+      maxAge: 30 * 24 * 60 * 60,
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+    });
+  }
+
   return response;
 }
 

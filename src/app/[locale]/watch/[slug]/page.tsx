@@ -14,7 +14,7 @@ import {
   getCreatorByHandle,
   getDocumentaryBySlug,
 } from "@/lib/data/catalog";
-import { getBalanceSeconds } from "@/lib/data/credits";
+import { getBalanceSeconds, getOrCreateReferralCode } from "@/lib/data/credits";
 import { getFilmSubtitles } from "@/lib/data/subtitles";
 import { createClient } from "@/lib/supabase/server";
 import { formatDuration } from "@/lib/utils/format";
@@ -123,6 +123,11 @@ export default async function WatchPage({ params }: WatchPageProps) {
     user && creator && creator.ownerUserId === user.id,
   );
 
+  // Seerens affiliate-kode — delte links bærer ?ref={kode}, og
+  // middleware sætter doccys_ref-cookien hos modtageren. Oprettes
+  // lazy som på profilen; gæster deler uden kode.
+  const refCode = user ? await getOrCreateReferralCode(user.id) : null;
+
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
       {player}
@@ -140,7 +145,7 @@ export default async function WatchPage({ params }: WatchPageProps) {
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
         <SaveFilmButton slug={documentary.slug} />
-        <ShareButtons title={documentary.title} />
+        <ShareButtons title={documentary.title} refCode={refCode} />
       </div>
 
       {creator && (

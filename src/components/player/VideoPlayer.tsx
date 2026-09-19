@@ -9,6 +9,10 @@ import type {
   SessionVerdict,
 } from "@/lib/types";
 import { LOCALE_LANGUAGE_NAMES } from "@/lib/i18n/languageNames";
+import {
+  seekFromUrlParam,
+  setSharedWatchSeconds,
+} from "@/lib/player/shareTime";
 
 const HEARTBEAT_INTERVAL_SEC = 10;
 
@@ -58,7 +62,17 @@ export default function VideoPlayer({
   const lastVideoTimeRef = useRef(0);
   const lastHeartbeatRef = useRef(0);
   const pendingSeekFromRef = useRef<number | null>(null);
+  // Startposition fra et delt tidskode-link (?t=123) — læses én gang
+  // ved mount og søges til, når videoens metadata er klar. Null = intet
+  // søg (det gælder også ugyldige/for store tal).
+  const initialSeekRef = useRef<number | null>(null);
   const [status, setStatus] = useState<string | null>(null);
+
+  // Delings-tidskoden læses ved første klient-render — window findes
+  // ikke under SSR, og seekFromUrlParam vogter selv på det.
+  useEffect(() => {
+    initialSeekRef.current = seekFromUrlParam();
+  }, []);
 
   const recordEvent = useCallback(
     (type: PlaybackEventType, extra: EventExtra = {}) => {
@@ -187,6 +201,16 @@ export default function VideoPlayer({
           playsInline
           preload="metadata"
           className="absolute inset-0 h-full w-full object-contain"
+          onLoadedMetadata={() => {
+            // Delt tidskode: søg til ?t=-øjeblikket én gang, når
+            // duration er kendt (kun hvis t ligger inde i filmen).
+            const video = videoRef.current;
+            const target = initialSeekRef.current;
+            if (video && target !== null && target < video.duration) {
+              video.currentTime = target;
+              initialSeekRef.current = null;
+            }
+          }}
           onPlay={() => {
             const video = videoRef.current;
             lastHeartbeatRef.current = video?.currentTime ?? 0;
@@ -212,6 +236,9 @@ export default function VideoPlayer({
             const video = videoRef.current;
             if (!video) return;
             lastVideoTimeRef.current = video.currentTime;
+            // Positionen deles videre via ShareButtons (?t=) — hold
+            // den opdateret ved hvert timeupdate (billigt: ét tal).
+            setSharedWatchSeconds(video.currentTime);
             if (
               !video.paused &&
               video.currentTime - lastHeartbeatRef.current >= HEARTBEAT_INTERVAL_SEC
