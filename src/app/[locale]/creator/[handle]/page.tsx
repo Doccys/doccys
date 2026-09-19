@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StatCard from "@/components/creator/StatCard";
 import EarningsPanel from "@/components/creator/EarningsPanel";
-import FilmographyTable from "@/components/creator/FilmographyTable";
+import FilmographyGrid from "@/components/creator/FilmographyGrid";
 import BulletinBoard from "@/components/creator/BulletinBoard";
 import {
   getCreatorByHandle,
@@ -128,7 +128,7 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
       <section className="mt-14">
         <h2 className="font-display text-2xl text-bone">{t("filmographyHeading")}</h2>
         <div className="mt-5">
-          <FilmographyTable
+          <FilmographyGrid
             films={films}
             isOwner={isOwner}
             earningsBySlug={isOwner ? earningsBySlug : undefined}
