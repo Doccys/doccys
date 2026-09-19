@@ -38,34 +38,38 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
   const creator = await getCreatorByHandle(handle, locale);
   if (!creator) notFound();
 
-  const [films, stats, country, earnings, posts, supabaseAuth] =
-    await Promise.all([
-      getFilmsByCreator(creator.handle, locale),
-      getCreatorStats(creator.handle),
-      localizedCountry(creator.country, locale),
-      getCreatorEarnings(creator.handle),
-      doccysStore.listCreatorPosts(creator.id),
-      createClient(),
-    ]);
-
   // Er den besøgende creatorens ejer-konto? Serveren er autoritet —
-  // kun ejeren ser opslag-formularen og rediger/slet/fastgør-knapper.
+  // kun ejeren ser opslag-formularen, rediger/slet/fastgør-knapper
+  // OG sin egen indtjening (data hentes slet ikke for andre).
+  const supabaseAuth = await createClient();
   const {
     data: { user },
   } = await supabaseAuth.auth.getUser();
   const isOwner = Boolean(user && creator.ownerUserId === user.id);
 
-  // Fald tilbage til et tomt aggregat hvis RPC'en ikke kan kaldes
-  // (fx før migrationen er kørt) — panelet viser så 0'er
-  const creatorEarnings = earnings ?? {
-    earnedDkk: 0,
-    paidDkk: 0,
-    availableDkk: 0,
-    validWatchedMinutes: 0,
-    films: [],
-  };
-  const earningsBySlug: Record<string, CreatorFilmEarnings> =
-    Object.fromEntries(creatorEarnings.films.map((f) => [f.slug, f]));
+  const [films, stats, country, posts] = await Promise.all([
+    getFilmsByCreator(creator.handle, locale),
+    getCreatorStats(creator.handle),
+    localizedCountry(creator.country, locale),
+    doccysStore.listCreatorPosts(creator.id),
+  ]);
+
+  // Indtjening er PRIVAT: RPC'en afviser alle undtagen ejeren
+  // (migration 20260919_indtjening_privat), så vi kalder den kun
+  // som ejer. Fald tilbage til et tomt aggregat hvis RPC'en fejler
+  // (fx før migrationen er kørt) — panelet viser så 0'er.
+  const creatorEarnings = isOwner
+    ? ((await getCreatorEarnings(creator.handle)) ?? {
+        earnedDkk: 0,
+        paidDkk: 0,
+        availableDkk: 0,
+        validWatchedMinutes: 0,
+        films: [],
+      })
+    : null;
+  const earningsBySlug: Record<string, CreatorFilmEarnings> = Object.fromEntries(
+    (creatorEarnings?.films ?? []).map((f) => [f.slug, f]),
+  );
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
@@ -91,11 +95,13 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
           value={formatNumber(stats.validCompletions, locale)}
           sub={t("validSub")}
         />
-        <StatCard
-          label={t("statEarnings")}
-          value={formatCurrency(creatorEarnings.availableDkk, locale)}
-          sub={t("earningsSub")}
-        />
+        {isOwner && creatorEarnings && (
+          <StatCard
+            label={t("statEarnings")}
+            value={formatCurrency(creatorEarnings.availableDkk, locale)}
+            sub={t("earningsSub")}
+          />
+        )}
       </div>
 
       <section className="mt-14">
@@ -106,17 +112,22 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
         />
       </section>
 
-      <section className="mt-14">
-        <h2 className="font-display text-2xl text-bone">{t("earningsHeading")}</h2>
-        <div className="mt-5">
-          <EarningsPanel earnings={creatorEarnings} />
-        </div>
-      </section>
+      {isOwner && creatorEarnings && (
+        <section className="mt-14">
+          <h2 className="font-display text-2xl text-bone">{t("earningsHeading")}</h2>
+          <div className="mt-5">
+            <EarningsPanel earnings={creatorEarnings} />
+          </div>
+        </section>
+      )}
 
       <section className="mt-14">
         <h2 className="font-display text-2xl text-bone">{t("filmographyHeading")}</h2>
         <div className="mt-5">
-          <FilmographyTable films={films} earningsBySlug={earningsBySlug} />
+          <FilmographyTable
+            films={films}
+            earningsBySlug={isOwner ? earningsBySlug : undefined}
+          />
         </div>
       </section>
     </div>

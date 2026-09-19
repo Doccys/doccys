@@ -5,7 +5,11 @@ import { formatCurrency, formatNumber } from "@/lib/utils/format";
 
 interface FilmographyTableProps {
   films: Documentary[];
-  /** per-film sete minutter + optjent kr fra creator_indtjening-RPC'en */
+  /**
+   * per-film sete minutter + optjent kr fra creator_indtjening-RPC'en.
+   * PRIVAT: gives kun med på creatorens egen side (isOwner) —
+   * udefra er kolonnerne skjult (undefined = gæst/anden bruger).
+   */
   earningsBySlug?: Record<string, CreatorFilmEarnings>;
 }
 
@@ -15,6 +19,7 @@ export default async function FilmographyTable({
 }: FilmographyTableProps) {
   const t = await getTranslations("filmography");
   const locale = await getLocale();
+  const showEarnings = Boolean(earningsBySlug);
 
   return (
     <div className="overflow-x-auto rounded-xl border border-smoke">
@@ -25,8 +30,12 @@ export default async function FilmographyTable({
             <th className="px-5 py-3">{t("year")}</th>
             <th className="px-5 py-3 text-right">{t("views")}</th>
             <th className="px-5 py-3 text-right">{t("completions")}</th>
-            <th className="px-5 py-3 text-right">{t("watchedMinutes")}</th>
-            <th className="px-5 py-3 text-right">{t("earnings")}</th>
+            {showEarnings && (
+              <th className="px-5 py-3 text-right">{t("watchedMinutes")}</th>
+            )}
+            {showEarnings && (
+              <th className="px-5 py-3 text-right">{t("earnings")}</th>
+            )}
           </tr>
         </thead>
         <tbody>
@@ -52,12 +61,16 @@ export default async function FilmographyTable({
                 <td className="px-5 py-4 text-right tabular-nums text-bone">
                   {formatNumber(film.stats.totalCompletions, locale)}
                 </td>
-                <td className="px-5 py-4 text-right tabular-nums text-champagne">
-                  {formatNumber(filmEarnings?.watchedMinutes ?? 0, locale)}
-                </td>
-                <td className="px-5 py-4 text-right tabular-nums text-bone">
-                  {formatCurrency(filmEarnings?.earnedDkk ?? 0, locale)}
-                </td>
+                {showEarnings && (
+                  <td className="px-5 py-4 text-right tabular-nums text-champagne">
+                    {formatNumber(filmEarnings?.watchedMinutes ?? 0, locale)}
+                  </td>
+                )}
+                {showEarnings && (
+                  <td className="px-5 py-4 text-right tabular-nums text-bone">
+                    {formatCurrency(filmEarnings?.earnedDkk ?? 0, locale)}
+                  </td>
+                )}
               </tr>
             );
           })}

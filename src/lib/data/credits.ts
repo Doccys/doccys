@@ -113,9 +113,11 @@ export async function getOrCreateReferralCode(userId: string): Promise<string | 
 }
 
 /**
- * Aggregatet fra creator_indtjening-RPC'en (security definer —
- * kun tal for en offentlig handle, ingen persondata).
- * Returnerer null hvis RPC'en ikke kan kaldes (fx før migration).
+ * Aggregatet fra creator_indtjening-RPC'en (security definer, PRIVAT
+ * siden 20260919_indtjening_privat: kun creatorens ejer-konto kan
+ * kalde den — anon er revet af, andre brugere får 42501). Kald den
+ * derfor KUN når isOwner er verificeret server-side.
+ * Returnerer null hvis RPC'en fejler (fx før migration).
  */
 export async function getCreatorEarnings(handle: string): Promise<CreatorEarnings | null> {
   try {
