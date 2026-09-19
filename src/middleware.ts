@@ -32,5 +32,7 @@ export async function middleware(request: Parameters<typeof handleI18nRouting>[0
 }
 
 export const config = {
-  matcher: "/((?!api|_next|_vercel|.*\\..*).*)",
+  // /og (genererede Open Graph-billeder) matcher ikke next-intl — de
+  // er sprogløse og skal helst kunne caches pr. URL.
+  matcher: "/((?!api|og|_next|_vercel|.*\\..*).*)",
 };

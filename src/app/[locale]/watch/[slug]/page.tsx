@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { siteUrl } from "@/lib/site";
 import VideoPlayer from "@/components/player/VideoPlayer";
 import PaywallCard from "@/components/watch/PaywallCard";
 import ShareButtons from "@/components/watch/ShareButtons";
@@ -31,22 +32,26 @@ export async function generateMetadata({
   if (!documentary) return { title: "Ikke fundet" };
 
   // Open Graph / Twitter-kort: det ER deling. Uden disse tags viser
-  // Facebook/WhatsApp kun et nøgent link — med dem kommer titel,
-  // synopse og filmens plakat-billede (posterUrl er en absolut
-  // Storage-URL, så den virker som og:image uden metadataBase).
+  // Facebook/WhatsApp kun et nøgent link. Uploadet plakat bruges
+  // når den findes — ellers det auto-genererede kort i filmens egen
+  // gradient (/og/film/{slug}), så ALLE film deler med billede.
+  const ogImage = documentary.posterUrl
+    ? documentary.posterUrl
+    : `${siteUrl()}/og/film/${documentary.slug}`;
+
   return {
     title: documentary.title,
     description: documentary.synopsis,
     openGraph: {
       title: documentary.title,
       description: documentary.synopsis,
-      images: documentary.posterUrl ? [documentary.posterUrl] : undefined,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: documentary.title }],
     },
     twitter: {
-      card: documentary.posterUrl ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: documentary.title,
       description: documentary.synopsis,
-      images: documentary.posterUrl ? [documentary.posterUrl] : undefined,
+      images: [ogImage],
     },
   };
 }
