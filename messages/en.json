@@ -131,6 +131,12 @@
     "paidLabel": "Paid out",
     "rejectedLabel": "Rejected"
   },
+  "currencyHint": {
+    "title": "Your local currency",
+    "rate": "1 DKK ≈ {rate} {currency}",
+    "balance": "your available balance ≈ {amount}",
+    "disclaimer": "The rate is indicative (today's mid-market rate) and changes with the currency market. Earnings and payouts are always in DKK."
+  },
   "filmography": {
     "film": "Film",
     "year": "Year",

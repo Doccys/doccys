@@ -131,6 +131,12 @@
     "paidLabel": "Maksettu",
     "rejectedLabel": "Hylätty"
   },
+  "currencyHint": {
+    "title": "Paikallinen valuuttasi",
+    "rate": "1 DKK ≈ {rate} {currency}",
+    "balance": "käytettävissä oleva saldosi ≈ {amount}",
+    "disclaimer": "Kurssi on suuntaa-antava (päivän keskikurssi) ja muuttuu valuuttamarkkinoiden mukana. Tulot ja maksut ovat aina DKK:ssa."
+  },
   "filmography": {
     "film": "Elokuva",
     "year": "Vuosi",

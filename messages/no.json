@@ -131,6 +131,12 @@
     "paidLabel": "Utbetalt",
     "rejectedLabel": "Avvist"
   },
+  "currencyHint": {
+    "title": "Din lokale valuta",
+    "rate": "1 DKK ≈ {rate} {currency}",
+    "balance": "din tilgjengelige saldo ≈ {amount}",
+    "disclaimer": "Kursen er veiledende (dagens midtkurs) og endres med valutamarkedet. Inntjening og utbetaling skjer alltid i DKK."
+  },
   "filmography": {
     "film": "Film",
     "year": "År",

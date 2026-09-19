@@ -131,6 +131,12 @@
     "paidLabel": "Pagado",
     "rejectedLabel": "Rechazado"
   },
+  "currencyHint": {
+    "title": "Tu moneda local",
+    "rate": "1 DKK ≈ {rate} {currency}",
+    "balance": "tu saldo disponible ≈ {amount}",
+    "disclaimer": "El tipo de cambio es orientativo (tipo medio de hoy) y cambia con el mercado de divisas. Los ingresos y los pagos son siempre en DKK."
+  },
   "filmography": {
     "film": "Película",
     "year": "Año",

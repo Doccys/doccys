@@ -131,6 +131,12 @@
     "paidLabel": "Versé",
     "rejectedLabel": "Refusé"
   },
+  "currencyHint": {
+    "title": "Votre devise locale",
+    "rate": "1 DKK ≈ {rate} {currency}",
+    "balance": "votre solde disponible ≈ {amount}",
+    "disclaimer": "Le taux est indicatif (taux moyen du jour) et évolue avec le marché des changes. Les revenus et les versements sont toujours en DKK."
+  },
   "filmography": {
     "film": "Film",
     "year": "Année",

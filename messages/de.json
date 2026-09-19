@@ -131,6 +131,12 @@
     "paidLabel": "Ausgezahlt",
     "rejectedLabel": "Abgelehnt"
   },
+  "currencyHint": {
+    "title": "Deine Landeswährung",
+    "rate": "1 DKK ≈ {rate} {currency}",
+    "balance": "dein verfügbares Guthaben ≈ {amount}",
+    "disclaimer": "Der Kurs ist ein Richtwert (heutiger Mittelkurs) und ändert sich mit dem Devisenmarkt. Einnahmen und Auszahlungen erfolgen immer in DKK."
+  },
   "filmography": {
     "film": "Film",
     "year": "Jahr",

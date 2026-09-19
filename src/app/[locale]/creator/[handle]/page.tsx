@@ -8,6 +8,7 @@ import PayoutPanel, {
   type PayoutMethod,
   type PayoutRequest,
 } from "@/components/creator/PayoutPanel";
+import CurrencyHint from "@/components/creator/CurrencyHint";
 import FilmographyGrid from "@/components/creator/FilmographyGrid";
 import BulletinBoard from "@/components/creator/BulletinBoard";
 import {
@@ -173,6 +174,9 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
               initialRequests={payoutRequests}
             />
           </div>
+          {/* vejledende kurs til creatorens lokale valuta — DK-seere
+              ser den slet ikke (DKK er deres egen valuta) */}
+          <CurrencyHint availableDkk={creatorEarnings.availableDkk} />
         </section>
       )}
 
