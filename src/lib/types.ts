@@ -41,6 +41,12 @@ export interface Documentary {
   durationSec: number;
   genres: string[];
   creatorHandle: string;
+  /**
+   * Sproget der TALES i filmen (ISO 639-1) — ikke appens sprog.
+   * Undertekst-pipelinen skriver lyden af på dette sprog og bruger
+   * resultatet som oversættelseskilde til alle platformssprog.
+   */
+  spokenLanguage: string;
   /** Tailwind-gradient-klasse brugt som plakat indtil rigtige assets findes */
   gradient: string;
   /** Uploadet plakat-billede (film-posters) — null = gradienten bruges */

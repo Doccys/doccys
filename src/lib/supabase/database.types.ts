@@ -72,6 +72,8 @@ export type DocumentaryRow = {
   /** numeric returneres som string fra Postgres — mappes med Number() */
   payout_rate_dkk: string;
   sort_order: number;
+  /** ISO 639-1: sproget der tales i filmen — whisper-hint i undertekst-pipelinen */
+  spoken_language: string;
   /** kladde/offentlig — nye uploads oprettes altid som 'draft' (RLS tvinger) */
   status: string;
   created_at: string;
@@ -96,6 +98,8 @@ export type DocumentaryInsert = {
   valid_completions?: number;
   payout_rate_dkk?: string | number;
   sort_order?: number;
+  /** ISO 639-1: sproget der tales i filmen — default 'da' (databasen) */
+  spoken_language?: string;
   /** RLS tvinger 'draft' for skaber-oprettede rækker */
   status?: string;
   created_at?: string;
@@ -118,6 +122,8 @@ export type DocumentaryUpdate = {
   valid_completions?: number;
   payout_rate_dkk?: string | number;
   sort_order?: number;
+  /** ISO 639-1: sproget der tales i filmen — whisper-hint i undertekst-pipelinen */
+  spoken_language?: string;
   /** RLS: skaberen kan kun opdatere rækker med status = 'draft', og kun til 'draft' */
   status?: string;
   created_at?: string;

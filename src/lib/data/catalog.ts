@@ -61,6 +61,7 @@ function toDocumentary(row: DocumentaryRow, locale?: string): Documentary {
     durationSec: row.duration_sec,
     genres: row.genres,
     creatorHandle: row.creator_handle,
+    spokenLanguage: row.spoken_language,
     gradient: row.gradient,
     posterUrl: row.poster_url,
     videoUrl: row.video_url,
