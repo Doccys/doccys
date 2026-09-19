@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { getCreators, getCreatorStats, getFilmsByCreator } from "@/lib/data/catalog";
-import { formatNumber } from "@/lib/utils/format";
+import { getCreators, getFilmsByCreator } from "@/lib/data/catalog";
 import { localizedCountry } from "@/lib/i18n/content";
 
 export const metadata: Metadata = { title: "Skabere" };
@@ -19,14 +18,15 @@ export default async function CreatorsPage({ params }: CreatorsPageProps) {
   const t = await getTranslations("creators");
   const creators = await getCreators(locale);
 
+  // Statistik er privat (samme beslutning som på selve profilen):
+  // visninger vises ikke offentligt — kun film-antallet står på kortet.
   const cards = await Promise.all(
     creators.map(async (creator) => {
-      const [films, stats, country] = await Promise.all([
+      const [films, country] = await Promise.all([
         getFilmsByCreator(creator.handle),
-        getCreatorStats(creator.handle),
         localizedCountry(creator.country, locale),
       ]);
-      return { creator, country, filmCount: films.length, totalViews: stats.totalViews };
+      return { creator, country, filmCount: films.length };
     }),
   );
 
@@ -39,7 +39,7 @@ export default async function CreatorsPage({ params }: CreatorsPageProps) {
       />
 
       <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {cards.map(({ creator, country, filmCount, totalViews }) => (
+        {cards.map(({ creator, country, filmCount }) => (
           <Link
             key={creator.id}
             href={`/creator/${creator.handle}`}
@@ -53,8 +53,7 @@ export default async function CreatorsPage({ params }: CreatorsPageProps) {
               {creator.bio}
             </p>
             <p className="mt-4 text-sm text-champagne">
-              {t("films", { count: filmCount })} ·{" "}
-              {t("views", { count: formatNumber(totalViews, locale) })}
+              {t("films", { count: filmCount })}
             </p>
           </Link>
         ))}

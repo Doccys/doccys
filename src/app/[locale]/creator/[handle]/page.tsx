@@ -47,12 +47,16 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
   } = await supabaseAuth.auth.getUser();
   const isOwner = Boolean(user && creator.ownerUserId === user.id);
 
-  const [films, stats, country, posts] = await Promise.all([
+  const [films, country, posts] = await Promise.all([
     getFilmsByCreator(creator.handle, locale),
-    getCreatorStats(creator.handle),
     localizedCountry(creator.country, locale),
     doccysStore.listCreatorPosts(creator.id),
   ]);
+
+  // Statistik er PRIVAT ligesom indtjeningen: gæster og andre
+  // brugere ser slet intet statistik-grid — kun ejeren ser sine
+  // egne tal (visninger, fuldførelser, indtjening).
+  const stats = isOwner ? await getCreatorStats(creator.handle) : null;
 
   // Indtjening er PRIVAT: RPC'en afviser alle undtagen ejeren
   // (migration 20260919_indtjening_privat), så vi kalder den kun
@@ -80,29 +84,29 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
       />
       <p className="mt-6 max-w-3xl leading-relaxed text-ash">{creator.bio}</p>
 
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard
-          label={t("statViews")}
-          value={formatNumber(stats.totalViews, locale)}
-        />
-        <StatCard
-          label={t("statCompletions")}
-          value={formatNumber(stats.totalCompletions, locale)}
-          sub={t("completionsSub", { rate: (stats.avgCompletionRate * 100).toFixed(0) })}
-        />
-        <StatCard
-          label={t("statValid")}
-          value={formatNumber(stats.validCompletions, locale)}
-          sub={t("validSub")}
-        />
-        {isOwner && creatorEarnings && (
+      {isOwner && stats && creatorEarnings && (
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <StatCard
+            label={t("statViews")}
+            value={formatNumber(stats.totalViews, locale)}
+          />
+          <StatCard
+            label={t("statCompletions")}
+            value={formatNumber(stats.totalCompletions, locale)}
+            sub={t("completionsSub", { rate: (stats.avgCompletionRate * 100).toFixed(0) })}
+          />
+          <StatCard
+            label={t("statValid")}
+            value={formatNumber(stats.validCompletions, locale)}
+            sub={t("validSub")}
+          />
           <StatCard
             label={t("statEarnings")}
             value={formatCurrency(creatorEarnings.availableDkk, locale)}
             sub={t("earningsSub")}
           />
-        )}
-      </div>
+        </div>
+      )}
 
       <section className="mt-14">
         <BulletinBoard
@@ -126,6 +130,7 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
         <div className="mt-5">
           <FilmographyTable
             films={films}
+            isOwner={isOwner}
             earningsBySlug={isOwner ? earningsBySlug : undefined}
           />
         </div>
