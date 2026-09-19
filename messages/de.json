@@ -113,7 +113,7 @@
     "intro": "Hinterlege deine Kontodaten und fordere eine Auszahlung an, sobald dein Guthaben 150 kr erreicht. Die Überweisung führt die Redaktion durch — das Geld ist meist in wenigen Werktagen da.",
     "methodTitle": "Auszahlungskonto",
     "iban": "IBAN",
-    "methodHint": "Die IBAN ist die internationale Nummer deines Kontos — deine Online-Bank zeigt sie an. Dänische IBANs beginnen mit DK gefolgt von 16 Ziffern.",
+    "methodHint": "Die IBAN ist die internationale Nummer deines Kontos — deine Online-Bank zeigt sie in den Kontodetails.",
     "save": "Daten speichern",
     "saving": "Speichern…",
     "saved": "Deine Daten wurden gespeichert.",

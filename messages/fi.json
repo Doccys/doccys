@@ -113,7 +113,7 @@
     "intro": "Tallenna tilisi tiedot ja pyydä maksua, kun salosi saavuttaa 150 kr. Siirron tekee toimitus — rahat saapuvat yleensä muutamassa arkipäivässä.",
     "methodTitle": "Maksutili",
     "iban": "IBAN",
-    "methodHint": "IBAN on tilisi kansainvälinen numero — verkkopankkisi näyttää sen. Tanskalaiset IBAN:t alkavat DK:lla ja niitä seuraa 16 numeroa.",
+    "methodHint": "IBAN on tilisi kansainvälinen numero — verkkopankkisi näyttää sen tilin tiedoissa.",
     "save": "Tallenna tiedot",
     "saving": "Tallennetaan…",
     "saved": "Tietosi on tallennettu.",

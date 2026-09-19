@@ -124,7 +124,7 @@ export default function PayoutPanel({
               value={iban}
               onChange={(e) => setIban(e.target.value)}
               maxLength={34}
-              placeholder="DK50 0040 0440 1162 43"
+              placeholder="GB82 WEST 1234 5698 7654 32"
               className="mt-1 w-full rounded-lg border border-smoke bg-noir px-4 py-2.5 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none"
             />
           </label>

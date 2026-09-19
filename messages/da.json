@@ -113,7 +113,7 @@
     "intro": "Gem din konto, og anmod om udbetaling, når saldoen når 150 kr. Overførslen foretages af redaktionen, og pengene lander typisk inden for et par hverdage.",
     "methodTitle": "Konto til udbetaling",
     "iban": "IBAN",
-    "methodHint": "IBAN er din kontos internationale nummer — din netbank viser det. Danske IBAN'er starter med DK efterfulgt af 16 cifre.",
+    "methodHint": "IBAN er din kontos internationale nummer — din netbank viser den under kontooplysninger.",
     "save": "Gem oplysninger",
     "saving": "Gemmer…",
     "saved": "Oplysningerne er gemt.",

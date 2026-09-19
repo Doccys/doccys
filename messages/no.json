@@ -113,7 +113,7 @@
     "intro": "Lagre kontoinformasjonen din og be om utbetaling når saldoen når 150 kr. Overføringen gjøres av redaksjonen — pengene kommer vanligvis innen noen virkedager.",
     "methodTitle": "Konto for utbetaling",
     "iban": "IBAN",
-    "methodHint": "IBAN er kontoinformasjonens internasjonale nummer — din nettbank viser det. Danske IBAN-er begynner med DK etterfulgt av 16 siffer.",
+    "methodHint": "IBAN er kontoens internasjonale nummer — din nettbank viser det i kontoinformasjonen.",
     "save": "Lagre opplysninger",
     "saving": "Lagrer…",
     "saved": "Opplysningene er lagret.",

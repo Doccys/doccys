@@ -113,7 +113,7 @@
     "intro": "Save your account details and request a payout once your balance reaches DKK 150. The transfer is made by the editorial team — the money usually arrives within a few business days.",
     "methodTitle": "Payout account",
     "iban": "IBAN",
-    "methodHint": "The IBAN is your account's international number — your online bank shows it. Danish IBANs start with DK followed by 16 digits.",
+    "methodHint": "The IBAN is your account's international number — your online bank shows it under account details.",
     "save": "Save details",
     "saving": "Saving…",
     "saved": "Your details have been saved.",
