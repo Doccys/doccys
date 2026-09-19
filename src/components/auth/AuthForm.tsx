@@ -37,12 +37,14 @@ export default function AuthForm() {
   const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [errorKey, setErrorKey] = useState<string | null>(null);
   const [showConfirmNotice, setShowConfirmNotice] = useState(false);
   const [busy, setBusy] = useState(false);
 
   const switchMode = (next: Mode) => {
     setMode(next);
+    setPasswordConfirm("");
     setErrorKey(null);
     setShowConfirmNotice(false);
   };
@@ -59,10 +61,17 @@ export default function AuthForm() {
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setBusy(true);
     setErrorKey(null);
     setShowConfirmNotice(false);
 
+    // Oprettelse: begge felter skal stemme — tastefejl i en adgangskode
+    // kan ellers kun opdages ved det mislykkede login bagefter.
+    if (mode === "signup" && password !== passwordConfirm) {
+      setErrorKey("passwordMismatch");
+      return;
+    }
+
+    setBusy(true);
     const supabase = createClient();
     try {
       if (mode === "login") {
@@ -174,6 +183,27 @@ export default function AuthForm() {
                 className={inputClassName}
               />
             </div>
+
+            {mode === "signup" && (
+              <div>
+                <label
+                  htmlFor="password-confirm"
+                  className="text-xs uppercase tracking-widest text-ash"
+                >
+                  {t("passwordConfirm")}
+                </label>
+                <input
+                  id="password-confirm"
+                  type="password"
+                  required
+                  minLength={6}
+                  autoComplete="new-password"
+                  value={passwordConfirm}
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
+                  className={inputClassName}
+                />
+              </div>
+            )}
 
             {mode === "login" && (
               <div className="text-right">
