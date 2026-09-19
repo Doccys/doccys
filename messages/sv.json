@@ -67,11 +67,11 @@
     "features": {
       "noAds": {
         "title": "Inga annonser",
-        "body": "Ingen pre-roll, inga avbrott, inget sponsrat innehåll. Katalogen finansieras enbart av prenumerationer."
+        "body": "Ingen pre-roll, inga avbrott, inget sponsrat innehåll. Katalogen finansieras enbart av minutpaket."
       },
-      "payPerCompletion": {
-        "title": "Betalning per fullföljd visning",
-        "body": "Skaparen får utbetalning först när du har sett filmen klart — och anti-fraud-systemet har validerat din visning som äkta."
+      "payPerMinute": {
+        "title": "Betalning per sedd minut",
+        "body": "Skaparen tjänar 2 kr per 100 giltiga sedda minuter — endast inloggade visningar som fuskkontrollen godkänner räknas."
       },
       "community": {
         "title": "Samtalet under filmen",
@@ -95,7 +95,7 @@
     "statValid": "Giltiga fullföljda visningar",
     "validSub": "Validerade av anti-fraud",
     "statEarnings": "Intäkter totalt",
-    "earningsSub": "Pay-per-completion",
+    "earningsSub": "2 kr per 100 sedda minuter",
     "earningsHeading": "Intäkter",
     "filmographyHeading": "Filmografi"
   },
@@ -281,7 +281,7 @@
   },
   "meta": {
     "title": "Doccys — Oberoende dokumentärer utan annonser",
-    "description": "Doccys är en minimalistisk, annonsfri streamingtjänst för oberoende dokumentärer. Betala per färdigvisad film — skaparen får sin del, du får stillheten."
+    "description": "Doccys är en minimalistisk, annonsfri streamingtjänst för oberoende dokumentärer. Betala bara för minuterna du faktiskt ser — skaparen får sin del, du får stillheten."
   },
   "paywall": {
     "loginTitle": "Logga in för att se filmen",

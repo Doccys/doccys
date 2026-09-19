@@ -67,11 +67,11 @@
     "features": {
       "noAds": {
         "title": "Ei mainoksia",
-        "body": "Ei alku-mainoksia, ei keskeytyksiä, ei sponsoroitua sisältöä. Katalogi rahoitetaan kokonaan tilauksilla."
+        "body": "Ei alkumainoksia, ei keskeytyksiä, ei sponsoroitua sisältöä. Katalogi rahoitetaan kokonaan minuuttipaketeilla."
       },
-      "payPerCompletion": {
-        "title": "Maksu katsotun mukaan",
-        "body": "Tekijä saa maksun vasta, kun olet katsonut elokuvan loppuun — ja petostentorjuntajärjestelmämme on vahvistanut katselusi aidoiksi."
+      "payPerMinute": {
+        "title": "Maksu katsotusta minuutista",
+        "body": "Tekijä ansaitsee 2 kr / 100 kelvollista katsottua minuuttia — mukaan lasketaan vain kirjautuneet katselut, jotka huijauksenesto hyväksyy."
       },
       "community": {
         "title": "Keskustelu elokuvan alla",
@@ -95,7 +95,7 @@
     "statValid": "Kelvolliset katsomiset",
     "validSub": "Petostentorjunnan vahvistama",
     "statEarnings": "Tulot yhteensä",
-    "earningsSub": "Pay-per-completion",
+    "earningsSub": "2 kr / 100 katsottua minuuttia",
     "earningsHeading": "Tulot",
     "filmographyHeading": "Filmografia"
   },
@@ -281,7 +281,7 @@
   },
   "meta": {
     "title": "Doccys — Itsenäiset dokumentit ilman mainoksia",
-    "description": "Doccys on minimalistinen, mainokseton suoratoistopalvelu itsenäisille dokumenteille. Maksat katsotusta elokuvasta — tekijä saa osuutensa, sinä saat rauhan."
+    "description": "Doccys on minimalistinen, mainokseton suoratoistopalvelu itsenäisille dokumenteille. Maksat vain minuuteista, joita oikeasti katsot — tekijä saa osuutensa, sinä saat rauhan."
   },
   "paywall": {
     "loginTitle": "Kirjaudu sisään katsoaksesi elokuvan",

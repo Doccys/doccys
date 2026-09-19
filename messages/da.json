@@ -67,11 +67,11 @@
     "features": {
       "noAds": {
         "title": "Ingen reklamer",
-        "body": "Ingen pre-roll, ingen pause, ingen sponsored content. Kataloget er alene finansieret af abonnementer."
+        "body": "Ingen pre-roll, ingen pause, ingen sponsored content. Kataloget er alene finansieret af minutpakkerne."
       },
-      "payPerCompletion": {
-        "title": "Pay-per-completion",
-        "body": "Skaberen udbetales først, når du har set filmen færdigt — og anti-fraud-systemet har valideret din visning som ægte."
+      "payPerMinute": {
+        "title": "Betaling pr. set minut",
+        "body": "Skaberen optjener 2 kr pr. 100 gyldige sete minutter — kun loggede afspilninger, som anti-fraud-systemet validerer, tæller med."
       },
       "community": {
         "title": "Samtale under filmen",
@@ -95,7 +95,7 @@
     "statValid": "Gyldige completions",
     "validSub": "Valideret af anti-fraud",
     "statEarnings": "Indtjening i alt",
-    "earningsSub": "Pay-per-completion",
+    "earningsSub": "2 kr pr. 100 sete minutter",
     "earningsHeading": "Indtjening",
     "filmographyHeading": "Filmografi"
   },
@@ -281,7 +281,7 @@
   },
   "meta": {
     "title": "Doccys — Uafhængige dokumentarer uden reklamer",
-    "description": "Doccys er en minimalistisk, reklamefri streamingtjeneste for uafhængige dokumentarer. Betal pr. færdigset film — skaberen får delen, du får roen."
+    "description": "Doccys er en minimalistisk, reklamefri streamingtjeneste for uafhængige dokumentarer. Betal kun for de minutter, du faktisk ser — skaberen får delen, du får roen."
   },
   "paywall": {
     "loginTitle": "Log ind for at se filmen",

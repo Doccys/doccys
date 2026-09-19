@@ -67,11 +67,11 @@
     "features": {
       "noAds": {
         "title": "Keine Werbung",
-        "body": "Keine Pre-Rolls, keine Unterbrechungen, kein gesponserter Inhalt. Der Katalog wird ausschließlich durch Abonnements finanziert."
+        "body": "Keine Pre-Rolls, keine Unterbrechungen, kein gesponserter Inhalt. Der Katalog wird ausschließlich über Minutenpakete finanziert."
       },
-      "payPerCompletion": {
-        "title": "Pay-per-Completion",
-        "body": "Creators werden erst bezahlt, wenn Sie den Film zu Ende ansehen — und unser Anti-Fraud-System Ihre Ansicht als echt bestätigt hat."
+      "payPerMinute": {
+        "title": "Bezahlung pro gesehenen Minute",
+        "body": "Creators verdienen 2 kr pro 100 gültig gesehenen Minuten — nur angemeldete Wiedergaben, die die Anti-Fraud-Prüfung bestehen, zählen."
       },
       "community": {
         "title": "Das Gespräch unter dem Film",
@@ -95,7 +95,7 @@
     "statValid": "Gültige Fertigstellungen",
     "validSub": "Von der Anti-Fraud-Prüfung verifiziert",
     "statEarnings": "Gesamteinnahmen",
-    "earningsSub": "Pay-per-completion",
+    "earningsSub": "2 kr pro 100 angesehenen Minuten",
     "earningsHeading": "Einnahmen",
     "filmographyHeading": "Filmografie"
   },
@@ -281,7 +281,7 @@
   },
   "meta": {
     "title": "Doccys — Unabhängige Dokumentarfilme ohne Werbung",
-    "description": "Doccys ist ein minimalistischer, werbefreier Streamingdienst für unabhängige Dokumentarfilme. Bezahlen Sie pro fertig gesehenem Film — der Creator erhält seinen Teil, Sie die Ruhe."
+    "description": "Doccys ist ein minimalistischer, werbefreier Streamingdienst für unabhängige Dokumentarfilme. Bezahlen Sie nur für die Minuten, die Sie tatsächlich sehen — der Creator erhält seinen Teil, Sie die Ruhe."
   },
   "paywall": {
     "loginTitle": "Melde dich an, um den Film zu sehen",

@@ -67,11 +67,11 @@
     "features": {
       "noAds": {
         "title": "Sin anuncios",
-        "body": "Sin anuncios previos, sin interrupciones, sin contenido patrocinado. El catálogo se financia únicamente con suscripciones."
+        "body": "Sin anuncios previos, sin interrupciones, sin contenido patrocinado. El catálogo se financia únicamente con paquetes de minutos."
       },
-      "payPerCompletion": {
-        "title": "Pago por visualización completada",
-        "body": "El creador cobra solo cuando terminas la película — y nuestro sistema antifraude ha validado tu visualización como auténtica."
+      "payPerMinute": {
+        "title": "Pago por minuto visto",
+        "body": "El creador gana 2 kr por cada 100 minutos válidos vistos — solo cuentan las reproducciones con sesión iniciada que superan la validación antifraude."
       },
       "community": {
         "title": "La conversación bajo la película",
@@ -95,7 +95,7 @@
     "statValid": "Finalizaciones válidas",
     "validSub": "Verificadas por el sistema anti-fraude",
     "statEarnings": "Ingresos totales",
-    "earningsSub": "Pay-per-completion",
+    "earningsSub": "2 kr por cada 100 minutos vistos",
     "earningsHeading": "Ingresos",
     "filmographyHeading": "Filmografía"
   },
@@ -281,7 +281,7 @@
   },
   "meta": {
     "title": "Doccys — Documentales independientes sin anuncios",
-    "description": "Doccys es un servicio de streaming minimalista y sin anuncios para documentales independientes. Paga por cada película que terminas — el creador recibe su parte, tú recibes la calma."
+    "description": "Doccys es un servicio de streaming minimalista y sin anuncios para documentales independientes. Paga solo por los minutos que realmente ves — el creador recibe su parte, tú recibes la calma."
   },
   "paywall": {
     "loginTitle": "Inicia sesión para ver la película",

@@ -67,11 +67,11 @@
     "features": {
       "noAds": {
         "title": "No ads",
-        "body": "No pre-roll, no interruptions, no sponsored content. The catalogue is funded entirely by subscriptions."
+        "body": "No pre-roll, no interruptions, no sponsored content. The catalogue is funded entirely by minute packs."
       },
-      "payPerCompletion": {
-        "title": "Pay-per-completion",
-        "body": "Creators are paid only once you've finished the film — and our anti-fraud system has validated your view as genuine."
+      "payPerMinute": {
+        "title": "Pay per watched minute",
+        "body": "Creators earn 2 kr per 100 valid minutes watched — only logged-in plays that pass anti-fraud validation count."
       },
       "community": {
         "title": "The conversation beneath the film",
@@ -95,7 +95,7 @@
     "statValid": "Valid completions",
     "validSub": "Verified by anti-fraud",
     "statEarnings": "Total earnings",
-    "earningsSub": "Pay-per-completion",
+    "earningsSub": "2 kr per 100 minutes watched",
     "earningsHeading": "Earnings",
     "filmographyHeading": "Filmography"
   },
@@ -281,7 +281,7 @@
   },
   "meta": {
     "title": "Doccys — Independent documentaries without ads",
-    "description": "Doccys is a minimalist, ad-free streaming service for independent documentaries. Pay per film you finish — the creator gets their share, you get the quiet."
+    "description": "Doccys is a minimalist, ad-free streaming service for independent documentaries. Pay only for the minutes you actually watch — the creator gets their share, you get the quiet."
   },
   "paywall": {
     "loginTitle": "Log in to watch the film",

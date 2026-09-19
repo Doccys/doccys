@@ -4,7 +4,7 @@ import DocumentaryGrid from "@/components/documentary/DocumentaryGrid";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { getDocumentaries } from "@/lib/data/catalog";
 
-const FEATURE_KEYS = ["noAds", "payPerCompletion", "community"] as const;
+const FEATURE_KEYS = ["noAds", "payPerMinute", "community"] as const;
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
