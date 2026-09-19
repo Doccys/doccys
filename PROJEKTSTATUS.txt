@@ -1,0 +1,381 @@
+DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
+Sidst opdateret: 2026-09-19
+==========================================================
+
+OM PROJEKTET
+Doccys = kurateret niche-streamingtjeneste for uafhængige dokumentarer.
+Next.js 15 + Supabase + next-intl, 8 locales (da/en/de/es/fr/fi/no/sv).
+RLS-first. Windows PowerShell 5.1 (ingen &&, BOM-fælder, curl.exe + temp-filer).
+Vigtige regler:
+- Brugeren kører selv SQL-migrationer i Supabase-dashboardet (SQL Editor),
+  og verificerer manuelt. Migra-tionerne er idempotente.
+- .env.local er git-ignoreret og må ALDRIG committes (indeholder
+  service_role-nøgle + Stripe-nøgler).
+- Git via fuld sti: & "C:\Program Files\Git\bin\git.exe"
+  Commit-beskeder via temp-fil (Set-Content -Encoding utf8) + git commit -F.
+  (BOM i commit-subject er kendt kosmetik.)
+
+FORRETNINGSMODELLEN — FÆRDIG OG LIVE-VERIFICERET
+- Engangs-minutpakker: pack-1000/2000/3000 min. Priser er 49/75/99 kr
+  INKL. dansk moms (global standard); basis ekskl. moms 39,20/60,00/79,20
+  sendes til Stripe (tax_behavior exclusive) og gemmes i credit_purchases.
+- Stripe Tax: Danmark-registrering oprettet via API (taxreg_1UGhUC…),
+  dashboard-UI'et drillede. Checkout forudfylder faktureringsland via
+  oprettet Stripe Customer (address.country DK) → moms er synlig fra
+  første sekund. Brugerens egen testkøb trak 9,80 kr moms, total 49,00.
+- Webhook /api/stripe/webhook (indfri_koeb-RPC) VERIFICERET END-TO-END:
+  brugerens testkøb krediterte minutterne automatisk ("ja den kom med det
+  samme"). Lytteren kørte via stripe listen --api-key (se "Stripe" herunder).
+- Paywall (fuld dækning = filmens hele længde), forbrug = faktisk sete
+  sekunder (afregn_session), affiliate 250 min, creator 2 kr/100 min.
+- FALSK REKLAME RETTET (ea2c78a, 19/9): tre gamle "pay-per-completion"-
+  tekster stemte ikke overens med minut-modellen og er rettet i alle
+  8 sprog: earningsSub ("2 kr pr. 100 sete minutter"), forsiden-feature
+  payPerCompletion→payPerMinute (2 kr/100 gyldige minutter, kun
+  loggede+validerede afspilninger), "finansieret af abonnementer"→
+  minutpakker (der findes ingen abonnementer!) og meta-beskrivelsen
+  ("betal kun for de minutter, du faktisk ser"). NB: stat-NAVNE som
+  "Færdigsetninger" er rene metrik-navne og røres ikke.
+
+OPSLAGTAVLE (creator_posts) — VIRKER (bruger verificeret 19/9)
+Commit 179a23b + 7a716b1. Migration 20260918_creator_opslagstavle.sql
+ER KØRT af brugeren (18/9). Verificeret udefra: anon select OK (200),
+anon insert afvist af RLS (42501). Detaljer:
+- creator_posts: creator_id TEXT (creators.id er text, ikke uuid!),
+  body 1..2000, pinned (partial unique index = max ét pr. creator),
+  updated_at-trigger, replica identity full + supabase_realtime-publication.
+- API: /api/creator-posts (GET/POST) + /api/creator-posts/[id]
+  (PATCH pin/rediger, DELETE). 409 ved pin-konflikt, 403 fremmed profil.
+- UI: BulletinBoard.tsx på creatorsiden (mellem stats og indtjening).
+  Server-renderet startdata + Supabase REALTIME-abonnement (projektets
+  første realtime-feature; payload-feltet hedder eventType i den
+  installerede supabase-js-version, ikke type). Refetch ved
+  visibilitychange. Ejerskab: isOwner = creator.ownerUserId === user.id.
+- i18n: bulletinBoard-namespace, 22 nøgler, alle 8 sprog. tsc + i18n-verify
+  ALLE TJEK GRÆNNE.
+- MANGLENDE TEST (afventer brugeren): two-fane-testen — fane A gæst,
+  fane B logget ind som creator-ejer, opret/rediger/fastgør/slet i B og
+  se det opdatere live i A uden reload. Hvis DELETE ikke virker live,
+  mistank: replica identity full. Test også /api/creator-posts med
+  fremmed creatorId → 403.
+
+KVALITETSKOMMENTARER (comments) — BYGGET 18/9, E2E-TEST MANGLER
+Commit 4e96e5f. Migration 20260918_kommentar_kvalitet.sql ER KØRT af
+brugeren (18/9). Verificeret udefra: pinned-kolonne findes, anonym
+insert afvises (RLS 42501), GET /api/comments svarer med viewer.canComment.
+Strategi: kommentardata er guld for creatoren — MEN kun hvis feltet
+ikke bliver en YouTube-jungel. Derfor:
+- KUN SEERE KOMMENTERER: login + har_set_film-RPC (læser den
+  append-only credit_ledger via 'forbrug:{sessionId}'→view_sessions —
+  kan IKKE forfalskes af klienten). NB: forbrug registreres først ved
+  validate (film slut/tab luk) → feltet åbner efter afspilning.
+- Gæster lukket (DB: insert kræver user_id = auth.uid()); gamle
+  gæstekommentarer forbliver læsbare.
+- Creator-moderation på egne film: fastgør ÉT indlæg pr. film
+  (partial unique index uq_comments_pinned → 23505 → API 409) + slet.
+  RLS-policies fastgoer_som_creator_ejer/slet_som_creator_ejer.
+- Trigger trg_comment_pin_kun: UPDATE kan KUN flippe pinned —
+  ordlyd/forfatter/film/tidspunkt er låst (creator kan aldrig omskrive).
+- UI: CommentSection får gate-boks (login-link til /login eller
+  "se filmen først") + pin/slet-knapper hvis isCreatorOwner (udregnes
+  server-side på watch-siden). GET /api/comments → {comments, viewer}.
+- i18n: 9 nye nøgler i comments-namespace, 2 gamle fjernet
+  (namePlaceholder, guestNote) — alle 8 sprog. tsc + i18n-verify GRØNNE.
+- MANGLENDE TEST (afventer brugeren): logget ind uden seertid → POST
+  403 "Se filmen først"; efter at have set en film → formularen åbner;
+  som creator-ejer → pin/slet-knapper, pin et andet indlæg → 409;
+  bonus: UPDATE af body via SQL Editor → trigger-fejl (pin-kun).
+
+AI-UNDERTEKSTER (film_subtitles) — KØRER, E2E-VERIFICERET (19/9)
+Migration 20260918_film_undertekster.sql KØRT. Brugeren har testet
+hele kæden: generering (8/8 ready på testfilm, inkl. DE/SV efter
+genforsøgs-fiksen) og CC-menuen live på watch-siden (dansk +
+spansk valgt og vist — crossOrigin-fiksen a7a56cd var sidste brik).
+Strategi: YouTube's autogen-undertekster slås med whisper-
+transskription + automatisk oversættelse til ALLE 8 platformssprog
+i ét klik — "udgiv på 8 sprog med ét klik" er creator-markedsføring.
+- Pipeline (POST /api/films/{slug}/subtitles, synkron — selv-hostet):
+  download video (streamet til disk) → ffmpeg 32 kbps mono MP3
+  (≈21 MB/90 min, under OpenAI's 25 MB) → whisper-1 (verbose_json
+  + segments, sprog = filmens TALESPROG, se næste sektion) →
+  kilde-VTT → gpt-4o-mini oversætter KUN tekststrenge (JSON-mode,
+  antal-valideret, chunk à 200) direkte fra kilden (aldrig pivot) →
+  8 VTT'er uploades til offentlig film-subtitles-bucket
+  ({user_id}/{slug}/{locale}.vtt) → film_subtitles-rækker
+  ready/failed. Ét try/catch pr. sprog. Genkørsel = idempotent upsert.
+- RLS: alle læser (status-filteret 'ready' ligger i QUERY'en, så
+  ejeren kan se egne processing/failed i studiet); kun creator-ejer
+  skriver. Ruten kører med creatorens egen session — ingen service-role.
+- Studio: pr. film 8 sprog-badges (DA/EN/…, fejlbesked som tooltip)
+  + Generér-knap (StudioSubtitleGenerator). Kladsletning rydder
+  også VTT-objekter.
+- Watch: native <track kind="captions"> i VideoPlayer (browserens
+  CC-menu); default = seererens locale, ellers filmens talesprog,
+  ellers første. GOTCHA (a7a56cd): <track> hentes med CORS-tvang,
+  men KUN hvis <video> har crossOrigin="anonymous" — ellers går
+  kaldet i no-cors, VTT'en kan ikke læses cross-origin, og hvert
+  sprog forsvinder fra CC-menuen idet det vælges. Supabase sender
+  ACAO: * (verificeret på både VTT og video).
+- Ingen npm-afhængighed — rå fetch mod api.openai.com. ~5 kr./film.
+- Oversættelses-robusthed (10f965c): gpt-4o-mini tabte af og til ét
+  segment (DE+SV fejlede med 59/60 på testfilm) → input er nu
+  nummereret {i, text}, output valideres 1:1 pr. nummer, og hvert
+  chunk får ét genforsøg ved mangelfuldt svar.
+- NB: test2-filmen har 8 gamle failed-rækker fra en 429-kørsel
+  (OpenAI-kredit opbrugt) — kan genkøres med Generér-knappen.
+
+TALESPROG (documentaries.spoken_language) — BYGGET 19/9, MIGRATION KØRT
+Commits 4b1d222 + 24b2750 + c547d52. Filmen har nu et talesprog
+(ISO 639-1, default 'da') — pipelinen transskriberer på DET sprog
+i stedet for hardkodet dansk, så en engelsksproget dokumentar kan
+komme globalt ind i kataloget. Kilde-VTT'en er transskriptionen;
+ de 7 andre platformssprog oversættes direkte fra den.
+- MIGRATION KØRT af brugeren (19/9): 20260919_film_talesprog.sql.
+  Verificeret udefra: GET /rest/v1/documentaries?select=slug,
+  spoken_language → alle 8 film har spoken_language='da'.
+- Upload-formularen: talesprog-vælger (sprogenes egne navne,
+  default Dansk) → /api/films validerer mod PLATFORM_LOCALES.
+- PLATFORM_LOCALES i i18n/languageNames.ts = ÉN kilde for pipeline,
+  vælger, badges og DB-check (skal altid matche migrationerne).
+- Studio-intro er nu dynamisk: "…på {language}…" i stedet for
+  hardkodet "dansk".
+- tsc + i18n-verify GRØNNE. MANGLENDE TEST (afventer brugeren):
+  opret en KORT film med talesprog fx English →
+  Generér → EN-badget er transskriptionen (de 7 andre oversatte)
+  → CC-menuen viser alle 8. Eksisterende film er upåvirkede.
+
+STATISTIK + INDTJENING ER PRIVAT (19/9, e67a673 + f2a1bb6)
+Brugeren ville ikke have at gæster ser statistik på skaberpro-
+filen. To trin:
+1. e67a673 (indtjening): brugeren opdagede i inkognito, at gæster
+   kunne se en fremmed creators kr-tal. EarningsPanel + statEarnings
+   + filmografiens kr-kolonner rendredes til alle, OG RPC'en
+   creator_indtjening var tildelt anon (PostgREST-læk).
+   - MIGRATION KØRT af brugeren (19/9): 20260919_indtjening_privat.sql.
+     Verificeret udefra: anon-kald afvises (HTTP 401, kode 42501,
+     "Kun creatorens ejer kan laese indtjening").
+2. f2a1bb6 (statistik helt væk): profilens hele stats-grid (vis-
+   ninger/fuldførelser/gyldige/indtjening) + filmografiens ALLE
+   tal-kolonner vises KUN for isOwner — gæster ser kun film + år
+   i filmografien. Skaber-listen (/creators) viser film-antal uden
+   views. Data hentes slet ikke for ikke-ejere (getCreatorStats +
+   getCreatorEarnings køres kun når isOwner).
+- NB: creator_payouts-RLS var i orden hele vejen (egne rækker) —
+  det var KUN aggregat-RPC'en der var åben. Film-STATS (film.stats
+  i catalog) er stadig offentlige data pr. film — de vises bare
+  ikke på skaber-siderne længere (watch-sidens eget tal røres ikke).
+- f2a1bb6→c2429bb: FilmographyTable er AFLØST af FilmographyGrid —
+  små 16:9 poster-kort (uploadet forsidebillede ellers gradient +
+  vandmærke) der linker direkte til filmen; ejerens private tal
+  står under hvert kort. Overskrift "Filmografi" uden "& statistik"
+  i alle 8 sprog.
+- Test (afventer brugeren): inkognito på /da/creator/jdjjdjdj →
+  ingen stats-grid, filmografi som poster-kort uden tal; logget
+  ind som ejer → poster-kort med egne tal under hvert kort.
+
+SELVBETJENT UDBETALING (150 kr-TÆRSKEL) — BYGGET 19/9, 9546670
+MIGRATION KØRT af brugeren (19/9): 20260919_creator_udbetaling.sql.
+NB: brugeren kørte først IND TJENING-migrationen (20260919_*) ved en
+fejl to gange — filnavnene ligner hinanden; tjek altid første
+kommentarlinje. Efter korrekt kørsel verificeret udefra: anon POST
+på begge tabeller afvises (42501), anon SELECT giver [] (200).
+Model: creatoren gemmer selv sine bankoplysninger og trykker
+"Udbetal {beløb}" på egen profil, når tilgængelig saldo >= 150 kr
+(tærsklen skal kunne forsvare bankgebyrer). Knappen opretter EN
+ANMODNING — den faktiske pengeoverførsel er fortsat manuel
+(bank/Stripe Connect først ved live mode, jf. backlog).
+- creator_payout_methods: user_id PK, IBAN som det ene felt (9c60bfc
+  fjernede reg.nr./kontonummer — IBAN er den internationale standard,
+  danske konti har også ét; DK-checken i DB forbliver par ELLER IBAN,
+  permissiv — ingen ny migration). RLS: kun egen række
+  (select/insert/update), updated_at-trigger.
+- creator_payout_requests: amount >= 150 (DB-check), status
+  pending|paid|rejected, max ÉÉN pending pr. konto (partial unique
+  index → 23505 → API 409). RLS: select/insert egen, INGEN
+  update-policy — status ændres KUN i dashboardet (service role).
+- API /api/payouts: PUT gem metode (valideret), POST anmodning —
+  ejerskab via creators.owner_user_id, saldo beregnes SERVER-side
+  med creator_indtjening (klienten kan ikke lyve med beløbet),
+  metode skal findes, 23505 → 409.
+- UI: PayoutPanel.tsx under EarningsPanel på egen profil (isOwner).
+  Bankformular + Udbetal-knap (låst < 150 kr / uden gemt metode /
+  ved pending) + anmodningshistorik. i18n: payoutPanel x8 sprog.
+- Redaktionens arbejdsgang står i migrationens kommentarer:
+  select pending → overfør i banken → insert i creator_payouts +
+  update request til 'paid' (creator_payouts trækker "Tilgængelig"
+  ned automatisk).
+- Valuta-ærlighed (46f0982 + 0816e67): beløb omregnes ALDRIG —
+  DKK er kontrakten. formatCurrency viser ISO-koden DKK for alle
+  sprog udover dansk ("kr." er tvetydigt for SEK/NOK-seere).
+  CurrencyHint-boksen under PayoutPanel (kun ejer) viser
+  VEJLEDENDE kurs til seerens lokale valuta (open.er-api.com,
+  gratis keyless, daglig middelkurs, localStorage-cache pr. dag);
+  DK-seere ser den ikke. disclaimer: kurser er ca., udbetaling
+  sker altid i DKK. NB: kurserne hentes klient-side — ved offline
+  eller blokeret API er boksen bare væk (ingen fejl).
+- Test (afventer brugeren, efter migrationen): ejer på egen profil
+  → gem bankoplysninger → Udbetal-knap (saldo 0,07 kr = låst med
+  teksten om 150 kr); prøv POST med < 150 kr saldo → 400; sæt
+  test-saldo op i SQL Editor → anmod → knappen låst igen (pending)
+  → anden POST → 409; kvitter i dashboardet og se 'Udbetalt' i
+  historikken + at Tilgængelig falder.
+
+DELING (share) — BYGGET 19/9, dc14c53
+Watch-siden har nu en Del-række under Gem-knappen: Facebook,
+WhatsApp, X, Telegram, Reddit, e-mail + "Kopiér link" (med
+"Kopieret ✓"-feedback). URL læses ved klik-tid (window.location.href)
+→ det lokaliserede link (/da/watch/…) deles korrekt.
+- VIGTIGST: generateMetadata på watch-siden har fået Open Graph +
+  Twitter-kort (titel, synopse, plakatbillede som summary_large_
+  image) — uden OG-tags viser Facebook/WhatsApp kun et nøgent link.
+  NB: ved lancering: Facebook's link-scanner cacher delte links —
+  brug https://developers.facebook.com/tools/debug/ hvis et kort
+  ikke opdaterer. Test ved at klistre et watch-link i fx Signal/
+  WhatsApp-chik (WhatsApp cacher også — nyeste indlæg viser kortet).
+- Ingen ny migration. i18n: share-namespace x8 (brand-navne er ikke
+  i i18n — universelle). tsc + i18n-verify GRØNNE.
+
+ORGANISK REKLAME — BYGGET 19/9 (5 commits: 323c2c6…d44c4ee)
+Formål: gøre delte links værd at klikke på og målbare. Alt er
+røgtestet mod kørende server; tsc + i18n-verify ALLE TJEK GRØNNE.
+1. OG-KORT: /og/film/{slug} (1200×630 i filmens egen gradient,
+   PostgREST-anon, cachebar) — fallback når intet plakatbillede.
+   NB: middleware matcher ikke /og.
+2. DELING 2.0 (ShareButtons): alle delte links bærer ?ref={seerens
+   affiliate-kode} (MIDDLEWARE sætter doccys_ref-cookien — 8 tegn
+   [a-z0-9] valideres syntaktisk; existens afgøres af checkout som
+   før), ?t={sektal} fra 10 sekunde (VideoPlayer skriver positionen
+   via lib/player/shareTime og søger selv til ved ankomst) og
+   utm_source/medium/campaign pr. platform. Nye mål: LinkedIn,
+   Bluesky, Mastodon (brand-navn, ikke i i18n). Del-knapper også på
+   skaberprofilen (med seerens egen ref-kode).
+3. SEO: VideoObject-JSON-LD på watch-siden (name/synopse/thumbnail/
+   uploadDate/duration/embedUrl/seertal). Documentary har nu
+   createdAt; toIsoDuration i format.ts.
+4. TRAILER-PIPELINE (MIGRATION KÆVERES: 20260919_film_trailer.sql —
+   film_trailers, slug-PK, offentlig læsning, creator-ejer skriver):
+   POST /api/films/{slug}/trailer {startSec?} → download → ffmpeg
+   (90 s klip, 720p/crf 26, +faststart) → upload til film-videos
+   {user_id}/{slug}-trailer.mp4 (upsert) → ready/failed. GET =
+   status, DELETE rydder række+objekt. Studio: trailer-knap med
+   start-sekundfelt + badge; kladsletning fjerner trailer-objektet.
+5. SMOOTH OVERGANG MELLEM DELE & SE:
+   - PaywallCard viser klar trailer som gratis smagsprøve (login OG
+     buy) — CTA-stripen står UNDER videoen, kontrollerne er frie.
+   - /api/embed/{slug}?lang=da: indlejrings-HTML uden app-layout
+     (trailer eller plakat i gradient + "Se hele filmen"-CTA).
+     Cachebar, kun publicerede film.
+   - /api/oembed?url={watch-URL} → iframe-uddrag (WordPress m.fl.);
+     watch-metadata annoncerer via alternate-link.
+   - Watch-metadata: og:video når traileren er klar (FB-videokort).
+     Twitter forbliver summary_large_image (player kræver
+     domænegodkendelse hos X — lancering-backlog).
+   - Studiet: "Del & indlejr"-række på publicerede film (film-link +
+     iframe-uddrag på udklipstavlen).
+- MANGLENDE TEST (afventer brugeren): kør migrationen → generér
+  trailer på en film i studiet → gæst ser smagsprøven på watch-
+  siden → /api/embed/{slug} i en iframe → del et link og se at
+  ?ref + ?t + utm hænger på → klik på delt ?t-link og se afspilleren
+  søge. NB: traileren på en KLADDE er teknisk offentligt læsbar
+  (som film_subtitles) — app'en viser kun published.
+- NB: dev-serverens .next-cache døde undervejs (500 på /de m.m.) —
+  serveren blev genstartet + .next ryddet; det var ikke kodefejl.
+
+PWA-INSTALLATION — BYGGET 19/9, 0a35ce6 (røgtestet, bruger-test mangler)
+Doccys er nu "Føj til startskærm"-bar som app (fuldskærm uden browser-
+chrome). ALLE TJEK GRØNNE mod kørende server (manifest 200, sw.js 200,
+PNG-signaturer OK, /da head-tags OK, tsc + i18n-verify).
+- src/app/manifest.ts → /manifest.webmanifest: name/start_url "/"
+  (middleware tager locale-redirecten)/standalone/theme noir/ikoner
+  192+512 med maskable-variant.
+- src/app/app-icons/[size]/route.tsx: DoccysMark (objektivring +
+  seksbladet blænde) tegnet med satori i 32/180/192/512 px,
+  champagne på noir; 404 på andre størrelser; cachebar (revalidate
+  86400). NB: satori tager ikke SVG-gradients → farven er flad.
+- layout.tsx: manifest-link, appleWebApp, applicationName, apple-
+  touch-icon 180, favicon 32, themeColor via viewport (Next 15),
+  apple-mobile-web-app-capable-meta til iOS.
+- middleware matcher ikke /app-icons (som /og).
+- public/sw.js: BEVIDST minimal pass-through SW (tom fetch-listener)
+  — den findes KUN fordi Chrome kræver en SW med fetch-handler for
+  at vise install-prompten. Ingen caching: streaming + betalingsflow
+  + realtime må ikke røres af en cache. Registreres KUN i production
+  (ServiceWorkerRegister.tsx, "use client") — i dev ses SW'en altså
+  IKKE, hvilket er bevidst.
+- MANGLENDE TEST (afventer brugeren, kræver PRODUCTION-build da SW
+  kun registreres dér): npm run build + start → Chrome desktop/Android
+  viser install-ikon i adressefeltet → installer → appen åbner i
+  fuldskærm med noir-ikon. iOS Safari: Del → "Føj til startskærm"
+  (virker også i dev, ingen SW behøves der). Offline-støtte er
+  fravalgt (kan bygges senere hvis ønsket).
+
+STRIPE — VIGTIGE FALDGRUBER (se også memory-fil doccys-stripe-setup.md)
+
+- Brugeren har TO Stripe-konti. Appens nøgle hører til
+  acct_1UGZYxJEBUa5F33S ("doccys.com sandbox", test mode). stripe login-
+  pairing havner på den forkerte konto → brug ALTID:
+  stripe listen --forward-to localhost:3000/api/stripe/webhook
+    --api-key <STRIPE_SECRET_KEY fra .env.local>
+  Hver listen-kørsel udskriver en NY whsec_… som skal i .env.local
+  (og dev-server genstartes efterfølgende).
+- stripe.exe: $env:LOCALAPPDATA\Microsoft\WinGet\Packages\
+  Stripe.StripeCli_Microsoft.Winget.Source_8wekyb3d8bbwe\stripe.exe
+- Rescue af betalt-køb-uden-kredit: POST /rest/v1/rpc/indfri_koeb med
+  service_role-nøglen (idempotent).
+- Adaptive pricing er slået til på kontoen (viser evt. lokal valuta) —
+  endnu ikke diskuteret/afklaret med brugeren.
+
+SUPABASE-ENV (i .env.local, git-ignoreret)
+URL: https://xzwowumgvhkltkwrnpdo.supabase.co
+Anon: sb_publishable_yZp8nMFYKi6sO17eGdQePQ_CI63ZlWQ (virker som
+apikey-header mod PostgREST). Service_role: legacy JWT — i .env.local.
+
+RESTERENDE PUNKTER (i prioriteret rækkefølge)
+0. Undertekster E2E — DONE (19/9): testfilm 'testtest' (talesprog
+   English) kørt igennem pipelinen, 8/8 ready, CC-menu verificeret
+   (da+es). Rester: 'test2' har 8 gamle failed-rækker fra en
+   429-kredit-kørsel — genkør med Generér-knappen, og evt. ryd
+   op i testfilmene inden lancering.
+1. Opslagstavle — VIRKER (19/9, bruger verificeret): ejer ser
+   skriveformular på /da/creator/{eget handle}; seed-profilerne
+   (nordlys/havblik/betonvaerket) har owner_user_id = null og kan
+   IKKE skrives på (bevidst — bind evt. en test-konto ved lancering).
+2. E2e-test kvalitetskommentarer (se ovenfor).
+2. Affiliate e2e-test: konto B via /api/ref/{kode} → B's første køb →
+   A +15000 s.
+3. Creator-afregning e2e: gyldig session → tal på creatorprofil
+   (nu også: selvbetjent udbetaling, se afsnittet ovenfor).
+4. checkout.session.expired-webhook: forladte sessions → 'failed'
+   (koden findes, utestet).
+5. Launch-backlog (aftalt med brugeren): juridiske sider +
+   aldersbekræftelse, e-mail-notifikationer (kommentar-moderation er
+   nu bygget, se ovenfor), TUS resumable upload + auto-thumbnails.
+6. Geo-detektion af inkl-moms-pris (v1.5-idé, ikke aftalt endeligt).
+7. Live mode-nødvendigheder: rigtig DK-momsregistrering (CVR/OSS),
+   permanent webhook-endpoint i stedet for lokal CLI-lytter.
+8. Git remote: brugeren opretter privat GitHub-repo → git remote add +
+   push. Lokal identitet "Jesper Hansen <jesper@doccys.local>" skal
+   rettes til ægte e-mail før push.
+
+GOD ARBEJDSGANG I DETTE PROJEKT
+- Plan-mode + Plan-agent ved større features; små trin, commit pr. trin,
+  dansk commit-beskeder og danske kommentarer i koden.
+- Kør npx tsc --noEmit + node scripts/i18n-verify.mjs efter ændringer
+  (i18n-verify har BASE-env override hvis dev-serveren kører på anden
+  port: $env:BASE = "http://localhost:3002").
+- PowerShell-kald rammes indimellem af "classifier unavailable" —
+  prøv blot igen et par gange.
+- Supabase-nygle-check: skriv JSON-bodies til temp-fil med
+  [System.IO.File]::WriteAllText + UTF8Encoding($false) (ingen BOM!)
+  og brug curl.exe -d "@fil".
+
+SIDSTE GIT-LOG (nyeste først)
+0a35ce6 pwa: manifest, ikon-rute og minimal service worker
+c547d52 talesprog: pipelinen transskriberer paa filmens sprog
+24b2750 talesprog: vaelger i upload-formularen + validering i /api/films
+4b1d222 talesprog: spoken_language-kolonne + PLATFORM_LOCALES som een kilde
+4728e83 undertekster: i18n-noegler x8 + import-rettelse
+0652d2a undertekster: i18n x8 + klient-sikre sprognavne
+711080d undertekster: tracks i afspilleren + default paa seerens sprog
+c224ce6 undertekster: studio-UI med sprog-badges og generer-knap
+0db8a81 undertekster: API-rute med hele pipelinen
