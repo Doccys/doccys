@@ -172,9 +172,17 @@ export default function VideoPlayer({
   return (
     <div className="mx-auto w-full max-w-[calc((100dvh-12rem)*16/9)]">
       <div className="relative aspect-video overflow-hidden rounded-xl border border-smoke bg-black shadow-2xl shadow-black/60">
+        {/* crossOrigin er PÅKRÆVET for underteksterne: <track> hentes
+            med CORS-tvang, men kun hvis MEDET-elementet har attributten
+            — ellers foretages kaldet i no-cors-tilstand, browseren kan
+            ikke læse den cross-origin VTT, og sporet fejler og FORSVINDER
+            fra CC-menuen idet det vælges. Supabases public buckets sender
+            Access-Control-Allow-Origin: * (verificeret), så videoen tåler
+            det CORS-kald, attributten også giver den. */}
         <video
           ref={videoRef}
           src={videoUrl}
+          crossOrigin="anonymous"
           controls
           playsInline
           preload="metadata"
