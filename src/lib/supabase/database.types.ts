@@ -423,6 +423,8 @@ export type CreatorPayoutMethodRow = {
   bank_account_nr: string | null;
   /** udenlandsk konto — check-constraint kræver parret ELLER IBAN */
   iban: string | null;
+  /** valgfri BIC/SWIFT — kun nødvendigt for konti uden for SEPA */
+  bic: string | null;
   /** røres automatisk af trg_payout_method_touch ved UPDATE */
   updated_at: string;
 };
@@ -432,6 +434,7 @@ export type CreatorPayoutMethodInsert = {
   bank_reg_nr?: string | null;
   bank_account_nr?: string | null;
   iban?: string | null;
+  bic?: string | null;
   updated_at?: string;
 };
 
@@ -439,6 +442,7 @@ export type CreatorPayoutMethodUpdate = {
   bank_reg_nr?: string | null;
   bank_account_nr?: string | null;
   iban?: string | null;
+  bic?: string | null;
   updated_at?: string;
 };
 

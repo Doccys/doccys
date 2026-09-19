@@ -21,7 +21,7 @@ export const dynamic = "force-dynamic";
 const PAYOUT_THRESHOLD_DKK = 150;
 
 export async function PUT(request: NextRequest) {
-  let body: { iban?: string };
+  let body: { iban?: string; bic?: string };
   try {
     body = await request.json();
   } catch {
@@ -52,15 +52,25 @@ export async function PUT(request: NextRequest) {
     );
   }
 
+  // BIC/SWIFT er VALGFRI — kun nødvendig for konti uden for SEPA.
+  // 8 tegn (bank+land+sted) eller 11 tegn (+ afdeling). Tomt = null.
+  const bic = body.bic?.trim().replace(/\s+/g, "").toUpperCase() || null;
+  if (bic && !/^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}(?:[A-Z0-9]{3})?$/.test(bic)) {
+    return NextResponse.json(
+      { error: "BIC/SWIFT-formatet ser forkert ud — 8 eller 11 tegn" },
+      { status: 400 },
+    );
+  }
+
   const { error } = await supabase
     .from("creator_payout_methods")
-    .upsert({ user_id: user.id, bank_reg_nr: null, bank_account_nr: null, iban });
+    .upsert({ user_id: user.id, bank_reg_nr: null, bank_account_nr: null, iban, bic });
 
   if (error) {
     console.error("gem udbetalingsoplysninger:", error);
     return NextResponse.json({ error: "Kunne ikke gemme oplysningerne" }, { status: 500 });
   }
-  return NextResponse.json({ method: { iban } });
+  return NextResponse.json({ method: { iban, bic } });
 }
 
 export async function POST(request: NextRequest) {

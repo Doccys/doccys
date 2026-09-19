@@ -9,6 +9,7 @@ const PAYOUT_THRESHOLD_DKK = 150;
 
 export type PayoutMethod = {
   iban: string | null;
+  bic: string | null;
 };
 
 export type PayoutRequest = {
@@ -45,6 +46,7 @@ export default function PayoutPanel({
   const locale = useLocale();
 
   const [iban, setIban] = useState(initialMethod?.iban ?? "");
+  const [bic, setBic] = useState(initialMethod?.bic ?? "");
   const [method, setMethod] = useState<PayoutMethod | null>(initialMethod);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -67,7 +69,7 @@ export default function PayoutPanel({
       const res = await fetch("/api/payouts", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ iban: iban || undefined }),
+        body: JSON.stringify({ iban: iban || undefined, bic: bic || undefined }),
       });
       const data = (await res.json()) as { method?: PayoutMethod; error?: string };
       if (!res.ok || !data.method) {
@@ -128,7 +130,20 @@ export default function PayoutPanel({
               className="mt-1 w-full rounded-lg border border-smoke bg-noir px-4 py-2.5 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none"
             />
           </label>
+          <label className="block">
+            <span className="text-xs uppercase tracking-widest text-ash">
+              {t("bic")}
+            </span>
+            <input
+              value={bic}
+              onChange={(e) => setBic(e.target.value)}
+              maxLength={11}
+              placeholder="DABADKKK"
+              className="mt-1 w-full rounded-lg border border-smoke bg-noir px-4 py-2.5 text-sm uppercase text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none"
+            />
+          </label>
           <p className="text-xs leading-relaxed text-ash">{t("methodHint")}</p>
+          <p className="text-xs leading-relaxed text-ash/80">{t("bicHint")}</p>
 
           {saveError && <p className="text-sm text-red-400">{saveError}</p>}
           {savedMsg && <p className="text-sm text-champagne">{savedMsg}</p>}

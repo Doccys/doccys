@@ -91,7 +91,7 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
       const [methodRes, requestsRes] = await Promise.all([
         supabaseAuth
           .from("creator_payout_methods")
-          .select("iban")
+          .select("iban, bic")
           .eq("user_id", user.id)
           .maybeSingle(),
         supabaseAuth
@@ -102,7 +102,7 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
           .limit(20),
       ]);
       if (methodRes.data) {
-        payoutMethod = { iban: methodRes.data.iban };
+        payoutMethod = { iban: methodRes.data.iban, bic: methodRes.data.bic };
       }
       payoutRequests = (requestsRes.data ?? []).map((r) => ({
         id: r.id,
