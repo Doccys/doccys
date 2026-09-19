@@ -6,9 +6,11 @@
  * 2. extractMp3: ffmpeg → 32 kbps mono MP3. 32 kbps er rigeligt
  *    til tale og holder selv en 90 min film under OpenAI's 25 MB-
  *    grænse (90 min * 32 kbps / 8 ≈ 21,6 MB).
- * 3. transcribeDanish: whisper-1 med verbose_json + segment-
- *    granularitet, låst til dansk — filmene er danske, så en
- *    automatisk sprogdetektion kun kan ramme ved siden af.
+ * 3. transcribeAudio: whisper-1 med verbose_json + segment-
+ *    granularitet, låst til filmens TALESSPROG (ISO 639-1 fra
+ *    documentaries.spoken_language) — en fastlåst kode rammer
+ *    altid rigtigt, hvor en automatisk detektion kan ramme ved
+ *    siden af på stille/andre-sprog passager.
  *
  * NB: Pipelinen er designet til den selv-hostede server. Under
  * serverless (Vercel) kræver kørslen en anden arkitektur
@@ -97,15 +99,19 @@ interface WhisperResponse {
 }
 
 /**
- * Dansk transskription via whisper-1. Returnerer segmenterne med
- * sekund-nøjagtige tidsstempler — timing-sandheden for ALLE sprog.
- * Generøs timeout: en lang film tager flere minutter at skrive ud.
+ * Transskription via whisper-1 på filmens talesprog (ISO 639-1).
+ * Returnerer segmenterne med sekund-nøjagtige tidsstempler —
+ * timing-sandheden for ALLE sprog. Generøs timeout: en lang film
+ * tager flere minutter at skrive ud.
  */
-export async function transcribeDanish(mp3Bytes: Buffer): Promise<SubtitleSegment[]> {
+export async function transcribeAudio(
+  mp3Bytes: Buffer,
+  language: string,
+): Promise<SubtitleSegment[]> {
   const form = new FormData();
   form.append("model", "whisper-1");
   form.append("response_format", "verbose_json");
-  form.append("language", "da");
+  form.append("language", language);
   form.append("timestamp_granularities[]", "segment");
   // Navnet er kun metadata for OpenAI — men filnavnet skal have en
   // lyd-endelse, så API'et accepterer blob'en.

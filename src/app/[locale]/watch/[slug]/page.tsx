@@ -65,13 +65,17 @@ export default async function WatchPage({ params }: WatchPageProps) {
       );
     } else {
       // Undertekster: kun 'ready'-rækker når afspilleren. Default er
-      // seererens eget sprog; findes det ikke, dansk, ellers første
+      // seererens eget sprog; findes det ikke, filmens TALESPROG
+      // (transskriptionens sprog — en dansk film falder således
+      // tilbage til dansk, en engelsk til engelsk), ellers første
       // track (alphabetisk da-først). Tom liste = ingen CC-menu,
       // præcis som før pipelinen kørte.
       const subtitleTracks = await getFilmSubtitles(slug);
       const defaultTrack =
         subtitleTracks.find((track) => track.locale === locale) ??
-        subtitleTracks.find((track) => track.locale === "da") ??
+        subtitleTracks.find(
+          (track) => track.locale === documentary.spokenLanguage,
+        ) ??
         subtitleTracks[0];
       const tracksWithDefault = subtitleTracks.map((track) => ({
         ...track,

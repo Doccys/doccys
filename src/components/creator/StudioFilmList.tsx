@@ -74,13 +74,19 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
 
             {/* Undertekster: AI-pipelinen pr. film — 8 sprog-badges
                 (kode, ikke oversatte navne — koderne er genkendelige
-                på alle sprog) + generér-knap. */}
+                på alle sprog) + generér-knap. Intro-teksten nævner
+                filmens TALESPROG: pipelinen skriver lyden af på
+                det sprog og oversætter derfra til alle andre. */}
             <div className="mt-4 max-w-xl">
               <p className="text-xs uppercase tracking-[0.3em] text-ash">
                 {t("subtitlesHeading")}
               </p>
               <p className="mt-1 text-xs leading-relaxed text-ash/70">
-                {t("subtitlesIntro")}
+                {t("subtitlesIntro", {
+                  language:
+                    LOCALE_LANGUAGE_NAMES[film.spokenLanguage] ??
+                    film.spokenLanguage,
+                })}
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {Object.keys(LOCALE_LANGUAGE_NAMES).map((locale) => {

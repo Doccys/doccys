@@ -4,14 +4,18 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { createClient } from "@/lib/supabase/server";
-import { LOCALE_LANGUAGE_NAMES } from "@/lib/i18n/languageNames";
+import {
+  LOCALE_LANGUAGE_NAMES,
+  PLATFORM_LOCALES,
+  isPlatformLocale,
+} from "@/lib/i18n/languageNames";
 import { FILM_SUBTITLES_BUCKET } from "@/lib/storage/filmSubtitles";
 import { buildVtt, type SubtitleSegment } from "@/lib/subtitles/vtt";
 import {
   downloadVideoToDisk,
   extractMp3,
   readMp3,
-  transcribeDanish,
+  transcribeAudio,
 } from "@/lib/subtitles/transcribe";
 import { translateSegmentTexts } from "@/lib/subtitles/translate";
 
@@ -39,9 +43,14 @@ interface RouteContext {
  * policies er anden forsvarslinje, ikke første).
  */
 
-/** Pipeline-sprogene — altid alle 8, dansk transskriberes først. */
-const ALL_LOCALES = ["da", "en", "de", "es", "fr", "fi", "no", "sv"] as const;
-const TARGET_LOCALES = ALL_LOCALES.filter((locale) => locale !== "da");
+/**
+ * Pipeline-sprogene = platformens 8 sprog. KILDEN er filmens
+ * talesprog (documentaries.spoken_language): whisper skriver lyden
+ * af på det sprog, og transskriptionen oversættes derefter direkte
+ * til ALLE de andre — aldrig via et pivot-sprog (fejl ville
+ * ellers hobbe op over to led).
+ */
+const ALL_LOCALES = PLATFORM_LOCALES;
 
 /** Supabase-klient bundet til requestens session (RLS gælder 1:1). */
 type SessionClient = Awaited<ReturnType<typeof createClient>>;
@@ -83,14 +92,21 @@ async function uploadVtt(
 
 /**
  * Fælles auth + ejerskab for begge metoder.
- * Returnerer enten en fejl-respons eller klienten + filmens video-URL.
+ * Returnerer enten en fejl-respons eller klienten + filmens
+ * video-URL og talesprog.
  */
 async function requireFilmOwner(
   request: NextRequest,
   slug: string,
 ): Promise<
   | { ok: false; response: NextResponse }
-  | { ok: true; supabase: SessionClient; userId: string; videoUrl: string }
+  | {
+      ok: true;
+      supabase: SessionClient;
+      userId: string;
+      videoUrl: string;
+      spokenLanguage: string;
+    }
 > {
   const supabase = await createClient();
   const {
@@ -110,7 +126,7 @@ async function requireFilmOwner(
   // kan publicere med undertekster fra første færdig.
   const { data: film } = await supabase
     .from("documentaries")
-    .select("creator_handle, video_url")
+    .select("creator_handle, video_url, spoken_language")
     .eq("slug", slug)
     .maybeSingle();
   if (!film) {
@@ -135,14 +151,32 @@ async function requireFilmOwner(
     };
   }
 
-  return { ok: true, supabase, userId: user.id, videoUrl: film.video_url };
+  // Kolonnen er not null default 'da' — men læses defensivt, hvis
+  // sproglisten en dag udvides uden migration af gamle rækker.
+  const spoken = isPlatformLocale(film.spoken_language)
+    ? film.spoken_language
+    : "da";
+
+  return {
+    ok: true,
+    supabase,
+    userId: user.id,
+    videoUrl: film.video_url,
+    spokenLanguage: spoken,
+  };
 }
 
 export async function POST(request: NextRequest, context: RouteContext) {
   const { slug } = await context.params;
   const auth = await requireFilmOwner(request, slug);
   if (!auth.ok) return auth.response;
-  const { supabase, userId, videoUrl } = auth;
+  const { supabase, userId, videoUrl, spokenLanguage } = auth;
+
+  // Kilden er filmens talesprog; ALLE andre platformssprog er mål.
+  const sourceLocale = spokenLanguage;
+  const targetLocales = ALL_LOCALES.filter(
+    (locale) => locale !== sourceLocale,
+  );
 
   // Idempotent start: alle 8 rækker sættes 'processing' (og gammel
   // URL/fejl ryddes) — en genkørsel overskriver præcis de samme stier.
@@ -166,8 +200,9 @@ export async function POST(request: NextRequest, context: RouteContext) {
     );
   }
 
-  // Transskription: download → MP3 → whisper. Fejler dette trin, kan
-  // intet sprog blive færdigt — alle 8 rækker markeres 'failed'.
+  // Transskription: download → MP3 → whisper på filmens talesprog.
+  // Fejler dette trin, kan intet sprog blive færdigt — alle 8
+  // rækker markeres 'failed'.
   let segments: SubtitleSegment[];
   const workDir = await mkdtemp(path.join(tmpdir(), "doccys-subtitles-"));
   try {
@@ -175,7 +210,7 @@ export async function POST(request: NextRequest, context: RouteContext) {
     const mp3Path = path.join(workDir, "film.mp3");
     await downloadVideoToDisk(videoUrl, videoPath);
     await extractMp3(videoPath, mp3Path);
-    segments = await transcribeDanish(await readMp3(mp3Path));
+    segments = await transcribeAudio(await readMp3(mp3Path), sourceLocale);
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     await Promise.all(
@@ -201,26 +236,34 @@ export async function POST(request: NextRequest, context: RouteContext) {
     return NextResponse.json({ error: message }, { status: 500 });
   }
 
-  // Dansk VTT: timings + originaltekst, klar fra whisper alene.
-  const daVtt = buildVtt(segments);
-  let daUrl: string;
+  // Kilde-VTT'en: timings + originaltekst på filmens talesprog,
+  // klar fra whisper alene — ingen oversættelse indvolveret.
+  const sourceVtt = buildVtt(segments);
+  let sourceUrl: string;
   try {
-    daUrl = await uploadVtt(supabase, `${userId}/${slug}/da.vtt`, daVtt);
+    sourceUrl = await uploadVtt(
+      supabase,
+      `${userId}/${slug}/${sourceLocale}.vtt`,
+      sourceVtt,
+    );
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    await updateSubtitleRow(supabase, slug, "da", { status: "failed", error: message });
+    await updateSubtitleRow(supabase, slug, sourceLocale, {
+      status: "failed",
+      error: message,
+    });
     return NextResponse.json({ error: message }, { status: 500 });
   }
-  await updateSubtitleRow(supabase, slug, "da", {
+  await updateSubtitleRow(supabase, slug, sourceLocale, {
     status: "ready",
-    vtt_url: daUrl,
+    vtt_url: sourceUrl,
     error: null,
   });
 
   // Oversættelser: ét sprog pr. try/catch — ét fejlet sprog må
-  // aldrig tage de færdige med sig. Timings genbruges 1:1 fra dansk.
+  // aldrig tage de færdige med sig. Timings genbruges 1:1 fra kilden.
   const texts = segments.map((segment) => segment.text);
-  for (const locale of TARGET_LOCALES) {
+  for (const locale of targetLocales) {
     try {
       const translations = await translateSegmentTexts(
         texts,
