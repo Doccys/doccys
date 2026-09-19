@@ -276,7 +276,17 @@
     "subtitlesProcessing": "Generando…",
     "subtitlesFailed": "Falló",
     "subtitlesMissing": "No generado",
-    "subtitlesError": "No se pudieron generar todos los subtítulos — inténtalo de nuevo. Los idiomas fallidos pueden reintentarse con el mismo botón."
+    "subtitlesError": "No se pudieron generar todos los subtítulos — inténtalo de nuevo. Los idiomas fallidos pueden reintentarse con el mismo botón.",
+    "trailerHeading": "Tráiler",
+    "trailerIntro": "Recorta 90 segundos de la película como muestra gratuita — los invitados la ven tras el muro de pago, y los enlaces compartidos muestran la película como tarjeta de vídeo.",
+    "trailerStartLabel": "Empezar en el segundo",
+    "trailerGenerate": "Generar tráiler",
+    "trailerRegenerate": "Generar de nuevo",
+    "trailerWorking": "Generando el tráiler — puede tardar unos minutos.",
+    "trailerReady": "Listo",
+    "trailerFailed": "Falló",
+    "trailerMissing": "No generado",
+    "trailerError": "El tráiler no se pudo generar — inténtalo de nuevo."
   },
   "profile": {
     "loginTitle": "Inicia sesión para ver tu perfil",

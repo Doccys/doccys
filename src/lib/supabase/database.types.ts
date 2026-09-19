@@ -538,6 +538,45 @@ export type FilmSubtitleUpdate = {
   updated_at?: string;
 };
 
+/* ---------- film_trailers (trailer pr. film — slug er PK) ---------- */
+
+export type FilmTrailerRow = {
+  documentary_slug: string;
+  /** hvor i filmen klippet starter */
+  start_sec: number;
+  /** klippets længde — fast 90 fra API'et, håndhæves af check */
+  length_sec: number;
+  /** public Storage-URL på trailer-MP4'en; null mens ikke 'ready' */
+  trailer_url: string | null;
+  /** 'processing' | 'ready' | 'failed' — håndhæves af check-constraint */
+  status: string;
+  /** fejlbesked når status = 'failed' */
+  error: string | null;
+  created_at: string;
+  /** røres automatisk af trg_film_trailer_touch ved UPDATE */
+  updated_at: string;
+};
+
+export type FilmTrailerInsert = {
+  documentary_slug: string;
+  start_sec?: number;
+  length_sec?: number;
+  trailer_url?: string | null;
+  status?: string;
+  error?: string | null;
+  created_at?: string;
+  updated_at?: string;
+};
+
+export type FilmTrailerUpdate = {
+  start_sec?: number;
+  length_sec?: number;
+  trailer_url?: string | null;
+  status?: string;
+  error?: string | null;
+  updated_at?: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -663,6 +702,20 @@ export type Database = {
             foreignKeyName: "film_subtitles_documentary_slug_fkey";
             columns: ["documentary_slug"];
             isOneToOne: false;
+            referencedRelation: "documentaries";
+            referencedColumns: ["slug"];
+          },
+        ];
+      };
+      film_trailers: {
+        Row: FilmTrailerRow;
+        Insert: FilmTrailerInsert;
+        Update: FilmTrailerUpdate;
+        Relationships: [
+          {
+            foreignKeyName: "film_trailers_documentary_slug_fkey";
+            columns: ["documentary_slug"];
+            isOneToOne: true;
             referencedRelation: "documentaries";
             referencedColumns: ["slug"];
           },

@@ -20,7 +20,7 @@ import {
 /**
  * Sletter en KLADDE — direkte via browser-klienten ala SaveFilmButton:
  * RLS tillader kun sletning af egne kladder (publicerede film er
- * redaktionens). Storage-objekterne (video + forsidebillede +
+ * redaktionens). Storage-objekterne (video + trailer + forsidebillede +
  * undertekst-VTT'er) fjernes bedst muligt først; dør klienten
  * imellem kaldene, bliver objekterne forældreløse — usynlige og
  * harmløse.
@@ -30,12 +30,15 @@ export default function StudioDeleteFilmButton({
   videoUrl,
   posterUrl,
   subtitleVttUrls,
+  trailerUrl,
 }: {
   documentaryId: string;
   videoUrl: string;
   posterUrl: string | null;
   /** Public-URL'er på filmens VTT-filer — ryddes sammen med resten. */
   subtitleVttUrls: string[];
+  /** Public-URL på trailer-MP4'en (film-videos) — samme ryddelogik. */
+  trailerUrl?: string | null;
 }) {
   const t = useTranslations("creatorStudio");
   const router = useRouter();
@@ -50,6 +53,13 @@ export default function StudioDeleteFilmButton({
       const path = publicUrlToStoragePath(videoUrl);
       if (path) {
         await supabase.storage.from(FILM_VIDEOS_BUCKET).remove([path]);
+      }
+      // Traileren bor i samme bucket som videoen — én sti-udledning til.
+      const trailerPath = trailerUrl
+        ? publicUrlToStoragePath(trailerUrl)
+        : null;
+      if (trailerPath) {
+        await supabase.storage.from(FILM_VIDEOS_BUCKET).remove([trailerPath]);
       }
       const posterPath = posterUrl
         ? posterPublicUrlToStoragePath(posterUrl)

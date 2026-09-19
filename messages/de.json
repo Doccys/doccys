@@ -276,7 +276,17 @@
     "subtitlesProcessing": "Wird erstellt…",
     "subtitlesFailed": "Fehlgeschlagen",
     "subtitlesMissing": "Nicht erstellt",
-    "subtitlesError": "Die Untertitel konnten nicht vollständig erstellt werden — versuche es erneut. Fehlgeschlagene Sprachen lassen sich mit derselben Taste erneut versuchen."
+    "subtitlesError": "Die Untertitel konnten nicht vollständig erstellt werden — versuche es erneut. Fehlgeschlagene Sprachen lassen sich mit derselben Taste erneut versuchen.",
+    "trailerHeading": "Trailer",
+    "trailerIntro": "Schneide 90 Sekunden des Films als kostenlose Kostprobe — Gäste sehen sie hinter der Paywall, und geteilte Links zeigen den Film als Videokarte.",
+    "trailerStartLabel": "Start bei Sekunde",
+    "trailerGenerate": "Trailer erstellen",
+    "trailerRegenerate": "Erneut erstellen",
+    "trailerWorking": "Trailer wird erstellt — das kann ein paar Minuten dauern.",
+    "trailerReady": "Fertig",
+    "trailerFailed": "Fehlgeschlagen",
+    "trailerMissing": "Nicht erstellt",
+    "trailerError": "Der Trailer konnte nicht erstellt werden — versuche es erneut."
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",

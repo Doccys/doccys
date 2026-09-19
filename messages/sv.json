@@ -276,7 +276,17 @@
     "subtitlesProcessing": "Genereras…",
     "subtitlesFailed": "Misslyckades",
     "subtitlesMissing": "Inte skapat",
-    "subtitlesError": "Undertexterna kunde inte genereras helt — försök igen. Språk som misslyckades kan prövas igen med samma knapp."
+    "subtitlesError": "Undertexterna kunde inte genereras helt — försök igen. Språk som misslyckades kan prövas igen med samma knapp.",
+    "trailerHeading": "Trailer",
+    "trailerIntro": "Klipp 90 sekunder av filmen som gratis smygtitt — gäster ser den bakom betalväggen, och delade länkar visar filmen som videokort.",
+    "trailerStartLabel": "Starta vid sekund",
+    "trailerGenerate": "Generera trailer",
+    "trailerRegenerate": "Generera igen",
+    "trailerWorking": "Genererar trailern — det kan ta några minuter.",
+    "trailerReady": "Klar",
+    "trailerFailed": "Misslyckades",
+    "trailerMissing": "Inte genererad",
+    "trailerError": "Trailern kunde inte genereras — försök igen."
   },
   "profile": {
     "loginTitle": "Logga in för att se din profil",

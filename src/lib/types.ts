@@ -63,6 +63,15 @@ export interface Documentary {
   createdAt: string;
 }
 
+/** Trailer-status pr. film — klient-sikker (studiet), jf. subtitles-advarslene */
+export interface FilmTrailerStatus {
+  startSec: number;
+  lengthSec: number;
+  trailerUrl: string | null;
+  status: "processing" | "ready" | "failed";
+  error: string | null;
+}
+
 export interface Comment {
   id: string;
   documentarySlug: string;

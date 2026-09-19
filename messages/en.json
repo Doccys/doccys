@@ -276,7 +276,17 @@
     "subtitlesProcessing": "Generating…",
     "subtitlesFailed": "Failed",
     "subtitlesMissing": "Not generated",
-    "subtitlesError": "The subtitles could not be fully generated — try again. Failed languages can be retried with the same button."
+    "subtitlesError": "The subtitles could not be fully generated — try again. Failed languages can be retried with the same button.",
+    "trailerHeading": "Trailer",
+    "trailerIntro": "Cut 90 seconds of the film as a free taste — guests see it behind the paywall, and shared links show the film as a video card.",
+    "trailerStartLabel": "Start at second",
+    "trailerGenerate": "Generate trailer",
+    "trailerRegenerate": "Generate again",
+    "trailerWorking": "Generating the trailer — it can take a few minutes.",
+    "trailerReady": "Ready",
+    "trailerFailed": "Failed",
+    "trailerMissing": "Not generated",
+    "trailerError": "The trailer could not be generated — try again."
   },
   "profile": {
     "loginTitle": "Log in to see your profile",

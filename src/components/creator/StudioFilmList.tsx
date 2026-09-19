@@ -1,7 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import StudioDeleteFilmButton from "@/components/creator/StudioDeleteFilmButton";
 import StudioSubtitleGenerator from "@/components/creator/StudioSubtitleGenerator";
+import StudioTrailerGenerator from "@/components/creator/StudioTrailerGenerator";
 import { getFilmSubtitleStatuses } from "@/lib/data/subtitles";
+import { getFilmTrailerStatus } from "@/lib/data/trailers";
 import { LOCALE_LANGUAGE_NAMES } from "@/lib/i18n/languageNames";
 import type { Documentary } from "@/lib/types";
 
@@ -22,19 +24,20 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
       );
   }
 
-  // Undertekst-status hentes pr. film ÉN gang her — badges, knap og
-  // sletning deler samme data. Kun ejeren ser studiet, så alle
+  // Undertekst- OG trailer-status hentes pr. film her — én gang til
+  // knapper, badges og sletning. Kun ejeren ser studiet, så alle
   // rækker (også failed med fejlbesked) er relevante her.
-  const filmsWithSubtitles = await Promise.all(
+  const filmsWithExtras = await Promise.all(
     films.map(async (film) => ({
       film,
       subtitleStatuses: await getFilmSubtitleStatuses(film.slug),
+      trailerStatus: await getFilmTrailerStatus(film.slug),
     })),
   );
 
   return (
     <ul className="space-y-4">
-      {filmsWithSubtitles.map(({ film, subtitleStatuses }) => {
+      {filmsWithExtras.map(({ film, subtitleStatuses, trailerStatus }) => {
         const draft = film.status === "draft";
         const statusByLocale = new Map(
           subtitleStatuses.map((entry) => [entry.locale, entry]),
@@ -126,6 +129,11 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
               />
             </div>
 
+            {/* Trailer: 90 sekunder af filmen som gratis smagsprøve —
+                det er det, gæster ser bag paywallen, og det, der
+                vises som video-kort, når filmen deles. */}
+            <StudioTrailerGenerator slug={film.slug} status={trailerStatus} />
+
             {draft && (
               <div className="mt-4 flex items-center gap-4">
                 <StudioDeleteFilmButton
@@ -133,6 +141,7 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
                   videoUrl={film.videoUrl}
                   posterUrl={film.posterUrl}
                   subtitleVttUrls={subtitleVttUrls}
+                  trailerUrl={trailerStatus?.trailerUrl}
                 />
                 <span className="text-xs text-ash/70">{t("draftNote")}</span>
               </div>

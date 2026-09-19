@@ -276,7 +276,17 @@
     "subtitlesProcessing": "Luodaan…",
     "subtitlesFailed": "Epäonnistui",
     "subtitlesMissing": "Ei luotu",
-    "subtitlesError": "Tekstityksiä ei saatu luotua kokonaan — yritä uudelleen. Epäonnistuneita kieliä voi yrittää uudelleen samalla painikkeella."
+    "subtitlesError": "Tekstityksiä ei saatu luotua kokonaan — yritä uudelleen. Epäonnistuneita kieliä voi yrittää uudelleen samalla painikkeella.",
+    "trailerHeading": "Traileri",
+    "trailerIntro": "Leikkaa elokuvasta 90 sekuntia ilmaisiksi maistiaisiksi — vieraat näkevät sen paywallin takana, ja jaetut linkit näyttävät elokuvan videokorttina.",
+    "trailerStartLabel": "Alku sekunnista",
+    "trailerGenerate": "Luo traileri",
+    "trailerRegenerate": "Luo uudelleen",
+    "trailerWorking": "Traileria luodaan — se voi kestää muutaman minuutin.",
+    "trailerReady": "Valmis",
+    "trailerFailed": "Epäonnistui",
+    "trailerMissing": "Ei luotu",
+    "trailerError": "Traileria ei voitu luoda — yritä uudelleen."
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",

@@ -276,7 +276,17 @@
     "subtitlesProcessing": "Genereres…",
     "subtitlesFailed": "Fejlede",
     "subtitlesMissing": "Ikke genereret",
-    "subtitlesError": "Underteksterne kunne ikke genereres helt — prøv igen. Sprog der fejlede, kan prøves igen med samme knap."
+    "subtitlesError": "Underteksterne kunne ikke genereres helt — prøv igen. Sprog der fejlede, kan prøves igen med samme knap.",
+    "trailerHeading": "Trailer",
+    "trailerIntro": "Klip 90 sekunder af filmen som gratis smagsprøve — gæster ser den bag paywallen, og delte links viser filmen som video-kort.",
+    "trailerStartLabel": "Start ved sekund",
+    "trailerGenerate": "Generér trailer",
+    "trailerRegenerate": "Generér igen",
+    "trailerWorking": "Genererer traileren — det kan tage et par minutter.",
+    "trailerReady": "Klar",
+    "trailerFailed": "Fejlede",
+    "trailerMissing": "Ikke genereret",
+    "trailerError": "Traileren kunne ikke genereres — prøv igen."
   },
   "profile": {
     "loginTitle": "Log ind for at se din profil",

@@ -276,7 +276,17 @@
     "subtitlesProcessing": "Génération…",
     "subtitlesFailed": "Échoué",
     "subtitlesMissing": "Non généré",
-    "subtitlesError": "Les sous-titres n'ont pas pu être entièrement générés — réessayez. Les langues en échec peuvent être relancées avec le même bouton."
+    "subtitlesError": "Les sous-titres n'ont pas pu être entièrement générés — réessayez. Les langues en échec peuvent être relancées avec le même bouton.",
+    "trailerHeading": "Bande-annonce",
+    "trailerIntro": "Coupez 90 secondes du film comme dégustation gratuite — les visiteurs la voient derrière le paywall, et les liens partagés affichent le film comme carte vidéo.",
+    "trailerStartLabel": "Début à la seconde",
+    "trailerGenerate": "Générer la bande-annonce",
+    "trailerRegenerate": "Générer à nouveau",
+    "trailerWorking": "Génération de la bande-annonce — cela peut prendre quelques minutes.",
+    "trailerReady": "Prête",
+    "trailerFailed": "Échec",
+    "trailerMissing": "Non générée",
+    "trailerError": "La bande-annonce n'a pas pu être générée — réessayez."
   },
   "profile": {
     "loginTitle": "Connectez-vous pour voir votre profil",

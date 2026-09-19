@@ -276,7 +276,17 @@
     "subtitlesProcessing": "Genereres…",
     "subtitlesFailed": "Feilet",
     "subtitlesMissing": "Ikke generert",
-    "subtitlesError": "Undertekstene kunne ikke genereres helt — prøv igjen. Språk som feilet, kan prøves igjen med samme knapp."
+    "subtitlesError": "Undertekstene kunne ikke genereres helt — prøv igjen. Språk som feilet, kan prøves igjen med samme knapp.",
+    "trailerHeading": "Trailer",
+    "trailerIntro": "Klipp 90 sekunder av filmen som gratis smaksporsjon — gjester ser den bak betalingsmuren, og delte lenker viser filmen som videokort.",
+    "trailerStartLabel": "Start på sekund",
+    "trailerGenerate": "Generer trailer",
+    "trailerRegenerate": "Generer på nytt",
+    "trailerWorking": "Genererer traileren — det kan ta noen minutter.",
+    "trailerReady": "Klar",
+    "trailerFailed": "Feilet",
+    "trailerMissing": "Ikke generert",
+    "trailerError": "Traileren kunne ikke genereres — prøv igjen."
   },
   "profile": {
     "loginTitle": "Logg inn for å se profilen din",
