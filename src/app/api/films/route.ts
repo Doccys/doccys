@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseEnv } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
 import { isPosterGradient } from "@/lib/data/gradients";
+import { isPlatformLocale } from "@/lib/i18n/languageNames";
 import type { DocumentaryRow } from "@/lib/supabase/database.types";
 
 export const dynamic = "force-dynamic";
@@ -56,6 +57,13 @@ export async function POST(request: NextRequest) {
   const durationSec = body.durationSec;
   const videoUrl = body.videoUrl;
   const posterUrl = body.posterUrl;
+  const spokenLanguage = body.spokenLanguage;
+
+  // Talesprog: valgfrit felt, default 'da' (databasen). Kun de 8
+  // platformssprog accepteres — pipelinen skal kunne levere alle
+  // undertekst-sprog ud fra kilden, og check-constrainten i
+  // databasen har præcis samme liste.
+  const spoken = isPlatformLocale(spokenLanguage) ? spokenLanguage : "da";
 
   if (!isPlainText(title, 2, MAX_TITLE)) {
     return NextResponse.json(
@@ -196,6 +204,7 @@ export async function POST(request: NextRequest) {
       duration_sec: durationSec,
       genres: genres.map((g) => g.trim()),
       creator_handle: owned.handle,
+      spoken_language: spoken,
       gradient,
       video_url: videoUrl,
       poster_url:

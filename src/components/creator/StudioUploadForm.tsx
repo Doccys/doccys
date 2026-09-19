@@ -14,6 +14,10 @@ import {
 } from "@/lib/storage/filmPosters";
 import { POSTER_GRADIENTS } from "@/lib/data/gradients";
 import { FILM_GENRES } from "@/lib/data/genres";
+import {
+  LOCALE_LANGUAGE_NAMES,
+  PLATFORM_LOCALES,
+} from "@/lib/i18n/languageNames";
 
 /**
  * Upload-formular med statens maskine:
@@ -84,6 +88,7 @@ export default function StudioUploadForm({
   const [title, setTitle] = useState("");
   const [year, setYear] = useState(String(new Date().getFullYear()));
   const [synopsis, setSynopsis] = useState("");
+  const [spokenLanguage, setSpokenLanguage] = useState<string>("da");
   const [genres, setGenres] = useState<string[]>([]);
   const [gradient, setGradient] = useState<string>(POSTER_GRADIENTS[0]);
   const [file, setFile] = useState<File | null>(null);
@@ -305,6 +310,7 @@ export default function StudioUploadForm({
           gradient,
           durationSec,
           videoUrl: publicUrl,
+          spokenLanguage,
           ...(posterUrl ? { posterUrl } : {}),
         }),
       });
@@ -319,6 +325,7 @@ export default function StudioUploadForm({
       setTitle("");
       setYear(String(new Date().getFullYear()));
       setSynopsis("");
+      setSpokenLanguage("da");
       setGenres([]);
       setGradient(POSTER_GRADIENTS[0]);
       setFile(null);
@@ -374,6 +381,29 @@ export default function StudioUploadForm({
           />
         </label>
       </div>
+
+      {/* Talesprog: hvad der TALES i filmen — undertekst-pipelinen
+          skriver lyden af på dette sprog og oversætter derfra til
+          alle platformssprog. Sprogenes egne navne (ikke oversat),
+          som CC-menuen i afspilleren. */}
+      <label className="mt-5 block">
+        <span className="text-sm text-ash">{t("spokenLanguageLabel")}</span>
+        <select
+          value={spokenLanguage}
+          onChange={(e) => setSpokenLanguage(e.target.value)}
+          disabled={busy}
+          className={`mt-1.5 ${inputClassName}`}
+        >
+          {PLATFORM_LOCALES.map((locale) => (
+            <option key={locale} value={locale}>
+              {LOCALE_LANGUAGE_NAMES[locale]}
+            </option>
+          ))}
+        </select>
+        <span className="mt-1.5 block text-xs text-ash/70">
+          {t("spokenLanguageHint")}
+        </span>
+      </label>
 
       <div className="mt-5">
         <span className="text-sm text-ash">{t("genresLabel")}</span>
