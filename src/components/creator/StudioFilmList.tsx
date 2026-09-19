@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import StudioDeleteFilmButton from "@/components/creator/StudioDeleteFilmButton";
 import StudioSubtitleGenerator from "@/components/creator/StudioSubtitleGenerator";
 import StudioTrailerGenerator from "@/components/creator/StudioTrailerGenerator";
+import StudioShareRow from "@/components/creator/StudioShareRow";
 import { getFilmSubtitleStatuses } from "@/lib/data/subtitles";
 import { getFilmTrailerStatus } from "@/lib/data/trailers";
 import { LOCALE_LANGUAGE_NAMES } from "@/lib/i18n/languageNames";
@@ -133,6 +134,10 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
                 det er det, gæster ser bag paywallen, og det, der
                 vises som video-kort, når filmen deles. */}
             <StudioTrailerGenerator slug={film.slug} status={trailerStatus} />
+
+            {/* Del & indlejr — kun for publicerede film: kladder har
+                intet offentligt watch-link at dele. */}
+            {!draft && <StudioShareRow slug={film.slug} title={film.title} />}
 
             {draft && (
               <div className="mt-4 flex items-center gap-4">

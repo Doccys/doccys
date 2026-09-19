@@ -286,7 +286,10 @@
     "trailerReady": "Klar",
     "trailerFailed": "Fejlede",
     "trailerMissing": "Ikke genereret",
-    "trailerError": "Traileren kunne ikke genereres — prøv igen."
+    "trailerError": "Traileren kunne ikke genereres — prøv igen.",
+    "shareHeading": "Del & indlejr",
+    "copyWatchLink": "Kopiér film-link",
+    "copyEmbedCode": "Kopiér indlejringskode"
   },
   "profile": {
     "loginTitle": "Log ind for at se din profil",
@@ -335,7 +338,12 @@
     "loginCta": "Log ind",
     "buyTitle": "Ikke minutter nok på saldoen",
     "buyBody": "Filmen kræver {minutes} minutter, og din saldo er {balance}. Køb en pakke for at starte afspilningen.",
-    "buyCta": "Køb minutter"
+    "buyCta": "Køb minutter",
+    "trailerLabel": "Trailer"
+  },
+  "embed": {
+    "cta": "Se hele filmen på Doccys",
+    "trailerLabel": "Trailer"
   },
   "minutes": {
     "heading": "Minutter",

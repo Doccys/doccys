@@ -286,7 +286,10 @@
     "trailerReady": "Prête",
     "trailerFailed": "Échec",
     "trailerMissing": "Non générée",
-    "trailerError": "La bande-annonce n'a pas pu être générée — réessayez."
+    "trailerError": "La bande-annonce n'a pas pu être générée — réessayez.",
+    "shareHeading": "Partager et intégrer",
+    "copyWatchLink": "Copier le lien du film",
+    "copyEmbedCode": "Copier le code d'intégration"
   },
   "profile": {
     "loginTitle": "Connectez-vous pour voir votre profil",
@@ -335,7 +338,12 @@
     "loginCta": "Se connecter",
     "buyTitle": "Pas assez de minutes sur votre solde",
     "buyBody": "Le film nécessite {minutes} minutes et votre solde est de {balance}. Achetez un pack pour lancer la lecture.",
-    "buyCta": "Acheter des minutes"
+    "buyCta": "Acheter des minutes",
+    "trailerLabel": "Bande-annonce"
+  },
+  "embed": {
+    "cta": "Voir le film entier sur Doccys",
+    "trailerLabel": "Bande-annonce"
   },
   "minutes": {
     "heading": "Minutes",

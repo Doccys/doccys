@@ -286,7 +286,10 @@
     "trailerReady": "Listo",
     "trailerFailed": "Falló",
     "trailerMissing": "No generado",
-    "trailerError": "El tráiler no se pudo generar — inténtalo de nuevo."
+    "trailerError": "El tráiler no se pudo generar — inténtalo de nuevo.",
+    "shareHeading": "Compartir e insertar",
+    "copyWatchLink": "Copiar enlace de la película",
+    "copyEmbedCode": "Copiar código para insertar"
   },
   "profile": {
     "loginTitle": "Inicia sesión para ver tu perfil",
@@ -335,7 +338,12 @@
     "loginCta": "Iniciar sesión",
     "buyTitle": "No tienes minutos suficientes",
     "buyBody": "La película requiere {minutes} minutos y tu saldo es de {balance}. Compra un paquete para empezar a reproducirla.",
-    "buyCta": "Comprar minutos"
+    "buyCta": "Comprar minutos",
+    "trailerLabel": "Tráiler"
+  },
+  "embed": {
+    "cta": "Ver la película completa en Doccys",
+    "trailerLabel": "Tráiler"
   },
   "minutes": {
     "heading": "Minutos",

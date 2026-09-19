@@ -16,6 +16,7 @@ import {
 } from "@/lib/data/catalog";
 import { getBalanceSeconds, getOrCreateReferralCode } from "@/lib/data/credits";
 import { getFilmSubtitles } from "@/lib/data/subtitles";
+import { getFilmTrailerUrl } from "@/lib/data/trailers";
 import { createClient } from "@/lib/supabase/server";
 import { formatDuration, toIsoDuration } from "@/lib/utils/format";
 import { localizedGenres } from "@/lib/i18n/content";
@@ -39,13 +40,31 @@ export async function generateMetadata({
     ? documentary.posterUrl
     : `${siteUrl()}/og/film/${documentary.slug}`;
 
+  // Klar trailer (film_trailers 'ready') gør Facebook i stand til at
+  // vise filmen som VIDEO-kort i feedtet — 90 sekunder direkte i
+  // previewet. Uden trailer er kortet "bare" et billede, og det er
+  // stadig fint. Twitter beholdes summary_large_image: player-kort
+  // kræver godkendelse af domænet hos X.
+  const trailerUrl = await getFilmTrailerUrl(slug);
+
+  const watchUrl = `${siteUrl()}/${locale}/watch/${documentary.slug}`;
+
   return {
     title: documentary.title,
     description: documentary.synopsis,
+    // oEmbed: gør filmen indlejrbar i CMS'er (alternates → <link
+    // rel="alternate" type="application/json+oembed">).
+    alternates: {
+      types: {
+        "application/json+oembed": `${siteUrl()}/api/oembed?url=${encodeURIComponent(watchUrl)}`,
+      },
+    },
     openGraph: {
+      type: "video.other",
       title: documentary.title,
       description: documentary.synopsis,
       images: [{ url: ogImage, width: 1200, height: 630, alt: documentary.title }],
+      videos: trailerUrl ? [{ url: trailerUrl }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -78,15 +97,20 @@ export default async function WatchPage({ params }: WatchPageProps) {
 
   let player: ReactNode;
   if (!user) {
-    player = <PaywallCard mode="login" />;
+    // Smagsprøven først: findes en klar trailer, afspilles den i
+    // paywall-kortet — delte links skal give modtageren noget at se.
+    const trailerUrl = await getFilmTrailerUrl(documentary.slug);
+    player = <PaywallCard mode="login" trailerUrl={trailerUrl} />;
   } else {
     const balanceSeconds = await getBalanceSeconds();
     if (balanceSeconds < documentary.durationSec) {
+      const trailerUrl = await getFilmTrailerUrl(documentary.slug);
       player = (
         <PaywallCard
           mode="buy"
           requiredMinutes={Math.ceil(documentary.durationSec / 60)}
           balanceMinutes={Math.max(Math.floor(balanceSeconds / 60), 0)}
+          trailerUrl={trailerUrl}
         />
       );
     } else {

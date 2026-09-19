@@ -286,7 +286,10 @@
     "trailerReady": "Fertig",
     "trailerFailed": "Fehlgeschlagen",
     "trailerMissing": "Nicht erstellt",
-    "trailerError": "Der Trailer konnte nicht erstellt werden — versuche es erneut."
+    "trailerError": "Der Trailer konnte nicht erstellt werden — versuche es erneut.",
+    "shareHeading": "Teilen & einbetten",
+    "copyWatchLink": "Film-Link kopieren",
+    "copyEmbedCode": "Embed-Code kopieren"
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",
@@ -335,7 +338,12 @@
     "loginCta": "Anmelden",
     "buyTitle": "Nicht genug Minuten auf dem Guthaben",
     "buyBody": "Der Film erfordert {minutes} Minuten, dein Guthaben beträgt {balance}. Kaufe ein Paket, um die Wiedergabe zu starten.",
-    "buyCta": "Minuten kaufen"
+    "buyCta": "Minuten kaufen",
+    "trailerLabel": "Trailer"
+  },
+  "embed": {
+    "cta": "Den ganzen Film auf Doccys ansehen",
+    "trailerLabel": "Trailer"
   },
   "minutes": {
     "heading": "Minuten",

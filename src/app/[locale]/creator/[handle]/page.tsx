@@ -11,12 +11,13 @@ import PayoutPanel, {
 import CurrencyHint from "@/components/creator/CurrencyHint";
 import FilmographyGrid from "@/components/creator/FilmographyGrid";
 import BulletinBoard from "@/components/creator/BulletinBoard";
+import ShareButtons from "@/components/watch/ShareButtons";
 import {
   getCreatorByHandle,
   getCreatorStats,
   getFilmsByCreator,
 } from "@/lib/data/catalog";
-import { getCreatorEarnings } from "@/lib/data/credits";
+import { getCreatorEarnings, getOrCreateReferralCode } from "@/lib/data/credits";
 import { doccysStore } from "@/lib/store/supabaseStore";
 import { createClient } from "@/lib/supabase/server";
 import type { CreatorFilmEarnings } from "@/lib/types";
@@ -127,6 +128,16 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
         subtitle={`@${creator.handle} · ${t("founded", { year: creator.foundedYear })} · ${country}`}
       />
       <p className="mt-6 max-w-3xl leading-relaxed text-ash">{creator.bio}</p>
+
+      {/* Del-rækken: profilen er skaberens visitkort — logget-ind
+          besøgende deler den med deres EGEN affiliate-kode på, som
+          på watch-siden (?ref= → middleware → doccys_ref-cookie). */}
+      <div className="mt-6">
+        <ShareButtons
+          title={creator.name}
+          refCode={user ? await getOrCreateReferralCode(user.id) : null}
+        />
+      </div>
 
       {isOwner && stats && creatorEarnings && (
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

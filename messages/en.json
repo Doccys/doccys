@@ -286,7 +286,10 @@
     "trailerReady": "Ready",
     "trailerFailed": "Failed",
     "trailerMissing": "Not generated",
-    "trailerError": "The trailer could not be generated — try again."
+    "trailerError": "The trailer could not be generated — try again.",
+    "shareHeading": "Share & embed",
+    "copyWatchLink": "Copy film link",
+    "copyEmbedCode": "Copy embed code"
   },
   "profile": {
     "loginTitle": "Log in to see your profile",
@@ -335,7 +338,12 @@
     "loginCta": "Log in",
     "buyTitle": "Not enough minutes on your balance",
     "buyBody": "The film requires {minutes} minutes, and your balance is {balance}. Buy a pack to start playing.",
-    "buyCta": "Buy minutes"
+    "buyCta": "Buy minutes",
+    "trailerLabel": "Trailer"
+  },
+  "embed": {
+    "cta": "Watch the full film on Doccys",
+    "trailerLabel": "Trailer"
   },
   "minutes": {
     "heading": "Minutes",

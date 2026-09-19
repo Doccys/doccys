@@ -286,7 +286,10 @@
     "trailerReady": "Valmis",
     "trailerFailed": "Epäonnistui",
     "trailerMissing": "Ei luotu",
-    "trailerError": "Traileria ei voitu luoda — yritä uudelleen."
+    "trailerError": "Traileria ei voitu luoda — yritä uudelleen.",
+    "shareHeading": "Jaa ja upota",
+    "copyWatchLink": "Kopioi elokuvan linkki",
+    "copyEmbedCode": "Kopioi upotuskoodi"
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",
@@ -335,7 +338,12 @@
     "loginCta": "Kirjaudu sisään",
     "buyTitle": "Saldo ei riitä",
     "buyBody": "Elokuva vaatii {minutes} minuuttia ja saldosi on {balance} minuuttia. Osta paketti aloittaaksesi toiston.",
-    "buyCta": "Osta minuutteja"
+    "buyCta": "Osta minuutteja",
+    "trailerLabel": "Traileri"
+  },
+  "embed": {
+    "cta": "Katso koko elokuva Doccys-palvelussa",
+    "trailerLabel": "Traileri"
   },
   "minutes": {
     "heading": "Minuutit",
