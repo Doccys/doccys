@@ -1,10 +1,14 @@
 /**
  * Oversættelsestrinnet — gpt-4o-mini oversætter KUN tekst-strenge.
  *
- * Timings kommer aldrig igennem modellen: den modtager et JSON-
- * array af strenge og returnerer {"translations": [...]} med
- * PRÆCIS samme antal i samme rækkefølge. VTT'en bygges bagefter med
- * de danske tidsstempler, så et sprog kan aldrig skride.
+ * Timings kommer aldrig igennem modellen: den modtager et NUMMERET
+ * JSON-array og returnerer {"translations": [{"i": …, "text": …}]}
+ * med ét objekt pr. input. Nummereringen er fejl-reserven: en lille
+ * model taber af og til ét segment (to korte linjer smeltet sammen
+ * til én oversættelse, eller én der glipper — set i praksis: 59
+ * svar ved 60 inputs). Hvert chunk får derfor ét genforsøg, hvis
+ * svaret ikke er et komplet, gyldigt 1:1-svar. VTT'en bygges
+ * bagefter med kildens tidsstempler, så et sprog kan aldrig skride.
  */
 import { getOpenAiApiKey, OPENAI_API_BASE } from "@/lib/openai/client";
 
@@ -28,12 +32,16 @@ export async function translateSegmentTexts(
   targetLanguage: string,
 ): Promise<string[]> {
   const translations: string[] = [];
-
   for (let offset = 0; offset < texts.length; offset += CHUNK_SIZE) {
     const chunk = texts.slice(offset, offset + CHUNK_SIZE);
-    translations.push(...(await translateChunk(chunk, targetLanguage)));
+    // Ét genforsøg: antals-fejl er typisk ét segment der er smuttet
+    // — andet forsøg rammer næsten altid.
+    try {
+      translations.push(...(await translateChunk(chunk, targetLanguage)));
+    } catch {
+      translations.push(...(await translateChunk(chunk, targetLanguage)));
+    }
   }
-
   return translations;
 }
 
@@ -59,14 +67,16 @@ async function translateChunk(
             `Oversæt hver tekststreng til naturlig, talt ${targetLanguage}.`,
             "Bevar betydningen og den omtrentlige længde — undertekster skal kunne læses i sekunder.",
             "Svar KUN med JSON på formen",
-            '{"translations": ["...", "..."]}',
-            "med PRÆCIS lige så mange oversættelser som input, i samme rækkefølge.",
+            '{"translations": [{"i": 0, "text": "..."}]}',
+            "med PRÆCIS ét objekt pr. input: samme numre som inputtet, aldrig færre, aldrig flere, aldrig sammenflettede.",
             "Gentag en tom streng som en tom streng.",
           ].join(" "),
         },
         {
           role: "user",
-          content: JSON.stringify({ texts }),
+          content: JSON.stringify({
+            texts: texts.map((text, i) => ({ i, text })),
+          }),
         },
       ],
     }),
@@ -94,15 +104,35 @@ async function translateChunk(
   }
 
   const translations = (parsed as { translations?: unknown }).translations;
-  if (
-    !Array.isArray(translations) ||
-    translations.length !== texts.length ||
-    translations.some((t) => typeof t !== "string")
-  ) {
+  if (!Array.isArray(translations)) {
+    throw new Error("OpenAI-oversættelsen returnerede ikke en liste.");
+  }
+
+  // Én gyldig oversættelse pr. input-nummer — dubletter, numre udenfor
+  // rækkevidde og ikke-strenge afvises, så svaret kan stole på 1:1.
+  const byIndex = new Map<number, string>();
+  for (const entry of translations) {
+    if (typeof entry !== "object" || entry === null) {
+      throw new Error("OpenAI-oversættelsen returnerede et ugyldigt element.");
+    }
+    const { i, text } = entry as { i?: unknown; text?: unknown };
+    if (
+      !Number.isInteger(i) ||
+      (i as number) < 0 ||
+      (i as number) >= texts.length ||
+      typeof text !== "string" ||
+      byIndex.has(i as number)
+    ) {
+      throw new Error("OpenAI-oversættelsen returnerede et ugyldigt element.");
+    }
+    byIndex.set(i as number, text);
+  }
+
+  if (byIndex.size !== texts.length) {
     throw new Error(
-      `OpenAI-oversættelsen returnerede ${Array.isArray(translations) ? translations.length : 0} strenge — ventede ${texts.length}.`,
+      `OpenAI-oversættelsen returnerede ${byIndex.size} strenge — ventede ${texts.length}.`,
     );
   }
 
-  return translations as string[];
+  return texts.map((_, i) => byIndex.get(i) as string);
 }
