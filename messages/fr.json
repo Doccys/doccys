@@ -150,6 +150,13 @@
     "saved": "Enregistré ✓",
     "save": "Enregistrer le film"
   },
+  "share": {
+    "label": "Partager",
+    "shareOn": "Partager sur {platform}",
+    "email": "E-mail",
+    "copyLink": "Copier le lien",
+    "copied": "Copié ✓"
+  },
   "comments": {
     "title": "Discussion",
     "subtitle": "Partagez vos impressions sur le film avec d'autres spectateurs — pas de spoilers sans avertissement, merci.",

@@ -150,6 +150,13 @@
     "saved": "Guardada ✓",
     "save": "Guardar película"
   },
+  "share": {
+    "label": "Compartir",
+    "shareOn": "Compartir en {platform}",
+    "email": "Correo",
+    "copyLink": "Copiar enlace",
+    "copied": "Copiado ✓"
+  },
   "comments": {
     "title": "Debate",
     "subtitle": "Comparte tus impresiones de la película con otros espectadores — sin spoilers sin aviso, por favor.",

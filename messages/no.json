@@ -150,6 +150,13 @@
     "saved": "Lagret ✓",
     "save": "Lagre film"
   },
+  "share": {
+    "label": "Del",
+    "shareOn": "Del på {platform}",
+    "email": "E-post",
+    "copyLink": "Kopier lenke",
+    "copied": "Kopiert ✓"
+  },
   "comments": {
     "title": "Diskusjon",
     "subtitle": "Del tankene om filmen med andre seere — ingen spoilere uten forvarsel, takk.",

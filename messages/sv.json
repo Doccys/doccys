@@ -150,6 +150,13 @@
     "saved": "Sparad ✓",
     "save": "Spara film"
   },
+  "share": {
+    "label": "Dela",
+    "shareOn": "Dela på {platform}",
+    "email": "E-post",
+    "copyLink": "Kopiera länk",
+    "copied": "Kopierad ✓"
+  },
   "comments": {
     "title": "Diskussion",
     "subtitle": "Dela dina tankar om filmen med andra tittare — inga spoilers utan förvarning, tack.",

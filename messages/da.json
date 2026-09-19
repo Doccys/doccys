@@ -150,6 +150,13 @@
     "saved": "Gemt ✓",
     "save": "Gem film"
   },
+  "share": {
+    "label": "Del",
+    "shareOn": "Del på {platform}",
+    "email": "E-mail",
+    "copyLink": "Kopiér link",
+    "copied": "Kopieret ✓"
+  },
   "comments": {
     "title": "Diskussion",
     "subtitle": "Del tanker om filmen med andre seere — ingen spoilers uden advarsel, tak.",

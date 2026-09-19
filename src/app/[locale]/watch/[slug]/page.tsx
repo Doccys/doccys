@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import VideoPlayer from "@/components/player/VideoPlayer";
 import PaywallCard from "@/components/watch/PaywallCard";
+import ShareButtons from "@/components/watch/ShareButtons";
 import CommentSection from "@/components/player/CommentSection";
 import SaveFilmButton from "@/components/documentary/SaveFilmButton";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -25,9 +26,29 @@ interface WatchPageProps {
 export async function generateMetadata({
   params,
 }: WatchPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const documentary = await getDocumentaryBySlug(slug);
-  return { title: documentary?.title ?? "Ikke fundet" };
+  const { locale, slug } = await params;
+  const documentary = await getDocumentaryBySlug(slug, locale);
+  if (!documentary) return { title: "Ikke fundet" };
+
+  // Open Graph / Twitter-kort: det ER deling. Uden disse tags viser
+  // Facebook/WhatsApp kun et nøgent link — med dem kommer titel,
+  // synopse og filmens plakat-billede (posterUrl er en absolut
+  // Storage-URL, så den virker som og:image uden metadataBase).
+  return {
+    title: documentary.title,
+    description: documentary.synopsis,
+    openGraph: {
+      title: documentary.title,
+      description: documentary.synopsis,
+      images: documentary.posterUrl ? [documentary.posterUrl] : undefined,
+    },
+    twitter: {
+      card: documentary.posterUrl ? "summary_large_image" : "summary",
+      title: documentary.title,
+      description: documentary.synopsis,
+      images: documentary.posterUrl ? [documentary.posterUrl] : undefined,
+    },
+  };
 }
 
 export default async function WatchPage({ params }: WatchPageProps) {
@@ -112,8 +133,9 @@ export default async function WatchPage({ params }: WatchPageProps) {
         </p>
       </header>
 
-      <div className="mt-6">
+      <div className="mt-6 flex flex-wrap items-center gap-3">
         <SaveFilmButton slug={documentary.slug} />
+        <ShareButtons title={documentary.title} />
       </div>
 
       {creator && (

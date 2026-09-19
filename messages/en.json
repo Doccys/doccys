@@ -150,6 +150,13 @@
     "saved": "Saved ✓",
     "save": "Save film"
   },
+  "share": {
+    "label": "Share",
+    "shareOn": "Share on {platform}",
+    "email": "Email",
+    "copyLink": "Copy link",
+    "copied": "Copied ✓"
+  },
   "comments": {
     "title": "Discussion",
     "subtitle": "Share your thoughts on the film with other viewers — no spoilers without a warning, please.",

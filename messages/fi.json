@@ -150,6 +150,13 @@
     "saved": "Tallennettu ✓",
     "save": "Tallenna elokuva"
   },
+  "share": {
+    "label": "Jaa",
+    "shareOn": "Jaa palvelussa {platform}",
+    "email": "Sähköposti",
+    "copyLink": "Kopioi linkki",
+    "copied": "Kopioitu ✓"
+  },
   "comments": {
     "title": "Keskustelu",
     "subtitle": "Jaa ajatuksesi elokuvasta muiden katsojien kanssa — ei spoilereita ilman varoitusta, kiitos.",
