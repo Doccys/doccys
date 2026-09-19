@@ -8,8 +8,6 @@ import { formatCurrency, formatDate } from "@/lib/utils/format";
 const PAYOUT_THRESHOLD_DKK = 150;
 
 export type PayoutMethod = {
-  bankRegNr: string | null;
-  bankAccountNr: string | null;
   iban: string | null;
 };
 
@@ -46,8 +44,6 @@ export default function PayoutPanel({
   const t = useTranslations("payoutPanel");
   const locale = useLocale();
 
-  const [bankRegNr, setBankRegNr] = useState(initialMethod?.bankRegNr ?? "");
-  const [bankAccountNr, setBankAccountNr] = useState(initialMethod?.bankAccountNr ?? "");
   const [iban, setIban] = useState(initialMethod?.iban ?? "");
   const [method, setMethod] = useState<PayoutMethod | null>(initialMethod);
   const [saving, setSaving] = useState(false);
@@ -71,11 +67,7 @@ export default function PayoutPanel({
       const res = await fetch("/api/payouts", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          bankRegNr: bankRegNr || undefined,
-          bankAccountNr: bankAccountNr || undefined,
-          iban: iban || undefined,
-        }),
+        body: JSON.stringify({ iban: iban || undefined }),
       });
       const data = (await res.json()) as { method?: PayoutMethod; error?: string };
       if (!res.ok || !data.method) {
@@ -124,34 +116,6 @@ export default function PayoutPanel({
         {/* Bankoplysninger */}
         <form onSubmit={handleSaveMethod} className="space-y-4">
           <h3 className="font-display text-lg text-bone">{t("methodTitle")}</h3>
-          <div className="grid grid-cols-2 gap-3">
-            <label className="block">
-              <span className="text-xs uppercase tracking-widest text-ash">
-                {t("bankRegNr")}
-              </span>
-              <input
-                value={bankRegNr}
-                onChange={(e) => setBankRegNr(e.target.value)}
-                inputMode="numeric"
-                maxLength={4}
-                placeholder="1234"
-                className="mt-1 w-full rounded-lg border border-smoke bg-noir px-4 py-2.5 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none"
-              />
-            </label>
-            <label className="block">
-              <span className="text-xs uppercase tracking-widest text-ash">
-                {t("bankAccountNr")}
-              </span>
-              <input
-                value={bankAccountNr}
-                onChange={(e) => setBankAccountNr(e.target.value)}
-                inputMode="numeric"
-                maxLength={10}
-                placeholder="1234567"
-                className="mt-1 w-full rounded-lg border border-smoke bg-noir px-4 py-2.5 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none"
-              />
-            </label>
-          </div>
           <label className="block">
             <span className="text-xs uppercase tracking-widest text-ash">
               {t("iban")}
@@ -160,7 +124,7 @@ export default function PayoutPanel({
               value={iban}
               onChange={(e) => setIban(e.target.value)}
               maxLength={34}
-              placeholder="DK…"
+              placeholder="DK50 0040 0440 1162 43"
               className="mt-1 w-full rounded-lg border border-smoke bg-noir px-4 py-2.5 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none"
             />
           </label>

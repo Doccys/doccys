@@ -21,7 +21,7 @@ export const dynamic = "force-dynamic";
 const PAYOUT_THRESHOLD_DKK = 150;
 
 export async function PUT(request: NextRequest) {
-  let body: { bankRegNr?: string; bankAccountNr?: string; iban?: string };
+  let body: { iban?: string };
   try {
     body = await request.json();
   } catch {
@@ -36,41 +36,31 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "Log ind først" }, { status: 401 });
   }
 
-  // dansk par ELLER IBAN — check-constraintet i DB kræver det samme,
-  // men en tydelig fejl her er pænere end en 42501
-  const bankRegNr = body.bankRegNr?.trim() || null;
-  const bankAccountNr = body.bankAccountNr?.trim() || null;
-  const iban = body.iban?.trim()?.toUpperCase() || null;
+  // IBAN er den internationale standard (danske konti har også et —
+  // DK + 16 cifre, synligt i netbanken). Mellemrum strippes først,
+  // mange skriver IBAN'en grupperet.
+  const iban = body.iban?.trim().replace(/\s+/g, "").toUpperCase() || null;
 
-  if (bankRegNr || bankAccountNr) {
-    if (!bankRegNr || !bankAccountNr) {
-      return NextResponse.json(
-        { error: "Både reg.nr. og kontonummer skal udfyldes" },
-        { status: 400 },
-      );
-    }
-    if (!/^\d{4}$/.test(bankRegNr) || !/^\d{6,10}$/.test(bankAccountNr)) {
-      return NextResponse.json(
-        { error: "Reg.nr. skal være 4 cifre og kontonummer 6-10 cifre" },
-        { status: 400 },
-      );
-    }
-  } else if (!iban) {
+  if (!iban) {
+    return NextResponse.json({ error: "Udfyld din IBAN" }, { status: 400 });
+  }
+  // landkode + 2 tjekciffer + 11-30 tegn = samlet længde 15-34
+  if (!/^[A-Z]{2}\d{2}[A-Z0-9]{11,30}$/.test(iban)) {
     return NextResponse.json(
-      { error: "Udfyld reg.nr. + kontonummer eller IBAN" },
+      { error: "IBAN-formatet ser forkert ud — tjek din netbank" },
       { status: 400 },
     );
   }
 
   const { error } = await supabase
     .from("creator_payout_methods")
-    .upsert({ user_id: user.id, bank_reg_nr: bankRegNr, bank_account_nr: bankAccountNr, iban });
+    .upsert({ user_id: user.id, bank_reg_nr: null, bank_account_nr: null, iban });
 
   if (error) {
     console.error("gem udbetalingsoplysninger:", error);
     return NextResponse.json({ error: "Kunne ikke gemme oplysningerne" }, { status: 500 });
   }
-  return NextResponse.json({ method: { bankRegNr, bankAccountNr, iban } });
+  return NextResponse.json({ method: { iban } });
 }
 
 export async function POST(request: NextRequest) {
