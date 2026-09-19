@@ -230,6 +230,12 @@ ANMODNING — den faktiske pengeoverførsel er fortsat manuel
 - NB dev-server (19/9): /fi/creators gav 500 "Jest worker child
   process exceptions" under i18n-verify — samme .next-cache-symptom
   som /de tidligere; genstart + ryd .next, det er ikke kodefejl.
+  Senere samme dag døde serveren HELT (alle ruter 500). Faldgrube:
+  den døde proces holder port 3000 → npm run dev lander på 3001,
+  og verify fejler på ALLE tjek. Find PID med Get-NetTCPConnection
+  -LocalPort 3000, Stop-Process, og kør evt. verify med
+  $env:BASE="http://localhost:3001". Efter drab af zombien var
+  ALLE TJEK GRÆNNE (også /fi — oversættelserne var i orden).
 
 DELING (share) — BYGGET 19/9, dc14c53
 Watch-siden har nu en Del-række under Gem-knappen: Facebook,
