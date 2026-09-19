@@ -263,6 +263,12 @@ ANMODNING — den faktiske pengeoverførsel er fortsat manuel
     række i historikken → klik "Kvittering (PDF)" → filen hentes og
     åbner med æøå, beløb og IBAN rigtigt. Prøv også en pending-række
     (intet link) og URL-manipulation med en fremmed request-id → 404.
+  - RULLEMENUEN (samme dag): brugeren savnede en direkte vej til
+    udbetaling (inden da: Skabere → egen profil). UserMenu har nu
+    "Udbetaling" (nav.payout x8) — vises KUN hvis kontoen ejer en
+    skaber-profil (handle hentes klient-side via owner_user_id,
+    creators er offentligt læsbar), og linker til /creator/{handle}#
+    udbetaling — PayoutPanel har fået id="udbetaling" + scroll-mt-24.
 
 DELING (share) — BYGGET 19/9, dc14c53
 Watch-siden har nu en Del-række under Gem-knappen: Facebook,

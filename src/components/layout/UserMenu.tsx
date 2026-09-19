@@ -26,6 +26,9 @@ export default function UserMenu() {
   const profileActive = pathname.startsWith("/profile");
 
   const [user, setUser] = useState<User | null>(null);
+  // egen skaber-profil (hvis kontoen ejer én) — styrer om rullemenuen
+  // viser "Udbetaling"-linket. creators er offentligt læsbar (RLS).
+  const [creatorHandle, setCreatorHandle] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -45,6 +48,22 @@ export default function UserMenu() {
     );
     return () => subscription.subscription.unsubscribe();
   }, []);
+
+  // Håndtaget hentes ved login/udvidet men ikke ved logud-signal —
+  // nulstilles i stedet her, så et link aldrig overlever sessionen.
+  useEffect(() => {
+    if (!user) {
+      setCreatorHandle(null);
+      return;
+    }
+    const supabase = createClient();
+    supabase
+      .from("creators")
+      .select("handle")
+      .eq("owner_user_id", user.id)
+      .maybeSingle()
+      .then(({ data }) => setCreatorHandle(data?.handle ?? null));
+  }, [user]);
 
   // Close the dropdown on clicks outside (same pattern as LanguageSwitcher).
   useEffect(() => {
@@ -149,6 +168,18 @@ export default function UserMenu() {
           >
             {navT("nav.creator")}
           </Link>
+          {/* direkte vej til udbetaling (ankret til panelet) — kun for
+              konti der ejer en skaber-profil, andre ser intet punkt */}
+          {creatorHandle && (
+            <Link
+              href={`/creator/${creatorHandle}#udbetaling`}
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="block px-4 py-2 text-xs text-ash transition-colors hover:bg-smoke/30 hover:text-bone"
+            >
+              {navT("nav.payout")}
+            </Link>
+          )}
           <button
             type="button"
             role="menuitem"

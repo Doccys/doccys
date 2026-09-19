@@ -108,7 +108,10 @@ export default function PayoutPanel({
   }
 
   return (
-    <div className="rounded-xl border border-smoke bg-onyx p-8">
+    <div
+      id="udbetaling"
+      className="scroll-mt-24 rounded-xl border border-smoke bg-onyx p-8"
+    >
       <p className="text-xs uppercase tracking-[0.35em] text-champagne">
         {t("eyebrow")}
       </p>
