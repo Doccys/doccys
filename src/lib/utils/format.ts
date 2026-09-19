@@ -38,3 +38,19 @@ export function formatDate(timestampMs: number, locale?: string): string {
     new Date(timestampMs),
   );
 }
+
+/**
+ * Sekunder → ISO 8601-varighed (PT1H23M45S), som schema.org
+ * VideoObject.duration forventer. Ingen decimaler: schema-standarden
+ * tillader dem teknisk, men heltalsekunder er det sikre kompatible.
+ */
+export function toIsoDuration(totalSec: number): string {
+  const hours = Math.floor(totalSec / 3600);
+  const minutes = Math.floor((totalSec % 3600) / 60);
+  const seconds = Math.floor(totalSec % 60);
+  let iso = "PT";
+  if (hours > 0) iso += `${hours}H`;
+  if (minutes > 0) iso += `${minutes}M`;
+  if (seconds > 0 || iso === "PT") iso += `${seconds}S`;
+  return iso;
+}

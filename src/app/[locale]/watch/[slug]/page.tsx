@@ -17,7 +17,7 @@ import {
 import { getBalanceSeconds, getOrCreateReferralCode } from "@/lib/data/credits";
 import { getFilmSubtitles } from "@/lib/data/subtitles";
 import { createClient } from "@/lib/supabase/server";
-import { formatDuration } from "@/lib/utils/format";
+import { formatDuration, toIsoDuration } from "@/lib/utils/format";
 import { localizedGenres } from "@/lib/i18n/content";
 
 interface WatchPageProps {
@@ -128,8 +128,40 @@ export default async function WatchPage({ params }: WatchPageProps) {
   // lazy som på profilen; gæster deler uden kode.
   const refCode = user ? await getOrCreateReferralCode(user.id) : null;
 
+  // Strukturerede data (schema.org VideoObject) er Googles vej ind i
+  // video-rige søgeresultater — thumbnails og længde direkte i hit-
+  // listen. uploadDate kræves af Google; embedUrl peger på den
+  // indlejringsbare afspiller (/api/embed — gratis smagsprøve, jf.
+  // paywall). "<" escapes som <, så titel/synopse aldrig kan
+  // bryde ud af script-blokken.
+  const shareImage =
+    documentary.posterUrl ?? `${siteUrl()}/og/film/${documentary.slug}`;
+  const videoJsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: documentary.title,
+    description: documentary.synopsis,
+    thumbnailUrl: [shareImage],
+    uploadDate: documentary.createdAt,
+    duration: toIsoDuration(documentary.durationSec),
+    embedUrl: `${siteUrl()}/api/embed/${documentary.slug}`,
+    publisher: {
+      "@type": "Organization",
+      name: creator?.name ?? "Doccys",
+    },
+    interactionStatistic: {
+      "@type": "InteractionCounter",
+      interactionType: { "@type": "WatchAction" },
+      userInteractionCount: documentary.stats.totalViews,
+    },
+  }).replaceAll("<", "\\u003c");
+
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: videoJsonLd }}
+      />
       {player}
 
       <header className="mt-10">

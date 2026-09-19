@@ -59,6 +59,8 @@ export interface Documentary {
    */
   status: DocumentaryStatus;
   stats: DocumentaryStats;
+  /** ISO-tidsstempel fra created_at — bruges af VideoObject-JSON-LD */
+  createdAt: string;
 }
 
 export interface Comment {

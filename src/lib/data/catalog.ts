@@ -66,6 +66,7 @@ function toDocumentary(row: DocumentaryRow, locale?: string): Documentary {
     posterUrl: row.poster_url,
     videoUrl: row.video_url,
     status: row.status as Documentary["status"],
+    createdAt: row.created_at,
     stats: {
       totalViews: row.total_views,
       totalCompletions: row.total_completions,
