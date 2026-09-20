@@ -1,5 +1,5 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-09-19
+Sidst opdateret: 2026-09-20
 ==========================================================
 
 OM PROJEKTET
@@ -61,6 +61,90 @@ p_billing_country text DEFAULT NULL::text" — ingen overlast.
   listen kører, NB ny whsec hvis den var stoppet — se Stripe-
   sektionen) → land 'DK' står på rækken → select-groupingen viser
   DK. Landene står null for gamle køb — det er korrekt.
+
+FIRE IN-APP FEATURES (20/9) — MIGRATIONER KØRT, VERIFICERET UDEFRA
+Commits: d32c653 (fortsaet-se) + 086e204 (samlinger) + 289cb76
+(faerdigheds-badge) + 66ac2bd (studie-retention). Migrationer KØRT
+af brugeren (20/9): 20260920_fortsaet_se.sql, 20260920_samlinger.sql,
+20260920_film_statistik.sql. Alle fejler graceful hvis tabeller/RPC'er
+mangler (tom rille, 404-samling, intet badge, ingen graf).
+1. FORTSÆT SE: afregn_session v2 (samme signatur (uuid), create or
+   replace) gemmer ved AFREGNING den længste nåede position (max
+   (video_time_sec)) i watch_history: upsert med greatest() = re-watch
+   sænker aldrig, completed = watch_history.completed = afregn er
+   ALDRIG autoritet for completed=true (recordValidCompletion er).
+   Forsiden (FØRSTE auth-personalisering): rille med uafsluttede,
+   ratio 0,03-0,95, kun publicerede film; DocumentaryCard har
+   progressRatio-prop → progress-bar + href ?t=Math.floor(ratio *
+   laengde) (seekFromUrlParam kræver HELTAL > 0). Afregn kaldes kun
+   for loggede → rillen er automatisk logged-ind-only. Kant-tilfælde:
+   hvis balance ikke dækker genoptagelse → PaywallCard, ?t ignoreres.
+2. SAMLINGER: collections + collection_films (select using(true),
+   INGEN write-policy = dashboard-only, creator_payouts-præcedensen);
+   dansk canonical + _i18n pr. sprog (bio_i18n-mønsteret). Seed: 3
+   samlinger der fordelter alle 6 film. NB: documentaries-RLS er
+   select using(true) — kladder skjules i KODEN (status='published'),
+   også i collection-joins. Rille på forsiden + /collections-index +
+   temasider + sitemap-entry pr. samling m. >=1 publiceret film.
+3. FÆRDIGHEDS-BADGE ("87 % så den færdig"): film_faedighedsstats-RPC
+   (offentligt aggregat, grant anon+authenticated — samme læk-niveau
+   som de seedede stats-kolonner; view_sessions er under bruger-RLS
+   ikke summerbar uden security definer). mergeFinishRates = ÉT
+   RPC-kald pr. katalogside; badge KUN ved >=5 afsluttede (mindste
+   grundlag — "1 seer = 100 %" undgås). De seedede stats-kolonner
+   læses ALDRIG af app'en. Anonyme sessioner tælles med (adfærd ≠
+   penge-statistik). Aktiv-sessioner ekskluderes.
+4. RETENTION-GRAF i studiet: film_retention-RPC (ejer-privat: revoke
+   anon/public + ejerskabstjek som creator_indtjening-skabelonen).
+   Drop-off pr. decil: bucket = længste NÅEDE position; sessioner
+   uden events tæller som "nåede intet". StudioRetentionChart = ren
+   SVG-server-komponent (intet chart-lib, ingen "use client"); vises
+   kun ved >=5 afsluttede (RETENTION_MIN_SESSIONS = samme tærskel som
+   badget) ellers aske-bemærkning. Seeded skabere (owner null)
+   afvises af RPC'en → ingen graf, korrekt.
+- VERIFICERET UDEFRA (20/9): tsc + i18n-verify grønne; anon-røgte
+  (film_faedighedsstats 200 kun aggregater, film_retention 42501,
+  collections GET 200 m. 3 slugs / POST 42501); /da/collections 200,
+  alle 3 temasider 200 (da/en/fi), sitemap har alle 3 samlinger m.
+  hreflang x8. Data-punkt: "earth" har 4 afsluttede/3 færdige < 5 →
+  intet badge er korrekt lige nu.
+- Test (afventer brugeren):
+  * Fortsæt se: se 2-3 min → luk tab → forsiden viser filmen m.
+    progress-bar → klik genoptager ved positionen → se færdig →
+    forsvinder fra rillen. Re-watch sænker ikke ratio.
+  * Badge: earth mangler ÉN afsluttet session til tærsklen — sæt en
+    til ikke-active via SQL → badget dukker op (3 færdige af 5 =
+    60 %). Alternativt: se earth næsten færdig én gang mere.
+  * Retention: jeres studiosider viser lige nu tom-bemærkningen
+    (4 sessioner < 5) — grafen dukker op ved samme tærskel.
+  * Samlinger: forsiden-rillen, /da/collections rækkefølge =
+    sort_order, klik gennem alle 3 temasider, film-rækkefølge =
+    collection_films.sort_order.
+
+RPC-EXECUTE-HUL LUKKET (20/9) — KRITISK FIX, KØRT OG VERIFICERET
+Anon-røgtestene afslørede at indfri_koeb kunne kaldes med den
+publicly-available anon-nøgle: hvem som helst kunne indfri en
+pending checkout UDEN at betale (betalingsomgåelse — webhook-
+signaturen beskytter kun ruten, ikke funktionen over PostgREST).
+Også afregn_session, har_set_film og creator_indtjening var
+anon-kaldbare. RODSAG (pg_proc.proacl-diagnose): Supabases
+platform-setup kører "alter default privileges in schema public
+grant execute on functions to anon, authenticated, service_role" —
+ALLE nye funktioner får DIREKTE execute-grants; vore grant-
+sætninger begrænser aldrig, og "revoke from public" er no-op.
+Fix: 20260920_rpc_tilladelser.sql — revoke direkte fra anon (+
+authenticated på indfri_koeb) pr. funktion, OG default-privilegierne
+ændret så FREMTIDIGE funktioner kun får adgang via eksplicitte
+grants (vort migrations-mønster). Læring er gemt i Claude-memory
+(postgres-function-execute-public-default). VERIFICERET: alle fire
+lækkede funktioner + film_retention → 42501 anon; saldo_sekunder +
+film_faedighedsstats → 200 (offentlige efter hensigten); collections
+RLS uændret. Webhook + rescue bruger service_role (grant bevist i
+proacl) og er urørte.
+- Test (afventer brugeren): authenticated-levestien er kun røgtet
+  indirekte — næste validate-afspilning (afregn_session) og næste
+  testkøb gennem webhook (indfri_koeb, stripe listen kører) er de
+  reelle verifikationer. Rescue-proceduren er uændret.
 
 OPSLAGTAVLE (creator_posts) — VIRKER (bruger verificeret 19/9)
 Commit 179a23b + 7a716b1. Migration 20260918_creator_opslagstavle.sql
