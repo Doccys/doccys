@@ -100,7 +100,15 @@ export default async function WatchPage({ params }: WatchPageProps) {
     // Smagsprøven først: findes en klar trailer, afspilles den i
     // paywall-kortet — delte links skal give modtageren noget at se.
     const trailerUrl = await getFilmTrailerUrl(documentary.slug);
-    player = <PaywallCard mode="login" trailerUrl={trailerUrl} />;
+    player = (
+      <PaywallCard
+        mode="login"
+        trailerUrl={trailerUrl}
+        // Kr-pris-linjen skal også stå ved login-spærren — gæster
+        // skal se "ca. 4,50 kr for hele filmen", ikke kun minutter
+        requiredMinutes={Math.ceil(documentary.durationSec / 60)}
+      />
+    );
   } else {
     const balanceSeconds = await getBalanceSeconds();
     if (balanceSeconds < documentary.durationSec) {

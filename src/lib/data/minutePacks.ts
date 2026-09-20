@@ -36,3 +36,14 @@ export const AFFILIATE_REWARD_SECONDS = 15_000;
 export function findMinutePack(packId: string): MinutePack | null {
   return MINUTE_PACKS.find((pack) => pack.id === packId) ?? null;
 }
+
+/**
+ * Konservativt pris-estimat for en hel film i kroner: regnet med
+ * MINDSTE pakkes kr/min — større pakker gør filmen billigere, så
+ * estimatet aldrig lover for lidt. Bruges på paywallen ("ca. X kr
+ * for hele filmen — ser du den aldrig, koster den 0 kr").
+ */
+export function estimateFilmPriceDkk(requiredMinutes: number): number {
+  const pack = MINUTE_PACKS[0];
+  return (requiredMinutes * pack.priceDkkInclDkVat) / pack.minutes;
+}

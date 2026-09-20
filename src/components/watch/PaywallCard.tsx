@@ -1,5 +1,7 @@
 import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { estimateFilmPriceDkk } from "@/lib/data/minutePacks";
+import { formatCurrency } from "@/lib/utils/format";
 
 interface PaywallCardProps {
   /**
@@ -7,7 +9,10 @@ interface PaywallCardProps {
    * saldoen dækker ikke filmens fulde længde.
    */
   mode: "login" | "buy";
-  /** Filmens længde i minutter (buy-varianten) */
+  /**
+   * Filmens længde i minutter — driver kr-pris-linjen. Sættes i dag i
+   * BEGGE varianter (login + buy); mangler den, udelades linjen.
+   */
   requiredMinutes?: number;
   /** Seerens aktuelle saldo i minutter (buy-varianten) */
   balanceMinutes?: number;
@@ -46,6 +51,19 @@ export default async function PaywallCard({
   const ctaHref = mode === "login" ? "/login" : "/profile#minutter";
   const ctaText = mode === "login" ? t("loginCta") : t("buyCta");
 
+  // Prisen i kroner — paywallens stærkeste argument. Konservativt
+  // estimat (mindste pakkes kr/min); vises kun med en kendt
+  // filmlængde.
+  const priceLine =
+    requiredMinutes && requiredMinutes > 0
+      ? t("priceLine", {
+          price: formatCurrency(
+            estimateFilmPriceDkk(requiredMinutes),
+            await getLocale(),
+          ),
+        })
+      : null;
+
   return (
     <div className="mx-auto w-full max-w-[calc((100dvh-12rem)*16/9)]">
       <div className="flex aspect-video flex-col overflow-hidden rounded-xl border border-smoke bg-onyx shadow-2xl shadow-black/60">
@@ -67,6 +85,9 @@ export default async function PaywallCard({
             </div>
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-smoke px-6 py-4 text-center">
               <p className="max-w-md text-sm leading-relaxed text-ash">{body}</p>
+              {priceLine && (
+                <p className="text-sm font-medium text-champagne">{priceLine}</p>
+              )}
               <Link
                 href={ctaHref}
                 className="rounded-full bg-champagne px-6 py-2.5 text-sm font-semibold text-onyx transition-colors hover:bg-champagne/85"
@@ -92,6 +113,11 @@ export default async function PaywallCard({
                 <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ash">
                   {body}
                 </p>
+                {priceLine && (
+                  <p className="mt-2 text-sm font-medium text-champagne">
+                    {priceLine}
+                  </p>
+                )}
               </div>
               <Link
                 href={ctaHref}

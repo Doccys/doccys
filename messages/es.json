@@ -407,7 +407,8 @@
     "buyTitle": "No tienes minutos suficientes",
     "buyBody": "La película requiere {minutes} minutos y tu saldo es de {balance}. Compra un paquete para empezar a reproducirla.",
     "buyCta": "Comprar minutos",
-    "trailerLabel": "Tráiler"
+    "trailerLabel": "Tráiler",
+    "priceLine": "aprox. {price} por la película completa — si nunca la ves, cuesta 0 kr."
   },
   "embed": {
     "cta": "Ver la película completa en Doccys",

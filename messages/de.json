@@ -407,7 +407,8 @@
     "buyTitle": "Nicht genug Minuten auf dem Guthaben",
     "buyBody": "Der Film erfordert {minutes} Minuten, dein Guthaben beträgt {balance}. Kaufe ein Paket, um die Wiedergabe zu starten.",
     "buyCta": "Minuten kaufen",
-    "trailerLabel": "Trailer"
+    "trailerLabel": "Trailer",
+    "priceLine": "ca. {price} für den ganzen Film — siehst du ihn nie, kostet er 0 kr."
   },
   "embed": {
     "cta": "Den ganzen Film auf Doccys ansehen",

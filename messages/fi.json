@@ -407,7 +407,8 @@
     "buyTitle": "Saldo ei riitä",
     "buyBody": "Elokuva vaatii {minutes} minuuttia ja saldosi on {balance} minuuttia. Osta paketti aloittaaksesi toiston.",
     "buyCta": "Osta minuutteja",
-    "trailerLabel": "Traileri"
+    "trailerLabel": "Traileri",
+    "priceLine": "n. {price} koko elokuvasta — jos et koskaan katso sitä, se maksaa 0 kr."
   },
   "embed": {
     "cta": "Katso koko elokuva Doccys-palvelussa",

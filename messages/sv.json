@@ -407,7 +407,8 @@
     "buyTitle": "Inte tillräckligt med minuter på saldot",
     "buyBody": "Filmen kräver {minutes} minuter och ditt saldo är {balance}. Köp ett paket för att starta uppspelningen.",
     "buyCta": "Köp minuter",
-    "trailerLabel": "Trailer"
+    "trailerLabel": "Trailer",
+    "priceLine": "ca. {price} för hela filmen — ser du den aldrig, kostar den 0 kr."
   },
   "embed": {
     "cta": "Se hela filmen på Doccys",

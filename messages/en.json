@@ -407,7 +407,8 @@
     "buyTitle": "Not enough minutes on your balance",
     "buyBody": "The film requires {minutes} minutes, and your balance is {balance}. Buy a pack to start playing.",
     "buyCta": "Buy minutes",
-    "trailerLabel": "Trailer"
+    "trailerLabel": "Trailer",
+    "priceLine": "approx. {price} for the whole film — if you never watch it, it costs 0 kr."
   },
   "embed": {
     "cta": "Watch the full film on Doccys",

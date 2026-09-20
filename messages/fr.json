@@ -407,7 +407,8 @@
     "buyTitle": "Pas assez de minutes sur votre solde",
     "buyBody": "Le film nécessite {minutes} minutes et votre solde est de {balance}. Achetez un pack pour lancer la lecture.",
     "buyCta": "Acheter des minutes",
-    "trailerLabel": "Bande-annonce"
+    "trailerLabel": "Bande-annonce",
+    "priceLine": "env. {price} pour tout le film — si vous ne le regardez jamais, il coûte 0 kr."
   },
   "embed": {
     "cta": "Voir le film entier sur Doccys",
