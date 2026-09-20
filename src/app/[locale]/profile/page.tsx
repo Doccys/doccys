@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import SectionHeading from "@/components/ui/SectionHeading";
 import MinutesSection from "@/components/profile/MinutesSection";
+import SupportLedgerSection from "@/components/profile/SupportLedgerSection";
 import WatchHistoryList from "@/components/profile/WatchHistoryList";
 import DocumentaryGrid from "@/components/documentary/DocumentaryGrid";
 import { createClient } from "@/lib/supabase/server";
@@ -16,6 +17,7 @@ import {
   getSavedFilms,
   getWatchHistory,
 } from "@/lib/data/catalog";
+import { getSupportLedger } from "@/lib/data/support";
 import type { Documentary, WatchHistoryEntry } from "@/lib/types";
 import { formatDate } from "@/lib/utils/format";
 
@@ -91,6 +93,11 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
   const balanceSeconds = await getBalanceSeconds();
   const referralCode = await getOrCreateReferralCode(user.id);
 
+  // Minutregnskab: seerens validede minutter → kroner direkte til
+  // skaberne. Null (datafejl) udelader sektionen — pynt, ikke en
+  // fejlside.
+  const supportLedger = await getSupportLedger(user.id);
+
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
       <SectionHeading
@@ -134,6 +141,8 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
           )}
         </div>
       </section>
+
+      {supportLedger && <SupportLedgerSection ledger={supportLedger} />}
 
       <section className="mt-16">
         <h2 className="font-display text-2xl text-bone">{t("savedHeading")}</h2>

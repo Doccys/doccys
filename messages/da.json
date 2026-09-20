@@ -350,6 +350,16 @@
     "completed": "Færdigset",
     "progress": "{watched} af {total}"
   },
+  "support": {
+    "heading": "Din støtte",
+    "subtitle": "Hvor dine minutter endte — og hvad der gik direkte til skaberne.",
+    "totalMinutes": "Du har set {minutes} minutter",
+    "totalAmount": "{amount} gik direkte til skaberne",
+    "creatorFilms": "{count, plural, one {# film} other {# film}}",
+    "entryMeta": "{minutes} min · {amount}",
+    "empty": "Ingen afregnede afspilninger endnu.",
+    "emptyHint": "Minutter og kroner lander her, første gang du ser en film færdig."
+  },
   "genres": {
     "Klima": "Klima",
     "Portræt": "Portræt",

@@ -350,6 +350,16 @@
     "completed": "Katsottu loppuun",
     "progress": "{watched} / {total}"
   },
+  "support": {
+    "heading": "Tukesi",
+    "subtitle": "Mihin minuttisi menivät — ja mikä meni suoraan tekijöille.",
+    "totalMinutes": "Olet katsonut {minutes} minuuttia",
+    "totalAmount": "{amount} meni suoraan tekijöille",
+    "creatorFilms": "{count, plural, one {# elokuva} other {# elokuvaa}}",
+    "entryMeta": "{minutes} min · {amount}",
+    "empty": "Ei vielä vahvistettuja katselukertoja.",
+    "emptyHint": "Minuutit ja kruunut ilmestyvät tänne, kun katsot elokuvan loppuun ensimmäistä kertaa."
+  },
   "genres": {
     "Klima": "Ilmasto",
     "Portræt": "Potretti",

@@ -350,6 +350,16 @@
     "completed": "Finalizada",
     "progress": "{watched} de {total}"
   },
+  "support": {
+    "heading": "Tu apoyo",
+    "subtitle": "Adónde fueron tus minutos — y qué fue directamente a los creadores.",
+    "totalMinutes": "Has visto {minutes} minutos",
+    "totalAmount": "{amount} fue directamente a los creadores",
+    "creatorFilms": "{count, plural, one {# película} other {# películas}}",
+    "entryMeta": "{minutes} min · {amount}",
+    "empty": "Aún no hay reproducciones validadas.",
+    "emptyHint": "Los minutos y las coronas llegan aquí la primera vez que terminas de ver una película."
+  },
   "genres": {
     "Klima": "Clima",
     "Portræt": "Retrato",

@@ -350,6 +350,16 @@
     "completed": "Completed",
     "progress": "{watched} of {total}"
   },
+  "support": {
+    "heading": "Your support",
+    "subtitle": "Where your minutes went — and what went straight to the creators.",
+    "totalMinutes": "You have watched {minutes} minutes",
+    "totalAmount": "{amount} went straight to the creators",
+    "creatorFilms": "{count, plural, one {# film} other {# films}}",
+    "entryMeta": "{minutes} min · {amount}",
+    "empty": "No validated playbacks yet.",
+    "emptyHint": "Minutes and kroner land here the first time you finish watching a film."
+  },
   "genres": {
     "Klima": "Climate",
     "Portræt": "Portrait",

@@ -350,6 +350,16 @@
     "completed": "Färdigvisad",
     "progress": "{watched} av {total}"
   },
+  "support": {
+    "heading": "Ditt stöd",
+    "subtitle": "Vart dina minuter tog vägen — och vad som gick direkt till skaparna.",
+    "totalMinutes": "Du har sett {minutes} minuter",
+    "totalAmount": "{amount} gick direkt till skaparna",
+    "creatorFilms": "{count, plural, one {# film} other {# filmer}}",
+    "entryMeta": "{minutes} min · {amount}",
+    "empty": "Ingen avräknade visningar än.",
+    "emptyHint": "Minuter och kronor hamnar här första gången du ser en film klar."
+  },
   "genres": {
     "Klima": "Klimat",
     "Portræt": "Porträtt",
