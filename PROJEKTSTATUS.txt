@@ -513,6 +513,17 @@ PNG-signaturer OK, /da head-tags OK, tsc + i18n-verify).
   seksbladet blænde) tegnet med satori i 32/180/192/512 px,
   champagne på noir; 404 på andre størrelser; cachebar (revalidate
   86400). NB: satori tager ikke SVG-gradients → farven er flad.
+  LOGO-REDESIGN (20/9): de oprindelige seks linjer gik hjørne til
+  hjørne på tværs og dannede to krydsende trekanter — i favicon-
+  størrelse læses det som en sekskantet stjerne (Magen David), hvilket
+  brugeren ikke vil risikere politisk/religiøst. Blændens linjer er
+  nu roterede akkorder i pinwheel-form (som et reelt iris-blænde-
+  motiv, Feather-aperture-geometri skaleret til r=12,5): indre
+  endepunkter danner åbningen, ydre ligger på ringen, ingen linjer
+  krydser midten. Retter i både DoccysMark.tsx og app-icons-ruten.
+  NB: favicon-browsercache er stædig — hard refresh/Ctrl+F5; app-
+  icons-ruten har revalidate 86400 (i production kan gamle ikoner
+  hænge i ISR-cachen indtil redeploy).
 - layout.tsx: manifest-link, appleWebApp, applicationName, apple-
   touch-icon 180, favicon 32, themeColor via viewport (Next 15),
   apple-mobile-web-app-capable-meta til iOS.

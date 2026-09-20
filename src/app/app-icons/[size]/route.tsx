@@ -54,9 +54,10 @@ export async function GET(
       >
         {/* Objektivringen */}
         <circle cx="16" cy="16" r="12.5" stroke={CHAMPAGNE} strokeWidth="2" />
-        {/* Den seksbladede blænde — bladene peger skråt ind mod midten */}
+        {/* Den seksbladede blænde — roterede akkorder i pinwheel-form
+            som en reel iris (ingen krydsende trekanter — se DoccysMark) */}
         <path
-          d="M16 8 L9.07 20 M9.07 12 L16 24 M9.07 20 L22.93 20 M16 24 L22.93 12 M22.93 20 L16 8 M22.93 12 L9.07 12"
+          d="M18.89 11 L26.06 23.43 M13.11 11 L27.46 11 M10.22 16 L17.4 3.57 M13.11 21 L27.46 21 M18.89 21 L26.06 8.57 M21.78 16 L14.6 28.43"
           stroke={CHAMPAGNE}
           strokeWidth="1.4"
           strokeLinecap="round"
