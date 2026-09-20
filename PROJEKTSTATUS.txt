@@ -37,28 +37,30 @@ FORRETNINGSMODELLEN — FÆRDIG OG LIVE-VERIFICERET
   ("betal kun for de minutter, du faktisk ser"). NB: stat-NAVNE som
   "Færdigsetninger" er rene metrik-navne og røres ikke.
 
-KOEBS-land (billing_country) — BYGGET 20/9, MIGRATION KRÆVES
+KOEBS-land (billing_country) — MIGRATION KØRT af brugeren (20/9)
 Formål: redaktionen skal vide hvilke lande der sælger bedst ift.
 deling/markedsføring. Pointen: Stripe Tax KRÆVER allerede
 faktureringsadresse ved checkout — landet (ISO alpha-2) lå i
 session.customer_details.address.country, men webhook'en sendte kun
-session-id, så det blev smidt væk. Nu: MIGRATION 20260920_koebs_land.sql
-→ billing_country-kolonne (null OK, format-check) + indfri_koeb
+session-id, så det blev smidt væk. Nu: 20260920_koebs_land.sql →
+billing_country-kolonne (null OK, format-check) + indfri_koeb
 udvidet med p_billing_country (DEFAULT NULL — rescue-kald med kun
 session-id virker uændret; NB drop function(text) FØRST, ellers
 overlaster create or replace og gamle kald rammer stadig den gamle).
 Webhook sender nu landet med. GDPR: ingen ny tracking — landet
 indsamles i forvejen til moms. Redaktionens statistik-SQL står i
 migrationens kommentarer (group by billing_country over paid-køb).
+VERIFICERET (20/9): kolonnen findes (anon-røgtest 200/[]), og
+pg_proc viser ÉN funktion: "p_stripe_session_id text,
+p_billing_country text DEFAULT NULL::text" — ingen overlast.
 - UTM-SPORING PR. KØB (utm_source/medium/campaign fra del-rillerne)
   er BEVIDST ikke med: kræver kilde-cookie = marketing-tracking
   under Cookie-reglen → afventer samtykke-løsning (launch-backlog).
   Affiliate-deling dækkes allerede af referrer_user_id pr. køb.
-- Test (afventer brugeren, efter migrationen): kør SQL-editors
-  statistik (landene står null for gamle køb — det er korrekt) →
-  afgiv et testkøb i checkout → land 'DK' står på rækken →
-  select-groupingen viser DK. NB: stripe listen-webhookken skal
-  køre med NY whsec hvis den var stoppet (se Stripe-sektionen).
+- Test (afventer brugeren): afgiv et testkøb i checkout (stripe
+  listen kører, NB ny whsec hvis den var stoppet — se Stripe-
+  sektionen) → land 'DK' står på rækken → select-groupingen viser
+  DK. Landene står null for gamle køb — det er korrekt.
 
 OPSLAGTAVLE (creator_posts) — VIRKER (bruger verificeret 19/9)
 Commit 179a23b + 7a716b1. Migration 20260918_creator_opslagstavle.sql
