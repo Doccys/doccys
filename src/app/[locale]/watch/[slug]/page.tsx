@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { siteUrl } from "@/lib/site";
 import VideoPlayer from "@/components/player/VideoPlayer";
 import PaywallCard from "@/components/watch/PaywallCard";
+import LocalPriceHint from "@/components/fx/LocalPriceHint";
 import ShareButtons from "@/components/watch/ShareButtons";
 import CommentSection from "@/components/player/CommentSection";
 import SaveFilmButton from "@/components/documentary/SaveFilmButton";
@@ -227,12 +228,18 @@ export default async function WatchPage({ params }: WatchPageProps) {
             <p className="mt-1 font-display text-xl text-bone">{creator.name}</p>
             {/* Det økonomiske løfte, offentligt: filmens sats pr. 100
                 sete minutter — radikal transparens, ingen anden
-                streamingtjeneste viser pengene ved selve værket. */}
+                streamingtjeneste viser pengene ved selve værket.
+                Ikke-danske seere ser satsen i egen valuta ved siden af
+                (vejledende kurs — DKK forbliver afregningsvalutaen). */}
             <p className="mt-1.5 text-xs text-champagne">
               {t("payoutLine", {
                 rate: formatCurrency(documentary.payoutRateDkk, locale),
                 creator: creator.name,
-              })}
+              })}{" "}
+              <LocalPriceHint
+                dkk={documentary.payoutRateDkk}
+                className="text-champagne/70"
+              />
             </p>
           </div>
           <span className="text-champagne">→</span>

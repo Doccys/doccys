@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
+import LocalPriceHint from "@/components/fx/LocalPriceHint";
 import { estimateFilmPriceDkk } from "@/lib/data/minutePacks";
 import { formatCurrency } from "@/lib/utils/format";
 
@@ -53,14 +54,16 @@ export default async function PaywallCard({
 
   // Prisen i kroner — paywallens stærkeste argument. Konservativt
   // estimat (mindste pakkes kr/min); vises kun med en kendt
-  // filmlængde.
-  const priceLine =
+  // filmlængde. Ikke-danske seere får desuden en vejledende
+  // oversættelse til deres lokale valuta (DKK forbliver canonical).
+  const priceDkk =
     requiredMinutes && requiredMinutes > 0
+      ? estimateFilmPriceDkk(requiredMinutes)
+      : null;
+  const priceLine =
+    priceDkk !== null
       ? t("priceLine", {
-          price: formatCurrency(
-            estimateFilmPriceDkk(requiredMinutes),
-            await getLocale(),
-          ),
+          price: formatCurrency(priceDkk, await getLocale()),
         })
       : null;
 
@@ -86,7 +89,12 @@ export default async function PaywallCard({
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-smoke px-6 py-4 text-center">
               <p className="max-w-md text-sm leading-relaxed text-ash">{body}</p>
               {priceLine && (
-                <p className="text-sm font-medium text-champagne">{priceLine}</p>
+                <p className="text-sm font-medium text-champagne">
+                  {priceLine}{" "}
+                  {priceDkk !== null && (
+                    <LocalPriceHint dkk={priceDkk} className="text-champagne/70" />
+                  )}
+                </p>
               )}
               <Link
                 href={ctaHref}
@@ -115,7 +123,13 @@ export default async function PaywallCard({
                 </p>
                 {priceLine && (
                   <p className="mt-2 text-sm font-medium text-champagne">
-                    {priceLine}
+                    {priceLine}{" "}
+                    {priceDkk !== null && (
+                      <LocalPriceHint
+                        dkk={priceDkk}
+                        className="text-champagne/70"
+                      />
+                    )}
                   </p>
                 )}
               </div>

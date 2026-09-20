@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import LocalPriceHint from "@/components/fx/LocalPriceHint";
 import { MINUTE_PACKS } from "@/lib/data/minutePacks";
 import { formatCurrency } from "@/lib/utils/format";
 
@@ -60,7 +61,13 @@ export default function PackPurchase({ locale }: PackPurchaseProps) {
               <p className="mt-1 text-sm text-champagne">
                 {t("packPrice", {
                   price: formatCurrency(pack.priceDkkInclDkVat, locale),
-                })}
+                })}{" "}
+                {/* Vejledende lokal valuta for internationale seere —
+                    DKK forbliver den faktiske trækvaluta (Stripe). */}
+                <LocalPriceHint
+                  dkk={pack.priceDkkInclDkVat}
+                  className="text-champagne/70"
+                />
               </p>
               <p className="mt-1 text-xs text-ash">{t("vatNote")}</p>
             </div>
