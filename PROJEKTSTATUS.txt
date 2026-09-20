@@ -224,6 +224,37 @@ disabled uden plakat + "Påkrævet"-markering i champagne) og i /api/films
   requiredMark + errors.posterRequired tilføjet — i ALLE 8 filer.
   tsc + i18n-verify ALLE TJEK GRØNNE.
 
+SØGNING — BYGGET 20/9, E2E-VERIFICERET (bruger + røgtester)
+Commits 0b962c1 (resultatsiden) + ff0a95a (header-feltet) + b637b8e
+(6 nye genrer). Kataloget var ved at blive en jungle — nu søges der
+på film + skabere + genrer fra headeren på alle sider.
+- searchCatalog (catalog.ts): film på titel/synopsis (ilike, KUN
+  publiceret — forsvar oveni RLS som alle kataloglæsninger), skabere
+  på navn/handle/bio, genre-match I KODEN mod FILM_GENRES (genres er
+  frit text[] i DB — ingen constraint). Søgetermen renses for
+  % _ , ( ) " * (sprænger ellers PostgRESTs .or()-filter), q max
+  100 tegn. Genre-film deduplikeres mod titel-hit (én film ét sted);
+  tomme genre-sektioner vises ikke.
+- /search-side (server-renderet, noindex, ingen sitemap-entry):
+  landing uden q med genre-chips; tom-resultat viser venlig tekst +
+  chips; sektionerne Film / Genrer / Skabere. CreatorCard UDTRUKKET
+  fra /creators' inline-markup — begge sider viser samme kort.
+- Header: desktop-input (w-36 → w-56 ved fokus, mellem nav og
+  konto-menuen); mobil: glas-knap folder fuldbredde-række ud under
+  baren (autofokus, Esc/udenforklik = UserMenu-mønstret). Feltet
+  husker q efter navigation. Alle 8 sprog: search-namespace.
+- GENREPALET udvidet til 17: + Kultur, Mad, Musik, Sand krim,
+  Rejse, Videnskab, Sport, Samfund (kun kode — genres lever i
+  genres.ts + sprogfilerne; DB har ingen constraint). Chips vises
+  automatisk i studie-formularen + på søgningens landing.
+- Verificeret: q=isen → film-hit; q=nordlys → skaber-hit; q=mad →
+  tom (ingen film har endnu Mad-genren); q=zzz → tom; /en-chips
+  oversat ("Society" → ?q=Samfund → korrekt sektion); tsc + i18n-
+  verify ALLE TJEK GRØNNE; bruger har verificeret i browser.
+- Bevidst ude af scope (fremtidig backlog ved skala): ordsøgning i
+  vilkårlig rækkefølge (kræver tsvector/full-text), samlingsnavn som
+  fjerde søgeområde, live-typeahead under feltet.
+
 OPSLAGTAVLE (creator_posts) — VIRKER (bruger verificeret 19/9)
 Commit 179a23b + 7a716b1. Migration 20260918_creator_opslagstavle.sql
 ER KØRT af brugeren (18/9). Verificeret udefra: anon select OK (200),
