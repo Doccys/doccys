@@ -92,6 +92,14 @@
     "films": "{count} films",
     "views": "{count} views"
   },
+  "collections": {
+    "railTitle": "Collections",
+    "indexTitle": "Curated collections",
+    "indexSubtitle": "Hand-picked themes across the catalogue — the editors' own rails.",
+    "filmCount": "{count} films",
+    "empty": "This collection is empty for now.",
+    "viewAll": "View all collections"
+  },
   "creatorProfile": {
     "eyebrow": "Creator profile",
     "founded": "Founded {year}",

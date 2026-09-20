@@ -92,6 +92,14 @@
     "films": "{count} elokuvaa",
     "views": "{count} katselukertaa"
   },
+  "collections": {
+    "railTitle": "Kokoelmat",
+    "indexTitle": "Kuraatoidut kokoelmat",
+    "indexSubtitle": "Käsivalittuja teemoja koko valikoimasta — toimituksen omat kiskot.",
+    "filmCount": "{count} elokuvaa",
+    "empty": "Tämä kokoelma on tyhjä nyt.",
+    "viewAll": "Katso kaikki kokoelmat"
+  },
   "creatorProfile": {
     "eyebrow": "Tekijäprofiili",
     "founded": "Perustettu {year}",

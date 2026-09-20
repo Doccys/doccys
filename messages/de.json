@@ -92,6 +92,14 @@
     "films": "{count} Filme",
     "views": "{count} Aufrufe"
   },
+  "collections": {
+    "railTitle": "Sammlungen",
+    "indexTitle": "Kuratierte Sammlungen",
+    "indexSubtitle": "Handverlesene Themen aus dem gesamten Katalog — die eigenen Rillen der Redaktion.",
+    "filmCount": "{count} Filme",
+    "empty": "Diese Sammlung ist im Moment leer.",
+    "viewAll": "Alle Sammlungen ansehen"
+  },
   "creatorProfile": {
     "eyebrow": "Creator-Profil",
     "founded": "Gegründet {year}",

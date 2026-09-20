@@ -107,6 +107,27 @@ export interface ContinueWatchingItem {
 }
 
 /**
+ * Én kurateret samling (tematisk rille). Titel og beskrivelse er
+ * oversat pr. sprog af redaktionen; preview er FØRSTE publicerede
+ * films plakat/gradient — samlingen har ikke egen grafik. Kurate-
+ * ring sker kun i dashboardet; app'en læser.
+ */
+export interface Collection {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  /** antal PUBLICEREDE film i samlingen (kladder tæller aldrig) */
+  filmCount: number;
+  /** første publicerede films gradient — fallback hvis ingen film */
+  previewGradient: string;
+  /** første publicerede films plakat — null = kun gradienten */
+  previewPosterUrl: string | null;
+  /** første publicerede films slug (og-billede-fallback) — null hvis tom */
+  previewFilmSlug: string | null;
+}
+
+/**
  * Ét opslag fra en creator til dens seere (opslagstavlen på
  * creatorsiden). Kun creatorens ejer-konto kan skrive — seere
  * læser. `pinned`-opslag vises øverst (ét pr. creator).

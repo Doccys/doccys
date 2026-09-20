@@ -505,6 +505,43 @@ export type CreatorPostUpdate = {
   updated_at?: string;
 };
 
+/* ---------- collections (kuraterede samlinger — redaktionsdata) ---------- */
+
+export type CollectionRow = {
+  id: string;
+  slug: string;
+  /** dansk canonical titel */
+  title: string;
+  /** oversættelser pr. sprog (en, es, fr, de, no, sv, fi) — null = ingen endnu */
+  title_i18n: Record<string, string> | null;
+  /** dansk canonical beskrivelse */
+  description: string;
+  description_i18n: Record<string, string> | null;
+  sort_order: number;
+  created_at: string;
+  /** røres automatisk af trg_collection_touch ved UPDATE */
+  updated_at: string;
+};
+
+/** dashboard-only: app'en skriver aldrig samlinger (ingen RLS-write-policy) */
+export type CollectionInsert = never;
+
+export type CollectionUpdate = never;
+
+/* ---------- collection_films (film-medlemskab i en samling) ---------- */
+
+export type CollectionFilmRow = {
+  collection_id: string;
+  documentary_slug: string;
+  sort_order: number;
+  created_at: string;
+};
+
+/** dashboard-only: medlemskaber kurateres udelukkende i dashboardet */
+export type CollectionFilmInsert = never;
+
+export type CollectionFilmUpdate = never;
+
 /* ---------- film_subtitles (AI-undertekster pr. film+sprog) ---------- */
 
 export type FilmSubtitleRow = {
@@ -696,6 +733,35 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "creators";
             referencedColumns: ["id"];
+          },
+        ];
+      };
+      collections: {
+        Row: CollectionRow;
+        /** dashboard-only — ingen RLS-write-policy */
+        Insert: CollectionInsert;
+        Update: CollectionUpdate;
+        Relationships: [];
+      };
+      collection_films: {
+        Row: CollectionFilmRow;
+        /** dashboard-only — ingen RLS-write-policy */
+        Insert: CollectionFilmInsert;
+        Update: CollectionFilmUpdate;
+        Relationships: [
+          {
+            foreignKeyName: "collection_films_collection_id_fkey";
+            columns: ["collection_id"];
+            isOneToOne: false;
+            referencedRelation: "collections";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "collection_films_documentary_slug_fkey";
+            columns: ["documentary_slug"];
+            isOneToOne: false;
+            referencedRelation: "documentaries";
+            referencedColumns: ["slug"];
           },
         ];
       };

@@ -92,6 +92,14 @@
     "films": "{count} películas",
     "views": "{count} visualizaciones"
   },
+  "collections": {
+    "railTitle": "Colecciones",
+    "indexTitle": "Colecciones curadas",
+    "indexSubtitle": "Temas seleccionados a mano en todo el catálogo: los rieles propios de la redacción.",
+    "filmCount": "{count} películas",
+    "empty": "Esta colección está vacía por ahora.",
+    "viewAll": "Ver todas las colecciones"
+  },
   "creatorProfile": {
     "eyebrow": "Perfil del creador",
     "founded": "Fundado en {year}",

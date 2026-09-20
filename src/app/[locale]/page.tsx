@@ -1,9 +1,14 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import HeroBanner from "@/components/home/HeroBanner";
 import DocumentaryGrid from "@/components/documentary/DocumentaryGrid";
+import CollectionRail from "@/components/collection/CollectionRail";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { createClient } from "@/lib/supabase/server";
-import { getContinueWatching, getDocumentaries } from "@/lib/data/catalog";
+import {
+  getCollections,
+  getContinueWatching,
+  getDocumentaries,
+} from "@/lib/data/catalog";
 
 const FEATURE_KEYS = ["noAds", "payPerMinute", "community"] as const;
 
@@ -33,6 +38,7 @@ export default async function HomePage({ params }: HomePageProps) {
   const progressBySlug = Object.fromEntries(
     continueItems.map((item) => [item.documentary.slug, item.progressRatio]),
   );
+  const collections = await getCollections(locale);
 
   return (
     <div>
@@ -64,6 +70,9 @@ export default async function HomePage({ params }: HomePageProps) {
           <DocumentaryGrid documentaries={rest} />
         </div>
       </section>
+
+      {/* kuraterede samlinger — redaktionens tematiske riller */}
+      <CollectionRail collections={collections} />
 
       <section className="mx-auto max-w-6xl px-6 pb-8">
         <SectionHeading eyebrow={t("how.eyebrow")} title={t("how.title")} />

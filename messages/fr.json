@@ -92,6 +92,14 @@
     "films": "{count} films",
     "views": "{count} vues"
   },
+  "collections": {
+    "railTitle": "Sélections",
+    "indexTitle": "Sélections thématiques",
+    "indexSubtitle": "Des thèmes choisis à la main dans tout le catalogue : les rails de la rédaction.",
+    "filmCount": "{count} films",
+    "empty": "Cette sélection est vide pour l'instant.",
+    "viewAll": "Toutes les sélections"
+  },
   "creatorProfile": {
     "eyebrow": "Profil du créateur",
     "founded": "Fondé en {year}",

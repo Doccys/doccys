@@ -92,6 +92,14 @@
     "films": "{count} filmer",
     "views": "{count} visningar"
   },
+  "collections": {
+    "railTitle": "Samlingar",
+    "indexTitle": "Kurerade samlingar",
+    "indexSubtitle": "Handplockade teman över hela katalogen — redaktionens egna räls.",
+    "filmCount": "{count} filmer",
+    "empty": "Den här samlingen är tom just nu.",
+    "viewAll": "Se alla samlingar"
+  },
   "creatorProfile": {
     "eyebrow": "Skaparprofil",
     "founded": "Grundat {year}",

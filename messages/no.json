@@ -92,6 +92,14 @@
     "films": "{count} filmer",
     "views": "{count} visninger"
   },
+  "collections": {
+    "railTitle": "Samlinger",
+    "indexTitle": "Kuraterte samlinger",
+    "indexSubtitle": "Håndplukkede temaer på tvers av kataloget — redaksjonens egne riller.",
+    "filmCount": "{count} filmer",
+    "empty": "Samlingen er tom for øyeblikket.",
+    "viewAll": "Se alle samlinger"
+  },
   "creatorProfile": {
     "eyebrow": "Skaperprofil",
     "founded": "Grunnlagt {year}",

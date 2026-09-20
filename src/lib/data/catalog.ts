@@ -23,6 +23,7 @@ import type {
 } from "@/lib/supabase/database.types";
 import type {
   ContinueWatchingItem,
+  Collection,
   Creator,
   CreatorApplication,
   CreatorStats,
@@ -224,6 +225,122 @@ export async function getCreatorStats(handle: string): Promise<CreatorStats> {
     validCompletions,
     avgCompletionRate: totalViews > 0 ? totalCompletions / totalViews : 0,
   };
+}
+
+/* ---------- Kuraterede samlinger ---------- */
+/*
+ * Samlinger er redaktionsdata (dashboard-only, offentlig læsning).
+ * documentaries' RLS er select using (true) — kladder skjules HER
+ * af status-filtret i koden, ikke af databasen, så en kladde
+ * aldrig kan dukke op i en offentlig samling.
+ */
+
+/** indre join-type fra det indlejrede katalog-kald nedenfor */
+interface CollectionJoinRow {
+  id: string;
+  slug: string;
+  title: string;
+  title_i18n: Record<string, string> | null;
+  description: string;
+  description_i18n: Record<string, string> | null;
+  sort_order: number;
+  collection_films: {
+    sort_order: number;
+    documentary_slug: string;
+    documentaries: {
+      slug: string;
+      status: string;
+      gradient: string;
+      poster_url: string | null;
+    } | null;
+  }[] | null;
+}
+
+function toCollection(row: CollectionJoinRow, locale?: string): Collection {
+  const films = (row.collection_films ?? [])
+    .filter((f) => f.documentaries?.status === "published")
+    .sort((a, b) => a.sort_order - b.sort_order);
+  const first = films[0]?.documentaries ?? null;
+  return {
+    id: row.id,
+    slug: row.slug,
+    title: localizedText(row.title, row.title_i18n, locale),
+    description: localizedText(row.description, row.description_i18n, locale),
+    filmCount: films.length,
+    previewGradient: first?.gradient ?? "from-[#232526] via-[#414345] to-[#6b6d70]",
+    previewPosterUrl: first?.poster_url ?? null,
+    previewFilmSlug: first?.slug ?? null,
+  };
+}
+
+/** Alle samlinger i redaktionens rækkefølge — med filmantal og preview. */
+export async function getCollections(locale?: string): Promise<Collection[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("collections")
+    .select(
+      "id, slug, title, title_i18n, description, description_i18n, sort_order, "
+        + "collection_films(sort_order, documentary_slug, "
+        + "documentaries(slug, status, gradient, poster_url))",
+    )
+    .order("sort_order");
+  if (error) {
+    console.warn("getCollections:", error.message);
+    return [];
+  }
+  return (data as unknown as CollectionJoinRow[]).map((row) =>
+    toCollection(row, locale),
+  );
+}
+
+/**
+ * Én samling + dens publicerede film i redaktionens rækkefølge.
+ * Null = ukendt slug. Tom film-liste er gyldig (empty-tilstand på
+ * temasiden) — f.eks. mens redaktionen bygger samlingen op.
+ */
+export async function getCollectionBySlug(
+  slug: string,
+  locale?: string,
+): Promise<{ collection: Collection; films: Documentary[] } | null> {
+  const supabase = await createClient();
+  const { data: row, error } = await supabase
+    .from("collections")
+    .select(
+      "id, slug, title, title_i18n, description, description_i18n, sort_order, "
+        + "collection_films(sort_order, documentary_slug, "
+        + "documentaries(slug, status, gradient, poster_url))",
+    )
+    .eq("slug", slug)
+    .maybeSingle();
+  if (error || !row) {
+    if (error) console.warn("getCollectionBySlug:", error.message);
+    return null;
+  }
+  const joinRow = row as unknown as CollectionJoinRow;
+  const collection = toCollection(joinRow, locale);
+  // fulde Documentary-objekter hentes som i getSavedFilms: slugs
+  // først (redaktionens rækkefølge), derefter filmene — og tilbage
+  // i samlingens orden
+  const slugs = (joinRow.collection_films ?? []).map(
+    (f) => f.documentary_slug,
+  );
+  if (slugs.length === 0) return { collection, films: [] };
+  const { data: films, error: filmsError } = await supabase
+    .from("documentaries")
+    .select("*")
+    .eq("status", "published")
+    .in("slug", slugs);
+  if (filmsError || !films) {
+    if (filmsError) console.warn("getCollectionBySlug:", filmsError.message);
+    return { collection, films: [] };
+  }
+  const bySlug = new Map(
+    films.map((f) => [f.slug, toDocumentary(f, locale)]),
+  );
+  const ordered = slugs
+    .map((s) => bySlug.get(s))
+    .filter((d): d is Documentary => d !== undefined);
+  return { collection: { ...collection, filmCount: ordered.length }, films: ordered };
 }
 
 /* ---------- Brugerdata (RLS: kun egne rækker) ---------- */
