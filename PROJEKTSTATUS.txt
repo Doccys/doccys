@@ -146,7 +146,7 @@ proacl) og er urørte.
   testkøb gennem webhook (indfri_koeb, stripe listen kører) er de
   reelle verifikationer. Rescue-proceduren er uændret.
 
-STØTTE-BEVIS + PAYOUT-RATE (20/9) — MIGRATION KØRT, VERIFICERET UDEFRA
+STØTTE-BEVIS + PAYOUT-RATE (20/9) — FULDT E2E-VERIFICERET (brugeren)
 Commits: 7517e87 (payout-rate-migrationen) + 76e4074 (beviset).
 Migration 20260920_payout_rate.sql KØRT af brugeren (20/9).
 Baggrund: pay-per-minute er Doccys' differentiator, men usynlig for
@@ -182,12 +182,12 @@ brugeren — efter en færdigset film viser playeren nu et bevis:
   SPOLING VERIFICERET: samme film med gennemspoling gav "1 min i
   alt" — kun naturlige fremskridt (delta <= 20 s) tæller; klientens
   complete-event trodseede afregn-genberegningen korrekt (saldo kun
-  trukket 1 min). AFVENTER: én normal afspilning (uden spoling)
-  hvor verdict bliver 'valid' → "X kr gik direkte til [skaber]"-
-  varianten → kryds-tjek af beløbet mod
-  view_sessions.watched_seconds × filmens payout_rate_dkk / 100.
-  Studiet: indtjening pr. film varierer nu efter rate (fx
-  isens-sidste-vinter 2,10 vs byen-under-betonen 1,60).
+  trukket 1 min). ALLE TRE SPOR VERIFICERET (20/9, efter
+  heuristics-v2): normal rolig afspilning → verdict 'valid' →
+  "0,04 kr gik direkte til [skaber]" vist, beløb kryds-tjekket mod
+  watched_seconds 112 × rate 2,00/100 = 0,0373 → 0,04 kr — skaberen
+  reelt kreditjeret. Studiet: indtjening pr. film varierer nu efter
+  rate (fx isens-sidste-vinter 2,10 vs byen-under-betonen 1,60).
 - FALSK POSITIV FUNDET + LUKKET (20/9, brugerens SQL-diagnostic):
   den ROLIGE 2-min-afspilning (watched_seconds 112) fik dommet
   'suspicious' udelukkende pga. botlike_cadence — jitter 0,016 s
