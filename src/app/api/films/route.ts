@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseEnv } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
-import { isPosterGradient } from "@/lib/data/gradients";
+import { POSTER_GRADIENTS, isPosterGradient } from "@/lib/data/gradients";
 import { isPlatformLocale } from "@/lib/i18n/languageNames";
 import type { DocumentaryRow } from "@/lib/supabase/database.types";
 
@@ -15,8 +15,10 @@ export const dynamic = "force-dynamic";
  * ALTID fra sessionen, og KUN ejeren af en godkendt skaber-profil
  * kan oprette film — betalende seere uden creator-status får 403.
  * RLS håndhæver det samme i databasen; ruten tilføjer validering,
- * ikke privilegier: tvungen draft-status, gradient-safelist,
- * slug-generering og video-URL bundet til uploaderens egen mappe.
+ * ikke privilegier: tvungen draft-status, gradient-safelist (med
+ * standard — tapetvalget er fjernet fra studie-UI'et), slug-
+ * generering, video-OG-plakat-URL bundet til uploaderens egen mappe
+ * samt plakat-PÅKRÆVET (uden foto blev filmene kedelige farveflader).
  */
 
 const MAX_TITLE = 200;
@@ -53,7 +55,13 @@ export async function POST(request: NextRequest) {
   const synopsis = body.synopsis;
   const year = body.year;
   const genres = body.genres;
-  const gradient = body.gradient;
+  // Tapetvalget er fjernet fra studie-UI'et (20/9) — gradienten lever
+  // dog videre som skjult baggrundslag under plakaten overalt i
+  // renderingen, så nye film får lydløst palettens standard.
+  const gradient =
+    typeof body.gradient === "string" && isPosterGradient(body.gradient)
+      ? body.gradient
+      : POSTER_GRADIENTS[0];
   const durationSec = body.durationSec;
   const videoUrl = body.videoUrl;
   const posterUrl = body.posterUrl;
@@ -97,12 +105,6 @@ export async function POST(request: NextRequest) {
   ) {
     return NextResponse.json(
       { error: "Vælg 1–5 genrer" },
-      { status: 400 },
-    );
-  }
-  if (typeof gradient !== "string" || !isPosterGradient(gradient)) {
-    return NextResponse.json(
-      { error: "Vælg en plakat-gradient fra paletten" },
       { status: 400 },
     );
   }
@@ -152,16 +154,12 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Plakat-billedet er VALGFRIPT — men skal, når det findes, ligeledes
-  // ligge i uploaderens egen mappe (film-posters-bucketet)
+  // Plakat-billedet er PÅKRÆVT (20/9) — og skal ligge i uploaderens
+  // egen mappe (film-posters-bucketet)
   const ownPosterPrefix = `${supabaseUrl}/storage/v1/object/public/film-posters/${user.id}/`;
-  if (
-    posterUrl !== undefined &&
-    posterUrl !== null &&
-    (typeof posterUrl !== "string" || !posterUrl.startsWith(ownPosterPrefix))
-  ) {
+  if (typeof posterUrl !== "string" || !posterUrl.startsWith(ownPosterPrefix)) {
     return NextResponse.json(
-      { error: "Plakat-URL hører ikke til din upload-mappe" },
+      { error: "Forsidebilledet mangler eller hører ikke til din upload-mappe" },
       { status: 400 },
     );
   }
@@ -207,8 +205,7 @@ export async function POST(request: NextRequest) {
       spoken_language: spoken,
       gradient,
       video_url: videoUrl,
-      poster_url:
-        typeof posterUrl === "string" && posterUrl ? posterUrl : null,
+      poster_url: posterUrl,
       status: "draft",
       sort_order: 1000,
     })

@@ -7,8 +7,9 @@
  * strengene bogstaveligt står i migrations-filerne). Derfor SKAL
  * paletten leve her som et importeret modul:
  *
- * - Studio-formularen lader skaberen vælge blandt disse swatches.
- * - /api/films afviser gradienter udenfor paletten.
+ * - /api/films tager palettens standard, når feltet mangler
+ *   (tapetvalget er fjernet fra studie-UI'et 20/9 — gradienten er
+ *   nu blot et skjult baggrundslag under plakaten).
  *
  * Tilføj nye gradienter her — aldrig direkte i databasen.
  */

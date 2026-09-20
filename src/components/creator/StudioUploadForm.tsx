@@ -12,7 +12,6 @@ import {
   POSTER_MIN_WIDTH,
   POSTER_MIN_HEIGHT,
 } from "@/lib/storage/filmPosters";
-import { POSTER_GRADIENTS } from "@/lib/data/gradients";
 import { FILM_GENRES } from "@/lib/data/genres";
 import {
   LOCALE_LANGUAGE_NAMES,
@@ -90,7 +89,6 @@ export default function StudioUploadForm({
   const [synopsis, setSynopsis] = useState("");
   const [spokenLanguage, setSpokenLanguage] = useState<string>("da");
   const [genres, setGenres] = useState<string[]>([]);
-  const [gradient, setGradient] = useState<string>(POSTER_GRADIENTS[0]);
   const [file, setFile] = useState<File | null>(null);
   const [durationSec, setDurationSec] = useState<number | null>(null);
   const [posterFile, setPosterFile] = useState<File | null>(null);
@@ -211,6 +209,13 @@ export default function StudioUploadForm({
     if (busy) return;
     setError(null);
 
+    // Forsidebilledet er PÅKRÆVT (20/9): tapetvalget er fjernet —
+    // uden et rigtigt foto blev filmenes kort kedelige farveflader.
+    if (!posterFile) {
+      setError(t("errors.posterRequired"));
+      return;
+    }
+
     if (
       !file ||
       durationSec === null ||
@@ -231,22 +236,19 @@ export default function StudioUploadForm({
       return;
     }
 
-    // 1) Upload forsidebillede (valgfrit — og lille, så det kommer
+    // 1) Upload forsidebilledet (PÅKRÆVT — og lille, så det kommer
     //    først). Failer det, er intet endnu spildt.
     setPhase("uploading");
-    let posterPath: string | null = null;
-    if (posterFile) {
-      const ext = POSTER_EXTENSIONS[posterFile.type];
-      posterPath = `${session.user.id}/${crypto.randomUUID()}.${ext}`;
-      const { error: posterError } = await supabase.storage
-        .from(FILM_POSTERS_BUCKET)
-        .upload(posterPath, posterFile);
-      if (posterError) {
-        console.warn("StudioUploadForm (plakat):", posterError.message);
-        setPhase("idle");
-        setError(t("errors.posterFailed"));
-        return;
-      }
+    const ext = POSTER_EXTENSIONS[posterFile.type];
+    const posterPath = `${session.user.id}/${crypto.randomUUID()}.${ext}`;
+    const { error: posterError } = await supabase.storage
+      .from(FILM_POSTERS_BUCKET)
+      .upload(posterPath, posterFile);
+    if (posterError) {
+      console.warn("StudioUploadForm (plakat):", posterError.message);
+      setPhase("idle");
+      setError(t("errors.posterFailed"));
+      return;
     }
 
     // 2) Upload video til egen mappe i film-videos-bucketet
@@ -263,12 +265,10 @@ export default function StudioUploadForm({
       console.warn("StudioUploadForm (upload):", uploadError.message);
       setPhase("idle");
       // Bedste indsats: plakaten er allerede oppe — fjern den igen
-      if (posterPath) {
-        await supabase.storage
-          .from(FILM_POSTERS_BUCKET)
-          .remove([posterPath])
-          .catch(() => undefined);
-      }
+      await supabase.storage
+        .from(FILM_POSTERS_BUCKET)
+        .remove([posterPath])
+        .catch(() => undefined);
       // Bucketens mime-tjek er skrapt (storage-js sender filens EGEN
       // type, ikke vores option) — omdøbte filer fejler her med 415.
       // En udløbet session giver en RLS-fejl i stedet.
@@ -290,13 +290,10 @@ export default function StudioUploadForm({
       .from(FILM_VIDEOS_BUCKET)
       .getPublicUrl(path);
     const publicUrl = `${data.publicUrl}`;
-    let posterUrl: string | undefined;
-    if (posterPath) {
-      const { data: posterData } = supabase.storage
-        .from(FILM_POSTERS_BUCKET)
-        .getPublicUrl(posterPath);
-      posterUrl = posterData.publicUrl;
-    }
+    const { data: posterData } = supabase.storage
+      .from(FILM_POSTERS_BUCKET)
+      .getPublicUrl(posterPath);
+    const posterUrl = posterData.publicUrl;
 
     try {
       const res = await fetch("/api/films", {
@@ -307,11 +304,10 @@ export default function StudioUploadForm({
           synopsis: synopsis.trim(),
           year: Number(year),
           genres,
-          gradient,
           durationSec,
           videoUrl: publicUrl,
           spokenLanguage,
-          ...(posterUrl ? { posterUrl } : {}),
+          posterUrl,
         }),
       });
       if (!res.ok) {
@@ -327,7 +323,6 @@ export default function StudioUploadForm({
       setSynopsis("");
       setSpokenLanguage("da");
       setGenres([]);
-      setGradient(POSTER_GRADIENTS[0]);
       setFile(null);
       setDurationSec(null);
       clearPoster();
@@ -339,9 +334,7 @@ export default function StudioUploadForm({
       // Rækken kunne ikke oprettes → fjern de netop uploadede
       // objekter, så intet hænger løst i bucketene
       await supabase.storage.from(FILM_VIDEOS_BUCKET).remove([path]);
-      if (posterPath) {
-        await supabase.storage.from(FILM_POSTERS_BUCKET).remove([posterPath]);
-      }
+      await supabase.storage.from(FILM_POSTERS_BUCKET).remove([posterPath]);
       setPhase("idle");
       setError(
         err instanceof Error && err.message !== "row"
@@ -438,30 +431,11 @@ export default function StudioUploadForm({
         />
       </label>
 
-      <div className="mt-5">
-        <span className="text-sm text-ash">{t("gradientLabel")}</span>
-        <div className="mt-2 flex flex-wrap gap-2.5">
-          {POSTER_GRADIENTS.map((candidate) => (
-            <button
-              key={candidate}
-              type="button"
-              onClick={() => setGradient(candidate)}
-              disabled={busy}
-              aria-label={t("gradientLabel")}
-              className={`h-10 w-16 rounded-lg bg-linear-to-br transition-transform ${
-                candidate
-              } ${
-                gradient === candidate
-                  ? "ring-2 ring-champagne"
-                  : "opacity-70 hover:opacity-100"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
-
       <label className="mt-5 block">
-        <span className="text-sm text-ash">{t("posterLabel")}</span>
+        <span className="text-sm text-ash">
+          {t("posterLabel")}{" "}
+          <span className="text-champagne">{t("requiredMark")}</span>
+        </span>
         <input
           ref={posterInputRef}
           type="file"
@@ -533,7 +507,7 @@ export default function StudioUploadForm({
       <div className="mt-6">
         <button
           type="submit"
-          disabled={busy || !file || durationSec === null}
+          disabled={busy || !file || !posterFile || durationSec === null}
           className="rounded-full bg-champagne px-6 py-2.5 text-sm font-medium text-noir transition-colors hover:bg-bone disabled:cursor-not-allowed disabled:opacity-40"
         >
           {busy ? t("working") : t("submit")}

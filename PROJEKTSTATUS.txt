@@ -208,6 +208,22 @@ brugeren — efter en færdigset film viser playeren nu et bevis:
   afspilning (side åbnet, intet tryk på play) skaber nu slet ingen
   session — også renere i produktion, ikke kun dev.
 
+STUDIO-UPLOAD: TAPETVALG FJERNET, FOTOSIDE PÅKRÆVET (20/9)
+Bruger-beslutning: film KED sig ud, når skabere valgte tapet i stedet
+for at uploade et billede — så tapetvælgeren (POSTER_GRADIENTS-swatches)
+er fjernet fra StudioUploadForm, og forsidebillede er nu PÅKRÆVET
+både i formularen (egen fejltekst errors.posterRequired + submit
+disabled uden plakat + "Påkrævet"-markering i champagne) og i /api/films
+(400 hvis posterUrl mangler/ikke ligger i egen mappe).
+- Gradient-KOLONNEN lever videre uændret: den er baggrundslag under
+  plakaten overalt i renderingen (kort, HeroBanner, OG-billede, embed,
+  samlinger) og Tailwind-klasserne skal kunne genereres — nye film
+  får lydløst palettens standard (POSTER_GRADIENTS[0]) fra API'en.
+  Eksisterende film uden plakat renderes som før. Ingen migration.
+- i18n: gradientLabel fjernet, posterHint omtydet til påkrævet,
+  requiredMark + errors.posterRequired tilføjet — i ALLE 8 filer.
+  tsc + i18n-verify ALLE TJEK GRØNNE.
+
 OPSLAGTAVLE (creator_posts) — VIRKER (bruger verificeret 19/9)
 Commit 179a23b + 7a716b1. Migration 20260918_creator_opslagstavle.sql
 ER KØRT af brugeren (18/9). Verificeret udefra: anon select OK (200),
