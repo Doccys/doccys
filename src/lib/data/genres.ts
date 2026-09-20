@@ -16,6 +16,8 @@ export const FILM_GENRES = [
   "Natur",
   "Eksperimentel",
   "Teknologi",
+  "Kultur",
+  "Mad",
 ] as const;
 
 export type FilmGenre = (typeof FILM_GENRES)[number];

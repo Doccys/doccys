@@ -359,7 +359,9 @@
     "Fællesskab": "Community",
     "Natur": "Nature",
     "Eksperimentel": "Experimental",
-    "Teknologi": "Technology"
+    "Teknologi": "Technology",
+    "Kultur": "Culture",
+    "Mad": "Food"
   },
   "countries": {
     "Island": "Iceland",
