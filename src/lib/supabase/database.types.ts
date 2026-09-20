@@ -355,6 +355,8 @@ export type CreditPurchaseRow = {
   status: string;
   /** koderens ejer hvis købet indfri en affiliate-henvisning */
   referrer_user_id: string | null;
+  /** faktureringsland (ISO 3166-1 alpha-2) fra Stripe — sættes af indfri_koeb ved 'paid' */
+  billing_country: string | null;
   created_at: string;
   paid_at: string | null;
 };

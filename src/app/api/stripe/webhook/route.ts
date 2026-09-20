@@ -43,9 +43,14 @@ export async function POST(request: NextRequest) {
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object as Stripe.Checkout.Session;
+      // faktureringslandet fra Stripe Tax-indsamlingen (ISO 3166-1
+      // alpha-2, fx 'DK') — gemmes på købsrækken til lande-statistik;
+      // null hvis checkout'en ingen adresse fik
+      const land = session.customer_details?.address?.country ?? null;
       // RPC'en håndterer ukendt session-id + replay → altid safe
       await service.rpc("indfri_koeb", {
         p_stripe_session_id: session.id,
+        p_billing_country: land,
       });
     } else if (event.type === "checkout.session.expired") {
       const session = event.data.object as Stripe.Checkout.Session;
