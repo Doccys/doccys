@@ -97,6 +97,16 @@ export interface WatchHistoryEntry {
 }
 
 /**
+ * Ét punkt i forsiden "Fortsæt se"-rille: filmen + hvor langt
+ * seeren kom. Positionen skrives af afregn_session ved afspilningens
+ * afslutning — se 20260920_fortsaet_se.
+ */
+export interface ContinueWatchingItem {
+  documentary: Documentary;
+  progressRatio: number;
+}
+
+/**
  * Ét opslag fra en creator til dens seere (opslagstavlen på
  * creatorsiden). Kun creatorens ejer-konto kan skrive — seere
  * læser. `pinned`-opslag vises øverst (ét pr. creator).

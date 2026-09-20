@@ -2,7 +2,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import HeroBanner from "@/components/home/HeroBanner";
 import DocumentaryGrid from "@/components/documentary/DocumentaryGrid";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { getDocumentaries } from "@/lib/data/catalog";
+import { createClient } from "@/lib/supabase/server";
+import { getContinueWatching, getDocumentaries } from "@/lib/data/catalog";
 
 const FEATURE_KEYS = ["noAds", "payPerMinute", "community"] as const;
 
@@ -18,9 +19,40 @@ export default async function HomePage({ params }: HomePageProps) {
   const documentaries = await getDocumentaries(locale);
   const [featured, ...rest] = documentaries;
 
+  // Forsidens første personalisering: "Fortsæt se"-rillen for
+  // loggede seere (uafsluttede film + hvor langt de kom). Anonyme
+  // besøgende ser den ikke — positionen gemmes i watch_history
+  // under brugerens RLS, så rillen kræver en konto.
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const continueItems = user
+    ? await getContinueWatching(user.id, locale)
+    : [];
+  const progressBySlug = Object.fromEntries(
+    continueItems.map((item) => [item.documentary.slug, item.progressRatio]),
+  );
+
   return (
     <div>
       {featured && <HeroBanner documentary={featured} />}
+
+      {continueItems.length > 0 && (
+        <section className="mx-auto max-w-6xl px-6 pt-16">
+          <SectionHeading
+            eyebrow={t("continue.eyebrow")}
+            title={t("continue.title")}
+            subtitle={t("continue.subtitle")}
+          />
+          <div className="mt-10">
+            <DocumentaryGrid
+              documentaries={continueItems.map((item) => item.documentary)}
+              progressBySlug={progressBySlug}
+            />
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto max-w-6xl px-6 py-16">
         <SectionHeading

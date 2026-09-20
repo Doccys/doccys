@@ -56,6 +56,11 @@
       "watchNow": "Watch now",
       "aboutCreator": "About the creator"
     },
+    "continue": {
+      "eyebrow": "Keep watching",
+      "title": "Where you left off",
+      "subtitle": "Playback picks up automatically right where you stopped."
+    },
     "catalog": {
       "eyebrow": "The catalogue",
       "title": "Independent documentaries",

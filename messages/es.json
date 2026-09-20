@@ -56,6 +56,11 @@
       "watchNow": "Ver ahora",
       "aboutCreator": "Sobre el creador"
     },
+    "continue": {
+      "eyebrow": "Seguir viendo",
+      "title": "Donde lo dejaste",
+      "subtitle": "La reproducción continúa automáticamente donde la dejaste."
+    },
     "catalog": {
       "eyebrow": "El catálogo",
       "title": "Documentales independientes",

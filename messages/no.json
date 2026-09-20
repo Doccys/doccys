@@ -56,6 +56,11 @@
       "watchNow": "Se nå",
       "aboutCreator": "Om skaperen"
     },
+    "continue": {
+      "eyebrow": "Fortsett å se",
+      "title": "Der du slapp",
+      "subtitle": "Avspillingen fortsetter automatisk der du slapp."
+    },
     "catalog": {
       "eyebrow": "Katalogen",
       "title": "Uavhengige dokumentarer",

@@ -4,12 +4,30 @@ import type { Documentary } from "@/lib/types";
 import { formatDuration } from "@/lib/utils/format";
 import { localizedGenres } from "@/lib/i18n/content";
 
-export default async function DocumentaryCard({ documentary }: { documentary: Documentary }) {
+export default async function DocumentaryCard({
+  documentary,
+  progressRatio,
+}: {
+  documentary: Documentary;
+  /** 0–1 hvis filmen er påbegyndt ("Fortsæt se") — linket genoptager da ved positionen */
+  progressRatio?: number;
+}) {
   const locale = await getLocale();
   const genres = await localizedGenres(documentary.genres, locale);
 
+  // Genoptagelses-position: seekFromUrlParam kræver et HELTAL > 0,
+  // derfor Math.floor + guard — små ratioer (eller 0) linker normalt.
+  const resumeSec =
+    progressRatio && progressRatio > 0 && documentary.durationSec > 0
+      ? Math.floor(progressRatio * documentary.durationSec)
+      : 0;
+  const href =
+    resumeSec > 0
+      ? `/watch/${documentary.slug}?t=${resumeSec}`
+      : `/watch/${documentary.slug}`;
+
   return (
-    <Link href={`/watch/${documentary.slug}`} className="group block">
+    <Link href={href} className="group block">
       <div
         className={`relative aspect-[16/9] overflow-hidden rounded-lg border border-smoke bg-linear-to-br ${documentary.gradient} transition-transform duration-300 group-hover:-translate-y-1`}
       >
@@ -37,6 +55,18 @@ export default async function DocumentaryCard({ documentary }: { documentary: Do
             {genres.join(" · ")}
           </p>
         </div>
+        {/* hvor langt seeren kom (WatchHistoryList-stil) — kun for
+            påbegyndte film i "Fortsæt se"-rillen */}
+        {progressRatio !== undefined && progressRatio > 0 && (
+          <div className="absolute inset-x-0 bottom-0 h-1 bg-smoke/60">
+            <div
+              className="h-full bg-champagne"
+              style={{
+                width: `${Math.min(100, Math.round(progressRatio * 100))}%`,
+              }}
+            />
+          </div>
+        )}
       </div>
       <div className="mt-3 flex items-center justify-between text-sm text-ash">
         <span>{documentary.year}</span>

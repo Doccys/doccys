@@ -56,6 +56,11 @@
       "watchNow": "Se nu",
       "aboutCreator": "Om skaparen"
     },
+    "continue": {
+      "eyebrow": "Fortsätt titta",
+      "title": "Där du slutade",
+      "subtitle": "Uppspelningen fortsätter automatiskt där du slutade."
+    },
     "catalog": {
       "eyebrow": "Katalogen",
       "title": "Oberoende dokumentärer",

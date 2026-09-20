@@ -56,6 +56,11 @@
       "watchNow": "Regarder",
       "aboutCreator": "À propos du créateur"
     },
+    "continue": {
+      "eyebrow": "Continuer",
+      "title": "Là où vous vous êtes arrêté",
+      "subtitle": "La lecture reprend automatiquement là où vous vous êtes arrêté."
+    },
     "catalog": {
       "eyebrow": "Le catalogue",
       "title": "Documentaires indépendants",

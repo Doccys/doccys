@@ -56,6 +56,11 @@
       "watchNow": "Katso nyt",
       "aboutCreator": "Tietoa tekijästä"
     },
+    "continue": {
+      "eyebrow": "Jatka katsomista",
+      "title": "Jäit siihen",
+      "subtitle": "Toisto jatkuu automaattisesti siitä, mihin jäit."
+    },
     "catalog": {
       "eyebrow": "Katalogi",
       "title": "Itsenäiset dokumentit",

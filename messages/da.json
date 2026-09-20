@@ -56,6 +56,11 @@
       "watchNow": "Se nu",
       "aboutCreator": "Om skaberen"
     },
+    "continue": {
+      "eyebrow": "Fortsæt se",
+      "title": "Hvor du slap",
+      "subtitle": "Din afspilning genoptages automatisk, hvor du stoppede."
+    },
     "catalog": {
       "eyebrow": "Kataloget",
       "title": "Uafhængige dokumentarer",

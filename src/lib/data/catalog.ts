@@ -22,6 +22,7 @@ import type {
   WatchHistoryRow,
 } from "@/lib/supabase/database.types";
 import type {
+  ContinueWatchingItem,
   Creator,
   CreatorApplication,
   CreatorStats,
@@ -322,6 +323,61 @@ export async function getSavedFilms(
   return slugs
     .map((slug) => bySlug.get(slug))
     .filter((d): d is Documentary => d !== undefined);
+}
+
+/**
+ * "Fortsæt se"-rillen til forsiden: uafsluttede film, hvor seeren
+ * var kommet i gang (ratio ≥ 3 %) men ikke ( næsten ) færdig (< 95 %).
+ * Positionen skrives af afregn_session ved afspilningens afslutning.
+ * RLS sikrer, at kun egne rækker læses; kun publicerede film vises —
+ * en film der er trukket tilbage eller stadig kladde kan ikke
+ * genoptages fra forsiden.
+ */
+export async function getContinueWatching(
+  userId: string,
+  locale?: string,
+  limit = 10,
+): Promise<ContinueWatchingItem[]> {
+  const supabase = await createClient();
+  const { data: history, error } = await supabase
+    .from("watch_history")
+    .select("documentary_slug, progress_ratio")
+    .eq("user_id", userId)
+    .eq("completed", false)
+    .gte("progress_ratio", 0.03)
+    .lt("progress_ratio", 0.95)
+    .order("watched_at", { ascending: false })
+    .limit(limit);
+  if (error || !history || history.length === 0) {
+    if (error) console.warn("getContinueWatching:", error.message);
+    return [];
+  }
+  // watch_history er unik pr. (user, film) — slugs er distinkte
+  const slugs = history.map(
+    (row: { documentary_slug: string }) => row.documentary_slug,
+  );
+  const { data: films, error: filmsError } = await supabase
+    .from("documentaries")
+    .select("*")
+    .eq("status", "published")
+    .in("slug", slugs);
+  if (filmsError || !films) {
+    if (filmsError) console.warn("getContinueWatching:", filmsError.message);
+    return [];
+  }
+  const bySlug = new Map(
+    films.map((row) => [row.slug, toDocumentary(row, locale)]),
+  );
+  return history
+    .map(
+      (row: { documentary_slug: string; progress_ratio: string | number }) => {
+        const documentary = bySlug.get(row.documentary_slug);
+        return documentary
+          ? { documentary, progressRatio: Number(row.progress_ratio) }
+          : null;
+      },
+    )
+    .filter((i): i is ContinueWatchingItem => i !== null);
 }
 
 /**

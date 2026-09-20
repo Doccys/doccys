@@ -56,6 +56,11 @@
       "watchNow": "Jetzt ansehen",
       "aboutCreator": "Über den Creator"
     },
+    "continue": {
+      "eyebrow": "Weiterschauen",
+      "title": "Dort, wo du aufgehört hast",
+      "subtitle": "Die Wiedergabe macht automatisch dort weiter, wo du aufgehört hast."
+    },
     "catalog": {
       "eyebrow": "Der Katalog",
       "title": "Unabhängige Dokumentarfilme",
