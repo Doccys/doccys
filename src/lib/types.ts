@@ -211,6 +211,16 @@ export interface CreatorEarnings {
   films: CreatorFilmEarnings[];
 }
 
+/**
+ * Retention pr. decil fra film_retention-RPC'en (KUN creatorens
+ * ejer). deciles[i] = andelen i procent af de afsluttede afspil-
+ * ninger, der nåede decil i+1 (10 %, 20 %, … 100 %) af filmen.
+ */
+export interface FilmRetention {
+  sessions: number;
+  deciles: number[];
+}
+
 /* ---------- 2. View-validation / anti-fraud ---------- */
 
 /**

@@ -3,8 +3,10 @@ import StudioDeleteFilmButton from "@/components/creator/StudioDeleteFilmButton"
 import StudioSubtitleGenerator from "@/components/creator/StudioSubtitleGenerator";
 import StudioTrailerGenerator from "@/components/creator/StudioTrailerGenerator";
 import StudioShareRow from "@/components/creator/StudioShareRow";
+import StudioRetentionChart from "@/components/creator/StudioRetentionChart";
 import { getFilmSubtitleStatuses } from "@/lib/data/subtitles";
 import { getFilmTrailerStatus } from "@/lib/data/trailers";
+import { getFilmRetention, RETENTION_MIN_SESSIONS } from "@/lib/data/retention";
 import { LOCALE_LANGUAGE_NAMES } from "@/lib/i18n/languageNames";
 import type { Documentary } from "@/lib/types";
 
@@ -25,20 +27,22 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
       );
   }
 
-  // Undertekst- OG trailer-status hentes pr. film her — én gang til
-  // knapper, badges og sletning. Kun ejeren ser studiet, så alle
-  // rækker (også failed med fejlbesked) er relevante her.
+  // Undertekst-, trailer- OG retention-data hentes pr. film her —
+  // ét Promise.all til knapper, badges, sletning og grafen. Kun
+  // ejeren ser studiet, så alle rækker (også failed med fejlbesked)
+  // er relevante her.
   const filmsWithExtras = await Promise.all(
     films.map(async (film) => ({
       film,
       subtitleStatuses: await getFilmSubtitleStatuses(film.slug),
       trailerStatus: await getFilmTrailerStatus(film.slug),
+      retention: await getFilmRetention(film.slug),
     })),
   );
 
   return (
     <ul className="space-y-4">
-      {filmsWithExtras.map(({ film, subtitleStatuses, trailerStatus }) => {
+      {filmsWithExtras.map(({ film, subtitleStatuses, trailerStatus, retention }) => {
         const draft = film.status === "draft";
         const statusByLocale = new Map(
           subtitleStatuses.map((entry) => [entry.locale, entry]),
@@ -134,6 +138,28 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
                 det er det, gæster ser bag paywallen, og det, der
                 vises som video-kort, når filmen deles. */}
             <StudioTrailerGenerator slug={film.slug} status={trailerStatus} />
+
+            {/* Retention: drop-off pr. decil — hvor langt seerne
+                kom. Ejer-privat RPC (getFilmRetention afviser alle
+                andre); grafen tegnes kun med statistisk grundlag
+                (samme >= 5-tærskel som færdigheds-badget), ellers
+                en diskret bemærkning. Seeded film uden ejer-data
+                lander også her — RPC'en afviser dem. */}
+            <div className="mt-4 max-w-xl">
+              <p className="text-xs uppercase tracking-[0.3em] text-ash">
+                {t("retentionHeading")}
+              </p>
+              <p className="mt-1 text-xs leading-relaxed text-ash/70">
+                {t("retentionIntro")}
+              </p>
+              {retention && retention.sessions >= RETENTION_MIN_SESSIONS ? (
+                <StudioRetentionChart retention={retention} />
+              ) : (
+                <p className="mt-3 text-xs text-ash/70">
+                  {t("retentionEmpty")}
+                </p>
+              )}
+            </div>
 
             {/* Del & indlejr — kun for publicerede film: kladder har
                 intet offentligt watch-link at dele. */}
