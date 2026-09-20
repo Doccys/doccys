@@ -804,8 +804,12 @@ export type Database = {
       };
       afregn_session: {
         Args: { p_session_id: string };
-        /** jsonb: { watched_seconds } | { allerede_afregnet } */
-        Returns: unknown;
+        /**
+         * jsonb: { watched_seconds } — altid til stede, også ved
+         * 'allerede_afregnet'. Læses af validate-ruten til
+         * støtte-beviset.
+         */
+        Returns: { watched_seconds: number };
       };
       indfri_koeb: {
         Args: { p_stripe_session_id: string };

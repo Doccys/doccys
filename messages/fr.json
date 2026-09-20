@@ -166,6 +166,18 @@
     "earnings": "Gagné"
   },
   "watch": {
+    "playerNote": "Les données de visionnage sont enregistrées de manière structurée (pauses, sauts, pulsations, métadonnées de l'appareil et horodatages) et validées par le système anti-fraude de Doccys avant que vos minutes vues ne soient décomptées.",
+    "playerStartFailed": "Les données de visionnage n'ont pas pu démarrer — la lecture fonctionne toujours.",
+    "verdictValid": "✓ Visionnage validé — vos minutes vues comptent pour les revenus du créateur.",
+    "verdictSuspicious": "△ Le visionnage est signalé pour examen manuel par le système anti-fraude.",
+    "verdictInvalid": "✗ Visionnage refusé — les minutes ont été décomptées de votre solde, mais ne comptent pas pour les revenus du créateur.",
+    "verdictError": "La validation n'a pas pu aboutir pour le moment.",
+    "proofEyebrow": "Reçu de soutien",
+    "proofMinutes": "Vous avez regardé {minutes} min au total",
+    "proofSupport": "{amount} sont allés directement à {creator}",
+    "proofSupportUnnamed": "{amount} sont allés directement au créateur",
+    "proofNeutral": "{minutes} minutes ont été décomptées de votre solde",
+    "proofClose": "Fermer le reçu",
     "creator": "Créateur",
     "discussionEyebrow": "La communauté",
     "discussionTitle": "Commentaires et discussion",

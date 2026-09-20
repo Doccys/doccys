@@ -166,6 +166,18 @@
     "earnings": "Ganado"
   },
   "watch": {
+    "playerNote": "Los datos de visualización se registran de forma estructurada (pausas, saltos, pulsaciones, metadatos del dispositivo y marcas de tiempo) y los valida el sistema antifraude de Doccys antes de liquidar tus minutos vistos.",
+    "playerStartFailed": "No se pudieron iniciar los datos de visualización — la reproducción sigue funcionando.",
+    "verdictValid": "✓ Visualización validada — tus minutos vistos cuentan para las ganancias del creador.",
+    "verdictSuspicious": "△ La visualización está marcada para revisión manual del sistema antifraude.",
+    "verdictInvalid": "✗ Visualización rechazada — los minutos se descontaron de tu saldo, pero no cuentan para las ganancias del creador.",
+    "verdictError": "La validación no se pudo completar ahora mismo.",
+    "proofEyebrow": "Comprobante de apoyo",
+    "proofMinutes": "Viste {minutes} min en total",
+    "proofSupport": "{amount} fueron directamente a {creator}",
+    "proofSupportUnnamed": "{amount} fueron directamente al creador",
+    "proofNeutral": "{minutes} minutos se descontaron de tu saldo",
+    "proofClose": "Cerrar comprobante",
     "creator": "Creador",
     "discussionEyebrow": "La comunidad",
     "discussionTitle": "Comentarios y debate",

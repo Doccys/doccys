@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import type {
   DeviceMetadata,
   FilmSubtitleTrack,
@@ -9,6 +10,7 @@ import type {
   SessionVerdict,
 } from "@/lib/types";
 import { LOCALE_LANGUAGE_NAMES } from "@/lib/i18n/languageNames";
+import { formatCurrency } from "@/lib/utils/format";
 import {
   seekFromUrlParam,
   setSharedWatchSeconds,
@@ -19,12 +21,22 @@ const HEARTBEAT_INTERVAL_SEC = 10;
 interface VideoPlayerProps {
   documentarySlug: string;
   videoUrl: string;
+  /** Skaberens navn til støtte-beviset (undefined → unævnt i teksten) */
+  creatorName?: string;
+  /** Filmens sats pr. 100 sete minutter — bevisets beløb regnes heraf */
+  payoutRateDkk: number;
   /**
    * Klar-undertekster (kun 'ready'-rækker). Native <track>-elementer
    * giver browserens egen CC-menu gratis — ingen afspiller-UI at
    * vedligeholde. Tomt/undefined = ingen undertekster, som før.
    */
   subtitleTracks?: FilmSubtitleTrack[];
+}
+
+/** Bevis-data fra validate-ruten — kun sat når afregningen lykkedes */
+interface WatchProof {
+  verdict: SessionVerdict["verdict"];
+  watchedSeconds: number;
 }
 
 type EventExtra = Partial<
@@ -48,14 +60,19 @@ function collectDeviceMetadata(): DeviceMetadata {
 /**
  * Doccys' afspiller. Udover almindelig playback logger den struktureret
  * alle rå hændelser (afspil, pause, spoling, hjerteslag, tidsstempler,
- * enhedsmetadata) til anti-fraud-API'et, så en completion kan valideres,
- * før den udbetales til skaberen via pay-per-completion.
+ * enhedsmetadata) til anti-fraud-API'et. Ved enden afregnes sessionen
+ * server-side (pay-per-minute), og støtte-beviset viser hvor mange
+ * minutter seeren så — og hvad der gik direkte til skaberen.
  */
 export default function VideoPlayer({
   documentarySlug,
   videoUrl,
+  creatorName,
+  payoutRateDkk,
   subtitleTracks,
 }: VideoPlayerProps) {
+  const t = useTranslations("watch");
+  const locale = useLocale();
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const sessionRef = useRef<string | null>(null);
   const eventBufferRef = useRef<PlaybackEvent[]>([]);
@@ -67,6 +84,9 @@ export default function VideoPlayer({
   // søg (det gælder også ugyldige/for store tal).
   const initialSeekRef = useRef<number | null>(null);
   const [status, setStatus] = useState<string | null>(null);
+  // Støtte-beviset: vises som overlay over videoen, når en
+  // afregnet afspilning er slut (null = skjult)
+  const [proof, setProof] = useState<WatchProof | null>(null);
 
   // Delings-tidskoden læses ved første klient-render — window findes
   // ikke under SSR, og seekFromUrlParam vogter selv på det.
@@ -131,7 +151,7 @@ export default function VideoPlayer({
         const data = (await res.json()) as { sessionId: string };
         if (!cancelled) sessionRef.current = data.sessionId;
       } catch {
-        setStatus("Visningsdata kunne ikke startes — afspilningen virker stadig.");
+        setStatus(t("playerStartFailed"));
       }
     })();
     return () => {
@@ -160,6 +180,9 @@ export default function VideoPlayer({
   }, [recordEvent, flushEvents]);
 
   // 3) Færdigset: log completion, valider sessionen og vis resultatet.
+  //    Svaret fra validate-ruten bærer de afregnede sekunder med —
+  //    beløbsgrundlaget til støtte-beviset (kun for loggede seere;
+  //    anonyme får watchedSeconds null og intet bevis).
   const handleEnded = useCallback(async () => {
     recordEvent("complete");
     recordEvent("session_end");
@@ -170,18 +193,26 @@ export default function VideoPlayer({
       const res = await fetch(`/api/views/sessions/${sessionId}/validate`, {
         method: "POST",
       });
-      const verdict = (await res.json()) as SessionVerdict;
+      const verdict = (await res.json()) as SessionVerdict & {
+        watchedSeconds?: number | null;
+      };
       setStatus(
         verdict.verdict === "valid"
-          ? "✓ Visning valideret — completion tæller med til skaberens indtjening."
+          ? t("verdictValid")
           : verdict.verdict === "suspicious"
-            ? "△ Visningen er markeret til manuel gennemgang af anti-fraud-systemet."
-            : "✗ Visning afvist — completion er ikke talt med i statistikken.",
+            ? t("verdictSuspicious")
+            : t("verdictInvalid"),
       );
+      if (verdict.watchedSeconds && verdict.watchedSeconds > 0) {
+        setProof({
+          verdict: verdict.verdict,
+          watchedSeconds: verdict.watchedSeconds,
+        });
+      }
     } catch {
-      setStatus("Valideringen kunne ikke gennemføres lige nu.");
+      setStatus(t("verdictError"));
     }
-  }, [recordEvent, flushEvents]);
+  }, [recordEvent, flushEvents, t]);
 
   return (
     <div className="mx-auto w-full max-w-[calc((100dvh-12rem)*16/9)]">
@@ -266,10 +297,60 @@ export default function VideoPlayer({
             />
           ))}
         </video>
+
+        {/* Støtte-beviset: end-skærm over videoen efter en afregnet
+            afspilning. Beløbs-claimet ("gik direkte til skaberen")
+            vises KUN ved verdict 'valid' — creator_indtjening tæller
+            kun valid-sessioner, så andet ville være løgn; invalid/
+            suspicious får den neutrale variant. */}
+        {proof && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-noir/90 px-6">
+            <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-2xl border border-champagne/40 bg-onyx px-8 py-8 text-center">
+              <p className="text-[11px] uppercase tracking-[0.25em] text-champagne">
+                {t("proofEyebrow")}
+              </p>
+              <p className="font-display text-2xl text-bone">
+                {t("proofMinutes", {
+                  minutes: Math.round(proof.watchedSeconds / 60),
+                })}
+              </p>
+              {proof.verdict === "valid" ? (
+                <p className="text-sm leading-relaxed text-ash">
+                  {creatorName
+                    ? t("proofSupport", {
+                        amount: formatCurrency(
+                          (proof.watchedSeconds / 60) * payoutRateDkk / 100,
+                          locale,
+                        ),
+                        creator: creatorName,
+                      })
+                    : t("proofSupportUnnamed", {
+                        amount: formatCurrency(
+                          (proof.watchedSeconds / 60) * payoutRateDkk / 100,
+                          locale,
+                        ),
+                      })}
+                </p>
+              ) : (
+                <p className="text-sm leading-relaxed text-ash">
+                  {t("proofNeutral", {
+                    minutes: Math.round(proof.watchedSeconds / 60),
+                  })}
+                </p>
+              )}
+              <button
+                type="button"
+                onClick={() => setProof(null)}
+                className="mt-2 rounded-full bg-champagne px-6 py-2.5 text-sm font-semibold text-onyx transition-colors hover:bg-champagne/85"
+              >
+                {t("proofClose")}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
       <p className="mt-3 text-xs leading-relaxed text-ash">
-        {status ??
-          "Visningsdata logges struktureret (pauser, spoling, hjerteslag, enhedsmetadata og tidsstempler) og valideres af Doccys' anti-fraud-system, før en completion udbetales."}
+        {status ?? t("playerNote")}
       </p>
     </div>
   );

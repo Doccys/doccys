@@ -166,6 +166,18 @@
     "earnings": "Ansaittu"
   },
   "watch": {
+    "playerNote": "Katselutiedot kirjataan jäsennellysti (taukojen, kelailun, sykäysten, laitteiden metatietojen ja aikaleimojen osalta), ja Doccysin petostentorjuntajärjestelmä vahvistaa ne ennen katseltujen minuuttien veloittamista.",
+    "playerStartFailed": "Katselutietoja ei saatu käyntiin — toisto toimii silti.",
+    "verdictValid": "✓ Katselu vahvistettu — katsellut minuuttisi lasketaan tekijän tuloihin.",
+    "verdictSuspicious": "△ Katselu on merkitty petostentorjuntajärjestelmän manuaaliseen tarkistukseen.",
+    "verdictInvalid": "✗ Katselu hylätty — minuutit on veloitettu saldostasi, mutta niitä ei lasketa tekijän tuloihin.",
+    "verdictError": "Vahvistusta ei voitu suorittaa juuri nyt.",
+    "proofEyebrow": "Tukikuitti",
+    "proofMinutes": "Katsoit yhteensä {minutes} min",
+    "proofSupport": "{amount} meni suoraan tekijälle {creator}",
+    "proofSupportUnnamed": "{amount} meni suoraan tekijälle",
+    "proofNeutral": "{minutes} minuuttia on veloitettu saldostasi",
+    "proofClose": "Sulje kuitti",
     "creator": "Tekijä",
     "discussionEyebrow": "Yhteisö",
     "discussionTitle": "Kommentit ja keskustelu",

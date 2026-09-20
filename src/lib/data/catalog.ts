@@ -70,6 +70,8 @@ function toDocumentary(row: DocumentaryRow, locale?: string): Documentary {
     status: row.status as Documentary["status"],
     createdAt: row.created_at,
     finishRate: null,
+    // numeric → string fra Postgres — satsen pr. 100 sete minutter
+    payoutRateDkk: Number(row.payout_rate_dkk),
     stats: {
       totalViews: row.total_views,
       totalCompletions: row.total_completions,

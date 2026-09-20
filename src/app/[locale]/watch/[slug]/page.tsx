@@ -136,6 +136,11 @@ export default async function WatchPage({ params }: WatchPageProps) {
           documentarySlug={documentary.slug}
           videoUrl={documentary.videoUrl}
           subtitleTracks={tracksWithDefault}
+          // Støtte-beviset: skaberens navn og filmens sats pr. 100
+          // sete minutter — beløbet efter en afspilning regnes i
+          // klienten ud fra afregningens watched_seconds
+          creatorName={creator?.name}
+          payoutRateDkk={documentary.payoutRateDkk}
         />
       );
     }

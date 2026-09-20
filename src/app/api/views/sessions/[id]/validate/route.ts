@@ -48,11 +48,17 @@ export async function POST(
 
   const hasCompleteEvent = session.events.some((e) => e.type === "complete");
 
+  // Afregnede sekunder til støtte-beviset — kun sat for loggede
+  // seere, hvor afregn_session rent faktisk blev kaldt
+  let afregnedeSekunder: number | null = null;
+
   if (user && session.userId === user.id) {
     // Logget seer: afregn forbruget atomisk i RPC'en — den skriver
     // watched_seconds og sætter status completed/abandoned ud fra
-    // om der er kommet et 'complete'-event
-    const { error } = await supabase.rpc("afregn_session", {
+    // om der er kommet et 'complete'-event. Returværdien sendes med
+    // til klienten: støtte-beviset i playeren viser de afregnede
+    // minutter (også ved 'allerede_afregnet' — RPC'en svarer altid).
+    const { data, error } = await supabase.rpc("afregn_session", {
       p_session_id: id,
     });
     if (error) {
@@ -61,8 +67,11 @@ export async function POST(
       // så sessionen ikke hænger i 'active' (saldoen trækkes så aldrig)
       await doccysStore.finishSession(id, hasCompleteEvent ? "completed" : "abandoned");
     }
+    afregnedeSekunder =
+      typeof data?.watched_seconds === "number" ? data.watched_seconds : null;
   } else {
-    // Anonym seer: ingen saldo at afregne — status som før
+    // Anonym seer: ingen saldo at afregne — status som før (intet
+    // bevis: der er intet forbrug at vise)
     await doccysStore.finishSession(id, "completed");
   }
 
@@ -72,5 +81,8 @@ export async function POST(
     }
   }
 
-  return NextResponse.json(verdict);
+  return NextResponse.json({
+    ...verdict,
+    watchedSeconds: afregnedeSekunder,
+  });
 }

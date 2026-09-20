@@ -166,6 +166,18 @@
     "earnings": "Verdient"
   },
   "watch": {
+    "playerNote": "Wiedergabedaten werden strukturiert protokolliert (Pausen, Springen, Herzschläge, Gerätemetadaten und Zeitstempel) und von Doccys' Anti-Betrug-System validiert, bevor deine gesehenen Minuten abgerechnet werden.",
+    "playerStartFailed": "Wiedergabedaten konnten nicht gestartet werden — die Wiedergabe funktioniert weiterhin.",
+    "verdictValid": "✓ Wiedergabe validiert — deine gesehenen Minuten zählen zu den Einnahmen des Urhebers.",
+    "verdictSuspicious": "△ Die Wiedergabe ist zur manuellen Prüfung durch das Anti-Betrug-System markiert.",
+    "verdictInvalid": "✗ Wiedergabe abgelehnt — die Minuten wurden von deinem Guthaben abgerechnet, zählen aber nicht zu den Einnahmen des Urhebers.",
+    "verdictError": "Die Validierung konnte gerade nicht abgeschlossen werden.",
+    "proofEyebrow": "Unterstützungs-Beleg",
+    "proofMinutes": "Du hast insgesamt {minutes} Min. gesehen",
+    "proofSupport": "{amount} gingen direkt an {creator}",
+    "proofSupportUnnamed": "{amount} gingen direkt an den Urheber",
+    "proofNeutral": "{minutes} Minuten wurden von deinem Guthaben abgerechnet",
+    "proofClose": "Beleg schließen",
     "creator": "Creator",
     "discussionEyebrow": "Die Community",
     "discussionTitle": "Kommentare & Diskussion",

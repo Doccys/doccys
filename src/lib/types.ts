@@ -66,6 +66,13 @@ export interface Documentary {
    * de seedede stats-kolonner.
    */
   finishRate: number | null;
+  /**
+   * Skaberens sats pr. 100 sete minutter (kr) — SANDHEDEN for
+   * indtjeningen siden 20260920_payout_rate (creator_indtjening og
+   * støtte-beviset bruger begge denne kolonne). numeric fra
+   * Postgres, mappet med Number().
+   */
+  payoutRateDkk: number;
   /** ISO-tidsstempel fra created_at — bruges af VideoObject-JSON-LD */
   createdAt: string;
 }

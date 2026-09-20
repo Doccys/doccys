@@ -166,6 +166,18 @@
     "earnings": "Intjänat"
   },
   "watch": {
+    "playerNote": "Visningsdata loggas strukturerat (pauser, spolningar, hjärtslag, enhetsmetadata och tidsstämplar) och valideras av Doccys anti-fraudsystem innan dina sedda minuter debiteras.",
+    "playerStartFailed": "Visningsdata kunde inte startas — uppspelningen fungerar fortfarande.",
+    "verdictValid": "✓ Visning validerad — dina sedda minuter räknas med i skaparens intäkter.",
+    "verdictSuspicious": "△ Visningen är markerad för manuell granskning av anti-fraudsystemet.",
+    "verdictInvalid": "✗ Visning avvisad — minuterna har debiterats ditt saldo, men räknas inte med i skaparens intäkter.",
+    "verdictError": "Valideringen kunde inte slutföras just nu.",
+    "proofEyebrow": "Stödkvitto",
+    "proofMinutes": "Du såg {minutes} min totalt",
+    "proofSupport": "{amount} gick direkt till {creator}",
+    "proofSupportUnnamed": "{amount} gick direkt till skaparen",
+    "proofNeutral": "{minutes} minuter har debiterats ditt saldo",
+    "proofClose": "Stäng kvittot",
     "creator": "Skapare",
     "discussionEyebrow": "Gemenskapen",
     "discussionTitle": "Kommentarer och diskussion",

@@ -166,6 +166,18 @@
     "earnings": "Earned"
   },
   "watch": {
+    "playerNote": "Viewing data is logged in a structured way (pauses, seeking, heartbeats, device metadata and timestamps) and validated by Doccys' anti-fraud system before your watched minutes are settled.",
+    "playerStartFailed": "Viewing data could not be started — playback still works.",
+    "verdictValid": "✓ Viewing validated — your watched minutes count towards the creator's earnings.",
+    "verdictSuspicious": "△ The viewing is flagged for manual review by the anti-fraud system.",
+    "verdictInvalid": "✗ Viewing rejected — the minutes were charged from your balance, but don't count towards the creator's earnings.",
+    "verdictError": "Validation could not be completed right now.",
+    "proofEyebrow": "Support receipt",
+    "proofMinutes": "You watched {minutes} min in total",
+    "proofSupport": "{amount} went directly to {creator}",
+    "proofSupportUnnamed": "{amount} went directly to the creator",
+    "proofNeutral": "{minutes} minutes were charged from your balance",
+    "proofClose": "Close receipt",
     "creator": "Creator",
     "discussionEyebrow": "The community",
     "discussionTitle": "Comments & discussion",
