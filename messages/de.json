@@ -92,6 +92,9 @@
     "films": "{count} Filme",
     "views": "{count} Aufrufe"
   },
+  "finishBadge": {
+    "label": "{percent} % haben sie zu Ende gesehen"
+  },
   "collections": {
     "railTitle": "Sammlungen",
     "indexTitle": "Kuratierte Sammlungen",

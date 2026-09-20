@@ -1,4 +1,4 @@
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { Documentary } from "@/lib/types";
 import { formatDuration } from "@/lib/utils/format";
@@ -13,6 +13,7 @@ export default async function DocumentaryCard({
   progressRatio?: number;
 }) {
   const locale = await getLocale();
+  const badgeT = await getTranslations("finishBadge");
   const genres = await localizedGenres(documentary.genres, locale);
 
   // Genoptagelses-position: seekFromUrlParam kræver et HELTAL > 0,
@@ -45,6 +46,17 @@ export default async function DocumentaryCard({
         {!documentary.posterUrl && (
           <span className="absolute left-3 top-2 select-none font-display text-4xl text-bone/10">
             {documentary.title[0]}
+          </span>
+        )}
+        {/* færdigheds-badge — reelle sessioner, kun ved >= 5 afsluttede
+            afspilninger (film_faedighedsstats); pillen viser kun
+            procenten, title-attributten forklarer den for hover/skærmlæser */}
+        {documentary.finishRate !== null && (
+          <span
+            title={badgeT("label", { percent: documentary.finishRate })}
+            className="absolute right-2 top-2 rounded-full border border-champagne/60 bg-noir/80 px-2 py-0.5 text-[10px] font-medium text-champagne"
+          >
+            {documentary.finishRate} %
           </span>
         )}
         <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-noir via-noir/80 to-transparent p-3 pt-8">

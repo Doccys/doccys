@@ -92,6 +92,9 @@
     "films": "{count} film",
     "views": "{count} visninger"
   },
+  "finishBadge": {
+    "label": "{percent} % så den færdig"
+  },
   "collections": {
     "railTitle": "Samlinger",
     "indexTitle": "Kuraterede samlinger",

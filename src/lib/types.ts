@@ -59,6 +59,13 @@ export interface Documentary {
    */
   status: DocumentaryStatus;
   stats: DocumentaryStats;
+  /**
+   * "Så X % den færdig" fra film_faedighedsstats-RPC'en — null når
+   * der er under 5 afsluttede afspilninger (intet statistisk grund-
+   * lag) eller statistikken ikke kan hentes. REELLE sessioner, ikke
+   * de seedede stats-kolonner.
+   */
+  finishRate: number | null;
   /** ISO-tidsstempel fra created_at — bruges af VideoObject-JSON-LD */
   createdAt: string;
 }

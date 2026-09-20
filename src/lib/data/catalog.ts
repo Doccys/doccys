@@ -69,12 +69,64 @@ function toDocumentary(row: DocumentaryRow, locale?: string): Documentary {
     videoUrl: row.video_url,
     status: row.status as Documentary["status"],
     createdAt: row.created_at,
+    finishRate: null,
     stats: {
       totalViews: row.total_views,
       totalCompletions: row.total_completions,
       validCompletions: row.valid_completions,
     },
   };
+}
+
+/*
+ * Færdigheds-badge: reelt view_sessions-aggregat fra
+ * film_faedighedsstats-RPC'en (security definer — view_sessions er
+ * ikke sommerbar under bruger-RLS). De seedede stats-kolonner må
+ * ALDRIG bruges hertil. Ét kald pr. katalogside (p_slug = null →
+ * alle publicerede film); tærsklen ≥ 5 afsluttede forhindrer
+ * "1 seer = 100 %"-social proof. Pre-migration (RPC mangler)
+ * fejler funktionen graceful: filmene returneres uden badges.
+ */
+const FAERDIG_MIN_AFSLUTTEDE = 5;
+
+interface FaerdighedsRow {
+  documentary_slug: string;
+  /** bigint fra Postgres kan komme som string via PostgREST */
+  afsluttede: string | number;
+  faerdige: string | number;
+}
+
+async function mergeFinishRates(
+  films: Documentary[],
+  slug?: string,
+): Promise<Documentary[]> {
+  if (films.length === 0) return films;
+  try {
+    const supabase = await createClient();
+    const { data, error } = await supabase.rpc("film_faedighedsstats", {
+      p_slug: slug ?? null,
+    });
+    if (error) throw new Error(error.message);
+    const bySlug = new Map(
+      (data as unknown as FaerdighedsRow[]).map((row) => [
+        row.documentary_slug,
+        row,
+      ]),
+    );
+    return films.map((film) => {
+      const row = bySlug.get(film.slug);
+      const afsluttede = row ? Number(row.afsluttede) : 0;
+      if (!row || afsluttede < FAERDIG_MIN_AFSLUTTEDE) return film;
+      return {
+        ...film,
+        finishRate: Math.round((Number(row.faerdige) * 100) / afsluttede),
+      };
+    });
+  } catch (err) {
+    // graceful: badges er pynt, aldrig en fejlside
+    console.warn("mergeFinishRates:", err);
+    return films;
+  }
 }
 
 function toCreatorApplication(row: CreatorApplicationRow): CreatorApplication {
@@ -114,7 +166,9 @@ export async function getDocumentaries(
     console.warn("getDocumentaries:", error.message);
     return [];
   }
-  return (data ?? []).map((row) => toDocumentary(row, locale));
+  return mergeFinishRates(
+    (data ?? []).map((row) => toDocumentary(row, locale)),
+  );
 }
 
 export async function getDocumentaryBySlug(
@@ -132,7 +186,7 @@ export async function getDocumentaryBySlug(
     if (error) console.warn("getDocumentaryBySlug:", error.message);
     return undefined;
   }
-  return toDocumentary(data, locale);
+  return (await mergeFinishRates([toDocumentary(data, locale)], slug))[0];
 }
 
 export async function getCreators(locale?: string): Promise<Creator[]> {
@@ -180,7 +234,9 @@ export async function getFilmsByCreator(
     console.warn("getFilmsByCreator:", error.message);
     return [];
   }
-  return (data ?? []).map((row) => toDocumentary(row, locale));
+  return mergeFinishRates(
+    (data ?? []).map((row) => toDocumentary(row, locale)),
+  );
 }
 
 /**
@@ -340,7 +396,11 @@ export async function getCollectionBySlug(
   const ordered = slugs
     .map((s) => bySlug.get(s))
     .filter((d): d is Documentary => d !== undefined);
-  return { collection: { ...collection, filmCount: ordered.length }, films: ordered };
+  const collectionFilms = await mergeFinishRates(ordered);
+  return {
+    collection: { ...collection, filmCount: collectionFilms.length },
+    films: collectionFilms,
+  };
 }
 
 /* ---------- Brugerdata (RLS: kun egne rækker) ---------- */
@@ -437,9 +497,11 @@ export async function getSavedFilms(
   const bySlug = new Map(
     films.map((row) => [row.slug, toDocumentary(row, locale)]),
   );
-  return slugs
-    .map((slug) => bySlug.get(slug))
-    .filter((d): d is Documentary => d !== undefined);
+  return mergeFinishRates(
+    slugs
+      .map((slug) => bySlug.get(slug))
+      .filter((d): d is Documentary => d !== undefined),
+  );
 }
 
 /**

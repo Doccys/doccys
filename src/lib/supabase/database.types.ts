@@ -822,6 +822,16 @@ export type Database = {
         /** true hvis auth.uid() har afregnet seertid på filmen (kvalitetsfilter for kommentarer) */
         Returns: boolean;
       };
+      film_faedighedsstats: {
+        Args: { p_slug?: string | null };
+        /** pr. publiceret film: { documentary_slug, afsluttede, faerdige } — offentligt badge-aggregat */
+        Returns: unknown;
+      };
+      film_retention: {
+        Args: { p_slug: string };
+        /** jsonb: { afsluttede, naaede: [10 pct-tal] } — KUN creatorens ejer (ejer-tjek i funktionen) */
+        Returns: unknown;
+      };
     };
     Enums: {
       [_ in never]: never;

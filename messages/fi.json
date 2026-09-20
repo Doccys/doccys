@@ -92,6 +92,9 @@
     "films": "{count} elokuvaa",
     "views": "{count} katselukertaa"
   },
+  "finishBadge": {
+    "label": "{percent} % katsoi sen loppuun"
+  },
   "collections": {
     "railTitle": "Kokoelmat",
     "indexTitle": "Kuraatoidut kokoelmat",

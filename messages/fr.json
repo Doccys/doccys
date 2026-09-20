@@ -92,6 +92,9 @@
     "films": "{count} films",
     "views": "{count} vues"
   },
+  "finishBadge": {
+    "label": "{percent} % l'ont vue jusqu'au bout"
+  },
   "collections": {
     "railTitle": "Sélections",
     "indexTitle": "Sélections thématiques",
