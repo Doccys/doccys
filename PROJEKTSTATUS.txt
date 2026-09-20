@@ -297,6 +297,30 @@ eksisterende tabeller/RPC'er.
   matcher overlayet, paywall-kr + sats-linje røgtestet i HTML.
 - tsc + i18n-verify ALLE TJEK GRØNNE pr. commit.
 
+VALUTA-VISNING (21/9) — BYGGET, LOKALVALUTA VED ALLE BELØB
+Brugeren generede sig over at en international platform taler DKK.
+Beslutning: DKK forbliver AFREGNINGSVALUTAen (Stripe-priser,
+payout-rater, ledger, moms — urørt; fuldt EUR-skift er evt.
+fremtidig re-pricing-beslutning), men internationale seere ser nu
+deres egen valuta som vejledende oversættelse. Commit b2324e1.
+- src/lib/fx/localCurrency.ts (NY): kurslogikken UDTRUKKET fra
+  CurrencyHint — detectLocalCurrency (browserens REGION, ikke
+  sidens sprog: DK → intet, DE → EUR, US → USD, SE → SEK…) +
+  fetchDkkRates (open.er-api.com, gratis/keyless, daglig
+  middelkurs, localStorage-cache pr. kalenderdag — samme nøgle
+  "doccys-fx-dkk" deles med studiet).
+- LocalPriceHint (NY, klient): "(≈ €0,59)" efter et DKK-beløb.
+  Progressive enhancement: dansk seer/ukendt region/fejlende kilde
+  → renderes INGENTING (server-renderet DKK-tal står altid alene,
+  intet hul i layoutet). Ingen i18n-nøgler — "≈" er sprogneutralt.
+- Koblet på 3 flader: paywallens kr-pris (begge varianter),
+  sats-linjen på watch-siden, pakkernes priser i PackPurchase.
+  Bevis-PNG + "Din støtte"-regnskab bevidst KUN DKK — det er
+  kvitteringer i afregningsvalutaen.
+- NB: den faktiske korttræk sker stadig i DKK (kunde-banken
+  omregner) — det gælder Enhver enkelt-valuta-platform, også
+  EUR-baserede over for f.eks. amerikanske kort.
+
 OPSLAGTAVLE (creator_posts) — VIRKER (bruger verificeret 19/9)
 Commit 179a23b + 7a716b1. Migration 20260918_creator_opslagstavle.sql
 ER KØRT af brugeren (18/9). Verificeret udefra: anon select OK (200),
