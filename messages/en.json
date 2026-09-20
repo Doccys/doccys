@@ -178,6 +178,7 @@
     "proofSupportUnnamed": "{amount} went directly to the creator",
     "proofNeutral": "{minutes} minutes were charged from your balance",
     "proofClose": "Close receipt",
+    "proofShare": "Download proof image",
     "creator": "Creator",
     "discussionEyebrow": "The community",
     "discussionTitle": "Comments & discussion",

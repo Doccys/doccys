@@ -347,6 +347,18 @@ export default function VideoPlayer({
                   })}
                 </p>
               )}
+              {/* Det delbare bevis: PNG-kort med samme tal som overlayet,
+                  genereret server-side fra seerens egne valid-sessioner.
+                  Same-origin <a download> bærer auth-cookies automatisk. */}
+              {proof.verdict === "valid" && (
+                <a
+                  href={`/api/bevis/${documentarySlug}?lang=${locale}`}
+                  download="doccys-bevis.png"
+                  className="rounded-full border border-champagne/60 px-6 py-2.5 text-sm font-medium text-champagne transition-colors hover:bg-champagne hover:text-noir"
+                >
+                  {t("proofShare")}
+                </a>
+              )}
               <button
                 type="button"
                 onClick={() => setProof(null)}
