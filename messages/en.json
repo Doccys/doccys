@@ -361,7 +361,13 @@
     "Eksperimentel": "Experimental",
     "Teknologi": "Technology",
     "Kultur": "Culture",
-    "Mad": "Food"
+    "Mad": "Food",
+    "Musik": "Music",
+    "Sand krim": "True crime",
+    "Rejse": "Travel",
+    "Videnskab": "Science",
+    "Sport": "Sports",
+    "Samfund": "Society"
   },
   "search": {
     "eyebrow": "Search",

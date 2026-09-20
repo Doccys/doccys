@@ -361,7 +361,13 @@
     "Eksperimentel": "Kokeellinen",
     "Teknologi": "Teknologia",
     "Kultur": "Kulttuuri",
-    "Mad": "Ruoka"
+    "Mad": "Ruoka",
+    "Musik": "Musiikki",
+    "Sand krim": "True crime",
+    "Rejse": "Matkailu",
+    "Videnskab": "Tiede",
+    "Sport": "Urheilu",
+    "Samfund": "Yhteiskunta"
   },
   "search": {
     "eyebrow": "Haku",

@@ -18,6 +18,12 @@ export const FILM_GENRES = [
   "Teknologi",
   "Kultur",
   "Mad",
+  "Musik",
+  "Sand krim",
+  "Rejse",
+  "Videnskab",
+  "Sport",
+  "Samfund",
 ] as const;
 
 export type FilmGenre = (typeof FILM_GENRES)[number];
