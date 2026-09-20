@@ -363,6 +363,19 @@
     "Kultur": "Culture",
     "Mad": "Food"
   },
+  "search": {
+    "eyebrow": "Search",
+    "placeholder": "Search films, creators, genres…",
+    "searchLabel": "Search",
+    "landingTitle": "What do you want to watch tonight?",
+    "landingHint": "Search films, creators and genres — or explore a genre directly.",
+    "exploreGenres": "Explore genres",
+    "resultsTitle": "Results for “{q}”",
+    "filmsSection": "Films",
+    "creatorsSection": "Creators",
+    "noResults": "No results for “{q}”.",
+    "noResultsHint": "Try another search term — or explore the genres below."
+  },
   "countries": {
     "Island": "Iceland",
     "Danmark": "Denmark"

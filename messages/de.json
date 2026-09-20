@@ -363,6 +363,19 @@
     "Kultur": "Kultur",
     "Mad": "Essen"
   },
+  "search": {
+    "eyebrow": "Suche",
+    "placeholder": "Filme, Creator, Genres suchen…",
+    "searchLabel": "Suchen",
+    "landingTitle": "Was möchtest du heute Abend sehen?",
+    "landingHint": "Durchsuche Filme, Creator und Genres — oder entdecke ein Genre direkt.",
+    "exploreGenres": "Genres entdecken",
+    "resultsTitle": "Ergebnisse für „{q}“",
+    "filmsSection": "Filme",
+    "creatorsSection": "Creator",
+    "noResults": "Keine Ergebnisse für „{q}“.",
+    "noResultsHint": "Probiere einen anderen Suchbegriff — oder entdecke die Genres unten."
+  },
   "countries": {
     "Island": "Island",
     "Danmark": "Dänemark"

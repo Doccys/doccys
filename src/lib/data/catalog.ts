@@ -14,6 +14,7 @@
  * sproget — de er en del af værket.
  */
 import { createClient } from "@/lib/supabase/server";
+import { FILM_GENRES } from "@/lib/data/genres";
 import type {
   CreatorApplicationRow,
   CreatorRow,
@@ -219,6 +220,109 @@ export async function getCreatorByHandle(
     return undefined;
   }
   return toCreator(data, locale);
+}
+
+/* ---------- Søgning ---------- */
+
+/** Resultat af en katalogsøgning — genrefilm er deduplikeret mod
+ *  titel/synopsis-resultaterne, så én film kun optræder ét sted. */
+export interface SearchResults {
+  films: Documentary[];
+  creators: Creator[];
+  genres: { genre: string; films: Documentary[] }[];
+}
+
+/**
+ * Renser en søgeterm til PostgRESTs `.or()`-filter: kommaer og
+ * parenteser er filtersyntaks selv (og ville sprænge udtrykket),
+ * citationstegn ligeledes, mens % og _ er LIKE-jokertegn. Whitespaces
+ * kollapses og længden binds (100), så et langt q ikke belaster DB'en.
+ */
+function sanitizeSearchTerm(q: string): string {
+  return q
+    .replace(/[%_\\,()"'*]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 100);
+}
+
+/**
+ * Søger kataloget: film på titel/synopsis, skabere på navn/handle/bio,
+ * genrer i koden mod FILM_GENRES (genres er frit text[] i databasen —
+ * ingen constraint at søge imod, og de kanoniske nøgler lever her).
+ * Genre-sektioner viser kun film UD OVER titel/synopsis-hitene.
+ * Alle tre stier filtrerer status='published' — forsvar oveni RLS,
+ * præcis som de øvrige offentlige kataloglæsninger.
+ */
+export async function searchCatalog(
+  query: string,
+  locale?: string,
+): Promise<SearchResults> {
+  const q = sanitizeSearchTerm(query);
+  if (!q) return { films: [], creators: [], genres: [] };
+
+  const supabase = await createClient();
+
+  const [filmRes, creatorRes] = await Promise.all([
+    supabase
+      .from("documentaries")
+      .select("*")
+      .eq("status", "published")
+      .or(`title.ilike.%${q}%,synopsis.ilike.%${q}%`)
+      .order("sort_order"),
+    supabase
+      .from("creators")
+      .select("*")
+      .or(`name.ilike.%${q}%,handle.ilike.%${q}%,bio.ilike.%${q}%`)
+      .order("name"),
+  ]);
+
+  if (filmRes.error) console.warn("searchCatalog (film):", filmRes.error.message);
+  if (creatorRes.error) {
+    console.warn("searchCatalog (skabere):", creatorRes.error.message);
+  }
+
+  const films = (filmRes.data ?? []).map((row) =>
+    toDocumentary(row, locale),
+  );
+  const creators = (creatorRes.data ?? []).map((row) =>
+    toCreator(row, locale),
+  );
+
+  // Genre-match: kanonisk dansk nøgle, case-insensitiv delmængde ("mad"
+  // matcher "Mad"). Hver matchet genre henter sine publicerede film.
+  const qLower = q.toLowerCase();
+  const matchedGenres = FILM_GENRES.filter((genre) =>
+    genre.toLowerCase().includes(qLower),
+  );
+
+  const genres: SearchResults["genres"] = [];
+  if (matchedGenres.length > 0) {
+    const seenSlugs = new Set(films.map((film) => film.slug));
+    for (const genre of matchedGenres) {
+      const { data, error } = await supabase
+        .from("documentaries")
+        .select("*")
+        .eq("status", "published")
+        .contains("genres", [genre])
+        .order("sort_order");
+      if (error) {
+        console.warn("searchCatalog (genre):", error.message);
+        continue;
+      }
+      const genreFilms = (data ?? [])
+        .map((row) => toDocumentary(row, locale))
+        .filter((film) => !seenSlugs.has(film.slug));
+      // Tomme genre-sektioner vises ikke — en overskrift uden film
+      // er støj. Første hit låser slugen mod senere genrer.
+      if (genreFilms.length > 0) {
+        for (const film of genreFilms) seenSlugs.add(film.slug);
+        genres.push({ genre, films: genreFilms });
+      }
+    }
+  }
+
+  return { films, creators, genres };
 }
 
 export async function getFilmsByCreator(

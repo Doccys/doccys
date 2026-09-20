@@ -363,6 +363,19 @@
     "Kultur": "Kultur",
     "Mad": "Mad"
   },
+  "search": {
+    "eyebrow": "Søgning",
+    "placeholder": "Søg film, skabere, genrer…",
+    "searchLabel": "Søg",
+    "landingTitle": "Hvad vil du se i aften?",
+    "landingHint": "Søg i film, skabere og genrer — eller udforsk en genre direkte.",
+    "exploreGenres": "Udforsk genrer",
+    "resultsTitle": "Resultater for “{q}”",
+    "filmsSection": "Film",
+    "creatorsSection": "Skabere",
+    "noResults": "Ingen resultater for “{q}”.",
+    "noResultsHint": "Prøv et andet søgeord — eller udforsk genrerne nedenfor."
+  },
   "countries": {
     "Island": "Island",
     "Danmark": "Danmark"

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Link } from "@/i18n/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import SectionHeading from "@/components/ui/SectionHeading";
+import CreatorCard from "@/components/creator/CreatorCard";
 import { getCreators, getFilmsByCreator } from "@/lib/data/catalog";
 import { localizedCountry } from "@/lib/i18n/content";
 
@@ -40,22 +40,12 @@ export default async function CreatorsPage({ params }: CreatorsPageProps) {
 
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         {cards.map(({ creator, country, filmCount }) => (
-          <Link
+          <CreatorCard
             key={creator.id}
-            href={`/creator/${creator.handle}`}
-            className="rounded-xl border border-smoke bg-onyx p-6 transition-colors hover:border-champagne/40"
-          >
-            <h3 className="font-display text-xl text-bone">{creator.name}</h3>
-            <p className="mt-1 text-xs text-ash">
-              @{creator.handle} · {country}
-            </p>
-            <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-ash">
-              {creator.bio}
-            </p>
-            <p className="mt-4 text-sm text-champagne">
-              {t("films", { count: filmCount })}
-            </p>
-          </Link>
+            creator={creator}
+            country={country}
+            filmsLabel={t("films", { count: filmCount })}
+          />
         ))}
       </div>
     </div>

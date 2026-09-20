@@ -363,6 +363,19 @@
     "Kultur": "Kulttuuri",
     "Mad": "Ruoka"
   },
+  "search": {
+    "eyebrow": "Haku",
+    "placeholder": "Etsi elokuvia, tekijöitä, genrejä…",
+    "searchLabel": "Hae",
+    "landingTitle": "Mitä haluat katsoa tänään?",
+    "landingHint": "Etsi elokuvista, tekijöistä ja genreistä — tai tutustu genreen suoraan.",
+    "exploreGenres": "Tutustu genreihin",
+    "resultsTitle": "Tulokset haulle ”{q}”",
+    "filmsSection": "Elokuvat",
+    "creatorsSection": "Tekijät",
+    "noResults": "Ei tuloksia haulle ”{q}”.",
+    "noResultsHint": "Kokeile toista hakusanaa — tai tutustu genreihin alla."
+  },
   "countries": {
     "Island": "Islanti",
     "Danmark": "Tanska"
