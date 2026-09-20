@@ -135,10 +135,16 @@ export default function VideoPlayer({
     }
   }, []);
 
-  // 1) Start session hos serveren, så alle hændelser kan tilordnes ét ID.
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
+  // 1) Sessionen oprettes LAZY ved første play — ikke ved mount. En
+  //    mount-oprettelse efterlod en forladt 'active'-række, hver gang
+  //    en side blev åbnet uden at der blev set noget (og i dev to
+  //    rækker pga. StrictMode-dobbeltmount). Først ved reelt play er
+  //    der noget at logge; tidlige hændelser (selve play-eventet) ligger
+  //    allerede i bufferen og skylles straks efter, at ID'et findes.
+  const sessionStartingRef = useRef<Promise<void> | null>(null);
+  const ensureSession = useCallback(async () => {
+    if (sessionRef.current || sessionStartingRef.current) return;
+    sessionStartingRef.current = (async () => {
       try {
         const res = await fetch("/api/views/sessions", {
           method: "POST",
@@ -149,15 +155,17 @@ export default function VideoPlayer({
           }),
         });
         const data = (await res.json()) as { sessionId: string };
-        if (!cancelled) sessionRef.current = data.sessionId;
+        sessionRef.current = data.sessionId;
+        void flushEvents();
       } catch {
         setStatus(t("playerStartFailed"));
+      } finally {
+        // Nulstilles også ved fejl, så et nyt play-forsøg kan prøve igen.
+        sessionStartingRef.current = null;
       }
     })();
-    return () => {
-      cancelled = true;
-    };
-  }, [documentarySlug]);
+    await sessionStartingRef.current;
+  }, [documentarySlug, flushEvents, t]);
 
   // 2) Ved side-lukning: log session_end, skyl bufferen og send en
   //    validate-beacon, så forbruget afregnes selv når taben lukkes
@@ -245,6 +253,7 @@ export default function VideoPlayer({
           onPlay={() => {
             const video = videoRef.current;
             lastHeartbeatRef.current = video?.currentTime ?? 0;
+            void ensureSession();
             recordEvent("play", { playbackRate: video?.playbackRate });
           }}
           onPause={() => {

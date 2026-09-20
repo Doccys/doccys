@@ -197,12 +197,16 @@ brugeren — efter en færdigset film viser playeren nu et bevis:
   på en reel visning + completed aldrig sat. FIX: ELLER→OG (både
   ratio >= 0,8 OG jitter < 0,05), VALIDATION_MODEL_VERSION bumpet
   til heuristics-v2. Gamle domme i DB beholder v1-stemplet.
-- StrictMode-sidefund (20/9): hver watch-sideindlæsning i dev skaber
-  to session-rækker ~10-70 ms fra hinanden (session-start-useEffect
-  fires to gange) — den anden bliver en forladt 'active'-zombie med
-  0 hændelser. Har ingen økonomisk/stats-mæssig effekt i dag (alle
-  RPC'er filtrerer status <> 'active'), men roder i rådata. Muligt
-  fix senere: opret sessionen først ved første play-event.
+- StrictMode-sidefund (20/9) + LUKKET: hver watch-sideindlæsning
+  skabte session-rækker ved MOUNT (~10-70 ms fra hinanden i dev pga.
+  StrictMode-dobbeltmount) — den ene blev en forladt 'active'-zombie
+  med 0 hændelser. Har ingen økonomisk/stats-mæssig effekt (alle
+  RPC'er filtrerer status <> 'active'), men rodede i rådata.
+  FIX: sessionen oprettes nu LAZY ved første play-event (ensureSession
+  i VideoPlayer) — aldrig ved mount, og play-hændelsen + øvrige buffer-
+  hændelser skylles straks efter, at ID'et findes. Afspilning uden
+  afspilning (side åbnet, intet tryk på play) skaber nu slet ingen
+  session — også renere i produktion, ikke kun dev.
 
 OPSLAGTAVLE (creator_posts) — VIRKER (bruger verificeret 19/9)
 Commit 179a23b + 7a716b1. Migration 20260918_creator_opslagstavle.sql
