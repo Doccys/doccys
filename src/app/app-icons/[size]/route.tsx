@@ -7,8 +7,8 @@ import { ImageResponse } from "next/og";
  *   /app-icons/192  → manifest-ikon (Android)
  *   /app-icons/512  → manifest-ikon (Android / splash)
  *
- * Motivet er brand-market fra DoccysMark (objektivring + seksbladet
- * blænde), her tegnet med fast champagne-farve — satori (next/og)
+ * Motivet er brand-market fra DoccysMark (objektivring + udfyldt
+ * play-trianglen), her tegnet med fast champagne-farve — satori (next/og)
  * tager ikke gradient-<defs> i SVG, så guld-gradienten er flad.
  * Ruten matcher ikke next-intl-middleware (se src/middleware.ts),
  * så ikonerne kan caches frit og er sprogløse.
@@ -54,13 +54,14 @@ export async function GET(
       >
         {/* Objektivringen */}
         <circle cx="16" cy="16" r="12.5" stroke={CHAMPAGNE} strokeWidth="2" />
-        {/* Den seksbladede blænde — roterede akkorder i pinwheel-form
-            som en reel iris (ingen krydsende trekanter — se DoccysMark) */}
+        {/* Play-trianglen (se DoccysMark) — tynd streg i samme farve
+            afrunder hjørnerne */}
         <path
-          d="M18.89 11 L26.06 23.43 M13.11 11 L27.46 11 M10.22 16 L17.4 3.57 M13.11 21 L27.46 21 M18.89 21 L26.06 8.57 M21.78 16 L14.6 28.43"
+          d="M13 10 L22.6 16 L13 22 Z"
+          fill={CHAMPAGNE}
           stroke={CHAMPAGNE}
-          strokeWidth="1.4"
-          strokeLinecap="round"
+          strokeWidth="1"
+          strokeLinejoin="round"
         />
       </svg>
     </div>,

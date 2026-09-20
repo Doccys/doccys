@@ -516,11 +516,12 @@ PNG-signaturer OK, /da head-tags OK, tsc + i18n-verify).
   LOGO-REDESIGN (20/9): de oprindelige seks linjer gik hjørne til
   hjørne på tværs og dannede to krydsende trekanter — i favicon-
   størrelse læses det som en sekskantet stjerne (Magen David), hvilket
-  brugeren ikke vil risikere politisk/religiøst. Blændens linjer er
-  nu roterede akkorder i pinwheel-form (som et reelt iris-blænde-
-  motiv, Feather-aperture-geometri skaleret til r=12,5): indre
-  endepunkter danner åbningen, ydre ligger på ringen, ingen linjer
-  krydser midten. Retter i både DoccysMark.tsx og app-icons-ruten.
+  brugeren ikke vil risikere politisk/religiøst. Første forsøg var
+  pinwheel-akkorder (iris-blænde), men brugeren valgte MERE STREAMING-
+  IDENTITET: objektivring + UDFYLDT PLAY-TRIANGLe i guld (tynd streg
+  i samme farve afrunder hjørnerne; tyngdepunkt i ringens midte).
+  Udfyldt form skalerer bedre til 16px end streg-tegning. Retter i
+  både DoccysMark.tsx og app-icons-ruten.
   NB: favicon-browsercache er stædig — hard refresh/Ctrl+F5; app-
   icons-ruten har revalidate 86400 (i production kan gamle ikoner
   hænge i ISR-cachen indtil redeploy).
