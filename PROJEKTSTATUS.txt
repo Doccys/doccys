@@ -1,5 +1,5 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-09-20
+Sidst opdateret: 2026-09-21
 ==========================================================
 
 OM PROJEKTET
@@ -254,6 +254,48 @@ på film + skabere + genrer fra headeren på alle sider.
 - Bevidst ude af scope (fremtidig backlog ved skala): ordsøgning i
   vilkårlig rækkefølge (kræver tsvector/full-text), samlingsnavn som
   fjerde søgeområde, live-typeahead under feltet.
+
+FIRE DIFFERENTIEREDE FEATURES (21/9) — BYGGET, BRUGER-VERIFICERET
+Gennemgang af sitet pegede på fire huller, hvor pay-per-minute-
+modellen kan ses — brugeren valgte alle fire. Commits 45746e3
+(minutregnskab) + b311f74 (paywall-kr) + e068291 (bevis-PNG) +
+2e242c5 (sats på filmsiden). INGEN migrationer — alt læses fra
+eksisterende tabeller/RPC'er.
+1. MINUTREGNSKAB ("Din støtte" i profilen, efter historikken):
+   getSupportLedger (src/lib/data/support.ts) summerer brugerens
+   EGNE view_sessions (RLS + eksplicit user_id-forsvar; verdict-
+   filter I KODEN — kolonnen er jsonb, undlad PostgREST-sti-filtre)
+   pr. film → kroner med payout_rate_dkk, aggregeret pr. skaber.
+   SAMME formel som creator_indtjening-RPC'en (sekunder × sats/60/
+   100) — seerens regnskab og skaberens indtjening stemmer
+   kron-for-kron. SupportLedgerSection: total-kort + pr.-skaber-
+   liste (navn, filmantal, min·kr). Fejl → null → sektionen
+   udelades (graceful). support-namespace ×8.
+2. PAYWALL-KR: estimateFilmPriceDkk (minutePacks.ts) regner et
+   KONSERVATIVT estimat med mindste pakkes kr/min (0,049) — større
+   pakker gør filmen billigere, løftet overskrives aldrig.
+   PaywallCard viser "ca. {price} for hele filmen — ser du den
+   aldrig, koster den 0 kr" i BEGGE varianter (trailer-stribe +
+   lås); login-grenen fik requiredMinutes. priceLine ×8.
+3. DELBART BEVIS: /api/bevis/{slug}?lang={locale} (force-dynamic —
+   persondata, må ALDRIG caches) renderer seerens SENESTE valid-
+   session som 1200×630 PNG i satori (/og/film-mønstret, NOIR +
+   champagne, ingen SVG-gradienter). 401 uden login (auth læses
+   server-side af cookies; same-origin <a download> bærer dem),
+   404 uden valid afspilning, ?lang valideres mod routing.locales.
+   Overlayet: "Hent bevis-billede"-knap KUN ved verdict valid.
+   proofShare ×8.
+4. SATS PÅ FILMSIDEN: creator-kortet på watch-siden viser nu
+   filmens payout_rate_dkk offentligt ("{rate} pr. 100 sete
+   minutter går direkte til {creator}") — satsen var indtil nu kun
+   i studiet og beviset. payoutLine ×8.
+- KONSISTENS-REGLEN (gælder alle fire): pengene regnes ALTID på de
+  nøjagtige sekunder (afregn_session-tallet), minutter runder kun
+  for VISNING (1 min 52 sek → "2 min" · 112/60×2/100 = 0,04 kr —
+  samme runding som DB'ens round(...,2)). Bruger-verification
+  (21/9): regnskab 2 min/0,04 kr stemmer, bevis-PNG hentes og
+  matcher overlayet, paywall-kr + sats-linje røgtestet i HTML.
+- tsc + i18n-verify ALLE TJEK GRØNNE pr. commit.
 
 OPSLAGTAVLE (creator_posts) — VIRKER (bruger verificeret 19/9)
 Commit 179a23b + 7a716b1. Migration 20260918_creator_opslagstavle.sql
