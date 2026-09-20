@@ -175,14 +175,16 @@ brugeren — efter en færdigset film viser playeren nu et bevis:
 - VERIFICERET UDEFRA (20/9): tsc + i18n-verify grønne; anon GET
   documentaries: earth/test2/testtest = 2,00, seed-film uændret;
   creator_indtjening OG afregn_session stadig 42501 anon.
-- Test (afventer brugeren): se en film færdig som logget bruger →
-  overlay "X min · Y kr gik direkte til [skaber]" → kryds-tjek mod
+- Test (delvist verificeret af brugeren 20/9): beviset VIRKER —
+  overlay viste "Du så 2 min i alt" + den NEUTRALE variant ("2
+  minutter er afregnet fra din saldo") — sessionens verdict var
+  under 'valid' (hurtig test-afspilning → dæknings-heuristik), og
+  beløbs-claimet blev korrekt TILBAGEHOLDT. AFVENTER: én normal
+  afspilning (uden spoling) hvor verdict bliver 'valid' → "X kr gik
+  direkte til [skaber]"-varianten → kryds-tjek af beløbet mod
   view_sessions.watched_seconds × filmens payout_rate_dkk / 100.
   Studiet: indtjening pr. film varierer nu efter rate (fx isens-
-  sidste-vinter 2,10 vs byen-under-betonen 1,60). Invalid-afspilning
-  (hurtigt spol igennem) → neutral variant uden beløb. NB: pr.-film-
-  beløb runder 2 decimaler pr. film — summen kan afvige enkelte øre
-  fra totalens afrunding (accepteret).
+  sidste-vinter 2,10 vs byen-under-betonen 1,60).
 
 OPSLAGTAVLE (creator_posts) — VIRKER (bruger verificeret 19/9)
 Commit 179a23b + 7a716b1. Migration 20260918_creator_opslagstavle.sql
