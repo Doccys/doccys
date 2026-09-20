@@ -335,6 +335,6 @@ export interface SessionVerdict {
   signals: FraudSignal[];
   features: ViewFeatures;
   decidedAt: number;
-  /** Angiver hvilken model der traf beslutningen ("heuristics-v1" indtil ML trænes) */
+  /** Angiver hvilken model der traf beslutningen (VALIDATION_MODEL_VERSION i viewValidation) */
   modelVersion: string;
 }

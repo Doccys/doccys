@@ -16,7 +16,7 @@ import type {
 } from "@/lib/types";
 
 /** Bumpes når logikken ændres, så gamle domme kan skelnes fra nye. */
-export const VALIDATION_MODEL_VERSION = "heuristics-v1";
+export const VALIDATION_MODEL_VERSION = "heuristics-v2";
 
 const TRUST_VALID_THRESHOLD = 70;
 const TRUST_SUSPICIOUS_THRESHOLD = 35;
@@ -71,14 +71,16 @@ export function validateSession(
     );
   }
 
-  // 3) Bot-agtig kadence: scripted playback gentager mekanisk identiske
-  //    intervaller (eller har jitter tæt på nul). Bemærk: en ægte browser
-  //    udløser timeupdate i ~250 ms-kvanter, så der er ALTD ms-støj —
-  //    derfor kræver vi enten mikro-jitter eller høj interval-uniformitet.
+  // 3) Bot-agtig kadence: scripted playback har BEGGE kendetegn — mekanisk
+  //    ensartede intervaller OG jitter tæt på nul. En ægte browser udløser
+  //    timeupdate i ~250 ms-kvanter, så der er altid ms-støj (en målt ægte
+  //    afspilning havde fx 0,016 s jitter) — den gamle ELLER-logik strafte
+  //    altså ægte jævne afspilninger på lav jitter alene (v1-falsk positiv:
+  //    identisk-ratio 0,2 blev ignoreret). Derfor kræves begge.
   const botlikeCadence =
     features.heartbeatCount >= 6 &&
-    (features.heartbeatJitterSec < 0.05 ||
-      features.identicalIntervalRatio >= 0.8);
+    features.identicalIntervalRatio >= 0.8 &&
+    features.heartbeatJitterSec < 0.05;
   if (botlikeCadence) {
     penalize(
       45,

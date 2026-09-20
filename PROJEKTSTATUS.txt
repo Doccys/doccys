@@ -178,16 +178,31 @@ brugeren — efter en færdigset film viser playeren nu et bevis:
 - Test (delvist verificeret af brugeren 20/9): beviset VIRKER —
   overlay viste "Du så 2 min i alt" + den NEUTRALE variant ("2
   minutter er afregnet fra din saldo") — sessionens verdict var
-  under 'valid' (hurtig test-afspilning → dæknings-heuristik), og
-  beløbs-claimet blev korrekt TILBAGEHOLDT. SPOLING VERIFICERET:
-  samme film med gennemspoling gav "1 min i alt" — kun naturlige
-  fremskridt (delta <= 20 s) tæller; klientens complete-event
-  trodseede afregn-genberegningen korrekt (saldo kun trukket 1 min).
-  AFVENTER: én normal afspilning (uden spoling) hvor verdict bliver
-  'valid' → "X kr gik direkte til [skaber]"-varianten → kryds-tjek
-  af beløbet mod view_sessions.watched_seconds × filmens
-  payout_rate_dkk / 100. Studiet: indtjening pr. film varierer nu
-  efter rate (fx isens-sidste-vinter 2,10 vs byen-under-betonen 1,60).
+  under 'valid', og beløbs-claimet blev korrekt TILBAGEHOLDT.
+  SPOLING VERIFICERET: samme film med gennemspoling gav "1 min i
+  alt" — kun naturlige fremskridt (delta <= 20 s) tæller; klientens
+  complete-event trodseede afregn-genberegningen korrekt (saldo kun
+  trukket 1 min). AFVENTER: én normal afspilning (uden spoling)
+  hvor verdict bliver 'valid' → "X kr gik direkte til [skaber]"-
+  varianten → kryds-tjek af beløbet mod
+  view_sessions.watched_seconds × filmens payout_rate_dkk / 100.
+  Studiet: indtjening pr. film varierer nu efter rate (fx
+  isens-sidste-vinter 2,10 vs byen-under-betonen 1,60).
+- FALSK POSITIV FUNDET + LUKKET (20/9, brugerens SQL-diagnostic):
+  den ROLIGE 2-min-afspilning (watched_seconds 112) fik dommet
+  'suspicious' udelukkende pga. botlike_cadence — jitter 0,016 s
+  alene udløste -45 (ELLER-logikken), selvom identisk-ratio kun var
+  0,2 (tydeligt menneske). dæknings-heuristik var uskyldig (min
+  tidligere note gættede forkert). Konsekvenser: skaberen tjente 0
+  på en reel visning + completed aldrig sat. FIX: ELLER→OG (både
+  ratio >= 0,8 OG jitter < 0,05), VALIDATION_MODEL_VERSION bumpet
+  til heuristics-v2. Gamle domme i DB beholder v1-stemplet.
+- StrictMode-sidefund (20/9): hver watch-sideindlæsning i dev skaber
+  to session-rækker ~10-70 ms fra hinanden (session-start-useEffect
+  fires to gange) — den anden bliver en forladt 'active'-zombie med
+  0 hændelser. Har ingen økonomisk/stats-mæssig effekt i dag (alle
+  RPC'er filtrerer status <> 'active'), men roder i rådata. Muligt
+  fix senere: opret sessionen først ved første play-event.
 
 OPSLAGTAVLE (creator_posts) — VIRKER (bruger verificeret 19/9)
 Commit 179a23b + 7a716b1. Migration 20260918_creator_opslagstavle.sql
