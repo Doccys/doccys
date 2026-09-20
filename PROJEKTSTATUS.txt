@@ -547,10 +547,23 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
 5. Launch-backlog (aftalt med brugeren): juridiske sider +
    aldersbekræftelse, e-mail-notifikationer (kommentar-moderation er
    nu bygget, se ovenfor), TUS resumable upload + auto-thumbnails.
-6. Geo-detektion af inkl-moms-pris (v1.5-idé, ikke aftalt endeligt).
-7. Live mode-nødvendigheder: rigtig DK-momsregistrering (CVR/OSS),
+6. DONATION TIL HUNDECENTER (idé 20/9, UDSKUDT til der er brugere —
+   ellers bliver beløbene latterligt små): "Donér din rest-saldo"-
+   knap. AFTALT ØKONOMI: fast konvertering til dyreste sats
+   (pack-1000: 3,92 kr ekskl. moms pr. 100 min), differencen til
+   giverens reelle pakkepris (2,64-3,92) betales af platformen.
+   KENDT HUL: affiliate-minutter kostede 0 — ved lancering enten
+   accepteres det med loft, eller doneres KUN købte minutter (FIFO
+   over credit_ledger). Teknisk: ledger-række reason 'donation' +
+   manuel udbetaling pr. md (creator_payouts-mønsteret). Alternativ
+   uden konvertering (kan gøres NU): hundecentret som creator —
+   payout-raten pr. film kan bevidst sættes højere (fx 5,00 kr/100
+   min) efter 20260920_payout_rate; udbetalinger er i forvejen
+   manuelle.
+7. Geo-detektion af inkl-moms-pris (v1.5-idé, ikke aftalt endeligt).
+8. Live mode-nødvendigheder: rigtig DK-momsregistrering (CVR/OSS),
    permanent webhook-endpoint i stedet for lokal CLI-lytter.
-8. Git remote: brugeren opretter privat GitHub-repo → git remote add +
+9. Git remote: brugeren opretter privat GitHub-repo → git remote add +
    push. Lokal identitet "Jesper Hansen <jesper@doccys.local>" skal
    rettes til ægte e-mail før push.
 
