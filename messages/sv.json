@@ -179,6 +179,7 @@
     "proofNeutral": "{minutes} minuter har debiterats ditt saldo",
     "proofClose": "Stäng kvittot",
     "proofShare": "Ladda ner bevis-bild",
+    "payoutLine": "{rate} per 100 sedda minuter går direkt till {creator}",
     "creator": "Skapare",
     "discussionEyebrow": "Gemenskapen",
     "discussionTitle": "Kommentarer och diskussion",

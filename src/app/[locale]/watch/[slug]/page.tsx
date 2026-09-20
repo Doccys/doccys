@@ -18,7 +18,7 @@ import { getBalanceSeconds, getOrCreateReferralCode } from "@/lib/data/credits";
 import { getFilmSubtitles } from "@/lib/data/subtitles";
 import { getFilmTrailerUrl } from "@/lib/data/trailers";
 import { createClient } from "@/lib/supabase/server";
-import { formatDuration, toIsoDuration } from "@/lib/utils/format";
+import { formatCurrency, formatDuration, toIsoDuration } from "@/lib/utils/format";
 import { localizedGenres } from "@/lib/i18n/content";
 
 interface WatchPageProps {
@@ -225,6 +225,15 @@ export default async function WatchPage({ params }: WatchPageProps) {
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-ash">{t("creator")}</p>
             <p className="mt-1 font-display text-xl text-bone">{creator.name}</p>
+            {/* Det økonomiske løfte, offentligt: filmens sats pr. 100
+                sete minutter — radikal transparens, ingen anden
+                streamingtjeneste viser pengene ved selve værket. */}
+            <p className="mt-1.5 text-xs text-champagne">
+              {t("payoutLine", {
+                rate: formatCurrency(documentary.payoutRateDkk, locale),
+                creator: creator.name,
+              })}
+            </p>
           </div>
           <span className="text-champagne">→</span>
         </Link>

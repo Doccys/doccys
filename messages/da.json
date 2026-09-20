@@ -179,6 +179,7 @@
     "proofNeutral": "{minutes} minutter er afregnet fra din saldo",
     "proofClose": "Luk beviset",
     "proofShare": "Hent bevis-billede",
+    "payoutLine": "{rate} pr. 100 sete minutter går direkte til {creator}",
     "creator": "Skaber",
     "discussionEyebrow": "Fællesskabet",
     "discussionTitle": "Kommentarer & diskussion",

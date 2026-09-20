@@ -179,6 +179,7 @@
     "proofNeutral": "{minutes} minuuttia on veloitettu saldostasi",
     "proofClose": "Sulje kuitti",
     "proofShare": "Lataa todistekuva",
+    "payoutLine": "{rate} per 100 katsottua minuuttia menee suoraan tekijälle {creator}",
     "creator": "Tekijä",
     "discussionEyebrow": "Yhteisö",
     "discussionTitle": "Kommentit ja keskustelu",

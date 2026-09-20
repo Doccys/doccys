@@ -179,6 +179,7 @@
     "proofNeutral": "{minutes} minutes were charged from your balance",
     "proofClose": "Close receipt",
     "proofShare": "Download proof image",
+    "payoutLine": "{rate} per 100 minutes watched goes straight to {creator}",
     "creator": "Creator",
     "discussionEyebrow": "The community",
     "discussionTitle": "Comments & discussion",

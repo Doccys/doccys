@@ -179,6 +179,7 @@
     "proofNeutral": "{minutes} Minuten wurden von deinem Guthaben abgerechnet",
     "proofClose": "Beleg schließen",
     "proofShare": "Nachweis-Bild herunterladen",
+    "payoutLine": "{rate} pro 100 gesehenen Minuten gehen direkt an {creator}",
     "creator": "Creator",
     "discussionEyebrow": "Die Community",
     "discussionTitle": "Kommentare & Diskussion",

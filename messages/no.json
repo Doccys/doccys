@@ -179,6 +179,7 @@
     "proofNeutral": "{minutes} minutter er trukket fra saldoen din",
     "proofClose": "Lukk kvitteringen",
     "proofShare": "Last ned bevis-bilde",
+    "payoutLine": "{rate} per 100 sete minutter går direkte til {creator}",
     "creator": "Skaper",
     "discussionEyebrow": "Fellesskapet",
     "discussionTitle": "Kommentarer og diskusjon",

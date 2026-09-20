@@ -179,6 +179,7 @@
     "proofNeutral": "{minutes} minutos se descontaron de tu saldo",
     "proofClose": "Cerrar comprobante",
     "proofShare": "Descargar imagen del comprobante",
+    "payoutLine": "{rate} por cada 100 minutos vistos van directamente a {creator}",
     "creator": "Creador",
     "discussionEyebrow": "La comunidad",
     "discussionTitle": "Comentarios y debate",

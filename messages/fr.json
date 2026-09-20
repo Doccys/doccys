@@ -179,6 +179,7 @@
     "proofNeutral": "{minutes} minutes ont été décomptées de votre solde",
     "proofClose": "Fermer le reçu",
     "proofShare": "Télécharger l'image du justificatif",
+    "payoutLine": "{rate} par 100 minutes regardées vont directement à {creator}",
     "creator": "Créateur",
     "discussionEyebrow": "La communauté",
     "discussionTitle": "Commentaires et discussion",
