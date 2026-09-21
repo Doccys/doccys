@@ -6,9 +6,12 @@ STANDARD-EMAILS VED SIGNUP + KØB (21/9) — DASHBOARD-TRIN AFVENTER BRUGEREN
 Der sendes nu bekræftelses-mail ved oprettelse (Supabases indbyggede)
 og købs-kvittering (Stripes indbyggede, sender kun i LIVE mode).
 Brugerens valg: SUPABASE indbygget ved signup + STRIPE indbygget ved
-køb; e-mail SKAL bekræftes før kontoen virker. Eget branded
-mail-udbyder (Resend/SMTP + skabeloner ×8) UDSÆTTES til domænekøb —
-doccys.com ejes endnu ikke, så Supabases delte afsender
+køb; e-mail SKAL bekræftes før kontoen virker. UDSAT-listen (til
+domænekøb ved lancering): branded mail-udbyder (Resend/SMTP +
+skabeloner ×8), velkomstmail efter bekræftelse, og EGEN kvitterings-
+tekst (21/9-afklaring: Stripes kvitteringstekst er standardiseret og
+kan ikke redigeres — fuld tekstkontrol kræver egen udsendelse).
+Doccys.com ejes endnu ikke, så Supabases delte afsender
 (no-reply@mail.app.supabase.com) er den pragmatiske vej indtil da.
 - KODE (lille — resten er dashboard-konfig): AuthForm sender nu
   emailRedirectTo → bekræftelses-linket rammer ${origin}/${locale}/profile
@@ -26,9 +29,13 @@ doccys.com ejes endnu ikke, så Supabases delte afsender
   tilføj https://doccys.vercel.app/** OG http://localhost:3000/** —
   ellers afvises emailRedirectTo og Supabase falder tilbage til Site URL.
 - DASHBOARD-TRIN (BRUGEREN, Stripe-testkontoen → Settings → Emails):
-  aktivér "Successful payments"-kvittering, navn "Doccys", evt. kort
-  dansk tekst ("Tak for dit køb — dine minutter ligger klar på din
-  profil."). NB STRIPES TO KONTI: husk SAMME trin på live-kontoen ved
+  aktivér "Successful payments"-kvitteringen. NB: kvitteringens TEKST er
+  STRIPES STANDARDISEREDE — der kan ikke redigeres brødtekst (kontoens
+  navn/logo/support-info følger med, og varelinjen viser "X minutter —
+  Doccys" fra checkouten). Vil vi have fuld kontrol over teksten (og
+  dansk sprogbrug), kræver det egen mail-udsendelse fra webhooken —
+  dvs. branded mail-udbyderen ved domænekøbet, jf. udsat-listen.
+  NB STRIPES TO KONTI: husk SAMME trin på live-kontoen ved
   lancering — kvitteringer sender kun i live mode, så feedback-rundens
   test-køb ikke udsender noget (og vennerne har fået besked om ikke at
   trykke køb alligevel).
