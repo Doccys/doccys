@@ -2,6 +2,25 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-09-21
 ==========================================================
 
+DEPLOY + MOBIL-HEADER (21/9)
+- SITET ER ONLINE (midlertidigt): https://doccys.vercel.app —
+  Vercel-projekt koblet på GitHub-repoet Doccys/doccys; push til
+  master udløser AUTOMATISK bygning (verificeret 21/9: push
+  2155f72 → ny bygning live minutter efter).
+- MOBIL-HEADER-FIX (2155f72): på smalle telefoner (~360 px)
+  krævede headeren ~540 px, så sprogvælgeren blev presset uden
+  for skærmen ("layout i stykker" på telefon). Alt gælder KUN
+  under sm (640 px), desktop uændret: px-4/gap-2 på mobil,
+  DOCCYS-ordmærket skjules (logo-mærket/favicon bærer brandet),
+  "Min profil" skjules for gæster på mobil (footeren linker
+  dertil), sprognavn skjules (globus alene). Verificeret mod
+  live-HTML (alle 5 nye klasser på plads). tsc + i18n-verify
+  ALLE TJEK GRØNNE. Afventer brugerens telefon-test af baren +
+  mobil-søgningen.
+- NB: git-identiteten er STADIG "jesper@doccys.local" — commits
+  på GitHub viser det lokale alias. Skift til ægte e-mail
+  (git config user.email) før historikken vokser meget mere.
+
 OM PROJEKTET
 Doccys = kurateret niche-streamingtjeneste for uafhængige dokumentarer.
 Next.js 15 + Supabase + next-intl, 8 locales (da/en/de/es/fr/fi/no/sv).
@@ -712,9 +731,12 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
 7. Geo-detektion af inkl-moms-pris (v1.5-idé, ikke aftalt endeligt).
 8. Live mode-nødvendigheder: rigtig DK-momsregistrering (CVR/OSS),
    permanent webhook-endpoint i stedet for lokal CLI-lytter.
-9. Git remote: brugeren opretter privat GitHub-repo → git remote add +
-   push. Lokal identitet "Jesper Hansen <jesper@doccys.local>" skal
-   rettes til ægte e-mail før push.
+9. Git remote — DONE (21/9): privat GitHub-repo Doccys/doccys +
+   Vercel auto-deploy på push (https://doccys.vercel.app).
+   RESTER: lokal identitet "Jesper Hansen <jesper@doccys.local>"
+   skal rettes til ægte e-mail — gør det SNART, inden historikken
+   vokser (git config user.email; allerede push'ede commits kan
+   evt. omskrives senere, men det bliver kun sværere med tiden).
 
 GOD ARBEJDSGANG I DETTE PROJEKT
 - Plan-mode + Plan-agent ved større features; små trin, commit pr. trin,
@@ -729,12 +751,13 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
-0a35ce6 pwa: manifest, ikon-rute og minimal service worker
-c547d52 talesprog: pipelinen transskriberer paa filmens sprog
-24b2750 talesprog: vaelger i upload-formularen + validering i /api/films
-4b1d222 talesprog: spoken_language-kolonne + PLATFORM_LOCALES som een kilde
-4728e83 undertekster: i18n-noegler x8 + import-rettelse
-0652d2a undertekster: i18n x8 + klient-sikre sprognavne
-711080d undertekster: tracks i afspilleren + default paa seerens sprog
-c224ce6 undertekster: studio-UI med sprog-badges og generer-knap
-0db8a81 undertekster: API-rute med hele pipelinen
+2155f72 header: mobilvenlig bredde — baren tryktes ud over skaermen
+4857698 deploy: start forste Vercel-bygning
+6082aac dev: trycloudflare-tunnels whitelisted (allowedDevOrigins)
+073aadb docs: valuta-visning i PROJEKTSTATUS
+b2324e1 valuta: lokal pris-visning for internationale soere
+d0e3d9d docs: fire differentierede features i PROJEKTSTATUS (verificeret)
+2e242c5 filmside: saetten synlig ved skaberen
+e068291 bevis: haengbart stoeatte-bevis som PNG
+b311f74 paywall: filmens pris i kroner paa spaerren
+45746e3 minutregnskab: "Din stoette"-sektion i profilen
