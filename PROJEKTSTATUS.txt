@@ -2,8 +2,13 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-09-21
 ==========================================================
 
-SVAR-TRÅDE I KOMMENTARFELTET (21/9) — KODE FÆRDIG, MIGRATION AFVENTER BRUGEREN
+SVAR-TRÅDE I KOMMENTARFELTET (21/9) — MIGRATION KØRT, UDEFRÅ VERIFICERET
 Commits 6b3fbed (migration + backend) + c4b8ba5 (UI + i18n).
+Migration 20260921_kommentar_svartraade.sql KØRT af brugeren (21/9).
+VERIFICERET UDEFRA: parent_id-kolonnen findes (anon GET 200,
+eksisterende rækker = null = topindlæg, korrekt) og anon insert
+afvises fortsat af RLS (42501). Pin-insert-vagten + 1-niveaus-
+triggeren kræver authenticated-session → dækkes af E2E-testen.
 Baggrund: forsiden lover "egen diskussion under hver film", men
 feltet var en flad kommentarvæg — brugerens valg: BYG SVAR-TRÅDE
 NU, så løftet er sandt (ordet "diskussion" beholdes). Beslutninger
