@@ -45,10 +45,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Ukendt pakke" }, { status: 400 });
   }
 
-  const locale = routing.locales.includes(
+  const locale: (typeof routing.locales)[number] = routing.locales.includes(
     (body.locale ?? "") as (typeof routing.locales)[number],
   )
-    ? body.locale
+    ? ((body.locale ?? routing.defaultLocale) as (typeof routing.locales)[number])
     : routing.defaultLocale;
 
   // Affiliate-henvisning: koden i cookien → ejer-id, hvis reglerne matcher
@@ -94,6 +94,9 @@ export async function POST(request: NextRequest) {
       const customer = await stripe.customers.create({
         email: user.email ?? undefined,
         address: { country: "DK" },
+        // Stripes købs-kvittering sendes på kundens foretrukne sprog —
+        // ellers kontoens standard. Sproget er allerede valideret ovenfor.
+        preferred_locales: [locale],
         metadata: { doccys_user_id: user.id },
       });
       customerId = customer.id;

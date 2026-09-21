@@ -2,6 +2,46 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-09-21
 ==========================================================
 
+STANDARD-EMAILS VED SIGNUP + KØB (21/9) — DASHBOARD-TRIN AFVENTER BRUGEREN
+Der sendes nu bekræftelses-mail ved oprettelse (Supabases indbyggede)
+og købs-kvittering (Stripes indbyggede, sender kun i LIVE mode).
+Brugerens valg: SUPABASE indbygget ved signup + STRIPE indbygget ved
+køb; e-mail SKAL bekræftes før kontoen virker. Eget branded
+mail-udbyder (Resend/SMTP + skabeloner ×8) UDSÆTTES til domænekøb —
+doccys.com ejes endnu ikke, så Supabases delte afsender
+(no-reply@mail.app.supabase.com) er den pragmatiske vej indtil da.
+- KODE (lille — resten er dashboard-konfig): AuthForm sender nu
+  emailRedirectTo → bekræftelses-linket rammer ${origin}/${locale}/profile
+  i seerens eget sprog i stedet for dashboardets Site URL (samme mønster
+  som ResetPasswordForm; detectSessionInUrl veksler ?code → logget ind).
+  UI var I FORVEJEN klar: checkEmail-notice ×8 + emailNotConfirmed-fejl
+  fandtes allerede — ingen nye i18n-nøgler, ingen migration. Checkout-
+  ruten sætter preferred_locales=[locale] på NYE Stripe-kunder, så
+  kvitteringen kommer på kundens sprog (eksisterende kunder beholder
+  deres gemte; intet webhook-arbejde — Stripe mailer selv fra
+  customer_details.email). tsc GRØN.
+- DASHBOARD-TRIN (BRUGEREN, Supabase → Authentication → Sign In / Up):
+  1) Slå "Confirm email" TIL. 2) Site URL = https://doccys.vercel.app
+  (rettes til doccys.com ved lancering). 3) Redirect URLs-allowlist:
+  tilføj https://doccys.vercel.app/** OG http://localhost:3000/** —
+  ellers afvises emailRedirectTo og Supabase falder tilbage til Site URL.
+- DASHBOARD-TRIN (BRUGEREN, Stripe-testkontoen → Settings → Emails):
+  aktivér "Successful payments"-kvittering, navn "Doccys", evt. kort
+  dansk tekst ("Tak for dit køb — dine minutter ligger klar på din
+  profil."). NB STRIPES TO KONTI: husk SAMME trin på live-kontoen ved
+  lancering — kvitteringer sender kun i live mode, så feedback-rundens
+  test-køb ikke udsender noget (og vennerne har fået besked om ikke at
+  trykke køb alligevel).
+- NB SPAM: delte Supabase-afsenderes lander af og til i spamfilteret —
+  sig det til feedback-rundens venner. Skulle confirm drille under
+  testrunden, kan den toggles tilbage i dashboardet med det samme.
+- Test (afventer brugeren, EFTER dashboard-trinene): E2E lokalt — opret
+  test-konto → bekræftelses-mail modtages → linket åbner /da/profile
+  med aktiv session → login med UBEBEKRÆFTET konto giver
+  emailNotConfirmed-fejlen. Derefter samme test på doccys.vercel.app.
+  Kvitterings-preview: Stripe-dashboardets test-betalinger (preview,
+  intet sendes i test mode).
+
 SVAR-TRÅDE I KOMMENTARFELTET (21/9) — MIGRATION KØRT, UDEFRÅ VERIFICERET
 Commits 6b3fbed (migration + backend) + c4b8ba5 (UI + i18n).
 Migration 20260921_kommentar_svartraade.sql KØRT af brugeren (21/9).
@@ -781,7 +821,10 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
    (koden findes, utestet).
 5. Launch-backlog (aftalt med brugeren): juridiske sider +
    aldersbekræftelse, e-mail-notifikationer (kommentar-moderation er
-   nu bygget, se ovenfor), TUS resumable upload + auto-thumbnails.
+   nu bygget, se ovenfor; standard-signup/købs-mails er DONE 21/9,
+   se sektionen øverst — resten her er branded mail-udbyder +
+   velkomstmail, se udsat-listen dér), TUS resumable upload +
+   auto-thumbnails.
 6. DONATION TIL HUNDECENTER (idé 20/9, UDSKUDT til der er brugere —
    ellers bliver beløbene latterligt små): "Donér din rest-saldo"-
    knap. AFTALT ØKONOMI: fast konvertering til dyreste sats

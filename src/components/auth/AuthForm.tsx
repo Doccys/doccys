@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
 
@@ -26,12 +26,15 @@ const ERROR_KEYS: Record<string, string> = {
  * `supabase.auth` via the browser client.
  *
  * - Login: signInWithPassword → on success go to the profile.
- * - Signup: signUp → if the project requires e-mail confirmation, show a
- *   notice instead of redirecting (the session is not issued until the
- *   address is confirmed).
+ * - Signup: signUp with an emailRedirectTo back to the profile — kræver
+ *   projektet e-mail-bekræftelse, vises notice i stedet for redirect,
+ *   og bekræftelses-linket i mailen rammer siten (og ikke dashboardets
+ *   Site URL). Efter klikket veksler detectSessionInUrl ?code=-linket
+ *   til en session, og brugeren lander logget ind på profilen.
  */
 export default function AuthForm() {
   const t = useTranslations("auth");
+  const locale = useLocale();
   const router = useRouter();
 
   const [mode, setMode] = useState<Mode>("login");
@@ -85,7 +88,15 @@ export default function AuthForm() {
           goToProfile();
         }
       } else {
-        const { data, error } = await supabase.auth.signUp({ email, password });
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            // bekræftelses-linket skal lande på siten i seerens sprog —
+            // ellers sender Supabase det til dashboardets Site URL
+            emailRedirectTo: `${window.location.origin}/${locale}/profile`,
+          },
+        });
         if (error) {
           handleError(error.code);
         } else if (data.session) {
