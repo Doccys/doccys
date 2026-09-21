@@ -866,6 +866,7 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+8853d4b emails: bekræftelses-link tilbage til siten + kvitteringssprog
 c4b8ba5 kommentarer: svar-knap, traad-visning og moderation i UI
 6b3fbed kommentarer: svartraade-migration + parentId gennem stakken
 7c389df docs: nav-omdoeb + /film-backlog i PROJEKTSTATUS
