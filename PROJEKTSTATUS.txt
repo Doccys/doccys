@@ -30,6 +30,14 @@ DEPLOY + MOBIL-HEADER (21/9)
   på række m. flex-wrap, og overlayet scroll-bart (overflow-y-
   auto + min-h-full), så det altid kan nås i lave bokse (landskab).
   Desktop uændret. tsc grøn, watch-siden røgtestet 200.
+- NAV: "FORSIDE" → "FILM" (f8bf47b, 21/9): venner-feedback pegede på
+  at nav'en ikke lovede film — og forsiden ER kataloget. Nav-linket
+  hedder nu Film (da/en "Films"/de "Filme"/es "Películas"/fr
+  "Films"/fi "Elokuvat"/no+sv "Filmer") og peger stadig på /.
+  Logoet var forvejen forside-klikket; kortere tekst hjælper
+  mobil-headeren. "Skabere" bliver i nav. KUN header.nav.home-
+  nøglen røres (hjemmesidens egne tekster ligger i separat
+  home-namespace). tsc + i18n-verify GRØNNE, røgtestet /da + /en.
 - NB: git-identiteten er STADIG "jesper@doccys.local" — commits
   på GitHub viser det lokale alias. Skift til ægte e-mail
   (git config user.email) før historikken vokser meget mere.
@@ -750,6 +758,11 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
    skal rettes til ægte e-mail — gør det SNART, inden historikken
    vokser (git config user.email; allerede push'ede commits kan
    evt. omskrives senere, men det bliver kun sværere med tiden).
+10. Dedikeret /film-katalogside med genre-filtre (21/9-idé,
+    skudt til filmantallet vokser): "Film" i nav peger indtil da
+    på forsiden som ER kataloget. Genrebaseret browsen findes
+    allerede på /search's landing (genre-chips) — genbrug
+    mønstret, når en rigtig side skal bygges.
 
 GOD ARBEJDSGANG I DETTE PROJEKT
 - Plan-mode + Plan-agent ved større features; små trin, commit pr. trin,
