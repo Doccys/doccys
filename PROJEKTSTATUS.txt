@@ -3,7 +3,12 @@ Sidst opdateret: 2026-09-21
 ==========================================================
 
 DEPLOY + MOBIL-HEADER (21/9)
-- SITET ER ONLINE (midlertidigt): https://doccys.vercel.app —
+- SITET ER ONLINE, MEN KUN SOM FEEDBACK-RUNDE: https://doccys.
+  vercel.app er oppe ~24 timer (ned igen tidligt 22/9) KUN som
+  feedback-runde til venner. BEVIDST IKKE EN LANCERING: erhvervs-
+  konto er ikke sat på, test-videoerne er ikke ryddet op, og
+  folk er bedt om IKKE at trykke køb. (Checkout kører i Stripe
+  TEST-mode, så ægte kort kan ikke trækkes — ingen reel risiko.)
   Vercel-projekt koblet på GitHub-repoet Doccys/doccys; push til
   master udløser AUTOMATISK bygning (verificeret 21/9: push
   2155f72 → ny bygning live minutter efter).
@@ -15,8 +20,16 @@ DEPLOY + MOBIL-HEADER (21/9)
   "Min profil" skjules for gæster på mobil (footeren linker
   dertil), sprognavn skjules (globus alene). Verificeret mod
   live-HTML (alle 5 nye klasser på plads). tsc + i18n-verify
-  ALLE TJEK GRØNNE. Afventer brugerens telefon-test af baren +
-  mobil-søgningen.
+  ALLE TJEK GRØNNE. Brugeren testede bagefter på telefon uden
+  nye header-anker (bevis-overlayet var det eneste efterspørgsel).
+- BEVIS-OVERLAY KOMPAKT PÅ MOBIL (46fbd76, bruger-verificeret
+  21/9 "det virker nu"): overlayet ligger over selve video-boksen
+  (kun ~200 px høj på en telefon) — kortets store luft/type +
+  to stakkede knapper krævede ~300 px og blev klemt. Nu under sm:
+  kompakt kort (px-5/py-5, text-lg-titel, text-xs-tekst), knapperne
+  på række m. flex-wrap, og overlayet scroll-bart (overflow-y-
+  auto + min-h-full), så det altid kan nås i lave bokse (landskab).
+  Desktop uændret. tsc grøn, watch-siden røgtestet 200.
 - NB: git-identiteten er STADIG "jesper@doccys.local" — commits
   på GitHub viser det lokale alias. Skift til ægte e-mail
   (git config user.email) før historikken vokser meget mere.
