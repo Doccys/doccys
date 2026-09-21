@@ -96,9 +96,11 @@ export default function UserMenu() {
         >
           {authT("login")}
         </Link>
+        {/* "Min profil" skjules paa mobil (pladsen er trang, og footeren
+            linker allerede dertil) — kun "Log ind" staar tilbage. */}
         <Link
           href="/profile"
-          className={`text-xs tracking-wide transition-colors ${
+          className={`hidden text-xs tracking-wide transition-colors sm:block ${
             profileActive
               ? "text-champagne"
               : "text-ash hover:text-bone"
@@ -124,7 +126,7 @@ export default function UserMenu() {
         <span className="flex h-5 w-5 items-center justify-center rounded-full border border-champagne/50 text-[10px] font-medium text-champagne">
           {initial}
         </span>
-        <span className="max-w-28 truncate text-xs text-bone">
+        <span className="max-w-20 truncate text-xs text-bone sm:max-w-28">
           {user.email}
         </span>
         <svg

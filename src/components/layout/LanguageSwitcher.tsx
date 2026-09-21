@@ -81,7 +81,11 @@ export default function LanguageSwitcher() {
         className="flex items-center gap-1.5 rounded-md border border-smoke bg-onyx px-2.5 py-1.5 text-xs text-ash transition-colors hover:text-bone"
       >
         <GlobeIcon className="h-3.5 w-3.5" />
-        {LOCALE_LABELS[locale] ?? locale}
+        {/* Sprognavnet skjules paa mobil — globusen raeker, og teksten
+            ("Espagnol" osv.) stikker headeren ud over skermen. */}
+        <span className="hidden sm:inline">
+          {LOCALE_LABELS[locale] ?? locale}
+        </span>
         <svg
           viewBox="0 0 12 12"
           className={`h-2.5 w-2.5 transition-transform ${open ? "rotate-180" : ""}`}

@@ -51,20 +51,23 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-smoke/60 bg-noir/80 backdrop-blur-md">
-      <div className="mx-auto flex h-11 max-w-6xl items-center justify-between px-6">
+      {/* Stram luft paa mobil (px-4/gap-2) — 640 px+ er urorvet. */}
+      <div className="mx-auto flex h-11 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link
           href="/"
           className="flex items-center gap-2.5"
           aria-label="Doccys — forside"
         >
           <DoccysMark className="h-6 w-6" />
-          <span className="font-display text-base font-medium tracking-[0.35em] text-bone">
+          {/* Ordmaerket er bredt (0,35em tracking) — paa mobil stikker det
+              baren ud, saa kun logo-maerket vises der. */}
+          <span className="hidden font-display text-base font-medium tracking-[0.35em] text-bone sm:inline">
             DOCCYS
           </span>
         </Link>
 
-        <div className="flex items-center gap-5">
-          <nav className="flex items-center gap-6" aria-label="Hovednavigation">
+        <div className="flex items-center gap-2 sm:gap-5">
+          <nav className="flex items-center gap-4 sm:gap-6" aria-label="Hovednavigation">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -141,7 +144,7 @@ export default function Header() {
             }}
             placeholder={searchT("placeholder")}
             aria-label={searchT("searchLabel")}
-            className="w-full bg-transparent px-6 py-3 text-sm text-bone placeholder:text-ash/60 focus:outline-none"
+            className="w-full bg-transparent px-4 py-3 text-sm text-bone placeholder:text-ash/60 focus:outline-none sm:px-6"
           />
         </form>
       )}
