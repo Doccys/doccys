@@ -311,20 +311,25 @@ export default function VideoPlayer({
             afspilning. Beløbs-claimet ("gik direkte til skaberen")
             vises KUN ved verdict 'valid' — creator_indtjening tæller
             kun valid-sessioner, så andet ville være løgn; invalid/
-            suspicious får den neutrale variant. */}
+            suspicious får den neutrale variant.
+            MOBIL: overlayet fylder kun video-boksen (~200 px høj på
+            en telefon), så kortet er kompakt der (mindre luft/type,
+            knapperne på række) — og containeren er scroll-bar, så den
+            altid kan nås selv i lave bokse (landskab). sm+ uændret. */}
         {proof && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-noir/90 px-6">
-            <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-2xl border border-champagne/40 bg-onyx px-8 py-8 text-center">
-              <p className="text-[11px] uppercase tracking-[0.25em] text-champagne">
+          <div className="absolute inset-0 z-10 overflow-y-auto bg-noir/90">
+            <div className="flex min-h-full items-center justify-center px-4 sm:px-6">
+              <div className="flex w-full max-w-sm flex-col items-center gap-2 rounded-xl border border-champagne/40 bg-onyx px-5 py-5 text-center sm:gap-3 sm:rounded-2xl sm:px-8 sm:py-8">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-champagne sm:text-[11px]">
                 {t("proofEyebrow")}
               </p>
-              <p className="font-display text-2xl text-bone">
+              <p className="font-display text-lg text-bone sm:text-2xl">
                 {t("proofMinutes", {
                   minutes: Math.round(proof.watchedSeconds / 60),
                 })}
               </p>
               {proof.verdict === "valid" ? (
-                <p className="text-sm leading-relaxed text-ash">
+                <p className="text-xs leading-relaxed text-ash sm:text-sm">
                   {creatorName
                     ? t("proofSupport", {
                         amount: formatCurrency(
@@ -341,7 +346,7 @@ export default function VideoPlayer({
                       })}
                 </p>
               ) : (
-                <p className="text-sm leading-relaxed text-ash">
+                <p className="text-xs leading-relaxed text-ash sm:text-sm">
                   {t("proofNeutral", {
                     minutes: Math.round(proof.watchedSeconds / 60),
                   })}
@@ -349,23 +354,28 @@ export default function VideoPlayer({
               )}
               {/* Det delbare bevis: PNG-kort med samme tal som overlayet,
                   genereret server-side fra seerens egne valid-sessioner.
-                  Same-origin <a download> bærer auth-cookies automatisk. */}
-              {proof.verdict === "valid" && (
-                <a
-                  href={`/api/bevis/${documentarySlug}?lang=${locale}`}
-                  download="doccys-bevis.png"
-                  className="rounded-full border border-champagne/60 px-6 py-2.5 text-sm font-medium text-champagne transition-colors hover:bg-champagne hover:text-noir"
+                  Same-origin <a download> bærer auth-cookies automatisk.
+                  Knapperne på række + flex-wrap = kortest mulige højde på
+                  mobil, og lange oversatte tekster glider selv ned. */}
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                {proof.verdict === "valid" && (
+                  <a
+                    href={`/api/bevis/${documentarySlug}?lang=${locale}`}
+                    download="doccys-bevis.png"
+                    className="rounded-full border border-champagne/60 px-5 py-2 text-xs font-medium text-champagne transition-colors hover:bg-champagne hover:text-noir sm:px-6 sm:py-2.5 sm:text-sm"
+                  >
+                    {t("proofShare")}
+                  </a>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setProof(null)}
+                  className="rounded-full bg-champagne px-5 py-2 text-xs font-semibold text-onyx transition-colors hover:bg-champagne/85 sm:px-6 sm:py-2.5 sm:text-sm"
                 >
-                  {t("proofShare")}
-                </a>
-              )}
-              <button
-                type="button"
-                onClick={() => setProof(null)}
-                className="mt-2 rounded-full bg-champagne px-6 py-2.5 text-sm font-semibold text-onyx transition-colors hover:bg-champagne/85"
-              >
-                {t("proofClose")}
-              </button>
+                  {t("proofClose")}
+                </button>
+              </div>
+              </div>
             </div>
           </div>
         )}
