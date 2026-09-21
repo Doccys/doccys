@@ -49,14 +49,18 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  let body: { documentarySlug?: string; body?: string };
+  let body: {
+    documentarySlug?: string;
+    body?: string;
+    parentId?: string | null;
+  };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Ugyldig JSON-body" }, { status: 400 });
   }
 
-  const { documentarySlug, body: text } = body;
+  const { documentarySlug, body: text, parentId } = body;
   const trimmedBody = text?.trim() ?? "";
 
   if (!documentarySlug || !trimmedBody) {
@@ -67,6 +71,38 @@ export async function POST(request: NextRequest) {
   }
   if (trimmedBody.length > 2000) {
     return NextResponse.json({ error: "Kommentaren er for lang (max 2000 tegn)" }, { status: 400 });
+  }
+
+  // Svar-tråde (maks ét niveau): forælderen skal findes i SAMME film
+  // og selv være et topindlæg — ellers var det et svar på et svar.
+  // DB-triggeren vagter det samme (PostgREST er direkte nåbar), her
+  // gives bare pæne fejl i stedet for rå trigger-tekst.
+  if (parentId != null && parentId !== "") {
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(parentId)) {
+      return NextResponse.json(
+        { error: "parentId er ikke et gyldigt id" },
+        { status: 400 },
+      );
+    }
+    const parent = await doccysStore.getCommentById(parentId);
+    if (!parent) {
+      return NextResponse.json(
+        { error: "Indlægget du svarer på, findes ikke" },
+        { status: 404 },
+      );
+    }
+    if (parent.documentarySlug !== documentarySlug) {
+      return NextResponse.json(
+        { error: "Svar skal tilhøre samme film som indlægget" },
+        { status: 400 },
+      );
+    }
+    if (parent.parentId) {
+      return NextResponse.json(
+        { error: "Svar på svar er ikke tilladt — maks ét niveau" },
+        { status: 400 },
+      );
+    }
   }
 
   // Sessionen læses fra cookies — serveren er eneste autoritet for
@@ -111,6 +147,7 @@ export async function POST(request: NextRequest) {
     authorName,
     userId: user.id,
     body: trimmedBody,
+    parentId: parentId && parentId !== "" ? parentId : null,
   });
 
   return NextResponse.json({ comment }, { status: 201 });

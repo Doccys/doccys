@@ -100,6 +100,8 @@ export interface Comment {
   likedByMe: boolean;
   /** Fremhævet af creatoren — ét fastgjort indlæg pr. film. */
   pinned: boolean;
+  /** Svar-tråde: peger på det indlæg, dette svar svarer på (null = topindlæg). */
+  parentId?: string | null;
 }
 
 export interface WatchHistoryEntry {

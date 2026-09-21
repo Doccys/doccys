@@ -286,6 +286,8 @@ export type CommentRow = {
   created_at: string;
   /** fremhævet af filmens creator-ejer (ét pr. film, DB-håndhævet) */
   pinned: boolean;
+  /** svar-tråde: forældre-indlægget (null = topindlæg) */
+  parent_id: string | null;
 };
 
 export type CommentInsert = {
@@ -296,6 +298,7 @@ export type CommentInsert = {
   body: string;
   created_at?: string;
   pinned?: boolean;
+  parent_id?: string | null;
 };
 
 /** triggeren trg_comment_pin_kun låser alt undtagen pinned */

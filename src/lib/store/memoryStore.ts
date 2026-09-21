@@ -53,7 +53,11 @@ export interface DoccysStore {
     /** Supabase-bruger-id, når forfatteren er logget ind (ellers null). */
     userId?: string | null;
     body: string;
+    /** Svar-tråde: forældre-indlægget (null = almindeligt topindlæg). */
+    parentId?: string | null;
   }): Promise<Comment>;
+  /** Ett enkelt indlæg — forældre-validering ved svar. */
+  getCommentById(commentId: string): Promise<Comment | undefined>;
   /**
    * Sætter eller fjerner den givne brugers like på en kommentar.
    * Returnerer den opdaterede kommentar, eller undefined hvis den ikke findes.
@@ -224,6 +228,7 @@ class MemoryStore implements DoccysStore {
     authorName: string;
     userId?: string | null;
     body: string;
+    parentId?: string | null;
   }): Promise<Comment> {
     const comment: Comment = {
       id: crypto.randomUUID(),
@@ -235,9 +240,14 @@ class MemoryStore implements DoccysStore {
       likeCount: 0,
       likedByMe: false,
       pinned: false,
+      parentId: input.parentId ?? null,
     };
     this.comments.unshift(comment);
     return comment;
+  }
+
+  async getCommentById(commentId: string): Promise<Comment | undefined> {
+    return this.comments.find((comment) => comment.id === commentId);
   }
 
   async setCommentLike(input: {

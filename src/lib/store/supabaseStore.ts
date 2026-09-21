@@ -85,6 +85,7 @@ function toComment(
     likeCount,
     likedByMe,
     pinned: row.pinned,
+    parentId: row.parent_id,
   };
 }
 
@@ -284,8 +285,13 @@ class SupabaseStore implements DoccysStore {
     authorName: string;
     userId?: string | null;
     body: string;
+    /** Svar-tråde: forældre-indlægget (null = almindeligt topindlæg). */
+    parentId?: string | null;
   }): Promise<Comment> {
     const supabase = await createClient();
+    // parent_id sendes KUN ved svar — ellers opfører topposts sig
+    // uændret, også før svartraade-migrationen er kørt (PostgREST
+    // afviser ellers kolonnen, som endnu ikke findes).
     const { data, error } = await supabase
       .from("comments")
       .insert({
@@ -293,6 +299,7 @@ class SupabaseStore implements DoccysStore {
         user_id: input.userId ?? null,
         author_name: input.authorName,
         body: input.body,
+        ...(input.parentId ? { parent_id: input.parentId } : {}),
       })
       .select("*")
       .single();
@@ -301,6 +308,17 @@ class SupabaseStore implements DoccysStore {
       throw new Error("Kunne ikke gemme kommentaren");
     }
     return toComment(data);
+  }
+
+  /** Ett enkelt indlæg — forældre-validering ved svar (RLS: select er offentlig). */
+  async getCommentById(commentId: string): Promise<Comment | undefined> {
+    const supabase = await createClient();
+    const { data } = await supabase
+      .from("comments")
+      .select("*")
+      .eq("id", commentId)
+      .maybeSingle();
+    return data ? toComment(data) : undefined;
   }
 
   async setCommentLike(input: {
