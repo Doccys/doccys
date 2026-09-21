@@ -221,7 +221,10 @@
     "delete": "Delete",
     "deleteConfirm": "Delete this comment? It cannot be undone.",
     "deleteError": "The comment could not be deleted. Try again.",
-    "pinError": "Could not pin the comment — another one is already pinned. Try again."
+    "pinError": "Could not pin the comment — another one is already pinned. Try again.",
+    "reply": "Reply",
+    "cancel": "Cancel",
+    "replyError": "The reply could not be posted. Try again."
   },
   "creatorApply": {
     "eyebrow": "Creators",

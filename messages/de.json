@@ -221,7 +221,10 @@
     "delete": "Löschen",
     "deleteConfirm": "Kommentar löschen? Das kann nicht rückgängig gemacht werden.",
     "deleteError": "Der Kommentar konnte nicht gelöscht werden. Bitte erneut versuchen.",
-    "pinError": "Kommentar konnte nicht angeheftet werden — ein anderer ist bereits angeheftet. Bitte erneut versuchen."
+    "pinError": "Kommentar konnte nicht angeheftet werden — ein anderer ist bereits angeheftet. Bitte erneut versuchen.",
+    "reply": "Antworten",
+    "cancel": "Abbrechen",
+    "replyError": "Die Antwort konnte nicht gesendet werden. Versuch es noch einmal."
   },
   "creatorApply": {
     "eyebrow": "Schöpfer",

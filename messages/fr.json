@@ -221,7 +221,10 @@
     "delete": "Supprimer",
     "deleteConfirm": "Supprimer le commentaire ? Cette action est irréversible.",
     "deleteError": "Le commentaire n'a pas pu être supprimé. Réessaie.",
-    "pinError": "Impossible d'épingler le commentaire — un autre est déjà épinglé. Réessaie."
+    "pinError": "Impossible d'épingler le commentaire — un autre est déjà épinglé. Réessaie.",
+    "reply": "Répondre",
+    "cancel": "Annuler",
+    "replyError": "La réponse n'a pas pu être envoyée. Réessaie."
   },
   "creatorApply": {
     "eyebrow": "Créateurs",

@@ -221,7 +221,10 @@
     "delete": "Slet",
     "deleteConfirm": "Slet kommentaren? Det kan ikke fortrydes.",
     "deleteError": "Kommentaren kunne ikke slettes. Prøv igen.",
-    "pinError": "Kunne ikke fastgøre kommentaren — der er allerede én fastgjort. Prøv igen."
+    "pinError": "Kunne ikke fastgøre kommentaren — der er allerede én fastgjort. Prøv igen.",
+    "reply": "Svar",
+    "cancel": "Annullér",
+    "replyError": "Svaret kunne ikke sendes. Prøv igen."
   },
   "creatorApply": {
     "eyebrow": "Skabere",

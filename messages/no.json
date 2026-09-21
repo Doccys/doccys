@@ -221,7 +221,10 @@
     "delete": "Slett",
     "deleteConfirm": "Slette kommentaren? Det kan ikke angres.",
     "deleteError": "Kommentaren kunne ikke slettes. Prøv igjen.",
-    "pinError": "Kunne ikke feste kommentaren — en annen er allerede festet. Prøv igjen."
+    "pinError": "Kunne ikke feste kommentaren — en annen er allerede festet. Prøv igjen.",
+    "reply": "Svar",
+    "cancel": "Avbryt",
+    "replyError": "Svaret kunne ikke sendes. Prøv igjen."
   },
   "creatorApply": {
     "eyebrow": "Skapere",

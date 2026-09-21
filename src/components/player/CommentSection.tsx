@@ -21,15 +21,18 @@ interface CommentsResponse {
 }
 
 /**
- * Diskussion under afspilleren.
+ * Diskussion under afspilleren — med svar-tråde (maks ét niveau).
  *
  * Kvalitetsfilteret: kun kendte konti, der HAR SET filmen, kan skrive
  * (serveren afgør det mod den manipulationssikre forbrugs-ledger via
- * har_set_film-RPC'en). Gæster og ikke-seere ser en gate-boks i stedet
- * for formularen — kommentar-dataen forbliver guld for creatoren.
+ * har_set_film-RPC'en) — det gælder svar som indlæg. Gæster og
+ * ikke-seere ser en gate-boks i stedet for formularen; kommentar-
+ * dataen forbliver guld for creatoren.
  *
- * Er seeren filmens creator-ejer, vises fastgør/slet-knapper pr. indlæg
- * (ét fastgjort indlæg pr. film, DB-håndhævet; 409 ved race).
+ * Er seeren filmens creator-ejer, vises fastgør/slet-knapper pr.
+ * indlæg (ét fastgjort indlæg pr. film, DB-håndhævet; 409 ved race).
+ * Svar kan slettes men aldrig fastgøres — pin-knappen findes kun på
+ * topindlæg, og DB-triggeren vagter det samme mod direkte PostgREST.
  */
 export default function CommentSection({ slug, isCreatorOwner }: CommentSectionProps) {
   const t = useTranslations("comments");
@@ -45,6 +48,11 @@ export default function CommentSection({ slug, isCreatorOwner }: CommentSectionP
   const [likeHint, setLikeHint] = useState<{ id: string; message: string } | null>(null);
   /** Moderation: id på det indlæg, der er i arbejde (deaktiverer knapperne). */
   const [workingId, setWorkingId] = useState<string | null>(null);
+  /** Svar-tråde: topindlægget hvis svar-formularen er åben (null = lukket). */
+  const [replyTo, setReplyTo] = useState<string | null>(null);
+  const [replyBody, setReplyBody] = useState("");
+  const [replySubmitting, setReplySubmitting] = useState(false);
+  const [replyError, setReplyError] = useState<string | null>(null);
 
   useEffect(() => {
     const supabase = createClient();
@@ -81,6 +89,7 @@ export default function CommentSection({ slug, isCreatorOwner }: CommentSectionP
   }, [slug, t]);
 
   const canSubmit = body.trim().length > 0;
+  const canReplySubmit = replyBody.trim().length > 0;
 
   /**
    * Likes kan kun afgives af loggede brugere — gæster får et login-hint.
@@ -145,6 +154,38 @@ export default function CommentSection({ slug, isCreatorOwner }: CommentSectionP
     }
   };
 
+  /**
+   * Svar på et topindlæg — maks ét niveau; API'en og DB-triggeren
+   * afviser svar på svar. Svaret appendes til den flade liste;
+   * grupperingen i renderet placerer det under sin forælder.
+   */
+  const handleReplySubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!replyTo || !replyBody.trim()) return;
+    setReplySubmitting(true);
+    setReplyError(null);
+    try {
+      const res = await fetch("/api/comments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          documentarySlug: slug,
+          body: replyBody.trim(),
+          parentId: replyTo,
+        }),
+      });
+      if (!res.ok) throw new Error();
+      const data = (await res.json()) as { comment: Comment };
+      setComments((prev) => [...prev, data.comment]);
+      setReplyBody("");
+      setReplyTo(null);
+    } catch {
+      setReplyError(t("replyError"));
+    } finally {
+      setReplySubmitting(false);
+    }
+  };
+
   /** Fastgør/frigør — 409 hvis et andet indlæg netop blev fastgjort. */
   const handlePinToggle = async (comment: Comment) => {
     setWorkingId(comment.id);
@@ -184,12 +225,157 @@ export default function CommentSection({ slug, isCreatorOwner }: CommentSectionP
         setError(t("deleteError"));
         return;
       }
-      setComments((prev) => prev.filter((c) => c.id !== comment.id));
+      // DB'en kaskaderer sletningen til svarene (on delete cascade) —
+      // det spejles her, så ingen forladte svar bliver hængende.
+      setComments((prev) =>
+        prev.filter((c) => c.id !== comment.id && c.parentId !== comment.id),
+      );
     } catch {
       setError(t("deleteError"));
     } finally {
       setWorkingId(null);
     }
+  };
+
+  // Tråde: topindlæg i den eksisterende rækkefølge (fastgjort øverst,
+  // derefter nyeste først) med svarene ÆLDSTE først under deres
+  // forælder — naturlig læseretning i en samtale.
+  const threads = comments
+    .filter((comment) => !comment.parentId)
+    .map((comment) => ({
+      comment,
+      replies: comments
+        .filter((reply) => reply.parentId === comment.id)
+        .sort((a, b) => a.createdAt - b.createdAt),
+    }));
+
+  /** Ét indlægskort — genbruges til topindlæg og (mere afdæmpede) svar. */
+  const renderCard = (comment: Comment, isReply: boolean) => {
+    const isWorking = workingId === comment.id;
+    return (
+      <article
+        className={
+          isReply
+            ? "rounded-lg border border-smoke/70 bg-onyx/60 p-4"
+            : "rounded-lg border border-smoke bg-onyx p-5"
+        }
+      >
+        <div className="flex items-baseline justify-between gap-4">
+          <p className="break-all font-medium text-champagne">
+            {comment.authorName}
+          </p>
+          <div className="flex shrink-0 items-center gap-2">
+            {isCreatorOwner && (
+              <>
+                {/* Svar kan aldrig fastgøres — pin-knappen findes kun
+                    på topindlæg (DB-triggeren vagter det samme). */}
+                {!isReply && (
+                  <button
+                    type="button"
+                    onClick={() => void handlePinToggle(comment)}
+                    disabled={isWorking}
+                    aria-label={comment.pinned ? t("unpin") : t("pin")}
+                    className="rounded-full border border-smoke px-3 py-1 text-xs text-ash transition-colors hover:border-champagne/60 hover:text-champagne disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    {comment.pinned ? t("unpin") : t("pin")}
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => void handleDelete(comment)}
+                  disabled={isWorking}
+                  className="rounded-full border border-smoke px-3 py-1 text-xs text-red-400/80 transition-colors hover:border-red-400/60 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  {t("delete")}
+                </button>
+              </>
+            )}
+            <p className="text-xs text-ash/70">
+              {formatDate(comment.createdAt, locale)}
+            </p>
+          </div>
+        </div>
+        {comment.pinned && (
+          <p className="mt-2">
+            <span className="rounded-full border border-champagne/60 px-2 py-0.5 text-xs font-medium text-champagne">
+              📌 {t("pinnedLabel")}
+            </span>
+          </p>
+        )}
+        <p className="mt-2 leading-relaxed text-bone/90">{comment.body}</p>
+
+        <div className="mt-3 flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => handleToggleLike(comment)}
+            aria-label={t("likeAria")}
+            aria-pressed={comment.likedByMe}
+            className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition-colors ${
+              comment.likedByMe
+                ? "border-champagne/60 text-champagne"
+                : "border-smoke text-ash hover:border-champagne/60 hover:text-champagne"
+            }`}
+          >
+            <HeartIcon filled={comment.likedByMe} />
+            {comment.likeCount > 0 && <span>{comment.likeCount}</span>}
+          </button>
+          {/* Svar-knappen findes kun på topindlæg (maks ét niveau) og
+              kun for seere der må skrive. */}
+          {!isReply && canComment && (
+            <button
+              type="button"
+              onClick={() => {
+                setReplyTo(replyTo === comment.id ? null : comment.id);
+                setReplyBody("");
+                setReplyError(null);
+              }}
+              className="rounded-full border border-smoke px-3 py-1 text-xs text-ash transition-colors hover:border-champagne/60 hover:text-champagne"
+            >
+              {t("reply")}
+            </button>
+          )}
+          {likeHint?.id === comment.id && (
+            <span className="text-xs text-ash/80">{likeHint.message}</span>
+          )}
+        </div>
+
+        {/* Svarets inline-formular — åbnes under det indlæg, der
+            svares på, i stedet for at rulle til toppen. */}
+        {!isReply && replyTo === comment.id && (
+          <form onSubmit={handleReplySubmit} className="mt-3 space-y-2">
+            <textarea
+              value={replyBody}
+              onChange={(e) => setReplyBody(e.target.value)}
+              placeholder={t("bodyPlaceholder")}
+              rows={2}
+              maxLength={2000}
+              className="w-full rounded-lg border border-smoke bg-onyx px-4 py-3 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none"
+            />
+            <div className="flex items-center gap-3">
+              <button
+                type="submit"
+                disabled={replySubmitting || !canReplySubmit}
+                className="rounded-full bg-champagne px-5 py-2 text-sm font-medium text-noir transition-colors hover:bg-bone disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                {replySubmitting ? t("submitting") : t("reply")}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setReplyTo(null);
+                  setReplyBody("");
+                  setReplyError(null);
+                }}
+                className="rounded-full border border-smoke px-5 py-2 text-sm text-ash transition-colors hover:text-bone"
+              >
+                {t("cancel")}
+              </button>
+            </div>
+            {replyError && <p className="text-sm text-red-400">{replyError}</p>}
+          </form>
+        )}
+      </article>
+    );
   };
 
   const gateBox = (
@@ -255,75 +441,18 @@ export default function CommentSection({ slug, isCreatorOwner }: CommentSectionP
         {!loading && comments.length === 0 && (
           <p className="text-sm text-ash">{t("empty")}</p>
         )}
-        {comments.map((comment) => {
-          const isWorking = workingId === comment.id;
-          return (
-            <article
-              key={comment.id}
-              className="rounded-lg border border-smoke bg-onyx p-5"
-            >
-              <div className="flex items-baseline justify-between gap-4">
-                <p className="break-all font-medium text-champagne">
-                  {comment.authorName}
-                </p>
-                <div className="flex shrink-0 items-center gap-2">
-                  {isCreatorOwner && (
-                    <>
-                      <button
-                        type="button"
-                        onClick={() => void handlePinToggle(comment)}
-                        disabled={isWorking}
-                        aria-label={comment.pinned ? t("unpin") : t("pin")}
-                        className="rounded-full border border-smoke px-3 py-1 text-xs text-ash transition-colors hover:border-champagne/60 hover:text-champagne disabled:cursor-not-allowed disabled:opacity-40"
-                      >
-                        {comment.pinned ? t("unpin") : t("pin")}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => void handleDelete(comment)}
-                        disabled={isWorking}
-                        className="rounded-full border border-smoke px-3 py-1 text-xs text-red-400/80 transition-colors hover:border-red-400/60 disabled:cursor-not-allowed disabled:opacity-40"
-                      >
-                        {t("delete")}
-                      </button>
-                    </>
-                  )}
-                  <p className="text-xs text-ash/70">
-                    {formatDate(comment.createdAt, locale)}
-                  </p>
-                </div>
+        {threads.map(({ comment, replies }) => (
+          <div key={comment.id}>
+            {renderCard(comment, false)}
+            {replies.length > 0 && (
+              <div className="mt-3 space-y-3 border-l border-smoke pl-4 sm:pl-6">
+                {replies.map((reply) => (
+                  <div key={reply.id}>{renderCard(reply, true)}</div>
+                ))}
               </div>
-              {comment.pinned && (
-                <p className="mt-2">
-                  <span className="rounded-full border border-champagne/60 px-2 py-0.5 text-xs font-medium text-champagne">
-                    📌 {t("pinnedLabel")}
-                  </span>
-                </p>
-              )}
-              <p className="mt-2 leading-relaxed text-bone/90">{comment.body}</p>
-
-              <div className="mt-3 flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => handleToggleLike(comment)}
-                  aria-label={t("likeAria")}
-                  aria-pressed={comment.likedByMe}
-                  className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition-colors ${
-                    comment.likedByMe
-                      ? "border-champagne/60 text-champagne"
-                      : "border-smoke text-ash hover:border-champagne/60 hover:text-champagne"
-                  }`}
-                >
-                  <HeartIcon filled={comment.likedByMe} />
-                  {comment.likeCount > 0 && <span>{comment.likeCount}</span>}
-                </button>
-                {likeHint?.id === comment.id && (
-                  <span className="text-xs text-ash/80">{likeHint.message}</span>
-                )}
-              </div>
-            </article>
-          );
-        })}
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );

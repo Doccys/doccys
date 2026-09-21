@@ -221,7 +221,10 @@
     "delete": "Poista",
     "deleteConfirm": "Poistetaanko kommentti? Tätä ei voi kumota.",
     "deleteError": "Kommenttia ei voitu poistaa. Yritä uudelleen.",
-    "pinError": "Kommenttia ei voitu kiinnittää — toinen on jo kiinnitetty. Yritä uudelleen."
+    "pinError": "Kommenttia ei voitu kiinnittää — toinen on jo kiinnitetty. Yritä uudelleen.",
+    "reply": "Vastaa",
+    "cancel": "Peruuta",
+    "replyError": "Vastausta ei voitu lähettää. Yritä uudelleen."
   },
   "creatorApply": {
     "eyebrow": "Tekijät",

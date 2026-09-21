@@ -221,7 +221,10 @@
     "delete": "Radera",
     "deleteConfirm": "Radera kommentaren? Det går inte att ångra.",
     "deleteError": "Kommentaren kunde inte raderas. Försök igen.",
-    "pinError": "Kunde inte fästa kommentaren — en annan är redan fäst. Försök igen."
+    "pinError": "Kunde inte fästa kommentaren — en annan är redan fäst. Försök igen.",
+    "reply": "Svara",
+    "cancel": "Avbryt",
+    "replyError": "Svaret kunde inte skickas. Försök igen."
   },
   "creatorApply": {
     "eyebrow": "Skapare",

@@ -221,7 +221,10 @@
     "delete": "Eliminar",
     "deleteConfirm": "¿Eliminar el comentario? No se puede deshacer.",
     "deleteError": "No se pudo eliminar el comentario. Inténtalo de nuevo.",
-    "pinError": "No se pudo fijar el comentario — ya hay otro fijado. Inténtalo de nuevo."
+    "pinError": "No se pudo fijar el comentario — ya hay otro fijado. Inténtalo de nuevo.",
+    "reply": "Responder",
+    "cancel": "Cancelar",
+    "replyError": "No se pudo enviar la respuesta. Inténtalo de nuevo."
   },
   "creatorApply": {
     "eyebrow": "Creadores",
