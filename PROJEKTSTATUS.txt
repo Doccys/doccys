@@ -2,6 +2,47 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-09-21
 ==========================================================
 
+SVAR-TRÅDE I KOMMENTARFELTET (21/9) — KODE FÆRDIG, MIGRATION AFVENTER BRUGEREN
+Commits 6b3fbed (migration + backend) + c4b8ba5 (UI + i18n).
+Baggrund: forsiden lover "egen diskussion under hver film", men
+feltet var en flad kommentarvæg — brugerens valg: BYG SVAR-TRÅDE
+NU, så løftet er sandt (ordet "diskussion" beholdes). Beslutninger
+(MED BRUGEREN): maks ÉT niveau (svar på indlæg, ikke på svar),
+svar kan SLETTES men aldrig FASTGØRES af creatoren (pin forbliver
+ét topindlæg pr. film), og svar kræver samme har_set_film-gate
+som al kommentering.
+- MIGRATION 20260921_kommentar_svartraade.sql (KØRES AF BRUGEREN):
+  parent_id (on delete cascade — sletning af topindlæg fjerner
+  dets svar), opslags-index, insert-trigger (maks 1 niveau + samme
+  film som forælderen + pin kan IKKE sættes ved indsættelse —
+  BONUS-SECURITYFIX: hidtil kunne en authenticated seer teknisk
+  indsætte eget 'pinned' indlæg direkte via PostgREST når intet
+  var fastgjort), pin-trigger udvidet (parent_id låses, svar kan
+  aldrig fastgøres). Ingen nye grants/RPC'er → intet execute-hul.
+- KODE: parentId på Comment/CommentRow/CommentInsert; addComment +
+  NY getCommentById i BEGGE stores (butikskontrakten opdateret);
+  POST /api/comments validerer parentId (uuid 400 / findes 404 /
+  samme slug 400 / ikke-svar-på-svar 400) og sender parent_id KUN
+  ved svar — topposts opfører sig uændret også FØR migrationen er
+  kørt (graceful, som samlinger/fortsæt-se-mønsteret).
+- UI: CommentSection grupperer til tråde — topindlæg i uændret
+  rækkefølge (pinned øverst, nyeste først), svarene ældste-først
+  indrykket under forælderen (border-l, afdæmpet kort). Svar-knap
+  på topindlæg (kun canComment) åbner inline-form med annullér;
+  slet-knap også på svar (optimistic UI fjerner børnene — DB'en
+  kaskaderer); pin-knap KUN på topindlæg; likes på svar gratis.
+  i18n: reply/cancel/replyError ×8. tsc + i18n-verify ALLE TJEK
+  GRØNNE; GET /api/comments 200 pre-migration (graceful bekræftet).
+- Test (afventer brugeren, EFTER migrationen — foldes sammen med
+  den manglende kommentar-E2E): se film → Svar på et indlæg →
+  svaret står indrykket ældst-foerst-i-sin-tråd → prøv svar på et
+  svar (UI-knap findes ikke; API giver 400) → som creator-ejer:
+  slet topindlæg → svaret forsvinder med, pin-knap fraværende på
+  svar. SQL-diagnostic: update comments set pinned=true where
+  parent_id is not null → trigger-fejl; insert med pinned=true →
+  trigger-fejl. VERIFICÉR kolonnen først (select column_name from
+  information_schema.columns where table_name='comments').
+
 DEPLOY + MOBIL-HEADER (21/9)
 - SITET ER ONLINE, MEN KUN SOM FEEDBACK-RUNDE: https://doccys.
   vercel.app er oppe ~24 timer (ned igen tidligt 22/9) KUN som
@@ -777,13 +818,13 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+c4b8ba5 kommentarer: svar-knap, traad-visning og moderation i UI
+6b3fbed kommentarer: svartraade-migration + parentId gennem stakken
+7c389df docs: nav-omdoeb + /film-backlog i PROJEKTSTATUS
+f8bf47b nav: "Forside" bliver til "Film" i alle 8 sprog
+9ca9ad3 docs: feedback-runde + bevis-overlay i PROJEKTSTATUS
+46fbd76 spiller: kompakt stoeatte-bevis paa mobil
+dbc2771 docs: mobil-header-fix + deploy i PROJEKTSTATUS
 2155f72 header: mobilvenlig bredde — baren tryktes ud over skaermen
 4857698 deploy: start forste Vercel-bygning
 6082aac dev: trycloudflare-tunnels whitelisted (allowedDevOrigins)
-073aadb docs: valuta-visning i PROJEKTSTATUS
-b2324e1 valuta: lokal pris-visning for internationale soere
-d0e3d9d docs: fire differentierede features i PROJEKTSTATUS (verificeret)
-2e242c5 filmside: saetten synlig ved skaberen
-e068291 bevis: haengbart stoeatte-bevis som PNG
-b311f74 paywall: filmens pris i kroner paa spaerren
-45746e3 minutregnskab: "Din stoette"-sektion i profilen
