@@ -47,7 +47,118 @@
     }
   },
   "footer": {
-    "tagline": "Documentales independientes. Sin anuncios. Nunca."
+    "tagline": "Documentales independientes. Sin anuncios. Nunca.",
+    "contact": "Contacto",
+    "terms": "Términos y condiciones",
+    "privacy": "Política de privacidad"
+  },
+  "legal": {
+    "contact": {
+      "title": "Contacta con Doccys",
+      "intro": "¿Preguntas, errores o ayuda? Leemos todo lo que llega a nuestro buzón.",
+      "sections": {
+        "s1": {
+          "title": "Escríbenos",
+          "body": "Puedes escribirnos siempre a support@doccys.com. Cuéntanos de qué película y página se trata, y qué dispositivo o navegador usas — así podemos ayudarte más rápido."
+        },
+        "s2": {
+          "title": "Sobre qué puedes escribir",
+          "body": "• Errores técnicos del sitio\n• Compras de minutos y pagos\n• Derechos de autor — ¿debería (o no) estar aquí una película?\n• Tus datos personales, p. ej. eliminar tu cuenta\n• Colaborar con Doccys como creador"
+        },
+        "s3": {
+          "title": "Tiempo de respuesta",
+          "body": "Intentamos responder en un plazo de dos días laborables. En festivos y lanzamientos puede tardar un poco más."
+        }
+      }
+    },
+    "terms": {
+      "title": "Términos y condiciones",
+      "intro": "Estas condiciones se aplican al uso de Doccys y a la compra de minutos. Última actualización: 22 de septiembre de 2026.",
+      "sections": {
+        "s1": {
+          "title": "Sobre Doccys",
+          "body": "Doccys es un servicio de streaming de documentales independientes: solo pagas por lo que realmente ves, minuto a minuto. El servicio lo gestiona Doccys — el número de registro de la empresa se publicará en el lanzamiento definitivo."
+        },
+        "s2": {
+          "title": "Creación de cuenta",
+          "body": "Crear una cuenta es gratis. Al registrarte debes indicar una dirección de correo válida y confirmarla con el enlace del correo que te enviamos — solo entonces se puede usar la cuenta. Tú eres responsable de mantener tus datos de acceso en secreto y de toda la actividad que ocurra a través de tu cuenta."
+        },
+        "s3": {
+          "title": "Minutos y reproducción",
+          "body": "Las películas se reproducen con los minutos de tu cuenta. El consumo se mide por el tiempo que realmente reproduces — si paras a mitad de película, solo pagas el tiempo visto. La tarifa por minuto de cada película aparece en su página antes de iniciar la reproducción.\nTu reproducción se registra como consumo medido (tu \u201cprueba\u201d) — consulta también la política de privacidad. Esa prueba es decisiva si hay dudas sobre qué viste y qué se descontó de tu saldo."
+        },
+        "s4": {
+          "title": "Compra y pago",
+          "body": "Los minutos se compran en paquetes a los precios indicados en la compra. El pago lo gestiona nuestro socio de pagos Stripe, y el recibo se envía a tu correo. Los precios se muestran sin IVA; el IVA se calcula según tu país de facturación y se incluye en el importe total al pagar."
+        },
+        "s5": {
+          "title": "Validez de los minutos",
+          "body": "Los minutos no caducan y se pueden usar mientras exista tu cuenta. Son personales, no se pueden transferir a otros ni canjearse por dinero. Los minutos ganados como bonificación por referidos siguen las mismas reglas."
+        },
+        "s6": {
+          "title": "Desistimiento y errores",
+          "body": "Los minutos son contenido digital: una vez iniciada la reproducción, el derecho de desistimiento expira según las reglas de la ley danesa de contratos de consumo para contenido digital. Si aún no has iniciado la reproducción, puedes escribir a support@doccys.com dentro de los 14 días posteriores a la compra y recuperar el importe completo.\nSi te cobraron algo que no pudiste ver por un error técnico, o el pago se procesó dos veces, escríbenos — lo solucionamos."
+        },
+        "s7": {
+          "title": "Derechos de los creadores",
+          "body": "Parte del consumo de minutos va al creador de la película. No puedes descargar, grabar ni compartir películas o fragmentos de películas de Doccys. Si crees que una película en Doccys infringe tus derechos, escribe a support@doccys.com."
+        },
+        "s8": {
+          "title": "Responsabilidad y contenido",
+          "body": "Doccys no es el editor de las películas — el contenido y las opiniones de las películas son de sus creadores. El servicio se ofrece \u201ctal cual\u201d. No respondemos de pérdidas indirectas o beneficios no obtenidos, incluidas caídas del servicio, pero corregimos errores tan rápido como podemos.\nPodemos cambiar precios futuros con aviso razonable; los cambios nunca afectan a minutos ya comprados."
+        },
+        "s9": {
+          "title": "Cambios en estas condiciones",
+          "body": "Podemos actualizar estas condiciones. La versión vigente está siempre en esta página, y anunciamos los cambios importantes en el sitio. Si sigues usando Doccys tras un cambio, aceptas la nueva versión."
+        },
+        "s10": {
+          "title": "Reclamaciones y contacto",
+          "body": "Puedes escribir siempre a support@doccys.com. Los consumidores daneses también pueden acudir a la junta danesa de reclamaciones de consumo en caso de reclamaciones de compra — ver forbrugerklagenaevnet.dk. Estas condiciones se rigen por la legislación danesa."
+        }
+      }
+    },
+    "privacy": {
+      "title": "Política de privacidad",
+      "intro": "Aquí puedes leer qué datos personales trata Doccys, por qué lo hace y qué derechos tienes. Última actualización: 22 de septiembre de 2026.",
+      "sections": {
+        "s1": {
+          "title": "Responsable del tratamiento",
+          "body": "Doccys — el número de registro de la empresa se publicará en el lanzamiento definitivo. Contacto: support@doccys.com."
+        },
+        "s2": {
+          "title": "Qué datos tratamos",
+          "body": "• Cuenta: tu dirección de correo (y su confirmación) y tu contraseña, que se guarda cifrada.\n• Compras: qué paquetes compraste, cuándo y el identificador de transacción. Las tarjetas de pago nunca las tratamos nosotros — eso ocurre en Stripe.\n• Reproducción: cuándo empiezas y paras, saltos y tiempo visto por película. El consumo medido (la \u201cprueba\u201d) es lo que descuenta minutos de tu saldo y remunera al creador.\n• Comentarios: el nombre con el que publicas, tus comentarios y \u201cme gusta\u201d, y su moderación.\n• Referidos: si llegas a través de un enlace de referido, guardamos el código en una cookie hasta 30 días para poder abonar a quien te recomendó en tu primera compra."
+        },
+        "s3": {
+          "title": "Finalidad y base jurídica",
+          "body": "Tratamos datos para prestar el servicio — crear tu cuenta, descontar minutos de tu saldo y remunerar a los creadores (contrato), mantener el servicio seguro y evitar abusos (interés legítimo) y cumplir obligaciones contables y fiscales (obligación legal). Nunca vendemos tus datos ni los usamos para perfilar publicidad — Doccys no muestra anuncios, nunca."
+        },
+        "s4": {
+          "title": "Terceros",
+          "body": "Usamos los siguientes encargados del tratamiento:\n• Supabase — inicio de sesión y base de datos\n• Stripe — pagos y recibos\n• Vercel — operación y hosting\nSolo tratan datos en nuestro nombre y para las finalidades indicadas arriba."
+        },
+        "s5": {
+          "title": "Cookies",
+          "body": "Doccys solo coloca una cookie: doccys_ref, que recuerda un enlace de referido hasta 30 días. Tu idioma se guarda en la dirección de la página, no en una cookie. No usamos rastreo de terceros ni cookies publicitarias."
+        },
+        "s6": {
+          "title": "Conservación",
+          "body": "Los datos de cuenta y comentarios se eliminan cuando nos lo pides. Los datos de compra y las pruebas se conservan cinco años para poder auditar la contabilidad y los pagos a creadores — la ley danesa de contabilidad lo exige."
+        },
+        "s7": {
+          "title": "Tus derechos",
+          "body": "Tienes derecho a:\n• acceder a los datos que tratamos sobre ti\n• rectificar datos inexactos\n• eliminar datos (con las excepciones que exige la ley de contabilidad)\n• recibir tus datos en un formato legible (portabilidad de datos)\n• oponerte al tratamiento\nEnvía tu solicitud a support@doccys.com — respondemos en un mes como máximo."
+        },
+        "s8": {
+          "title": "Reclamaciones",
+          "body": "Si no estás conforme con nuestra respuesta, puedes reclamar a la agencia danesa de protección de datos — ver datatilsynet.dk."
+        },
+        "s9": {
+          "title": "Cambios",
+          "body": "Si actualizamos esta política, la nueva versión aparece en esta página. Anunciamos los cambios importantes en el sitio."
+        }
+      }
+    }
   },
   "home": {
     "featured": {

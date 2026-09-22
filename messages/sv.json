@@ -47,7 +47,118 @@
     }
   },
   "footer": {
-    "tagline": "Oberoende dokumentärer. Inga annonser. Aldrig."
+    "tagline": "Oberoende dokumentärer. Inga annonser. Aldrig.",
+    "contact": "Kontakt",
+    "terms": "Köpvillkor",
+    "privacy": "Integritetspolicy"
+  },
+  "legal": {
+    "contact": {
+      "title": "Kontakta Doccys",
+      "intro": "Frågor, fel eller hjälp? Vi läser allt som landar i inkorgen.",
+      "sections": {
+        "s1": {
+          "title": "Skriv till oss",
+          "body": "Du kan alltid nå oss på support@doccys.com. Skriv gärna vilken film och sida det gäller, och vilken enhet eller webbläsare du använder — då kan vi hjälpa snabbare."
+        },
+        "s2": {
+          "title": "Vad du kan skriva om",
+          "body": "• Tekniska fel på webbplatsen\n• Köp av minuter och betalningar\n• Upphovsrätt — ska (eller bör inte) en film finnas här?\n• Dina personuppgifter, t.ex. radering av ditt konto\n• Samarbete med Doccys som upphovsperson"
+        },
+        "s3": {
+          "title": "Svarstid",
+          "body": "Vi försöker svara inom två vardagar. Vid helgdagar och lanseringar kan det ta lite längre."
+        }
+      }
+    },
+    "terms": {
+      "title": "Köpvillkor",
+      "intro": "Dessa villkor gäller för användning av Doccys och för köp av minuter. Senast uppdaterad: 22 september 2026.",
+      "sections": {
+        "s1": {
+          "title": "Om Doccys",
+          "body": "Doccys är en strömtjänst för oberoende dokumentärer: du betalar bara för det du faktiskt ser, minut för minut. Tjänsten drivs av Doccys — organisationsnumret anges vid den slutliga lanseringen."
+        },
+        "s2": {
+          "title": "Skapa ett konto",
+          "body": "Det är gratis att skapa ett konto. Vid registrering måste du ange en giltig e-postadress och bekräfta den via länken i mejlet du får — först därefter kan kontot användas. Du ansvarar själv för att hålla dina inloggningsuppgifter hemliga och för all aktivitet som sker via ditt konto."
+        },
+        "s3": {
+          "title": "Minuter och uppspelning",
+          "body": "Filmer spelas upp med minuterna på ditt konto. Förbrukningen mäts efter den tid du faktiskt spelar upp — stoppar du mitt i en film betalar du bara för tiden du såg. Minutpriset för en film framgår av filmens sida innan du startar uppspelningen.\nDin uppspelning registreras som mätt förbrukning (“beviset”) — se även integritetspolicyn. Beviset är avgörande om det är tveksamhet om vad du har sett och vad som har dragits från ditt saldo."
+        },
+        "s4": {
+          "title": "Köp och betalning",
+          "body": "Minuter köps som paket till de priser som framgår vid köpet. Betalningen hanteras av vår betalningspartner Stripe, och kvittot skickas till din e-post. Priserna är angivna exklusive moms; momsen beräknas efter ditt fakturaland och ingår i totalbeloppet vid betalningen."
+        },
+        "s5": {
+          "title": "Minuternas giltighet",
+          "body": "Minuter går inte ut och kan användas så länge ditt konto finns. De är personliga och kan inte överföras till andra eller växlas till pengar. Minuter intjänade som hänvisningsbonus följer samma regler."
+        },
+        "s6": {
+          "title": "Ångerrätt och fel",
+          "body": "Minuter är digitalt innehåll: när uppspelningen har påbörjats upphör ångerrätten enligt danska konsumentköpslagens regler för digitalt innehåll. Har du inte påbörjat uppspelningen kan du inom 14 dagar efter köpet skriva till support@doccys.com och få hela beloppet tillbaka.\nBlev du debiterad för något du inte kunde se på grund av ett tekniskt fel, eller gick betalningen igenom två gånger, skriv till oss — då rättar vi det."
+        },
+        "s7": {
+          "title": "Upphovspersonernas rättigheter",
+          "body": "En del av minutförbrukningen tillfaller filmens upphovsperson. Du får inte ladda ner, spela in eller sprida filmer eller delar av filmer från Doccys. Anser du att en film på Doccys kränker dina rättigheter kan du skriva till support@doccys.com."
+        },
+        "s8": {
+          "title": "Ansvar och innehåll",
+          "body": "Doccys är inte utgivare av filmerna — innehållet och åsikterna i filmerna är upphovspersonernas. Tjänsten levereras “som den är”. Vi ansvarar inte för indirekta förluster eller utebliven vinst, inklusive driftstörningar, men rättar naturligtvis fel så snabbt vi kan.\nVi kan ändra framtida priser med rimlig förvarning; ändringar påverkar aldrig minuter som redan är köpta."
+        },
+        "s9": {
+          "title": "Ändringar av villkoren",
+          "body": "Vi kan uppdatera dessa villkor. Den gällande versionen ligger alltid på denna sida, och vid väsentliga ändringar ger vi besked på webbplatsen. Fortsätter du att använda Doccys efter en ändring godkänner du den nya versionen."
+        },
+        "s10": {
+          "title": "Klagomål och kontakt",
+          "body": "Du kan alltid skriva till support@doccys.com. Danska konsumenter kan dessutom kontakta Forbrugerklagenævnet vid köpsklagomål — se forbrugerklagenaevnet.dk. Dansk rätt gäller för dessa villkor."
+        }
+      }
+    },
+    "privacy": {
+      "title": "Integritetspolicy",
+      "intro": "Här kan du läsa vilka personuppgifter Doccys behandlar, varför vi gör det och vilka rättigheter du har. Senast uppdaterad: 22 september 2026.",
+      "sections": {
+        "s1": {
+          "title": "Personuppgiftsansvarig",
+          "body": "Doccys — organisationsnumret anges vid den slutliga lanseringen. Kontakt: support@doccys.com."
+        },
+        "s2": {
+          "title": "Vilka uppgifter vi behandlar",
+          "body": "• Konto: din e-postadress (och bekräftelsen av den) och ditt lösenord, som lagras krypterat.\n• Köp: vilka paket du har köpt, köptidpunkt och transaktions-id. Betalkort behandlas aldrig av oss — det sker hos Stripe.\n• Uppspelning: när du startar och stoppar, spolningar och använd tid per film. Den uppmätta forbrukningen (“beviset”) är det som drar minuter från ditt saldo och ersätter upphovspersonen.\n• Kommentarer: namnet du skriver under, dina kommentarer och gillanden samt moderering av dem.\n• Hänvisning: kommer du via en hänvisningslänk sparar vi koden i en cookie i upp till 30 dagar, så att den som hänvisade dig kan krediteras vid ditt första köp."
+        },
+        "s3": {
+          "title": "Syfte och grund",
+          "body": "Vi behandlar uppgifter för att leverera tjänsten — skapa ditt konto, dra minuter från ditt saldo och ersätta upphovspersonerna (avtalsgrund), hålla tjänsten säker och förhindra missbruk (legitimt intresse) och uppfylla bokförings- och skattskyldighet (rättslig förpliktelse). Vi säljer aldrig dina uppgifter och använder dem inte för annonsprofilering — Doccys visar inga annonser, någonsin."
+        },
+        "s4": {
+          "title": "Tredje parter",
+          "body": "Vi använder följande personuppgiftsbiträden:\n• Supabase — inloggning och databas\n• Stripe — betalningar och kvitton\n• Vercel — drift och hosting\nDe behandlar bara uppgifter på vårt vägnar och för de syften som nämns ovan."
+        },
+        "s5": {
+          "title": "Kakor",
+          "body": "Doccys sätter bara en kaka: doccys_ref, som minns en hänvisningslänk i upp till 30 dagar. Ditt språkval sparas i sidans adress, inte i en kaka. Vi använder ingen spårning från tredje part och inga annonskakor."
+        },
+        "s6": {
+          "title": "Lagring",
+          "body": "Konto- och kommentarsuppgifter raderas när du ber oss om det. Köpdata och bevis sparas i fem år så att redovisning och ersättning till upphovspersoner kan granskas — dansk bokföringslag kräver det."
+        },
+        "s7": {
+          "title": "Dina rättigheter",
+          "body": "Du har rätt till:\n• insyn i de uppgifter vi behandlar om dig\n• att få felaktiga uppgifter rättade\n• att få uppgifter raderade (med de undantag bokföringslagen kräver)\n• att få uppgifter utlämnade i ett läsbart format (dataportabilitet)\n• att invända mot behandlingen\nSkicka din begäran till support@doccys.com — vi svarar senast en månad senare."
+        },
+        "s8": {
+          "title": "Klagomål",
+          "body": "Är du inte nöjd med vårt svar kan du klaga till Datatilsynet — se datatilsynet.dk."
+        },
+        "s9": {
+          "title": "Ändringar",
+          "body": "Uppdaterar vi policyn ligger den nya versionen på denna sida. Vid väsentliga ändringar ger vi besked på webbplatsen."
+        }
+      }
+    }
   },
   "home": {
     "featured": {

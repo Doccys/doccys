@@ -47,7 +47,118 @@
     }
   },
   "footer": {
-    "tagline": "Itsenäiset dokumentit. Ei mainoksia. Koskaan."
+    "tagline": "Itsenäiset dokumentit. Ei mainoksia. Koskaan.",
+    "contact": "Yhteystiedot",
+    "terms": "Ehdot",
+    "privacy": "Tietosuojakäytäntö"
+  },
+  "legal": {
+    "contact": {
+      "title": "Ota yhteyttä Doccyseen",
+      "intro": "Kysymyksiä, virheitä vai apua? Luemme kaiken saapuneen postin.",
+      "sections": {
+        "s1": {
+          "title": "Kirjoita meille",
+          "body": "Tavoitat meidät aina osoitteesta support@doccys.com. Kerrothan, mistä elokuvasta ja sivusta on kyse ja mitä laitetta tai selainta käytät — niin voimme auttaa nopeammin."
+        },
+        "s2": {
+          "title": "Aiheista, joista voit kirjoittaa",
+          "body": "• Sivuston tekniset virheet\n• Minuuttien ostaminen ja maksut\n• Tekijänoikeudet — pitäisikö (vai pitäisikö ei) jonkin elokuvan olla täällä?\n• Henkilötietosi, esim. tilisi poistaminen\n• Yhteistyö Doccysin kanssa tekijänä"
+        },
+        "s3": {
+          "title": "Vastausaika",
+          "body": "Pyrimme vastaamaan kahden arkipäivän kuluessa. Pyhien ja julkaisujen aikaan se voi kestää hiukan pidempään."
+        }
+      }
+    },
+    "terms": {
+      "title": "Ehdot",
+      "intro": "Nämä ehdot koskevat Doccysin käyttöä ja minuuttien ostamista. Viimeksi päivitetty 22.9.2026.",
+      "sections": {
+        "s1": {
+          "title": "Doccysistä",
+          "body": "Doccys on suoratoistopalvelu itsenäisille dokumenteille: maksat vain siitä, mitä todella katsot, minuutti minuutilta. Palvelua ylläpitää Doccys — y-tunnus julkaistaan lopullisen julkaisun yhteydessä."
+        },
+        "s2": {
+          "title": "Tilin luominen",
+          "body": "Tilin luominen on ilmaista. Rekisteröityessäsi anna toimiva sähköpostiosoite ja vahvista se postista löytyvän linkin avulla — vasta sitten tiliä voi käyttää. Olet itse vastuussa kirjautumistietojesi salaamisesta ja kaikesta tilisi kautta tapahtuvasta toiminnasta."
+        },
+        "s3": {
+          "title": "Minuutit ja toisto",
+          "body": "Elokuvia katsotaan tilin minuuteilla. Kulutus mitataan todellisen katseluajan mukaan — jos keskeytät elokuvan keskeltä, maksat vain katsotun ajan. Elokuvan minuuttimaksu näkyy elokuvan sivulla ennen toiston aloittamista.\nKatselusi rekisteröidään mitattuna kulutuksena (“todiste”) — ks. myös tietosuojakäytäntö. Todiste on ratkaiseva, jos on epäselvyyttä siitä, mitä olet katsonut ja mitä saldostasi on vähennetty."
+        },
+        "s4": {
+          "title": "Ostaminen ja maksaminen",
+          "body": "Minuutteja ostetaan paketteina oston yhteydessä näkyviin hintoihin. Maksun hoitaa maksukumppanimme Stripe, ja kuitti lähetetään sähköpostiisi. Hinnat näytetään ilman alv:tä; alv lasketaan laskutusmaasi mukaan ja sisältyy kokonaissummaan maksun yhteydessä."
+        },
+        "s5": {
+          "title": "Minuuttien voimassaolo",
+          "body": "Minuutit eivät vanhene, ja voit käyttää niitä niin kauan kuin tilisi on olemassa. Ne ovat henkilökohtaisia, eikä niitä voi siirtää toiselle tai vaihtaa rahaksi. Suosittelubonuksena ansaitut minuutit noudattavat samoja sääntöjä."
+        },
+        "s6": {
+          "title": "Peruutusoikeus ja virheet",
+          "body": "Minuutit ovat digitaalista sisältöä: kun toisto on aloitettu, peruutusoikeus päättyy Tanskan kuluttajasopimuslain digitaalista sisältöä koskevien sääntöjen mukaan. Jos et ole aloittanut toistoa, voit kirjoittaa osoitteeseen support@doccys.com 14 päivän kuluessa ostoista ja saada koko summan takaisin.\nJos sinulta veloitettiin jostakin, jota et teknisen vian vuoksi voinut katsoa, tai maksu meni läpi kahdesti, kirjoita meille — korjaamme asian."
+        },
+        "s7": {
+          "title": "Tekijöiden oikeudet",
+          "body": "Osa minuuttikulutuksesta menee elokuvan tekijälle. Et saa ladata, tallentaa tai jakaa Doccysin elokuvia tai niiden osia. Jos mielestäsi Doccysin elokuva loukkaa oikeuksiasi, kirjoita osoitteeseen support@doccys.com."
+        },
+        "s8": {
+          "title": "Vastuu ja sisältö",
+          "body": "Doccys ei ole elokuvien kustantaja — elokuvien sisältö ja näkemykset ovat tekijöiden. Palvelu tarjotaan “hnkönsä mukaisena”. Emme vastaa välillisistä vahingoista tai saamatta jääneistä hyödyistä, mukaan lukien palvelukatkoista, mutta korjaamme virheet tietysti niin nopeasti kuin pystymme.\nVoimme muuttaa tulevia hintoja kohtuullisella ilmoitusajalla; muutokset eivät koskaan koske jo ostettuja minuutteja."
+        },
+        "s9": {
+          "title": "Ehtojen muutokset",
+          "body": "Voimme päivittää näitä ehtoja. Voimassa oleva versio on aina tällä sivulla, ja ilmoitamme olennaisista muutoksista sivustolla. Jos jatkat Doccysin käyttöä muutoksen jälkeen, hyväksyt uuden version."
+        },
+        "s10": {
+          "title": "Valitukset ja yhteystiedot",
+          "body": "Voit aina kirjoittaa osoitteeseen support@doccys.com. Tanskalaiset kuluttajat voivat lisäksi ottaa yhteyttä Tanskan kuluttajavalituslautakuntaan ostovalitusten osalta — ks. forbrugerklagenaevnet.dk. Näihin ehtoihin sovelletaan Tanskan oikeutta."
+        }
+      }
+    },
+    "privacy": {
+      "title": "Tietosuojakäytäntö",
+      "intro": "Täältä näet, mitä henkilötietoja Doccys käsittelee, miksi, ja mitkä oikeutesi ovat. Viimeksi päivitetty 22.9.2026.",
+      "sections": {
+        "s1": {
+          "title": "Rekisterinpitäjä",
+          "body": "Doccys — y-tunnus julkaistaan lopullisen julkaisun yhteydessä. Yhteystieto: support@doccys.com."
+        },
+        "s2": {
+          "title": "Mitä tietoja käsittelemme",
+          "body": "• Tili: sähköpostiosoitteesi (ja sen vahvistus) sekä salasanasi, joka tallennetaan salattuna.\n• Ostot: mitkä paketit ostit, milloin ja tapahtumatunnus. Maksukortteja emme käsittele koskaan — se tapahtuu Stripellä.\n• Toisto: milloin aloitat ja lopetat, kelaus ja katsottu aika per elokuva. Mitattu kulutus (“todiste”) vähentää minuutteja saldostasi ja korvaa tekijän.\n• Kommentit: nimi, jolla kirjoitat, kommenttisi ja tykkäyksesi sekä niiden moderointi.\n• Suosittelut: jos tulet suosittelulinkin kautta, säilytämme koodin evästeessä enintään 30 päivää, jotta sinut suositellut henkilö saa hyvityksen ensimmäisestä ostostasi."
+        },
+        "s3": {
+          "title": "Tarkoitus ja peruste",
+          "body": "Käsittelemme tietoja palvelun tarjoamiseksi — tilin luominen, minuuttien vähentäminen saldostasi ja tekijöiden korvaaminen (sopimus), palvelun turvaaminen ja väärinkäytösten estäminen (oikeutettu etu) sekä kirjanpito- ja verovelvoitteiden täyttäminen (lakisääteinen velvoite). Emme koskaan myy tietojasi emmekä käytä niitä mainosprofilointiin — Doccys ei näytä mainoksia koskaan."
+        },
+        "s4": {
+          "title": "Kolmannet osapuolet",
+          "body": "Käytämme seuraavia henkilötietojen käsittelijöitä:\n• Supabase — kirjautuminen ja tietokanta\n• Stripe — maksut ja kuitit\n• Vercel — ylläpito ja isännöinti\nNe käsittelevät tietoja vain puolestamme ja yllä mainittuihin tarkoituksiin."
+        },
+        "s5": {
+          "title": "Evästeet",
+          "body": "Doccys asettaa vain yhden evästeen: doccys_ref, joka muistaa suosittelulinkin enintään 30 päivää. Kielivalintasi tallentuu sivun osoitteeseen, ei evästeeseen. Emme käytä kolmannen osapuolen seurantaa emmekä mainosevästeitä."
+        },
+        "s6": {
+          "title": "Säilytys",
+          "body": "Tili- ja kommenttitiedot poistetaan, kun pyydät sitä. Ostotiedot ja todisteet säilytetään viisi vuotta, jotta kirjanpito ja tekijöille maksettavat korvaukset voidaan tarkistaa — Tanskan kirjanpitälaki edellyttää sitä."
+        },
+        "s7": {
+          "title": "Oikeutesi",
+          "body": "Sinulla on oikeus:\n• saada tietää, mitä tietoja sinusta käsitellään\n• saada virheelliset tiedot korjatuiksi\n• saada tietoja poistetuiksi (kirjanpitälain edellyttämin poikkeuksin)\n• saada tietosi luettavassa muodossa (siirrettävyys)\n• vastustaa käsittelyä\nLähetä pyyntösi osoitteeseen support@doccys.com — vastaamme viimeistään kuukauden kuluttua."
+        },
+        "s8": {
+          "title": "Valitukset",
+          "body": "Jos et ole tyytyväinen vastaukseemme, voit valittaa Tanskan tietosuojaviranomaiselle — ks. datatilsynet.dk."
+        },
+        "s9": {
+          "title": "Muutokset",
+          "body": "Jos päivitämme tätä käytäntöä, uusi versio ilmestyy tälle sivulle. Ilmoitamme olennaisista muutoksista sivustolla."
+        }
+      }
+    }
   },
   "home": {
     "featured": {

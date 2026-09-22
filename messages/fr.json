@@ -47,7 +47,118 @@
     }
   },
   "footer": {
-    "tagline": "Documentaires indépendants. Sans publicité. Jamais."
+    "tagline": "Documentaires indépendants. Sans publicité. Jamais.",
+    "contact": "Contact",
+    "terms": "Conditions générales",
+    "privacy": "Politique de confidentialité"
+  },
+  "legal": {
+    "contact": {
+      "title": "Contacter Doccys",
+      "intro": "Des questions, un bug ou besoin d'aide ? Nous lisons tout ce qui arrive dans notre boîte.",
+      "sections": {
+        "s1": {
+          "title": "Écrivez-nous",
+          "body": "Vous pouvez toujours nous joindre à support@doccys.com. Précisez de quel film et de quelle page il s'agit, et quel appareil ou navigateur vous utilisez — cela nous aide à vous aider plus vite."
+        },
+        "s2": {
+          "title": "Sujets possibles",
+          "body": "• Bugs techniques du site\n• Achats de minutes et paiements\n• Droits d'auteur — un film devrait-il (ou non) être ici ?\n• Vos données personnelles, p. ex. la suppression de votre compte\n• Collaborer avec Doccys en tant que créateur"
+        },
+        "s3": {
+          "title": "Délai de réponse",
+          "body": "Nous nous efforçons de répondre sous deux jours ouvrés. Pendant les jours fériés et les lancements, cela peut prendre un peu plus de temps."
+        }
+      }
+    },
+    "terms": {
+      "title": "Conditions générales",
+      "intro": "Ces conditions s'appliquent à l'utilisation de Doccys et à l'achat de minutes. Dernière mise à jour : 22 septembre 2026.",
+      "sections": {
+        "s1": {
+          "title": "À propos de Doccys",
+          "body": "Doccys est un service de streaming de documentaires indépendants : vous ne payez que ce que vous regardez réellement, minute par minute. Le service est exploité par Doccys — le numéro d'enregistrement de l'entreprise sera publié au lancement définitif."
+        },
+        "s2": {
+          "title": "Création d'un compte",
+          "body": "La création d'un compte est gratuite. À l'inscription, vous devez fournir une adresse e-mail valide et la confirmer via le lien de l'e-mail que nous vous envoyons — ce n'est qu'ensuite que le compte peut être utilisé. Vous êtes responsable de garder vos identifiants secrets et de toute activité survenant via votre compte."
+        },
+        "s3": {
+          "title": "Minutes et lecture",
+          "body": "Les films sont lus avec les minutes de votre compte. La consommation est mesurée selon le temps réellement regardé — si vous vous arrêtez au milieu d'un film, vous ne payez que le temps visionné. Le tarif à la minute d'un film figure sur sa page avant de lancer la lecture.\nVotre lecture est enregistrée comme une consommation mesurée (votre “preuve”) — voir aussi la politique de confidentialité. Cette preuve est déterminante en cas de doute sur ce que vous avez regardé et sur ce qui a été déduit de votre solde."
+        },
+        "s4": {
+          "title": "Achat et paiement",
+          "body": "Les minutes s'achètent en paquets aux prix indiqués lors de l'achat. Le paiement est traité par notre partenaire Stripe, et le reçu est envoyé sur votre e-mail. Les prix sont indiqués hors TVA ; la TVA est calculée selon votre pays de facturation et incluse dans le montant total au paiement."
+        },
+        "s5": {
+          "title": "Validité des minutes",
+          "body": "Les minutes n'expirent pas et restent utilisables tant que votre compte existe. Elles sont personnelles, non transférables et ne peuvent pas être échangées contre de l'argent. Les minutes gagnées en bonus de parrainage suivent les mêmes règles."
+        },
+        "s6": {
+          "title": "Rétractation et erreurs",
+          "body": "Les minutes sont un contenu numérique : une fois la lecture commencée, le droit de rétractation tombe selon les règles de la loi danoise sur les contrats de consommation pour le contenu numérique. Si vous n'avez pas commencé la lecture, vous pouvez écrire à support@doccys.com dans les 14 jours suivant l'achat pour être remboursé intégralement.\nSi vous avez été débité pour quelque chose que vous n'avez pas pu voir en raison d'un bug, ou si le paiement est passé deux fois, écrivez-nous — nous corrigeons la situation."
+        },
+        "s7": {
+          "title": "Droits des créateurs",
+          "body": "Une partie de la consommation de minutes revient au créateur du film. Vous ne pouvez pas télécharger, enregistrer ni partager des films ou des extraits de films de Doccys. Si vous estimez qu'un film sur Doccys porte atteinte à vos droits, écrivez à support@doccys.com."
+        },
+        "s8": {
+          "title": "Responsabilité et contenu",
+          "body": "Doccys n'est pas l'éditeur des films — le contenu et les opinions des films sont ceux de leurs créateurs. Le service est fourni « tel quel ». Nous ne sommes pas responsables des pertes indirectes ou manques à gagner, y compris les interruptions, mais nous corrigeons bien sûr les bugs aussi vite que possible.\nNous pouvons modifier les prix futurs avec un préavis raisonnable ; les modifications ne concernent jamais les minutes déjà achetées."
+        },
+        "s9": {
+          "title": "Modifications des conditions",
+          "body": "Nous pouvons mettre à jour ces conditions. La version en vigueur figure toujours sur cette page, et nous annonçons les changements importants sur le site. Si vous continuez à utiliser Doccys après un changement, vous en acceptez la nouvelle version."
+        },
+        "s10": {
+          "title": "Réclamations et contact",
+          "body": "Vous pouvez toujours écrire à support@doccys.com. Les consommateurs danois peuvent également saisir la médiation danoise de la consommation pour les litiges d'achat — voir forbrugerklagenaevnet.dk. Ces conditions sont régies par le droit danois."
+        }
+      }
+    },
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "intro": "Ici, vous pouvez lire quelles données personnelles Doccys traite, pourquoi, et quels sont vos droits. Dernière mise à jour : 22 septembre 2026.",
+      "sections": {
+        "s1": {
+          "title": "Responsable du traitement",
+          "body": "Doccys — le numéro d'enregistrement de l'entreprise sera publié au lancement définitif. Contact : support@doccys.com."
+        },
+        "s2": {
+          "title": "Données traitées",
+          "body": "• Compte : votre adresse e-mail (et sa confirmation) et votre mot de passe, stocké chiffré.\n• Achats : quels paquets vous avez achetés, quand, et l'identifiant de transaction. Les cartes bancaires ne sont jamais traitées par nous — cela se fait chez Stripe.\n• Lecture : quand vous démarrez et arrêtez, les sauts et le temps visionné par film. La consommation mesurée (la « preuve ») est ce qui déduit des minutes de votre solde et rémunère le créateur.\n• Commentaires : le nom sous lequel vous publiez, vos commentaires et vos mentions « j'aime », ainsi que leur modération.\n• Parrainage : si vous arrivez via un lien de parrainage, nous conservons le code dans un cookie jusqu'à 30 jours afin que la personne qui vous a parrainé soit créditée lors de votre premier achat."
+        },
+        "s3": {
+          "title": "Finalités et base légale",
+          "body": "Nous traitons des données pour fournir le service — créer votre compte, déduire des minutes de votre solde et rémunérer les créateurs (contrat), garantir la sécurité du service et prévenir les abus (intérêt légitime) et respecter les obligations comptables et fiscales (obligation légale). Nous ne vendons jamais vos données et ne les utilisons pas pour du profilage publicitaire — Doccys n'affiche aucune publicité, jamais."
+        },
+        "s4": {
+          "title": "Tiers",
+          "body": "Nous utilisons les sous-traitants suivants :\n• Supabase — connexion et base de données\n• Stripe — paiements et reçus\n• Vercel — exploitation et hébergement\nIls ne traitent des données qu'en notre nom et aux finalités indiquées ci-dessus."
+        },
+        "s5": {
+          "title": "Cookies",
+          "body": "Doccys ne dépose qu'un seul cookie : doccys_ref, qui retient un lien de parrainage jusqu'à 30 jours. Votre choix de langue est conservé dans l'adresse de la page, pas dans un cookie. Nous n'utilisons aucun pistage tiers ni cookie publicitaire."
+        },
+        "s6": {
+          "title": "Conservation",
+          "body": "Les données de compte et de commentaires sont supprimées quand vous nous le demandez. Les données d'achat et les preuves sont conservées cinq ans afin que la comptabilité et la rémunération des créateurs puissent être vérifiées — la loi comptable danoise l'exige."
+        },
+        "s7": {
+          "title": "Vos droits",
+          "body": "Vous avez le droit de :\n• accéder aux données que nous traitons sur vous\n• faire rectifier des données inexactes\n• faire supprimer des données (avec les exceptions exigées par la loi comptable)\n• recevoir vos données dans un format lisible (portabilité)\n• vous opposer au traitement\nEnvoyez votre demande à support@doccys.com — nous répondons au plus tard un mois après."
+        },
+        "s8": {
+          "title": "Réclamations",
+          "body": "Si notre réponse ne vous satisfait pas, vous pouvez saisir l'agence danoise de protection des données — voir datatilsynet.dk."
+        },
+        "s9": {
+          "title": "Modifications",
+          "body": "Si nous mettons à jour cette politique, la nouvelle version figure sur cette page. Nous annonçons les changements importants sur le site."
+        }
+      }
+    }
   },
   "home": {
     "featured": {

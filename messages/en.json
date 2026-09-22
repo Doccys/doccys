@@ -47,7 +47,118 @@
     }
   },
   "footer": {
-    "tagline": "Independent documentaries. No ads. Ever."
+    "tagline": "Independent documentaries. No ads. Ever.",
+    "contact": "Contact",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy"
+  },
+  "legal": {
+    "contact": {
+      "title": "Contact Doccys",
+      "intro": "Questions, bugs or need help? We read everything that lands in our inbox.",
+      "sections": {
+        "s1": {
+          "title": "Email us",
+          "body": "You can always reach us at support@doccys.com. Please tell us which film and page it concerns, and which device or browser you are using — it helps us help you faster."
+        },
+        "s2": {
+          "title": "What you can write about",
+          "body": "• Technical issues on the site\n• Minute purchases and payments\n• Copyright — should (or shouldn't) a film be here?\n• Your personal data, e.g. deleting your account\n• Working with Doccys as a creator"
+        },
+        "s3": {
+          "title": "Response time",
+          "body": "We aim to reply within two business days. Around holidays and launches it may take a little longer."
+        }
+      }
+    },
+    "terms": {
+      "title": "Terms & Conditions",
+      "intro": "These terms apply to your use of Doccys and to the purchase of minutes. Last updated: 22 September 2026.",
+      "sections": {
+        "s1": {
+          "title": "About Doccys",
+          "body": "Doccys is a streaming service for independent documentaries: you only pay for what you actually watch, minute by minute. The service is run by Doccys — the company registration number will be published at the final launch."
+        },
+        "s2": {
+          "title": "Creating an account",
+          "body": "Creating an account is free. When you sign up, you must provide a valid email address and confirm it via the link in the email we send you — only then can the account be used. You are responsible for keeping your login details secret and for all activity that happens through your account."
+        },
+        "s3": {
+          "title": "Minutes and playback",
+          "body": "Films are played using the minutes on your account. Consumption is measured by the time you actually play — if you stop mid-film, you only pay for the time watched. A film's per-minute rate is shown on the film's page before you start playback.\nYour playback is registered as measured consumption (your “proof”) — see also the privacy policy. That proof is decisive if there is any doubt about what you watched and what was deducted from your balance."
+        },
+        "s4": {
+          "title": "Purchases and payment",
+          "body": "Minutes are bought as packs at the prices shown at checkout. Payment is handled by our payment partner Stripe, and the receipt is emailed to you. Prices are shown excluding VAT; VAT is calculated based on your billing country and included in the total at payment."
+        },
+        "s5": {
+          "title": "Validity of minutes",
+          "body": "Minutes do not expire and can be used as long as your account exists. They are personal and cannot be transferred to others or exchanged for money. Minutes earned as referral bonuses follow the same rules."
+        },
+        "s6": {
+          "title": "Withdrawal and errors",
+          "body": "Minutes are digital content: once playback has started, the right of withdrawal lapses under the Danish Consumer Contracts Act's rules for digital content. If you have not started playback, you can write to support@doccys.com within 14 days of purchase and get a full refund.\nIf you were charged for something you could not watch due to a technical error, or a payment went through twice, write to us — we will make it right."
+        },
+        "s7": {
+          "title": "Creators' rights",
+          "body": "Part of the minute consumption goes to the film's creator. You may not download, record or share films or parts of films from Doccys. If you believe a film on Doccys infringes your rights, write to support@doccys.com."
+        },
+        "s8": {
+          "title": "Liability and content",
+          "body": "Doccys is not the publisher of the films — the content and opinions in the films are the creators'. The service is provided “as is”. We are not liable for indirect losses or lost benefits, including downtime, but of course we fix bugs as fast as we can.\nWe may change future prices with reasonable notice; changes never affect minutes already purchased."
+        },
+        "s9": {
+          "title": "Changes to these terms",
+          "body": "We may update these terms. The current version is always on this page, and we announce significant changes on the site. If you keep using Doccys after a change, you accept the new version."
+        },
+        "s10": {
+          "title": "Complaints and contact",
+          "body": "You can always write to support@doccys.com. Danish consumers may also contact the Danish Consumer Complaints Board about purchase complaints — see forbrugerklagenaevnet.dk. Danish law governs these terms."
+        }
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "intro": "Here you can read which personal data Doccys processes, why, and which rights you have. Last updated: 22 September 2026.",
+      "sections": {
+        "s1": {
+          "title": "Data controller",
+          "body": "Doccys — the company registration number will be published at the final launch. Contact: support@doccys.com."
+        },
+        "s2": {
+          "title": "Which data we process",
+          "body": "• Account: your email address (and confirmation of it) and your password, which is stored encrypted.\n• Purchases: which packs you bought, when, and the transaction ID. Payment cards are never processed by us — that happens at Stripe.\n• Playback: when you start and stop, seek operations and time watched per film. The measured consumption (the “proof”) is what deducts minutes from your balance and pays the creator.\n• Comments: the name you post under, your comments and likes, and their moderation.\n• Referrals: if you arrive via a referral link, we store the code in a cookie for up to 30 days so that whoever referred you can be credited for your first purchase."
+        },
+        "s3": {
+          "title": "Purpose and legal basis",
+          "body": "We process data to deliver the service — creating your account, deducting minutes from your balance and paying creators (contract), keeping the service safe and preventing abuse (legitimate interest), and meeting bookkeeping and tax obligations (legal obligation). We never sell your data and never use it for ad profiling — Doccys shows no ads, ever."
+        },
+        "s4": {
+          "title": "Third parties",
+          "body": "We use the following data processors:\n• Supabase — login and database\n• Stripe — payments and receipts\n• Vercel — operation and hosting\nThey only process data on our behalf and for the purposes stated above."
+        },
+        "s5": {
+          "title": "Cookies",
+          "body": "Doccys sets only one cookie: doccys_ref, which remembers a referral link for up to 30 days. Your language choice is stored in the page address, not in a cookie. We use no third-party tracking and no advertising cookies."
+        },
+        "s6": {
+          "title": "Retention",
+          "body": "Account and comment data are deleted when you ask us to. Purchase data and proofs are kept for five years so that accounting and creator payouts can be audited — the Danish Bookkeeping Act requires it."
+        },
+        "s7": {
+          "title": "Your rights",
+          "body": "You have the right to:\n• access the data we process about you\n• have inaccurate data corrected\n• have data deleted (with the exceptions the Bookkeeping Act requires)\n• receive your data in a readable format (data portability)\n• object to the processing\nSend your request to support@doccys.com — we reply within a month at the latest."
+        },
+        "s8": {
+          "title": "Complaints",
+          "body": "If you are not satisfied with our reply, you can complain to the Danish Data Protection Agency — see datatilsynet.dk."
+        },
+        "s9": {
+          "title": "Changes",
+          "body": "If we update this policy, the new version appears on this page. We announce significant changes on the site."
+        }
+      }
+    }
   },
   "home": {
     "featured": {
