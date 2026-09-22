@@ -5,6 +5,7 @@ import DoccysMark from "@/components/logo/DoccysMark";
 export default async function Footer() {
   const t = await getTranslations();
   const navT = await getTranslations("header.nav");
+  const legalT = await getTranslations("footer");
 
   return (
     <footer className="mt-24 border-t border-smoke/60">
@@ -16,12 +17,22 @@ export default async function Footer() {
           </span>
         </div>
         <p className="text-sm text-ash">{t("footer.tagline")}</p>
-        <div className="flex gap-6 text-sm text-ash">
+        {/* flex-wrap: fem links må gerne bredde sig over to linjer på mobil */}
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ash">
           <Link href="/creators" className="hover:text-bone">
             {navT("creators")}
           </Link>
           <Link href="/profile" className="hover:text-bone">
             {navT("profile")}
+          </Link>
+          <Link href="/contact" className="hover:text-bone">
+            {legalT("contact")}
+          </Link>
+          <Link href="/terms" className="hover:text-bone">
+            {legalT("terms")}
+          </Link>
+          <Link href="/privacy" className="hover:text-bone">
+            {legalT("privacy")}
           </Link>
         </div>
       </div>

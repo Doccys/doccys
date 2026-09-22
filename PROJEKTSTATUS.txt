@@ -2,6 +2,39 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-09-21
 ==========================================================
 
+JURIDISKE SIDER + FOOTER-LINKS (22/9) — BYGGET OG VERIFICERET
+Tre nye sider, linket fra footeren: /contact (Kontakt), /terms
+(Handelsbetingelser/Køpvillkor/AGB…), /privacy (Privatlivspolitik).
+Fodden har nu fem links (flex-wrap, pænt på mobil). Sprog: NYT
+"legal"-namespace i alle 8 messages-filer — 432 nøgler i alt, FULD
+PARITET (nyt script scripts/i18n-keys-verify.mjs tjekker det og er
+nu en del af arbejdsgangen — intet sådant tjek fandtes før).
+Indhold: FULDE tekster (brugerens valg — ikke korte/pladsholdere):
+betingelser om pay-per-minute, målt forbrug/bevis, Stripe-betaling,
+moms efter faktureringsland, fortrydelse (14 dage før påbegyndt
+afspilning; digital-indhold-reglerne), ophavsret, ansvarsbegrænsning;
+privatliv om konto/køb/afspilningsdata/kommentarer/henvisnings-cookie,
+formål+grundlag, databehandlere (Supabase, Stripe, Vercel), 5 års
+opbevaring af købsdata/beviser (bogføringsloven), GDPR-rettigheder,
+klage til Datatilsynet. Kontakt-e-mail: support@doccys.com
+(brugerens valg). RENDERING: LegalPage-komponent — body- strenge
+i JSON med \n = afsnit og "• "-linjer = punktliste, smal
+læsekolonne max-w-3xl, statisk rendering (setRequestLocale).
+VERIFICERET 22/9: tsc grøn, i18n-verify ALLE TJEK GRØNNE, nøgle-
+paritet 8/8 OK, siderne 200 på da/en/de/sv, titel-template virker
+("Terms &amp; Conditions — Doccys"), footer-links href-korrekte,
+sitemap.xml har alle tre paths ×8 sprog, 10+9 sektioner renderet,
+ul/li-rendering tjekket.
+NB'S SOM BESTÅR:
+- support@doccys.com ER IKKE OPRETTET — mail ryger i ingenting
+  indtil domænet er købt og mailboksen sat op. Skal IKKE afbødes
+  på sitet; notér til lancering.
+- Teksterne er skrevet af en udvikler, ikke en jurist — planlagt:
+  ENDELIGT JURIDISK EFTERSYN VED LANCERING (backlog består).
+- CVR/erhvervsfelter er markeret "oplyses ved lancering" i
+  teksterne — udfyldes når erhverskontoen er på plads.
+- Aldersbekræftelse er stadig sit eget backlog-punkt (ikke bygget).
+
 STANDARD-EMAILS VED SIGNUP + KØB (21/9) — DASHBOARD-TRIN AFVENTER BRUGEREN
 Der sendes nu bekræftelses-mail ved oprettelse (Supabases indbyggede)
 og købs-kvittering (Stripes indbyggede, sender kun i LIVE mode).
@@ -826,12 +859,14 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
    (nu også: selvbetjent udbetaling, se afsnittet ovenfor).
 4. checkout.session.expired-webhook: forladte sessions → 'failed'
    (koden findes, utestet).
-5. Launch-backlog (aftalt med brugeren): juridiske sider +
-   aldersbekræftelse, e-mail-notifikationer (kommentar-moderation er
+5. Launch-backlog (aftalt med brugeren): aldersbekræftelse
+   (juridiske sider er BYGGET 22/9 — se sektionen øverst; resten:
+   CVR-felter udfyldes + ENDELIGT JURIDISK EFTERSYN af teksterne
+   ved lancering), e-mail-notifikationer (kommentar-moderation er
    nu bygget, se ovenfor; standard-signup/købs-mails er DONE 21/9,
    se sektionen øverst — resten her er branded mail-udbyder +
-   velkomstmail, se udsat-listen dér), TUS resumable upload +
-   auto-thumbnails.
+   velkomstmail + egen kvitteringstekst, se udsat-listen dér),
+   TUS resumable upload + auto-thumbnails.
 6. DONATION TIL HUNDECENTER (idé 20/9, UDSKUDT til der er brugere —
    ellers bliver beløbene latterligt små): "Donér din rest-saldo"-
    knap. AFTALT ØKONOMI: fast konvertering til dyreste sats
@@ -873,6 +908,9 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+b2fc6bc juridisk: legal-namespace (kontakt, betingelser, privatliv) paa 8 sprog + noegle-paritetsscript
+7f02a22 docs: Stripes kvitteringstekst er standardiseret (21/9-afklaring)
+16fe4a6 docs: emails-sektion + git-log i PROJEKTSTATUS
 8853d4b emails: bekræftelses-link tilbage til siten + kvitteringssprog
 c4b8ba5 kommentarer: svar-knap, traad-visning og moderation i UI
 6b3fbed kommentarer: svartraade-migration + parentId gennem stakken

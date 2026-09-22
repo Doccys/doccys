@@ -60,6 +60,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     entry("/creators", now, 0.8),
     entry("/collections", now, 0.6),
+    // juridiske sider — vigtige for troværdighed, sjældent ændret
+    entry("/contact", now, 0.3),
+    entry("/terms", now, 0.3),
+    entry("/privacy", now, 0.3),
     ...(creatorsRes.data ?? []).map((c) =>
       entry(`/creator/${c.handle}`, now, 0.7),
     ),
