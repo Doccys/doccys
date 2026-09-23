@@ -17,6 +17,8 @@
     "passwordConfirm": "Upprepa lösenordet",
     "email": "E-post",
     "emailPlaceholder": "du@exempel.se",
+    "username": "Användarnamn",
+    "usernamePlaceholder": "Namnet andra ser vid dina kommentarer",
     "password": "Lösenord",
     "login": "Logga in",
     "signup": "Skapa konto",
@@ -35,6 +37,7 @@
     "passwordUpdated": "Ditt lösenord har uppdaterats.",
     "goToProfile": "Gå till din profil",
     "loggedInAs": "Inloggad som",
+    "fallbackName": "Användare",
     "logout": "Logga ut",
     "working": "Ett ögonblick…",
     "errors": {
@@ -312,6 +315,7 @@
     "title": "Diskussion",
     "subtitle": "Dela dina tankar om filmen med andra tittare — inga spoilers utan förvarning, tack.",
     "postingAs": "Kommenterar som",
+    "noNameShort": "Tittare",
     "bodyPlaceholder": "Skriv din kommentar…",
     "submit": "Skriv kommentar",
     "submitting": "Skickar…",
@@ -460,7 +464,13 @@
     "creatorSub": "Ansök om att bli skapare och få möjlighet att ladda upp dina dokumentärer.",
     "creatorOwnedSub": "Du är en godkänd skapare — studion är öppen.",
     "creatorApplyCta": "Bli skapare",
-    "creatorStudioCta": "Öppna studion"
+    "creatorStudioCta": "Öppna studion",
+    "nameMissing": "Välj ditt användarnamn",
+    "nameMissingSub": "Din e-post visas aldrig för andra — välj namnet andra ska se vid dina kommentarer.",
+    "nameLabel": "Användarnamn",
+    "nameSave": "Spara användarnamn",
+    "nameSaved": "Ditt användarnamn har sparats.",
+    "nameError": "Användarnamnet kunde inte sparas. Försök igen."
   },
   "watchHistory": {
     "completed": "Färdigvisad",

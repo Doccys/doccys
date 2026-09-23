@@ -17,6 +17,8 @@
     "passwordConfirm": "Confirmar contraseña",
     "email": "Correo electrónico",
     "emailPlaceholder": "tu@ejemplo.com",
+    "username": "Nombre de usuario",
+    "usernamePlaceholder": "El nombre que otros verán en tus comentarios",
     "password": "Contraseña",
     "login": "Iniciar sesión",
     "signup": "Crear cuenta",
@@ -35,6 +37,7 @@
     "passwordUpdated": "Tu contraseña se ha actualizado.",
     "goToProfile": "Ir a tu perfil",
     "loggedInAs": "Sesión iniciada como",
+    "fallbackName": "Usuario",
     "logout": "Cerrar sesión",
     "working": "Un momento…",
     "errors": {
@@ -312,6 +315,7 @@
     "title": "Debate",
     "subtitle": "Comparte tus impresiones de la película con otros espectadores — sin spoilers sin aviso, por favor.",
     "postingAs": "Comentando como",
+    "noNameShort": "Espectador",
     "bodyPlaceholder": "Escribe tu comentario…",
     "submit": "Publicar comentario",
     "submitting": "Enviando…",
@@ -460,7 +464,13 @@
     "creatorSub": "Solicita convertirte en creador y accede a subir tus documentales.",
     "creatorOwnedSub": "Eres un creador aprobado — el estudio está abierto.",
     "creatorApplyCta": "Convertirse en creador",
-    "creatorStudioCta": "Abrir el estudio"
+    "creatorStudioCta": "Abrir el estudio",
+    "nameMissing": "Elige tu nombre de usuario",
+    "nameMissingSub": "Tu correo nunca se muestra a otros — elige el nombre que verán en tus comentarios.",
+    "nameLabel": "Nombre de usuario",
+    "nameSave": "Guardar nombre de usuario",
+    "nameSaved": "Tu nombre de usuario se ha guardado.",
+    "nameError": "No se pudo guardar el nombre de usuario. Inténtalo de nuevo."
   },
   "watchHistory": {
     "completed": "Finalizada",

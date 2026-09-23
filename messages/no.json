@@ -17,6 +17,8 @@
     "passwordConfirm": "Gjenta passordet",
     "email": "E-post",
     "emailPlaceholder": "du@eksempel.no",
+    "username": "Brukernavn",
+    "usernamePlaceholder": "Navnet andre ser ved kommentarene dine",
     "password": "Passord",
     "login": "Logg inn",
     "signup": "Opprett konto",
@@ -35,6 +37,7 @@
     "passwordUpdated": "Passordet ditt er oppdatert.",
     "goToProfile": "Gå til profilen din",
     "loggedInAs": "Logget inn som",
+    "fallbackName": "Bruker",
     "logout": "Logg ut",
     "working": "Et øyeblikk…",
     "errors": {
@@ -312,6 +315,7 @@
     "title": "Diskusjon",
     "subtitle": "Del tankene om filmen med andre seere — ingen spoilere uten forvarsel, takk.",
     "postingAs": "Kommenterer som",
+    "noNameShort": "Seer",
     "bodyPlaceholder": "Skriv kommentaren din…",
     "submit": "Skriv kommentar",
     "submitting": "Sender…",
@@ -460,7 +464,13 @@
     "creatorSub": "Søk om å bli skaper og få tilgang til å laste opp dokumentarene dine.",
     "creatorOwnedSub": "Du er en godkjent skaper — studioet er åpent.",
     "creatorApplyCta": "Bli skaper",
-    "creatorStudioCta": "Åpne studioet"
+    "creatorStudioCta": "Åpne studioet",
+    "nameMissing": "Velg brukernavnet ditt",
+    "nameMissingSub": "E-posten din vises aldri for andre — velg navnet andre skal se ved kommentarene dine.",
+    "nameLabel": "Brukernavn",
+    "nameSave": "Lagre brukernavn",
+    "nameSaved": "Brukernavnet ditt er lagret.",
+    "nameError": "Brukernavnet kunne ikke lagres. Prøv igjen."
   },
   "watchHistory": {
     "completed": "Fullført",

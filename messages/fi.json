@@ -17,6 +17,8 @@
     "passwordConfirm": "Vahvista salasana",
     "email": "Sähköposti",
     "emailPlaceholder": "sinä@esimerkki.fi",
+    "username": "Käyttäjänimi",
+    "usernamePlaceholder": "Nimi, jonka muut näkevät kommenteissasi",
     "password": "Salasana",
     "login": "Kirjaudu sisään",
     "signup": "Luo tili",
@@ -35,6 +37,7 @@
     "passwordUpdated": "Salasanasi on päivitetty.",
     "goToProfile": "Siirry profiiliisi",
     "loggedInAs": "Kirjautuneena",
+    "fallbackName": "Käyttäjä",
     "logout": "Kirjaudu ulos",
     "working": "Hetkinen…",
     "errors": {
@@ -312,6 +315,7 @@
     "title": "Keskustelu",
     "subtitle": "Jaa ajatuksesi elokuvasta muiden katsojien kanssa — ei spoilereita ilman varoitusta, kiitos.",
     "postingAs": "Kommentoijana",
+    "noNameShort": "Katsoja",
     "bodyPlaceholder": "Kirjoita kommenttisi…",
     "submit": "Kirjoita kommentti",
     "submitting": "Lähetetään…",
@@ -460,7 +464,13 @@
     "creatorSub": "Hae tekijäksi ja saat pääsyn dokumentariesi lataamiseen.",
     "creatorOwnedSub": "Sinut on hyväksytty tekijäksi — studio on auki.",
     "creatorApplyCta": "Tule tekijäksi",
-    "creatorStudioCta": "Avaa studio"
+    "creatorStudioCta": "Avaa studio",
+    "nameMissing": "Valitse käyttäjänimesi",
+    "nameMissingSub": "Sähköpostiasi ei koskaan näytetä muille — valitse nimi, jonka muut näkevät kommenteissasi.",
+    "nameLabel": "Käyttäjänimi",
+    "nameSave": "Tallenna käyttäjänimi",
+    "nameSaved": "Käyttäjänimesi on tallennettu.",
+    "nameError": "Käyttäjänimen tallentaminen epäonnistui. Yritä uudelleen."
   },
   "watchHistory": {
     "completed": "Katsottu loppuun",

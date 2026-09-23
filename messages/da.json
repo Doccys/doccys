@@ -17,6 +17,8 @@
     "passwordConfirm": "Gentag adgangskode",
     "email": "E-mail",
     "emailPlaceholder": "dig@eksempel.dk",
+    "username": "Brugernavn",
+    "usernamePlaceholder": "Det navn, andre ser ved dine kommentarer",
     "password": "Adgangskode",
     "login": "Log ind",
     "signup": "Opret konto",
@@ -35,6 +37,7 @@
     "passwordUpdated": "Din adgangskode er opdateret.",
     "goToProfile": "Gå til din profil",
     "loggedInAs": "Logget ind som",
+    "fallbackName": "Bruger",
     "logout": "Log ud",
     "working": "Vent lidt…",
     "errors": {
@@ -312,6 +315,7 @@
     "title": "Diskussion",
     "subtitle": "Del tanker om filmen med andre seere — ingen spoilers uden advarsel, tak.",
     "postingAs": "Kommenterer som",
+    "noNameShort": "Seer",
     "bodyPlaceholder": "Skriv din kommentar…",
     "submit": "Skriv kommentar",
     "submitting": "Sender…",
@@ -460,7 +464,13 @@
     "creatorSub": "Ansøg om at blive skaber og få adgang til upload af dine dokumentarer.",
     "creatorOwnedSub": "Du er godkendt skaber — studiet er åbent.",
     "creatorApplyCta": "Bliv skaber",
-    "creatorStudioCta": "Åbn studiet"
+    "creatorStudioCta": "Åbn studiet",
+    "nameMissing": "Vælg dit brugernavn",
+    "nameMissingSub": "Din e-mail vises aldrig til andre — vælg det navn, andre skal se ved dine kommentarer.",
+    "nameLabel": "Brugernavn",
+    "nameSave": "Gem brugernavn",
+    "nameSaved": "Dit brugernavn er gemt.",
+    "nameError": "Brugernavnet kunne ikke gemmes. Prøv igen."
   },
   "watchHistory": {
     "completed": "Færdigset",

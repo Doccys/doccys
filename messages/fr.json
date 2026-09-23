@@ -17,6 +17,8 @@
     "passwordConfirm": "Confirmer le mot de passe",
     "email": "E-mail",
     "emailPlaceholder": "vous@exemple.com",
+    "username": "Nom d'utilisateur",
+    "usernamePlaceholder": "Le nom que les autres verront sur vos commentaires",
     "password": "Mot de passe",
     "login": "Se connecter",
     "signup": "Créer un compte",
@@ -35,6 +37,7 @@
     "passwordUpdated": "Votre mot de passe a été mis à jour.",
     "goToProfile": "Aller à votre profil",
     "loggedInAs": "Connecté en tant que",
+    "fallbackName": "Utilisateur",
     "logout": "Se déconnecter",
     "working": "Un instant…",
     "errors": {
@@ -312,6 +315,7 @@
     "title": "Discussion",
     "subtitle": "Partagez vos impressions sur le film avec d'autres spectateurs — pas de spoilers sans avertissement, merci.",
     "postingAs": "Commentant en tant que",
+    "noNameShort": "Spectateur",
     "bodyPlaceholder": "Écrivez votre commentaire…",
     "submit": "Publier le commentaire",
     "submitting": "Envoi…",
@@ -460,7 +464,13 @@
     "creatorSub": "Candidatez pour devenir créateur et accédez à l'envoi de vos documentaires.",
     "creatorOwnedSub": "Vous êtes un créateur approuvé — le studio est ouvert.",
     "creatorApplyCta": "Devenir créateur",
-    "creatorStudioCta": "Ouvrir le studio"
+    "creatorStudioCta": "Ouvrir le studio",
+    "nameMissing": "Choisissez votre nom d'utilisateur",
+    "nameMissingSub": "Votre e-mail n'est jamais montré aux autres — choisissez le nom que les autres verront sur vos commentaires.",
+    "nameLabel": "Nom d'utilisateur",
+    "nameSave": "Enregistrer le nom d'utilisateur",
+    "nameSaved": "Votre nom d'utilisateur a été enregistré.",
+    "nameError": "Le nom d'utilisateur n'a pas pu être enregistré. Réessayez."
   },
   "watchHistory": {
     "completed": "Terminé",

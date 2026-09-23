@@ -17,6 +17,8 @@
     "passwordConfirm": "Confirm password",
     "email": "Email",
     "emailPlaceholder": "you@example.com",
+    "username": "Username",
+    "usernamePlaceholder": "The name others see on your comments",
     "password": "Password",
     "login": "Sign in",
     "signup": "Create account",
@@ -35,6 +37,7 @@
     "passwordUpdated": "Your password has been updated.",
     "goToProfile": "Go to your profile",
     "loggedInAs": "Signed in as",
+    "fallbackName": "User",
     "logout": "Sign out",
     "working": "Just a moment…",
     "errors": {
@@ -312,6 +315,7 @@
     "title": "Discussion",
     "subtitle": "Share your thoughts on the film with other viewers — no spoilers without a warning, please.",
     "postingAs": "Commenting as",
+    "noNameShort": "Viewer",
     "bodyPlaceholder": "Write your comment…",
     "submit": "Post comment",
     "submitting": "Sending…",
@@ -460,7 +464,13 @@
     "creatorSub": "Apply to become a creator and get access to upload your documentaries.",
     "creatorOwnedSub": "You are an approved creator — the studio is open.",
     "creatorApplyCta": "Become a creator",
-    "creatorStudioCta": "Open the studio"
+    "creatorStudioCta": "Open the studio",
+    "nameMissing": "Choose your username",
+    "nameMissingSub": "Your e-mail is never shown to others — pick the name others will see on your comments.",
+    "nameLabel": "Username",
+    "nameSave": "Save username",
+    "nameSaved": "Your username has been saved.",
+    "nameError": "The username could not be saved. Try again."
   },
   "watchHistory": {
     "completed": "Completed",

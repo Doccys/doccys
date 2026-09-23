@@ -17,6 +17,8 @@
     "passwordConfirm": "Passwort bestätigen",
     "email": "E-Mail",
     "emailPlaceholder": "du@beispiel.de",
+    "username": "Benutzername",
+    "usernamePlaceholder": "Der Name, den andere bei deinen Kommentaren sehen",
     "password": "Passwort",
     "login": "Anmelden",
     "signup": "Konto erstellen",
@@ -35,6 +37,7 @@
     "passwordUpdated": "Dein Passwort wurde aktualisiert.",
     "goToProfile": "Zu deinem Profil",
     "loggedInAs": "Angemeldet als",
+    "fallbackName": "Benutzer",
     "logout": "Abmelden",
     "working": "Einen Moment…",
     "errors": {
@@ -312,6 +315,7 @@
     "title": "Diskussion",
     "subtitle": "Teile deine Gedanken zum Film mit anderen Zuschauern — keine Spoiler ohne Vorwarnung, bitte.",
     "postingAs": "Kommentierst als",
+    "noNameShort": "Zuschauer",
     "bodyPlaceholder": "Schreibe deinen Kommentar…",
     "submit": "Kommentar schreiben",
     "submitting": "Wird gesendet…",
@@ -460,7 +464,13 @@
     "creatorSub": "Bewirb dich als Schöpfer und erhalte Zugang zum Upload deiner Dokumentarfilme.",
     "creatorOwnedSub": "Du bist ein zugelassener Schöpfer — das Studio ist offen.",
     "creatorApplyCta": "Schöpfer werden",
-    "creatorStudioCta": "Studio öffnen"
+    "creatorStudioCta": "Studio öffnen",
+    "nameMissing": "Wähle deinen Benutzernamen",
+    "nameMissingSub": "Deine E-Mail wird anderen nie angezeigt — wähle den Namen, den andere bei deinen Kommentaren sehen sollen.",
+    "nameLabel": "Benutzername",
+    "nameSave": "Benutzernamen speichern",
+    "nameSaved": "Dein Benutzername wurde gespeichert.",
+    "nameError": "Der Benutzername konnte nicht gespeichert werden. Versuch es erneut."
   },
   "watchHistory": {
     "completed": "Fertig gesehen",
