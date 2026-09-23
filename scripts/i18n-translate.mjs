@@ -25,8 +25,17 @@ import { dirname, join } from "node:path";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-/** Målsprog med eksplicit variant, så gpt rammer brasiliansk/forenklet. */
+/** Målsprog med eksplicit variant, så gpt rammer brasiliansk/forenklet.
+ *  Alle 13 platformssprog — scriptet bruges til at fylde huller i
+ *  EKSISTERENDE filer (fx nye nøgler), ikke kun hele nye sprog. */
 const TARGET_LANGUAGES = {
+  en: "engelsk",
+  es: "spansk",
+  fr: "fransk",
+  de: "tysk",
+  no: "norsk (bokmål)",
+  sv: "svensk",
+  fi: "finsk",
   ja: "japansk (naturlig, høflig です/ます-stil)",
   zh: "forenklet kinesisk (简体中文, ikke traditionelle tegn)",
   it: "italiensk",

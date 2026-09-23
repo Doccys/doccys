@@ -166,7 +166,7 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
             {!draft && <StudioShareRow slug={film.slug} title={film.title} />}
 
             {draft && (
-              <div className="mt-4 flex items-center gap-4">
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1">
                 <StudioDeleteFilmButton
                   documentaryId={film.id}
                   videoUrl={film.videoUrl}
@@ -175,6 +175,14 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
                   trailerUrl={trailerStatus?.trailerUrl}
                 />
                 <span className="text-xs text-ash/70">{t("draftNote")}</span>
+                {/* Publiceringskravet håndhæves af DB-triggeren
+                    trg_publiceringskrav (20260923_publiceringskrav.sql)
+                    — redaktionen kan ikke udgive filmen uden 13
+                    ready-undertekster + ready-trailer. Denne linje
+                    fortæller creatoren HVORFOR filmen ikke er live. */}
+                <span className="text-xs text-champagne/80">
+                  {t("publishGateNote")}
+                </span>
               </div>
             )}
           </li>

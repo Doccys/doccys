@@ -417,6 +417,7 @@
     "statusDraft": "Entwurf — wartet auf Freigabe",
     "statusPublished": "Veröffentlicht",
     "draftNote": "Ein Entwurf kann gelöscht werden; ein veröffentlichter Film gehört dem Redaktionsteam.",
+    "publishGateNote": "Der Film kann erst veröffentlicht werden, wenn die Untertitel in allen Sprachen fertig sind und der Trailer fertiggestellt ist.",
     "delete": "Entwurf löschen",
     "deleteConfirm": "Diesen Entwurf löschen? Das Video wird ebenfalls entfernt.",
     "empty": "Noch keine Filme — lade oben deinen ersten hoch.",

@@ -74,6 +74,34 @@ eksisterende OpenAI-nøgle med manuel gennemgang efter.
   indhold findes; OS-native CJK-fonte giver let cross-platform-
   render-difference.
 
+PUBLIKATIONSKRAV: UNDERTEKSTER + TRAILER PÅKRÆVET VED PUBLICERING (23/9)
+Brugerens beslutning: en film kan KUN publiceres, når alle 13 under-
+tekst-sprog har status 'ready' OG traileren har status 'ready'.
+Hvorfor en DB-trigger og ikke app-kode: publicering sker IKKE via
+appen — POST /api/films tvinger altid status 'draft', og intet app-
+rute-opkald rører documentaries.status. Publicering = redaktøren
+flipper status i Supabase-dashboardet → KUN en BEFORE UPDATE-trigger
+kan håndhæve kravet dér.
+- MIGRATION 20260923_publiceringskrav.sql (KØRES AF BRUGEREN):
+  kraev_undertekster_og_trailer() + trg_publiceringskrav before
+  update på documentaries. Greber KUN draft→published (allerede
+  publicerede film røres ikke; draft→draft, unpublish m.v. frit).
+  Dansk prosa-fejl med handlingsanvisning ("koer undertekst-
+  generering i studiet"). EXECUTE-hullet lukket som sædvanligt:
+  revoke from public + revoke from anon, authenticated (platform-
+  setup graanter execute til naeste; verify med proacl-tjek).
+  Verifikations-SQL står i filen: negativ test SKAL fejle, tgenabled
+  'O', proacl. NB: taelleren 13 = PLATFORM_LOCALES — udvides
+  sproglisten, skal triggeren med (staar i filens hoved).
+- STUDIO-UI: StudioFilmList.tsx viser nu publishGateNote (champagne-
+  farvet) ved siden af draftNote i draft-sektionen — fortæller
+  creatoren HVORFOR filmen ikke er live. Nøglen oversat i alle 13
+  messages-filer (445 nøgler — i18n-keys-verify; i18n-verify ALLE
+  TJEK GRØNNE, tsc grøn).
+- SCRIPT scripts/i18n-translate.mjs: TARGET_LANGUAGES udvidet til
+  alle 13 sprog (var kun de 5 nye — gav "Ukendt målsprog"-fejl ved
+  genkørsel på en/da m.v.). Scriptet er nu faellesskabssprog.
+
 BRUGERNAVN I STEDET FOR BLOTTET E-MAIL (23/9) — MIGRATION KØRT, E2E AFVENTER
 (kommentar-brugernavn-migrationen er kørt af brugeren 23/9 efter
 pin-vagt-fiksen; resten af sektionen er uændret historik.)

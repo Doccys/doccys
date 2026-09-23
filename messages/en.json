@@ -417,6 +417,7 @@
     "statusDraft": "Draft — awaiting approval",
     "statusPublished": "Published",
     "draftNote": "A draft can be deleted; a published film belongs to the editorial team.",
+    "publishGateNote": "The film can only be published once subtitles are ready in all languages and the trailer is finished.",
     "delete": "Delete draft",
     "deleteConfirm": "Delete this draft? The video is removed as well.",
     "empty": "No films yet — upload your first one above.",

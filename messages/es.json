@@ -417,6 +417,7 @@
     "statusDraft": "Borrador — pendiente de aprobación",
     "statusPublished": "Publicada",
     "draftNote": "Un borrador puede eliminarse; una película publicada pertenece al equipo editorial.",
+    "publishGateNote": "La película solo puede publicarse cuando los subtítulos están listos en todos los idiomas y el tráiler está terminado.",
     "delete": "Eliminar borrador",
     "deleteConfirm": "¿Eliminar este borrador? El vídeo también se eliminará.",
     "empty": "Aún no hay películas — sube la primera arriba.",
