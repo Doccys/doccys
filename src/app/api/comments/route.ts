@@ -139,8 +139,17 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const authorName =
-    (user.user_metadata?.full_name as string | undefined) ?? user.email ?? "";
+  // Navnet kommer altid fra brugerens metadata — aldrig fra klienten.
+  // DB-triggeren saet_kommentar_navn() overskriver author_name alligevel
+  // (uforfalskelig), men en pæn 422 her er venligere end en DB-fejl.
+  const authorName = (user.user_metadata?.full_name as string | undefined)
+    ?.trim();
+  if (!authorName) {
+    return NextResponse.json(
+      { error: "Vælg dit brugernavn på din profil, før du kommenterer" },
+      { status: 422 },
+    );
+  }
 
   const comment = await doccysStore.addComment({
     documentarySlug,

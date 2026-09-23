@@ -46,6 +46,7 @@
       "emailNotConfirmed": "Bekræft din e-mail, før du logger ind.",
       "weakPassword": "Adgangskoden er for svag — brug mindst 6 tegn.",
       "passwordMismatch": "Adgangskoderne er ikke ens.",
+      "nameMissing": "Vælg dit brugernavn, før du opretter kontoen.",
       "generic": "Noget gik galt. Prøv igen."
     }
   },

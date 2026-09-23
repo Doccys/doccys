@@ -46,6 +46,7 @@
       "emailNotConfirmed": "Bestätige deine E-Mail, bevor du dich anmeldest.",
       "weakPassword": "Passwort zu schwach — mindestens 6 Zeichen.",
       "passwordMismatch": "Die Passwörter stimmen nicht überein.",
+      "nameMissing": "Wähle deinen Benutzernamen, bevor du das Konto erstellst.",
       "generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
     }
   },

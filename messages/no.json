@@ -46,6 +46,7 @@
       "emailNotConfirmed": "Bekreft e-posten din før du logger inn.",
       "weakPassword": "Passordet er for svakt — bruk minst 6 tegn.",
       "passwordMismatch": "Passordene er ikke like.",
+      "nameMissing": "Velg brukernavnet ditt før du oppretter kontoen.",
       "generic": "Noe gikk galt. Prøv igjen."
     }
   },

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import SectionHeading from "@/components/ui/SectionHeading";
+import DisplayNameForm from "@/components/profile/DisplayNameForm";
 import MinutesSection from "@/components/profile/MinutesSection";
 import SupportLedgerSection from "@/components/profile/SupportLedgerSection";
 import WatchHistoryList from "@/components/profile/WatchHistoryList";
@@ -67,8 +68,10 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
   }
 
   const memberSince = Date.parse(user.created_at);
-  const displayName =
-    (user.user_metadata?.full_name as string | undefined) ?? user.email ?? t("eyebrow");
+  // Brugernavnet fra metadata — e-mailen vises aldrig. Konti uden navn
+  // (oprettet før signup-feltet kom til) får CTA-kortet herunder.
+  const rawName = (user.user_metadata?.full_name as string | undefined)?.trim();
+  const displayName = rawName ?? t("eyebrow");
 
   const history = await getWatchHistory(user.id);
   const historyEntries = await Promise.all(
@@ -112,6 +115,29 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
         referralCode={referralCode}
         purchaseSuccess={koeb === "ok"}
       />
+
+      {/* Brugernavn: navnløse konti (fra før signup-feltet) får et
+          fremhævet CTA-kort — ellers en stille redigerings-mulighed.
+          Kommentarer kræver navnet (API'et afviser med 422). */}
+      <section
+        className={`mt-16 rounded-xl border px-6 py-6 ${
+          rawName ? "border-smoke bg-onyx" : "border-champagne/50 bg-onyx"
+        }`}
+      >
+        <h2
+          className={`font-display text-2xl ${
+            rawName ? "text-bone" : "text-champagne"
+          }`}
+        >
+          {rawName ? t("nameLabel") : t("nameMissing")}
+        </h2>
+        {!rawName && (
+          <p className="mt-2 text-sm leading-relaxed text-ash">
+            {t("nameMissingSub")}
+          </p>
+        )}
+        <DisplayNameForm initialName={rawName ?? ""} />
+      </section>
 
       <section className="mt-16">
         <h2 className="font-display text-2xl text-bone">{t("creatorHeading")}</h2>

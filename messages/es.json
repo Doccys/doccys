@@ -46,6 +46,7 @@
       "emailNotConfirmed": "Confirma tu correo antes de iniciar sesión.",
       "weakPassword": "La contraseña es demasiado débil: usa al menos 6 caracteres.",
       "passwordMismatch": "Las contraseñas no coinciden.",
+      "nameMissing": "Elige tu nombre de usuario antes de crear la cuenta.",
       "generic": "Algo salió mal. Inténtalo de nuevo."
     }
   },

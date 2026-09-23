@@ -378,6 +378,13 @@ export default function CommentSection({ slug, isCreatorOwner }: CommentSectionP
     );
   };
 
+  // Brugernavnet fra metadata — e-mailen vises aldrig. Navnløse konti
+  // (oprettet før feltet kom til) ser kort-fallbacken indtil de sætter
+  // navnet på profilen; API'et afviser alligevel kommentaren pænt (422).
+  const displayName =
+    (user?.user_metadata?.full_name as string | undefined)?.trim() ||
+    (user ? t("noNameShort") : "");
+
   const gateBox = (
     <div className="mt-8 rounded-lg border border-smoke bg-onyx px-6 py-5 text-sm text-ash">
       {user ? (
@@ -405,11 +412,11 @@ export default function CommentSection({ slug, isCreatorOwner }: CommentSectionP
         <form onSubmit={handleSubmit} className="mt-8 space-y-3">
           <div className="flex items-center gap-2.5 text-sm text-ash">
             <span className="flex h-6 w-6 items-center justify-center rounded-full border border-champagne/50 text-[11px] font-medium text-champagne">
-              {(user?.email ?? "?").charAt(0).toUpperCase()}
+              {(displayName || "?").charAt(0).toUpperCase()}
             </span>
             <span>
               {t("postingAs")}{" "}
-              <span className="break-all text-champagne">{user?.email}</span>
+              <span className="break-all text-champagne">{displayName}</span>
             </span>
           </div>
           <textarea

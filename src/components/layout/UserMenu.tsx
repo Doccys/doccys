@@ -12,7 +12,8 @@ import { createClient } from "@/lib/supabase/client";
  * - Logged out: a discreet "Log ind" link next to the usual "Min profil"
  *   nav item, so the login page is always reachable.
  * - Logged in: replaces "Min profil" with a chip showing the user's
- *   avatar initial + e-mail. The dropdown holds "Min profil" and "Log ud".
+ *   avatar initial + username (metadata full_name — e-mailen vises
+ *   aldrig). The dropdown holds "Min profil" and "Log ud".
  *
  * The logged-in state is read client-side (supabase.auth), so the header
  * always renders the logged-out version on the server and upgrades once
@@ -112,7 +113,12 @@ export default function UserMenu() {
     );
   }
 
-  const initial = (user.email ?? "?").charAt(0).toUpperCase();
+  // Brugernavnet fra metadata med generisk fallback for konti uden navn
+  // (oprettet før feltet kom til) — e-mailen vises aldrig i headeren.
+  const displayName =
+    (user.user_metadata?.full_name as string | undefined)?.trim() ||
+    authT("fallbackName");
+  const initial = displayName.charAt(0).toUpperCase();
 
   return (
     <div ref={containerRef} className="relative">
@@ -127,7 +133,7 @@ export default function UserMenu() {
           {initial}
         </span>
         <span className="max-w-20 truncate text-xs text-bone sm:max-w-28">
-          {user.email}
+          {displayName}
         </span>
         <svg
           viewBox="0 0 12 12"
@@ -152,7 +158,7 @@ export default function UserMenu() {
             <p className="text-[10px] uppercase tracking-widest text-ash">
               {authT("loggedInAs")}
             </p>
-            <p className="truncate text-xs text-bone">{user.email}</p>
+            <p className="truncate text-xs text-bone">{displayName}</p>
           </div>
           <Link
             href="/profile"

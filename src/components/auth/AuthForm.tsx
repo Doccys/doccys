@@ -39,6 +39,7 @@ export default function AuthForm() {
 
   const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [errorKey, setErrorKey] = useState<string | null>(null);
@@ -73,6 +74,12 @@ export default function AuthForm() {
       setErrorKey("passwordMismatch");
       return;
     }
+    // Et navn af kun mellemrum passerer HTML-valideringen — men ville
+    // give en konto uden synligt navn (comments-triggeren afviser den).
+    if (mode === "signup" && name.trim() === "") {
+      setErrorKey("nameMissing");
+      return;
+    }
 
     setBusy(true);
     const supabase = createClient();
@@ -95,6 +102,10 @@ export default function AuthForm() {
             // bekræftelses-linket skal lande på siten i seerens sprog —
             // ellers sender Supabase det til dashboardets Site URL
             emailRedirectTo: `${window.location.origin}/${locale}/profile`,
+            // brugernavnet persisteres i metadata fra første sekund, så
+            // chippen, profilen og kommentarer har det umiddelbart efter
+            // første login — e-mailen vises aldrig som identitet
+            data: { full_name: name.trim() },
           },
         });
         if (error) {
@@ -173,6 +184,28 @@ export default function AuthForm() {
                 className={inputClassName}
               />
             </div>
+
+            {mode === "signup" && (
+              <div>
+                <label
+                  htmlFor="username"
+                  className="text-xs uppercase tracking-widest text-ash"
+                >
+                  {t("username")}
+                </label>
+                <input
+                  id="username"
+                  type="text"
+                  required
+                  maxLength={120}
+                  autoComplete="nickname"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder={t("usernamePlaceholder")}
+                  className={inputClassName}
+                />
+              </div>
+            )}
 
             <div>
               <label

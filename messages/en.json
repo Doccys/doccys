@@ -46,6 +46,7 @@
       "emailNotConfirmed": "Confirm your email before signing in.",
       "weakPassword": "Password is too weak — use at least 6 characters.",
       "passwordMismatch": "The passwords don't match.",
+      "nameMissing": "Choose your username before creating the account.",
       "generic": "Something went wrong. Please try again."
     }
   },

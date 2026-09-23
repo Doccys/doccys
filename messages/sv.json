@@ -46,6 +46,7 @@
       "emailNotConfirmed": "Bekräfta din e-post innan du loggar in.",
       "weakPassword": "Lösenordet är för svagt — använd minst 6 tecken.",
       "passwordMismatch": "Lösenorden matchar inte.",
+      "nameMissing": "Välj ditt användarnamn innan du skapar kontot.",
       "generic": "Något gick fel. Försök igen."
     }
   },

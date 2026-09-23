@@ -46,6 +46,7 @@
       "emailNotConfirmed": "Vahvista sähköpostiosoitteesi ennen sisäänkirjautumista.",
       "weakPassword": "Salasana on liian heikko — käytä vähintään 6 merkkiä.",
       "passwordMismatch": "Salasanat eivät täsmää.",
+      "nameMissing": "Valitse käyttäjänimesi ennen tilin luomista.",
       "generic": "Jotain meni pieleen. Yritä uudelleen."
     }
   },
