@@ -82,7 +82,7 @@ appen — POST /api/films tvinger altid status 'draft', og intet app-
 rute-opkald rører documentaries.status. Publicering = redaktøren
 flipper status i Supabase-dashboardet → KUN en BEFORE UPDATE-trigger
 kan håndhæve kravet dér.
-- MIGRATION 20260923_publiceringskrav.sql (KØRES AF BRUGEREN):
+- MIGRATION 20260923_publiceringskrav.sql (KØRT OG VERIFICERET 23/9):
   kraev_undertekster_og_trailer() + trg_publiceringskrav before
   update på documentaries. Greber KUN draft→published (allerede
   publicerede film røres ikke; draft→draft, unpublish m.v. frit).
@@ -93,6 +93,13 @@ kan håndhæve kravet dér.
   Verifikations-SQL står i filen: negativ test SKAL fejle, tgenabled
   'O', proacl. NB: taelleren 13 = PLATFORM_LOCALES — udvides
   sproglisten, skal triggeren med (staar i filens hoved).
+  VERIFICERET I SQL EDITOR: tgenabled 'O'; proacl kun postgres/
+  service_role (ingen anon/authenticated); negativ test i
+  begin/rollback (draft-flip + gen-publicering af isens-sidste-
+  vinter) fejlede med "kun 0 af 13 undertekst-sprog er klar".
+  NB derved: isens-sidste-vinter har 0 ready-raekker i film_
+  subtitles — enten er sporene aldrig koert i den nye pipeline,
+  eller de ligger et andet sted; tjek foerste genkorsel.
 - STUDIO-UI: StudioFilmList.tsx viser nu publishGateNote (champagne-
   farvet) ved siden af draftNote i draft-sektionen — fortæller
   creatoren HVORFOR filmen ikke er live. Nøglen oversat i alle 13
