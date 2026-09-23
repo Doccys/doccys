@@ -2,7 +2,76 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-09-23
 ==========================================================
 
-BRUGERNAVN I STEDET FOR BLOTTET E-MAIL (23/9) — MIGRATION AFVENTER BRUGEREN
+GLOBAL UDRULNING: 5 NYE SPROG (23/9) — KODE + OVERSÆTTELSER
+FERDIGE, 2 MIGRATIONER AFVENTER BRUGEREN
+Japansk, forenklet kinesisk, italiensk, brasiliansk portugisisk og
+hindi — både som site-sprog OG undertekst-sprog (brugerens valg:
+sproglisten følger sitens sprog 1:1 → 13 i alt). Beslutninger MED
+BRUGEREN: zh = forenklet · hi = hindi · pt = brasiliansk (URL "pt")
+· undertekst = samme 13 liste · oversættelser via NYT script på den
+eksisterende OpenAI-nøgle med manuel gennemgang efter.
+- OVERSÆTTELSESSCRIPT scripts/i18n-translate.mjs (NYT, rå fetch som
+  undertekst-pipelinen, ingen SDK): pr. namespace-chunk (guard 8.000
+  tegn), JSON-mode, validering pr. chunk (nøglesæt-lighed, pladsholder-
+  NAVNE incl. ICU-flertals {count, plural, …}, linjeantal + "• "-
+  struktur for juridiske tekster), 3 forsøg, PROGRESSIV skrivning pr.
+  chunk — afbrudt kørsel = genkør og hullerne fyldes. --payload-
+  tilstand til seed-indhold. LÆRING: første kørsel fejlede 3×3 på
+  support.creatorFilms — ICU-flertals-udtryk MÅ valideres på navne
+  (count), ikke på de indre tokens (modellen oversætter inde i
+  grenene, {# 映画} er korrekt). gpt-4o, ~$0,45 i alt.
+- 5 NYE messages-filer: 444 nøgler, FULD PARITET (13 filer —
+  i18n-keys-verify). Gennemgået: zh konsekvent forenklet, pt
+  brasiliansk ("usuário", "assistir"), ja です/ます igennem, hi
+  respektfuldt आप-register, juridiske tekster med bevaret "• "/\n/
+  brandnavne/CVR. PT-BR-flertals-bug undervejs: it kom igennem med
+  ét forsøg pga "film" er uændelig på italiensk — de 4 andre afvistes
+  af DEN GAMLE validering, ikke af modellen.
+- PLUMBING: routing.locales 13 (NB: messages-filen SKAL findes først,
+  request.ts importerer dynamisk — ellers crash). LanguageSwitcher
+  + LOCALE_LANGUAGE_NAMES: 日本語/中文/Italiano/Português/हिन्दी.
+  NYT TRANSLATION_LANGUAGE_HINTS (brasiliansk/forenklet eksplicit til
+  undertekst-GPT'en — display-navne forbliver sprogenes egne).
+  content.ts isSupportedLocale afleder nu af routing.locales (tredje
+  hardcodede liste dræbt). STRIPE_LOCALES-mapping: no→nb (latent bug-
+  fix — "no" er ikke i Stripes liste), pt→pt-BR, hi→en (Stripe har
+  ikke hindi; accepteret trade-off). FONTE: --font-cjk CSS-fallback-
+  stak (PingFang/Yu Gothic/Meiryo/YaHei/Nirmala…) efter Playfair/
+  Inter — CJK-overskrifter bliver sans, accepteret; næste/font Noto
+  afvist (bygning downloader hundredvis af woff2), Google Fonts-
+  link afvist (bryder selv-hosting).
+- MIGRATIONER (BRUGEREN, SQL Editor, rækkefølge ligegyldig):
+  1) 20260923_global_sprog.sql — de to check-constraints (film_
+     subtitles.locale + documentaries.spoken_language) til 13 koder.
+     SKAL KØRES FØR nogen genererer undertekster eller vælger
+     talesprog på de nye sprog — ellers afvises rækken.
+  2) 20260923_global_indhold.sql — 15 seed-tekster × 5 sprog som
+     jsonb-merge (3 bios + 6 synopses + 3 samlinger × 2; vogt
+     "not (… ? 'ja')" — dashboard-redigerede værdier røres ikke;
+     _i18n-objekterne går fra 7 til 12 nøgler). Verifikations-SQL
+     står i begge filer (12/12/12 sprog pr. række, ?&-tjek).
+- VERIFICERET 23/9: tsc grøn; keys-verify 13 filer/444 nøgler;
+  i18n-verify ALLE TJEK GRØNNE (10 tjek — 4 nye: /ja/ forside,
+  /zh/creators, /it/profile, /pt/watch med forventede strenge læst
+  direkte i messages-filerne + dansk-læk-tjek); sitemap hreflang ×13
+  (22 sider pr. sprog). Pipeline-omkostning: filmkørsler ~3,5–15
+  min, eksisterende film får de 5 nye CC-spor først ved genkørsel.
+- TEST (afventer brugeren, efter migrationerne): /ja forside uden
+  tofu (font-fallback); sprogvælger 13 navne; /it/creators genre-
+  chips på italiensk; studio talesprog-vælger + 13 badges; generér
+  undertekster på en film → 13 spor; checkout fra /pt → Stripe-
+  dashboard viser preferred_locales ["pt-BR"] på NY kunde; E2E:
+  username-flows + gengivelse på de nye sprog.
+- BEVIDST UDELUKT/noteret: manifest forbliver lang:"da"; PDF-
+  kvittering forbliver dansk; formatDuration danske forkortelser
+  (kendt wart); hi-kvitteringer på engelsk (Stripe); creator-
+  uploadede bios/synopses falder til dansk på de nye sprog indtil
+  indhold findes; OS-native CJK-fonte giver let cross-platform-
+  render-difference.
+
+BRUGERNAVN I STEDET FOR BLOTTET E-MAIL (23/9) — MIGRATION KØRT, E2E AFVENTER
+(kommentar-brugernavn-migrationen er kørt af brugeren 23/9 efter
+pin-vagt-fiksen; resten af sektionen er uændret historik.)
 E-mailen viste sig ikke blot at blive VIST (header-chip, dropdown,
 "Kommenterer som", profil-overskrift) — den var også PERSISTERET i
 comments.author_name og dermed OFFENTLIGT LÆSBAR via GET /api/comments
@@ -228,8 +297,8 @@ DEPLOY + MOBIL-HEADER (21/9)
 
 OM PROJEKTET
 Doccys = kurateret niche-streamingtjeneste for uafhængige dokumentarer.
-Next.js 15 + Supabase + next-intl, 8 locales (da/en/de/es/fr/fi/no/sv).
-RLS-first. Windows PowerShell 5.1 (ingen &&, BOM-fælder, curl.exe + temp-filer).
+Next.js 15 + Supabase + next-intl, 13 locales (da/en/de/es/fr/fi/no/sv/
+ja/zh/it/pt/hi). RLS-first. Windows PowerShell 5.1 (ingen &&, BOM-fælder, curl.exe + temp-filer).
 Vigtige regler:
 - Brugeren kører selv SQL-migrationer i Supabase-dashboardet (SQL Editor),
   og verificerer manuelt. Migra-tionerne er idempotente.
@@ -966,6 +1035,10 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+a3d7b82 globalt: migrationer — sprog-constraints + seed-indhold paa 5 nye sprog
+eb8855d globalt: 13 locales gennem stakken + cjk-fonte + verify-tjek
+b032e63 globalt: oversaettelsesscript + messages-filer paa ja/zh/it/pt/hi
+a9009d9 brugernavn: lokaliseret 422-vejledning + pin-vagt-fix i e-mail-rydningen
 62995ca brugernavn: signup-felt + navn i stedet for e-mail i UI og comments-ruten
 b60089d brugernavn: migration (e-mail-rydning + navne-trigger) + i18n-noegler paa 8 sprog
 b170737 juridisk: kontakt-, betingelses- og privatsider + footer-links + sitemap
