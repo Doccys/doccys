@@ -1,0 +1,588 @@
+{
+  "header": {
+    "nav": {
+      "home": "电影",
+      "creators": "创作者",
+      "creator": "工作室",
+      "profile": "我的资料",
+      "payout": "付款"
+    },
+    "language": "切换语言"
+  },
+  "auth": {
+    "loginTitle": "登录",
+    "loginSubtitle": "欢迎回来。您的电影在等您。",
+    "signupTitle": "创建账户",
+    "signupSubtitle": "一个账户适用于观众和创作者——永远无广告。",
+    "passwordConfirm": "重复密码",
+    "email": "电子邮件",
+    "emailPlaceholder": "你@例子.公司",
+    "username": "用户名",
+    "usernamePlaceholder": "其他人在您的评论中看到的名字",
+    "password": "密码",
+    "login": "登录",
+    "signup": "创建账户",
+    "noAccount": "没有账户？",
+    "hasAccount": "已经有账户？",
+    "checkEmail": "账户已创建。请检查您的收件箱并确认您的电子邮件，然后登录。",
+    "forgotPassword": "忘记密码？",
+    "resetTitle": "重置密码",
+    "resetSubtitle": "输入您的电子邮件，我们将发送一个链接以选择新密码。",
+    "resetSend": "发送重置链接",
+    "resetSent": "如果账户存在，我们已发送链接到您的电子邮件。也请检查您的垃圾邮件文件夹。",
+    "newPasswordTitle": "选择新密码",
+    "newPasswordSubtitle": "输入您的Doccys账户的新密码。",
+    "newPassword": "新密码",
+    "newPasswordConfirm": "重复密码",
+    "passwordUpdated": "您的密码已更新。",
+    "goToProfile": "前往您的个人资料",
+    "loggedInAs": "登录为",
+    "fallbackName": "用户",
+    "logout": "登出",
+    "working": "请稍候…",
+    "errors": {
+      "invalidCredentials": "无效的电子邮件或密码。",
+      "emailExists": "该电子邮件已存在账户。",
+      "emailNotConfirmed": "请确认您的电子邮件，然后登录。",
+      "weakPassword": "密码太弱——请使用至少6个字符。",
+      "passwordMismatch": "密码不匹配。",
+      "nameMissing": "请选择您的用户名，然后创建账户。",
+      "generic": "出了点问题。请再试一次。"
+    }
+  },
+  "footer": {
+    "tagline": "独立纪录片。永无广告。",
+    "contact": "联系",
+    "terms": "条款和条件",
+    "privacy": "隐私政策"
+  },
+  "legal": {
+    "contact": {
+      "title": "联系Doccys",
+      "intro": "有问题、错误或需要帮助？我们会阅读所有进入收件箱的内容。",
+      "sections": {
+        "s1": {
+          "title": "写信给我们",
+          "body": "您可以随时通过support@doccys.com联系我们。请注明涉及的电影和页面，以及您使用的设备或浏览器——这样我们可以更快地提供帮助。"
+        },
+        "s2": {
+          "title": "您可以写些什么",
+          "body": "• 网站上的技术错误\n• 分钟购买和付款\n• 版权——某部电影是否（不）应该在这里？\n• 您的个人数据，例如删除您的账户\n• 作为创作者与Doccys合作"
+        },
+        "s3": {
+          "title": "回复时间",
+          "body": "我们努力在两个工作日内回复。节假日和发布期间可能需要更长时间。"
+        }
+      }
+    },
+    "terms": {
+      "title": "交易条款",
+      "intro": "这些条款适用于使用Doccys和购买分钟。最近更新：2026年9月22日。",
+      "sections": {
+        "s1": {
+          "title": "关于Doccys",
+          "body": "Doccys是一家独立纪录片的流媒体服务：您只需为您实际观看的内容按分钟付费。该服务由Doccys运营——最终发布时将提供CVR号码。"
+        },
+        "s2": {
+          "title": "账户创建",
+          "body": "创建账户是免费的。创建时，您需要提供一个有效的电子邮件地址并通过您收到的邮件中的链接进行确认——只有这样，账户才能使用。您有责任保密您的登录信息，并对通过您的账户进行的所有活动负责。"
+        },
+        "s3": {
+          "title": "分钟和播放",
+          "body": "电影播放会消耗您账户上的分钟。消费根据您实际播放的时间计算——如果您在电影中途停止，您只需为观看的时间付费。电影的分钟价格会在您开始播放前显示在电影页面上。\n您的播放记录会被记录为消费证明（“证据”）——请参阅隐私政策。如果对您观看的内容和从您的余额中扣除的内容有疑问，证据是关键。"
+        },
+        "s4": {
+          "title": "购买和付款",
+          "body": "分钟以套餐形式购买，价格在购买时显示。付款由我们的支付合作伙伴Stripe处理，收据将发送到您的电子邮件。价格不含增值税；增值税根据您的账单国家计算，并包含在付款的总金额中。"
+        },
+        "s5": {
+          "title": "分钟的有效性",
+          "body": "分钟不会过期，只要您的账户存在就可以使用。它们是个人的，不能转让给他人或兑换成现金。作为推荐奖励获得的分钟遵循相同的规则。"
+        },
+        "s6": {
+          "title": "撤销和错误",
+          "body": "分钟是数字内容：根据数字内容的购买协议法则，一旦播放开始，撤销权即失效。如果您尚未开始播放，可以在购买后14天内写信至support@doccys.com以获得全额退款。\n如果由于技术错误导致您无法观看某些内容，或者付款重复，请写信给我们——我们会纠正。"
+        },
+        "s7": {
+          "title": "创作者的权利",
+          "body": "部分分钟消费归电影创作者所有。您不得下载、录制或传播Doccys上的电影或电影片段。如果您发现Doccys上的某部电影侵犯了您的权利，可以写信至support@doccys.com。"
+        },
+        "s8": {
+          "title": "责任和内容",
+          "body": "Doccys不是电影的出版商或发行商——电影中的内容和观点属于创作者。服务按“现状”提供。我们不对间接损失或未实现的利益负责，包括停机，但我们会尽快纠正错误。\n我们可以在合理通知的情况下更改未来的价格；已购买的分钟不会受到影响。"
+        },
+        "s9": {
+          "title": "条款的变更",
+          "body": "我们可以更新这些条款。当前版本始终在此页面上，若有重大更改，我们会在网站上通知。如果您在更改后继续使用Doccys，即表示您接受新版本。"
+        },
+        "s10": {
+          "title": "投诉和联系",
+          "body": "您可以随时写信至support@doccys.com。丹麦消费者还可以在购买投诉时联系消费者投诉委员会——请参阅forbrugerklagenaevnet.dk。丹麦法律适用于这些条款。"
+        }
+      }
+    },
+    "privacy": {
+      "title": "隐私政策",
+      "intro": "在这里，您可以了解Doccys处理哪些个人数据、我们为何这样做以及您拥有哪些权利。最近更新：2026年9月22日。",
+      "sections": {
+        "s1": {
+          "title": "数据负责人",
+          "body": "Doccys——最终发布时将提供CVR号码。联系方式：support@doccys.com。"
+        },
+        "s2": {
+          "title": "我们处理哪些数据",
+          "body": "• 账户：您的电子邮件地址（及其确认）和加密存储的密码。\n• 购买：您购买的套餐、购买时间和交易ID。我们从不处理支付卡信息——这由Stripe处理。\n• 播放：您何时开始和停止、快进和每部电影的消费时间。测量的消费（“证据”）是从您的余额中扣除分钟并结算给创作者的依据。\n• 评论：您使用的名称、您的评论和点赞以及对此的管理。\n• 推荐：如果您通过推荐链接访问，我们会在cookie中保存代码最多30天，以便在您首次购买时给予推荐人积分。"
+        },
+        "s3": {
+          "title": "目的和依据",
+          "body": "我们处理数据是为了提供服务——创建您的账户，从您的余额中扣除分钟并结算给创作者（合同依据），保持服务安全并防止滥用（合法利益）以及履行会计和税务义务（法律义务）。我们从不出售您的数据，也不将其用于广告分析——Doccys从不显示广告。"
+        },
+        "s4": {
+          "title": "第三方",
+          "body": "我们使用以下数据处理者：\n• Supabase——登录和数据库\n• Stripe——付款和收据\n• Vercel——运营和托管\n他们仅代表我们处理数据，并用于上述目的。"
+        },
+        "s5": {
+          "title": "Cookies",
+          "body": "Doccys仅设置一个cookie：doccys_ref，用于记住推荐链接最多30天。您的语言选择保存在页面地址中，而不是cookie中。我们不使用第三方跟踪和广告cookie。"
+        },
+        "s6": {
+          "title": "存储",
+          "body": "当您要求我们删除时，账户和评论数据将被删除。购买数据和证据保存五年，以便会计和创作者结算可以核实——这是会计法的要求。"
+        },
+        "s7": {
+          "title": "您的权利",
+          "body": "您有权：\n• 访问我们处理的关于您的数据\n• 更正不准确的数据\n• 删除数据（会计法要求的例外情况除外）\n• 以可读格式获取数据（数据可携性）\n• 反对处理\n请将您的请求发送至support@doccys.com——我们将在一个月内回复。"
+        },
+        "s8": {
+          "title": "投诉",
+          "body": "如果您对我们的答复不满意，可以向数据保护局投诉——请参阅datatilsynet.dk。"
+        },
+        "s9": {
+          "title": "变更",
+          "body": "如果我们更新此政策，新版本将发布在此页面上。若有重大更改，我们会在网站上通知。"
+        }
+      }
+    }
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "本月精选纪录片",
+      "by": "由 {name}",
+      "watchNow": "立即观看",
+      "aboutCreator": "关于创作者"
+    },
+    "continue": {
+      "eyebrow": "继续观看",
+      "title": "从你停止的地方继续",
+      "subtitle": "您的播放将自动从您停止的地方继续。"
+    },
+    "catalog": {
+      "eyebrow": "目录",
+      "title": "独立纪录片",
+      "subtitle": "精选影片，无广告中断。只为您看完的内容付费。"
+    },
+    "how": {
+      "eyebrow": "Doccys 如何运作",
+      "title": "创作者优先。始终如此。"
+    },
+    "features": {
+      "noAds": {
+        "title": "无广告",
+        "body": "无前置广告，无暂停广告，无赞助内容。目录仅由分钟包资助。"
+      },
+      "payPerMinute": {
+        "title": "按观看分钟付费",
+        "body": "创作者每获得100个有效观看分钟可赚取2 DKK — 只有经过反欺诈系统验证的登录播放才计入。"
+      },
+      "community": {
+        "title": "影片下的讨论",
+        "body": "每部影片都有自己的讨论区。没有算法干扰 — 只有与你观看相同内容的人。"
+      }
+    }
+  },
+  "creators": {
+    "eyebrow": "社区",
+    "title": "Doccys上的创作者",
+    "subtitle": "填充目录的独立电影公司和团体。",
+    "films": "{count, plural, one {# 部电影} other {# 部电影}}",
+    "views": "{count, plural, one {# 次观看} other {# 次观看}}"
+  },
+  "finishBadge": {
+    "label": "{percent} % 完成观看"
+  },
+  "collections": {
+    "railTitle": "合集",
+    "indexTitle": "精选合集",
+    "indexSubtitle": "跨目录的精选主题 — 编辑团队的独家推荐。",
+    "filmCount": "{count, plural, one {# 部电影} other {# 部电影}}",
+    "empty": "该合集目前为空。",
+    "viewAll": "查看所有合集"
+  },
+  "creatorProfile": {
+    "eyebrow": "创作者资料",
+    "founded": "成立于 {year}",
+    "statViews": "播放次数",
+    "statCompletions": "完成观看次数",
+    "completionsSub": "占所有观看次数的 {rate}%",
+    "statValid": "有效完成观看",
+    "validSub": "通过反欺诈验证",
+    "statEarnings": "总收入",
+    "earningsSub": "每观看100分钟赚2克朗",
+    "earningsHeading": "收入",
+    "filmographyHeading": "作品集"
+  },
+  "earningsPanel": {
+    "eyebrow": "收入",
+    "rate": "每观看100分钟2元",
+    "explainer": "您在Doccys上赚取{rate}。只有通过反欺诈验证的登录播放才会被计入——操纵行为永远不会支付。",
+    "earned": "总收入",
+    "paidOut": "已支付",
+    "watchedMinutes": "有效观看分钟数",
+    "threshold": "当可用余额达到150元时支付。"
+  },
+  "payoutPanel": {
+    "eyebrow": "付款",
+    "intro": "保存您的账户信息，当余额达到150 DKK时请求付款。转账由编辑部处理，通常在几个工作日内到账。",
+    "methodTitle": "付款账户",
+    "iban": "IBAN",
+    "bic": "BIC/SWIFT",
+    "methodHint": "IBAN是您的账户国际号码——您的网上银行会在账户信息中显示。",
+    "bicHint": "BIC/SWIFT是可选的——仅对非SEPA账户必要。",
+    "save": "保存信息",
+    "saving": "正在保存…",
+    "saved": "信息已保存。",
+    "saveError": "无法保存信息。",
+    "payoutTitle": "请求付款",
+    "locked": "当您的可用余额达到150 DKK时，按钮将解锁。",
+    "noMethod": "在请求付款之前，请保存您的付款信息。",
+    "pending": "您已经有一个待处理的请求——编辑部将尽快付款。",
+    "button": "支付 {amount}",
+    "requesting": "发送中…",
+    "requestError": "无法创建请求。",
+    "receipt": "收据 (PDF)",
+    "history": "历史请求",
+    "empty": "尚无付款。",
+    "pendingLabel": "待处理",
+    "paidLabel": "已支付",
+    "rejectedLabel": "已拒绝"
+  },
+  "currencyHint": {
+    "title": "您的本地货币",
+    "rate": "1 DKK ≈ {rate} {currency}",
+    "balance": "您的可用余额 ≈ {amount}",
+    "disclaimer": "汇率为参考（当天中间汇率），随外汇市场变化。收入和支付始终以DKK进行。"
+  },
+  "filmography": {
+    "film": "电影",
+    "year": "年份",
+    "views": "观看次数",
+    "completions": "完成观看",
+    "watchedMinutes": "观看分钟数",
+    "earnings": "收入"
+  },
+  "watch": {
+    "playerNote": "观看数据以结构化方式记录（暂停、快进、心跳、设备元数据和时间戳），并由Doccys的反欺诈系统验证，然后计算您的观看分钟数。",
+    "playerStartFailed": "观看数据无法启动 — 播放仍然有效。",
+    "verdictValid": "✓ 观看已验证 — 您的观看分钟数计入创作者收入。",
+    "verdictSuspicious": "△ 观看被反欺诈系统标记为人工审核。",
+    "verdictInvalid": "✗ 观看被拒绝 — 分钟数已从您的余额中扣除，但不计入创作者收入。",
+    "verdictError": "验证目前无法完成。",
+    "proofEyebrow": "支持证明",
+    "proofMinutes": "您总共观看了{minutes}分钟",
+    "proofSupport": "{amount}直接支持了{creator}",
+    "proofSupportUnnamed": "{amount}直接支持了创作者",
+    "proofNeutral": "{minutes}分钟已从您的余额中扣除",
+    "proofClose": "关闭证明",
+    "proofShare": "下载证明图片",
+    "payoutLine": "每观看100分钟，{rate}直接支持{creator}",
+    "creator": "创作者",
+    "discussionEyebrow": "社区",
+    "discussionTitle": "评论与讨论",
+    "discussionSubtitle": "继续关于电影的对话 — 直接在播放器下方。"
+  },
+  "saveButton": {
+    "loginToSave": "登录以保存电影",
+    "saved": "已保存 ✓",
+    "save": "保存电影"
+  },
+  "share": {
+    "label": "分享",
+    "shareOn": "在{platform}上分享",
+    "email": "电子邮件",
+    "copyLink": "复制链接",
+    "copied": "已复制✓"
+  },
+  "comments": {
+    "title": "讨论",
+    "subtitle": "与其他观众分享对电影的看法——请勿在未警告的情况下剧透，谢谢。",
+    "postingAs": "评论身份",
+    "noNameShort": "观众",
+    "nameMissing": "请在评论前在您的个人资料中选择用户名。",
+    "bodyPlaceholder": "写下您的评论…",
+    "submit": "发表评论",
+    "submitting": "正在发送…",
+    "loggedInNote": "您的评论将以您的个人资料发布。",
+    "loading": "正在获取讨论…",
+    "empty": "还没有评论——成为第一个评论电影的人。",
+    "loadError": "无法获取评论。",
+    "submitError": "无法发送评论。请重试。",
+    "likeAria": "点赞评论",
+    "likeGuestHint": "登录以点赞评论。",
+    "likeError": "无法记录点赞。请重试。",
+    "gateLogin": "登录以发表评论",
+    "gateLoginSuffix": "— 只有观众可以在电影下评论。",
+    "gateWatch": "观看电影后评论区将开放——仅限观众，以保持讨论的价值。",
+    "pin": "置顶",
+    "unpin": "取消置顶",
+    "pinnedLabel": "由创作者置顶",
+    "delete": "删除",
+    "deleteConfirm": "删除评论？此操作无法撤销。",
+    "deleteError": "无法删除评论。请重试。",
+    "pinError": "无法置顶评论——已有一条评论被置顶。请重试。",
+    "reply": "回复",
+    "cancel": "取消",
+    "replyError": "无法发送回复。请重试。"
+  },
+  "creatorApply": {
+    "eyebrow": "创作者",
+    "loginTitle": "登录以申请",
+    "loginSubtitle": "创作者申请需要一个账户——创建一个账户只需片刻。",
+    "loginCta": "登录",
+    "title": "成为Doccys的创作者",
+    "subtitle": "Doccys是经过策划的：所有创作者都需经过编辑部的批准，才能展示他们的电影。告诉我们你们是谁，以及你们在做什么。",
+    "nameLabel": "创作者姓名",
+    "handleLabel": "用户名（URL）",
+    "handleHint": "小写字母、数字和连字符，例如“nordlys-film”。如果您被批准，个人资料将位于/creator/{handle}。",
+    "countryLabel": "国家",
+    "foundedYearLabel": "成立年份",
+    "bioLabel": "简短简介",
+    "motivationLabel": "动机",
+    "motivationHint": "为什么你们的电影应该在Doccys上？几句话即可。",
+    "submit": "提交申请",
+    "resubmit": "再次提交",
+    "working": "正在发送…",
+    "statusPending": "您的申请正在等待批准。",
+    "statusPendingSub": "申请日期：{date}。编辑部将在此回复——状态会自动更新。",
+    "statusApproved": "恭喜——您已被批准为创作者！",
+    "statusApprovedSub": "您的个人资料已创建，工作室已开放。您现在可以上传电影（在编辑部批准后才会公开展示）。",
+    "statusApprovedCta": "打开工作室",
+    "statusRejected": "您的申请这次未获批准。",
+    "statusRejectedSub": "决定日期：{date}。您可以修改申请并再次提交。",
+    "errors": {
+      "handleTaken": "用户名已被使用——请选择另一个。",
+      "reserved": "用户名已被保留——请选择另一个。",
+      "stale": "申请状态已更改——请重新加载页面。",
+      "generic": "请检查所有字段并重试。"
+    }
+  },
+  "creatorStudio": {
+    "eyebrow": "创作者工作室",
+    "loginTitle": "登录以打开工作室",
+    "loginSubtitle": "工作室仅限于已批准的创作者。",
+    "loginCta": "登录",
+    "uploadHeading": "上传新电影",
+    "uploadSubtitle": "电影将保存为草稿，并在编辑批准后公开显示。",
+    "titleLabel": "标题",
+    "yearLabel": "年份",
+    "genresLabel": "类型（最多选择5个）",
+    "synopsisLabel": "简介",
+    "posterLabel": "封面图片",
+    "requiredMark": "必填",
+    "posterHint": "必填（jpg/png/webp，最大10 MB，至少640×360像素）—平台上电影的封面图片。",
+    "posterDetected": "图片：{width}×{height} 像素",
+    "fileLabel": "视频文件（mp4，最大2 GB）",
+    "durationDetected": "文件长度：{seconds} 秒",
+    "submit": "上传电影",
+    "working": "处理中…",
+    "probing": "读取文件的元数据…",
+    "uploading": "上传视频…",
+    "saving": "创建电影…",
+    "success": "上传成功！电影已作为草稿保存，等待批准。",
+    "creatorNote": "电影将关联到您的创作者档案 @{handle}。",
+    "errors": {
+      "notMp4": "只能上传mp4文件。",
+      "notPoster": "只能使用jpg、png和webp图片。",
+      "posterRequired": "上传封面图片—电影不能在没有封面的情况下发布。",
+      "posterProbe": "无法读取图片—这是有效图片吗？",
+      "posterTooSmall": "图片太小—至少640×360像素。",
+      "posterTooBig": "图片太大—最大10 MB。",
+      "posterFailed": "无法上传封面图片—请重试。",
+      "probe": "无法读取文件的元数据—这是有效的mp4吗？",
+      "missingFields": "请填写标题和简介，选择至少一个类型并选择一个视频文件。",
+      "notLoggedIn": "您已退出登录—请重新登录并重试。",
+      "uploadFailed": "上传失败—请重试。",
+      "rowFailed": "无法创建电影—请重试。"
+    },
+    "filmsHeading": "您的电影",
+    "statusDraft": "草稿—等待批准",
+    "statusPublished": "已发布",
+    "draftNote": "草稿可以删除；已发布的电影属于编辑部。",
+    "delete": "删除草稿",
+    "deleteConfirm": "删除此草稿？视频也将被移除。",
+    "empty": "尚无电影—在上方上传您的第一部电影。",
+    "retentionHeading": "保留率",
+    "retentionIntro": "观众观看的进度—达到电影10%、20%…100%的比例。",
+    "retentionEmpty": "尚未有足够的完成播放以生成保留率图表（至少5个）。",
+    "retentionSessions": "{count} 次完成播放",
+    "subtitlesHeading": "字幕",
+    "subtitlesIntro": "AI将生成电影音频的{language}文本并翻译为所有平台语言。",
+    "spokenLanguageLabel": "电影的语言",
+    "spokenLanguageHint": "电影中使用的语言—字幕将根据此语言生成。",
+    "subtitlesGenerate": "生成字幕",
+    "subtitlesRegenerate": "重新生成",
+    "subtitlesWorking": "正在生成字幕—长电影可能需要几分钟。",
+    "subtitlesReady": "已准备好",
+    "subtitlesProcessing": "生成中…",
+    "subtitlesFailed": "失败",
+    "subtitlesMissing": "未生成",
+    "subtitlesError": "字幕未能完全生成—请重试。失败的语言可以使用相同按钮重试。",
+    "trailerHeading": "预告片",
+    "trailerIntro": "剪辑90秒电影作为免费预览—访客在付费墙后观看，分享的链接将电影显示为视频卡片。",
+    "trailerStartLabel": "从秒开始",
+    "trailerGenerate": "生成预告片",
+    "trailerRegenerate": "重新生成",
+    "trailerWorking": "正在生成预告片—可能需要几分钟。",
+    "trailerReady": "已准备好",
+    "trailerFailed": "失败",
+    "trailerMissing": "未生成",
+    "trailerError": "无法生成预告片—请重试。",
+    "shareHeading": "分享 & 嵌入",
+    "copyWatchLink": "复制电影链接",
+    "copyEmbedCode": "复制嵌入代码"
+  },
+  "profile": {
+    "loginTitle": "登录以查看您的个人资料",
+    "loginSubtitle": "您的电子邮件、分钟余额和保存的电影在登录后等待您。",
+    "loginCta": "登录",
+    "eyebrow": "我的账户",
+    "memberSince": "会员自 {date}",
+    "historyHeading": "我的观看历史",
+    "historySubtitle": "继续您上次中断的地方——或重温旧时的最爱。",
+    "historyEmpty": "尚未观看任何电影。完成观看一部纪录片，它将出现在这里——只有有效的完成才会被记录。",
+    "savedHeading": "保存的电影",
+    "savedSubtitle": "您的私人观看列表。",
+    "savedEmpty": "尚未保存任何电影。在播放器下点击“保存电影”，电影将出现在这里。",
+    "creatorHeading": "创作者",
+    "creatorSub": "申请成为创作者并获得上传您纪录片的权限。",
+    "creatorOwnedSub": "您已被批准为创作者——工作室已开放。",
+    "creatorApplyCta": "成为创作者",
+    "creatorStudioCta": "打开工作室",
+    "nameMissing": "选择您的用户名",
+    "nameMissingSub": "您的电子邮件永远不会显示给他人——选择一个名字，其他人将在您的评论中看到。",
+    "nameLabel": "用户名",
+    "nameSave": "保存用户名",
+    "nameSaved": "您的用户名已保存。",
+    "nameError": "无法保存用户名。请再试一次。"
+  },
+  "watchHistory": {
+    "completed": "已观看",
+    "progress": "{watched} / {total}"
+  },
+  "support": {
+    "heading": "您的支持",
+    "subtitle": "您的分钟数去向何处——以及哪些直接给了创作者。",
+    "totalMinutes": "您已观看 {minutes} 分钟",
+    "totalAmount": "{amount} 直接给了创作者",
+    "creatorFilms": "{count, plural, one {# 部电影} other {# 部电影}}",
+    "entryMeta": "{minutes} 分钟 · {amount}",
+    "empty": "尚无结算播放。",
+    "emptyHint": "首次完整观看电影时，分钟数和金额将显示在此处。"
+  },
+  "genres": {
+    "Klima": "气候",
+    "Portræt": "肖像",
+    "Kunst": "艺术",
+    "Historie": "历史",
+    "Byrum": "城市空间",
+    "Fællesskab": "社区",
+    "Natur": "自然",
+    "Eksperimentel": "实验",
+    "Teknologi": "技术",
+    "Kultur": "文化",
+    "Mad": "美食",
+    "Musik": "音乐",
+    "Sand krim": "真实犯罪",
+    "Rejse": "旅行",
+    "Videnskab": "科学",
+    "Sport": "体育",
+    "Samfund": "社会"
+  },
+  "search": {
+    "eyebrow": "搜索",
+    "placeholder": "搜索电影、创作者、类型…",
+    "searchLabel": "搜索",
+    "landingTitle": "今晚想看什么？",
+    "landingHint": "搜索电影、创作者和类型 — 或直接探索一个类型。",
+    "exploreGenres": "探索类型",
+    "resultsTitle": "“{q}”的结果",
+    "filmsSection": "电影",
+    "creatorsSection": "创作者",
+    "noResults": "没有“{q}”的结果。",
+    "noResultsHint": "尝试其他关键词 — 或探索下面的类型。"
+  },
+  "countries": {
+    "Island": "冰岛",
+    "Danmark": "丹麦"
+  },
+  "meta": {
+    "title": "Doccys — 无广告的独立纪录片",
+    "description": "Doccys 是一个极简主义、无广告的独立纪录片流媒体服务。只为你实际观看的分钟数付费——创作者获得报酬，你获得宁静。"
+  },
+  "paywall": {
+    "loginTitle": "登录以观看电影",
+    "loginBody": "创建一个账户或登录——当您准备好观看时购买一个分钟包。",
+    "loginCta": "登录",
+    "buyTitle": "余额分钟不足",
+    "buyBody": "电影需要{minutes}分钟，您的余额是{balance}。购买一个包以开始播放。",
+    "buyCta": "购买分钟",
+    "trailerLabel": "预告片",
+    "priceLine": "整部电影约{price}——如果您从未观看，它将花费0元。"
+  },
+  "embed": {
+    "cta": "在Doccys上观看完整电影",
+    "trailerLabel": "预告片"
+  },
+  "minutes": {
+    "heading": "分钟",
+    "balanceLabel": "您的余额",
+    "balanceValue": "{minutes} 分钟",
+    "packMinutes": "{minutes} 分钟",
+    "packPrice": "{price}",
+    "vatNote": "含增值税",
+    "packBuy": "购买",
+    "purchaseSuccess": "感谢您的购买！一旦付款确认，分钟数将添加到您的余额中。",
+    "purchaseError": "购买未成功 - 请重试。",
+    "referralUnavailable": "您的推荐链接目前无法显示。"
+  },
+  "affiliate": {
+    "explainer": "与朋友分享您的链接。 如果朋友通过您的链接购买了他们的第一个分钟包，您将获得250分钟的余额。",
+    "yourLink": "您的链接",
+    "copy": "复制",
+    "copied": "已复制！",
+    "reward": "每位购买首个套餐的朋友可获得250分钟。"
+  },
+  "bulletinBoard": {
+    "title": "创作者的新消息",
+    "subtitle": "来自创作者的消息和公告。",
+    "placeholder": "写一篇给观众的帖子…",
+    "submit": "发布",
+    "submitting": "发送中…",
+    "edit": "编辑",
+    "editingPlaceholder": "编辑帖子…",
+    "save": "保存更改",
+    "saving": "保存中…",
+    "cancel": "取消",
+    "delete": "删除",
+    "deleteConfirm": "删除帖子？此操作无法撤销。",
+    "pin": "置顶",
+    "unpin": "取消置顶",
+    "pinnedLabel": "已置顶",
+    "editedLabel": "已编辑",
+    "empty": "创作者尚未发布任何内容。",
+    "emptyOwner": "发布你的第一篇帖子——观众将在此看到。",
+    "submitError": "帖子无法发送。请重试。",
+    "updateError": "帖子无法保存。请重试。",
+    "deleteError": "帖子无法删除。请重试。",
+    "pinError": "无法置顶帖子——已有一个帖子被置顶。请重试。"
+  }
+}
