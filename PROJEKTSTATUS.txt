@@ -102,9 +102,14 @@ kan håndhæve kravet dér.
   eller de ligger et andet sted; tjek foerste genkorsel.
 - STUDIO-UI: StudioFilmList.tsx viser nu publishGateNote (champagne-
   farvet) ved siden af draftNote i draft-sektionen — fortæller
-  creatoren HVORFOR filmen ikke er live. Nøglen oversat i alle 13
-  messages-filer (445 nøgler — i18n-keys-verify; i18n-verify ALLE
-  TJEK GRØNNE, tsc grøn).
+  creatoren HVORFOR filmen ikke er live. BEGYNDT RØDT: paa-
+  kravvet-badge (roedt, title-tooltip = publishGateNote) ved baade
+  undertekst- og trailer-knappen paa kladder, naar kravet ikke er
+  opfyldt (<13 ready-sprog resp. ingen ready-trailer); PLATFORM_
+  LOCALE_COUNT = Object.keys(LOCALE_LANGUAGE_NAMES).length er
+  taelleren. Noeglerne publishGateNote + requiredBadge oversat i
+  alle 13 messages-filer (446 noegler — i18n-keys-verify; i18n-verify
+  ALLE TJEK GRØNNE, tsc grøn).
 - SCRIPT scripts/i18n-translate.mjs: TARGET_LANGUAGES udvidet til
   alle 13 sprog (var kun de 5 nye — gav "Ukendt målsprog"-fejl ved
   genkørsel på en/da m.v.). Scriptet er nu faellesskabssprog.

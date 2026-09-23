@@ -16,10 +16,14 @@ import { useRouter } from "@/i18n/navigation";
 export default function StudioSubtitleGenerator({
   slug,
   hasExisting,
+  required,
 }: {
   slug: string;
   /** Findes der allerede rækker? → "Generér igen"-tekst. */
   hasExisting: boolean;
+  /** Kladde med under 13 klar-sprog → rødt påkrævet-badge
+   *  (publiceringskravet, trg_publiceringskrav). */
+  required?: boolean;
 }) {
   const t = useTranslations("creatorStudio");
   const router = useRouter();
@@ -52,14 +56,24 @@ export default function StudioSubtitleGenerator({
 
   return (
     <div className="mt-3">
-      <button
-        type="button"
-        onClick={handleGenerate}
-        disabled={busy}
-        className="rounded-full bg-champagne px-5 py-2 text-sm font-medium text-noir transition-colors hover:bg-bone disabled:cursor-not-allowed disabled:opacity-40"
-      >
-        {hasExisting ? t("subtitlesRegenerate") : t("subtitlesGenerate")}
-      </button>
+      <div className="flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          onClick={handleGenerate}
+          disabled={busy}
+          className="rounded-full bg-champagne px-5 py-2 text-sm font-medium text-noir transition-colors hover:bg-bone disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          {hasExisting ? t("subtitlesRegenerate") : t("subtitlesGenerate")}
+        </button>
+        {required && (
+          <span
+            title={t("publishGateNote")}
+            className="rounded-full border border-red-400/60 px-2.5 py-0.5 text-[11px] text-red-400"
+          >
+            {t("requiredBadge")}
+          </span>
+        )}
+      </div>
       {busy && (
         <p className="mt-2 text-xs text-ash/70">{t("subtitlesWorking")}</p>
       )}

@@ -418,6 +418,7 @@
     "statusPublished": "Publicado",
     "draftNote": "Um rascunho pode ser excluído; um filme publicado pertence à redação.",
     "publishGateNote": "O filme só pode ser publicado quando as legendas estiverem prontas em todos os idiomas e o trailer estiver pronto.",
+    "requiredBadge": "Obrigatório",
     "delete": "Excluir rascunho",
     "deleteConfirm": "Excluir este rascunho? O vídeo também será removido.",
     "empty": "Nenhum filme ainda — carregue seu primeiro acima.",

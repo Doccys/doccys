@@ -418,6 +418,7 @@
     "statusPublished": "Julkaistu",
     "draftNote": "Luonnoksen voi poistaa; julkaistu elokuva kuuluu toimitukselle.",
     "publishGateNote": "Elokuvan voi julkaista vasta, kun tekstitykset ovat valmiit kaikilla kielillä ja traileri on valmis.",
+    "requiredBadge": "Vaadittu",
     "delete": "Poista luonnos",
     "deleteConfirm": "Poistetaanko tämä luonnos? Video poistetaan myös.",
     "empty": "Ei vielä elokuvia — lataa ensimmäinen yllä.",

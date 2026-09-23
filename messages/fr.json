@@ -418,6 +418,7 @@
     "statusPublished": "Publié",
     "draftNote": "Un brouillon peut être supprimé ; un film publié appartient à l'équipe éditoriale.",
     "publishGateNote": "Le film ne peut être publié que lorsque les sous-titres sont prêts dans toutes les langues et que la bande-annonce est terminée.",
+    "requiredBadge": "Obligatoire",
     "delete": "Supprimer le brouillon",
     "deleteConfirm": "Supprimer ce brouillon ? La vidéo sera également supprimée.",
     "empty": "Pas encore de films — envoyez votre premier ci-dessus.",

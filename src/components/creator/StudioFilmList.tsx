@@ -10,6 +10,10 @@ import { getFilmRetention, RETENTION_MIN_SESSIONS } from "@/lib/data/retention";
 import { LOCALE_LANGUAGE_NAMES } from "@/lib/i18n/languageNames";
 import type { Documentary } from "@/lib/types";
 
+/** Antal platformssprog = publiceringskravets tæller (13 —
+ *  trg_publiceringskrav; hold i trit med PLATFORM_LOCALES). */
+const PLATFORM_LOCALE_COUNT = Object.keys(LOCALE_LANGUAGE_NAMES).length;
+
 /**
  * Skaberens egen film-liste i studiet — inklusiv kladder, som er
  * usynlige alle andre steder i app'en. Preview afspilles direkte
@@ -50,6 +54,9 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
         const subtitleVttUrls = subtitleStatuses
           .map((entry) => entry.vttUrl)
           .filter((url): url is string => url !== null);
+        const subtitlesReady = subtitleStatuses.filter(
+          (entry) => entry.status === "ready",
+        ).length;
         return (
           <li
             key={film.id}
@@ -131,13 +138,18 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
               <StudioSubtitleGenerator
                 slug={film.slug}
                 hasExisting={subtitleStatuses.length > 0}
+                required={draft && subtitlesReady < PLATFORM_LOCALE_COUNT}
               />
             </div>
 
             {/* Trailer: 90 sekunder af filmen som gratis smagsprøve —
                 det er det, gæster ser bag paywallen, og det, der
                 vises som video-kort, når filmen deles. */}
-            <StudioTrailerGenerator slug={film.slug} status={trailerStatus} />
+            <StudioTrailerGenerator
+              slug={film.slug}
+              status={trailerStatus}
+              required={draft && trailerStatus?.status !== "ready"}
+            />
 
             {/* Retention: drop-off pr. decil — hvor langt seerne
                 kom. Ejer-privat RPC (getFilmRetention afviser alle

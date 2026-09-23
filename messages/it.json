@@ -418,6 +418,7 @@
     "statusPublished": "Pubblicato",
     "draftNote": "Una bozza può essere eliminata; un film pubblicato è della redazione.",
     "publishGateNote": "Il film può essere pubblicato solo quando i sottotitoli sono pronti in tutte le lingue e il trailer è finito.",
+    "requiredBadge": "Obbligatorio",
     "delete": "Elimina bozza",
     "deleteConfirm": "Eliminare questa bozza? Anche il video sarà rimosso.",
     "empty": "Nessun film ancora — carica il tuo primo sopra.",

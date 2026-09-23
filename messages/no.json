@@ -418,6 +418,7 @@
     "statusPublished": "Utgitt",
     "draftNote": "En kladd kan slettes; en utgitt film tilhører redaksjonen.",
     "publishGateNote": "Filmen kan først publiseres når undertekstene er klare på alle språk og traileren er ferdig.",
+    "requiredBadge": "Påkrevd",
     "delete": "Slett kladd",
     "deleteConfirm": "Slette denne kladden? Videoen fjernes også.",
     "empty": "Ingen filmer ennå — last opp din første ovenfor.",

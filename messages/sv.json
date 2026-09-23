@@ -418,6 +418,7 @@
     "statusPublished": "Publicerad",
     "draftNote": "Ett utkast kan raderas; en publicerad film tillhör redaktionen.",
     "publishGateNote": "Filmen kan först publiceras när undertexterna är klara på alla språk och trailern är färdig.",
+    "requiredBadge": "Krävs",
     "delete": "Radera utkast",
     "deleteConfirm": "Radera det här utkastet? Videon tas också bort.",
     "empty": "Inga filmer än — ladda upp din första ovan.",
