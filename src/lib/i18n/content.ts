@@ -11,12 +11,16 @@
  * og ikke-intl-kontekster har intet request-sprog at hente implicit).
  */
 
+import { routing } from "@/i18n/routing";
+
 type VocabularyNamespace = "genres" | "countries";
 
+/** Er locale ét af sitens sprog? (routing.ts er den ene kilde — der er
+ *  en messages/<locale>.json pr. kode, så importet nedenfor er altid sikkert.) */
 function isSupportedLocale(locale: string | undefined): locale is string {
   return (
     locale !== undefined &&
-    ["da", "en", "es", "fr", "de", "no", "sv", "fi"].includes(locale)
+    (routing.locales as readonly string[]).includes(locale)
   );
 }
 

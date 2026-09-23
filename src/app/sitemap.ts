@@ -6,8 +6,8 @@ import { getCollections } from "@/lib/data/catalog";
 
 /**
  * sitemap.xml — ét entry pr. side med hreflang-alternater for alle
- * 8 sprog (search engines aflæser alternaterne og viser den rette
- * sprogversion i søgeresultater). Kun offentligt indhold: publice-
+ * sitets sprog (search engines aflæser alternaterne og viser den
+ * rette sprogversion i søgeresultater). Kun offentligt indhold: publice-
  * rede film, alle skabere og alle kuraterede samlinger med mindst
  * én publiceret film; kladder og tomme samlinger holdes ude.
  *
@@ -22,7 +22,7 @@ function entry(
   priority: number,
 ): MetadataRoute.Sitemap[number] {
   const base = siteUrl();
-  // hreflang: alle 8 sprogversioner af samme side
+  // hreflang: alle sprogversioner af samme side
   const languages: Record<string, string> = {};
   for (const locale of routing.locales) {
     languages[locale] = `${base}/${locale}${path}`;

@@ -15,6 +15,11 @@ const LOCALE_LABELS: Record<string, string> = {
   no: "Norsk",
   sv: "Svenska",
   fi: "Suomi",
+  ja: "日本語",
+  zh: "中文",
+  it: "Italiano",
+  pt: "Português",
+  hi: "हिन्दी",
 };
 
 function GlobeIcon({ className }: { className?: string }) {

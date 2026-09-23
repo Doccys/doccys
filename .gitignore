@@ -10,6 +10,9 @@
 *.pem
 *.tsbuildinfo
 
+# arbejdsfiler (oversaettelses-payload-mellemprodukter osv.)
+/tmp/
+
 # debug logs
 npm-debug.log*
 yarn-debug.log*

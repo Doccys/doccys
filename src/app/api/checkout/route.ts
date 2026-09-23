@@ -7,6 +7,31 @@ import { routing } from "@/i18n/routing";
 export const dynamic = "force-dynamic";
 
 /**
+ * Doccys-locale → Stripe-landekode til preferred_locales (købs-
+ * kvitteringens sprog). Størstedelen passer dire igennem; afvigelserne:
+ * - "no" → "nb": Stripe bruger bokmål-koden (fix af latent bug —
+ *   "no" er ikke i Stripes understøttede liste)
+ * - "pt" → "pt-BR": sitet er brasiliansk portugisisk, og Stripe skelner
+ * - "hi": Stripe har ikke hindi — kvitteringen falder tilbage til
+ *   engelsk (accepteret trade-off, noteret i PROJEKTSTATUS)
+ */
+const STRIPE_LOCALES: Record<string, string> = {
+  da: "da",
+  en: "en",
+  es: "es",
+  fr: "fr",
+  de: "de",
+  no: "nb",
+  sv: "sv",
+  fi: "fi",
+  ja: "ja",
+  zh: "zh",
+  it: "it",
+  pt: "pt-BR",
+  hi: "en",
+};
+
+/**
  * POST /api/checkout — start et engangs-køb af en minutpakke.
  *
  * Tillidsmodel: brugeren kan selv oprette pending-køb (RLS tvinger
@@ -95,8 +120,9 @@ export async function POST(request: NextRequest) {
         email: user.email ?? undefined,
         address: { country: "DK" },
         // Stripes købs-kvittering sendes på kundens foretrukne sprog —
-        // ellers kontoens standard. Sproget er allerede valideret ovenfor.
-        preferred_locales: [locale],
+        // ellers kontoens standard. Sproget er allerede valideret
+        // ovenfor; korten mappes til Stripes egne koder (nb, pt-BR, …).
+        preferred_locales: [STRIPE_LOCALES[locale] ?? "en"],
         metadata: { doccys_user_id: user.id },
       });
       customerId = customer.id;

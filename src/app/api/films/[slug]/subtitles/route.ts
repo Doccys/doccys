@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 import {
   LOCALE_LANGUAGE_NAMES,
   PLATFORM_LOCALES,
+  TRANSLATION_LANGUAGE_HINTS,
   isPlatformLocale,
 } from "@/lib/i18n/languageNames";
 import { FILM_SUBTITLES_BUCKET } from "@/lib/storage/filmSubtitles";
@@ -29,12 +30,13 @@ interface RouteContext {
  * Undertekst-pipelinen for én film.
  *
  * POST: kører HELE pipelinen synkront (download → ffmpeg → whisper →
- * VTT ×8 → oversættelse ×7 → upload → film_subtitles-rækker). Det er
- * bevidst: Doccys er selv-hostet, og en typisk film tager 2–10 min.
- * NB: Under serverless (fx Vercel) er der maks-request-tider — dér
- * kræver det en baggrundsjob-arkitektur. Ruten gemmer status pr.
- * sprog i film_subtitles, så en afbrudt kørsel altid kan ses i
- * studiet og genoptages med samme knap (upsert = idempotent).
+ * VTT pr. sprog → oversættelser → upload → film_subtitles-rækker).
+ * Det er bevidst: Doccys er selv-hostet, og en typisk film tager
+ * 3–15 min (13 sprog). NB: Under serverless (fx Vercel) er der
+ * maks-request-tider — dér kræver det en baggrundsjob-arkitektur.
+ * Ruten gemmer status pr. sprog i film_subtitles, så en afbrudt
+ * kørsel altid kan ses i studiet og genoptages med samme knap
+ * (upsert = idempotent).
  *
  * GET: statuslisten pr. sprog — til studio-badgene efter kørslen.
  *
@@ -44,11 +46,12 @@ interface RouteContext {
  */
 
 /**
- * Pipeline-sprogene = platformens 8 sprog. KILDEN er filmens
+ * Pipeline-sprogene = platformens sprog (13 efter den globale
+ * udrulning — jf. 20260923_global_sprog.sql). KILDEN er filmens
  * talesprog (documentaries.spoken_language): whisper skriver lyden
  * af på det sprog, og transskriptionen oversættes derefter direkte
- * til ALLE de andre — aldrig via et pivot-sprog (fejl ville
- * ellers hobbe op over to led).
+ * til ALLE de andre — aldrig via et pivot-sprog (fejl ville ellers
+ * hobbe op over to led).
  */
 const ALL_LOCALES = PLATFORM_LOCALES;
 
@@ -178,7 +181,7 @@ export async function POST(request: NextRequest, context: RouteContext) {
     (locale) => locale !== sourceLocale,
   );
 
-  // Idempotent start: alle 8 rækker sættes 'processing' (og gammel
+  // Idempotent start: alle sprog-rækker sættes 'processing' (og gammel
   // URL/fejl ryddes) — en genkørsel overskriver præcis de samme stier.
   const { error: upsertError } = await supabase
     .from("film_subtitles")
@@ -201,7 +204,7 @@ export async function POST(request: NextRequest, context: RouteContext) {
   }
 
   // Transskription: download → MP3 → whisper på filmens talesprog.
-  // Fejler dette trin, kan intet sprog blive færdigt — alle 8
+  // Fejler dette trin, kan intet sprog blive færdigt — alle
   // rækker markeres 'failed'.
   let segments: SubtitleSegment[];
   const workDir = await mkdtemp(path.join(tmpdir(), "doccys-subtitles-"));
@@ -267,7 +270,10 @@ export async function POST(request: NextRequest, context: RouteContext) {
     try {
       const translations = await translateSegmentTexts(
         texts,
-        LOCALE_LANGUAGE_NAMES[locale] ?? locale,
+        // Hintet bærer varianten, hvor den betyder noget: "português"
+        // alene kunne give europæisk portugisisk, og kinesisk skal
+        // være forenklet. Fald pænt tilbage til navnet/koden.
+        TRANSLATION_LANGUAGE_HINTS[locale] ?? LOCALE_LANGUAGE_NAMES[locale] ?? locale,
       );
       const localized = segments.map((segment, i) => ({
         ...segment,

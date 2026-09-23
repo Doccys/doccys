@@ -550,7 +550,7 @@ export type CollectionFilmUpdate = never;
 export type FilmSubtitleRow = {
   id: string;
   documentary_slug: string;
-  /** en af de 8 platformssprog — håndhæves af check-constraint */
+  /** en af platformssprogene (13) — håndhæves af check-constraint */
   locale: string;
   /** public Storage-URL på VTT'en; null mens status ikke er 'ready' */
   vtt_url: string | null;

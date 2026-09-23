@@ -80,7 +80,7 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
               className="mt-4 aspect-video w-full max-w-xl rounded-lg border border-smoke"
             />
 
-            {/* Undertekster: AI-pipelinen pr. film — 8 sprog-badges
+            {/* Undertekster: AI-pipelinen pr. film — sprog-badges
                 (kode, ikke oversatte navne — koderne er genkendelige
                 på alle sprog) + generér-knap. Intro-teksten nævner
                 filmens TALESPROG: pipelinen skriver lyden af på

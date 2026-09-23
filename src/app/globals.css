@@ -14,8 +14,19 @@
   --color-champagne: #d4b678; /* accent: guld/champagne */
   --color-champagne-dark: #9c7f4e; /* accent i svagere tilstande */
 
-  --font-display: var(--font-playfair);
-  --font-body: var(--font-inter);
+  /*
+   * Fonte: Playfair + Inter er latin-only (next/font) — japansk,
+   * kinesisk og hindi-tekst falder igennem til OS-native fonte via
+   * --font-cjk-stakken (Win11: Yu Gothic/Meiryo, Microsoft YaHei,
+   * Nirmala UI; macOS: PingFang/Hiragino; Linux: Noto). Font-glyffer
+   * vælges pr. tegn af browseren, så latin forbliver brand-konsekvent.
+   */
+  --font-cjk:
+    "PingFang SC", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo",
+    "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans JP", "Nirmala UI",
+    "Noto Sans Devanagari";
+  --font-display: var(--font-playfair), var(--font-cjk), serif;
+  --font-body: var(--font-inter), var(--font-cjk), sans-serif;
 }
 
 /* Diskret, filmisk scrollbar der matcher den mørke stil */

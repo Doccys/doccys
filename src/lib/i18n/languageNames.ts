@@ -10,15 +10,16 @@
  */
 
 /**
- * Platformens 8 sprog — ÉN kilde til sandhed for:
+ * Platformens 13 sprog — ÉN kilde til sandhed for:
  * - undertekst-pipelinen (én VTT pr. sprog, film_subtitles-rækker)
  * - talesprog-vælgeren i upload-formularen
  * - sprog-badgene i studiet
  *
  * Skal ALTID matche check-constrainten på documentaries.spoken_language
- * og film_subtitles.locale i migrationerne — udvidelse af listen er et
- * bevidst trin (migration + dette modul), ikke en tilfældighed.
- * Dansk står først: default talesprog og CC-fallback.
+ * og film_subtitles.locale i migrationerne (20260923_global_sprog.sql)
+ * — udvidelse af listen er et bevidst trin (migration + dette modul),
+ * ikke en tilfældighed. Dansk står først: default talesprog og
+ * CC-fallback.
  */
 export const PLATFORM_LOCALES = [
   "da",
@@ -29,6 +30,11 @@ export const PLATFORM_LOCALES = [
   "fi",
   "no",
   "sv",
+  "ja",
+  "zh",
+  "it",
+  "pt",
+  "hi",
 ] as const;
 
 export type PlatformLocale = (typeof PLATFORM_LOCALES)[number];
@@ -57,4 +63,32 @@ export const LOCALE_LANGUAGE_NAMES: Record<string, string> = {
   fi: "Suomi",
   no: "Norsk",
   sv: "Svenska",
+  ja: "日本語",
+  zh: "中文",
+  it: "Italiano",
+  pt: "Português",
+  hi: "हिन्दी",
+};
+
+/**
+ * Oversættelses-mål pr. sprogkode, med eksplicit variant der hvor det
+ * betyder noget for undertekst-pipelinen: "português" alene kunne give
+ * europæisk portugisisk, og kinesisk SKAL være forenklet. Dansk ordlyd,
+ * fordi undertekst-prompts er danske. Display-navne forbliver de
+ * egne navne ovenfor — hintet bruges kun mod GPT.
+ */
+export const TRANSLATION_LANGUAGE_HINTS: Record<string, string> = {
+  da: "dansk",
+  en: "engelsk",
+  de: "tysk",
+  es: "spansk",
+  fr: "fransk",
+  fi: "finsk",
+  no: "norsk",
+  sv: "svensk",
+  ja: "japansk",
+  zh: "forenklet kinesisk (简体中文, ikke traditionelle tegn)",
+  it: "italiensk",
+  pt: "brasiliansk portugisisk",
+  hi: "hindi",
 };
