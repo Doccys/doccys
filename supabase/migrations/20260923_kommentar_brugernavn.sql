@@ -6,7 +6,7 @@
 -- rækker ved genkørsel, og trigger/par er med vilje drop/create
 -- (genkørsel opfrisker dem).
 --
--- Tillidsmodel: en seers identitet er indtil nu været dens
+-- Tillidsmodel: en seers identitet har indtil nu været dens
 -- E-MAILADRESSE — vist i header og profil, og gemt som
 -- author_name på hver kommentar. Comments er offentligt læsbart
 -- (select using (true)), så hver kommentar har altså lækket
@@ -29,9 +29,19 @@
 --    Snæver e-mail-regex: kun rækker, der ER en blottet
 --    mailadresse, røres — seed-navne ("Mette" osv.) og fremtidige
 --    brugernavne (som må indeholde @) bliver stående.
+--    NB: UPDATE på comments vagtes af kun_pin_aendring() (20260918,
+--    "indholdet må aldrig ændres") — den skal slås fra omkring denne
+--    rydning, som netop er den ene legitime omrokning af forfatter-
+--    navne. Vagten slås til igen straks efter; fejler UPDATE'en,
+--    efterlades vagten slået fra i den pågældende session, men da
+--    SQL-editoren stopper ved fejlen, ses det med det samme.
+alter table public.comments disable trigger trg_comment_pin_kun;
+
 update public.comments
   set author_name = 'Tidl. seer'
   where author_name ~ '^[^@[:space:]]+@[^@[:space:]]+$';
+
+alter table public.comments enable trigger trg_comment_pin_kun;
 
 -- 2) Insert-trigger: author_name kommer ALTID fra brugerens egen
 --    metadata. Mangler brugeren et brugernavn, afvises kommentaren
@@ -82,6 +92,9 @@ revoke execute on function public.saet_kommentar_navn() from public;
 --       select count(*) from public.comments
 --        where author_name ~ '^[^@[:space:]]+@[^@[:space:]]+$';
 --       → forventet 0.
+--    a2) Begge vagter er aktive igen (tgenabled = 'O'):
+--       select tgname, tgenabled from pg_trigger
+--        where tgname in ('trg_comment_pin_kun', 'trg_comment_brugernavn');
 --    b) Forfalsket navn afvist/overskrevet (som AUTHENTICERET seer
 --       med brugernavn sat i metadata):
 --       insert med "author_name": "En Anden" direkte via PostgREST

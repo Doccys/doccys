@@ -317,6 +317,7 @@
     "subtitle": "Partagez vos impressions sur le film avec d'autres spectateurs — pas de spoilers sans avertissement, merci.",
     "postingAs": "Commentant en tant que",
     "noNameShort": "Spectateur",
+    "nameMissing": "Choisissez votre nom d'utilisateur sur votre profil avant de commenter.",
     "bodyPlaceholder": "Écrivez votre commentaire…",
     "submit": "Publier le commentaire",
     "submitting": "Envoi…",

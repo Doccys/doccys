@@ -1,6 +1,64 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-09-21
+Sidst opdateret: 2026-09-23
 ==========================================================
+
+BRUGERNAVN I STEDET FOR BLOTTET E-MAIL (23/9) — MIGRATION AFVENTER BRUGEREN
+E-mailen viste sig ikke blot at blive VIST (header-chip, dropdown,
+"Kommenterer som", profil-overskrift) — den var også PERSISTERET i
+comments.author_name og dermed OFFENTLIGT LÆSBAR via GET /api/comments
+(select-policy er using(true)). Desuden et eksisterende hul: insert-
+policyen tjekker kun user_id, så en authenticated seer kunne indsætte
+et vilkårligt author_name direkte via PostgREST = kommentere i andres
+navn. Beslutninger (MED BRUGEREN): obligatorisk brugernavn-felt ved
+signup · navnet er IKKE unikt (ingen handles endnu) · eksisterende
+e-mail-navne skjules (via DB-rewrite, ikke render-skjuling — API'et
+ville stadig lække) · navnet kan redigeres på profilen.
+ARKITEKTUR: navnet bor i auth.users.raw_user_meta_data under
+"full_name" (nøglen profilen og comments-ruten allerede læste som
+fallback) — ingen ny tabel; skrives ved signUp({data:{full_name}}) og
+supabase.auth.updateUser (sessionen opdateres med det samme, ingen
+re-login). Server-side autoritet: ny before-insert-trigger.
+- MIGRATION 20260923_kommentar_brugernavn.sql (KØRES AF BRUGEREN):
+  1) update: alle author_name der matcher snæver e-mail-regex →
+  'Tidl. seer' (idempotent; seed-navne og fremtidige brugernavne med @
+  røres ikke — regex kræver @+domæne-agtig form). Første kørsel fejlede
+  med P0001 fra kun_pin_aendring() (UPDATE-vagten fra 20260918 fanger
+  alle author_name-ændringer) — rettet: alter table disable/enable
+  trigger trg_comment_pin_kun omkring UPDATE'en (rydningen er netop
+  den ene legitime omrokning; enable straks efter, verifikation a2
+  tjekker tgenabled='O'). 2) saet_kommentar_navn() (security definer, before insert): overskriver NEW.author_name
+  med trim(raw_user_meta_data->>'full_name') fra auth.users — navnet er
+  dermed UFORFALSKELIGT (impersonation-hullet lukket i DB); tomt/mangler
+  → raise 'Vælg dit brugernavn på din profil, før du kommenterer';
+  uden for 1-120 → raise. 3) revoke execute from public (EXECUTE-hullet).
+  Verifikations-SQL følger i filen (e-mail-tælling → 0, forfalsket
+  author_name overskrives, manglende navn → exception, anon røgtest).
+- KODE (commits b60089d + 62995ca, alt kørt grønt: tsc, i18n-keys-
+  verify 443 nøgler 8/8 paritet, i18n-verify ALLE TJEK GRØNNE):
+  AuthForm: obligatorisk "Brugernavn"-felt (nickname, maks 120, trim;
+  mellemrums-navn afvises med auth.errors.nameMissing) mellem e-mail og
+  adgangskode → data.full_name ved oprettelse. comments POST: authorName
+  er altid trimmed metadata-full_name; konti uden navn → 422 med
+  henvisning til profilen (triggeren håndhæver alligevel). CommentSection
+  + UserMenu: viser navnet med fallback (comments.noNameShort "Seer" /
+  auth.fallbackName "Bruger") — e-mailen er fjernet fra ALLE render-
+  steder (tilbage er kun Stripe-kunde-metadata: legitimt, ikke
+  offentligt). Profil: overskrift = navnet; alle konti kan redigere via
+  NY DisplayNameForm (updateUser + router.refresh); navnløse konti (fra
+  før feltet) får fremhævet champagne-CTA-kort.
+- GRACEFUL INDEN MIGRATIONEN: koden fejler pænt uden DB-ændring (422 +
+  render-fallbacks) — gamle e-mail-rækker vises dog stadig som author_name
+  indtil migrationen er kørt (det offentlige API lækker altså endnu).
+- TEST (afventer brugeren, efter migrationen): udefra anon GET
+  /api/comments → e-mails væk ('Tidl. seer'), anon insert stadig 42501.
+  E2E: opret konto med brugernavn → chip/profil/kommentar-form viser
+  navnet; kommentér → author_name = navn; PostgREST-insert med falsk
+  author_name → overskrevet af triggeren; gammel konto uden navn → 422 +
+  CTA på profilen → sæt navn → kommentér igen. (Foldes i kommentar-E2E'en.)
+- BEVIDST UDELUKT: unikke handles + offentlige /bruger/{handle}-sider
+  (kan bygges senere oven på samme metadata), creator_applications/
+  creators-navne (separat identitet), Stripe-kunde-metadata (ikke
+  offentligt).
 
 JURIDISKE SIDER + FOOTER-LINKS (22/9) — BYGGET OG VERIFICERET
 Tre nye sider, linket fra footeren: /contact (Kontakt), /terms
@@ -908,6 +966,9 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+62995ca brugernavn: signup-felt + navn i stedet for e-mail i UI og comments-ruten
+b60089d brugernavn: migration (e-mail-rydning + navne-trigger) + i18n-noegler paa 8 sprog
+b170737 juridisk: kontakt-, betingelses- og privatsider + footer-links + sitemap
 b2fc6bc juridisk: legal-namespace (kontakt, betingelser, privatliv) paa 8 sprog + noegle-paritetsscript
 7f02a22 docs: Stripes kvitteringstekst er standardiseret (21/9-afklaring)
 16fe4a6 docs: emails-sektion + git-log i PROJEKTSTATUS

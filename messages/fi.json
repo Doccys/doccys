@@ -317,6 +317,7 @@
     "subtitle": "Jaa ajatuksesi elokuvasta muiden katsojien kanssa — ei spoilereita ilman varoitusta, kiitos.",
     "postingAs": "Kommentoijana",
     "noNameShort": "Katsoja",
+    "nameMissing": "Valitse käyttäjänimesi profiilista ennen kommentointia.",
     "bodyPlaceholder": "Kirjoita kommenttisi…",
     "submit": "Kirjoita kommentti",
     "submitting": "Lähetetään…",

@@ -111,10 +111,12 @@ export default function AuthForm() {
         if (error) {
           handleError(error.code);
         } else if (data.session) {
-          // E-mail confirmation is disabled in the project — signed up and in.
+          // Bekræftelse slået fra i projektet: session straks (f.eks. ved
+          // genoprettelse af en allerede bekræftet konto).
           goToProfile();
         } else {
-          // Confirmation required: the session is not issued yet.
+          // Bekræftelses-mail er afsendt — sessionen udstedes først
+          // efter klikket på linket.
           setShowConfirmNotice(true);
         }
       }

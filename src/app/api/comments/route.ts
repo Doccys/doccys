@@ -9,9 +9,9 @@ export const dynamic = "force-dynamic";
  * POST /api/comments — opretter en kommentar.
  *
  * Forfatter-identiteten afgøres server-side ud fra Supabase-sessionen i
- * requestens cookies: e-mail (eller gemte fulde navn) og bruger-id kan
- * ikke opgives fra klienten. Gæster kan ikke kommentere — felterne er
- * kun for folk der HAR SET filmen (se POST nedenfor).
+ * requestens cookies: brugernavnet (auth-metadata full_name) og
+ * bruger-id kan ikke opgives fra klienten. Gæster kan ikke kommentere —
+ * felterne er kun for folk der HAR SET filmen (se POST nedenfor).
  *
  * GET-svaret bærer desuden `viewer.canComment`: serverens afgørelse af
  * hvorvidt DENNE seer må skrive (logget ind + har_set_film-RPC'en, som

@@ -317,6 +317,7 @@
     "subtitle": "Share your thoughts on the film with other viewers — no spoilers without a warning, please.",
     "postingAs": "Commenting as",
     "noNameShort": "Viewer",
+    "nameMissing": "Choose your username on your profile before commenting.",
     "bodyPlaceholder": "Write your comment…",
     "submit": "Post comment",
     "submitting": "Sending…",

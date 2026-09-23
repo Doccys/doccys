@@ -143,12 +143,14 @@ export default function CommentSection({ slug, isCreatorOwner }: CommentSectionP
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ documentarySlug: slug, body: body.trim() }),
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) throw new Error(res.status === 422 ? "name" : "");
       const data = (await res.json()) as { comment: Comment };
       setComments((prev) => [data.comment, ...prev]);
       setBody("");
-    } catch {
-      setError(t("submitError"));
+    } catch (err) {
+      // 422 = kontoen har ikke noget brugernavn endnu — giv den
+      // lokaliserede vejledning i stedet for den generiske fejl.
+      setError(err instanceof Error && err.message === "name" ? t("nameMissing") : t("submitError"));
     } finally {
       setSubmitting(false);
     }
@@ -174,13 +176,14 @@ export default function CommentSection({ slug, isCreatorOwner }: CommentSectionP
           parentId: replyTo,
         }),
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) throw new Error(res.status === 422 ? "name" : "");
       const data = (await res.json()) as { comment: Comment };
       setComments((prev) => [...prev, data.comment]);
       setReplyBody("");
       setReplyTo(null);
-    } catch {
-      setReplyError(t("replyError"));
+    } catch (err) {
+      // 422 = kontoen har ikke noget brugernavn endnu (jf. ovenfor).
+      setReplyError(err instanceof Error && err.message === "name" ? t("nameMissing") : t("replyError"));
     } finally {
       setReplySubmitting(false);
     }
