@@ -77,7 +77,7 @@
     },
     "terms": {
       "title": "AGB",
-      "intro": "Diese Bedingungen gelten für die Nutzung von Doccys und den Kauf von Minuten. Zuletzt aktualisiert: 22. September 2026.",
+      "intro": "Diese Bedingungen gelten für die Nutzung von Doccys und den Kauf von Minuten. Zuletzt aktualisiert: 23. September 2026.",
       "sections": {
         "s1": {
           "title": "Über Doccys",
@@ -118,6 +118,10 @@
         "s10": {
           "title": "Beschwerden und Kontakt",
           "body": "Du kannst jederzeit an support@doccys.com schreiben. Dänische Verbraucher können sich bei Kaufbeschwerden außerdem an das dänische Verbraucherbeschwerdeboard wenden — siehe forbrugerklagenaevnet.dk. Auf diese Bedingungen findet dänisches Recht Anwendung."
+        },
+        "s11": {
+          "title": "Lizenz bei Hochladen von Filmen (Ersteller)",
+          "body": "Wenn Sie einen Film zu Doccys hochladen, bestätigen Sie Folgendes:\n• Sie besitzen alle Rechte an dem Film — einschließlich Musik und Archivmaterial — und der Film verletzt keine Rechte Dritter.\n• Sie gewähren Doccys eine nicht-exklusive, weltweite und zeitlich unbegrenzte Lizenz, den Film auf der Plattform zu streamen, Untertitel und Trailer basierend auf dem Film zu erstellen sowie den Film auf der Plattform zu vermarkten.\n• Sie können jederzeit die Redaktion bitten, Ihren Film zu entfernen — schreiben Sie an support@doccys.com.\n• Ihre Zustimmung wird bei jedem Upload mit Zeitstempel und Versionsnummer registriert und gilt für den Film, den Sie hochladen.\nBei Unstimmigkeiten zwischen Übersetzungen ist der dänische Text maßgeblich (siehe Abschnitt 10)."
         }
       }
     },
@@ -411,7 +415,8 @@
       "missingFields": "Fülle Titel und Synopsis aus, wähle mindestens ein Genre und eine Videodatei.",
       "notLoggedIn": "Du bist nicht mehr angemeldet — melde dich an und versuche es erneut.",
       "uploadFailed": "Der Upload ist fehlgeschlagen — versuche es erneut.",
-      "rowFailed": "Der Film konnte nicht erstellt werden — versuche es erneut."
+      "rowFailed": "Der Film konnte nicht erstellt werden — versuche es erneut.",
+      "license": "Sie müssen die Lizenzbedingungen bestätigen, bevor Sie hochladen können."
     },
     "filmsHeading": "Deine Filme",
     "statusDraft": "Entwurf — wartet auf Freigabe",
@@ -450,7 +455,9 @@
     "trailerError": "Der Trailer konnte nicht erstellt werden — versuche es erneut.",
     "shareHeading": "Teilen & einbetten",
     "copyWatchLink": "Film-Link kopieren",
-    "copyEmbedCode": "Embed-Code kopieren"
+    "copyEmbedCode": "Embed-Code kopieren",
+    "licenseLabel": "Ich bestätige, dass ich alle Rechte an dem Film besitze — einschließlich Musik und Archivmaterial — und Doccys eine nicht-exklusive, weltweite und zeitlich unbegrenzte Lizenz erteile, den Film zu streamen, Untertitel und Trailer zu erstellen sowie ihn zu vermarkten.",
+    "licenseLink": "Lesen Sie die Lizenzbedingungen in den Geschäftsbedingungen, Abschnitt 11."
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",

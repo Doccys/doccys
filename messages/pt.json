@@ -77,7 +77,7 @@
     },
     "terms": {
       "title": "Termos e Condições",
-      "intro": "Estes termos se aplicam ao uso do Doccys e à compra de minutos. Última atualização: 22 de setembro de 2026.",
+      "intro": "Estes termos se aplicam ao uso do Doccys e à compra de minutos. Última atualização: 23 de setembro de 2026.",
       "sections": {
         "s1": {
           "title": "Sobre o Doccys",
@@ -118,6 +118,10 @@
         "s10": {
           "title": "Reclamações e contato",
           "body": "Você pode sempre escrever para support@doccys.com. Consumidores dinamarqueses também podem contatar o Conselho de Reclamações do Consumidor para reclamações de compra — veja forbrugerklagenaevnet.dk. A lei dinamarquesa se aplica a estes termos."
+        },
+        "s11": {
+          "title": "Licença ao enviar filmes (criadores)",
+          "body": "Ao enviar um filme para Doccys, você confirma o seguinte:\n• Você possui todos os direitos sobre o filme — incluindo música e material de arquivo — e o filme não infringe os direitos de terceiros.\n• Você concede à Doccys uma licença não exclusiva, mundial e por tempo indeterminado para transmitir o filme na plataforma, produzir legendas e trailers com base no filme, bem como promover o filme na plataforma.\n• Você pode solicitar à equipe editorial a remoção do seu filme a qualquer momento — escreva para support@doccys.com.\n• Sua aceitação é registrada com data e número de versão a cada envio e se aplica ao filme que você enviar.\nEm caso de divergência entre traduções, o texto em dinamarquês prevalece (ver seção 10)."
         }
       }
     },
@@ -411,7 +415,8 @@
       "missingFields": "Preencha o título e a sinopse, escolha pelo menos um gênero e selecione um arquivo de vídeo.",
       "notLoggedIn": "Você não está mais logado — faça login e tente novamente.",
       "uploadFailed": "Falha no carregamento — tente novamente.",
-      "rowFailed": "Não foi possível criar o filme — tente novamente."
+      "rowFailed": "Não foi possível criar o filme — tente novamente.",
+      "license": "Você deve confirmar os termos da licença antes de poder fazer upload."
     },
     "filmsHeading": "Seus filmes",
     "statusDraft": "Rascunho — aguardando aprovação",
@@ -450,7 +455,9 @@
     "trailerError": "Não foi possível gerar o trailer — tente novamente.",
     "shareHeading": "Compartilhar & incorporar",
     "copyWatchLink": "Copiar link do filme",
-    "copyEmbedCode": "Copiar código de incorporação"
+    "copyEmbedCode": "Copiar código de incorporação",
+    "licenseLabel": "Confirmo que possuo todos os direitos do filme — incluindo música e material de arquivo — e concedo à Doccys uma licença não exclusiva, mundial e ilimitada no tempo para transmitir o filme, produzir legendas e trailers, bem como para sua promoção.",
+    "licenseLink": "Leia os termos da licença nos Termos de Serviço, seção 11."
   },
   "profile": {
     "loginTitle": "Faça login para ver seu perfil",

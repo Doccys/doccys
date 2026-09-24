@@ -77,7 +77,7 @@
     },
     "terms": {
       "title": "Kjøpsvilkår",
-      "intro": "Disse vilkårene gjelder for bruk av Doccys og for kjøp av minutter. Sist oppdatert: 22. september 2026.",
+      "intro": "Disse vilkårene gjelder for bruk av Doccys og for kjøp av minutter. Sist oppdatert: 23. september 2026.",
       "sections": {
         "s1": {
           "title": "Om Doccys",
@@ -118,6 +118,10 @@
         "s10": {
           "title": "Klager og kontakt",
           "body": "Du kan alltid skrive til support@doccys.com. Danske forbrukere kan dessuten kontakte Forbrugerklagenævnet ved kjøpsklager — se forbrugerklagenaevnet.dk. Dansk rett gjelder for disse vilkårene."
+        },
+        "s11": {
+          "title": "Lisens ved opplasting av film (skapere)",
+          "body": "Når du laster opp en film til Doccys, bekrefter du følgende:\n• Du eier alle rettigheter til filmen — inkludert musikk og arkivmateriale — og filmen krenker ikke tredjeparts rettigheter.\n• Du gir Doccys en ikke-eksklusiv, verdensomspennende og tidsubegrenset lisens til å strømme filmen på plattformen, lage undertekster og trailere basert på filmen samt markedsføre filmen på plattformen.\n• Du kan når som helst be redaksjonen om å fjerne filmen din — skriv til support@doccys.com.\n• Din aksept registreres med tidspunkt og versjonsnummer ved hver opplasting og gjelder den filmen du laster opp.\nVed uoverensstemmelse mellom oversettelser er den danske teksten gjeldende (jf. avsnitt 10)."
         }
       }
     },
@@ -411,7 +415,8 @@
       "missingFields": "Fyll ut tittel og synopsi, velg minst én sjanger og velg en videofil.",
       "notLoggedIn": "Du er ikke lenger logget inn — logg inn og prøv igjen.",
       "uploadFailed": "Opplastingen feilet — prøv igjen.",
-      "rowFailed": "Filmen kunne ikke opprettes — prøv igjen."
+      "rowFailed": "Filmen kunne ikke opprettes — prøv igjen.",
+      "license": "Du må bekrefte lisensvilkårene før du kan laste opp."
     },
     "filmsHeading": "Filmene dine",
     "statusDraft": "Kladd — venter på godkjenning",
@@ -450,7 +455,9 @@
     "trailerError": "Traileren kunne ikke genereres — prøv igjen.",
     "shareHeading": "Del og bygg inn",
     "copyWatchLink": "Kopier lenke til filmen",
-    "copyEmbedCode": "Kopier innbyggingskode"
+    "copyEmbedCode": "Kopier innbyggingskode",
+    "licenseLabel": "Jeg bekrefter at jeg eier alle rettigheter til filmen — inkludert musikk og arkivmateriale — og gir Doccys en ikke-eksklusiv, verdensomspennende og tidsubegrenset lisens til å strømme filmen, lage undertekster og trailere samt markedsføring av den.",
+    "licenseLink": "Les lisensvilkårene i Handelsbetingelsene, avsnitt 11."
   },
   "profile": {
     "loginTitle": "Logg inn for å se profilen din",

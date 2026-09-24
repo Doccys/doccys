@@ -18,11 +18,18 @@ export const dynamic = "force-dynamic";
  * ikke privilegier: tvungen draft-status, gradient-safelist (med
  * standard — tapetvalget er fjernet fra studie-UI'et), slug-
  * generering, video-OG-plakat-URL bundet til uploaderens egen mappe
- * samt plakat-PÅKRÆVET (uden foto blev filmene kedelige farveflader).
+ * samt plakat-PÅKRÆVET (uden foto blev filmene kedelige farveflader)
+ * og licens-PÅKRÆVET (licenseAccepted + version — jf. 20260923_film_
+ * licens.sql og Handelsbetingelserne afsnit 11).
  */
 
 const MAX_TITLE = 200;
 const MAX_SYNOPSIS = 5000;
+
+/** Licens-version pr. upload: bundet til "Senest opdateret"-datoen i
+ *  legal.terms.intro og klausulen i legal.terms.sections.s11 —
+ *  ændres licens-teksten væsentligt, bumpes alle tre steder. */
+const FILM_LICENSE_VERSION = "2026-09-23";
 
 /** Dansk-venlig slug: æ→ae, ø→o, å→a, små bogstaver, bindestreger. */
 function slugify(text: string): string {
@@ -66,6 +73,10 @@ export async function POST(request: NextRequest) {
   const videoUrl = body.videoUrl;
   const posterUrl = body.posterUrl;
   const spokenLanguage = body.spokenLanguage;
+  // Licens-accept: strikt !== true — fx strengen "true" afvises.
+  // Ruten + insert-policyn (RLS) håndhæver begge; beviset (tidspunkt
+  // + version) skrives af SERVEREN her, aldrig fra klient-ur.
+  const licenseAccepted = body.licenseAccepted === true;
 
   // Talesprog: valgfrit felt, default 'da' (databasen). Kun de 8
   // platformssprog accepteres — pipelinen skal kunne levere alle
@@ -116,6 +127,12 @@ export async function POST(request: NextRequest) {
   ) {
     return NextResponse.json(
       { error: "Filens længde kunne ikke bruges" },
+      { status: 400 },
+    );
+  }
+  if (!licenseAccepted) {
+    return NextResponse.json(
+      { error: "Du skal bekræfte licensvilkårene, før filmen uploades" },
       { status: 400 },
     );
   }
@@ -208,6 +225,8 @@ export async function POST(request: NextRequest) {
       poster_url: posterUrl,
       status: "draft",
       sort_order: 1000,
+      license_accepted_at: new Date().toISOString(),
+      license_version: FILM_LICENSE_VERSION,
     })
     .select("*")
     .single();

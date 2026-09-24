@@ -76,6 +76,11 @@ export type DocumentaryRow = {
   spoken_language: string;
   /** kladde/offentlig — nye uploads oprettes altid som 'draft' (RLS tvinger) */
   status: string;
+  /** licens-accept pr. film: hvornår skaberen bekræftede klausulen
+   *  (terms s11) — kun sat af POST /api/films, null = aldrig accepteret */
+  license_accepted_at: string | null;
+  /** licens-tekstversion ved accept ('2026-09-23' — følger terms-datoen) */
+  license_version: string | null;
   created_at: string;
 };
 
@@ -102,6 +107,9 @@ export type DocumentaryInsert = {
   spoken_language?: string;
   /** RLS tvinger 'draft' for skaber-oprettede rækker */
   status?: string;
+  /** sættes af POST /api/films ved licens-accept (insert-policyn kræver den) */
+  license_accepted_at?: string;
+  license_version?: string;
   created_at?: string;
 };
 

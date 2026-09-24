@@ -77,7 +77,7 @@
     },
     "terms": {
       "title": "Conditions générales",
-      "intro": "Ces conditions s'appliquent à l'utilisation de Doccys et à l'achat de minutes. Dernière mise à jour : 22 septembre 2026.",
+      "intro": "Ces conditions s'appliquent à l'utilisation de Doccys et à l'achat de minutes. Dernière mise à jour : 23 septembre 2026.",
       "sections": {
         "s1": {
           "title": "À propos de Doccys",
@@ -118,6 +118,10 @@
         "s10": {
           "title": "Réclamations et contact",
           "body": "Vous pouvez toujours écrire à support@doccys.com. Les consommateurs danois peuvent également saisir la médiation danoise de la consommation pour les litiges d'achat — voir forbrugerklagenaevnet.dk. Ces conditions sont régies par le droit danois."
+        },
+        "s11": {
+          "title": "Licence lors du téléchargement de films (créateurs)",
+          "body": "Lorsque vous téléchargez un film sur Doccys, vous confirmez ce qui suit :\n• Vous possédez tous les droits sur le film — y compris la musique et le matériel d'archives — et le film ne viole pas les droits de tiers.\n• Vous accordez à Doccys une licence non exclusive, mondiale et illimitée dans le temps pour diffuser le film sur la plateforme, produire des sous-titres et des bandes-annonces basés sur le film, ainsi que promouvoir le film sur la plateforme.\n• Vous pouvez à tout moment demander à la rédaction de retirer votre film — écrivez à support@doccys.com.\n• Votre acceptation est enregistrée avec l'heure et le numéro de version à chaque téléchargement et s'applique au film que vous téléchargez.\nEn cas de divergence entre les traductions, le texte danois prévaut (cf. section 10)."
         }
       }
     },
@@ -411,7 +415,8 @@
       "missingFields": "Remplissez le titre et le synopsis, choisissez au moins un genre et sélectionnez un fichier vidéo.",
       "notLoggedIn": "Vous n'êtes plus connecté — connectez-vous et réessayez.",
       "uploadFailed": "L'envoi a échoué — réessayez.",
-      "rowFailed": "Le film n'a pas pu être créé — réessayez."
+      "rowFailed": "Le film n'a pas pu être créé — réessayez.",
+      "license": "Vous devez confirmer les conditions de licence avant de pouvoir télécharger."
     },
     "filmsHeading": "Vos films",
     "statusDraft": "Brouillon — en attente d'approbation",
@@ -450,7 +455,9 @@
     "trailerError": "La bande-annonce n'a pas pu être générée — réessayez.",
     "shareHeading": "Partager et intégrer",
     "copyWatchLink": "Copier le lien du film",
-    "copyEmbedCode": "Copier le code d'intégration"
+    "copyEmbedCode": "Copier le code d'intégration",
+    "licenseLabel": "Je confirme que je possède tous les droits sur le film — y compris la musique et le matériel d'archives — et j'accorde à Doccys une licence non exclusive, mondiale et illimitée dans le temps pour diffuser le film, produire des sous-titres et des bandes-annonces ainsi que pour sa promotion.",
+    "licenseLink": "Lisez les conditions de licence dans les Conditions Générales, section 11."
   },
   "profile": {
     "loginTitle": "Connectez-vous pour voir votre profil",

@@ -77,7 +77,7 @@
     },
     "terms": {
       "title": "Ehdot",
-      "intro": "Nämä ehdot koskevat Doccysin käyttöä ja minuuttien ostamista. Viimeksi päivitetty 22.9.2026.",
+      "intro": "Nämä ehdot koskevat Doccysin käyttöä ja minuuttien ostamista. Viimeksi päivitetty 23.9.2026.",
       "sections": {
         "s1": {
           "title": "Doccysistä",
@@ -118,6 +118,10 @@
         "s10": {
           "title": "Valitukset ja yhteystiedot",
           "body": "Voit aina kirjoittaa osoitteeseen support@doccys.com. Tanskalaiset kuluttajat voivat lisäksi ottaa yhteyttä Tanskan kuluttajavalituslautakuntaan ostovalitusten osalta — ks. forbrugerklagenaevnet.dk. Näihin ehtoihin sovelletaan Tanskan oikeutta."
+        },
+        "s11": {
+          "title": "Lisenssi elokuvan lataamiseen (tekijät)",
+          "body": "Kun lataat elokuvan Doccysiin, vahvistat seuraavat:\n• Omistat kaikki oikeudet elokuvaan — mukaan lukien musiikki ja arkistomateriaali — eikä elokuva loukkaa kolmansien osapuolten oikeuksia.\n• Annoit Doccysille ei-yksinomaisen, maailmanlaajuisen ja ajallisesti rajoittamattoman lisenssin suoratoistaa elokuvaa alustalla, valmistaa tekstityksiä ja trailereita elokuvan pohjalta sekä markkinoida elokuvaa alustalla.\n• Voit milloin tahansa pyytää toimitusta poistamaan elokuvasi — kirjoita osoitteeseen support@doccys.com.\n• Hyväksyntäsi rekisteröidään ajankohdan ja versionumeron kanssa jokaisen latauksen yhteydessä ja koskee lataamaasi elokuvaa.\nKäännösten välisissä ristiriidoissa suomenkielinen teksti on ratkaiseva (ks. kohta 10)."
         }
       }
     },
@@ -411,7 +415,8 @@
       "missingFields": "Täytä nimi ja synopsis, valitse vähintään yksi tyylilaji ja videotiedosto.",
       "notLoggedIn": "Et ole enää kirjautunut sisään — kirjaudu sisään ja yritä uudelleen.",
       "uploadFailed": "Lataus epäonnistui — yritä uudelleen.",
-      "rowFailed": "Elokuvaa ei voitu luoda — yritä uudelleen."
+      "rowFailed": "Elokuvaa ei voitu luoda — yritä uudelleen.",
+      "license": "Sinun on vahvistettava lisenssiehdot ennen kuin voit ladata."
     },
     "filmsHeading": "Elokuvasi",
     "statusDraft": "Luonnos — odottaa hyväksyntää",
@@ -450,7 +455,9 @@
     "trailerError": "Traileria ei voitu luoda — yritä uudelleen.",
     "shareHeading": "Jaa ja upota",
     "copyWatchLink": "Kopioi elokuvan linkki",
-    "copyEmbedCode": "Kopioi upotuskoodi"
+    "copyEmbedCode": "Kopioi upotuskoodi",
+    "licenseLabel": "Vahvistan, että omistan kaikki oikeudet elokuvaan — mukaan lukien musiikki ja arkistomateriaali — ja annan Doccysille ei-yksinomaisen, maailmanlaajuisen ja ajattoman lisenssin elokuvan suoratoistoon, tekstitysten ja trailereiden valmistamiseen sekä sen markkinointiin.",
+    "licenseLink": "Lue lisenssiehdot Käyttöehdoista, kohta 11."
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",

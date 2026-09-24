@@ -2,7 +2,7 @@
 
 import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { FILM_VIDEOS_BUCKET } from "@/lib/storage/filmVideos";
 import {
@@ -97,6 +97,9 @@ export default function StudioUploadForm({
     height: number;
   } | null>(null);
   const [posterPreviewUrl, setPosterPreviewUrl] = useState<string | null>(null);
+  // Licens-accept pr. film (Handelsbetingelserne afsnit 11): resettes
+  // ved success, så hver ny upload bekræftes individuelt.
+  const [licenseAccepted, setLicenseAccepted] = useState(false);
 
   const [phase, setPhase] = useState<Phase>("idle");
   const [error, setError] = useState<string | null>(null);
@@ -227,6 +230,15 @@ export default function StudioUploadForm({
       return;
     }
 
+    // Licens-accept (Handelsbetingelserne afsnit 11): sidste tjek
+    // FØR sessionen og FØR noget som helst uploades til storage —
+    // en manglende accept må aldrig efterlade objekter i bucketene.
+    // API'en og insert-policyn håndhæver det samme igen server-side.
+    if (!licenseAccepted) {
+      setError(t("errors.license"));
+      return;
+    }
+
     const supabase = createClient();
     const {
       data: { session },
@@ -308,6 +320,7 @@ export default function StudioUploadForm({
           videoUrl: publicUrl,
           spokenLanguage,
           posterUrl,
+          licenseAccepted: true,
         }),
       });
       if (!res.ok) {
@@ -325,6 +338,7 @@ export default function StudioUploadForm({
       setGenres([]);
       setFile(null);
       setDurationSec(null);
+      setLicenseAccepted(false);
       clearPoster();
       if (fileInputRef.current) fileInputRef.current.value = "";
       if (posterInputRef.current) posterInputRef.current.value = "";
@@ -482,6 +496,31 @@ export default function StudioUploadForm({
         )}
       </label>
 
+      {/* Licens-accept (kodebasens første checkbox): ejerskabs-
+          bekræftelse + brugsret, jf. Handelsbetingelserne afsnit 11.
+          Kort + henvisende i alle 13 sprog — den fulde klausul står
+          kun ét sted (legal.terms.sections.s11), så oversættelses-
+          drift aldrig udvander licensen. Submit er disabled uden
+          accept, og API/policy håndhæver det igen server-side. */}
+      <label className="mt-5 flex items-start gap-3">
+        <input
+          type="checkbox"
+          checked={licenseAccepted}
+          onChange={(event) => setLicenseAccepted(event.target.checked)}
+          disabled={busy}
+          className="mt-0.5 h-4 w-4 shrink-0 accent-champagne"
+        />
+        <span className="text-sm leading-relaxed text-ash">
+          {t("licenseLabel")}{" "}
+          <Link
+            href="/terms"
+            className="text-champagne underline underline-offset-2"
+          >
+            {t("licenseLink")}
+          </Link>
+        </span>
+      </label>
+
       {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
 
       {phase === "done" && (
@@ -507,7 +546,13 @@ export default function StudioUploadForm({
       <div className="mt-6">
         <button
           type="submit"
-          disabled={busy || !file || !posterFile || durationSec === null}
+          disabled={
+            busy ||
+            !file ||
+            !posterFile ||
+            durationSec === null ||
+            !licenseAccepted
+          }
           className="rounded-full bg-champagne px-6 py-2.5 text-sm font-medium text-noir transition-colors hover:bg-bone disabled:cursor-not-allowed disabled:opacity-40"
         >
           {busy ? t("working") : t("submit")}

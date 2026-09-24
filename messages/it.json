@@ -77,7 +77,7 @@
     },
     "terms": {
       "title": "Termini e condizioni",
-      "intro": "Questi termini si applicano all'uso di Doccys e all'acquisto di minuti. Ultimo aggiornamento: 22 settembre 2026.",
+      "intro": "Questi termini si applicano all'uso di Doccys e all'acquisto di minuti. Ultimo aggiornamento: 23 settembre 2026.",
       "sections": {
         "s1": {
           "title": "Informazioni su Doccys",
@@ -118,6 +118,10 @@
         "s10": {
           "title": "Reclami e contatti",
           "body": "Puoi sempre scrivere a support@doccys.com. I consumatori danesi possono anche contattare il Consiglio dei Reclami dei Consumatori per reclami sugli acquisti — vedi forbrugerklagenaevnet.dk. La legge danese si applica a questi termini."
+        },
+        "s11": {
+          "title": "Licenza per il caricamento di film (creatori)",
+          "body": "Quando carichi un film su Doccys, confermi quanto segue:\n• Possiedi tutti i diritti sul film — inclusi musica e materiale d'archivio — e il film non viola i diritti di terzi.\n• Concedi a Doccys una licenza non esclusiva, mondiale e illimitata nel tempo per trasmettere il film sulla piattaforma, creare sottotitoli e trailer basati sul film e promuovere il film sulla piattaforma.\n• Puoi chiedere in qualsiasi momento alla redazione di rimuovere il tuo film — scrivi a support@doccys.com.\n• La tua accettazione viene registrata con data e numero di versione ad ogni caricamento e si applica al film che carichi.\nIn caso di discrepanze tra le traduzioni, il testo danese è quello valido (cfr. sezione 10)."
         }
       }
     },
@@ -411,7 +415,8 @@
       "missingFields": "Compila titolo e sinossi, seleziona almeno un genere e scegli un file video.",
       "notLoggedIn": "Non sei più connesso — accedi e riprova.",
       "uploadFailed": "Caricamento fallito — riprova.",
-      "rowFailed": "Impossibile creare il film — riprova."
+      "rowFailed": "Impossibile creare il film — riprova.",
+      "license": "Devi confermare i termini della licenza prima di poter caricare."
     },
     "filmsHeading": "I tuoi film",
     "statusDraft": "Bozza — in attesa di approvazione",
@@ -450,7 +455,9 @@
     "trailerError": "Impossibile generare il trailer — riprova.",
     "shareHeading": "Condividi & incorpora",
     "copyWatchLink": "Copia link del film",
-    "copyEmbedCode": "Copia codice di incorporamento"
+    "copyEmbedCode": "Copia codice di incorporamento",
+    "licenseLabel": "Confermo di possedere tutti i diritti sul film — inclusi musica e materiale d'archivio — e concedo a Doccys una licenza non esclusiva, mondiale e illimitata nel tempo per trasmettere il film, produrre sottotitoli e trailer, nonché per la sua promozione.",
+    "licenseLink": "Leggi i termini della licenza nei Termini e condizioni, sezione 11."
   },
   "profile": {
     "loginTitle": "Accedi per vedere il tuo profilo",

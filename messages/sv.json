@@ -77,7 +77,7 @@
     },
     "terms": {
       "title": "Köpvillkor",
-      "intro": "Dessa villkor gäller för användning av Doccys och för köp av minuter. Senast uppdaterad: 22 september 2026.",
+      "intro": "Dessa villkor gäller för användning av Doccys och för köp av minuter. Senast uppdaterad: 23 september 2026.",
       "sections": {
         "s1": {
           "title": "Om Doccys",
@@ -118,6 +118,10 @@
         "s10": {
           "title": "Klagomål och kontakt",
           "body": "Du kan alltid skriva till support@doccys.com. Danska konsumenter kan dessutom kontakta Forbrugerklagenævnet vid köpsklagomål — se forbrugerklagenaevnet.dk. Dansk rätt gäller för dessa villkor."
+        },
+        "s11": {
+          "title": "Licens vid uppladdning av filmer (skapare)",
+          "body": "När du laddar upp en film till Doccys bekräftar du följande:\n• Du äger alla rättigheter till filmen — inklusive musik och arkivmaterial — och filmen kränker inte tredje parts rättigheter.\n• Du ger Doccys en icke-exklusiv, världsomfattande och tidsobestämd licens att strömma filmen på plattformen, skapa undertexter och trailers baserade på filmen samt marknadsföra filmen på plattformen.\n• Du kan när som helst be redaktionen ta bort din film — skriv till support@doccys.com.\n• Ditt godkännande registreras med tidpunkt och versionsnummer vid varje uppladdning och gäller den film du laddar upp.\nVid oenighet mellan översättningar gäller den danska texten (se avsnitt 10)."
         }
       }
     },
@@ -411,7 +415,8 @@
       "missingFields": "Fyll i titel och synopsis, välj minst en genre och välj en videofil.",
       "notLoggedIn": "Du är inte längre inloggad — logga in och försök igen.",
       "uploadFailed": "Uppladdningen misslyckades — försök igen.",
-      "rowFailed": "Filmen kunde inte skapas — försök igen."
+      "rowFailed": "Filmen kunde inte skapas — försök igen.",
+      "license": "Du måste bekräfta licensvillkoren innan du kan ladda upp."
     },
     "filmsHeading": "Dina filmer",
     "statusDraft": "Utkast — väntar på godkännande",
@@ -450,7 +455,9 @@
     "trailerError": "Trailern kunde inte genereras — försök igen.",
     "shareHeading": "Dela och bädda in",
     "copyWatchLink": "Kopiera fillänk",
-    "copyEmbedCode": "Kopiera inbäddningskod"
+    "copyEmbedCode": "Kopiera inbäddningskod",
+    "licenseLabel": "Jag bekräftar att jag äger alla rättigheter till filmen — inklusive musik och arkivmaterial — och ger Doccys en icke-exklusiv, världsomfattande och tidsobegränsad licens att strömma filmen, producera undertexter och trailers samt marknadsföra den.",
+    "licenseLink": "Läs licensvillkoren i Handelsvillkoren, avsnitt 11."
   },
   "profile": {
     "loginTitle": "Logga in för att se din profil",

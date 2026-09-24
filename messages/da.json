@@ -77,7 +77,7 @@
     },
     "terms": {
       "title": "Handelsbetingelser",
-      "intro": "Disse betingelser gælder for brug af Doccys og for køb af minutter. Senest opdateret: 22. september 2026.",
+      "intro": "Disse betingelser gælder for brug af Doccys og for køb af minutter. Senest opdateret: 23. september 2026.",
       "sections": {
         "s1": {
           "title": "Om Doccys",
@@ -118,6 +118,10 @@
         "s10": {
           "title": "Klage og kontakt",
           "body": "Du kan altid skrive til support@doccys.com. Danske forbrugere kan desuden kontakte Forbrugerklagenævnet ved købsklager — se forbrugerklagenaevnet.dk. Dansk ret gælder for disse betingelser."
+        },
+        "s11": {
+          "title": "Licens ved upload af film (skabere)",
+          "body": "Når du uploader en film til Doccys, bekræfter du følgende:\n• Du ejer alle rettigheder til filmen — herunder musik og arkivmateriale — og filmen krænker ikke tredjeparters rettigheder.\n• Du giver Doccys en ikke-eksklusiv, verdensomspændende og tidsubegrænset licens til at strømme filmen på platformen, fremstille undertekster og trailere på baggrund af filmen samt markedsføre filmen på platformen.\n• Du kan til enhver tid bede redaktionen fjerne din film — skriv til support@doccys.com.\n• Din accept registreres med tidspunkt og versionsnummer ved hver upload og gælder den film, du uploader.\nVed uoverensstemmelse mellem oversættelser er den danske tekst gældende (jf. afsnit 10)."
         }
       }
     },
@@ -411,8 +415,11 @@
       "missingFields": "Udfyld titel og synopsis, vælg mindst én genre og vælg en videofil.",
       "notLoggedIn": "Du er ikke længere logget ind — log ind og prøv igen.",
       "uploadFailed": "Uploaden fejlede — prøv igen.",
-      "rowFailed": "Filmen kunne ikke oprettes — prøv igen."
+      "rowFailed": "Filmen kunne ikke oprettes — prøv igen.",
+      "license": "Du skal bekræfte licensvilkårene, før du kan uploade."
     },
+    "licenseLabel": "Jeg bekræfter, at jeg ejer alle rettigheder til filmen — herunder musik og arkivmateriale — og giver Doccys en ikke-eksklusiv, verdensomspændende og tidsubegrænset licens til at strømme filmen, fremstille undertekster og trailere samt markedsførelse af den.",
+    "licenseLink": "Læs licensvilkårene i Handelsbetingelserne, afsnit 11.",
     "filmsHeading": "Dine film",
     "statusDraft": "Kladde — afventer godkendelse",
     "statusPublished": "Udgivet",

@@ -77,7 +77,7 @@
     },
     "terms": {
       "title": "Términos y condiciones",
-      "intro": "Estas condiciones se aplican al uso de Doccys y a la compra de minutos. Última actualización: 22 de septiembre de 2026.",
+      "intro": "Estas condiciones se aplican al uso de Doccys y a la compra de minutos. Última actualización: 23 de septiembre de 2026.",
       "sections": {
         "s1": {
           "title": "Sobre Doccys",
@@ -89,7 +89,7 @@
         },
         "s3": {
           "title": "Minutos y reproducción",
-          "body": "Las películas se reproducen con los minutos de tu cuenta. El consumo se mide por el tiempo que realmente reproduces — si paras a mitad de película, solo pagas el tiempo visto. La tarifa por minuto de cada película aparece en su página antes de iniciar la reproducción.\nTu reproducción se registra como consumo medido (tu \u201cprueba\u201d) — consulta también la política de privacidad. Esa prueba es decisiva si hay dudas sobre qué viste y qué se descontó de tu saldo."
+          "body": "Las películas se reproducen con los minutos de tu cuenta. El consumo se mide por el tiempo que realmente reproduces — si paras a mitad de película, solo pagas el tiempo visto. La tarifa por minuto de cada película aparece en su página antes de iniciar la reproducción.\nTu reproducción se registra como consumo medido (tu “prueba”) — consulta también la política de privacidad. Esa prueba es decisiva si hay dudas sobre qué viste y qué se descontó de tu saldo."
         },
         "s4": {
           "title": "Compra y pago",
@@ -109,7 +109,7 @@
         },
         "s8": {
           "title": "Responsabilidad y contenido",
-          "body": "Doccys no es el editor de las películas — el contenido y las opiniones de las películas son de sus creadores. El servicio se ofrece \u201ctal cual\u201d. No respondemos de pérdidas indirectas o beneficios no obtenidos, incluidas caídas del servicio, pero corregimos errores tan rápido como podemos.\nPodemos cambiar precios futuros con aviso razonable; los cambios nunca afectan a minutos ya comprados."
+          "body": "Doccys no es el editor de las películas — el contenido y las opiniones de las películas son de sus creadores. El servicio se ofrece “tal cual”. No respondemos de pérdidas indirectas o beneficios no obtenidos, incluidas caídas del servicio, pero corregimos errores tan rápido como podemos.\nPodemos cambiar precios futuros con aviso razonable; los cambios nunca afectan a minutos ya comprados."
         },
         "s9": {
           "title": "Cambios en estas condiciones",
@@ -118,6 +118,10 @@
         "s10": {
           "title": "Reclamaciones y contacto",
           "body": "Puedes escribir siempre a support@doccys.com. Los consumidores daneses también pueden acudir a la junta danesa de reclamaciones de consumo en caso de reclamaciones de compra — ver forbrugerklagenaevnet.dk. Estas condiciones se rigen por la legislación danesa."
+        },
+        "s11": {
+          "title": "Licencia al subir películas (creadores)",
+          "body": "Cuando subes una película a Doccys, confirmas lo siguiente:\n• Posees todos los derechos de la película, incluyendo música y material de archivo, y la película no infringe los derechos de terceros.\n• Concedes a Doccys una licencia no exclusiva, mundial y perpetua para transmitir la película en la plataforma, crear subtítulos y tráilers basados en la película, y promocionar la película en la plataforma.\n• Puedes solicitar al equipo editorial que elimine tu película en cualquier momento — escribe a support@doccys.com.\n• Tu aceptación se registra con la hora y el número de versión en cada carga y se aplica a la película que subes.\nEn caso de discrepancia entre las traducciones, prevalece el texto en danés (ver sección 10)."
         }
       }
     },
@@ -131,7 +135,7 @@
         },
         "s2": {
           "title": "Qué datos tratamos",
-          "body": "• Cuenta: tu dirección de correo (y su confirmación) y tu contraseña, que se guarda cifrada.\n• Compras: qué paquetes compraste, cuándo y el identificador de transacción. Las tarjetas de pago nunca las tratamos nosotros — eso ocurre en Stripe.\n• Reproducción: cuándo empiezas y paras, saltos y tiempo visto por película. El consumo medido (la \u201cprueba\u201d) es lo que descuenta minutos de tu saldo y remunera al creador.\n• Comentarios: el nombre con el que publicas, tus comentarios y \u201cme gusta\u201d, y su moderación.\n• Referidos: si llegas a través de un enlace de referido, guardamos el código en una cookie hasta 30 días para poder abonar a quien te recomendó en tu primera compra."
+          "body": "• Cuenta: tu dirección de correo (y su confirmación) y tu contraseña, que se guarda cifrada.\n• Compras: qué paquetes compraste, cuándo y el identificador de transacción. Las tarjetas de pago nunca las tratamos nosotros — eso ocurre en Stripe.\n• Reproducción: cuándo empiezas y paras, saltos y tiempo visto por película. El consumo medido (la “prueba”) es lo que descuenta minutos de tu saldo y remunera al creador.\n• Comentarios: el nombre con el que publicas, tus comentarios y “me gusta”, y su moderación.\n• Referidos: si llegas a través de un enlace de referido, guardamos el código en una cookie hasta 30 días para poder abonar a quien te recomendó en tu primera compra."
         },
         "s3": {
           "title": "Finalidad y base jurídica",
@@ -411,7 +415,8 @@
       "missingFields": "Rellena el título y la sinopsis, elige al menos un género y selecciona un archivo de vídeo.",
       "notLoggedIn": "Ya no estás conectado — inicia sesión e inténtalo de nuevo.",
       "uploadFailed": "La subida falló — inténtalo de nuevo.",
-      "rowFailed": "No se pudo crear la película — inténtalo de nuevo."
+      "rowFailed": "No se pudo crear la película — inténtalo de nuevo.",
+      "license": "Debe confirmar los términos de la licencia antes de poder subir."
     },
     "filmsHeading": "Tus películas",
     "statusDraft": "Borrador — pendiente de aprobación",
@@ -450,7 +455,9 @@
     "trailerError": "El tráiler no se pudo generar — inténtalo de nuevo.",
     "shareHeading": "Compartir e insertar",
     "copyWatchLink": "Copiar enlace de la película",
-    "copyEmbedCode": "Copiar código para insertar"
+    "copyEmbedCode": "Copiar código para insertar",
+    "licenseLabel": "Confirmo que poseo todos los derechos de la película, incluyendo música y material de archivo, y otorgo a Doccys una licencia no exclusiva, mundial y perpetua para transmitir la película, producir subtítulos y tráilers, así como para su comercialización.",
+    "licenseLink": "Lea los términos de la licencia en los Términos y Condiciones, sección 11."
   },
   "profile": {
     "loginTitle": "Inicia sesión para ver tu perfil",

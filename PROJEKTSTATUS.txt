@@ -114,6 +114,52 @@ kan håndhæve kravet dér.
   alle 13 sprog (var kun de 5 nye — gav "Ukendt målsprog"-fejl ved
   genkørsel på en/da m.v.). Scriptet er nu faellesskabssprog.
 
+FILM-LICENS: SKABERENS ACCEPT VED UPLOAD (23-24/9) — MIGRATION KØRT OG VERIFICERET
+Brugerens spoergsmaal aabenbarede et hul: Doccys stroemmer filmen
+kommercielt, genererer AI-undertekster/trailer (bearbejdelse) og
+bevarer filmen publiceret — men creatoren accepterede INGENTING ved
+upload (ingen licens-klausul fandtes nogen steder; "publiceret film
+er redaktionens" er kun drifts-styring, ikke rettighedsoverdragelse).
+Beslutning MED BRUGEREN: ejerskabsbekraeftelse + ikke-eksklusiv,
+verdensomspændende, tidsubegraenset brugsret (stroemning, undertekster/
+trailere, markedsfoering) + ret til at bede redaktionen fjerne filmen.
+- MIGRATION 20260923_film_licens.sql (KØRT 23/9, VERIFICERET):
+  license_accepted_at + license_version paa documentaries — NULLABLE
+  og UDEN default (en default now() ville give alle inserts en
+  "accept"; backfill af seed-film = falsk bevisfoering, udebliver).
+  Bevis: HVORNAAR (servertid fra API'en, aldrig klient-ur) + HVAD
+  (version '2026-09-23' bundet til terms-intro-datoen); HVEM følger
+  af creator_handle. Accepten er BEVIS, ikke kryptografi.
+  HAANDHAEVELSE i begge led: POST /api/films afviser licenseAccepted
+  !== true (400, dansk tekst — ruttens øvrige fejl er ogsaa danske)
+  OG RLS-policyn opret_egne_kladder kraever license_accepted_at is
+  not null i with check (den reelle garant; service role omgaar
+  RLS → seed/redaktionelle inserts knækker ikke — derfor INGEN
+  check-constraint). Samme krav i rediger_egne_kladder (accept kan
+  ikke nulles paa egen kladde). Publiceringskrav-triggeren røres
+  IKKE. VERIFICERET: 2 license%-kolonner; 3 policies (opret/
+  rediger/slet_egne_kladder); positiv test afventer foerste upload.
+- KLAUSULENS HJEM: legal.terms.sections.s11 (NY sektion, terms-
+  sidens liste udvidet, intro-dato → 23/9 i ALLE 13 sprog —
+  scriptet fylder kun huller, datoen rettedes manuelt pr. fil).
+  Checkbox-teksten i studiet er KORT + henvisende m. link til
+  /terms, sa 13-sprogs-oversaettelse aldrig udvander licensen;
+  dansk tekst gælder ved uoverensstemmelse (jf. s10). Ingen
+  apply-checkbox: rettighedsgiv sker ved upload af det konkrete
+  vaerk (ansøgningen har intet vaerk at licensere).
+- STUDIO-UI (kodebasens FØRSTE checkbox): licenseAccepted-state,
+  sidste validering FOER storage-upload (accept-mangler maa aldrig
+  efterlade objekter i bucketene — rulbacken kraever jo at POST'en
+  overhovedet naa'r), submit disabled uden accept, reset ved
+  success (accept pr. film). 5 nye noegler: licenseLabel,
+  licenseLink, errors.license, legal s11 title/body — oversat via
+  script (gpt-4o, "• "-struktur valideret; spot-tjek ja/zh/hi/pt
+  OK), 451 noegler fuld paritet. i18n-verify: NYT tjek /ja/terms
+  (s11-titel + dansk-laek-tjek) — ALLE TJEK GRØNNE.
+- VERSION-BUNDLING: FILM_LICENSE_VERSION ('2026-09-23') i
+  api/films/route.ts ↔ terms-intro-dato ↔ s11 — aendres licensen
+  vaesentligt, bumpes alle tre.
+
 BRUGERNAVN I STEDET FOR BLOTTET E-MAIL (23/9) — MIGRATION KØRT, E2E AFVENTER
 (kommentar-brugernavn-migrationen er kørt af brugeren 23/9 efter
 pin-vagt-fiksen; resten af sektionen er uændret historik.)

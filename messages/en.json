@@ -77,7 +77,7 @@
     },
     "terms": {
       "title": "Terms & Conditions",
-      "intro": "These terms apply to your use of Doccys and to the purchase of minutes. Last updated: 22 September 2026.",
+      "intro": "These terms apply to your use of Doccys and to the purchase of minutes. Last updated: 23 September 2026.",
       "sections": {
         "s1": {
           "title": "About Doccys",
@@ -118,6 +118,10 @@
         "s10": {
           "title": "Complaints and contact",
           "body": "You can always write to support@doccys.com. Danish consumers may also contact the Danish Consumer Complaints Board about purchase complaints — see forbrugerklagenaevnet.dk. Danish law governs these terms."
+        },
+        "s11": {
+          "title": "License upon Uploading Films (Creators)",
+          "body": "When you upload a film to Doccys, you confirm the following:\n• You own all rights to the film — including music and archival material — and the film does not infringe on third-party rights.\n• You grant Doccys a non-exclusive, worldwide, and perpetual license to stream the film on the platform, create subtitles and trailers based on the film, and market the film on the platform.\n• You can request the editorial team to remove your film at any time — write to support@doccys.com.\n• Your acceptance is recorded with a timestamp and version number upon each upload and applies to the film you upload.\nIn case of discrepancies between translations, the Danish text prevails (cf. section 10)."
         }
       }
     },
@@ -411,7 +415,8 @@
       "missingFields": "Fill in the title and synopsis, choose at least one genre and pick a video file.",
       "notLoggedIn": "You are no longer logged in — log in and try again.",
       "uploadFailed": "The upload failed — try again.",
-      "rowFailed": "The film could not be created — try again."
+      "rowFailed": "The film could not be created — try again.",
+      "license": "You must confirm the license terms before you can upload."
     },
     "filmsHeading": "Your films",
     "statusDraft": "Draft — awaiting approval",
@@ -450,7 +455,9 @@
     "trailerError": "The trailer could not be generated — try again.",
     "shareHeading": "Share & embed",
     "copyWatchLink": "Copy film link",
-    "copyEmbedCode": "Copy embed code"
+    "copyEmbedCode": "Copy embed code",
+    "licenseLabel": "I confirm that I own all rights to the film — including music and archival material — and grant Doccys a non-exclusive, worldwide, and perpetual license to stream the film, produce subtitles and trailers, and market it.",
+    "licenseLink": "Read the license terms in the Terms of Trade, section 11."
   },
   "profile": {
     "loginTitle": "Log in to see your profile",

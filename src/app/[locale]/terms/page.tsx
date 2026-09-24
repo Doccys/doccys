@@ -23,10 +23,12 @@ export default async function TermsPage({ params }: TermsPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
 
+  // s11 = licensklausulen for skabere (accepteres pr. film ved upload
+  // i studiet — jf. 20260923_film_licens.sql)
   return (
     <LegalPage
       namespace="terms"
-      sections={["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"]}
+      sections={["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"]}
     />
   );
 }
