@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { doccysStore } from "@/lib/store/supabaseStore";
 import { getDocumentaryBySlug, recordValidCompletion } from "@/lib/data/catalog";
 import { validateSession } from "@/lib/analytics/viewValidation";
+import { estimateEgressBytes } from "@/lib/analytics/egress";
 import { createClient } from "@/lib/supabase/server";
 import type { SessionVerdict } from "@/lib/types";
 
@@ -44,7 +45,17 @@ export async function POST(
 
   const documentary = await getDocumentaryBySlug(session.documentarySlug);
   const verdict = validateSession(session, documentary?.durationSec ?? 0);
-  await doccysStore.setVerdict(id, verdict);
+
+  // Egress-skønnet skrives sammen med dommet — for ALLE sessioner
+  // (loggede såvel som anonyme; afregn_session rammer kun loggede).
+  // estimatedWatchedSec spejler afregnens watched_seconds, og
+  // idempotens-garden ovenfor sikrer, at kun første validate skriver.
+  const estimatedEgressBytes = estimateEgressBytes(
+    verdict.features.estimatedWatchedSec,
+    documentary?.videoFileSizeBytes ?? null,
+    documentary?.durationSec ?? 0,
+  );
+  await doccysStore.setVerdict(id, verdict, estimatedEgressBytes);
 
   const hasCompleteEvent = session.events.some((e) => e.type === "complete");
 

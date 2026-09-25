@@ -232,11 +232,19 @@ class SupabaseStore implements DoccysStore {
   async setVerdict(
     sessionId: string,
     verdict: SessionVerdict,
+    estimatedEgressBytes?: number,
   ): Promise<ViewSession | undefined> {
     const supabase = await createClient();
     const { error } = await supabase
       .from("view_sessions")
-      .update({ verdict })
+      // skønnet skrives sammen med dommet (én round-trip); undefined =
+      // uændret (kolonnen har default 0)
+      .update({
+        verdict,
+        ...(estimatedEgressBytes !== undefined && {
+          estimated_egress_bytes: estimatedEgressBytes,
+        }),
+      })
       .eq("id", sessionId);
     if (error) {
       console.warn("setVerdict:", error.message);

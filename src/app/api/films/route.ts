@@ -205,6 +205,21 @@ export async function POST(request: NextRequest) {
     slug = `${base}-${attempt}`;
   }
 
+  // Filens størrelse til egress-estimatet: server-side HEAD på den
+  // offentlige URL (klientens File.size kan lyves om; HEAD koster ingen
+  // egress — kun headers). Best-effort: fejl ⇒ null, blokerer ALDRIG
+  // uploaden.
+  let videoFileBytes: number | null = null;
+  try {
+    const head = await fetch(videoUrl, { method: "HEAD" });
+    const length = Number(head.headers.get("content-length"));
+    if (head.ok && Number.isFinite(length) && length > 0) {
+      videoFileBytes = length;
+    }
+  } catch {
+    // ukendt størrelse → sessioner på filmen får egress-skønnet 0
+  }
+
   // sort_order 1000: default 0 ville straks overtage HeroBannerens
   // "Månedens udvalgte" (forsiden tager laveste sort_order).
   // Redaktionen sætter den endelige position ved publicering.
@@ -222,6 +237,7 @@ export async function POST(request: NextRequest) {
       spoken_language: spoken,
       gradient,
       video_url: videoUrl,
+      video_file_size_bytes: videoFileBytes,
       poster_url: posterUrl,
       status: "draft",
       sort_order: 1000,

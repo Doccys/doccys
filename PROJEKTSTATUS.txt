@@ -160,6 +160,41 @@ trailere, markedsfoering) + ret til at bede redaktionen fjerne filmen.
   api/films/route.ts ↔ terms-intro-dato ↔ s11 — aendres licensen
   vaesentligt, bumpes alle tre.
 
+EGRESS-ESTIMAT PR. SESSION: GB-PR-TIME-MÅLING (26/9) — MIGRATION AFVENTER KOERSEL
+Forretningsregnskabet (≈17 kr margin pr. pakke) manglede den ene store
+variable omkostning: baandbredde. Video stroemmes DIREKTE fra Supabase
+Storage til browseren, saa serveren ser aldrig byterne — eksakt maal
+kraever enten proxy gennem API-ruten (dobbelt egress + latens, afvist)
+eller Resource Timing (upaalideligt cross-origin, afvist). Derfor et
+SERVER-SIDE SKOEN: bytes ≈ sete sekunder × (filens stoerrelse /
+filmens laengde), skrevet ved validate (koerer for ALLE sessioner —
+modsat afregn_session der kun rammer loggede) ud fra
+verdict.features.estimatedWatchedSec (spejler afregnens
+watched_seconds). Formelen bor i src/lib/analytics/egress.ts.
+- MIGRATION 20260926_egress_estimat.sql (AFVENTER KOERSEL):
+  documentaries.video_file_size_bytes (nullable, ingen default —
+  null = ukendt stoerrelse → skoennet bliver 0, hellere undervurdere
+  end digte) + view_sessions.estimated_egress_bytes (default 0,
+  check >= 0) + EN GANG-BACKFILL fra storage.objects-metadata
+  (video_url '%/object/public/film-videos/' || o.name — giver
+  test-filmene reelle stoerrelser; seed-filmene har ingen objekter og
+  forbliver null). Verifikations-SQL i headeren, inkl. den loebende
+  GB-pr-maaned-forespoergsel (coalesce med dommets feature — anonyme
+  sessioner har watched_seconds 0).
+- UPLOAD: POST /api/films goer server-side HEAD paa den offentlige
+  video-URL → content-length (klientens File.size kan lyves om;
+  HEAD koster ingen egress). Best-effort: fejl ⇒ null, blokerer
+  ALDRIG uploaden.
+- TRADE-OFFS (bevidst): skoen ikke maaling; CBR-antagelse (progressiv
+  mp4, ingen adaptiv stroem endnu); browsers range-overshoot goer
+  reelt forbrug ~10-20% hoejere; trailere/undertekster/persistente
+  billeder taelles ikke (ubetydeligt). KALIBRERING: sammenlign
+  sum(estimated_egress_bytes) med Supabase-dashbordets baandbredde
+  efter foerste rigtige seeruge.
+- Ingen UI → ingen i18n-noegler. Positiv test afventer migrationen:
+  se en test-film → select estimated_egress_bytes … order by
+  started_at desc limit 1 → > 0.
+
 BRUGERNAVN I STEDET FOR BLOTTET E-MAIL (23/9) — MIGRATION KØRT, E2E AFVENTER
 (kommentar-brugernavn-migrationen er kørt af brugeren 23/9 efter
 pin-vagt-fiksen; resten af sektionen er uændret historik.)

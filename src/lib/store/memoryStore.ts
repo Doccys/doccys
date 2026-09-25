@@ -39,6 +39,8 @@ export interface DoccysStore {
   setVerdict(
     sessionId: string,
     verdict: SessionVerdict,
+    /** kun persisted-laget: egress-skøn skrives i databasen */
+    estimatedEgressBytes?: number,
   ): Promise<ViewSession | undefined>;
 
   // — Comments —
@@ -197,10 +199,12 @@ class MemoryStore implements DoccysStore {
   }
 
   async setVerdict(
-    sessionId: string,
+    _sessionId: string,
     verdict: SessionVerdict,
+    // egress-skønnet lever kun i databen — hukommelses-butikken ignorerer det
+    _estimatedEgressBytes?: number,
   ): Promise<ViewSession | undefined> {
-    const session = this.sessions.get(sessionId);
+    const session = this.sessions.get(_sessionId);
     if (!session) return undefined;
     session.verdict = verdict;
     return session;

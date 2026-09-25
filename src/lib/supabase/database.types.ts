@@ -64,6 +64,8 @@ export type DocumentaryRow = {
   creator_handle: string;
   gradient: string;
   video_url: string;
+  /** filens størrelse i bytes — egress-estimatets grundlag (null = ukendt) */
+  video_file_size_bytes: number | null;
   /** plakat-billede i film-posters — null = gradienten bruges */
   poster_url: string | null;
   total_views: number;
@@ -96,7 +98,8 @@ export type DocumentaryInsert = {
   creator_handle: string;
   gradient: string;
   video_url: string;
-  /** plakat-billede i film-posters — null = gradienten bruges */
+  /** sættes af POST /api/films (server-side HEAD) — null = ukendt størrelse */
+  video_file_size_bytes?: number | null;
   poster_url?: string | null;
   total_views?: number;
   total_completions?: number;
@@ -124,6 +127,7 @@ export type DocumentaryUpdate = {
   creator_handle?: string;
   gradient?: string;
   video_url?: string;
+  video_file_size_bytes?: number | null;
   poster_url?: string | null;
   total_views?: number;
   total_completions?: number;
@@ -234,6 +238,9 @@ export type ViewSessionRow = {
   status: string;
   /** reelt sete sekunder — skrives af afregn_session, aldrig af klienter */
   watched_seconds: number;
+  /** egress-skøn pr. session (sete sekunder × filbytes/længde) —
+   *  skrives af validate-ruten; 0 = ikke skønnet eller ukendt størrelse */
+  estimated_egress_bytes: number;
   /** jsonb: SessionVerdict (features, signals, modelVersion) */
   verdict: unknown;
 };
@@ -247,6 +254,7 @@ export type ViewSessionInsert = {
   ended_at?: string | null;
   status?: string;
   watched_seconds?: number;
+  estimated_egress_bytes?: number;
   verdict?: unknown;
 };
 
@@ -255,6 +263,8 @@ export type ViewSessionUpdate = {
   status?: string;
   /** skrives kun af afregn_session (security definer) — aldrig direkte */
   watched_seconds?: number;
+  /** egress-skøn — skrives af validate-ruten sammen med dommet */
+  estimated_egress_bytes?: number;
   verdict?: unknown;
 };
 

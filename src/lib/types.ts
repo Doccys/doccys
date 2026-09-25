@@ -54,6 +54,12 @@ export interface Documentary {
   /** Placeholder-video indtil medie-server/CDN kobles på */
   videoUrl: string;
   /**
+   * Filens størrelse i bytes — server-side HEAD ved upload.
+   * Grundlag for egress-skønnet (sete sekunder × bytes/længde);
+   * null = ukendt (seed/placeholder), sessioner får da skønnet 0.
+   */
+  videoFileSizeBytes: number | null;
+  /**
    * Kladde/offentlig: nye uploads oprettes altid som 'draft' og
    * vises først offentligt, når redaktionen godkender dem.
    */
