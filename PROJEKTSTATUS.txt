@@ -160,7 +160,7 @@ trailere, markedsfoering) + ret til at bede redaktionen fjerne filmen.
   api/films/route.ts ↔ terms-intro-dato ↔ s11 — aendres licensen
   vaesentligt, bumpes alle tre.
 
-EGRESS-ESTIMAT PR. SESSION: GB-PR-TIME-MÅLING (26/9) — MIGRATION AFVENTER KOERSEL
+EGRESS-ESTIMAT PR. SESSION: GB-PR-TIME-MÅLING (26/9) — MIGRATION KØRT OG VERIFICERET
 Forretningsregnskabet (≈17 kr margin pr. pakke) manglede den ene store
 variable omkostning: baandbredde. Video stroemmes DIREKTE fra Supabase
 Storage til browseren, saa serveren ser aldrig byterne — eksakt maal
@@ -171,7 +171,10 @@ filmens laengde), skrevet ved validate (koerer for ALLE sessioner —
 modsat afregn_session der kun rammer loggede) ud fra
 verdict.features.estimatedWatchedSec (spejler afregnens
 watched_seconds). Formelen bor i src/lib/analytics/egress.ts.
-- MIGRATION 20260926_egress_estimat.sql (AFVENTER KOERSEL):
+- MIGRATION 20260926_egress_estimat.sql (KØRT 26/9, VERIFICERET —
+  backfillen gav de 3 test-film reelle stoerrelser: testtest
+  7.147.054, test2/earth 17.839.845 bytes (samme fil, uploadet to
+  gange); seed-filmene forblev null som forventet):
   documentaries.video_file_size_bytes (nullable, ingen default —
   null = ukendt stoerrelse → skoennet bliver 0, hellere undervurdere
   end digte) + view_sessions.estimated_egress_bytes (default 0,
