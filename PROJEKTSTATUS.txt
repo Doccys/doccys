@@ -198,6 +198,38 @@ watched_seconds). Formelen bor i src/lib/analytics/egress.ts.
   se en test-film → select estimated_egress_bytes … order by
   started_at desc limit 1 → > 0.
 
+CREATOR-TAL: STUDIETS "DINE TAL" — INDTJENINGENS BEVISFØRING (26-27/9) — MIGRATION KØRT OG VERIFICERET
+Brugerens mål: skabernes data skal være DEL AF indtjeningen, sa
+satsen (2 kr/100 min) kan retfjaerdiggoeres. I dag viste studiet
+kun en svaert laeselig retention-kurve, og profilernes visninger/
+faerdigsoeende er SEEDEDE pyntetal — pengene kommer reelt fra
+view_sessions. Beslutninger MED BRUGEREN: hjemmet er STUDIET;
+REELLE tal kun i studiet (profilerne beholder seed-tallene til
+feedback-runden — LAENSERINGSpunkt: udskift profilernes StatCards/
+FilmographyGrid til reelle aggregater); indhold v1 = minutter→kr
++ 30-dages kurve + engagement + seer-opdeling.
+- MIGRATION 20260927_creator_tal.sql (KØRT 27/9, VERIFICERET):
+  eje-privat security-definer RPC creator_tal(p_handle) → i eet
+  kald: ialt (minutter/kr), film (pr. film: afspilninger, unikke
+  seere, gyldige minutter, optjent kr, sats, faerdigsaaet %,
+  kommentarer, likes — kladder medtages og viser 0), daglig
+  (seneste 30 dage, DK-doegn via Europe/Copenhagen, 0-dage
+  medtages) og seere (sprog top 5 + enhed paa skærmbredde-proxy
+  <=600/<=1024/over, over ALLE sessioner inkl. gaester).
+  Ejerskab: owner_user_id + 42501; grants verify: proacl =
+  postgres + service_role + authenticated, ingen anon/public;
+  SQL-editor-negativtest gav 42501. PENGEFORMLEN findes nu i TO
+  funktioner (creator_tal + creator_indtjening) — sync-kommentar
+  i begge; fælles SQL-hjaelper foerst noedvendig ved aendring nr. 2.
+- UI: StudioStatsSection (sammendrag 4 kort, haandbygget SVG-
+  kurve i StudioTidsserieChart, seer-soejler, pr.-film-tabel hvor
+  GYLDIGE MINUTTER × SATS = KR staar række for række; empty-state
+  "Ingen seere endnu"). Gaestenoten fortaeller aet skel: adfaerd
+  taeller alle sessioner, men KUN loggede gyldige minutter
+  afregnes. Retention-kurven fik x-akse-forklaring ("0 % — 100 %
+  af filmen"). 29 nye creatorStudio-noegler, 480 i alt, fuld
+  paritet; bruger verificerede E2E i studiet ("ja det virker").
+
 BRUGERNAVN I STEDET FOR BLOTTET E-MAIL (23/9) — MIGRATION KØRT, E2E AFVENTER
 (kommentar-brugernavn-migrationen er kørt af brugeren 23/9 efter
 pin-vagt-fiksen; resten af sektionen er uændret historik.)
