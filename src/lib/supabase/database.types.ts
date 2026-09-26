@@ -857,6 +857,12 @@ export type Database = {
         /** jsonb: { afsluttede, naaede: [10 pct-tal] } — KUN creatorens ejer (ejer-tjek i funktionen) */
         Returns: unknown;
       };
+      creator_tal: {
+        Args: { p_creator_handle: string };
+        /** jsonb: { ialt, film, daglig, seere } — KUN creatorens
+         *  ejer; studiets "Dine tal"-aggregat (20260927_creator_tal) */
+        Returns: unknown;
+      };
     };
     Enums: {
       [_ in never]: never;

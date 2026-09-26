@@ -99,6 +99,11 @@ export default async function StudioRetentionChart({
       <p className="mt-1 text-xs text-ash/70">
         {t("retentionSessions", { count: retention.sessions })}
       </p>
+      {/* x-akse-forklaringen: decilerne er positionen i filmen —
+          gør kurven læsbar uden at genlæse intro-teksten */}
+      <p className="text-xs text-ash/70">
+        {t("retentionAxisStart")} — {t("retentionAxisEnd")}
+      </p>
     </div>
   );
 }

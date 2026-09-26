@@ -4,11 +4,13 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StudioUploadForm from "@/components/creator/StudioUploadForm";
 import StudioFilmList from "@/components/creator/StudioFilmList";
+import StudioStatsSection from "@/components/creator/StudioStatsSection";
 import { createClient } from "@/lib/supabase/server";
 import {
   getCreatorFilmsIncludingDrafts,
   getOwnedCreator,
 } from "@/lib/data/catalog";
+import { getCreatorTal } from "@/lib/data/creatorTal";
 import { localizedCountry } from "@/lib/i18n/content";
 
 export const metadata: Metadata = { title: "Skaber-studio" };
@@ -63,9 +65,12 @@ export default async function CreatorStudioPage({ params }: StudioPageProps) {
     return redirect({ href: "/creator/apply", locale });
   }
 
-  const [films, country] = await Promise.all([
+  const [films, country, tal] = await Promise.all([
     getCreatorFilmsIncludingDrafts(creator.handle, locale),
     localizedCountry(creator.country, locale),
+    // Reelle tal til "Dine tal" — null (RPC-fejl/migration ikke
+    // kørt) udelader sektionen helt, så studiet altid virker
+    getCreatorTal(creator.handle),
   ]);
 
   return (
@@ -83,6 +88,8 @@ export default async function CreatorStudioPage({ params }: StudioPageProps) {
           <StudioUploadForm creatorHandle={creator.handle} />
         </div>
       </section>
+
+      {tal && <StudioStatsSection tal={tal} />}
 
       <section className="mt-16">
         <h2 className="font-display text-2xl text-bone">{t("filmsHeading")}</h2>

@@ -226,6 +226,59 @@ export interface CreatorEarnings {
   films: CreatorFilmEarnings[];
 }
 
+/* ---------- Studiets "Dine tal" (creator_tal-RPC'en) ---------- */
+
+/**
+ * Én films række i studiets tal-tabel. Adfærd (afspilninger,
+ * unikke seere, færdigsået %) tæller ALLE sessioner; minutter og
+ * kr er KUN det afregnede grundlag (loggede + gyldige) — det er
+ * bevisføringen bag satsen pr. 100 min.
+ */
+export interface CreatorTalFilm {
+  slug: string;
+  title: string;
+  status: string;
+  /** filmens sats pr. 100 gyldigt sete minutter (kr) */
+  rateDkk: number;
+  /** alle sessioner på filmen, inkl. aktive og anonyme gæster */
+  plays: number;
+  /** count(distinct user_id) — kun loggede seere tælles */
+  uniqueViewers: number;
+  validMinutes: number;
+  earnedDkk: number;
+  /** set færdig-andel af afsluttede afspilninger (0–100, live) */
+  finishPct: number;
+  comments: number;
+  likes: number;
+}
+
+/** Ét døgn i 30-dages-serien (DK-døgn, tekst-dato) */
+export interface CreatorTalDay {
+  /** "2026-09-26" — DK-døgngrænser, sorteret ældst først */
+  date: string;
+  minutes: number;
+  dkk: number;
+}
+
+/** Seer-opdeling over alle sessioner — "hvem ser", ingen identiteter */
+export interface CreatorTalSeere {
+  /** browserens sprog (fx "da-DK"), top 5, antal faldende */
+  languages: { name: string; count: number }[];
+  devices: { mobile: number; tablet: number; desktop: number; unknown: number };
+}
+
+/**
+ * Hele "Dine tal"-aggregatet fra creator_tal-RPC'en (security
+ * definer, ejer-privat — kun reelle tal, aldrig seed-pyntetal).
+ */
+export interface CreatorTal {
+  totalMinutes: number;
+  totalDkk: number;
+  films: CreatorTalFilm[];
+  daily: CreatorTalDay[];
+  seere: CreatorTalSeere;
+}
+
 /**
  * Retention pr. decil fra film_retention-RPC'en (KUN creatorens
  * ejer). deciles[i] = andelen i procent af de afsluttede afspil-
