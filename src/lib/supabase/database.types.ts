@@ -863,6 +863,13 @@ export type Database = {
          *  ejer; studiets "Dine tal"-aggregat (20260927_creator_tal) */
         Returns: unknown;
       };
+      top_creators: {
+        Args: Record<string, never>;
+        /** jsonb: [{ handle, navn, land, minutter, afspilninger }] —
+         *  offentligt Top 10-leaderboard, gyldige minutter/30 dage
+         *  (20260928_top_creators) */
+        Returns: unknown;
+      };
     };
     Enums: {
       [_ in never]: never;

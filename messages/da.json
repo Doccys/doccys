@@ -209,7 +209,12 @@
     "title": "Skabere på Doccys",
     "subtitle": "De uafhængige filmselskaber og kollektiver, der fylder kataloget.",
     "films": "{count} film",
-    "views": "{count} visninger"
+    "views": "{count} visninger",
+    "topEyebrow": "Top 10",
+    "topHeading": "De mest sete skabere",
+    "topIntro": "Rangeret efter reelle, gyldige sete minutter de seneste 30 dage. Listen opdaterer sig selv — kun publicerede film tæller med.",
+    "topEmpty": "Endnu ingen sete minutter at rangere efter i denne måned.",
+    "topMinutes": "{minutes} gyldige min"
   },
   "finishBadge": {
     "label": "{percent} % så den færdig"

@@ -23,6 +23,19 @@ export interface Creator {
   ownerUserId: string | null;
 }
 
+/**
+ * Række i det offentlige Top 10-leaderboard på /creators
+ * (top_creators-RPC'en, 20260928): gyldige minutter de seneste
+ * 30 dage — adfærd, ikke penge (kr forbliver privat i studiet).
+ */
+export interface TopCreator {
+  handle: string;
+  name: string;
+  country: string;
+  minutes: number;
+  plays: number;
+}
+
 /** Redaktionelle seertal — display-only, indtjeningen beregnes separat. */
 export interface DocumentaryStats {
   totalViews: number;

@@ -230,6 +230,44 @@ FilmographyGrid til reelle aggregater); indhold v1 = minutter→kr
   af filmen"). 29 nye creatorStudio-noegler, 480 i alt, fuld
   paritet; bruger verificerede E2E i studiet ("ja det virker").
 
+TOP-10-CREATORS: OFFENTLIGT LEADERBOARD PÅ /CREATORS (28/9) — MIGRATION KØRT OG VERIFICERET
+Efter exit-diskussionen: en automatisk opdateret Top 10-liste over
+skaberne — indtjeningens bevisfoering, ikke annonceplads (listen kan
+aldrig koebes; betalte placeringer er skjult reklame efter
+markedsfoeringsloven § 5 og draeber kurationse-brandet). Beslutninger
+MED BRUGEREN: metrik = GYLDIGE MINUTTER de seneste 30 dage
+(taettest paa indtjening uden at offentliggoere kr — penge forbliver
+private i studiet; præcedens: creator_indtjening gjort privat i
+20260919, mens adfaerds-aggregater er offentlige som
+film_faedighedsstats); placering = sektion overst paa /creators over
+CreatorCard-gridet; automatisering = ISR (revalidate = 3600 paa hele
+/creators — ingen cron findes i projektet, listen genhentes time for
+time, samme moenster som sitemap/OG).
+- MIGRATION 20260928_top_creators.sql (KØRT 28/9, VERIFICERET):
+  offentlig security-definer RPC top_creators() → jsonb-array max 10
+  pr. skaber {handle, navn, land, minutter, afspilninger}, rangeret
+  efter gyldige minutter desc (navn asc som tie-break), KUN raekker
+  med minutter > 0. Samme gyldigheds-filter som creator_tal/
+  creator_indtjening (user_id not null, status <> 'active',
+  verdict = 'valid') + KUN publicerede film (kladder rangerer
+  aldrig). Grants: revoke from public + grant to anon,
+  authenticated (paakraevt efter 20260920_rpc_tilladelser — uden
+  grant = 42501); proacl verificeret =
+  {postgres,service_role,anon,authenticated}.
+- KODE: getTopCreators() i catalog.ts (pn []-fallback ved RPC-fejl —
+  /creators loader altid), TopCreatorsSection (rangeret liste, nr. 1
+  i champagne, navne linker til profilerne, land lokaliseret, "X
+  gyldige min" hoejrestillet tabular-nums; venlig empty-state naar
+  vinduet er tomt). 5 nye creators-noegler (topEyebrow, topHeading,
+  topIntro, topEmpty, topMinutes) → 485 noegler, fuld paritet.
+- E2E: /da/creators → sektionen viser test-skaberen som nr. 1 med
+  reelle gyldige minutter (afventer brugerens browser-tjek).
+- TRADE-OFFS: minutter er adfaerd, ikke kr; rullende 30-dages-vindue
+  (nye skabere kan ryge op hurtigt, listen fryser ikke); ISR =
+  time-glad liste i produktion (tilstraebt — dev viser live-tal med
+  det samme). Leaderboard-duellen er en billig motivator for
+  skaberne til selv at promovere deres film.
+
 BRUGERNAVN I STEDET FOR BLOTTET E-MAIL (23/9) — MIGRATION KØRT, E2E AFVENTER
 (kommentar-brugernavn-migrationen er kørt af brugeren 23/9 efter
 pin-vagt-fiksen; resten af sektionen er uændret historik.)

@@ -29,6 +29,7 @@ import type {
   CreatorApplication,
   CreatorStats,
   Documentary,
+  TopCreator,
   WatchHistoryEntry,
 } from "@/lib/types";
 
@@ -204,6 +205,36 @@ export async function getCreators(locale?: string): Promise<Creator[]> {
     return [];
   }
   return (data ?? []).map((row) => toCreator(row, locale));
+}
+
+/**
+ * Top 10-skabere de seneste 30 dage — det offentlige leaderboard
+ * på /creators (top_creators-RPC'en). Kun adfærds-aggregater
+ * (gyldige minutter + afspilninger), aldrig kr. Ved fejl returneres
+ * en tom liste, så /creators loader normalt — TopCreatorsSection
+ * viser selv en venlig empty-state.
+ */
+export async function getTopCreators(): Promise<TopCreator[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("top_creators");
+  if (error) {
+    console.warn("getTopCreators:", error.message);
+    return [];
+  }
+  const rows = (data ?? []) as Array<{
+    handle: string;
+    navn: string;
+    land: string;
+    minutter: number | string;
+    afspilninger: number | string;
+  }>;
+  return rows.map((r) => ({
+    handle: r.handle,
+    name: r.navn,
+    country: r.land,
+    minutes: Number(r.minutter),
+    plays: Number(r.afspilninger),
+  }));
 }
 
 export async function getCreatorByHandle(
