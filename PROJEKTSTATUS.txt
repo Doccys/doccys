@@ -260,8 +260,10 @@ time, samme moenster som sitemap/OG).
   gyldige min" hoejrestillet tabular-nums; venlig empty-state naar
   vinduet er tomt). 5 nye creators-noegler (topEyebrow, topHeading,
   topIntro, topEmpty, topMinutes) → 485 noegler, fuld paritet.
-- E2E: /da/creators → sektionen viser test-skaberen som nr. 1 med
-  reelle gyldige minutter (afventer brugerens browser-tjek).
+- E2E: VERIFICERET paa doccys.vercel.app/da/creators (28/9) —
+  sektionen viser test-skaberen som nr. 1 med reelle gyldige
+  minutter; deploy f8cbe91. ISR betyder nye gyldige sessioner
+  vises senest en time senere.
 - TRADE-OFFS: minutter er adfaerd, ikke kr; rullende 30-dages-vindue
   (nye skabere kan ryge op hurtigt, listen fryser ikke); ISR =
   time-glad liste i produktion (tilstraebt — dev viser live-tal med
