@@ -491,7 +491,10 @@
     "talThFinish": "Terminé",
     "talThComments": "Commentaires",
     "talThLikes": "Likes",
-    "talNoSessions": "Pas encore de lectures"
+    "talNoSessions": "Pas encore de lectures",
+    "posterPickButton": "Choisir une image…",
+    "filePickButton": "Choisir un fichier vidéo…",
+    "fileNoneChosen": "Aucun fichier choisi"
   },
   "profile": {
     "loginTitle": "Connectez-vous pour voir votre profil",

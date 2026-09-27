@@ -491,7 +491,10 @@
     "talThFinish": "Fullført",
     "talThComments": "Kommentarer",
     "talThLikes": "Likes",
-    "talNoSessions": "Ingen avspillinger ennå"
+    "talNoSessions": "Ingen avspillinger ennå",
+    "posterPickButton": "Velg bilde…",
+    "filePickButton": "Velg videofil…",
+    "fileNoneChosen": "Ingen fil valgt"
   },
   "profile": {
     "loginTitle": "Logg inn for å se profilen din",

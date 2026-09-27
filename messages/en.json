@@ -491,7 +491,10 @@
     "talThFinish": "Finished Watching",
     "talThComments": "Comments",
     "talThLikes": "Likes",
-    "talNoSessions": "No plays yet"
+    "talNoSessions": "No plays yet",
+    "posterPickButton": "Choose image…",
+    "filePickButton": "Choose video file…",
+    "fileNoneChosen": "No file chosen"
   },
   "profile": {
     "loginTitle": "Log in to see your profile",

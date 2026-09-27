@@ -491,7 +491,10 @@
     "talThFinish": "Fertig gesehen",
     "talThComments": "Kommentare",
     "talThLikes": "Likes",
-    "talNoSessions": "Noch keine Wiedergaben"
+    "talNoSessions": "Noch keine Wiedergaben",
+    "posterPickButton": "Bild auswählen…",
+    "filePickButton": "Videodatei auswählen…",
+    "fileNoneChosen": "Keine Datei ausgewählt"
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",

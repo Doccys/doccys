@@ -491,7 +491,10 @@
     "talThFinish": "पूरा देखा गया",
     "talThComments": "टिप्पणियाँ",
     "talThLikes": "लाइक्स",
-    "talNoSessions": "अभी तक कोई प्ले नहीं"
+    "talNoSessions": "अभी तक कोई प्ले नहीं",
+    "posterPickButton": "चित्र चुनें…",
+    "filePickButton": "वीडियो फ़ाइल चुनें…",
+    "fileNoneChosen": "कोई फ़ाइल नहीं चुनी गई"
   },
   "profile": {
     "loginTitle": "अपने प्रोफ़ाइल को देखने के लिए लॉग इन करें",

@@ -491,7 +491,10 @@
     "talThFinish": "Färdigtittad",
     "talThComments": "Kommentarer",
     "talThLikes": "Gillar",
-    "talNoSessions": "Inga visningar ännu"
+    "talNoSessions": "Inga visningar ännu",
+    "posterPickButton": "Välj bild…",
+    "filePickButton": "Välj videofil…",
+    "fileNoneChosen": "Ingen fil vald"
   },
   "profile": {
     "loginTitle": "Logga in för att se din profil",

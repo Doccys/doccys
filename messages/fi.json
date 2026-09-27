@@ -491,7 +491,10 @@
     "talThFinish": "Katsottu loppuun",
     "talThComments": "Kommentit",
     "talThLikes": "Tykkäykset",
-    "talNoSessions": "Ei toistoja vielä"
+    "talNoSessions": "Ei toistoja vielä",
+    "posterPickButton": "Valitse kuva…",
+    "filePickButton": "Valitse videotiedosto…",
+    "fileNoneChosen": "Ei tiedostoa valittu"
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",

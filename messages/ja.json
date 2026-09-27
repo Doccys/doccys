@@ -491,7 +491,10 @@
     "talThFinish": "完了視聴",
     "talThComments": "コメント",
     "talThLikes": "いいね",
-    "talNoSessions": "まだ再生はありません"
+    "talNoSessions": "まだ再生はありません",
+    "posterPickButton": "画像を選択…",
+    "filePickButton": "ビデオファイルを選択…",
+    "fileNoneChosen": "ファイルが選択されていません"
   },
   "profile": {
     "loginTitle": "プロフィールを見るにはログインしてください",

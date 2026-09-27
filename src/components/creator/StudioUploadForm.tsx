@@ -445,19 +445,40 @@ export default function StudioUploadForm({
         />
       </label>
 
-      <label className="mt-5 block">
-        <span className="text-sm text-ash">
-          {t("posterLabel")}{" "}
-          <span className="text-champagne">{t("requiredMark")}</span>
-        </span>
+      <div className="mt-5">
+        {/* Native file-input-tekst ("Ingen fil valgt") følger BROWSERENS
+            sprog, ikke sidens — derfor skjules inputtet (sr-only) og
+            knap + filnavn tegnes selv, så alle 13 sprog holder. */}
+        <label className="block" htmlFor="studio-poster-input">
+          <span className="text-sm text-ash">
+            {t("posterLabel")}{" "}
+            <span className="text-champagne">{t("requiredMark")}</span>
+          </span>
+        </label>
         <input
+          id="studio-poster-input"
           ref={posterInputRef}
           type="file"
           accept="image/jpeg,image/png,image/webp"
           onChange={handlePosterChange}
           disabled={busy}
-          className={`mt-1.5 file:mr-4 file:rounded-full file:border-0 file:bg-champagne file:px-4 file:py-1.5 file:text-xs file:font-medium file:text-noir ${inputClassName}`}
+          className="sr-only"
         />
+        <span className="mt-1.5 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => posterInputRef.current?.click()}
+            disabled={busy}
+            className="rounded-full bg-champagne px-4 py-1.5 text-xs font-medium text-noir transition-colors hover:bg-bone disabled:opacity-50"
+          >
+            {t("posterPickButton")}
+          </button>
+          <span
+            className={`min-w-0 max-w-full truncate text-xs ${posterFile ? "text-ash" : "text-ash/70"}`}
+          >
+            {posterFile ? posterFile.name : t("fileNoneChosen")}
+          </span>
+        </span>
         <span className="mt-1.5 block text-xs text-ash/70">
           {t("posterHint")}
         </span>
@@ -477,24 +498,42 @@ export default function StudioUploadForm({
             </span>
           </span>
         )}
-      </label>
+      </div>
 
-      <label className="mt-5 block">
-        <span className="text-sm text-ash">{t("fileLabel")}</span>
+      <div className="mt-5">
+        <label className="block" htmlFor="studio-video-input">
+          <span className="text-sm text-ash">{t("fileLabel")}</span>
+        </label>
         <input
+          id="studio-video-input"
           ref={fileInputRef}
           type="file"
           accept="video/mp4"
           onChange={handleFileChange}
           disabled={busy}
-          className={`mt-1.5 file:mr-4 file:rounded-full file:border-0 file:bg-champagne file:px-4 file:py-1.5 file:text-xs file:font-medium file:text-noir ${inputClassName}`}
+          className="sr-only"
         />
+        <span className="mt-1.5 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={busy}
+            className="rounded-full bg-champagne px-4 py-1.5 text-xs font-medium text-noir transition-colors hover:bg-bone disabled:opacity-50"
+          >
+            {t("filePickButton")}
+          </button>
+          <span
+            className={`min-w-0 max-w-full truncate text-xs ${file ? "text-ash" : "text-ash/70"}`}
+          >
+            {file ? file.name : t("fileNoneChosen")}
+          </span>
+        </span>
         {durationSec !== null && file && (
           <span className="mt-1.5 block text-xs text-ash/70">
             {t("durationDetected", { seconds: durationSec })}
           </span>
         )}
-      </label>
+      </div>
 
       {/* Licens-accept (kodebasens første checkbox): ejerskabs-
           bekræftelse + brugsret, jf. Handelsbetingelserne afsnit 11.

@@ -491,7 +491,10 @@
     "talThFinish": "完成观看",
     "talThComments": "评论",
     "talThLikes": "点赞",
-    "talNoSessions": "尚无播放"
+    "talNoSessions": "尚无播放",
+    "posterPickButton": "选择图片…",
+    "filePickButton": "选择视频文件…",
+    "fileNoneChosen": "未选择文件"
   },
   "profile": {
     "loginTitle": "登录以查看您的个人资料",
