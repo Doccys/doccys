@@ -230,6 +230,23 @@ FilmographyGrid til reelle aggregater); indhold v1 = minutter→kr
   af filmen"). 29 nye creatorStudio-noegler, 480 i alt, fuld
   paritet; bruger verificerede E2E i studiet ("ja det virker").
 
+LANCERINGS-LÅS: INDEKSERING AF DOCCYS.COM SLÅET FRA (27/9)
+Domænet doccys.com er købt og koblet på (siden kører derude nu,
+parallel med doccys.vercel.app). Da robots.txt var åben, kunne
+Google begynde at indeksere et katalog med testfilm — derfor
+skjultes siden for soegemaskiner i robots.ts (Disallow / for alle,
+sitemap-pejling fjernet) INDtil lanceringen. AABNINGEN er en
+bevidst lanceringshandling: konstanten AABEN_NEDENFOR i robots.ts
+saettes til true + commit "launch: aaben for indeksering".
+VENNERNE kan stadig se siden normalt — laasen rammer KUN crawlers.
+Domaene-klar-checklisten til feedback-runden / lanceringen:
+NEXT_PUBLIC_SITE_URL=https://doccys.com i Vercel-env (ellers
+fallback-localhost i sitemap/OG), Supabase Site URL + redirect-
+liste paa doccys.com, custom SMTP med SPF/DKIM paa noreply@doccys
+(afbloekerer signup/password-reset-mails), Stripe live-webhook paa
+doccys.com/api/stripe/webhook, vercel.app redirect til doccys.com
+(i Vercel domain settings — undgaa dobbelt-inhold).
+
 TOP-10-CREATORS: OFFENTLIGT LEADERBOARD PÅ /CREATORS (28/9) — MIGRATION KØRT OG VERIFICERET
 Efter exit-diskussionen: en automatisk opdateret Top 10-liste over
 skaberne — indtjeningens bevisfoering, ikke annonceplads (listen kan
