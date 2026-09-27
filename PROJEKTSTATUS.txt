@@ -230,6 +230,33 @@ FilmographyGrid til reelle aggregater); indhold v1 = minutter→kr
   af filmen"). 29 nye creatorStudio-noegler, 480 i alt, fuld
   paritet; bruger verificerede E2E i studiet ("ja det virker").
 
+PROJEKT PAUSE: DOCCYS ER OFFLINE (27/9) — RESUME FOERST NEDENSTAAENDE ER KLAR
+Brugerens beslutning: INGEN ma gaa paa siden online foer den er klar.
+Vercel-projektet er PAUSET i dashboardet — doccys.com OG
+doccys.vercel.app svarer ikke; kode, domaene-binding, env og DB
+staar uændret. Ved resume: deploy seneste commit (34503ed
+lancerings-laasen kan mangle at vaere deployet foer pausen) —
+robots-laasen aktiv fra foerste sekund, venner ind, crawlere ude.
+LOKALT KORER ALT STADIG: npm run dev + Supabase er uafhaengige af
+Vercel — alle nedennestaaende test/trin kan goeres paa localhost.
+Resume-checklist (i raekkefoelge):
+1) Test-filmene bortryddes: SQL flip til draft (update ... where
+   slug in ('testtest','test2','earth')) — slet derefter via
+   localhost-studiet (/da/creator/studio, ejer-login; knappen
+   rydder Storage + DB + kaskader). EGRESS-E2E-TESTEN KOERES
+   FOERST (afspil testtest kort -> estimated_egress_bytes > 0 i
+   seneste session) — derefter er grundlaget vaek.
+2) CVR + erhvervskonto klar (brugeren korer virk.dk; ApS
+   anbefalet: 3-aars aktieskat-uret starter, begrænset haeftelse).
+3) Vercel-env: NEXT_PUBLIC_SITE_URL=https://doccys.com foer
+   resume (ellers localhost-fallback i sitemap/OG i produktion).
+4) Resume projekt i Vercel + verify: robots.txt = Disallow /,
+   forsiden live paa doccys.com — SAADAN kan feedback-runden
+   startes (venner maa ikke klikke koeb — Stripe er stadig TEST).
+5) Efter feedback: SMTP-setup, Stripe live, test-film helt vaek,
+   aaben for indeksering (AABEN_NEDENFOR = true) ved rigtig
+   lancering.
+
 LANCERINGS-LÅS: INDEKSERING AF DOCCYS.COM SLÅET FRA (27/9)
 Domænet doccys.com er købt og koblet på (siden kører derude nu,
 parallel med doccys.vercel.app). Da robots.txt var åben, kunne
