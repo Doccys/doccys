@@ -2,6 +2,60 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-09-28
 ==========================================================
 
+ALDERSBEKRÆFTELSE 18+ VED KONTOOPRETTELSE (28/9) — BYGGET, E2E AFVENTER
+Sidste juridiske backlog-punkt lukket: konti under 18 kan ikke indgå
+bindende købsaftaler (minutpakker), og intet alder-relateret fandtes
+i kodebasen. Beslutninger MED BRUGEREN: checkbox ved signup ( ikke
+fødselsdato-felt), 18 år, NY klausul i /terms (s12 efter s11 — se
+hvorfor nedenfor). Eksisterende konti røres ikke. Featuren følger
+filmlicens-precedenten punkt for punkt: afkrydsningsfelt i klienten,
+strikt server-tjek, bevis skrevet af SERVEREN (servertid + version),
+fuld klausul kun ét sted.
+- AuthForm (e6c0d39): ageAccepted-state med reset i switchMode (en
+  afkrydset boks hænger aldrig ved efter login-tab-skift), guard i
+  submit (ageRequired-nøglen, matcher licens-dobbelttjekket i
+  StudioUploadForm), checkbox EFTER password-felterne i accent-
+  champagne m. /terms-link (ageLabel+ageLink — split så GPT rammer
+  korrekt grammatik pr. sprog), submit disabled uden accept, POST-
+  body sender ageAccepted:true (klienten sender ingen tid).
+- SIGNUP-RUTE (521d67a): strikt body.ageAccepted === true → 422
+  {error:"ageRequired"} blandt felt-valideringerne FØR rate-limit
+  (afvist kald koster ingen bucket/mail). BEVIS i raw_user_meta_data:
+  age_confirmed_at = servertid ISO + age_terms_version = "2026-09-28"
+  (konstant i ruten — parallel til FILM_LICENSE_VERSION; auth.users
+  kan ikke ALTER'es, generateLink tager metadata gratis — INGEN
+  migration). VERSION-BUNDLING ×3: konstanten ↔ terms-intro-datoen
+  ↔ s12-klausulen (bumpes alle tre ved væsentlig ændring).
+- TERMS S12 (838b579): NY sektion "Aldersgrænse på 18 år" EFTER s11
+  — ikke redigering af s2, for oversættelsesscriptet fylder KUN
+  huller: en redigeret s2-tekst ville give stille divergens på 12
+  sprog, mens et nyt s12-nøgle-par er rent additivt. 4 afsnit:
+  18+ krav → bekræftelse registreres m. tidspunkt+version → konto må
+  ikke stilles til rådighed for unge (indhold ikke aldersmærket) →
+  kendt mindreårig bruger lukkes (jf. s2). Intro-datoen "Senest
+  opdateret" 23/9 → 28/9 i ALLE 13 filer.
+- i18n (dd6fdec): 5 nye nøgler (auth.ageLabel/ageLink, auth.errors.
+  ageRequired, legal s12 title/body) oversat ×12 via script (gpt-4o,
+  alt OK pr. fil), dato-rettelsen MANUELT pr. fil (kun dagtallet 23→
+  28 — scriptet rører ikke eksisterende ikke-tomme nøgler, samme
+  rutine som s11). i18n-verify-udvidelse: /ja/terms-tjekket matcher
+  nu S12-titlen også. 513 nøgler ×13 fuld paritet.
+- RØGTESTET 28/9: negativ POST /api/auth/signup uden ageAccepted →
+  422 ageRequired (via temp-fil — curl -d med inline-JSON mangles af
+  PowerShell-kodningen). tsc + keys-verify + i18n-verify ALLE TJEK
+  GRØNNE.
+- TEST (afventer brugeren, E2E): /da/login → Opret-konto: checkboxen
+  vises, knap disabled; AFKRYDS → login-tab → tilbage → boksen er
+  IKKE afkrydset (reset-test); /terms-link lander på s12; fuld
+  signup m. afkryds → bekræftelsesmail → klik → logget ind;
+  Supabase-dashboard Authentication → Users: raw_user_meta_data
+  indeholder age_confirmed_at (servertid) + age_terms_version.
+- BEVIDST UDELUKT: fødselsdato-felt (lettere at lyve om, mere at
+  udfylde), alders-gate for gæster (blokerer trailere/synopser),
+  backfill på eksisterende konti (falsk bevisføring — filmlicens-
+  argumentet), checkout-tjek (arver signup-bekræftelsen; gamle
+  konti har intet bevis og røres ikke).
+
 GLOBAL UDRULNING: 5 NYE SPROG (23/9) — FULDFØRT OG LIVE-VERIFICERET
 Japansk, forenklet kinesisk, italiensk, brasiliansk portugisisk og
 hindi — både som site-sprog OG undertekst-sprog (brugerens valg:
@@ -423,7 +477,8 @@ NB'S SOM BESTÅR:
   ENDELIGT JURIDISK EFTERSYN VED LANCERING (backlog består).
 - CVR/erhvervsfelter er markeret "oplyses ved lancering" i
   teksterne — udfyldes når erhverskontoen er på plads.
-- Aldersbekræftelse er stadig sit eget backlog-punkt (ikke bygget).
+- Aldersbekræftelse ER BYGGET (28/9) — checkbox ved signup + terms
+  s12-klausul ×13 sprog (se sektionen øverst); E2E-test afventer.
 
 LOKALISEREDE AUTH-MAILS ×13 (28/9) — APPEN SENDER SELV — FULDFØRT OG BRUGER-VERIFICERET
 Commit cf67acd (push'et til GitHub 28/9; Vercel bygger ikke, mens
@@ -1300,10 +1355,10 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
    (nu også: selvbetjent udbetaling, se afsnittet ovenfor).
 4. checkout.session.expired-webhook: forladte sessions → 'failed'
    (koden findes, utestet).
-5. Launch-backlog (aftalt med brugeren): aldersbekræftelse
-   (juridiske sider er BYGGET 22/9 — se sektionen øverst; resten:
-   CVR-felter udfyldes + ENDELIGT JURIDISK EFTERSYN af teksterne
-   ved lancering), e-mail-notifikationer (kommentar-moderation er
+5. Launch-backlog (aftalt med brugeren): aldersbekræftelse ER NU
+   BYGGET (28/9, se sektionen øverst; resten på det juridiske
+   område: CVR-felter udfyldes + ENDELIGT JURIDISK EFTERSYN af
+   teksterne ved lancering), e-mail-notifikationer (kommentar-moderation er
    nu bygget, se ovenfor; standard-signup/købs-mails er DONE 21/9,
    se sektionen øverst — resten her er branded mail-udbyder +
    velkomstmail + egen kvitteringstekst, se udsat-listen dér),
@@ -1349,6 +1404,14 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+dd6fdec i18n: 18+ -bekraeftelse og terms s12 oversat til 12 sprog
+838b579 terms: aldersklausul afsnit 12 + senest-opdateret-dato
+521d67a auth: signup-ruten kræver 18+ -bekræftelse og gemmer bevis i metadata
+e6c0d39 auth: 18+ -checkbox ved kontoprettelse i AuthForm
+4217f08 docs: test-filmene slettet — resume-checklist punkt 1 fuldfoert
+9e7583a docs: egress-e2e verificeret — 2.397.476 bytes paa testtest-session
+923d4e3 docs: cvr-nummer soegt og under behandling — resume paa vent
+bbb3919 docs: auth-mails e2e-verificeret + git-log opdateret i PROJEKTSTATUS
 cf67acd emails: appen sender selv signup-bekraeftelse og nulstilling paa modtagerens sprog
 4945a4f auth: oeje i adgangskode-felterne (vis/skjul)
 9788d41 auth: bekræftelses-link lander paa /auth/confirm og logger ind
