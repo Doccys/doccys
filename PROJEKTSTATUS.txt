@@ -44,12 +44,13 @@ fuld klausul kun ét sted.
   422 ageRequired (via temp-fil — curl -d med inline-JSON mangles af
   PowerShell-kodningen). tsc + keys-verify + i18n-verify ALLE TJEK
   GRØNNE.
-- TEST (afventer brugeren, E2E): /da/login → Opret-konto: checkboxen
-  vises, knap disabled; AFKRYDS → login-tab → tilbage → boksen er
-  IKKE afkrydset (reset-test); /terms-link lander på s12; fuld
-  signup m. afkryds → bekræftelsesmail → klik → logget ind;
-  Supabase-dashboard Authentication → Users: raw_user_meta_data
-  indeholder age_confirmed_at (servertid) + age_terms_version.
+- TEST (delvist bruger-verificeret 28/9): checkboxen m. henvisning
+  til afsnit 12 vises paa opret-bruger-siden (bruger-set i browser).
+  Resten afventer: AFKRYDS → login-tab → tilbage → boksen er IKKE
+  afkrydset (reset-test); fuld signup m. afkryds → bekræftelsesmail
+  → klik → logget ind; Supabase-dashboard Authentication → Users:
+  raw_user_meta_data indeholder age_confirmed_at (servertid) +
+  age_terms_version.
 - BEVIDST UDELUKT: fødselsdato-felt (lettere at lyve om, mere at
   udfylde), alders-gate for gæster (blokerer trailere/synopser),
   backfill på eksisterende konti (falsk bevisføring — filmlicens-
