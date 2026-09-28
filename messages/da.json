@@ -15,6 +15,8 @@
     "signupTitle": "Opret konto",
     "signupSubtitle": "Én konto til både seere og skabere — altid uden reklamer.",
     "passwordConfirm": "Gentag adgangskode",
+    "ageLabel": "Jeg bekræfter, at jeg er mindst 18 år — se",
+    "ageLink": "Handelsbetingelserne, afsnit 12",
     "email": "E-mail",
     "emailPlaceholder": "dig@eksempel.dk",
     "username": "Brugernavn",
@@ -52,6 +54,7 @@
       "weakPassword": "Adgangskoden er for svag — brug mindst 6 tegn.",
       "passwordMismatch": "Adgangskoderne er ikke ens.",
       "nameMissing": "Vælg dit brugernavn, før du opretter kontoen.",
+      "ageRequired": "Du skal bekræfte, at du er mindst 18 år, før kontoen oprettes.",
       "rateLimited": "For mange forsøg — vent lidt og prøv igen.",
       "generic": "Noget gik galt. Prøv igen."
     }

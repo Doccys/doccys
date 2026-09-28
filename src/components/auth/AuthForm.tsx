@@ -43,6 +43,9 @@ export default function AuthForm() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  // 18+-bekræftelse (Handelsbetingelserne afsnit 12): nulstilles ved
+  // mode-switch, så en afkrydset boks aldrig hænger ved efter login-tab.
+  const [ageAccepted, setAgeAccepted] = useState(false);
   const [errorKey, setErrorKey] = useState<string | null>(null);
   const [showConfirmNotice, setShowConfirmNotice] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -50,6 +53,7 @@ export default function AuthForm() {
   const switchMode = (next: Mode) => {
     setMode(next);
     setPasswordConfirm("");
+    setAgeAccepted(false);
     setErrorKey(null);
     setShowConfirmNotice(false);
   };
@@ -81,6 +85,13 @@ export default function AuthForm() {
       setErrorKey("nameMissing");
       return;
     }
+    // 18+: boksen er altid afkrydset, når knappen kan trykkes — tjekket
+    // er en guard mod manipuleret/disabled-knap og matcher studiets
+    // licens-dobbelttjek. Beviset skrives af ruten fra SERVERTID.
+    if (mode === "signup" && !ageAccepted) {
+      setErrorKey("ageRequired");
+      return;
+    }
 
     setBusy(true);
     const supabase = createClient();
@@ -110,6 +121,7 @@ export default function AuthForm() {
             // første login — e-mailen vises aldrig som identitet
             name: name.trim(),
             locale,
+            ageAccepted: true,
           }),
         });
         if (!res.ok) {
@@ -244,6 +256,26 @@ export default function AuthForm() {
               </div>
             )}
 
+            {mode === "signup" && (
+              <label className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  checked={ageAccepted}
+                  onChange={(e) => setAgeAccepted(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-champagne"
+                />
+                <span className="text-sm leading-relaxed text-ash">
+                  {t("ageLabel")}{" "}
+                  <Link
+                    href="/terms"
+                    className="text-champagne underline underline-offset-2"
+                  >
+                    {t("ageLink")}
+                  </Link>
+                </span>
+              </label>
+            )}
+
             {mode === "login" && (
               <div className="text-right">
                 <Link
@@ -263,7 +295,7 @@ export default function AuthForm() {
 
             <button
               type="submit"
-              disabled={busy}
+              disabled={busy || (mode === "signup" && !ageAccepted)}
               className="w-full rounded-full bg-champagne px-6 py-2.5 text-xs font-medium tracking-wide text-noir transition-colors hover:bg-bone disabled:opacity-50"
             >
               {busy ? t("working") : mode === "login" ? t("login") : t("signup")}
