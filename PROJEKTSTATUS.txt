@@ -234,6 +234,13 @@ FilmographyGrid til reelle aggregater); indhold v1 = minutter→kr
   paritet; bruger verificerede E2E i studiet ("ja det virker").
 
 PROJEKT PAUSE: DOCCYS ER OFFLINE (27/9) — RESUME FOERST NEDENSTAAENDE ER KLAR
+LAUNCH-DATO: 1. DECEMBER 2026 (brugerens beslutning 28/9): siten
+må IKKE lanceres før d. 1/12 — det gælder resume, feedback-runde
+OG aabning for indeksering. CVR-nummeret er soegt og under
+behandling; intet traenger, men alt kan goeres klaar paa forhaand
+(checklisten herunder + Vercel-env). Tidligst resume: naar CVR er
+paa pladt OG traek 1-4 er klaar — lancering (Stripe live, SMTP,
+indeksering) foerst 1/12.
 Brugerens beslutning: INGEN ma gaa paa siden online foer den er klar.
 Vercel-projektet er PAUSET i dashboardet — doccys.com OG
 doccys.vercel.app svarer ikke; kode, domaene-binding, env og DB
