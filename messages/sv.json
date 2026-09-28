@@ -47,7 +47,8 @@
       "weakPassword": "Lösenordet är för svagt — använd minst 6 tecken.",
       "passwordMismatch": "Lösenorden matchar inte.",
       "nameMissing": "Välj ditt användarnamn innan du skapar kontot.",
-      "generic": "Något gick fel. Försök igen."
+      "generic": "Något gick fel. Försök igen.",
+      "rateLimited": "För många försök — vänta lite och försök igen."
     },
     "confirmTitle": "Bekräftar din e-post",
     "confirmWorking": "Ett ögonblick — din e-post bekräftas och du kommer in på din profil…",
@@ -635,5 +636,25 @@
     "updateError": "Inlägget kunde inte sparas. Försök igen.",
     "deleteError": "Inlägget kunde inte tas bort. Försök igen.",
     "pinError": "Kunde inte fästa inlägget — ett annat är redan fäst. Försök igen."
+  },
+  "mail": {
+    "tagline": "Oberoende dokumentärer. Inga annonser. Någonsin.",
+    "support": "Frågor? Skriv till support@doccys.com.",
+    "signup": {
+      "subject": "Bekräfta din e-post för ditt Doccys-konto",
+      "heading": "Välkommen till Doccys",
+      "body": "Hej {name} — klicka på knappen nedan för att bekräfta din e-post och komma igång.",
+      "button": "Bekräfta min e-post",
+      "expiry": "Länken utgår efter kort tid och kan endast användas en gång.",
+      "ignore": "Har du inte skapat ett konto hos Doccys kan du lugnt ignorera detta mejl."
+    },
+    "reset": {
+      "subject": "Återställ ditt lösenord på Doccys",
+      "heading": "Återställ ditt lösenord",
+      "body": "Vi har mottagit en begäran om att återställa lösenordet för ditt Doccys-konto. Klicka på knappen nedan för att välja ett nytt.",
+      "button": "Välj nytt lösenord",
+      "expiry": "Länken utgår efter kort tid och kan endast användas en gång.",
+      "security": "Har du inte begärt detta kan du lugnt ignorera mejlet — ditt lösenord är oförändrat."
+    }
   }
 }

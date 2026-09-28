@@ -47,7 +47,8 @@
       "weakPassword": "Passordet er for svakt — bruk minst 6 tegn.",
       "passwordMismatch": "Passordene er ikke like.",
       "nameMissing": "Velg brukernavnet ditt før du oppretter kontoen.",
-      "generic": "Noe gikk galt. Prøv igjen."
+      "generic": "Noe gikk galt. Prøv igjen.",
+      "rateLimited": "For mange forsøk — vent litt og prøv igjen."
     },
     "confirmTitle": "Bekrefter din e-post",
     "confirmWorking": "Et øyeblikk — din e-post bekreftes, og du kommer inn på din profil…",
@@ -635,5 +636,25 @@
     "updateError": "Oppslaget kunne ikke lagres. Prøv igjen.",
     "deleteError": "Oppslaget kunne ikke slettes. Prøv igjen.",
     "pinError": "Kunne ikke feste oppslaget — et annet er allerede festet. Prøv igjen."
+  },
+  "mail": {
+    "tagline": "Uavhengige dokumentarer. Ingen reklamer. Noensinne.",
+    "support": "Spørsmål? Skriv til support@doccys.com.",
+    "signup": {
+      "subject": "Bekreft din e-post for din Doccys-konto",
+      "heading": "Velkommen til Doccys",
+      "body": "Hei {name} — klikk på knappen nedenfor for å bekrefte din e-post og komme i gang.",
+      "button": "Bekreft min e-post",
+      "expiry": "Lenken utløper etter kort tid og kan kun brukes én gang.",
+      "ignore": "Har du ikke opprettet en konto hos Doccys, kan du trygt ignorere denne e-posten."
+    },
+    "reset": {
+      "subject": "Tilbakestill ditt passord på Doccys",
+      "heading": "Tilbakestill ditt passord",
+      "body": "Vi har mottatt en forespørsel om å tilbakestille passordet for din Doccys-konto. Klikk på knappen nedenfor for å velge et nytt.",
+      "button": "Velg nytt passord",
+      "expiry": "Lenken utløper etter kort tid og kan kun brukes én gang.",
+      "security": "Har du ikke bedt om dette, kan du trygt ignorere e-posten — ditt passord er uendret."
+    }
   }
 }

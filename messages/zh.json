@@ -47,7 +47,8 @@
       "weakPassword": "密码太弱——请使用至少6个字符。",
       "passwordMismatch": "密码不匹配。",
       "nameMissing": "请选择您的用户名，然后创建账户。",
-      "generic": "出了点问题。请再试一次。"
+      "generic": "出了点问题。请再试一次。",
+      "rateLimited": "尝试次数过多 — 请稍候再试。"
     },
     "confirmTitle": "确认您的电子邮件",
     "confirmWorking": "请稍候 — 正在确认您的电子邮件，您将进入您的个人资料…",
@@ -635,5 +636,25 @@
     "updateError": "帖子无法保存。请重试。",
     "deleteError": "帖子无法删除。请重试。",
     "pinError": "无法置顶帖子——已有一个帖子被置顶。请重试。"
+  },
+  "mail": {
+    "tagline": "独立纪录片。永无广告。",
+    "support": "有问题吗？请发送电子邮件至support@doccys.com。",
+    "signup": {
+      "subject": "确认您的Doccys账户电子邮件",
+      "heading": "欢迎来到Doccys",
+      "body": "您好{name} — 点击下面的按钮以确认您的电子邮件并开始使用。",
+      "button": "确认我的电子邮件",
+      "expiry": "该链接将在短时间后失效，并且只能使用一次。",
+      "ignore": "如果您没有在Doccys注册账户，可以放心忽略此邮件。"
+    },
+    "reset": {
+      "subject": "重置您的Doccys密码",
+      "heading": "重置您的密码",
+      "body": "我们已收到重置您Doccys账户密码的请求。点击下面的按钮以选择新密码。",
+      "button": "选择新密码",
+      "expiry": "该链接将在短时间后失效，并且只能使用一次。",
+      "security": "如果您没有请求此操作，可以放心忽略此邮件 — 您的密码保持不变。"
+    }
   }
 }

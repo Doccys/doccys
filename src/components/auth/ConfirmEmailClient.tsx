@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -10,8 +10,10 @@ type Phase = "working" | "error";
 /**
  * Landingskort for bekræftelses-linket i signup-mailen.
  *
- * Mailen peger på /auth/confirm?code=…, og kortet veksler koden til en
- * session i browseren, hvorefter brugeren sendes videre til profilen.
+ * Appens egne mails peger på /auth/confirm?token_hash=…, som veksles
+ * via verifyOtp (ældre Supabase-mails bar PKCE-?code=, der veksles
+ * med exchangeCodeForSession — grenen er beholdt) — og brugeren
+ * sendes derefter videre til profilen.
  * Det SKAL ske på en dedikeret klientside: landede linket direkte på
  * /profile, server-renderede siden den logged-ud-variant uden nogen
  * Supabase-klient — og ?code= blev aldrig vekslet (brugeren ramte
@@ -26,9 +28,14 @@ export default function ConfirmEmailClient() {
 
   const [phase, setPhase] = useState<Phase>("working");
 
+  // Dev/strict mode kalder effekten to gange — et dobbelt kald ville
+  // bruge tokenet to gange, og det andet rammer otp_expired. Ref-vagten
+  // sikrer, at vekslingen kun sættes i gang én gang (et remount deler
+  // refs, så vagten overlever; udførelsen kører altid færdig).
+  const startedRef = useRef(false);
+
   useEffect(() => {
     const supabase = createClient();
-    let active = true;
 
     const goToProfile = () => {
       // refresh() lader server-komponenterne genlæse sessions-cookies.
@@ -45,25 +52,37 @@ export default function ConfirmEmailClient() {
         goToProfile();
         return;
       }
-      const hasCode = new URLSearchParams(window.location.search).has("code");
-      if (!hasCode) {
-        if (active) setPhase("error");
+      if (startedRef.current) return;
+      startedRef.current = true;
+
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("code")) {
+        // Ældre Supabase-mails: PKCE-?code= veksles fra samme browser
+        // (verifier-cookien fra signup-kørslen bor dér).
+        const { error } = await supabase.auth.exchangeCodeForSession(
+          window.location.href,
+        );
+        if (error) setPhase("error");
+        else goToProfile();
         return;
       }
-      const { error } = await supabase.auth.exchangeCodeForSession(
-        window.location.href,
-      );
-      if (!active) return;
-      if (error) {
-        setPhase("error");
-      } else {
-        goToProfile();
+      const tokenHash = params.get("token_hash");
+      const type = params.get("type");
+      if (tokenHash && type === "signup") {
+        // Appens egne mails: engangs-token fra generateLink — verifyOtp
+        // bekræfter e-mailen og udsteder sessionen i ét kald.
+        const { error } = await supabase.auth.verifyOtp({
+          token_hash: tokenHash,
+          type: "signup",
+        });
+        if (error) setPhase("error");
+        else goToProfile();
+        return;
       }
+      // Hverken token eller kode (fx et recovery-token, der er landet
+      // på forkert side) — vis fejl-tilstanden med vej til login.
+      setPhase("error");
     })();
-
-    return () => {
-      active = false;
-    };
   }, [router]);
 
   return (

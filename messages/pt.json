@@ -47,7 +47,8 @@
       "weakPassword": "A senha é muito fraca — use pelo menos 6 caracteres.",
       "passwordMismatch": "As senhas não coincidem.",
       "nameMissing": "Escolha seu nome de usuário antes de criar a conta.",
-      "generic": "Algo deu errado. Tente novamente."
+      "generic": "Algo deu errado. Tente novamente.",
+      "rateLimited": "Muitas tentativas — aguarde um pouco e tente novamente."
     },
     "confirmTitle": "Confirmando seu e-mail",
     "confirmWorking": "Um momento — seu e-mail está sendo confirmado, e você será direcionado para seu perfil…",
@@ -635,5 +636,25 @@
     "updateError": "Não foi possível salvar a postagem. Tente novamente.",
     "deleteError": "Não foi possível excluir a postagem. Tente novamente.",
     "pinError": "Não foi possível fixar a postagem — já há uma fixada. Tente novamente."
+  },
+  "mail": {
+    "tagline": "Documentários independentes. Sem anúncios. Nunca.",
+    "support": "Dúvidas? Escreva para support@doccys.com.",
+    "signup": {
+      "subject": "Confirme seu e-mail para sua conta Doccys",
+      "heading": "Bem-vindo ao Doccys",
+      "body": "Olá {name} — clique no botão abaixo para confirmar seu e-mail e começar.",
+      "button": "Confirmar meu e-mail",
+      "expiry": "O link expira em breve e só pode ser usado uma vez.",
+      "ignore": "Se você não criou uma conta no Doccys, pode ignorar este e-mail com segurança."
+    },
+    "reset": {
+      "subject": "Redefina sua senha no Doccys",
+      "heading": "Redefina sua senha",
+      "body": "Recebemos uma solicitação para redefinir a senha da sua conta Doccys. Clique no botão abaixo para escolher uma nova.",
+      "button": "Escolher nova senha",
+      "expiry": "O link expira em breve e só pode ser usado uma vez.",
+      "security": "Se você não solicitou isso, pode ignorar este e-mail com segurança — sua senha permanece inalterada."
+    }
   }
 }

@@ -47,7 +47,8 @@
       "weakPassword": "Password is too weak — use at least 6 characters.",
       "passwordMismatch": "The passwords don't match.",
       "nameMissing": "Choose your username before creating the account.",
-      "generic": "Something went wrong. Please try again."
+      "generic": "Something went wrong. Please try again.",
+      "rateLimited": "Too many attempts — please wait a moment and try again."
     },
     "confirmTitle": "Confirming your email",
     "confirmWorking": "Just a moment — your email is being confirmed, and you'll be taken to your profile…",
@@ -635,5 +636,25 @@
     "updateError": "The message could not be saved. Try again.",
     "deleteError": "The message could not be deleted. Try again.",
     "pinError": "Could not pin the message — another one is already pinned. Try again."
+  },
+  "mail": {
+    "tagline": "Independent documentaries. No ads. Ever.",
+    "support": "Questions? Write to support@doccys.com.",
+    "signup": {
+      "subject": "Confirm your email for your Doccys account",
+      "heading": "Welcome to Doccys",
+      "body": "Hi {name} — click the button below to confirm your email and get started.",
+      "button": "Confirm my email",
+      "expiry": "The link expires shortly and can only be used once.",
+      "ignore": "If you did not create an account with Doccys, you can safely ignore this email."
+    },
+    "reset": {
+      "subject": "Reset your password on Doccys",
+      "heading": "Reset your password",
+      "body": "We have received a request to reset the password for your Doccys account. Click the button below to choose a new one.",
+      "button": "Choose new password",
+      "expiry": "The link expires shortly and can only be used once.",
+      "security": "If you did not request this, you can safely ignore the email — your password remains unchanged."
+    }
   }
 }

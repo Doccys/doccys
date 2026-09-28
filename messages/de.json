@@ -47,7 +47,8 @@
       "weakPassword": "Passwort zu schwach — mindestens 6 Zeichen.",
       "passwordMismatch": "Die Passwörter stimmen nicht überein.",
       "nameMissing": "Wähle deinen Benutzernamen, bevor du das Konto erstellst.",
-      "generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
+      "generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+      "rateLimited": "Zu viele Versuche – bitte warten Sie einen Moment und versuchen Sie es erneut."
     },
     "confirmTitle": "Bestätigen Sie Ihre E-Mail",
     "confirmWorking": "Einen Moment — Ihre E-Mail wird bestätigt und Sie gelangen zu Ihrem Profil…",
@@ -635,5 +636,25 @@
     "updateError": "Die Nachricht konnte nicht gespeichert werden. Bitte erneut versuchen.",
     "deleteError": "Die Nachricht konnte nicht gelöscht werden. Bitte erneut versuchen.",
     "pinError": "Nachricht konnte nicht angepinnt werden — eine andere ist bereits angepinnt. Bitte erneut versuchen."
+  },
+  "mail": {
+    "tagline": "Unabhängige Dokumentationen. Keine Werbung. Niemals.",
+    "support": "Fragen? Schreiben Sie an support@doccys.com.",
+    "signup": {
+      "subject": "Bestätigen Sie Ihre E-Mail für Ihr Doccys-Konto",
+      "heading": "Willkommen bei Doccys",
+      "body": "Hallo {name} — klicken Sie auf die Schaltfläche unten, um Ihre E-Mail zu bestätigen und loszulegen.",
+      "button": "Meine E-Mail bestätigen",
+      "expiry": "Der Link läuft nach kurzer Zeit ab und kann nur einmal verwendet werden.",
+      "ignore": "Wenn Sie kein Konto bei Doccys erstellt haben, können Sie diese E-Mail ignorieren."
+    },
+    "reset": {
+      "subject": "Setzen Sie Ihr Passwort bei Doccys zurück",
+      "heading": "Setzen Sie Ihr Passwort zurück",
+      "body": "Wir haben eine Anfrage zum Zurücksetzen des Passworts für Ihr Doccys-Konto erhalten. Klicken Sie auf die Schaltfläche unten, um ein neues auszuwählen.",
+      "button": "Neues Passwort wählen",
+      "expiry": "Der Link läuft nach kurzer Zeit ab und kann nur einmal verwendet werden.",
+      "security": "Wenn Sie dies nicht angefordert haben, können Sie die E-Mail ignorieren — Ihr Passwort bleibt unverändert."
+    }
   }
 }

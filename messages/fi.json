@@ -47,7 +47,8 @@
       "weakPassword": "Salasana on liian heikko — käytä vähintään 6 merkkiä.",
       "passwordMismatch": "Salasanat eivät täsmää.",
       "nameMissing": "Valitse käyttäjänimesi ennen tilin luomista.",
-      "generic": "Jotain meni pieleen. Yritä uudelleen."
+      "generic": "Jotain meni pieleen. Yritä uudelleen.",
+      "rateLimited": "Liian monta yritystä — odota hetki ja yritä uudelleen."
     },
     "confirmTitle": "Vahvistetaan sähköpostiasi",
     "confirmWorking": "Hetkinen — sähköpostiasi vahvistetaan ja pääset profiiliisi…",
@@ -635,5 +636,25 @@
     "updateError": "Viestiä ei voitu tallentaa. Yritä uudelleen.",
     "deleteError": "Viestiä ei voitu poistaa. Yritä uudelleen.",
     "pinError": "Viestiä ei voitu kiinnittää — toinen on jo kiinnitetty. Yritä uudelleen."
+  },
+  "mail": {
+    "tagline": "Itsenäisiä dokumentteja. Ei mainoksia. Koskaan.",
+    "support": "Kysymyksiä? Kirjoita osoitteeseen support@doccys.com.",
+    "signup": {
+      "subject": "Vahvista sähköpostiosoitteesi Doccys-tiliäsi varten",
+      "heading": "Tervetuloa Doccysiin",
+      "body": "Hei {name} — napsauta alla olevaa painiketta vahvistaaksesi sähköpostiosoitteesi ja aloittaaksesi.",
+      "button": "Vahvista sähköpostiosoitteeni",
+      "expiry": "Linkki vanhenee lyhyen ajan kuluttua ja sitä voi käyttää vain kerran.",
+      "ignore": "Jos et ole luonut tiliä Doccysissa, voit huoletta jättää tämän sähköpostin huomiotta."
+    },
+    "reset": {
+      "subject": "Nollaa salasanasi Doccysissa",
+      "heading": "Nollaa salasanasi",
+      "body": "Olemme vastaanottaneet pyynnön nollata Doccys-tilisi salasana. Napsauta alla olevaa painiketta valitaksesi uuden.",
+      "button": "Valitse uusi salasana",
+      "expiry": "Linkki vanhenee lyhyen ajan kuluttua ja sitä voi käyttää vain kerran.",
+      "security": "Jos et ole pyytänyt tätä, voit huoletta jättää sähköpostin huomiotta — salasanasi on ennallaan."
+    }
   }
 }

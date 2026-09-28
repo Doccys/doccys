@@ -27,13 +27,11 @@ const ERROR_KEYS: Record<string, string> = {
  * `supabase.auth` via the browser client.
  *
  * - Login: signInWithPassword → on success go to the profile.
- * - Signup: signUp with an emailRedirectTo to the confirm card — kræver
- *   projektet e-mail-bekræftelse, vises notice i stedet for redirect.
- *   Bekræftelses-linket lander på /auth/confirm, som veksler ?code=
- *   på klienten og sender brugeren logget ind til profilen (landede
- *   linket direkte på /profile, var siden allerede server-renderet i
- *   logged-ud-varianten, før vekslen blev færdig — og der blev aldrig
- *   navigeret/refreshet bagefter).
+ * - Signup: POST /api/auth/signup — ruten opretter kontoen OG sender
+ *   bekræftelses-mailen selv (nodemailer, seerens sprog; Supabases
+ *   indbyggede skabeloner findes kun på engelsk). Mail-linket lander på
+ *   /auth/confirm med et engangs-token, som kortet veksler via
+ *   verifyOtp og sender brugeren logget ind til profilen.
  */
 export default function AuthForm() {
   const t = useTranslations("auth");
@@ -98,28 +96,30 @@ export default function AuthForm() {
           goToProfile();
         }
       } else {
-        const { data, error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            // bekræftelses-linket skal lande på confirm-kortet i seerens
-            // sprog — kortet veksler ?code= og sender videre til profilen
-            emailRedirectTo: `${window.location.origin}/${locale}/auth/confirm`,
+        // Signup går via appens API-rute: den opretter kontoen og sender
+        // selv bekræftelses-mailen på seerens sprog. Serveren svarer med
+        // ERROR_KEYS-nøglesprog ved fejl (emailExists/weakPassword/…).
+        const res = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            email,
+            password,
             // brugernavnet persisteres i metadata fra første sekund, så
             // chippen, profilen og kommentarer har det umiddelbart efter
             // første login — e-mailen vises aldrig som identitet
-            data: { full_name: name.trim() },
-          },
+            name: name.trim(),
+            locale,
+          }),
         });
-        if (error) {
-          handleError(error.code);
-        } else if (data.session) {
-          // Bekræftelse slået fra i projektet: session straks (f.eks. ved
-          // genoprettelse af en allerede bekræftet konto).
-          goToProfile();
+        if (!res.ok) {
+          const data = (await res.json().catch(() => null)) as {
+            error?: string;
+          } | null;
+          setErrorKey(data?.error ?? "generic");
         } else {
           // Bekræftelses-mail er afsendt — sessionen udstedes først
-          // efter klikket på linket.
+          // efter klikket på linket i mailen.
           setShowConfirmNotice(true);
         }
       }

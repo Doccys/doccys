@@ -47,7 +47,8 @@
       "weakPassword": "La contraseña es demasiado débil: usa al menos 6 caracteres.",
       "passwordMismatch": "Las contraseñas no coinciden.",
       "nameMissing": "Elige tu nombre de usuario antes de crear la cuenta.",
-      "generic": "Algo salió mal. Inténtalo de nuevo."
+      "generic": "Algo salió mal. Inténtalo de nuevo.",
+      "rateLimited": "Demasiados intentos: espera un momento y vuelve a intentarlo."
     },
     "confirmTitle": "Confirmando tu correo electrónico",
     "confirmWorking": "Un momento — tu correo electrónico está siendo confirmado y accederás a tu perfil…",
@@ -635,5 +636,25 @@
     "updateError": "No se pudo guardar el mensaje. Inténtalo de nuevo.",
     "deleteError": "No se pudo eliminar el mensaje. Inténtalo de nuevo.",
     "pinError": "No se pudo fijar el mensaje — ya hay otro fijado. Inténtalo de nuevo."
+  },
+  "mail": {
+    "tagline": "Documentales independientes. Sin anuncios. Nunca.",
+    "support": "¿Preguntas? Escribe a support@doccys.com.",
+    "signup": {
+      "subject": "Confirma tu correo electrónico para tu cuenta de Doccys",
+      "heading": "Bienvenido a Doccys",
+      "body": "Hola {name} — haz clic en el botón de abajo para confirmar tu correo electrónico y comenzar.",
+      "button": "Confirma mi correo electrónico",
+      "expiry": "El enlace caduca después de un corto tiempo y solo puede usarse una vez.",
+      "ignore": "Si no creaste una cuenta en Doccys, puedes ignorar este correo con seguridad."
+    },
+    "reset": {
+      "subject": "Restablece tu contraseña en Doccys",
+      "heading": "Restablece tu contraseña",
+      "body": "Hemos recibido una solicitud para restablecer la contraseña de tu cuenta de Doccys. Haz clic en el botón de abajo para elegir una nueva.",
+      "button": "Elige una nueva contraseña",
+      "expiry": "El enlace caduca después de un corto tiempo y solo puede usarse una vez.",
+      "security": "Si no solicitaste esto, puedes ignorar el correo con tranquilidad — tu contraseña no ha cambiado."
+    }
   }
 }

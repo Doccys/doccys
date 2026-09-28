@@ -1,5 +1,5 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-09-23
+Sidst opdateret: 2026-09-28
 ==========================================================
 
 GLOBAL UDRULNING: 5 NYE SPROG (23/9) — FULDFØRT OG LIVE-VERIFICERET
@@ -406,6 +406,56 @@ NB'S SOM BESTÅR:
 - CVR/erhvervsfelter er markeret "oplyses ved lancering" i
   teksterne — udfyldes når erhverskontoen er på plads.
 - Aldersbekræftelse er stadig sit eget backlog-punkt (ikke bygget).
+
+LOKALISEREDE AUTH-MAILS ×13 (28/9) — APPEN SENDER SELV — FULDFØRT OG BRUGER-VERIFICERET
+Supabases indbyggede auth-mails findes kun på engelsk (ét sprog pr.
+projekt). Beslutning med brugeren (valg B): appen sender selv signup-
+bekræftelse + password-nulstil via nodemailer over Namecheap-SMTP, med
+tekst fra messages-filerne i modtagerens sprog. Nyt `mail`-namespace
+(15 nøgler) + auth.errors.rateLimited → 508 nøgler ×13, fuld paritet.
+- ARKITEKTUR: AuthForm/ResetPasswordForm kalder POST /api/auth/signup
+  og /api/auth/reset. Ruterne bruger createServiceClient().auth.admin
+  .generateLink — signup-varianten OPRETTER selv brugeren (ubekræftet,
+  med password + full_name/locale-metadata) og returnerer et
+  engangs-token; intet createUser, intet opslag (getUserByEmail findes
+  ikke i supabase-js). Linket bygges selv af hashed_token →
+  /{locale}/auth/confirm?token_hash=…&type=signup (reset: …/auth/reset
+  &type=recovery) — action_link bruges IKKE (frossent redirect-mål).
+  ConfirmEmailClient/ResetPasswordForm veksler via verifyOtp (?code=-
+  grenene bevaret til gamle Supabase-mails). "Confirm email" forbliver
+  ON i dashboardet — admin-API'et udsender aldrig egne mails, så login
+  kræver stadig bekræftelse; sikkerheden er uændret.
+- MAIL-UDSEENDE: lys baggrund (mørke HTML-mails er spam-/dark-mode-
+  følsomme), knap som tabel-celle i champagne, From hårdkodet
+  "Doccys <contact@doccys.com>" (DMARC-alignment — intet env for From).
+  Både HTML- og plain-text-del. src/lib/mail.ts' kind-signatur gør
+  velkomstmail nem at tilføje senere (UDSAT-listen forbliver uændret).
+- NO ENUMERATION: reset-ruten svarer ALTID {ok:true} (ukendt e-mail =
+  ingen mail; SMTP-fejl logges, svaret forbliver ok). Signup afslører
+  emailExists som før (status quo). Fejltriage på error.message (admin-
+  fejl bærer sjældent error.code): /password|weak/i → weakPassword,
+  /already|exist|registered/i → emailExists, ellers generic.
+- RATE LIMITING (NY i projektet, src/lib/rateLimit.ts): in-memory pr.
+  server-instans — per-IP 5/10 min + per-e-mail 60 s cooldown.
+  NØDVENDIG: admin-API'et omgår Supabases egne limiter, så app-niveauet
+  er den eneste beskyttelse mod mail-bombing. Nulstilles ved genstart/
+  cold start — accepteret trade-off, intet limiter-dep.
+- STRICT MODE: verifyOtp-grene har ref-vagt mod dobbelt-kald (andet
+  kald rammer otp_expired) i begge kort.
+- ENV (brugeren): SMTP_HOST/PORT/USER/PASS i .env.local (append'et
+  28/9, adgangskoden = den fra Supabase-dashboardet; KUN i env, aldrig
+  git). VED VERCEL-RESUME: tilføj samme 4 nøgler i Vercel-env, og
+  bekræft at mail-links peger på https://doccys.com (origin tages fra
+  requestet — test med et link åbnet på en anden enhed).
+- E2E VERIFICERET AF BRUGEREN (28/9): signup- OG reset-mails virker,
+  på flere sprog (dansk + andre) — modtageren får mailen på eget
+  sprog, linket lander på /{locale}/auth/confirm og logger ind.
+  Resten af kæden (resend, emailExists, genklik = otp_expired) er
+  røgtet via Supabases enkelt-brug-OTP-logik og StrictMode-ref-vagten;
+  evt. kant-tilfælde fanges i den kommende feedback-runde.
+  VED VERCEL-RESUME (NB): SMTP_HOST/PORT/USER/PASS skal i Vercel-env,
+  og mail-links skal pege på https://doccys.com (origin tages fra
+  requestet — test et link åbnet på en anden enhed).
 
 E-MAIL PÅ EGET DOMÆNE + BEKRÆFT-LOGIN-KÆDE (21/9 → 28/9) — FULDFØRT OG BRUGER-VERIFICERET
 Signup-bekræftelse (Supabase) og købs-kvittering (Stripe, kun LIVE

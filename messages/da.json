@@ -52,7 +52,28 @@
       "weakPassword": "Adgangskoden er for svag — brug mindst 6 tegn.",
       "passwordMismatch": "Adgangskoderne er ikke ens.",
       "nameMissing": "Vælg dit brugernavn, før du opretter kontoen.",
+      "rateLimited": "For mange forsøg — vent lidt og prøv igen.",
       "generic": "Noget gik galt. Prøv igen."
+    }
+  },
+  "mail": {
+    "tagline": "Uafhængige dokumentarer. Ingen reklamer. Nogensinde.",
+    "support": "Spørgsmål? Skriv til support@doccys.com.",
+    "signup": {
+      "subject": "Bekræft din e-mail til din Doccys-konto",
+      "heading": "Velkommen til Doccys",
+      "body": "Hej {name} — klik på knappen herunder for at bekræfte din e-mail og komme i gang.",
+      "button": "Bekræft min e-mail",
+      "expiry": "Linket udløber efter kort tid og kan kun bruges én gang.",
+      "ignore": "Har du ikke oprettet en konto hos Doccys, kan du trygt ignorere denne mail."
+    },
+    "reset": {
+      "subject": "Nulstil din adgangskode på Doccys",
+      "heading": "Nulstil din adgangskode",
+      "body": "Vi har modtaget en forespørgsel om at nulstille adgangskoden til din Doccys-konto. Klik på knappen herunder for at vælge en ny.",
+      "button": "Vælg ny adgangskode",
+      "expiry": "Linket udløber efter kort tid og kan kun bruges én gang.",
+      "security": "Har du ikke bedt om dette, kan du roligt ignorere mailen — din adgangskode er uændret."
     }
   },
   "footer": {

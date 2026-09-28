@@ -47,7 +47,8 @@
       "weakPassword": "La password è troppo debole — usa almeno 6 caratteri.",
       "passwordMismatch": "Le password non corrispondono.",
       "nameMissing": "Scegli il tuo nome utente prima di creare l'account.",
-      "generic": "Qualcosa è andato storto. Riprova."
+      "generic": "Qualcosa è andato storto. Riprova.",
+      "rateLimited": "Troppi tentativi — attendi un po' e riprova."
     },
     "confirmTitle": "Conferma la tua e-mail",
     "confirmWorking": "Un momento — la tua e-mail viene confermata e accederai al tuo profilo…",
@@ -635,5 +636,25 @@
     "updateError": "Il post non può essere salvato. Riprova.",
     "deleteError": "Il post non può essere eliminato. Riprova.",
     "pinError": "Impossibile fissare il post — ce n'è già uno fissato. Riprova."
+  },
+  "mail": {
+    "tagline": "Documentari indipendenti. Nessuna pubblicità. Mai.",
+    "support": "Domande? Scrivi a support@doccys.com.",
+    "signup": {
+      "subject": "Conferma la tua e-mail per il tuo account Doccys",
+      "heading": "Benvenuto su Doccys",
+      "body": "Ciao {name} — clicca sul pulsante qui sotto per confermare la tua e-mail e iniziare.",
+      "button": "Conferma la mia e-mail",
+      "expiry": "Il link scade dopo poco tempo e può essere utilizzato solo una volta.",
+      "ignore": "Se non hai creato un account su Doccys, puoi tranquillamente ignorare questa e-mail."
+    },
+    "reset": {
+      "subject": "Reimposta la tua password su Doccys",
+      "heading": "Reimposta la tua password",
+      "body": "Abbiamo ricevuto una richiesta di reimpostazione della password per il tuo account Doccys. Clicca sul pulsante qui sotto per sceglierne una nuova.",
+      "button": "Scegli una nuova password",
+      "expiry": "Il link scade dopo poco tempo e può essere utilizzato solo una volta.",
+      "security": "Se non hai richiesto questo, puoi tranquillamente ignorare l'e-mail — la tua password rimane invariata."
+    }
   }
 }

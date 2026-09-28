@@ -47,7 +47,8 @@
       "weakPassword": "Mot de passe trop faible — au moins 6 caractères.",
       "passwordMismatch": "Les mots de passe ne correspondent pas.",
       "nameMissing": "Choisissez votre nom d'utilisateur avant de créer le compte.",
-      "generic": "Une erreur est survenue. Réessayez."
+      "generic": "Une erreur est survenue. Réessayez.",
+      "rateLimited": "Trop de tentatives — attendez un peu et réessayez."
     },
     "confirmTitle": "Confirme votre e-mail",
     "confirmWorking": "Un instant — votre e-mail est en cours de confirmation, et vous accéderez à votre profil…",
@@ -635,5 +636,25 @@
     "updateError": "Le message n'a pas pu être enregistré. Réessayez.",
     "deleteError": "Le message n'a pas pu être supprimé. Réessayez.",
     "pinError": "Impossible d'épingler le message — un autre est déjà épinglé. Réessayez."
+  },
+  "mail": {
+    "tagline": "Documentaires indépendants. Pas de publicités. Jamais.",
+    "support": "Des questions ? Écrivez à support@doccys.com.",
+    "signup": {
+      "subject": "Confirmez votre e-mail pour votre compte Doccys",
+      "heading": "Bienvenue sur Doccys",
+      "body": "Bonjour {name} — cliquez sur le bouton ci-dessous pour confirmer votre e-mail et commencer.",
+      "button": "Confirmer mon e-mail",
+      "expiry": "Le lien expire après peu de temps et ne peut être utilisé qu'une seule fois.",
+      "ignore": "Si vous n'avez pas créé de compte chez Doccys, vous pouvez ignorer cet e-mail en toute sécurité."
+    },
+    "reset": {
+      "subject": "Réinitialisez votre mot de passe sur Doccys",
+      "heading": "Réinitialisez votre mot de passe",
+      "body": "Nous avons reçu une demande pour réinitialiser le mot de passe de votre compte Doccys. Cliquez sur le bouton ci-dessous pour en choisir un nouveau.",
+      "button": "Choisir un nouveau mot de passe",
+      "expiry": "Le lien expire après peu de temps et ne peut être utilisé qu'une seule fois.",
+      "security": "Si vous n'avez pas demandé cela, vous pouvez ignorer cet e-mail en toute sécurité — votre mot de passe reste inchangé."
+    }
   }
 }

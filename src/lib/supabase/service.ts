@@ -1,10 +1,11 @@
 /**
  * Service-role-klient — omgår RLS, bruges KUN server-side.
  *
- * Importeres udelukkende af Stripe-webhook-ruten, som er den eneste
- * del af appen der skal skrive uden om brugerens RLS-sikkerhed
- * (indfri_koeb + markering af udløbne køb). Nøglen må ALDRIG eksponeres
- * som NEXT_PUBLIC_* — den giver fuld adgang til databasen.
+ * Importeres af Stripe-webhook-ruten (skriver uden om brugerens RLS:
+ * indfri_koeb + markering af udløbne køb) og auth-mail-ruterne
+ * (/api/auth/signup + /api/auth/reset: opretter ubekræftede konti og
+ * genererer engangs-links via admin.generateLink). Nøglen må ALDRIG
+ * eksponeres som NEXT_PUBLIC_* — den giver fuld adgang til databasen.
  */
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/lib/supabase/database.types";
