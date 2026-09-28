@@ -25,10 +25,12 @@ export default async function TermsPage({ params }: TermsPageProps) {
 
   // s11 = licensklausulen for skabere (accepteres pr. film ved upload
   // i studiet — jf. 20260923_film_licens.sql)
+  // s12 = aldersgrænse 18+ (bekræftes ved kontoprettelse — jf.
+  // AuthForm + /api/auth/signup, bevis i raw_user_meta_data)
   return (
     <LegalPage
       namespace="terms"
-      sections={["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"]}
+      sections={["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12"]}
     />
   );
 }

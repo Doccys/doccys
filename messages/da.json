@@ -106,7 +106,7 @@
     },
     "terms": {
       "title": "Handelsbetingelser",
-      "intro": "Disse betingelser gælder for brug af Doccys og for køb af minutter. Senest opdateret: 23. september 2026.",
+      "intro": "Disse betingelser gælder for brug af Doccys og for køb af minutter. Senest opdateret: 28. september 2026.",
       "sections": {
         "s1": {
           "title": "Om Doccys",
@@ -151,6 +151,10 @@
         "s11": {
           "title": "Licens ved upload af film (skabere)",
           "body": "Når du uploader en film til Doccys, bekræfter du følgende:\n• Du ejer alle rettigheder til filmen — herunder musik og arkivmateriale — og filmen krænker ikke tredjeparters rettigheder.\n• Du giver Doccys en ikke-eksklusiv, verdensomspændende og tidsubegrænset licens til at strømme filmen på platformen, fremstille undertekster og trailere på baggrund af filmen samt markedsføre filmen på platformen.\n• Du kan til enhver tid bede redaktionen fjerne din film — skriv til support@doccys.com.\n• Din accept registreres med tidspunkt og versionsnummer ved hver upload og gælder den film, du uploader.\nVed uoverensstemmelse mellem oversættelser er den danske tekst gældende (jf. afsnit 10)."
+        },
+        "s12": {
+          "title": "Aldersgrænse på 18 år",
+          "body": "Doccys er en streamingtjeneste for voksne: for at oprette en konto og bruge platformen skal du være mindst 18 år.\nVed oprettelsen af kontoen bekræfter du med afkrydsning, at du er mindst 18 år. Bekræftelsen registreres med tidspunkt og versionsnummer sammen med din konto.\nEn konto må ikke stilles til rådighed for unge under 18 år — indholdet på Doccys er ikke udvalgt eller aldersmærket til børn og unge.\nBliver vi opmærksomme på, at en bruger er under 18 år, kan vi lukke kontoen med omgående virkning (jf. afsnit 2 om ansvaret for din konto)."
         }
       }
     },
