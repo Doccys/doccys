@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
+import PasswordInput from "./PasswordInput";
 
 type Mode = "login" | "signup";
 
@@ -218,17 +219,11 @@ export default function AuthForm() {
               >
                 {t("password")}
               </label>
-              <input
+              <PasswordInput
                 id="password"
-                type="password"
-                required
-                minLength={6}
-                autoComplete={
-                  mode === "login" ? "current-password" : "new-password"
-                }
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className={inputClassName}
+                onChange={setPassword}
+                autoComplete={mode === "login" ? "current-password" : "new-password"}
               />
             </div>
 
@@ -240,15 +235,11 @@ export default function AuthForm() {
                 >
                   {t("passwordConfirm")}
                 </label>
-                <input
+                <PasswordInput
                   id="password-confirm"
-                  type="password"
-                  required
-                  minLength={6}
-                  autoComplete="new-password"
                   value={passwordConfirm}
-                  onChange={(e) => setPasswordConfirm(e.target.value)}
-                  className={inputClassName}
+                  onChange={setPasswordConfirm}
+                  autoComplete="new-password"
                 />
               </div>
             )}

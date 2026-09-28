@@ -51,7 +51,9 @@
     },
     "confirmTitle": "Confirmando tu correo electrónico",
     "confirmWorking": "Un momento — tu correo electrónico está siendo confirmado y accederás a tu perfil…",
-    "confirmError": "El enlace ha caducado o ya ha sido utilizado. Intenta iniciar sesión — si tu correo electrónico está confirmado, accederás directamente a tu perfil."
+    "confirmError": "El enlace ha caducado o ya ha sido utilizado. Intenta iniciar sesión — si tu correo electrónico está confirmado, accederás directamente a tu perfil.",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña"
   },
   "footer": {
     "tagline": "Documentales independientes. Sin anuncios. Nunca.",

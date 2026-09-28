@@ -4,6 +4,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
+import PasswordInput from "./PasswordInput";
 
 type Phase = "request" | "sent" | "new" | "done";
 
@@ -201,15 +202,11 @@ export default function ResetPasswordForm() {
               >
                 {t("newPassword")}
               </label>
-              <input
+              <PasswordInput
                 id="new-password"
-                type="password"
-                required
-                minLength={6}
-                autoComplete="new-password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className={inputClassName}
+                onChange={setPassword}
+                autoComplete="new-password"
               />
             </div>
 
@@ -220,15 +217,11 @@ export default function ResetPasswordForm() {
               >
                 {t("newPasswordConfirm")}
               </label>
-              <input
+              <PasswordInput
                 id="confirm-password"
-                type="password"
-                required
-                minLength={6}
-                autoComplete="new-password"
                 value={confirm}
-                onChange={(e) => setConfirm(e.target.value)}
-                className={inputClassName}
+                onChange={setConfirm}
+                autoComplete="new-password"
               />
             </div>
 

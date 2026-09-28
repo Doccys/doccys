@@ -51,7 +51,9 @@
     },
     "confirmTitle": "Confirme votre e-mail",
     "confirmWorking": "Un instant — votre e-mail est en cours de confirmation, et vous accéderez à votre profil…",
-    "confirmError": "Le lien a expiré ou a déjà été utilisé. Essayez de vous connecter — si votre e-mail est confirmé, vous accéderez directement à votre profil."
+    "confirmError": "Le lien a expiré ou a déjà été utilisé. Essayez de vous connecter — si votre e-mail est confirmé, vous accéderez directement à votre profil.",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe"
   },
   "footer": {
     "tagline": "Documentaires indépendants. Sans publicité. Jamais.",

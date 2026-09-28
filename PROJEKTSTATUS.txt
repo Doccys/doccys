@@ -439,11 +439,18 @@ brug → genklik = otp_expired).
   stadig gyldig), evt. skabeloner ×8. Stripe-kvitteringen: aktivér på
   BEGGE konti (husk live-kontoen ved lancering; kun LIVE mode sender —
   feedback-rundens test-køb udsender intet, og vennerne køber ikke).
-- RESTER I AUTH-KÆDEN: password-reset E2E (/da/auth/reset → mail →
-  link → ny adgangskode → login; koden findes, utestet) + oprydning af
-  test-konti i Authentication → Users bagefter. NB SPAM er ikke længere
-  et anliggende med egen afsender, men sig det til vennerne alligevel
-  hvis mailen lander i spamfilteret.
+- RESTER I AUTH-KÆDEN: KUN oprydning af test-konti i Authentication →
+  Users. Password-reset E2E er VERIFICERET af brugeren 28/9 (/da/auth/
+  reset → mail → link → ny adgangskode → login; Supabase afviser
+  korrekt at acceptere den GAMLE adgangskode som den nye). NB SPAM er
+  ikke længere et anliggende med egen afsender, men sig det til
+  vennerne alligevel hvis mailen lander i spamfilteret.
+- ØJE I ADGANGSKODE-FELTER (28/9, brugerønske): nyt genbrugeligt
+  PasswordInput (client) med vis/skjul-knap (inline-SVG à la UserMenu,
+  ash→bone-hover, aria-label ×13) erstatter alle 4 rå password-inputs
+  i AuthForm + ResetPasswordForm. Nøgler showPassword/hidePassword
+  (493 i alt, fuld paritet). Browserens adgangskode-hukommelse virker
+  stadig (autoComplete følger feltet).
 
 SVAR-TRÅDE I KOMMENTARFELTET (21/9) — MIGRATION KØRT, UDEFRÅ VERIFICERET
 Commits 6b3fbed (migration + backend) + c4b8ba5 (UI + i18n).

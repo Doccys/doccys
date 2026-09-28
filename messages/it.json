@@ -51,7 +51,9 @@
     },
     "confirmTitle": "Conferma la tua e-mail",
     "confirmWorking": "Un momento — la tua e-mail viene confermata e accederai al tuo profilo…",
-    "confirmError": "Il link è scaduto o è già stato utilizzato. Prova ad accedere — se la tua e-mail è confermata, verrai indirizzato direttamente al tuo profilo."
+    "confirmError": "Il link è scaduto o è già stato utilizzato. Prova ad accedere — se la tua e-mail è confermata, verrai indirizzato direttamente al tuo profilo.",
+    "showPassword": "Mostra password",
+    "hidePassword": "Nascondi password"
   },
   "footer": {
     "tagline": "Documentari indipendenti. Nessuna pubblicità. Mai.",

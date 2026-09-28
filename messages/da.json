@@ -20,6 +20,8 @@
     "username": "Brugernavn",
     "usernamePlaceholder": "Det navn, andre ser ved dine kommentarer",
     "password": "Adgangskode",
+    "showPassword": "Vis adgangskode",
+    "hidePassword": "Skjul adgangskode",
     "login": "Log ind",
     "signup": "Opret konto",
     "noAccount": "Har du ikke en konto?",

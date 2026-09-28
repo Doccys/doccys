@@ -51,7 +51,9 @@
     },
     "confirmTitle": "Bestätigen Sie Ihre E-Mail",
     "confirmWorking": "Einen Moment — Ihre E-Mail wird bestätigt und Sie gelangen zu Ihrem Profil…",
-    "confirmError": "Der Link ist abgelaufen oder wurde bereits verwendet. Versuchen Sie, sich anzumelden — ist Ihre E-Mail bestätigt, gelangen Sie direkt zu Ihrem Profil."
+    "confirmError": "Der Link ist abgelaufen oder wurde bereits verwendet. Versuchen Sie, sich anzumelden — ist Ihre E-Mail bestätigt, gelangen Sie direkt zu Ihrem Profil.",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen"
   },
   "footer": {
     "tagline": "Unabhängige Dokumentarfilme. Keine Werbung. Niemals.",

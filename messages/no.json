@@ -51,7 +51,9 @@
     },
     "confirmTitle": "Bekrefter din e-post",
     "confirmWorking": "Et øyeblikk — din e-post bekreftes, og du kommer inn på din profil…",
-    "confirmError": "Lenken er utløpt eller allerede brukt. Prøv å logge inn — er din e-post bekreftet, kommer du direkte til din profil."
+    "confirmError": "Lenken er utløpt eller allerede brukt. Prøv å logge inn — er din e-post bekreftet, kommer du direkte til din profil.",
+    "showPassword": "Vis passord",
+    "hidePassword": "Skjul passord"
   },
   "footer": {
     "tagline": "Uavhengige dokumentarer. Ingen reklamer. Aldri.",

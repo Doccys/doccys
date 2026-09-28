@@ -51,7 +51,9 @@
     },
     "confirmTitle": "Vahvistetaan sähköpostiasi",
     "confirmWorking": "Hetkinen — sähköpostiasi vahvistetaan ja pääset profiiliisi…",
-    "confirmError": "Linkki on vanhentunut tai jo käytetty. Yritä kirjautua sisään — jos sähköpostisi on vahvistettu, pääset suoraan profiiliisi."
+    "confirmError": "Linkki on vanhentunut tai jo käytetty. Yritä kirjautua sisään — jos sähköpostisi on vahvistettu, pääset suoraan profiiliisi.",
+    "showPassword": "Näytä salasana",
+    "hidePassword": "Piilota salasana"
   },
   "footer": {
     "tagline": "Itsenäiset dokumentit. Ei mainoksia. Koskaan.",

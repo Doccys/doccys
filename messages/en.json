@@ -51,7 +51,9 @@
     },
     "confirmTitle": "Confirming your email",
     "confirmWorking": "Just a moment — your email is being confirmed, and you'll be taken to your profile…",
-    "confirmError": "The link has expired or has already been used. Try logging in — if your email is confirmed, you'll go straight to your profile."
+    "confirmError": "The link has expired or has already been used. Try logging in — if your email is confirmed, you'll go straight to your profile.",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
   },
   "footer": {
     "tagline": "Independent documentaries. No ads. Ever.",
