@@ -234,9 +234,12 @@ PROJEKT PAUSE: DOCCYS ER OFFLINE (27/9) — RESUME FOERST NEDENSTAAENDE ER KLAR
 Brugerens beslutning: INGEN ma gaa paa siden online foer den er klar.
 Vercel-projektet er PAUSET i dashboardet — doccys.com OG
 doccys.vercel.app svarer ikke; kode, domaene-binding, env og DB
-staar uændret. Ved resume: deploy seneste commit (34503ed
-lancerings-laasen kan mangle at vaere deployet foer pausen) —
-robots-laasen aktiv fra foerste sekund, venner ind, crawlere ude.
+staar uændret. Ved resume: deploy seneste commit (cf67acd — auth-
+mails + oeje-i-adgangskode + bekræftelses-login + top-10-creators +
+lancerings-laasen 34503ed er ALLE aldrig deployet; Vercel bygger
+seneste commit automatisk, saa LAEG ENV-NOEGLERNE IND FOERST —
+se trin 3 + SMTP-nøglerne herunder) — robots-laasen aktiv fra
+foerste sekund, venner ind, crawlere ude.
 LOKALT KORER ALT STADIG: npm run dev + Supabase er uafhaengige af
 Vercel — alle nedennestaaende test/trin kan goeres paa localhost.
 Resume-checklist (i raekkefoelge):
@@ -408,6 +411,8 @@ NB'S SOM BESTÅR:
 - Aldersbekræftelse er stadig sit eget backlog-punkt (ikke bygget).
 
 LOKALISEREDE AUTH-MAILS ×13 (28/9) — APPEN SENDER SELV — FULDFØRT OG BRUGER-VERIFICERET
+Commit cf67acd (push'et til GitHub 28/9; Vercel bygger ikke, mens
+projektet er sat på pause — seneste commit deployes ved genaktivering).
 Supabases indbyggede auth-mails findes kun på engelsk (ét sprog pr.
 projekt). Beslutning med brugeren (valg B): appen sender selv signup-
 bekræftelse + password-nulstil via nodemailer over Namecheap-SMTP, med
@@ -1328,6 +1333,24 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+cf67acd emails: appen sender selv signup-bekraeftelse og nulstilling paa modtagerens sprog
+4945a4f auth: oeje i adgangskode-felterne (vis/skjul)
+9788d41 auth: bekræftelses-link lander paa /auth/confirm og logger ind
+6fcf254 upload: egen filvaelger-knap paa 13 sprog i studiet
+4d8afd0 docs: projekt pauset i vercel — resume-checklist noteret
+34503ed lancerings-laas: skjul doccys.com for soegemaskiner
+18d917d docs: top-10-creators e2e-verificeret paa produktion
+f8cbe91 top-10-creators: offentligt leaderboard paa /creators
+32daca2 docs: creator-tal migration koert og e2e-verificeret — 480 noegler paritet
+86591b8 creator-tal: studiets Dine-tal-sektion — indtjeningens bevisfoering
+75ae2ae docs: egress-migrationen koert — backfill verificeret paa 3 test-film
+35a4cb5 egress: skoen pr. session — sete sekunder x filbytes/laengde
+fef7057 film-licens: skaberens accept ved upload + klausul i betingelserne
+27bd76f studio: roedt paa-kravvet-badge ved undertekst- og trailer-knapper
+03002c8 docs: publiceringskrav-migration koert og live-verificeret i SQL editor
+b5f7d1d publiceringskrav: undertekster (13) + trailer paakravvet ved publicering
+d877558 docs: global udrulning fuldfoert — migrationer koert, live-verificeret
+bca579a docs: global udrulning i PROJEKTSTATUS + git-log
 a3d7b82 globalt: migrationer — sprog-constraints + seed-indhold paa 5 nye sprog
 eb8855d globalt: 13 locales gennem stakken + cjk-fonte + verify-tjek
 b032e63 globalt: oversaettelsesscript + messages-filer paa ja/zh/it/pt/hi
