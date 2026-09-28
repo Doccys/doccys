@@ -48,13 +48,16 @@
       "passwordMismatch": "Passordene er ikke like.",
       "nameMissing": "Velg brukernavnet ditt før du oppretter kontoen.",
       "generic": "Noe gikk galt. Prøv igjen.",
-      "rateLimited": "For mange forsøk — vent litt og prøv igjen."
+      "rateLimited": "For mange forsøk — vent litt og prøv igjen.",
+      "ageRequired": "Du må bekrefte at du er minst 18 år før kontoen opprettes."
     },
     "confirmTitle": "Bekrefter din e-post",
     "confirmWorking": "Et øyeblikk — din e-post bekreftes, og du kommer inn på din profil…",
     "confirmError": "Lenken er utløpt eller allerede brukt. Prøv å logge inn — er din e-post bekreftet, kommer du direkte til din profil.",
     "showPassword": "Vis passord",
-    "hidePassword": "Skjul passord"
+    "hidePassword": "Skjul passord",
+    "ageLabel": "Jeg bekrefter at jeg er minst 18 år — se",
+    "ageLink": "Handelsbetingelsene, avsnitt 12"
   },
   "footer": {
     "tagline": "Uavhengige dokumentarer. Ingen reklamer. Aldri.",
@@ -83,7 +86,7 @@
     },
     "terms": {
       "title": "Kjøpsvilkår",
-      "intro": "Disse vilkårene gjelder for bruk av Doccys og for kjøp av minutter. Sist oppdatert: 23. september 2026.",
+      "intro": "Disse vilkårene gjelder for bruk av Doccys og for kjøp av minutter. Sist oppdatert: 28. september 2026.",
       "sections": {
         "s1": {
           "title": "Om Doccys",
@@ -128,6 +131,10 @@
         "s11": {
           "title": "Lisens ved opplasting av film (skapere)",
           "body": "Når du laster opp en film til Doccys, bekrefter du følgende:\n• Du eier alle rettigheter til filmen — inkludert musikk og arkivmateriale — og filmen krenker ikke tredjeparts rettigheter.\n• Du gir Doccys en ikke-eksklusiv, verdensomspennende og tidsubegrenset lisens til å strømme filmen på plattformen, lage undertekster og trailere basert på filmen samt markedsføre filmen på plattformen.\n• Du kan når som helst be redaksjonen om å fjerne filmen din — skriv til support@doccys.com.\n• Din aksept registreres med tidspunkt og versjonsnummer ved hver opplasting og gjelder den filmen du laster opp.\nVed uoverensstemmelse mellom oversettelser er den danske teksten gjeldende (jf. avsnitt 10)."
+        },
+        "s12": {
+          "title": "Aldersgrense på 18 år",
+          "body": "Doccys er en streamingtjeneste for voksne: for å opprette en konto og bruke plattformen må du være minst 18 år.\nVed opprettelsen av kontoen bekrefter du med avkryssing at du er minst 18 år. Bekreftelsen registreres med tidspunkt og versjonsnummer sammen med kontoen din.\nEn konto må ikke gjøres tilgjengelig for unge under 18 år — innholdet på Doccys er ikke utvalgt eller aldersmerket for barn og unge.\nBlir vi oppmerksomme på at en bruker er under 18 år, kan vi stenge kontoen med umiddelbar virkning (jf. avsnitt 2 om ansvaret for kontoen din)."
         }
       }
     },

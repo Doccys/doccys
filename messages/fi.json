@@ -48,13 +48,16 @@
       "passwordMismatch": "Salasanat eivät täsmää.",
       "nameMissing": "Valitse käyttäjänimesi ennen tilin luomista.",
       "generic": "Jotain meni pieleen. Yritä uudelleen.",
-      "rateLimited": "Liian monta yritystä — odota hetki ja yritä uudelleen."
+      "rateLimited": "Liian monta yritystä — odota hetki ja yritä uudelleen.",
+      "ageRequired": "Sinun on vahvistettava, että olet vähintään 18-vuotias ennen tilin luomista."
     },
     "confirmTitle": "Vahvistetaan sähköpostiasi",
     "confirmWorking": "Hetkinen — sähköpostiasi vahvistetaan ja pääset profiiliisi…",
     "confirmError": "Linkki on vanhentunut tai jo käytetty. Yritä kirjautua sisään — jos sähköpostisi on vahvistettu, pääset suoraan profiiliisi.",
     "showPassword": "Näytä salasana",
-    "hidePassword": "Piilota salasana"
+    "hidePassword": "Piilota salasana",
+    "ageLabel": "Vahvistan, että olen vähintään 18-vuotias — katso",
+    "ageLink": "Käyttöehdot, luku 12"
   },
   "footer": {
     "tagline": "Itsenäiset dokumentit. Ei mainoksia. Koskaan.",
@@ -83,7 +86,7 @@
     },
     "terms": {
       "title": "Ehdot",
-      "intro": "Nämä ehdot koskevat Doccysin käyttöä ja minuuttien ostamista. Viimeksi päivitetty 23.9.2026.",
+      "intro": "Nämä ehdot koskevat Doccysin käyttöä ja minuuttien ostamista. Viimeksi päivitetty 28.9.2026.",
       "sections": {
         "s1": {
           "title": "Doccysistä",
@@ -128,6 +131,10 @@
         "s11": {
           "title": "Lisenssi elokuvan lataamiseen (tekijät)",
           "body": "Kun lataat elokuvan Doccysiin, vahvistat seuraavat:\n• Omistat kaikki oikeudet elokuvaan — mukaan lukien musiikki ja arkistomateriaali — eikä elokuva loukkaa kolmansien osapuolten oikeuksia.\n• Annoit Doccysille ei-yksinomaisen, maailmanlaajuisen ja ajallisesti rajoittamattoman lisenssin suoratoistaa elokuvaa alustalla, valmistaa tekstityksiä ja trailereita elokuvan pohjalta sekä markkinoida elokuvaa alustalla.\n• Voit milloin tahansa pyytää toimitusta poistamaan elokuvasi — kirjoita osoitteeseen support@doccys.com.\n• Hyväksyntäsi rekisteröidään ajankohdan ja versionumeron kanssa jokaisen latauksen yhteydessä ja koskee lataamaasi elokuvaa.\nKäännösten välisissä ristiriidoissa suomenkielinen teksti on ratkaiseva (ks. kohta 10)."
+        },
+        "s12": {
+          "title": "Ikäraja 18 vuotta",
+          "body": "Doccys on aikuisille suunnattu suoratoistopalvelu: tilin luomiseksi ja alustan käyttämiseksi sinun on oltava vähintään 18-vuotias.\nTilin luomisen yhteydessä vahvistat rastittamalla, että olet vähintään 18-vuotias. Vahvistus rekisteröidään aikaleiman ja versionumeron kanssa tilisi yhteyteen.\nTiliä ei saa antaa alle 18-vuotiaiden käyttöön — Doccysissä oleva sisältö ei ole valikoitu tai ikämerkattu lapsille ja nuorille.\nJos huomaamme, että käyttäjä on alle 18-vuotias, voimme sulkea tilin välittömästi (ks. jakso 2 tilisi vastuusta)."
         }
       }
     },

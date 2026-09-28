@@ -48,13 +48,16 @@
       "passwordMismatch": "Le password non corrispondono.",
       "nameMissing": "Scegli il tuo nome utente prima di creare l'account.",
       "generic": "Qualcosa è andato storto. Riprova.",
-      "rateLimited": "Troppi tentativi — attendi un po' e riprova."
+      "rateLimited": "Troppi tentativi — attendi un po' e riprova.",
+      "ageRequired": "Devi confermare di avere almeno 18 anni prima che l'account venga creato."
     },
     "confirmTitle": "Conferma la tua e-mail",
     "confirmWorking": "Un momento — la tua e-mail viene confermata e accederai al tuo profilo…",
     "confirmError": "Il link è scaduto o è già stato utilizzato. Prova ad accedere — se la tua e-mail è confermata, verrai indirizzato direttamente al tuo profilo.",
     "showPassword": "Mostra password",
-    "hidePassword": "Nascondi password"
+    "hidePassword": "Nascondi password",
+    "ageLabel": "Confermo di avere almeno 18 anni — vedere",
+    "ageLink": "Termini e condizioni, sezione 12"
   },
   "footer": {
     "tagline": "Documentari indipendenti. Nessuna pubblicità. Mai.",
@@ -83,7 +86,7 @@
     },
     "terms": {
       "title": "Termini e condizioni",
-      "intro": "Questi termini si applicano all'uso di Doccys e all'acquisto di minuti. Ultimo aggiornamento: 23 settembre 2026.",
+      "intro": "Questi termini si applicano all'uso di Doccys e all'acquisto di minuti. Ultimo aggiornamento: 28 settembre 2026.",
       "sections": {
         "s1": {
           "title": "Informazioni su Doccys",
@@ -128,6 +131,10 @@
         "s11": {
           "title": "Licenza per il caricamento di film (creatori)",
           "body": "Quando carichi un film su Doccys, confermi quanto segue:\n• Possiedi tutti i diritti sul film — inclusi musica e materiale d'archivio — e il film non viola i diritti di terzi.\n• Concedi a Doccys una licenza non esclusiva, mondiale e illimitata nel tempo per trasmettere il film sulla piattaforma, creare sottotitoli e trailer basati sul film e promuovere il film sulla piattaforma.\n• Puoi chiedere in qualsiasi momento alla redazione di rimuovere il tuo film — scrivi a support@doccys.com.\n• La tua accettazione viene registrata con data e numero di versione ad ogni caricamento e si applica al film che carichi.\nIn caso di discrepanze tra le traduzioni, il testo danese è quello valido (cfr. sezione 10)."
+        },
+        "s12": {
+          "title": "Limite di età di 18 anni",
+          "body": "Doccys è un servizio di streaming per adulti: per creare un account e utilizzare la piattaforma devi avere almeno 18 anni.\nCreando l'account, confermi con un segno di spunta di avere almeno 18 anni. La conferma viene registrata con data e numero di versione insieme al tuo account.\nUn account non deve essere messo a disposizione di giovani sotto i 18 anni — i contenuti su Doccys non sono selezionati o contrassegnati per bambini e giovani.\nSe veniamo a conoscenza che un utente ha meno di 18 anni, possiamo chiudere l'account con effetto immediato (cfr. sezione 2 sulla responsabilità del tuo account)."
         }
       }
     },

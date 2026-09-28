@@ -48,13 +48,16 @@
       "passwordMismatch": "The passwords don't match.",
       "nameMissing": "Choose your username before creating the account.",
       "generic": "Something went wrong. Please try again.",
-      "rateLimited": "Too many attempts — please wait a moment and try again."
+      "rateLimited": "Too many attempts — please wait a moment and try again.",
+      "ageRequired": "You must confirm that you are at least 18 years old before the account is created."
     },
     "confirmTitle": "Confirming your email",
     "confirmWorking": "Just a moment — your email is being confirmed, and you'll be taken to your profile…",
     "confirmError": "The link has expired or has already been used. Try logging in — if your email is confirmed, you'll go straight to your profile.",
     "showPassword": "Show password",
-    "hidePassword": "Hide password"
+    "hidePassword": "Hide password",
+    "ageLabel": "I confirm that I am at least 18 years old — see",
+    "ageLink": "Terms and Conditions, section 12"
   },
   "footer": {
     "tagline": "Independent documentaries. No ads. Ever.",
@@ -83,7 +86,7 @@
     },
     "terms": {
       "title": "Terms & Conditions",
-      "intro": "These terms apply to your use of Doccys and to the purchase of minutes. Last updated: 23 September 2026.",
+      "intro": "These terms apply to your use of Doccys and to the purchase of minutes. Last updated: 28 September 2026.",
       "sections": {
         "s1": {
           "title": "About Doccys",
@@ -128,6 +131,10 @@
         "s11": {
           "title": "License upon Uploading Films (Creators)",
           "body": "When you upload a film to Doccys, you confirm the following:\n• You own all rights to the film — including music and archival material — and the film does not infringe on third-party rights.\n• You grant Doccys a non-exclusive, worldwide, and perpetual license to stream the film on the platform, create subtitles and trailers based on the film, and market the film on the platform.\n• You can request the editorial team to remove your film at any time — write to support@doccys.com.\n• Your acceptance is recorded with a timestamp and version number upon each upload and applies to the film you upload.\nIn case of discrepancies between translations, the Danish text prevails (cf. section 10)."
+        },
+        "s12": {
+          "title": "Age limit of 18 years",
+          "body": "Doccys is a streaming service for adults: to create an account and use the platform, you must be at least 18 years old.\nBy creating the account, you confirm by checking that you are at least 18 years old. The confirmation is recorded with the timestamp and version number along with your account.\nAn account must not be made available to individuals under 18 years old — the content on Doccys is not selected or age-rated for children and young people.\nIf we become aware that a user is under 18 years old, we may close the account with immediate effect (see section 2 regarding your account responsibility)."
         }
       }
     },

@@ -95,12 +95,13 @@ const checks = [
     danish: ["Kommentarer &amp; diskussion", "Log ind for at gemme filmen"],
   },
   {
-    // Licensklausulen (terms s11) renderes på alle sprog — titlen
-    // verificerer sektionen; punktstrukturen i body validerede
-    // oversættelsesscriptets linje/"• "-tjek (body's \n splittes
-    // af LegalPage og kan ikke matches som én streng i HTML)
+    // Licensklausulen (terms s11) og aldersklausulen (terms s12)
+    // renderes på alle sprog — titlerne verificerer sektionerne;
+    // punktstrukturen i body validerede oversættelsesscriptets
+    // linje/"• "-tjek (body's \n splittes af LegalPage og kan ikke
+    // matches som én streng i HTML)
     url: "/ja/terms",
-    expectFrom: ["ja", ["legal.terms.sections.s11.title"]],
+    expectFrom: ["ja", ["legal.terms.sections.s11.title", "legal.terms.sections.s12.title"]],
     danish: ["Licens ved upload af film"],
   },
 ];
