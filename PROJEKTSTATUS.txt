@@ -251,6 +251,10 @@ Resume-checklist (i raekkefoelge):
    seneste session) — derefter er grundlaget vaek.
 2) CVR + erhvervskonto klar (brugeren korer virk.dk; ApS
    anbefalet: 3-aars aktieskat-uret starter, begrænset haeftelse).
+   STATUS 28/9: CVR-numret er SOEGT og under behandling hos
+   myndighederne — resume paa vent indtil det er paa plads.
+   (Trin 1 kan dog koeres allerede nu: egress-E2E + test-film-
+   ryddning kraever kun localhost + Supabase.)
 3) Vercel-env: NEXT_PUBLIC_SITE_URL=https://doccys.com foer
    resume (ellers localhost-fallback i sitemap/OG i produktion).
 4) Resume projekt i Vercel + verify: robots.txt = Disallow /,
