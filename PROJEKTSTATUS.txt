@@ -194,9 +194,12 @@ watched_seconds). Formelen bor i src/lib/analytics/egress.ts.
   billeder taelles ikke (ubetydeligt). KALIBRERING: sammenlign
   sum(estimated_egress_bytes) med Supabase-dashbordets baandbredde
   efter foerste rigtige seeruge.
-- Ingen UI → ingen i18n-noegler. Positiv test afventer migrationen:
-  se en test-film → select estimated_egress_bytes … order by
-  started_at desc limit 1 → > 0.
+- Ingen UI → ingen i18n-noegler. POSITIV TEST VERIFICERET (28/9,
+  bruger-E2E): testtest afspillet ~30 sek → tab luk → seneste
+  session estimated_egress_bytes = 2.397.476 (status abandoned)
+  — plausibelt: ~1/3 af filmens 7.147.054 bytes. Skønnet virker
+  end-to-end. Kalibrering mod dashbordets baandbredde-tal afventer
+  foerste rigtige seeruge.
 
 CREATOR-TAL: STUDIETS "DINE TAL" — INDTJENINGENS BEVISFØRING (26-27/9) — MIGRATION KØRT OG VERIFICERET
 Brugerens mål: skabernes data skal være DEL AF indtjeningen, sa
@@ -246,9 +249,11 @@ Resume-checklist (i raekkefoelge):
 1) Test-filmene bortryddes: SQL flip til draft (update ... where
    slug in ('testtest','test2','earth')) — slet derefter via
    localhost-studiet (/da/creator/studio, ejer-login; knappen
-   rydder Storage + DB + kaskader). EGRESS-E2E-TESTEN KOERES
-   FOERST (afspil testtest kort -> estimated_egress_bytes > 0 i
-   seneste session) — derefter er grundlaget vaek.
+   rydder Storage + DB + kaskader). EGRESS-E2E-TESTEN ER KOERT OG
+   VERIFICERET (28/9 — 2.397.476 bytes paa testtest); tilbage er
+   KUN flip + sletning via studiet. NB: isens-sidste-vinter har 0
+   ready-undertekst-raekker (se publiceringskrav-sektionen) — den
+   er en SEED-film og røres ikke af denne rydning.
 2) CVR + erhvervskonto klar (brugeren korer virk.dk; ApS
    anbefalet: 3-aars aktieskat-uret starter, begrænset haeftelse).
    STATUS 28/9: CVR-numret er SOEGT og under behandling hos
