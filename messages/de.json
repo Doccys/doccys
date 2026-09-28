@@ -531,7 +531,21 @@
     "nameLabel": "Benutzername",
     "nameSave": "Benutzernamen speichern",
     "nameSaved": "Dein Benutzername wurde gespeichert.",
-    "nameError": "Der Benutzername konnte nicht gespeichert werden. Versuch es erneut."
+    "nameError": "Der Benutzername konnte nicht gespeichert werden. Versuch es erneut.",
+    "deleteHeading": "Konto löschen",
+    "deleteIntro": "Die Löschung ist dauerhaft: Ihr Konto, Ihre Sehhistorie und Ihre gespeicherten Filme verschwinden, und Ihre Kommentare werden vollständig gelöscht. Kaufdaten werden anonymisiert für fünf Jahre gemäß dem Buchhaltungsgesetz aufbewahrt — ohne Verbindung zu Ihnen.",
+    "deleteConfirmLabel": "Geben Sie Ihren Benutzernamen (“{name}”) zur Bestätigung ein",
+    "deletePlaceholder": "Ihr Benutzername",
+    "deleteButton": "Konto dauerhaft löschen",
+    "deleteWorking": "Wird gelöscht…",
+    "deleteCreatorBlocked": "Ihr Konto besitzt ein Creator-Profil mit Filmen, Wiedergaben und Auszahlungen — es kann daher nicht selbstständig gelöscht werden. Schreiben Sie an die Redaktion, wir helfen Ihnen gerne:",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "Wählen Sie zuerst Ihren Benutzernamen oben — das ist die Bestätigung, die wir benötigen, wenn das Konto gelöscht werden soll.",
+    "deleteErrors": {
+      "generic": "Das Konto konnte noch nicht gelöscht werden. Versuchen Sie es erneut — es ist nichts falsch daran, es mehrmals zu versuchen, und wenn der Fehler weiterhin besteht, schreiben Sie an support@doccys.com.",
+      "nameMismatch": "Der Name stimmt nicht mit Ihrem Benutzernamen überein. Überprüfen Sie die Schreibweise und versuchen Sie es erneut.",
+      "creatorBlocked": "Ihr Konto besitzt ein Creator-Profil und kann hier nicht gelöscht werden. Schreiben Sie an support@doccys.com."
+    }
   },
   "watchHistory": {
     "completed": "Fertig gesehen",

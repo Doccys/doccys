@@ -531,7 +531,21 @@
     "nameLabel": "Brukernavn",
     "nameSave": "Lagre brukernavn",
     "nameSaved": "Brukernavnet ditt er lagret.",
-    "nameError": "Brukernavnet kunne ikke lagres. Prøv igjen."
+    "nameError": "Brukernavnet kunne ikke lagres. Prøv igjen.",
+    "deleteHeading": "Slett konto",
+    "deleteIntro": "Slettingen er permanent: kontoen din, seerhistorikken din og de lagrede filmene dine forsvinner, og kommentarene dine blir slettet helt. Kjøpsdata oppbevares anonymisert i fem år i henhold til bokføringsloven — uten kobling til deg.",
+    "deleteConfirmLabel": "Skriv brukernavnet ditt (“{name}”) for å bekrefte",
+    "deletePlaceholder": "Ditt brukernavn",
+    "deleteButton": "Slett min konto permanent",
+    "deleteWorking": "Sletter…",
+    "deleteCreatorBlocked": "Kontoen din eier en skaperprofil med filmer, avspillinger og utbetalinger — den kan derfor ikke slettes selvbetjent. Skriv til redaksjonen, så hjelper vi deg:",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "Velg først brukernavnet ditt ovenfor — det er bekreftelsen vi ber om når kontoen skal slettes.",
+    "deleteErrors": {
+      "generic": "Kontoen kunne ikke slettes ennå. Prøv igjen — det skjer ikke noe galt ved å prøve flere ganger, og hvis feilen vedvarer, skriv til support@doccys.com.",
+      "nameMismatch": "Navnet samsvarer ikke med brukernavnet ditt. Sjekk stavemåten og prøv igjen.",
+      "creatorBlocked": "Kontoen din eier en skaperprofil og kan ikke slettes her. Skriv til support@doccys.com."
+    }
   },
   "watchHistory": {
     "completed": "Fullført",

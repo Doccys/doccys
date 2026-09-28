@@ -531,7 +531,21 @@
     "nameLabel": "Nom d'utilisateur",
     "nameSave": "Enregistrer le nom d'utilisateur",
     "nameSaved": "Votre nom d'utilisateur a été enregistré.",
-    "nameError": "Le nom d'utilisateur n'a pas pu être enregistré. Réessayez."
+    "nameError": "Le nom d'utilisateur n'a pas pu être enregistré. Réessayez.",
+    "deleteHeading": "Supprimer le compte",
+    "deleteIntro": "La suppression est permanente : votre compte, votre historique de visionnage et vos films enregistrés disparaîtront, et vos commentaires seront complètement supprimés. Les données d'achat sont conservées de manière anonymisée pendant cinq ans conformément à la loi sur la comptabilité — sans lien avec vous.",
+    "deleteConfirmLabel": "Entrez votre nom d'utilisateur (“{name}”) pour confirmer",
+    "deletePlaceholder": "Votre nom d'utilisateur",
+    "deleteButton": "Supprimer mon compte définitivement",
+    "deleteWorking": "Suppression…",
+    "deleteCreatorBlocked": "Votre compte possède un profil créateur avec des films, des lectures et des paiements — il ne peut donc pas être supprimé de manière autonome. Écrivez à la rédaction, nous vous aiderons :",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "Veuillez d'abord sélectionner votre nom d'utilisateur ci-dessus — c'est la confirmation que nous demandons lorsque le compte doit être supprimé.",
+    "deleteErrors": {
+      "generic": "Le compte n'a pas pu être supprimé pour le moment. Réessayez — il n'y a rien de mal à essayer plusieurs fois, et si l'erreur persiste, écrivez à support@doccys.com.",
+      "nameMismatch": "Le nom ne correspond pas à votre nom d'utilisateur. Vérifiez l'orthographe et réessayez.",
+      "creatorBlocked": "Votre compte possède un profil créateur et ne peut pas être supprimé ici. Écrivez à support@doccys.com."
+    }
   },
   "watchHistory": {
     "completed": "Terminé",

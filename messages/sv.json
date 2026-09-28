@@ -531,7 +531,21 @@
     "nameLabel": "Användarnamn",
     "nameSave": "Spara användarnamn",
     "nameSaved": "Ditt användarnamn har sparats.",
-    "nameError": "Användarnamnet kunde inte sparas. Försök igen."
+    "nameError": "Användarnamnet kunde inte sparas. Försök igen.",
+    "deleteHeading": "Ta bort konto",
+    "deleteIntro": "Borttagningen är permanent: ditt konto, din visningshistorik och dina sparade filmer försvinner, och dina kommentarer raderas helt. Köpinformation lagras anonymiserad i fem år enligt bokföringslagen — utan koppling till dig.",
+    "deleteConfirmLabel": "Skriv ditt användarnamn (“{name}”) för att bekräfta",
+    "deletePlaceholder": "Ditt användarnamn",
+    "deleteButton": "Ta bort min konto permanent",
+    "deleteWorking": "Tar bort…",
+    "deleteCreatorBlocked": "Ditt konto äger en skapareprofil med filmer, visningar och utbetalningar — den kan därför inte tas bort självbetjänat. Skriv till redaktionen så hjälper vi dig:",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "Välj först ditt användarnamn ovan — det är bekräftelsen vi ber om när kontot ska tas bort.",
+    "deleteErrors": {
+      "generic": "Kontot kunde inte tas bort ännu. Försök igen — det gör inget fel att försöka flera gånger, och om felet kvarstår, skriv till support@doccys.com.",
+      "nameMismatch": "Namnet matchar inte ditt användarnamn. Kontrollera stavningen och försök igen.",
+      "creatorBlocked": "Ditt konto äger en skapareprofil och kan inte tas bort här. Skriv till support@doccys.com."
+    }
   },
   "watchHistory": {
     "completed": "Färdigvisad",

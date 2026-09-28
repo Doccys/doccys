@@ -531,7 +531,21 @@
     "nameLabel": "Nome utente",
     "nameSave": "Salva nome utente",
     "nameSaved": "Il tuo nome utente è stato salvato.",
-    "nameError": "Il nome utente non può essere salvato. Riprova."
+    "nameError": "Il nome utente non può essere salvato. Riprova.",
+    "deleteHeading": "Elimina account",
+    "deleteIntro": "L'eliminazione è permanente: il tuo account, la tua cronologia di visione e i tuoi film salvati scompariranno, e i tuoi commenti verranno eliminati completamente. I dati di acquisto vengono conservati in forma anonima per cinque anni ai sensi della legge contabile — senza collegamento a te.",
+    "deleteConfirmLabel": "Scrivi il tuo nome utente (“{name}”) per confermare",
+    "deletePlaceholder": "Il tuo nome utente",
+    "deleteButton": "Elimina il mio account permanentemente",
+    "deleteWorking": "Eliminando…",
+    "deleteCreatorBlocked": "Il tuo account possiede un profilo creatore con film, riproduzioni e pagamenti — pertanto non può essere eliminato autonomamente. Scrivi alla redazione, ti aiuteremo:",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "Seleziona prima il tuo nome utente qui sopra — è la conferma che chiediamo quando l'account deve essere eliminato.",
+    "deleteErrors": {
+      "generic": "L'account non può essere eliminato ancora. Riprova — non succede nulla di sbagliato nel provare più volte, e se l'errore persiste, scrivi a support@doccys.com.",
+      "nameMismatch": "Il nome non corrisponde al tuo nome utente. Controlla l'ortografia e riprova.",
+      "creatorBlocked": "Il tuo account possiede un profilo creatore e non può essere eliminato qui. Scrivi a support@doccys.com."
+    }
   },
   "watchHistory": {
     "completed": "Completato",

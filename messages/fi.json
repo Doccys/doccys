@@ -531,7 +531,21 @@
     "nameLabel": "Käyttäjänimi",
     "nameSave": "Tallenna käyttäjänimi",
     "nameSaved": "Käyttäjänimesi on tallennettu.",
-    "nameError": "Käyttäjänimen tallentaminen epäonnistui. Yritä uudelleen."
+    "nameError": "Käyttäjänimen tallentaminen epäonnistui. Yritä uudelleen.",
+    "deleteHeading": "Poista tili",
+    "deleteIntro": "Poisto on pysyvä: tilisi, katseluhistoriasi ja tallennetut elokuvat katoavat, ja kommenttisi poistetaan kokonaan. Ostotietoja säilytetään anonymisoituna viisi vuotta kirjanpitolain mukaan — ilman yhteyttä sinuun.",
+    "deleteConfirmLabel": "Kirjoita käyttäjänimesi (“{name}”) vahvistaaksesi",
+    "deletePlaceholder": "Käyttäjänimesi",
+    "deleteButton": "Poista tilini pysyvästi",
+    "deleteWorking": "Poistetaan…",
+    "deleteCreatorBlocked": "Tilisi omistaa luojaprofiilin, jossa on elokuvia, toistoja ja maksusuorituksia — sitä ei voi siksi poistaa itsepalveluna. Ota yhteyttä toimitukseen, niin autamme sinua:",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "Valitse ensin käyttäjänimesi yllä — se on vahvistus, jota pyydämme, kun tiliä poistetaan.",
+    "deleteErrors": {
+      "generic": "Tiliä ei voitu vielä poistaa. Yritä uudelleen — ei ole mitään väärää yrittää useita kertoja, ja jos virhe jatkuu, kirjoita osoitteeseen support@doccys.com.",
+      "nameMismatch": "Nimi ei vastaa käyttäjänimeäsi. Tarkista kirjoitusasu ja yritä uudelleen.",
+      "creatorBlocked": "Tilisi omistaa luojaprofiilin eikä sitä voi poistaa täällä. Kirjoita osoitteeseen support@doccys.com."
+    }
   },
   "watchHistory": {
     "completed": "Katsottu loppuun",

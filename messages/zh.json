@@ -531,7 +531,21 @@
     "nameLabel": "用户名",
     "nameSave": "保存用户名",
     "nameSaved": "您的用户名已保存。",
-    "nameError": "无法保存用户名。请再试一次。"
+    "nameError": "无法保存用户名。请再试一次。",
+    "deleteHeading": "删除账户",
+    "deleteIntro": "删除是永久性的：您的账户、观看历史和收藏的电影将消失，您的评论将被完全删除。根据会计法，购买数据将匿名保存五年——与您无关。",
+    "deleteConfirmLabel": "输入您的用户名（“{name}”）以确认",
+    "deletePlaceholder": "您的用户名",
+    "deleteButton": "永久删除我的账户",
+    "deleteWorking": "正在删除…",
+    "deleteCreatorBlocked": "您的账户拥有一个创作者资料，包含电影、播放和付款——因此无法自助删除。请联系编辑部，我们会帮助您：",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "请先在上方选择您的用户名——这是我们在删除账户时要求的确认。",
+    "deleteErrors": {
+      "generic": "账户尚未删除。请再试一次——多次尝试没有问题，如果错误持续，请联系support@doccys.com。",
+      "nameMismatch": "名称与您的用户名不匹配。请检查拼写并重试。",
+      "creatorBlocked": "您的账户拥有一个创作者资料，无法在此删除。请联系support@doccys.com。"
+    }
   },
   "watchHistory": {
     "completed": "已观看",

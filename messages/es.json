@@ -531,7 +531,21 @@
     "nameLabel": "Nombre de usuario",
     "nameSave": "Guardar nombre de usuario",
     "nameSaved": "Tu nombre de usuario se ha guardado.",
-    "nameError": "No se pudo guardar el nombre de usuario. Inténtalo de nuevo."
+    "nameError": "No se pudo guardar el nombre de usuario. Inténtalo de nuevo.",
+    "deleteHeading": "Eliminar cuenta",
+    "deleteIntro": "La eliminación es permanente: tu cuenta, tu historial de visualización y tus películas guardadas desaparecerán, y tus comentarios se eliminarán por completo. Los datos de compra se almacenan de forma anónima durante cinco años según la ley de contabilidad — sin conexión contigo.",
+    "deleteConfirmLabel": "Escribe tu nombre de usuario (“{name}”) para confirmar",
+    "deletePlaceholder": "Tu nombre de usuario",
+    "deleteButton": "Eliminar mi cuenta permanentemente",
+    "deleteWorking": "Eliminando…",
+    "deleteCreatorBlocked": "Tu cuenta posee un perfil de creador con películas, reproducciones y pagos — por lo tanto, no se puede eliminar de forma autónoma. Escribe al equipo editorial y te ayudaremos:",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "Primero selecciona tu nombre de usuario arriba — es la confirmación que pedimos cuando se debe eliminar la cuenta.",
+    "deleteErrors": {
+      "generic": "La cuenta no se pudo eliminar aún. Intenta de nuevo — no hay nada de malo en intentar varias veces, y si el error persiste, escribe a support@doccys.com.",
+      "nameMismatch": "El nombre no coincide con tu nombre de usuario. Verifica la ortografía y vuelve a intentarlo.",
+      "creatorBlocked": "Tu cuenta posee un perfil de creador y no se puede eliminar aquí. Escribe a support@doccys.com."
+    }
   },
   "watchHistory": {
     "completed": "Finalizada",

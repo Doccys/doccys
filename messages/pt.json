@@ -531,7 +531,21 @@
     "nameLabel": "Nome de usuário",
     "nameSave": "Salvar nome de usuário",
     "nameSaved": "Seu nome de usuário foi salvo.",
-    "nameError": "Não foi possível salvar o nome de usuário. Tente novamente."
+    "nameError": "Não foi possível salvar o nome de usuário. Tente novamente.",
+    "deleteHeading": "Excluir conta",
+    "deleteIntro": "A exclusão é permanente: sua conta, seu histórico de visualização e seus filmes salvos desaparecerão, e seus comentários serão completamente apagados. Os dados de compra são armazenados de forma anônima por cinco anos, de acordo com a lei de contabilidade — sem ligação com você.",
+    "deleteConfirmLabel": "Digite seu nome de usuário (“{name}”) para confirmar",
+    "deletePlaceholder": "Seu nome de usuário",
+    "deleteButton": "Excluir minha conta permanentemente",
+    "deleteWorking": "Excluindo…",
+    "deleteCreatorBlocked": "Sua conta possui um perfil de criador com filmes, reproduções e pagamentos — portanto, não pode ser excluída por conta própria. Entre em contato com a redação, e nós ajudaremos você:",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "Primeiro, escolha seu nome de usuário acima — é a confirmação que pedimos quando a conta deve ser excluída.",
+    "deleteErrors": {
+      "generic": "A conta não pôde ser excluída ainda. Tente novamente — não há problema em tentar várias vezes, e se o erro persistir, escreva para support@doccys.com.",
+      "nameMismatch": "O nome não corresponde ao seu nome de usuário. Verifique a ortografia e tente novamente.",
+      "creatorBlocked": "Sua conta possui um perfil de criador e não pode ser excluída aqui. Escreva para support@doccys.com."
+    }
   },
   "watchHistory": {
     "completed": "Concluído",

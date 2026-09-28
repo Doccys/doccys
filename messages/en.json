@@ -531,7 +531,21 @@
     "nameLabel": "Username",
     "nameSave": "Save username",
     "nameSaved": "Your username has been saved.",
-    "nameError": "The username could not be saved. Try again."
+    "nameError": "The username could not be saved. Try again.",
+    "deleteHeading": "Delete account",
+    "deleteIntro": "The deletion is permanent: your account, your viewing history, and your saved movies will disappear, and your comments will be completely deleted. Purchase data is stored anonymously for five years according to the accounting law — without linking to you.",
+    "deleteConfirmLabel": "Type your username (“{name}”) to confirm",
+    "deletePlaceholder": "Your username",
+    "deleteButton": "Permanently delete my account",
+    "deleteWorking": "Deleting…",
+    "deleteCreatorBlocked": "Your account owns a creator profile with movies, plays, and payouts — it cannot be deleted by yourself. Write to the editorial team, and we will help you:",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "First select your username above — that is the confirmation we ask for when the account is to be deleted.",
+    "deleteErrors": {
+      "generic": "The account could not be deleted yet. Please try again — there is nothing wrong with trying multiple times, and if the error persists, write to support@doccys.com.",
+      "nameMismatch": "The name does not match your username. Check the spelling and try again.",
+      "creatorBlocked": "Your account owns a creator profile and cannot be deleted here. Write to support@doccys.com."
+    }
   },
   "watchHistory": {
     "completed": "Completed",
