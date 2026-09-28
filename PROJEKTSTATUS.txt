@@ -246,14 +246,13 @@ foerste sekund, venner ind, crawlere ude.
 LOKALT KORER ALT STADIG: npm run dev + Supabase er uafhaengige af
 Vercel — alle nedennestaaende test/trin kan goeres paa localhost.
 Resume-checklist (i raekkefoelge):
-1) Test-filmene bortryddes: SQL flip til draft (update ... where
-   slug in ('testtest','test2','earth')) — slet derefter via
-   localhost-studiet (/da/creator/studio, ejer-login; knappen
-   rydder Storage + DB + kaskader). EGRESS-E2E-TESTEN ER KOERT OG
-   VERIFICERET (28/9 — 2.397.476 bytes paa testtest); tilbage er
-   KUN flip + sletning via studiet. NB: isens-sidste-vinter har 0
-   ready-undertekst-raekker (se publiceringskrav-sektionen) — den
-   er en SEED-film og røres ikke af denne rydning.
+1) FULDFØRT (28/9): Egress-E2E-testen verificeret (2.397.476
+   bytes paa testtest, se egress-sektionen) → SQL flip til draft
+   (testtest/test2/earth) → alle 3 film SLETTET via localhost-
+   studiet (knappen rydder Storage + DB + kaskader). Verificeret
+   udefra: anon GET documentaries slug in (testtest,test2,earth)
+   → []. NB: test2's 8 gamle 429-failed-raekker i film_subtitles
+   er kaaskade-slettet med filmen.
 2) CVR + erhvervskonto klar (brugeren korer virk.dk; ApS
    anbefalet: 3-aars aktieskat-uret starter, begrænset haeftelse).
    STATUS 28/9: CVR-numret er SOEGT og under behandling hos
@@ -1279,9 +1278,10 @@ apikey-header mod PostgREST). Service_role: legacy JWT — i .env.local.
 RESTERENDE PUNKTER (i prioriteret rækkefølge)
 0. Undertekster E2E — DONE (19/9): testfilm 'testtest' (talesprog
    English) kørt igennem pipelinen, 8/8 ready, CC-menu verificeret
-   (da+es). Rester: 'test2' har 8 gamle failed-rækker fra en
-   429-kredit-kørsel — genkør med Generér-knappen, og evt. ryd
-   op i testfilmene inden lancering.
+   (da+es). Testfilmene (testtest/test2/earth) er SLETTET 28/9 —
+   rydningen er færdig; isens-sidste-vinter har stadig 0 ready-
+   raekker i film_subtitles (se publiceringskrav-sektionen), tjek
+   ved første genkørsel af undertekst-pipelinen.
 1. Opslagstavle — VIRKER (19/9, bruger verificeret): ejer ser
    skriveformular på /da/creator/{eget handle}; seed-profilerne
    (nordlys/havblik/betonvaerket) har owner_user_id = null og kan
