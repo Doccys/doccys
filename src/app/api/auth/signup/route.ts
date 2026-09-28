@@ -7,6 +7,14 @@ import { routing } from "@/i18n/routing";
 export const dynamic = "force-dynamic";
 
 /**
+ * Alders-vilkårs-version: bundet til "Senest opdateret"-datoen i
+ * legal.terms.intro og klausulen i legal.terms.sections.s12 —
+ * ændres aldersklausulen væsentligt, bumpes alle tre steder
+ * (samme model som FILM_LICENSE_VERSION i api/films/route.ts).
+ */
+const AGE_TERMS_VERSION = "2026-09-28";
+
+/**
  * POST /api/auth/signup — opret konto OG send den lokaliserede
  * bekræftelses-mail.
  *
@@ -17,15 +25,25 @@ export const dynamic = "force-dynamic";
  * af hashed_token, og mailen sendes via nodemailer på seerens sprog.
  * action_link bruges IKKE: dens redirect-mål fryses ved afsendelse.
  *
+ * 18+-bekræftelse (Handelsbetingelserne afsnit 12): ruten kræver
+ * ageAccepted === true og skriver selv beviset (servertid + version)
+ * i raw_user_meta_data — klienten sender ingen tid, intet klient-ur.
+ *
  * Supabase udsender ingen egne mails fra admin-API'et; "Confirm email"
  * forbliver slået til i dashboardet, så login stadig kræver bekræftelse.
  *
  * Svarer {ok:true} ved succes; fejl svarer med ERROR_KEYS-nøglesprog
- * (emailExists/weakPassword/rateLimited/generic), som AuthForm viser
- * direkte.
+ * (emailExists/weakPassword/rateLimited/ageRequired/generic), som
+ * AuthForm viser direkte.
  */
 export async function POST(request: NextRequest) {
-  let body: { email?: string; password?: string; name?: string; locale?: string };
+  let body: {
+    email?: string;
+    password?: string;
+    name?: string;
+    locale?: string;
+    ageAccepted?: boolean;
+  };
   try {
     body = await request.json();
   } catch {
@@ -47,6 +65,13 @@ export async function POST(request: NextRequest) {
   if (name.length < 1 || name.length > 120) {
     return NextResponse.json({ error: "nameMissing" }, { status: 400 });
   }
+  // 18+ (Handelsbetingelserne afsnit 12): strikt === true — en streng
+  // "true" eller 1 afvises (samme håndhævelse som licensen i /api/films).
+  // Tjekket ligger blandt felt-valideringerne, FØR rate-limit, så et
+  // afvist kald ikke koster en bucket eller en mail.
+  if (body.ageAccepted !== true) {
+    return NextResponse.json({ error: "ageRequired" }, { status: 422 });
+  }
   const locale: (typeof routing.locales)[number] = routing.locales.includes(
     (body.locale ?? "") as (typeof routing.locales)[number],
   )
@@ -67,7 +92,17 @@ export async function POST(request: NextRequest) {
     type: "signup",
     email,
     password,
-    options: { data: { full_name: name, locale } },
+    options: {
+      data: {
+        full_name: name,
+        locale,
+        // 18+-bevis: HVORNÅR (servertid) + HVAD (vilkårs-version bundet
+        // til terms-datoen) — samme model som filmlicensens kolonner,
+        // blot i metadata da auth.users ikke kan ALTER'es.
+        age_confirmed_at: new Date().toISOString(),
+        age_terms_version: AGE_TERMS_VERSION,
+      },
+    },
   });
 
   if (error) {
