@@ -26,11 +26,13 @@ const ERROR_KEYS: Record<string, string> = {
  * `supabase.auth` via the browser client.
  *
  * - Login: signInWithPassword → on success go to the profile.
- * - Signup: signUp with an emailRedirectTo back to the profile — kræver
- *   projektet e-mail-bekræftelse, vises notice i stedet for redirect,
- *   og bekræftelses-linket i mailen rammer siten (og ikke dashboardets
- *   Site URL). Efter klikket veksler detectSessionInUrl ?code=-linket
- *   til en session, og brugeren lander logget ind på profilen.
+ * - Signup: signUp with an emailRedirectTo to the confirm card — kræver
+ *   projektet e-mail-bekræftelse, vises notice i stedet for redirect.
+ *   Bekræftelses-linket lander på /auth/confirm, som veksler ?code=
+ *   på klienten og sender brugeren logget ind til profilen (landede
+ *   linket direkte på /profile, var siden allerede server-renderet i
+ *   logged-ud-varianten, før vekslen blev færdig — og der blev aldrig
+ *   navigeret/refreshet bagefter).
  */
 export default function AuthForm() {
   const t = useTranslations("auth");
@@ -99,9 +101,9 @@ export default function AuthForm() {
           email,
           password,
           options: {
-            // bekræftelses-linket skal lande på siten i seerens sprog —
-            // ellers sender Supabase det til dashboardets Site URL
-            emailRedirectTo: `${window.location.origin}/${locale}/profile`,
+            // bekræftelses-linket skal lande på confirm-kortet i seerens
+            // sprog — kortet veksler ?code= og sender videre til profilen
+            emailRedirectTo: `${window.location.origin}/${locale}/auth/confirm`,
             // brugernavnet persisteres i metadata fra første sekund, så
             // chippen, profilen og kommentarer har det umiddelbart efter
             // første login — e-mailen vises aldrig som identitet

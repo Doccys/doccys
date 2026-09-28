@@ -48,7 +48,10 @@
       "passwordMismatch": "Passordene er ikke like.",
       "nameMissing": "Velg brukernavnet ditt før du oppretter kontoen.",
       "generic": "Noe gikk galt. Prøv igjen."
-    }
+    },
+    "confirmTitle": "Bekrefter din e-post",
+    "confirmWorking": "Et øyeblikk — din e-post bekreftes, og du kommer inn på din profil…",
+    "confirmError": "Lenken er utløpt eller allerede brukt. Prøv å logge inn — er din e-post bekreftet, kommer du direkte til din profil."
   },
   "footer": {
     "tagline": "Uavhengige dokumentarer. Ingen reklamer. Aldri.",

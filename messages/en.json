@@ -48,7 +48,10 @@
       "passwordMismatch": "The passwords don't match.",
       "nameMissing": "Choose your username before creating the account.",
       "generic": "Something went wrong. Please try again."
-    }
+    },
+    "confirmTitle": "Confirming your email",
+    "confirmWorking": "Just a moment — your email is being confirmed, and you'll be taken to your profile…",
+    "confirmError": "The link has expired or has already been used. Try logging in — if your email is confirmed, you'll go straight to your profile."
   },
   "footer": {
     "tagline": "Independent documentaries. No ads. Ever.",

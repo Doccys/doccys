@@ -407,52 +407,43 @@ NB'S SOM BESTÅR:
   teksterne — udfyldes når erhverskontoen er på plads.
 - Aldersbekræftelse er stadig sit eget backlog-punkt (ikke bygget).
 
-STANDARD-EMAILS VED SIGNUP + KØB (21/9) — DASHBOARD-TRIN AFVENTER BRUGEREN
-Der sendes nu bekræftelses-mail ved oprettelse (Supabases indbyggede)
-og købs-kvittering (Stripes indbyggede, sender kun i LIVE mode).
-Brugerens valg: SUPABASE indbygget ved signup + STRIPE indbygget ved
-køb; e-mail SKAL bekræftes før kontoen virker. UDSAT-listen (til
-domænekøb ved lancering): branded mail-udbyder (Resend/SMTP +
-skabeloner ×8), velkomstmail efter bekræftelse, og EGEN kvitterings-
-tekst (21/9-afklaring: Stripes kvitteringstekst er standardiseret og
-kan ikke redigeres — fuld tekstkontrol kræver egen udsendelse).
-Doccys.com ejes endnu ikke, så Supabases delte afsender
-(no-reply@mail.app.supabase.com) er den pragmatiske vej indtil da.
-- KODE (lille — resten er dashboard-konfig): AuthForm sender nu
-  emailRedirectTo → bekræftelses-linket rammer ${origin}/${locale}/profile
-  i seerens eget sprog i stedet for dashboardets Site URL (samme mønster
-  som ResetPasswordForm; detectSessionInUrl veksler ?code → logget ind).
-  UI var I FORVEJEN klar: checkEmail-notice ×8 + emailNotConfirmed-fejl
-  fandtes allerede — ingen nye i18n-nøgler, ingen migration. Checkout-
-  ruten sætter preferred_locales=[locale] på NYE Stripe-kunder, så
-  kvitteringen kommer på kundens sprog (eksisterende kunder beholder
-  deres gemte; intet webhook-arbejde — Stripe mailer selv fra
-  customer_details.email). tsc GRØN.
-- DASHBOARD-TRIN (BRUGEREN, Supabase → Authentication → Sign In / Up):
-  1) Slå "Confirm email" TIL. 2) Site URL = https://doccys.vercel.app
-  (rettes til doccys.com ved lancering). 3) Redirect URLs-allowlist:
-  tilføj https://doccys.vercel.app/** OG http://localhost:3000/** —
-  ellers afvises emailRedirectTo og Supabase falder tilbage til Site URL.
-- DASHBOARD-TRIN (BRUGEREN, Stripe-testkontoen → Settings → Emails):
-  aktivér "Successful payments"-kvitteringen. NB: kvitteringens TEKST er
-  STRIPES STANDARDISEREDE — der kan ikke redigeres brødtekst (kontoens
-  navn/logo/support-info følger med, og varelinjen viser "X minutter —
-  Doccys" fra checkouten). Vil vi have fuld kontrol over teksten (og
-  dansk sprogbrug), kræver det egen mail-udsendelse fra webhooken —
-  dvs. branded mail-udbyderen ved domænekøbet, jf. udsat-listen.
-  NB STRIPES TO KONTI: husk SAMME trin på live-kontoen ved
-  lancering — kvitteringer sender kun i live mode, så feedback-rundens
-  test-køb ikke udsender noget (og vennerne har fået besked om ikke at
-  trykke køb alligevel).
-- NB SPAM: delte Supabase-afsenderes lander af og til i spamfilteret —
-  sig det til feedback-rundens venner. Skulle confirm drille under
-  testrunden, kan den toggles tilbage i dashboardet med det samme.
-- Test (afventer brugeren, EFTER dashboard-trinene): E2E lokalt — opret
-  test-konto → bekræftelses-mail modtages → linket åbner /da/profile
-  med aktiv session → login med UBEBEKRÆFTET konto giver
-  emailNotConfirmed-fejlen. Derefter samme test på doccys.vercel.app.
-  Kvitterings-preview: Stripe-dashboardets test-betalinger (preview,
-  intet sendes i test mode).
+E-MAIL PÅ EGET DOMÆNE + BEKRÆFT-LOGIN-KÆDE (21/9 → 28/9) — FULDFØRT OG BRUGER-VERIFICERET
+Signup-bekræftelse (Supabase) og købs-kvittering (Stripe, kun LIVE
+mode) er som før — men afsenderen er nu EGEN: 2-års Namecheap
+Private Email-licens, contact@doccys.com med CATCH-ALL (alle
+@doccys.com-adresser modtages) → support@doccys.com-henvisningerne i
+13 sprogs juridiske tekster er dækket UDEN kodeændring. Catch-all er
+kun modtagende — send IKKE fra andre @doccys.com-adresser
+(DMARC-misalignment). Brugerens dashboard-trin (ALT kørt 28/9): DNS
+(MX mx1/mx2.privateemail.com + SPF-TXT), Supabase Auth SMTP host
+smtp.privateemail.com:465 afsender/username contact@doccys.com
+(adgangskoden KUN i dashboardet, aldrig i git), "Confirm email" TIL,
+Site URL = https://doccys.com, Redirect URLs = https://doccys.com/**
++ http://localhost:3000/** + http://localhost:3002/** (wildcards
+påkrævet — bare URL matcher kun roden; målet FRYSES i mailen ved
+afsendelse, så gamle links rammer gamle mål; OTP-links er enkelt-
+brug → genklik = otp_expired).
+- BEKRÆFT-LOGIN-FIX (28/9): klik på bekræftelses-linket RAMTE login-
+  tilstanden — /profile server-renderede sin logged-ud-variant, FØR
+  ?code= blev vekslet klient-side, og intet refreshed bagefter.
+  Løsning = Supabases officielle mønster, samme mekanik som
+  ResetPasswordForm: emailRedirectTo peger nu på /{locale}/auth/confirm,
+  hvor ConfirmEmailClient veksler koden og SÅ router.replace("/profile")
+  + router.refresh(). Fejltilstand (udløbet/genbrugt link) viser
+  login-vej. Nøgler confirmTitle/confirmWorking/confirmError i
+  auth-namespacet ×13 (491 i alt, fuld paritet). tsc GRØN,
+  bruger-verificeret 28/9. Den gamle AuthForm-kommentar om at
+  detectSessionInUrl klarer det direkte på /profile er rettet.
+- Udsat-liste uændret: velkomstmail efter bekræftelse, EGEN
+  kvitteringstekst (Stripes er standardiseret — 21/9-afklaringen
+  stadig gyldig), evt. skabeloner ×8. Stripe-kvitteringen: aktivér på
+  BEGGE konti (husk live-kontoen ved lancering; kun LIVE mode sender —
+  feedback-rundens test-køb udsender intet, og vennerne køber ikke).
+- RESTER I AUTH-KÆDEN: password-reset E2E (/da/auth/reset → mail →
+  link → ny adgangskode → login; koden findes, utestet) + oprydning af
+  test-konti i Authentication → Users bagefter. NB SPAM er ikke længere
+  et anliggende med egen afsender, men sig det til vennerne alligevel
+  hvis mailen lander i spamfilteret.
 
 SVAR-TRÅDE I KOMMENTARFELTET (21/9) — MIGRATION KØRT, UDEFRÅ VERIFICERET
 Commits 6b3fbed (migration + backend) + c4b8ba5 (UI + i18n).

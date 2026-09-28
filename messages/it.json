@@ -48,7 +48,10 @@
       "passwordMismatch": "Le password non corrispondono.",
       "nameMissing": "Scegli il tuo nome utente prima di creare l'account.",
       "generic": "Qualcosa è andato storto. Riprova."
-    }
+    },
+    "confirmTitle": "Conferma la tua e-mail",
+    "confirmWorking": "Un momento — la tua e-mail viene confermata e accederai al tuo profilo…",
+    "confirmError": "Il link è scaduto o è già stato utilizzato. Prova ad accedere — se la tua e-mail è confermata, verrai indirizzato direttamente al tuo profilo."
   },
   "footer": {
     "tagline": "Documentari indipendenti. Nessuna pubblicità. Mai.",

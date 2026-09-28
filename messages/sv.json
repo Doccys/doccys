@@ -48,7 +48,10 @@
       "passwordMismatch": "Lösenorden matchar inte.",
       "nameMissing": "Välj ditt användarnamn innan du skapar kontot.",
       "generic": "Något gick fel. Försök igen."
-    }
+    },
+    "confirmTitle": "Bekräftar din e-post",
+    "confirmWorking": "Ett ögonblick — din e-post bekräftas och du kommer in på din profil…",
+    "confirmError": "Länken har gått ut eller redan använts. Försök logga in — är din e-post bekräftad kommer du direkt till din profil."
   },
   "footer": {
     "tagline": "Oberoende dokumentärer. Inga annonser. Aldrig.",

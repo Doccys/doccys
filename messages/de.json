@@ -48,7 +48,10 @@
       "passwordMismatch": "Die Passwörter stimmen nicht überein.",
       "nameMissing": "Wähle deinen Benutzernamen, bevor du das Konto erstellst.",
       "generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
-    }
+    },
+    "confirmTitle": "Bestätigen Sie Ihre E-Mail",
+    "confirmWorking": "Einen Moment — Ihre E-Mail wird bestätigt und Sie gelangen zu Ihrem Profil…",
+    "confirmError": "Der Link ist abgelaufen oder wurde bereits verwendet. Versuchen Sie, sich anzumelden — ist Ihre E-Mail bestätigt, gelangen Sie direkt zu Ihrem Profil."
   },
   "footer": {
     "tagline": "Unabhängige Dokumentarfilme. Keine Werbung. Niemals.",

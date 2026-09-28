@@ -48,7 +48,10 @@
       "passwordMismatch": "Les mots de passe ne correspondent pas.",
       "nameMissing": "Choisissez votre nom d'utilisateur avant de créer le compte.",
       "generic": "Une erreur est survenue. Réessayez."
-    }
+    },
+    "confirmTitle": "Confirme votre e-mail",
+    "confirmWorking": "Un instant — votre e-mail est en cours de confirmation, et vous accéderez à votre profil…",
+    "confirmError": "Le lien a expiré ou a déjà été utilisé. Essayez de vous connecter — si votre e-mail est confirmé, vous accéderez directement à votre profil."
   },
   "footer": {
     "tagline": "Documentaires indépendants. Sans publicité. Jamais.",

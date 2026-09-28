@@ -48,7 +48,10 @@
       "passwordMismatch": "Las contraseñas no coinciden.",
       "nameMissing": "Elige tu nombre de usuario antes de crear la cuenta.",
       "generic": "Algo salió mal. Inténtalo de nuevo."
-    }
+    },
+    "confirmTitle": "Confirmando tu correo electrónico",
+    "confirmWorking": "Un momento — tu correo electrónico está siendo confirmado y accederás a tu perfil…",
+    "confirmError": "El enlace ha caducado o ya ha sido utilizado. Intenta iniciar sesión — si tu correo electrónico está confirmado, accederás directamente a tu perfil."
   },
   "footer": {
     "tagline": "Documentales independientes. Sin anuncios. Nunca.",
