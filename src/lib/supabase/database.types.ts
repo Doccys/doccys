@@ -346,7 +346,8 @@ export type CommentLikeUpdate = never;
 
 export type CreditLedgerRow = {
   id: string;
-  user_id: string;
+  /** null = anonymiseret ved kontosletning (20260928_slet_konto) */
+  user_id: string | null;
   /** positiv = kredit (køb/affiliate/admin), negativ = forbrug */
   seconds: number;
   reason: string;
@@ -358,16 +359,20 @@ export type CreditLedgerRow = {
 /**
  * Insert/Update sker KUN via service-role (webhook) eller
  * security definer-RPC'er — der findes ingen klient-policy,
- * så Insert/Update er `never` for app-klienter.
+ * så Insert er `never` for app-klienter. Update-typen findes til
+ * kontosletnings-rutens anonymisering (user_id = null).
  */
 export type CreditLedgerInsert = never;
-export type CreditLedgerUpdate = never;
+export type CreditLedgerUpdate = {
+  user_id?: string | null;
+};
 
 /* ---------- credit_purchases (engangs-køb af minutpakker) ---------- */
 
 export type CreditPurchaseRow = {
   id: string;
-  user_id: string;
+  /** null = anonymiseret ved kontosletning (20260928_slet_konto) */
+  user_id: string | null;
   pack_id: string;
   minutes: number;
   /** numeric → string fra Postgres — mappes med Number() */
@@ -396,11 +401,13 @@ export type CreditPurchaseInsert = {
 };
 
 /**
- * Der findes ingen update-policy — typen findes kun fordi
- * webhook-ruten (service-role) markerer udløbne køb 'failed'.
+ * Der findes ingen update-policy — typen findes for service-role:
+ * webhook-ruten markerer udløbne køb 'failed', kontosletnings-
+ * ruten anonymiserer (user_id = null).
  */
 export type CreditPurchaseUpdate = {
   status?: string;
+  user_id?: string | null;
 };
 
 /* ---------- user_referral_codes (affiliate) ---------- */
