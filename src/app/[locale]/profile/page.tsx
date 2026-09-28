@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import SectionHeading from "@/components/ui/SectionHeading";
 import DisplayNameForm from "@/components/profile/DisplayNameForm";
+import DeleteAccountSection from "@/components/profile/DeleteAccountSection";
 import MinutesSection from "@/components/profile/MinutesSection";
 import SupportLedgerSection from "@/components/profile/SupportLedgerSection";
 import WatchHistoryList from "@/components/profile/WatchHistoryList";
@@ -182,6 +183,19 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
             </p>
           )}
         </div>
+      </section>
+
+      {/* Slet konto (sidste sektion — farlig handling står altid
+          nederst): privatlivspolitikkens løfte i selvbetjening.
+          Skabere henvises til redaktionen (ruten håndhæver 403),
+          navnløse konti skal vælge navn først (DisplayNameForm ovenfor). */}
+      <section className="mt-16 rounded-xl border border-smoke bg-onyx px-6 py-6">
+        <h2 className="font-display text-2xl text-bone">{t("deleteHeading")}</h2>
+        <p className="mt-2 text-sm leading-relaxed text-ash">{t("deleteIntro")}</p>
+        <DeleteAccountSection
+          expectedName={rawName ?? ""}
+          isCreatorOwner={Boolean(ownedCreator)}
+        />
       </section>
     </div>
   );

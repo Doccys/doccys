@@ -551,7 +551,21 @@
     "nameLabel": "Brugernavn",
     "nameSave": "Gem brugernavn",
     "nameSaved": "Dit brugernavn er gemt.",
-    "nameError": "Brugernavnet kunne ikke gemmes. Prøv igen."
+    "nameError": "Brugernavnet kunne ikke gemmes. Prøv igen.",
+    "deleteHeading": "Slet konto",
+    "deleteIntro": "Sletningen er permanent: din konto, din seerhistorik og dine gemte film forsvinder, og dine kommentarer slettes helt. Købsdata opbevares anonymiseret i fem år jf. bogføringsloven — uden kobling til dig.",
+    "deleteConfirmLabel": "Skriv dit brugernavn (“{name}”) for at bekræfte",
+    "deletePlaceholder": "Dit brugernavn",
+    "deleteButton": "Slet min konto permanent",
+    "deleteWorking": "Sletter…",
+    "deleteCreatorBlocked": "Din konto ejer en skaberprofil med film, afspilninger og udbetalinger — den kan derfor ikke slettes selvbetjent. Skriv til redaktionen, så hjælper vi dig:",
+    "deleteContact": "support@doccys.com",
+    "deleteNameMissing": "Vælg først dit brugernavn ovenfor — det er bekræftelsen, vi beder om, når kontoen skal slettes.",
+    "deleteErrors": {
+      "generic": "Kontoen kunne ikke slettes endnu. Prøv igen — der sker ikke noget forkert ved at prøve flere gange, og holder fejlen ved, skriv til support@doccys.com.",
+      "nameMismatch": "Navnet matcher ikke dit brugernavn. Tjek stavemåden og prøv igen.",
+      "creatorBlocked": "Din konto ejer en skaberprofil og kan ikke slettes her. Skriv til support@doccys.com."
+    }
   },
   "watchHistory": {
     "completed": "Færdigset",
