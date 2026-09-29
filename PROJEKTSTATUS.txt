@@ -1,6 +1,76 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-09-28
+Sidst opdateret: 2026-09-29
 ==========================================================
+
+CVR MODTAGET (29/9): DOCCYS, CVR-NR 46804147 — MOMS-REGISTRERING VALGT
+Resume-checklistens punkt 2 er lukket hvad angår selve CVR'et. Det er
+udfyldt i de juridiske tekster (commit c1b7577): "CVR-nr. 46804147"
+erstatter pladsholderen i terms s1 ("Tjenesten drives af Doccys —
+CVR-nr. 46804147") OG privacy s1 (dataansvarlig), alle 13 sprog, og
+"Senest opdateret"-datoerne er bundet til 29/9 i begge dokumenter
+(dato-formaterne er sproglokale: 29 September / 29.9. / 2026年9月29日 …).
+Udfyldningen skete via fail-closed engangs-script: hvert sprogs
+pladsholder-sætning skulle findes i BEGGE s1-tekster, ellers skrev
+scriptet intet for sproget (første runde fangede netop at de nordiske/
+engelske oversættelser siger "organisasjonsnummer/y-tunnus/
+registration number" uden ordet "CVR"). i18n-verify er udvidet:
+/ja/terms-tjekket kræver nu også "46804147" i HTML'et (nummeret er
+sprog-neutralt). 525 nøgler ×13 fuld paritet, tsc grøn.
+NB: Firmanavnet i registret er oplyst som "Doccys" af brugeren —
+viser det officielle navn sig at indeholde selskabsform (fx "ApS"),
+rettes navnet i s1-teksterne (én linje pr. sprog).
+REST for brugeren (virksomheds-admin, ikke kode): 1) tilmelde
+virksomhed via mitID, 2) aktivere virksomhedens Digital Post,
+3) oprette NemKonto til virksomheden. Dertil kommer Stripe: CVR'et
+skal ind i Stripe-dashboardet (Settings → Business) hos brugeren, og
+DK-moms/SE-nr følger moms-registreringen — forudsætning for punkt 8
+nedenfor (rigtig DK-moms ved live mode).
+LAUNCH RØRES IKKE: genaktivering/feedback-runde/indeksering er stadig
+1/12-2026 (brugerens beslutning) — CVR'et fjerner kun én af blokeringerne.
+
+SLET KONTO — SELVBETJENT KONTOSLETNING (28-29/9) — BYGGET, E2E RUND 1 OK, RUND 2 AFVENTER
+Privatlivspolitikkens løfte (s6/s7: konto- og kommentardata slettes,
+købsdata opbevares anonymiseret 5 år jf. bogføringsloven) er nu selv-
+betjent. Beslutninger MED BRUGEREN: skabere BLOKERES (skriv til
+redaktionen), købsdata ANONYMISERES (user_id = null, ikke sletning),
+kommentarer slettes HELT, skriv-og-bekræft (brugeren skriver sit eget
+brugernavn).
+- MIGRATION 20260928_slet_konto (dc68e5f): credit_ledger.user_id +
+  credit_purchases.user_id DROP NOT NULL (begge var NOT NULL m. on
+  delete cascade — deleteUser ville ellers æde bogføringsbeviserne).
+  KØRT OG VERIFICERET AF BRUGEREN 29/9 (is_nullable = YES ×2).
+  Anonyme rækker er ulæselige for alle (policies kræver auth.uid() =
+  user_id, aldrig sandt for null); saldo_sekunder/indfri_koeb rammer
+  aldrig null-rækker.
+- RUTE DELETE /api/account (9dc9830): fail-closed trin-rækkefølge —
+  1) session (401), 2) navne-bekræftelse SERVER-SIDE (trim+lowercase
+  mod full_name-metadata → 422 nameMismatch), 3) skaber-lås (403
+  creatorBlocked — ruten gen-tjekker, UI'et skjuler kun), 4) købsdata
+  anonymiseres FØR ALT ANDET (u-migreret DB → NOT NULL-fejl = 500 OG
+  intet slettet), 5) kommentarer slettes via service-klient (kaskader
+  tager likes + svar-tråde), 6) admin.deleteUser SIDST. Trin 4+5
+  idempotente (gen-kald rammer 0 rækker) — fejler deleteUser, prøver
+  brugeren igen uden datatab. database.types.ts følger med (user_id:
+  string | null på begge Row-typer + Update-typer). Ingen rate limit
+  (session-beskyttet, ingen mail); ingen storage-oprydning ({user_id}/
+  findes kun hos skabere — og skabere er blokeret).
+- PROFIL-UI (d5b5614): sektion 8 nederst (farlig handling altid sidst)
+  m. DeleteAccountSection: skriv-og-bekræft (knap aktiveres først ved
+  match, RØD accent — champagne må ikke bruges til fare-handlinger),
+  success → signOut → router.replace("/"), fejl-nøgler oversættes fra
+  rutens {error}. Skaber-gren: ingen formular, kun redaktions-
+  henvisning (mailto). Navnløse konti (legacy uden full_name): tekst
+  der henviser til DisplayNameForm ovenfor. 12 nye profile-nøgler
+  (delete*), oversat ×12 (41c34a6) → 525 nøgler ×13 fuld paritet.
+- E2E RUND 1 (bruger, 29/9): testkonto slettet fra profilen, lander
+  logget ud. VERIFICERET i dashboardet: auth.users = 0 rækker.
+  AFVENTER RUND 2 (købs-anonymiseringen — kernen): testbrugeren med
+  de mange gamle testkøb slettes, derefter skal credit_purchases +
+  credit_ledger vise rækkerne med user_id = null (SQL-liste står i
+  samtalen). NB: runde 1 viste intet at anonymisere — de gamle
+  testkøb lå på EN ANDEN konto, og rækker følger ikke på tværs af
+  konti. Dertil: skaber-konto skal vise 403-grenen, forkert navn →
+  knap forbliver deaktiveret / API 422.
 
 ALDERSBEKRÆFTELSE 18+ VED KONTOOPRETTELSE (28/9) — BYGGET, E2E AFVENTER
 Sidste juridiske backlog-punkt lukket: konti under 18 kan ikke indgå
@@ -291,11 +361,11 @@ FilmographyGrid til reelle aggregater); indhold v1 = minutter→kr
 PROJEKT PAUSE: DOCCYS ER OFFLINE (27/9) — RESUME FOERST NEDENSTAAENDE ER KLAR
 LAUNCH-DATO: 1. DECEMBER 2026 (brugerens beslutning 28/9): siten
 må IKKE lanceres før d. 1/12 — det gælder resume, feedback-runde
-OG aabning for indeksering. CVR-nummeret er soegt og under
-behandling; intet traenger, men alt kan goeres klaar paa forhaand
-(checklisten herunder + Vercel-env). Tidligst resume: naar CVR er
-paa pladt OG traek 1-4 er klaar — lancering (Stripe live, SMTP,
-indeksering) foerst 1/12.
+OG aabning for indeksering. CVR-nr 46804147 er MODTAGET (29/9, se
+sektionen øverst); intet traenger, men alt kan goeres klaar paa
+forhaand (checklisten herunder + Vercel-env). Tidligst resume: traek
+1-4 er klaar — lanceringen (Stripe live, SMTP, indeksering) er foerst
+1/12 uanset.
 Brugerens beslutning: INGEN ma gaa paa siden online foer den er klar.
 Vercel-projektet er PAUSET i dashboardet — doccys.com OG
 doccys.vercel.app svarer ikke; kode, domaene-binding, env og DB
@@ -317,10 +387,12 @@ Resume-checklist (i raekkefoelge):
    er kaaskade-slettet med filmen.
 2) CVR + erhvervskonto klar (brugeren korer virk.dk; ApS
    anbefalet: 3-aars aktieskat-uret starter, begrænset haeftelse).
-   STATUS 28/9: CVR-numret er SOEGT og under behandling hos
-   myndighederne — resume paa vent indtil det er paa plads.
-   (Trin 1 kan dog koeres allerede nu: egress-E2E + test-film-
-   ryddning kraever kun localhost + Supabase.)
+   STATUS 29/9: CVR-NR 46804147 MODTAGET — "Doccys", moms-
+   registrering valgt. CVR'et er UDFYLDT i de juridiske tekster
+   (se sektionen øverst). REST for brugeren: 1) tilmelde virksomhed
+   via mitID, 2) aktivere virksomhedens Digital Post, 3) oprette
+   NemKonto til virksomheden — dertil CVR'et ind i Stripe-
+   dashboardet (Settings → Business).
 3) Vercel-env: NEXT_PUBLIC_SITE_URL=https://doccys.com foer
    resume (ellers localhost-fallback i sitemap/OG i produktion).
 4) Resume projekt i Vercel + verify: robots.txt = Disallow /,
@@ -476,8 +548,10 @@ NB'S SOM BESTÅR:
   på sitet; notér til lancering.
 - Teksterne er skrevet af en udvikler, ikke en jurist — planlagt:
   ENDELIGT JURIDISK EFTERSYN VED LANCERING (backlog består).
-- CVR/erhvervsfelter er markeret "oplyses ved lancering" i
-  teksterne — udfyldes når erhverskontoen er på plads.
+- CVR-feltet ER UDFYLDT (29/9, commit c1b7577): CVR-nr 46804147 i
+  terms s1 + privacy s1, alle 13 sprog (se sektionen øverst). Viser
+  det officielle registernavn sig at indeholde selskabsform (fx
+  "ApS"), rettes navnet — én linje pr. sprog.
 - Aldersbekræftelse ER BYGGET (28/9) — checkbox ved signup + terms
   s12-klausul ×13 sprog (se sektionen øverst); E2E-test afventer.
 
@@ -1357,8 +1431,8 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
 4. checkout.session.expired-webhook: forladte sessions → 'failed'
    (koden findes, utestet).
 5. Launch-backlog (aftalt med brugeren): aldersbekræftelse ER NU
-   BYGGET (28/9, se sektionen øverst; resten på det juridiske
-   område: CVR-felter udfyldes + ENDELIGT JURIDISK EFTERSYN af
+   BYGGET (28/9, se sektionen øverst; CVR-felterne ER UDFYLDT 29/9 —
+   resten på det juridiske område: ENDELIGT JURIDISK EFTERSYN af
    teksterne ved lancering), e-mail-notifikationer (kommentar-moderation er
    nu bygget, se ovenfor; standard-signup/købs-mails er DONE 21/9,
    se sektionen øverst — resten her er branded mail-udbyder +
@@ -1391,6 +1465,19 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
     på forsiden som ER kataloget. Genrebaseret browsen findes
     allerede på /search's landing (genre-chips) — genbrug
     mønstret, når en rigtig side skal bygges.
+11. SUNSET VED TILBAGETRÆKNING AF FILM (29/9-drøftelse med
+    brugeren, IDÉ ikke bygget): trækkes en film, forbliver den
+    spilbar i 7 dage for brugere med igangværende fremskridt
+    (status fx 'trukket' — usynlig for nye seere). Motivation: en
+    seer der har set 15 af 60 minutter skal kunne vende tilbage og
+    bruge sine sidste 45 minutter; pung-modellen dækker pengene
+    (kun afspillet tid trækkes, minutterne udløber aldrig og kan
+    bruges på andre film — jf. terms s3/s5), men ikke historien.
+    KONTRAKTLIGT VARSEL TIL SKABERE ER BEVIDST AFVALGT (hårdt at
+    håndhæve, afholder skabere, retighedskonflikter kan tvinge
+    øjeblikkelig tilbagetrækning). Bygges først hvis/naar det
+    bliver reelt — platformen er kurateret og tilbagetrækning er
+    pt. kun redaktionens/brugerens eget valg.
 
 GOD ARBEJDSGANG I DETTE PROJEKT
 - Plan-mode + Plan-agent ved større features; små trin, commit pr. trin,
@@ -1405,6 +1492,14 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+c1b7577 legal: cvr-nr 46804147 i betingelser og privatlivspolitik (13 sprog)
+41c34a6 i18n: slet-konto-tekster oversat til 12 sprog
+d5b5614 profil: slet-konto-sektion med skriv-og-bekraeft (skabere blokeret)
+9dc9830 auth: DELETE /api/account — selvbetjent kontosletning med skaber-laas og anonymiserede koeb
+dc68e5f db: slet-konto — koebdata kan anonymiseres (user_id drop not null)
+5306eb4 docs: 18+ -e2e — knaplaas og reset-test bruger-verificeret
+8f80d1c docs: 18+ -checkboxen bruger-set paa opret-bruger-siden
+fd04b8e docs: aldersbekraeftelse bygget — juridisk backlog-punkt lukket
 dd6fdec i18n: 18+ -bekraeftelse og terms s12 oversat til 12 sprog
 838b579 terms: aldersklausul afsnit 12 + senest-opdateret-dato
 521d67a auth: signup-ruten kræver 18+ -bekræftelse og gemmer bevis i metadata
