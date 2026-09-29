@@ -86,11 +86,11 @@
     },
     "terms": {
       "title": "Ehdot",
-      "intro": "Nämä ehdot koskevat Doccysin käyttöä ja minuuttien ostamista. Viimeksi päivitetty 28.9.2026.",
+      "intro": "Nämä ehdot koskevat Doccysin käyttöä ja minuuttien ostamista. Viimeksi päivitetty 29.9.2026.",
       "sections": {
         "s1": {
           "title": "Doccysistä",
-          "body": "Doccys on suoratoistopalvelu itsenäisille dokumenteille: maksat vain siitä, mitä todella katsot, minuutti minuutilta. Palvelua ylläpitää Doccys — y-tunnus julkaistaan lopullisen julkaisun yhteydessä."
+          "body": "Doccys on suoratoistopalvelu itsenäisille dokumenteille: maksat vain siitä, mitä todella katsot, minuutti minuutilta. Palvelua ylläpitää Doccys — y-tunnus (CVR) 46804147."
         },
         "s2": {
           "title": "Tilin luominen",
@@ -140,11 +140,11 @@
     },
     "privacy": {
       "title": "Tietosuojakäytäntö",
-      "intro": "Täältä näet, mitä henkilötietoja Doccys käsittelee, miksi, ja mitkä oikeutesi ovat. Viimeksi päivitetty 22.9.2026.",
+      "intro": "Täältä näet, mitä henkilötietoja Doccys käsittelee, miksi, ja mitkä oikeutesi ovat. Viimeksi päivitetty 29.9.2026.",
       "sections": {
         "s1": {
           "title": "Rekisterinpitäjä",
-          "body": "Doccys — y-tunnus julkaistaan lopullisen julkaisun yhteydessä. Yhteystieto: support@doccys.com."
+          "body": "Doccys — y-tunnus (CVR) 46804147. Yhteystieto: support@doccys.com."
         },
         "s2": {
           "title": "Mitä tietoja käsittelemme",

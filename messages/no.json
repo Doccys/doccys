@@ -86,11 +86,11 @@
     },
     "terms": {
       "title": "Kjøpsvilkår",
-      "intro": "Disse vilkårene gjelder for bruk av Doccys og for kjøp av minutter. Sist oppdatert: 28. september 2026.",
+      "intro": "Disse vilkårene gjelder for bruk av Doccys og for kjøp av minutter. Sist oppdatert: 29. september 2026.",
       "sections": {
         "s1": {
           "title": "Om Doccys",
-          "body": "Doccys er en strømmetjeneste for uavhengige dokumentarer: du betaler bare for det du faktisk ser, minutt for minutt. Tjenesten drives av Doccys — organisasjonsnummeret oppgis ved den endelige lanseringen."
+          "body": "Doccys er en strømmetjeneste for uavhengige dokumentarer: du betaler bare for det du faktisk ser, minutt for minutt. Tjenesten drives av Doccys — organisasjonsnummer (CVR) 46804147."
         },
         "s2": {
           "title": "Oppretting av konto",
@@ -140,11 +140,11 @@
     },
     "privacy": {
       "title": "Personvernpolicy",
-      "intro": "Her kan du lese hvilke persondata Doccys behandler, hvorfor vi gjør det, og hvilke rettigheter du har. Sist oppdatert: 22. september 2026.",
+      "intro": "Her kan du lese hvilke persondata Doccys behandler, hvorfor vi gjør det, og hvilke rettigheter du har. Sist oppdatert: 29. september 2026.",
       "sections": {
         "s1": {
           "title": "Personansvarlig",
-          "body": "Doccys — organisasjonsnummeret oppgis ved den endelige lanseringen. Kontakt: support@doccys.com."
+          "body": "Doccys — organisasjonsnummer (CVR) 46804147. Kontakt: support@doccys.com."
         },
         "s2": {
           "title": "Hvilke data vi behandler",

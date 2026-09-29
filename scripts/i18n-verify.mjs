@@ -99,9 +99,11 @@ const checks = [
     // renderes på alle sprog — titlerne verificerer sektionerne;
     // punktstrukturen i body validerede oversættelsesscriptets
     // linje/"• "-tjek (body's \n splittes af LegalPage og kan ikke
-    // matches som én streng i HTML)
+    // matches som én streng i HTML). "46804147" verificerer at
+    // CVR-feltet (s1) er udfyldt — nummeret er sprog-neutralt.
     url: "/ja/terms",
     expectFrom: ["ja", ["legal.terms.sections.s11.title", "legal.terms.sections.s12.title"]],
+    expect: ["46804147"],
     danish: ["Licens ved upload af film"],
   },
 ];

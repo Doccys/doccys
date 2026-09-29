@@ -16,8 +16,8 @@ export async function generateMetadata({
 
 /**
  * Handelsbetingelser — fuld tekst, der følger med i alle sprog.
- * NB: CVR/erhvervsfelter er bevidst markeret "oplyses ved lancering";
- * teksterne skal have et endeligt juridisk eftersyn før lancering.
+ * CVR-nr 46804147 er udfyldt i s1 (Doccys, 29/9 2026); teksterne
+ * skal stadig have et endeligt juridisk eftersyn før lancering.
  */
 export default async function TermsPage({ params }: TermsPageProps) {
   const { locale } = await params;
