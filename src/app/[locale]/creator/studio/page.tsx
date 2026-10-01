@@ -8,6 +8,7 @@ import StudioStatsSection from "@/components/creator/StudioStatsSection";
 import { createClient } from "@/lib/supabase/server";
 import {
   getCreatorFilmsIncludingDrafts,
+  getCreatorFollowerCount,
   getOwnedCreator,
 } from "@/lib/data/catalog";
 import { getCreatorTal } from "@/lib/data/creatorTal";
@@ -65,12 +66,15 @@ export default async function CreatorStudioPage({ params }: StudioPageProps) {
     return redirect({ href: "/creator/apply", locale });
   }
 
-  const [films, country, tal] = await Promise.all([
+  const [films, country, tal, followerCount] = await Promise.all([
     getCreatorFilmsIncludingDrafts(creator.handle, locale),
     localizedCountry(creator.country, locale),
     // Reelle tal til "Dine tal" — null (RPC-fejl/migration ikke
     // kørt) udelader sektionen helt, så studiet altid virker
     getCreatorTal(creator.handle),
+    // Offentligt follower-tal — tælles direkte (creator_followers
+    // er select using (true)), creator_tal-RPC'en røres ikke
+    getCreatorFollowerCount(creator.id),
   ]);
 
   return (
@@ -89,7 +93,7 @@ export default async function CreatorStudioPage({ params }: StudioPageProps) {
         </div>
       </section>
 
-      {tal && <StudioStatsSection tal={tal} />}
+      {tal && <StudioStatsSection tal={tal} followerCount={followerCount} />}
 
       <section className="mt-16">
         <h2 className="font-display text-2xl text-bone">{t("filmsHeading")}</h2>

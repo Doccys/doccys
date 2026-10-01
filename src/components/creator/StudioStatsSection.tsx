@@ -16,8 +16,11 @@ import StudioTidsserieChart from "@/components/creator/StudioTidsserieChart";
  */
 export default async function StudioStatsSection({
   tal,
+  followerCount,
 }: {
   tal: CreatorTal;
+  /** offentligt tal fra creator_followers — reelt også uden afspilninger */
+  followerCount: number;
 }) {
   const t = await getTranslations("creatorStudio");
   const locale = await getLocale();
@@ -27,12 +30,24 @@ export default async function StudioStatsSection({
   const min30 = tal.daily.reduce((sum, d) => sum + d.minutes, 0);
   const plays = tal.films.reduce((sum, f) => sum + f.plays, 0);
 
-  // Intet data endnu → venlig empty-state i stedet for nuller
+  // Intet data endnu → venlig empty-state i stedet for nuller.
+  // Følger-tallet er reelt uanset afspilninger, så det får sit
+  // kort også her.
   if (plays === 0 && tal.totalDkk === 0 && tal.totalMinutes === 0) {
     return (
       <section className="mt-16">
         <h2 className="font-display text-2xl text-bone">{t("talHeading")}</h2>
         <p className="mt-2 max-w-2xl text-sm text-ash">{t("talEmpty")}</p>
+        <div className="mt-6 grid max-w-xs gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-xl border border-smoke bg-onyx p-5">
+            <p className="text-xs uppercase tracking-widest text-ash">
+              {t("talFollowers")}
+            </p>
+            <p className="mt-2 font-display text-2xl tabular-nums text-bone">
+              {formatNumber(followerCount, locale)}
+            </p>
+          </div>
+        </div>
       </section>
     );
   }
@@ -62,6 +77,7 @@ export default async function StudioStatsSection({
       label: t("talSummaryTotalMin"),
       value: `${formatNumber(tal.totalMinutes, locale)} min`,
     },
+    { label: t("talFollowers"), value: formatNumber(followerCount, locale) },
   ];
 
   return (
@@ -74,7 +90,8 @@ export default async function StudioStatsSection({
         {t("talGuestNote")}
       </p>
 
-      {/* Sammendrag — fire tal, EarningsPanel-grid-stil */}
+      {/* Sammendrag — fem tal, EarningsPanel-grid-stil (femte kort
+          wrapper til næste række under lg:grid-cols-4) */}
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {summary.map((card) => (
           <div
