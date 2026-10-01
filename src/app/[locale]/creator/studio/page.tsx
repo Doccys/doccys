@@ -101,6 +101,23 @@ export default async function CreatorStudioPage({ params }: StudioPageProps) {
           <StudioFilmList films={films} />
         </div>
       </section>
+
+      {/* Visitkort: skaberens delbare PNG (også og:image på profilen).
+          Same-origin <a download> — kortet genereres af /og/visitkort
+          med skaberens egne tal og doccys.com som reklame. */}
+      <section className="mt-16">
+        <h2 className="font-display text-2xl text-bone">{t("visitHeading")}</h2>
+        <p className="mt-2 max-w-2xl text-sm text-ash">{t("visitIntro")}</p>
+        <div className="mt-5">
+          <a
+            href={`/og/visitkort/${creator.handle}?lang=${locale}`}
+            download={`doccys-visitkort-${creator.handle}.png`}
+            className="inline-block rounded-full border border-champagne/60 px-6 py-2.5 text-xs font-medium tracking-wide text-champagne transition-colors hover:bg-champagne hover:text-noir"
+          >
+            {t("visitDownload")}
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

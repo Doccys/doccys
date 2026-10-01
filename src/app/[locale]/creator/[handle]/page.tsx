@@ -25,6 +25,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { CreatorFilmEarnings } from "@/lib/types";
 import { formatCurrency, formatNumber } from "@/lib/utils/format";
 import { localizedCountry } from "@/lib/i18n/content";
+import { siteUrl } from "@/lib/site";
 
 interface CreatorPageProps {
   params: Promise<{ locale: string; handle: string }>;
@@ -33,9 +34,31 @@ interface CreatorPageProps {
 export async function generateMetadata({
   params,
 }: CreatorPageProps): Promise<Metadata> {
-  const { handle } = await params;
-  const creator = await getCreatorByHandle(handle);
-  return { title: creator?.name ?? "Skaber ikke fundet" };
+  const { locale, handle } = await params;
+  const creator = await getCreatorByHandle(handle, locale);
+  if (!creator) return { title: "Skaber ikke fundet" };
+
+  // Open Graph / Twitter-kort: profilen ER skaberens visitkort, når
+  // linket deles — auto-genereret PNG fra /og/visitkort med navn,
+  // tal og doccys.com (watch-sidens metadata-mønster).
+  const ogImage = `${siteUrl()}/og/visitkort/${creator.handle}?lang=${locale}`;
+
+  return {
+    title: creator.name,
+    description: creator.bio,
+    openGraph: {
+      type: "profile",
+      title: creator.name,
+      description: creator.bio,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: creator.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: creator.name,
+      description: creator.bio,
+      images: [ogImage],
+    },
+  };
 }
 
 export default async function CreatorPage({ params }: CreatorPageProps) {
