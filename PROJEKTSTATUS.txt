@@ -1,6 +1,43 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-09-29
+Sidst opdateret: 2026-10-01
 ==========================================================
+
+SEERE FØLGER SKABERE — creator_followers (1/10) — BYGGET, MIGRATION KØRT, E2E OK
+Vækst-gennemgangens pull-kanal: intet bragte en seer tilbage efter et
+besøg. Beslutninger MED BRUGEREN: seere følger KUN skabere (ingen
+user-til-user), OFFENTLIGT follower-tal på skaberprofilen, "Skabere du
+følger"-oversigt i profilen, INGEN notifikationer/cron i v1
+(opfølgingstrin, se punkt 12 nederst). Ejeren kan ikke følge sig selv
+(UI skjuler, DB håndhæver).
+- MIGRATION 20261001_creator_followers (0d24321): sammensat PK
+  (creator_id TEXT NB, user_id) = duplikat-styring i DB; KUN ét extra
+  index (user_id, followed_at desc) — PK-prefix dækker resten. RLS:
+  select using(true) (offentligt tal), insert with check med
+  SELV-FØLGE-FORBUD-subquery mod creators.owner_user_id (creator_posts-
+  mønstret), delete egne. Insert/delete-only (ingen update-policy).
+  KØRT AF BRUGEREN 1/10. NB: den optimistiske knap "hopper af" igen
+  hvis tabellen mangler (PGRST205 → stille revert) — forventet pre-
+  migration, forveksles IKKE med en bug.
+- KNAP (0fa3fe7): FollowCreatorButton, browser-klient direkte mod
+  tabellen (SaveFilmButton-præcedens, RLS eneste autoritet, ingen API-
+  rute). Server-renderet sandhed som props (profilsiden HAR brugeren),
+  gæst → login-link. Optimistisk ±1 med stille revert. getCreatorFollow
+  State/getCreatorFollowerCount i catalog.ts fejler graceful til 0.
+- PROFIL (e5194b8): "Skabere du følger" MELLEM gemte film og slet
+  konto (farlig handling altid sidst). getFollowedCreators = to-trins
+  (getSavedFilms-mønsteret), senest fulgte øverst. UnfollowCreatorButton
+  → router.refresh. Ordvalg: "Følg ikke længere" (7a1f5a6) — "afølge"
+  er en FALSK VEN (betyder ledsage), Facebook/Instagram-konventionen
+  valgt efter bruger-spørgsmål.
+- STUDIO (80f0028): femte kort "Følgere" i Dine tal — tælles direkte
+  (tabellen er offentligt læsbar), creator_tal-RPC'en RØRES IKKE
+  (security definer/ejer-gating gælder afregning). Kortet findes også
+  i empty-state-grenen — tallet er reelt uden afspilninger.
+- E2E (bruger, 1/10): følg/afølge + persistens OK, følger-listen på
+  profilen OK, "Følg ikke længere" OK. 534 nøgler ×13 fuld paritet,
+  i18n-verify alle 11 tjek grønne (BASE=3002). IKKE ENDNU EKSPlicitT
+  testet: gæst-linket, ejerens tekst-visning, tallet på tværs af 2
+  konti, studie-kortet, RLS-negativ-insert (SQL står i migrationen).
 
 CVR MODTAGET (29/9): DOCCYS, CVR-NR 46804147 — MOMS-REGISTRERING VALGT
 Resume-checklistens punkt 2 er lukket hvad angår selve CVR'et. Det er
@@ -1478,6 +1515,14 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
     øjeblikkelig tilbagetrækning). Bygges først hvis/naar det
     bliver reelt — platformen er kurateret og tilbagetrækning er
     pt. kun redaktionens/brugerens eget valg.
+12. FØLGE-NOTIFIKATIONER (1/10, opfølging til creator_followers):
+    "din skaber har lagt en ny film op"-push til følgerne er den
+    naturlige næste trin for følge-funktionen, MEN kræver cron/
+    job-fundament (nyt indhold → notificér) som ikke findes endnu.
+    Vente-agtigt design: e-mail via eksisterende SMTP-opsætning
+    (brugerens sprog, som auth-mailsene), afmeldingslink i hver
+    mail. Bygges sammen med det øvrige notifikations-fundament —
+    se også punkt 5 (branded mail-udbyder).
 
 GOD ARBEJDSGANG I DETTE PROJEKT
 - Plan-mode + Plan-agent ved større features; små trin, commit pr. trin,
@@ -1492,6 +1537,15 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+7a1f5a6 i18n: afolge -> Foelg ikke laengere (falsk ven, 13 sprog)
+c96632e i18n: foelge-noegler oversat til de 12 oevrige sprog
+80f0028 studio: follower-tal i Dine tal
+e5194b8 profil: oversigt over skabere du foelger
+0fa3fe7 skaberprofil: foelg-knap med offentligt follower-tal
+41b16eb i18n: danske noegler til foelge-funktionen
+70058be typer: creator_followers i Database-genericen
+0d24321 db: creator_followers — seere kan foelge skabere (RLS + index)
+4c68511 docs: cvr 46804147 modtaget — checklist punkt 2 lukket, slet-konto-status
 c1b7577 legal: cvr-nr 46804147 i betingelser og privatlivspolitik (13 sprog)
 41c34a6 i18n: slet-konto-tekster oversat til 12 sprog
 d5b5614 profil: slet-konto-sektion med skriv-og-bekraeft (skabere blokeret)
