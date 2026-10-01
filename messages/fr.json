@@ -251,7 +251,11 @@
     "statEarnings": "Revenus totaux",
     "earningsSub": "2 kr pour 100 minutes vues",
     "earningsHeading": "Revenus",
-    "filmographyHeading": "Filmographie"
+    "filmographyHeading": "Filmographie",
+    "follow": "Suivre",
+    "followLogin": "Connectez-vous pour suivre {name}",
+    "following": "Suit ✓",
+    "followers": "{count, plural, one {# abonné} other {# abonnés}}"
   },
   "earningsPanel": {
     "eyebrow": "Revenus",
@@ -507,7 +511,8 @@
     "talNoSessions": "Pas encore de lectures",
     "posterPickButton": "Choisir une image…",
     "filePickButton": "Choisir un fichier vidéo…",
-    "fileNoneChosen": "Aucun fichier choisi"
+    "fileNoneChosen": "Aucun fichier choisi",
+    "talFollowers": "Abonnés"
   },
   "profile": {
     "loginTitle": "Connectez-vous pour voir votre profil",
@@ -545,7 +550,11 @@
       "generic": "Le compte n'a pas pu être supprimé pour le moment. Réessayez — il n'y a rien de mal à essayer plusieurs fois, et si l'erreur persiste, écrivez à support@doccys.com.",
       "nameMismatch": "Le nom ne correspond pas à votre nom d'utilisateur. Vérifiez l'orthographe et réessayez.",
       "creatorBlocked": "Votre compte possède un profil créateur et ne peut pas être supprimé ici. Écrivez à support@doccys.com."
-    }
+    },
+    "followingHeading": "Créateurs que vous suivez",
+    "followingSubtitle": "Votre liste privée — dernier créateur suivi en haut.",
+    "followingEmpty": "Vous ne suivez aucun créateur pour le moment. Appuyez sur \"Suivre\" sur un profil de créateur pour que le créateur apparaisse ici.",
+    "unfollowButton": "Se désabonner"
   },
   "watchHistory": {
     "completed": "Terminé",

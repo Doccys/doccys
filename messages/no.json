@@ -251,7 +251,11 @@
     "statEarnings": "Inntjening totalt",
     "earningsSub": "2 kr per 100 sette minutter",
     "earningsHeading": "Inntjening",
-    "filmographyHeading": "Filmografi"
+    "filmographyHeading": "Filmografi",
+    "follow": "Følg",
+    "followLogin": "Logg inn for å følge {name}",
+    "following": "Følger ✓",
+    "followers": "{count, plural, one {# følger} other {# følgere}}"
   },
   "earningsPanel": {
     "eyebrow": "Inntjening",
@@ -507,7 +511,8 @@
     "talNoSessions": "Ingen avspillinger ennå",
     "posterPickButton": "Velg bilde…",
     "filePickButton": "Velg videofil…",
-    "fileNoneChosen": "Ingen fil valgt"
+    "fileNoneChosen": "Ingen fil valgt",
+    "talFollowers": "Følgere"
   },
   "profile": {
     "loginTitle": "Logg inn for å se profilen din",
@@ -545,7 +550,11 @@
       "generic": "Kontoen kunne ikke slettes ennå. Prøv igjen — det skjer ikke noe galt ved å prøve flere ganger, og hvis feilen vedvarer, skriv til support@doccys.com.",
       "nameMismatch": "Navnet samsvarer ikke med brukernavnet ditt. Sjekk stavemåten og prøv igjen.",
       "creatorBlocked": "Kontoen din eier en skaperprofil og kan ikke slettes her. Skriv til support@doccys.com."
-    }
+    },
+    "followingHeading": "Skapere du følger",
+    "followingSubtitle": "Din private liste — sist fulgte skaper øverst.",
+    "followingEmpty": "Du følger ingen skapere ennå. Trykk \"Følg\" på en skaperprofil, så dukker skaperen opp her.",
+    "unfollowButton": "Avfølg"
   },
   "watchHistory": {
     "completed": "Fullført",

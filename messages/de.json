@@ -251,7 +251,11 @@
     "statEarnings": "Gesamteinnahmen",
     "earningsSub": "2 kr pro 100 angesehenen Minuten",
     "earningsHeading": "Einnahmen",
-    "filmographyHeading": "Filmografie"
+    "filmographyHeading": "Filmografie",
+    "follow": "Folgen",
+    "followLogin": "Melden Sie sich an, um {name} zu folgen",
+    "following": "Folgt ✓",
+    "followers": "{count, plural, one {# Follower} other {# Follower}}"
   },
   "earningsPanel": {
     "eyebrow": "Einnahmen",
@@ -507,7 +511,8 @@
     "talNoSessions": "Noch keine Wiedergaben",
     "posterPickButton": "Bild auswählen…",
     "filePickButton": "Videodatei auswählen…",
-    "fileNoneChosen": "Keine Datei ausgewählt"
+    "fileNoneChosen": "Keine Datei ausgewählt",
+    "talFollowers": "Follower"
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",
@@ -545,7 +550,11 @@
       "generic": "Das Konto konnte noch nicht gelöscht werden. Versuchen Sie es erneut — es ist nichts falsch daran, es mehrmals zu versuchen, und wenn der Fehler weiterhin besteht, schreiben Sie an support@doccys.com.",
       "nameMismatch": "Der Name stimmt nicht mit Ihrem Benutzernamen überein. Überprüfen Sie die Schreibweise und versuchen Sie es erneut.",
       "creatorBlocked": "Ihr Konto besitzt ein Creator-Profil und kann hier nicht gelöscht werden. Schreiben Sie an support@doccys.com."
-    }
+    },
+    "followingHeading": "Ersteller, die du folgst",
+    "followingSubtitle": "Deine private Liste — zuletzt gefolgte Ersteller oben.",
+    "followingEmpty": "Du folgst noch keinen Erstellern. Drücke \"Folgen\" auf einem Erstellerprofil, damit der Ersteller hier erscheint.",
+    "unfollowButton": "Entfolgen"
   },
   "watchHistory": {
     "completed": "Fertig gesehen",

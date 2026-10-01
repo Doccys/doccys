@@ -251,7 +251,11 @@
     "statEarnings": "Tulot yhteensä",
     "earningsSub": "2 kr / 100 katsottua minuuttia",
     "earningsHeading": "Tulot",
-    "filmographyHeading": "Filmografia"
+    "filmographyHeading": "Filmografia",
+    "follow": "Seuraa",
+    "followLogin": "Kirjaudu sisään seuratakseen {name}",
+    "following": "Seuraa ✓",
+    "followers": "{count, plural, one {# seuraaja} other {# seuraajaa}}"
   },
   "earningsPanel": {
     "eyebrow": "Tulot",
@@ -507,7 +511,8 @@
     "talNoSessions": "Ei toistoja vielä",
     "posterPickButton": "Valitse kuva…",
     "filePickButton": "Valitse videotiedosto…",
-    "fileNoneChosen": "Ei tiedostoa valittu"
+    "fileNoneChosen": "Ei tiedostoa valittu",
+    "talFollowers": "Seuraajat"
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",
@@ -545,7 +550,11 @@
       "generic": "Tiliä ei voitu vielä poistaa. Yritä uudelleen — ei ole mitään väärää yrittää useita kertoja, ja jos virhe jatkuu, kirjoita osoitteeseen support@doccys.com.",
       "nameMismatch": "Nimi ei vastaa käyttäjänimeäsi. Tarkista kirjoitusasu ja yritä uudelleen.",
       "creatorBlocked": "Tilisi omistaa luojaprofiilin eikä sitä voi poistaa täällä. Kirjoita osoitteeseen support@doccys.com."
-    }
+    },
+    "followingHeading": "Seuraajat",
+    "followingSubtitle": "Yksityinen listasi — viimeksi seurattu luoja ylimpänä.",
+    "followingEmpty": "Et seuraa vielä yhtään luojaa. Paina \"Seuraa\" luojan profiilissa, niin luoja ilmestyy tänne.",
+    "unfollowButton": "Lopeta seuraaminen"
   },
   "watchHistory": {
     "completed": "Katsottu loppuun",

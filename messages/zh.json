@@ -251,7 +251,11 @@
     "statEarnings": "总收入",
     "earningsSub": "每观看100分钟赚2克朗",
     "earningsHeading": "收入",
-    "filmographyHeading": "作品集"
+    "filmographyHeading": "作品集",
+    "follow": "关注",
+    "followLogin": "登录以关注 {name}",
+    "following": "已关注 ✓",
+    "followers": "{count, plural, one {# 位关注者} other {# 位关注者}}"
   },
   "earningsPanel": {
     "eyebrow": "收入",
@@ -507,7 +511,8 @@
     "talNoSessions": "尚无播放",
     "posterPickButton": "选择图片…",
     "filePickButton": "选择视频文件…",
-    "fileNoneChosen": "未选择文件"
+    "fileNoneChosen": "未选择文件",
+    "talFollowers": "关注者"
   },
   "profile": {
     "loginTitle": "登录以查看您的个人资料",
@@ -545,7 +550,11 @@
       "generic": "账户尚未删除。请再试一次——多次尝试没有问题，如果错误持续，请联系support@doccys.com。",
       "nameMismatch": "名称与您的用户名不匹配。请检查拼写并重试。",
       "creatorBlocked": "您的账户拥有一个创作者资料，无法在此删除。请联系support@doccys.com。"
-    }
+    },
+    "followingHeading": "你关注的创作者",
+    "followingSubtitle": "你的私人列表 — 最近关注的创作者在最上面。",
+    "followingEmpty": "你还没有关注任何创作者。点击创作者资料上的“关注”，创作者将出现在这里。",
+    "unfollowButton": "取消关注"
   },
   "watchHistory": {
     "completed": "已观看",

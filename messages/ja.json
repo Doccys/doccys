@@ -251,7 +251,11 @@
     "statEarnings": "総収益",
     "earningsSub": "100 分視聴ごとに 2 DKK",
     "earningsHeading": "収益",
-    "filmographyHeading": "フィルモグラフィー"
+    "filmographyHeading": "フィルモグラフィー",
+    "follow": "フォロー",
+    "followLogin": "{name}をフォローするにはログインしてください",
+    "following": "フォロー中 ✓",
+    "followers": "{count, plural, one {# フォロワー} other {# フォロワー}}"
   },
   "earningsPanel": {
     "eyebrow": "収益",
@@ -507,7 +511,8 @@
     "talNoSessions": "まだ再生はありません",
     "posterPickButton": "画像を選択…",
     "filePickButton": "ビデオファイルを選択…",
-    "fileNoneChosen": "ファイルが選択されていません"
+    "fileNoneChosen": "ファイルが選択されていません",
+    "talFollowers": "フォロワー"
   },
   "profile": {
     "loginTitle": "プロフィールを見るにはログインしてください",
@@ -545,7 +550,11 @@
       "generic": "アカウントはまだ削除できませんでした。再試行してください — 何度でも試しても問題ありません。エラーが続く場合は、support@doccys.comにご連絡ください。",
       "nameMismatch": "名前があなたのユーザー名と一致しません。スペルを確認して再試行してください。",
       "creatorBlocked": "あなたのアカウントはクリエイタープロフィールを所有しており、ここでは削除できません。support@doccys.comにご連絡ください。"
-    }
+    },
+    "followingHeading": "フォローしているクリエイター",
+    "followingSubtitle": "あなたのプライベートリスト — 最近フォローしたクリエイターが上に表示されます。",
+    "followingEmpty": "まだフォローしているクリエイターはいません。クリエイタープロフィールで「フォロー」を押すと、ここにクリエイターが表示されます。",
+    "unfollowButton": "フォローを解除"
   },
   "watchHistory": {
     "completed": "視聴完了",

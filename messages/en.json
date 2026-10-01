@@ -251,7 +251,11 @@
     "statEarnings": "Total earnings",
     "earningsSub": "2 kr per 100 minutes watched",
     "earningsHeading": "Earnings",
-    "filmographyHeading": "Filmography"
+    "filmographyHeading": "Filmography",
+    "follow": "Follow",
+    "followLogin": "Log in to follow {name}",
+    "following": "Following ✓",
+    "followers": "{count, plural, one {# follower} other {# followers}}"
   },
   "earningsPanel": {
     "eyebrow": "Earnings",
@@ -507,7 +511,8 @@
     "talNoSessions": "No plays yet",
     "posterPickButton": "Choose image…",
     "filePickButton": "Choose video file…",
-    "fileNoneChosen": "No file chosen"
+    "fileNoneChosen": "No file chosen",
+    "talFollowers": "Followers"
   },
   "profile": {
     "loginTitle": "Log in to see your profile",
@@ -545,7 +550,11 @@
       "generic": "The account could not be deleted yet. Please try again — there is nothing wrong with trying multiple times, and if the error persists, write to support@doccys.com.",
       "nameMismatch": "The name does not match your username. Check the spelling and try again.",
       "creatorBlocked": "Your account owns a creator profile and cannot be deleted here. Write to support@doccys.com."
-    }
+    },
+    "followingHeading": "Creators you follow",
+    "followingSubtitle": "Your private list — most recently followed creator at the top.",
+    "followingEmpty": "You are not following any creators yet. Press \"Follow\" on a creator profile to have them appear here.",
+    "unfollowButton": "Unfollow"
   },
   "watchHistory": {
     "completed": "Completed",

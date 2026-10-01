@@ -251,7 +251,11 @@
     "statEarnings": "Intäkter totalt",
     "earningsSub": "2 kr per 100 sedda minuter",
     "earningsHeading": "Intäkter",
-    "filmographyHeading": "Filmografi"
+    "filmographyHeading": "Filmografi",
+    "follow": "Följ",
+    "followLogin": "Logga in för att följa {name}",
+    "following": "Följer ✓",
+    "followers": "{count, plural, one {# följare} other {# följare}}"
   },
   "earningsPanel": {
     "eyebrow": "Intäkter",
@@ -507,7 +511,8 @@
     "talNoSessions": "Inga visningar ännu",
     "posterPickButton": "Välj bild…",
     "filePickButton": "Välj videofil…",
-    "fileNoneChosen": "Ingen fil vald"
+    "fileNoneChosen": "Ingen fil vald",
+    "talFollowers": "Följare"
   },
   "profile": {
     "loginTitle": "Logga in för att se din profil",
@@ -545,7 +550,11 @@
       "generic": "Kontot kunde inte tas bort ännu. Försök igen — det gör inget fel att försöka flera gånger, och om felet kvarstår, skriv till support@doccys.com.",
       "nameMismatch": "Namnet matchar inte ditt användarnamn. Kontrollera stavningen och försök igen.",
       "creatorBlocked": "Ditt konto äger en skapareprofil och kan inte tas bort här. Skriv till support@doccys.com."
-    }
+    },
+    "followingHeading": "Skapare du följer",
+    "followingSubtitle": "Din privata lista — senast följd skapare högst upp.",
+    "followingEmpty": "Du följer inga skapare än. Tryck \"Följ\" på en skapareprofil så dyker skaparen upp här.",
+    "unfollowButton": "Sluta följa"
   },
   "watchHistory": {
     "completed": "Färdigvisad",

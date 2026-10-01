@@ -251,7 +251,11 @@
     "statEarnings": "Guadagni totali",
     "earningsSub": "2 DKK per 100 minuti visualizzati",
     "earningsHeading": "Guadagni",
-    "filmographyHeading": "Filmografia"
+    "filmographyHeading": "Filmografia",
+    "follow": "Segui",
+    "followLogin": "Accedi per seguire {name}",
+    "following": "Seguendo ✓",
+    "followers": "{count, plural, one {# seguace} other {# seguaci}}"
   },
   "earningsPanel": {
     "eyebrow": "Guadagni",
@@ -507,7 +511,8 @@
     "talNoSessions": "Ancora nessuna riproduzione",
     "posterPickButton": "Scegli immagine…",
     "filePickButton": "Scegli file video…",
-    "fileNoneChosen": "Nessun file selezionato"
+    "fileNoneChosen": "Nessun file selezionato",
+    "talFollowers": "Follower"
   },
   "profile": {
     "loginTitle": "Accedi per vedere il tuo profilo",
@@ -545,7 +550,11 @@
       "generic": "L'account non può essere eliminato ancora. Riprova — non succede nulla di sbagliato nel provare più volte, e se l'errore persiste, scrivi a support@doccys.com.",
       "nameMismatch": "Il nome non corrisponde al tuo nome utente. Controlla l'ortografia e riprova.",
       "creatorBlocked": "Il tuo account possiede un profilo creatore e non può essere eliminato qui. Scrivi a support@doccys.com."
-    }
+    },
+    "followingHeading": "Creatori che segui",
+    "followingSubtitle": "La tua lista privata — il creatore più recente in cima.",
+    "followingEmpty": "Non segui ancora alcun creatore. Premi \"Segui\" su un profilo creatore e il creatore apparirà qui.",
+    "unfollowButton": "Smetti di seguire"
   },
   "watchHistory": {
     "completed": "Completato",
