@@ -11,9 +11,11 @@ import PayoutPanel, {
 import CurrencyHint from "@/components/creator/CurrencyHint";
 import FilmographyGrid from "@/components/creator/FilmographyGrid";
 import BulletinBoard from "@/components/creator/BulletinBoard";
+import FollowCreatorButton from "@/components/creator/FollowCreatorButton";
 import ShareButtons from "@/components/watch/ShareButtons";
 import {
   getCreatorByHandle,
+  getCreatorFollowState,
   getCreatorStats,
   getFilmsByCreator,
 } from "@/lib/data/catalog";
@@ -52,6 +54,10 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
     data: { user },
   } = await supabaseAuth.auth.getUser();
   const isOwner = Boolean(user && creator.ownerUserId === user.id);
+
+  // Følge-tilstand: tallet er offentligt, "følger du?" er brugerens
+  // egen række. Server-renderet sandhed som props — ingen useEffect.
+  const follow = await getCreatorFollowState(creator.id, user?.id ?? null);
 
   const [films, country, posts] = await Promise.all([
     getFilmsByCreator(creator.handle, locale),
@@ -128,6 +134,21 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
         subtitle={`@${creator.handle} · ${t("founded", { year: creator.foundedYear })} · ${country}`}
       />
       <p className="mt-6 max-w-3xl leading-relaxed text-ash">{creator.bio}</p>
+
+      {/* Følge-rækken: ejeren kan ikke følge sig selv (DB'en
+          håndhæver det) og ser kun sit tal som tekst. */}
+      {isOwner ? (
+        <p className="mt-6 text-xs tabular-nums text-ash">
+          {t("followers", { count: follow.followerCount })}
+        </p>
+      ) : (
+        <FollowCreatorButton
+          creatorId={creator.id}
+          creatorName={creator.name}
+          initialFollowing={user ? follow.isFollowing : null}
+          initialFollowerCount={follow.followerCount}
+        />
+      )}
 
       {/* Del-rækken: profilen er skaberens visitkort — logget-ind
           besøgende deler den med deres EGEN affiliate-kode på, som

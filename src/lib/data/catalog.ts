@@ -421,6 +421,48 @@ export async function getCreatorStats(handle: string): Promise<CreatorStats> {
   };
 }
 
+/**
+ * Offentligt follower-tal for en skaber (creator_followers er
+ * select using (true), så tallet kan tælles af alle). Fejler
+ * graceful til 0 — tallet er pynt, aldrig en fejlside (fx før
+ * migrationen er kørt).
+ */
+export async function getCreatorFollowerCount(creatorId: string): Promise<number> {
+  const supabase = await createClient();
+  const { count, error } = await supabase
+    .from("creator_followers")
+    .select("creator_id", { count: "exact", head: true })
+    .eq("creator_id", creatorId);
+  if (error) {
+    console.warn("getCreatorFollowerCount:", error.message);
+    return 0;
+  }
+  return count ?? 0;
+}
+
+/**
+ * Følge-tilstand pr. seer: det offentlige tal + om DENNE bruger
+ * følger skaberen. Gæst (userId = null) følger aldrig — knappen
+ * renderes så som login-link.
+ */
+export async function getCreatorFollowState(
+  creatorId: string,
+  userId: string | null,
+): Promise<{ followerCount: number; isFollowing: boolean }> {
+  const supabase = await createClient();
+  const countPromise = getCreatorFollowerCount(creatorId);
+  const followingPromise = userId
+    ? supabase
+        .from("creator_followers")
+        .select("creator_id")
+        .eq("creator_id", creatorId)
+        .eq("user_id", userId)
+        .maybeSingle()
+    : Promise.resolve({ data: null, error: null });
+  const [count, { data }] = await Promise.all([countPromise, followingPromise]);
+  return { followerCount: count, isFollowing: Boolean(data) };
+}
+
 /* ---------- Kuraterede samlinger ---------- */
 /*
  * Samlinger er redaktionsdata (dashboard-only, offentlig læsning).
@@ -640,6 +682,40 @@ export async function getSavedFilms(
       .map((slug) => bySlug.get(slug))
       .filter((d): d is Documentary => d !== undefined),
   );
+}
+
+/**
+ * "Skabere du følger" i profilen: to-trins som getSavedFilms —
+ * først brugerens følgerækker (RLS: kun egne), så creators-rækkerne.
+ * Map'et bevarer rækkefølgen: senest fulgte skaber øverst.
+ */
+export async function getFollowedCreators(
+  userId: string,
+  locale?: string,
+): Promise<Creator[]> {
+  const supabase = await createClient();
+  const { data: follows, error: followsError } = await supabase
+    .from("creator_followers")
+    .select("creator_id")
+    .eq("user_id", userId)
+    .order("followed_at", { ascending: false });
+  if (followsError || !follows || follows.length === 0) {
+    if (followsError) console.warn("getFollowedCreators:", followsError.message);
+    return [];
+  }
+  const ids = follows.map((row) => row.creator_id);
+  const { data: creators, error: creatorsError } = await supabase
+    .from("creators")
+    .select("*")
+    .in("id", ids);
+  if (creatorsError || !creators) {
+    if (creatorsError) console.warn("getFollowedCreators:", creatorsError.message);
+    return [];
+  }
+  const byId = new Map(creators.map((row) => [row.id, toCreator(row, locale)]));
+  return ids
+    .map((id) => byId.get(id))
+    .filter((c): c is Creator => c !== undefined);
 }
 
 /**
