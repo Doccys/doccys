@@ -554,7 +554,7 @@
     "followingHeading": "Ersteller, die du folgst",
     "followingSubtitle": "Deine private Liste — zuletzt gefolgte Ersteller oben.",
     "followingEmpty": "Du folgst noch keinen Erstellern. Drücke \"Folgen\" auf einem Erstellerprofil, damit der Ersteller hier erscheint.",
-    "unfollowButton": "Entfolgen"
+    "unfollowButton": "Nicht mehr folgen"
   },
   "watchHistory": {
     "completed": "Fertig gesehen",

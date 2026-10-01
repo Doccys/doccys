@@ -554,7 +554,7 @@
     "followingHeading": "Créateurs que vous suivez",
     "followingSubtitle": "Votre liste privée — dernier créateur suivi en haut.",
     "followingEmpty": "Vous ne suivez aucun créateur pour le moment. Appuyez sur \"Suivre\" sur un profil de créateur pour que le créateur apparaisse ici.",
-    "unfollowButton": "Se désabonner"
+    "unfollowButton": "Ne plus suivre"
   },
   "watchHistory": {
     "completed": "Terminé",

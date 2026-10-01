@@ -554,7 +554,7 @@
     "followingHeading": "Seuraajat",
     "followingSubtitle": "Yksityinen listasi — viimeksi seurattu luoja ylimpänä.",
     "followingEmpty": "Et seuraa vielä yhtään luojaa. Paina \"Seuraa\" luojan profiilissa, niin luoja ilmestyy tänne.",
-    "unfollowButton": "Lopeta seuraaminen"
+    "unfollowButton": "Älä seuraa enää"
   },
   "watchHistory": {
     "completed": "Katsottu loppuun",

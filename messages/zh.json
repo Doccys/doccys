@@ -554,7 +554,7 @@
     "followingHeading": "你关注的创作者",
     "followingSubtitle": "你的私人列表 — 最近关注的创作者在最上面。",
     "followingEmpty": "你还没有关注任何创作者。点击创作者资料上的“关注”，创作者将出现在这里。",
-    "unfollowButton": "取消关注"
+    "unfollowButton": "不再关注"
   },
   "watchHistory": {
     "completed": "已观看",

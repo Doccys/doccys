@@ -554,7 +554,7 @@
     "followingHeading": "フォローしているクリエイター",
     "followingSubtitle": "あなたのプライベートリスト — 最近フォローしたクリエイターが上に表示されます。",
     "followingEmpty": "まだフォローしているクリエイターはいません。クリエイタープロフィールで「フォロー」を押すと、ここにクリエイターが表示されます。",
-    "unfollowButton": "フォローを解除"
+    "unfollowButton": "フォローをやめる"
   },
   "watchHistory": {
     "completed": "視聴完了",

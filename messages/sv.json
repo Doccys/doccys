@@ -554,7 +554,7 @@
     "followingHeading": "Skapare du följer",
     "followingSubtitle": "Din privata lista — senast följd skapare högst upp.",
     "followingEmpty": "Du följer inga skapare än. Tryck \"Följ\" på en skapareprofil så dyker skaparen upp här.",
-    "unfollowButton": "Sluta följa"
+    "unfollowButton": "Följ inte längre"
   },
   "watchHistory": {
     "completed": "Färdigvisad",
