@@ -533,6 +533,25 @@ export type CreatorPostUpdate = {
   updated_at?: string;
 };
 
+/* ---------- creator_followers (seere følger skabere) ---------- */
+
+export type CreatorFollowerRow = {
+  /** TEXT — creators.id er ikke uuid */
+  creator_id: string;
+  /** aldrig null: følge kræver en logget-ind konto */
+  user_id: string;
+  followed_at: string;
+};
+
+export type CreatorFollowerInsert = {
+  creator_id: string;
+  user_id: string;
+  followed_at?: string;
+};
+
+/** følger er insert/delete-only — de opdateres aldrig */
+export type CreatorFollowerUpdate = never;
+
 /* ---------- collections (kuraterede samlinger — redaktionsdata) ---------- */
 
 export type CollectionRow = {
@@ -704,6 +723,20 @@ export type Database = {
             columns: ["comment_id"];
             isOneToOne: false;
             referencedRelation: "comments";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      creator_followers: {
+        Row: CreatorFollowerRow;
+        Insert: CreatorFollowerInsert;
+        Update: CreatorFollowerUpdate;
+        Relationships: [
+          {
+            foreignKeyName: "creator_followers_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
             referencedColumns: ["id"];
           },
         ];
