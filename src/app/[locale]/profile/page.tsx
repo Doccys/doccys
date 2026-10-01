@@ -7,6 +7,7 @@ import DeleteAccountSection from "@/components/profile/DeleteAccountSection";
 import MinutesSection from "@/components/profile/MinutesSection";
 import SupportLedgerSection from "@/components/profile/SupportLedgerSection";
 import WatchHistoryList from "@/components/profile/WatchHistoryList";
+import UnfollowCreatorButton from "@/components/profile/UnfollowCreatorButton";
 import DocumentaryGrid from "@/components/documentary/DocumentaryGrid";
 import { createClient } from "@/lib/supabase/server";
 import {
@@ -15,6 +16,7 @@ import {
 } from "@/lib/data/credits";
 import {
   getDocumentaryBySlug,
+  getFollowedCreators,
   getOwnedCreator,
   getSavedFilms,
   getWatchHistory,
@@ -87,6 +89,10 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
   );
 
   const savedFilms = await getSavedFilms(user.id, locale);
+
+  // "Skabere du følger": to-trins-læsning i catalog — senest
+  // fulgte skaber øverst (followed_at desc).
+  const followedCreators = await getFollowedCreators(user.id, locale);
 
   // Creator-status: har kontoen en ejet skaber-profil, linker
   // kortet til studiet — ellers til ansøgningssiden.
@@ -180,6 +186,43 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
           ) : (
             <p className="rounded-xl border border-smoke bg-onyx px-6 py-8 text-sm leading-relaxed text-ash">
               {t("savedEmpty")}
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* Skabere du følger: rækkefølgen fra getFollowedCreators (senest
+          først). Land vises som rå ISO-kode i v1 — @handle og årstal
+          er de bærende oplysninger. */}
+      <section className="mt-16">
+        <h2 className="font-display text-2xl text-bone">{t("followingHeading")}</h2>
+        <p className="mt-2 text-sm text-ash">{t("followingSubtitle")}</p>
+        <div className="mt-5">
+          {followedCreators.length > 0 ? (
+            <ul className="divide-y divide-smoke rounded-xl border border-smoke bg-onyx">
+              {followedCreators.map((creator) => (
+                <li
+                  key={creator.id}
+                  className="flex items-center justify-between gap-4 px-6 py-4"
+                >
+                  <div className="min-w-0">
+                    <Link
+                      href={`/creator/${creator.handle}`}
+                      className="text-sm font-medium text-bone transition-colors hover:text-champagne"
+                    >
+                      {creator.name}
+                    </Link>
+                    <p className="mt-0.5 truncate text-xs text-ash">
+                      @{creator.handle} · {creator.foundedYear} · {creator.country}
+                    </p>
+                  </div>
+                  <UnfollowCreatorButton creatorId={creator.id} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="rounded-xl border border-smoke bg-onyx px-6 py-8 text-sm leading-relaxed text-ash">
+              {t("followingEmpty")}
             </p>
           )}
         </div>
