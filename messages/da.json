@@ -474,6 +474,9 @@
     "delete": "Slet kladde",
     "deleteConfirm": "Slet denne kladde? Videoen fjernes også.",
     "empty": "Ingen film endnu — upload din første ovenfor.",
+    "visitHeading": "Dit visitkort",
+    "visitIntro": "Et kort med din profil og dine tal — klart til at dele på sociale medier, i mails eller ved festivaler.",
+    "visitDownload": "Hent visitkort (PNG)",
     "retentionHeading": "Retention",
     "retentionIntro": "Hvor langt dine seere kom — andelen der nåede hhv. 10 %, 20 % … 100 % af filmen.",
     "retentionEmpty": "Endnu ikke nok afsluttede afspilninger til en retention-graf (mindst 5).",
@@ -686,5 +689,11 @@
     "updateError": "Opslaget kunne ikke gemmes. Prøv igen.",
     "deleteError": "Opslaget kunne ikke slettes. Prøv igen.",
     "pinError": "Kunne ikke fastgøre opslaget — der er allerede ét fastgjort. Prøv igen."
+  },
+  "visitkort": {
+    "eyebrow": "Skaber på Doccys",
+    "founded": "Grundlagt {year}",
+    "films": "{count, plural, one {# film} other {# film}}",
+    "followers": "{count, plural, one {# følger} other {# følgere}}"
   }
 }
