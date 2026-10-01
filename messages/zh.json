@@ -512,7 +512,10 @@
     "posterPickButton": "选择图片…",
     "filePickButton": "选择视频文件…",
     "fileNoneChosen": "未选择文件",
-    "talFollowers": "关注者"
+    "talFollowers": "关注者",
+    "visitHeading": "您的名片",
+    "visitIntro": "包含您的个人资料和数据的卡片——准备好在社交媒体、电子邮件或节日中分享。",
+    "visitDownload": "下载名片 (PNG)"
   },
   "profile": {
     "loginTitle": "登录以查看您的个人资料",
@@ -686,5 +689,11 @@
       "expiry": "该链接将在短时间后失效，并且只能使用一次。",
       "security": "如果您没有请求此操作，可以放心忽略此邮件 — 您的密码保持不变。"
     }
+  },
+  "visitkort": {
+    "eyebrow": "在Doccys上创建",
+    "founded": "成立于 {year}",
+    "films": "{count, plural, one {# 部电影} other {# 部电影}}",
+    "followers": "{count, plural, one {# 位关注者} other {# 位关注者}}"
   }
 }

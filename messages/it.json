@@ -512,7 +512,10 @@
     "posterPickButton": "Scegli immagine…",
     "filePickButton": "Scegli file video…",
     "fileNoneChosen": "Nessun file selezionato",
-    "talFollowers": "Follower"
+    "talFollowers": "Follower",
+    "visitHeading": "Il tuo biglietto da visita",
+    "visitIntro": "Un biglietto con il tuo profilo e le tue statistiche — pronto per essere condiviso sui social media, nelle e-mail o durante i festival.",
+    "visitDownload": "Scarica il biglietto da visita (PNG)"
   },
   "profile": {
     "loginTitle": "Accedi per vedere il tuo profilo",
@@ -686,5 +689,11 @@
       "expiry": "Il link scade dopo poco tempo e può essere utilizzato solo una volta.",
       "security": "Se non hai richiesto questo, puoi tranquillamente ignorare l'e-mail — la tua password rimane invariata."
     }
+  },
+  "visitkort": {
+    "eyebrow": "Creatore su Doccys",
+    "founded": "Fondato nel {year}",
+    "films": "{count, plural, one {# film} other {# film}}",
+    "followers": "{count, plural, one {# follower} other {# follower}}"
   }
 }

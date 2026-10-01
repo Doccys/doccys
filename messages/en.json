@@ -512,7 +512,10 @@
     "posterPickButton": "Choose image…",
     "filePickButton": "Choose video file…",
     "fileNoneChosen": "No file chosen",
-    "talFollowers": "Followers"
+    "talFollowers": "Followers",
+    "visitHeading": "Your business card",
+    "visitIntro": "A card with your profile and your stats — ready to share on social media, in emails, or at festivals.",
+    "visitDownload": "Download business card (PNG)"
   },
   "profile": {
     "loginTitle": "Log in to see your profile",
@@ -686,5 +689,11 @@
       "expiry": "The link expires shortly and can only be used once.",
       "security": "If you did not request this, you can safely ignore the email — your password remains unchanged."
     }
+  },
+  "visitkort": {
+    "eyebrow": "Creators on Doccys",
+    "founded": "Founded {year}",
+    "films": "{count, plural, one {# film} other {# films}}",
+    "followers": "{count, plural, one {# follower} other {# followers}}"
   }
 }

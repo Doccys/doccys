@@ -512,7 +512,10 @@
     "posterPickButton": "Bild auswählen…",
     "filePickButton": "Videodatei auswählen…",
     "fileNoneChosen": "Keine Datei ausgewählt",
-    "talFollowers": "Follower"
+    "talFollowers": "Follower",
+    "visitHeading": "Deine Visitenkarte",
+    "visitIntro": "Eine Karte mit deinem Profil und deinen Zahlen – bereit zum Teilen in sozialen Medien, per E-Mail oder auf Festivals.",
+    "visitDownload": "Visitenkarte herunterladen (PNG)"
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",
@@ -686,5 +689,11 @@
       "expiry": "Der Link läuft nach kurzer Zeit ab und kann nur einmal verwendet werden.",
       "security": "Wenn Sie dies nicht angefordert haben, können Sie die E-Mail ignorieren — Ihr Passwort bleibt unverändert."
     }
+  },
+  "visitkort": {
+    "eyebrow": "Erstellt auf Doccys",
+    "founded": "Gegründet {year}",
+    "films": "{count, plural, one {# Film} other {# Filme}}",
+    "followers": "{count, plural, one {# Follower} other {# Follower}}"
   }
 }

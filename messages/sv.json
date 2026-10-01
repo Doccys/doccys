@@ -512,7 +512,10 @@
     "posterPickButton": "Välj bild…",
     "filePickButton": "Välj videofil…",
     "fileNoneChosen": "Ingen fil vald",
-    "talFollowers": "Följare"
+    "talFollowers": "Följare",
+    "visitHeading": "Ditt visitkort",
+    "visitIntro": "Ett kort med din profil och dina siffror – klart att dela på sociala medier, i e-post eller vid festivaler.",
+    "visitDownload": "Ladda ner visitkort (PNG)"
   },
   "profile": {
     "loginTitle": "Logga in för att se din profil",
@@ -686,5 +689,11 @@
       "expiry": "Länken utgår efter kort tid och kan endast användas en gång.",
       "security": "Har du inte begärt detta kan du lugnt ignorera mejlet — ditt lösenord är oförändrat."
     }
+  },
+  "visitkort": {
+    "eyebrow": "Skapare på Doccys",
+    "founded": "Grundad {year}",
+    "films": "{count, plural, one {# film} other {# filmer}}",
+    "followers": "{count, plural, one {# följare} other {# följare}}"
   }
 }

@@ -512,7 +512,10 @@
     "posterPickButton": "Valitse kuva…",
     "filePickButton": "Valitse videotiedosto…",
     "fileNoneChosen": "Ei tiedostoa valittu",
-    "talFollowers": "Seuraajat"
+    "talFollowers": "Seuraajat",
+    "visitHeading": "Käyntikorttisi",
+    "visitIntro": "Kortti, jossa on profiilisi ja tietosi — valmis jaettavaksi sosiaalisessa mediassa, sähköposteissa tai festivaaleilla.",
+    "visitDownload": "Lataa käyntikortti (PNG)"
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",
@@ -686,5 +689,11 @@
       "expiry": "Linkki vanhenee lyhyen ajan kuluttua ja sitä voi käyttää vain kerran.",
       "security": "Jos et ole pyytänyt tätä, voit huoletta jättää sähköpostin huomiotta — salasanasi on ennallaan."
     }
+  },
+  "visitkort": {
+    "eyebrow": "Luojat Doccysissä",
+    "founded": "Perustettu {year}",
+    "films": "{count, plural, one {# elokuva} other {# elokuvaa}}",
+    "followers": "{count, plural, one {# seuraaja} other {# seuraajaa}}"
   }
 }
