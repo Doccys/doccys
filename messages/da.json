@@ -271,7 +271,11 @@
     "statEarnings": "Indtjening i alt",
     "earningsSub": "2 kr pr. 100 sete minutter",
     "earningsHeading": "Indtjening",
-    "filmographyHeading": "Filmografi"
+    "filmographyHeading": "Filmografi",
+    "follow": "Følg",
+    "followLogin": "Log ind for at følge {name}",
+    "following": "Følger ✓",
+    "followers": "{count, plural, one {# følger} other {# følgere}}"
   },
   "earningsPanel": {
     "eyebrow": "Indtjening",
@@ -509,6 +513,7 @@
     "talSummary30dMin": "Gyldige minutter, seneste 30 dage",
     "talSummaryTotalKr": "Optjent i alt",
     "talSummaryTotalMin": "Gyldige minutter i alt",
+    "talFollowers": "Følgere",
     "talChartHeading": "Daglig indtjening — seneste 30 dage",
     "talChartBar": "{date}: {amount}",
     "talSeereHeading": "Hvem ser dine film",
@@ -541,6 +546,10 @@
     "savedHeading": "Gemte film",
     "savedSubtitle": "Din private watchlist.",
     "savedEmpty": "Ingen gemte film endnu. Tryk \"Gem film\" under en afspiller, så lander filmen her.",
+    "followingHeading": "Skabere du følger",
+    "followingSubtitle": "Din private liste — senest fulgte skaber øverst.",
+    "followingEmpty": "Du følger ingen skabere endnu. Tryk \"Følg\" på en skaberprofil, så dukker skaberen op her.",
+    "unfollowButton": "Afølge",
     "creatorHeading": "Skaber",
     "creatorSub": "Ansøg om at blive skaber og få adgang til upload af dine dokumentarer.",
     "creatorOwnedSub": "Du er godkendt skaber — studiet er åbent.",
