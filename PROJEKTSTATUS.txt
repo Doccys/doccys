@@ -1,6 +1,70 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-10-01
+Sidst opdateret: 2026-10-02
 ==========================================================
+
+@ TAG VED SIGNUP — RESERVEREDE BRUGER-HANDLES (2/10) — BYGGET, MIGRATION AFVENTER KØRT AF BRUGEREN
+Alle nye brugere kan nu vælge deres eget unikke @ tag allerede ved
+kontooprettelse — tag'et reserverer kontoens fremtidige skaber-
+handle (user_handles), så ingen andre kan tage det i mellemtiden.
+Beslutninger MED BRUGEREN: ALLE nye brugere (ikke kun kommende
+skabere), unikt på tværs af HELE platformen (creators +
+ansøgninger + reservationer) med LIVE ledighedstjek, VALGFRIT ved
+signup + claim-kort på profilen bagefter, UFORANDERLIGT når valgt
+(handles er URL-identifikatorer; ingen update-sti findes).
+- MIGRATION 20261002_user_handles.sql (a7597bb): user_handles
+  (user_id uuid PK on delete cascade — kontosletning frigiver
+  tag'et, handle unique + check-constraint som creator_
+  applications). RLS: select using(true) (live-tjekket kræver
+  anon-læsning — samme stilling som owner_user_id), insert med
+  auth.uid()-tjek, INGEN update/delete-policy = uforanderligt.
+  Fælles prædikat handle_optaget(p_handle, p_user_id) (security
+  definer — creator_applications er ellers ulæselig for triggeren)
+  bruges af signup-RPC'en OG tre triggers: user_handles-insert,
+  ansøgningens handle-felt (andre kontos reservation afvises, egen
+  er ok) OG creator_application_status (ERSTATTET wholesale m.
+  20260915-krop + handle-tjek → dansk fejl ved godkendelse).
+  EXECUTE-hullet: revoke fra public/anon/authenticated ×4.
+  AFVENTER KØRT AF BRUGEREN (SQL Editor; idempotent, kør to
+  gange, verifikations-SQL i headeren: 2 policies, proacl,
+  negativ-insert 42501, dansk exception på seedet creators-handle).
+  NB: KODEN FEJLER PÆNT PRE-MIGRATION (PGRST205 → intet live-
+  tjek, intet claim-kort, signup fortsætter uden tag).
+- AFVIST DESIGN (vigtig læring): admin.deleteUser-rollback efter
+  generateLink ved handle-konflikt — generateLink re-udsteder
+  token for eksisterende ubekræftet bruger, så et deleteUser
+  kunne slette en konto med en allerede afsendt bekræftelsesmail.
+  I stedet: ledigheds-FOR-tjek via RPC (stopper friske racer
+  FØR kontoen oprettes = 409 uden sideeffekter) + idempotent
+  reservation efter (samme tag = ren resend; andet tag = 409
+  handleLocked; insert-race = 409 handleTaken, kontoen består).
+- SIGNUP-RUTE (e69b606): syntaks/reserveret FØR rate-limit (koster
+  ingen bucket), DB-ledighed EFTER; reservationen ligger FØR
+  mailen (race → ingen afsendt mail).
+- UI: valgfrit @-tagfelt i AuthForm m. debounced live-tjek (500 ms,
+  advisivt, PGRST205-graceful; c57e0af) · profil: @-visning ved
+  titlen + fremhævet champagne-kort m. HandleClaimForm til konti
+  uden tag (987147b; DisplayNameForm-mønsteret, browser-klient direkte
+  — RLS er autoriteten) · ansøgning: handle-feltet forudfyldes fra
+  reservationen, prober nu også user_handles m. ejer-tjek, P0001
+  (trigger) fanges som handleTaken (0152447). Fælles regler i NYT
+  src/lib/handles.ts (0c5b356); typer i database-genericen (b2f1400).
+- i18n (62fd2a9): 17 nye nøgler (8 auth + 9 profile) oversat ×12
+  via script → 558 nøgler ×13 fuld paritet; tsc + i18n-verify ALLE
+  11 TJEK GRØNNE (BASE=3002).
+- AFVIGELSE FRA PLANEN: intet "stille kort" på profilen når tag'et
+  findes — KUN @-visningen ved titlen (claim-kortet vises udelukkende
+  ved manglende tag).
+- E2E (AFVENTER, efter migrationen — fuld liste i planen): signup
+  m. tag → mail → bekræft → profilen viser @tag · signup uden tag →
+  claim-kort → reserver · duplikat: A tager X, signup B med X →
+  live-rød + 409 handleTaken · race-sim: reservér i SQL Editor,
+  signup m. samme tag → 409 FØR kontooprettelse · ansøgning
+  forudfyldes fra egen reservation · anden konto force-submitter på
+  reserveret tag → dansk trigger-fejl → handleTaken · godkendelse
+  af ansøgning på en andens reserverede handle → dansk EXCEPTION,
+  ingen creators-række · apply/studio → 422 handleReserved ·
+  ab/Foo_Bar → 422 handleInvalid · kontosletning m. tag → rækken
+  cascade-slettes.
 
 SEERE FØLGER SKABERE — creator_followers (1/10) — BYGGET, MIGRATION KØRT, E2E OK
 Vækst-gennemgangens pull-kanal: intet bragte en seer tilbage efter et
@@ -1537,6 +1601,14 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+62fd2a9 i18n: @ tag-tekster oversat til 12 oevrige sprog
+0152447 ansoegning: forudfyldning fra reserveret tag + udvidet tjek
+987147b profil: claim-formular til @ tag
+c57e0af authform: valgfrit @-tagfelt med live ledighedstjek
+e69b606 auth: valgfrit @ tag i signup-ruten
+a7597bb db: user_handles — reserverede @ tags ved signup
+0c5b356 faelles handle-validering i src/lib/handles.ts
+b2f1400 typer: user_handles i database-genericen
 7a1f5a6 i18n: afolge -> Foelg ikke laengere (falsk ven, 13 sprog)
 c96632e i18n: foelge-noegler oversat til de 12 oevrige sprog
 80f0028 studio: follower-tal i Dine tal
