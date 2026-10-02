@@ -49,7 +49,11 @@
       "nameMissing": "请选择您的用户名，然后创建账户。",
       "generic": "出了点问题。请再试一次。",
       "rateLimited": "尝试次数过多 — 请稍候再试。",
-      "ageRequired": "您必须确认您至少18岁才能创建帐户。"
+      "ageRequired": "您必须确认您至少18岁才能创建帐户。",
+      "handleInvalid": "该 @ 标签无效 — 使用小写字母、数字和连字符（3–40 个字符）。",
+      "handleTaken": "该 @ 标签已被使用 — 请选择另一个。",
+      "handleReserved": "该 @ 标签已被保留 — 请选择另一个。",
+      "handleLocked": "账户已经有一个 @ 标签 — 无法更改。请使用相同的标签并确认您的电子邮件。"
     },
     "confirmTitle": "确认您的电子邮件",
     "confirmWorking": "请稍候 — 正在确认您的电子邮件，您将进入您的个人资料…",
@@ -57,7 +61,11 @@
     "showPassword": "显示密码",
     "hidePassword": "隐藏密码",
     "ageLabel": "我确认我至少18岁 — 查看",
-    "ageLink": "服务条款，第12节"
+    "ageLink": "服务条款，第12节",
+    "handle": "@ 标签（可选）",
+    "handlePlaceholder": "例如 nordlys-film — 将成为您的 @ 名称",
+    "handleHint": "小写字母、数字和连字符（3–40 个字符）。保留您的未来创作者地址，不能更改。",
+    "handleAvailable": "标签可用！"
   },
   "footer": {
     "tagline": "独立纪录片。永无广告。",
@@ -557,7 +565,16 @@
     "followingHeading": "你关注的创作者",
     "followingSubtitle": "你的私人列表 — 最近关注的创作者在最上面。",
     "followingEmpty": "你还没有关注任何创作者。点击创作者资料上的“关注”，创作者将出现在这里。",
-    "unfollowButton": "不再关注"
+    "unfollowButton": "不再关注",
+    "handleMissing": "选择你的@标签",
+    "handleMissingSub": "小写字母、数字和连字符（3-40个字符）。标签将保留你的未来创作者地址，只能选择一次。",
+    "handleLabel": "@标签",
+    "handlePlaceholder": "例如 nordlys-film",
+    "handleSave": "保留@标签",
+    "handleSaved": "你的@标签已保留。",
+    "handleAvailable": "可用！",
+    "handleTaken": "该@标签已被使用 — 请选择另一个。",
+    "handleError": "标签暂时无法保留 — 请稍后再试。"
   },
   "watchHistory": {
     "completed": "已观看",

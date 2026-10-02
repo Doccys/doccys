@@ -49,7 +49,11 @@
       "nameMissing": "Elige tu nombre de usuario antes de crear la cuenta.",
       "generic": "Algo salió mal. Inténtalo de nuevo.",
       "rateLimited": "Demasiados intentos: espera un momento y vuelve a intentarlo.",
-      "ageRequired": "Debes confirmar que tienes al menos 18 años antes de que se cree la cuenta."
+      "ageRequired": "Debes confirmar que tienes al menos 18 años antes de que se cree la cuenta.",
+      "handleInvalid": "La etiqueta @ no es válida — usa letras minúsculas, números y guiones (3–40 caracteres).",
+      "handleTaken": "La etiqueta @ ya está en uso — elige otra.",
+      "handleReserved": "La etiqueta @ está reservada — elige otra.",
+      "handleLocked": "La cuenta ya tiene una etiqueta @ — no se puede cambiar. Usa la misma etiqueta y confirma tu correo electrónico."
     },
     "confirmTitle": "Confirmando tu correo electrónico",
     "confirmWorking": "Un momento — tu correo electrónico está siendo confirmado y accederás a tu perfil…",
@@ -57,7 +61,11 @@
     "showPassword": "Mostrar contraseña",
     "hidePassword": "Ocultar contraseña",
     "ageLabel": "Confirmo que tengo al menos 18 años — ver",
-    "ageLink": "Términos y condiciones, sección 12"
+    "ageLink": "Términos y condiciones, sección 12",
+    "handle": "@ etiqueta (opcional)",
+    "handlePlaceholder": "por ejemplo, nordlys-film — será tu nombre @",
+    "handleHint": "Letras minúsculas, números y guiones (3–40 caracteres). Reserva tu futura dirección de creador y no se puede cambiar más tarde.",
+    "handleAvailable": "¡La etiqueta está disponible!"
   },
   "footer": {
     "tagline": "Documentales independientes. Sin anuncios. Nunca.",
@@ -557,7 +565,16 @@
     "followingHeading": "Creadores que sigues",
     "followingSubtitle": "Tu lista privada — el creador más reciente seguido en la parte superior.",
     "followingEmpty": "Aún no sigues a ningún creador. Presiona \"Seguir\" en un perfil de creador y aparecerá aquí.",
-    "unfollowButton": "Dejar de seguir"
+    "unfollowButton": "Dejar de seguir",
+    "handleMissing": "Elige tu @ etiqueta",
+    "handleMissingSub": "Letras minúsculas, números y guiones (3–40 caracteres). La etiqueta reserva tu futura dirección de creador y solo se puede elegir una vez.",
+    "handleLabel": "@ etiqueta",
+    "handlePlaceholder": "ej. aurora-boreal-peliculas",
+    "handleSave": "Reservar @ etiqueta",
+    "handleSaved": "Tu @ etiqueta está reservada.",
+    "handleAvailable": "¡Disponible!",
+    "handleTaken": "La @ etiqueta ya está en uso — elige otra.",
+    "handleError": "No se pudo reservar la etiqueta aún — inténtalo de nuevo más tarde."
   },
   "watchHistory": {
     "completed": "Finalizada",

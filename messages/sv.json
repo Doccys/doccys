@@ -49,7 +49,11 @@
       "nameMissing": "Välj ditt användarnamn innan du skapar kontot.",
       "generic": "Något gick fel. Försök igen.",
       "rateLimited": "För många försök — vänta lite och försök igen.",
-      "ageRequired": "Du måste bekräfta att du är minst 18 år innan kontot kan skapas."
+      "ageRequired": "Du måste bekräfta att du är minst 18 år innan kontot kan skapas.",
+      "handleInvalid": "Det @ tagget är inte giltigt — använd små bokstäver, siffror och bindestreck (3–40 tecken).",
+      "handleTaken": "Det @ tagget är redan taget — välj ett annat.",
+      "handleReserved": "Det @ tagget är reserverat — välj ett annat.",
+      "handleLocked": "Kontot har redan ett @ tagg — det kan inte ändras. Använd samma tagg och bekräfta din e-post."
     },
     "confirmTitle": "Bekräftar din e-post",
     "confirmWorking": "Ett ögonblick — din e-post bekräftas och du kommer in på din profil…",
@@ -57,7 +61,11 @@
     "showPassword": "Visa lösenord",
     "hidePassword": "Dölj lösenord",
     "ageLabel": "Jag bekräftar att jag är minst 18 år — se",
-    "ageLink": "Handelsvillkoren, avsnitt 12"
+    "ageLink": "Handelsvillkoren, avsnitt 12",
+    "handle": "@ tagg (valfritt)",
+    "handlePlaceholder": "t.ex. nordlys-film — blir ditt @-namn",
+    "handleHint": "Små bokstäver, siffror och bindestreck (3–40 tecken). Reserverar din framtida skapare-adress och kan inte ändras senare.",
+    "handleAvailable": "Tagget är tillgängligt!"
   },
   "footer": {
     "tagline": "Oberoende dokumentärer. Inga annonser. Aldrig.",
@@ -557,7 +565,16 @@
     "followingHeading": "Skapare du följer",
     "followingSubtitle": "Din privata lista — senast följd skapare högst upp.",
     "followingEmpty": "Du följer inga skapare än. Tryck \"Följ\" på en skapareprofil så dyker skaparen upp här.",
-    "unfollowButton": "Följ inte längre"
+    "unfollowButton": "Följ inte längre",
+    "handleMissing": "Välj ditt @ tag",
+    "handleMissingSub": "Små bokstäver, siffror och bindestreck (3–40 tecken). Taggen reserverar din framtida skapare-adress och kan endast väljas en gång.",
+    "handleLabel": "@ tag",
+    "handlePlaceholder": "t.ex. norrsken-film",
+    "handleSave": "Reservera @ tag",
+    "handleSaved": "Ditt @ tag är reserverat.",
+    "handleAvailable": "Tillgänglig!",
+    "handleTaken": "Det @ tag är redan använt — välj ett annat.",
+    "handleError": "Taggen kunde inte reserveras ännu — försök igen senare."
   },
   "watchHistory": {
     "completed": "Färdigvisad",

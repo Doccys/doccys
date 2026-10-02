@@ -49,7 +49,11 @@
       "nameMissing": "Wähle deinen Benutzernamen, bevor du das Konto erstellst.",
       "generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
       "rateLimited": "Zu viele Versuche – bitte warten Sie einen Moment und versuchen Sie es erneut.",
-      "ageRequired": "Sie müssen bestätigen, dass Sie mindestens 18 Jahre alt sind, bevor das Konto erstellt wird."
+      "ageRequired": "Sie müssen bestätigen, dass Sie mindestens 18 Jahre alt sind, bevor das Konto erstellt wird.",
+      "handleInvalid": "Das @ Tag ist ungültig — verwenden Sie Kleinbuchstaben, Zahlen und Bindestriche (3–40 Zeichen).",
+      "handleTaken": "Das @ Tag ist bereits vergeben — wählen Sie ein anderes.",
+      "handleReserved": "Das @ Tag ist reserviert — wählen Sie ein anderes.",
+      "handleLocked": "Das Konto hat bereits ein @ Tag — es kann nicht geändert werden. Verwenden Sie dasselbe Tag und bestätigen Sie Ihre E-Mail."
     },
     "confirmTitle": "Bestätigen Sie Ihre E-Mail",
     "confirmWorking": "Einen Moment — Ihre E-Mail wird bestätigt und Sie gelangen zu Ihrem Profil…",
@@ -57,7 +61,11 @@
     "showPassword": "Passwort anzeigen",
     "hidePassword": "Passwort verbergen",
     "ageLabel": "Ich bestätige, dass ich mindestens 18 Jahre alt bin — siehe",
-    "ageLink": "Allgemeine Geschäftsbedingungen, Abschnitt 12"
+    "ageLink": "Allgemeine Geschäftsbedingungen, Abschnitt 12",
+    "handle": "@ Tag (optional)",
+    "handlePlaceholder": "z.B. nordlys-film — wird Ihr @-Name",
+    "handleHint": "Kleinbuchstaben, Zahlen und Bindestriche (3–40 Zeichen). Reserviert Ihre zukünftige Ersteller-Adresse und kann später nicht geändert werden.",
+    "handleAvailable": "Das Tag ist verfügbar!"
   },
   "footer": {
     "tagline": "Unabhängige Dokumentarfilme. Keine Werbung. Niemals.",
@@ -557,7 +565,16 @@
     "followingHeading": "Ersteller, die du folgst",
     "followingSubtitle": "Deine private Liste — zuletzt gefolgte Ersteller oben.",
     "followingEmpty": "Du folgst noch keinen Erstellern. Drücke \"Folgen\" auf einem Erstellerprofil, damit der Ersteller hier erscheint.",
-    "unfollowButton": "Nicht mehr folgen"
+    "unfollowButton": "Nicht mehr folgen",
+    "handleMissing": "Wähle dein @ Tag",
+    "handleMissingSub": "Kleinbuchstaben, Zahlen und Bindestriche (3–40 Zeichen). Das Tag reserviert deine zukünftige Ersteller-Adresse und kann nur einmal gewählt werden.",
+    "handleLabel": "@ Tag",
+    "handlePlaceholder": "z.B. nordlicht-filme",
+    "handleSave": "@ Tag reservieren",
+    "handleSaved": "Dein @ Tag ist reserviert.",
+    "handleAvailable": "Verfügbar!",
+    "handleTaken": "Das @ Tag wird bereits verwendet — wähle ein anderes.",
+    "handleError": "Das Tag konnte noch nicht reserviert werden — versuche es später erneut."
   },
   "watchHistory": {
     "completed": "Fertig gesehen",

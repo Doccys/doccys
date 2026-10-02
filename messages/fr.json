@@ -49,7 +49,11 @@
       "nameMissing": "Choisissez votre nom d'utilisateur avant de créer le compte.",
       "generic": "Une erreur est survenue. Réessayez.",
       "rateLimited": "Trop de tentatives — attendez un peu et réessayez.",
-      "ageRequired": "Vous devez confirmer que vous avez au moins 18 ans avant que le compte soit créé."
+      "ageRequired": "Vous devez confirmer que vous avez au moins 18 ans avant que le compte soit créé.",
+      "handleInvalid": "Ce tag @ n'est pas valide — utilisez des lettres minuscules, des chiffres et des tirets (3–40 caractères).",
+      "handleTaken": "Ce tag @ est déjà utilisé — choisissez-en un autre.",
+      "handleReserved": "Ce tag @ est réservé — choisissez-en un autre.",
+      "handleLocked": "Le compte a déjà un tag @ — il ne peut pas être modifié. Utilisez le même tag et confirmez votre e-mail."
     },
     "confirmTitle": "Confirme votre e-mail",
     "confirmWorking": "Un instant — votre e-mail est en cours de confirmation, et vous accéderez à votre profil…",
@@ -57,7 +61,11 @@
     "showPassword": "Afficher le mot de passe",
     "hidePassword": "Masquer le mot de passe",
     "ageLabel": "Je confirme que j'ai au moins 18 ans — voir",
-    "ageLink": "Les conditions générales, section 12"
+    "ageLink": "Les conditions générales, section 12",
+    "handle": "@ tag (facultatif)",
+    "handlePlaceholder": "par ex. nordlys-film — devient votre nom @",
+    "handleHint": "Lettres minuscules, chiffres et tirets (3–40 caractères). Réserve votre future adresse de créateur et ne peut pas être modifié plus tard.",
+    "handleAvailable": "Le tag est disponible !"
   },
   "footer": {
     "tagline": "Documentaires indépendants. Sans publicité. Jamais.",
@@ -557,7 +565,16 @@
     "followingHeading": "Créateurs que vous suivez",
     "followingSubtitle": "Votre liste privée — dernier créateur suivi en haut.",
     "followingEmpty": "Vous ne suivez aucun créateur pour le moment. Appuyez sur \"Suivre\" sur un profil de créateur pour que le créateur apparaisse ici.",
-    "unfollowButton": "Ne plus suivre"
+    "unfollowButton": "Ne plus suivre",
+    "handleMissing": "Choisissez votre @ tag",
+    "handleMissingSub": "Lettres minuscules, chiffres et tirets (3–40 caractères). Le tag réserve votre future adresse de créateur et ne peut être choisi qu'une seule fois.",
+    "handleLabel": "@ tag",
+    "handlePlaceholder": "ex. nordlys-film",
+    "handleSave": "Réserver @ tag",
+    "handleSaved": "Votre @ tag est réservé.",
+    "handleAvailable": "Disponible !",
+    "handleTaken": "Le @ tag est déjà utilisé — choisissez-en un autre.",
+    "handleError": "Le tag n'a pas pu être réservé pour le moment — réessayez plus tard."
   },
   "watchHistory": {
     "completed": "Terminé",

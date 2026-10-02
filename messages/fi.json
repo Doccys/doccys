@@ -49,7 +49,11 @@
       "nameMissing": "Valitse käyttäjänimesi ennen tilin luomista.",
       "generic": "Jotain meni pieleen. Yritä uudelleen.",
       "rateLimited": "Liian monta yritystä — odota hetki ja yritä uudelleen.",
-      "ageRequired": "Sinun on vahvistettava, että olet vähintään 18-vuotias ennen tilin luomista."
+      "ageRequired": "Sinun on vahvistettava, että olet vähintään 18-vuotias ennen tilin luomista.",
+      "handleInvalid": "Tämä @ tunniste ei ole kelvollinen — käytä pieniä kirjaimia, numeroita ja väliviivoja (3–40 merkkiä).",
+      "handleTaken": "Tämä @ tunniste on jo käytössä — valitse toinen.",
+      "handleReserved": "Tämä @ tunniste on varattu — valitse toinen.",
+      "handleLocked": "Tilillä on jo @ tunniste — sitä ei voi muuttaa. Käytä samaa tunnistetta ja vahvista sähköpostisi."
     },
     "confirmTitle": "Vahvistetaan sähköpostiasi",
     "confirmWorking": "Hetkinen — sähköpostiasi vahvistetaan ja pääset profiiliisi…",
@@ -57,7 +61,11 @@
     "showPassword": "Näytä salasana",
     "hidePassword": "Piilota salasana",
     "ageLabel": "Vahvistan, että olen vähintään 18-vuotias — katso",
-    "ageLink": "Käyttöehdot, luku 12"
+    "ageLink": "Käyttöehdot, luku 12",
+    "handle": "@ tunniste (valinnainen)",
+    "handlePlaceholder": "esim. nordlys-film — tulee @-nimeksesi",
+    "handleHint": "Pienet kirjaimet, numerot ja väliviivat (3–40 merkkiä). Varaa tulevan luojan osoitteesi, eikä sitä voi muuttaa myöhemmin.",
+    "handleAvailable": "Tunniste on saatavilla!"
   },
   "footer": {
     "tagline": "Itsenäiset dokumentit. Ei mainoksia. Koskaan.",
@@ -557,7 +565,16 @@
     "followingHeading": "Seuraajat",
     "followingSubtitle": "Yksityinen listasi — viimeksi seurattu luoja ylimpänä.",
     "followingEmpty": "Et seuraa vielä yhtään luojaa. Paina \"Seuraa\" luojan profiilissa, niin luoja ilmestyy tänne.",
-    "unfollowButton": "Älä seuraa enää"
+    "unfollowButton": "Älä seuraa enää",
+    "handleMissing": "Valitse @ tunnuksesi",
+    "handleMissingSub": "Pienet kirjaimet, numerot ja väliviivat (3–40 merkkiä). Tunnus varaa tulevan luojan osoitteesi ja se voidaan valita vain kerran.",
+    "handleLabel": "@ tunnus",
+    "handlePlaceholder": "esim. revontuli-elokuvat",
+    "handleSave": "Varaa @ tunnus",
+    "handleSaved": "@ tunnuksesi on varattu.",
+    "handleAvailable": "Vapaa!",
+    "handleTaken": "@ tunnus on jo käytössä — valitse toinen.",
+    "handleError": "Tunnusta ei voitu vielä varata — yritä myöhemmin uudelleen."
   },
   "watchHistory": {
     "completed": "Katsottu loppuun",

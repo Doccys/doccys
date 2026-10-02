@@ -49,7 +49,11 @@
       "nameMissing": "Velg brukernavnet ditt før du oppretter kontoen.",
       "generic": "Noe gikk galt. Prøv igjen.",
       "rateLimited": "For mange forsøk — vent litt og prøv igjen.",
-      "ageRequired": "Du må bekrefte at du er minst 18 år før kontoen opprettes."
+      "ageRequired": "Du må bekrefte at du er minst 18 år før kontoen opprettes.",
+      "handleInvalid": "Det @ tag er ikke gyldig — bruk små bokstaver, tall og bindestreker (3–40 tegn).",
+      "handleTaken": "Det @ tag er allerede i bruk — velg et annet.",
+      "handleReserved": "Det @ tag er reservert — velg et annet.",
+      "handleLocked": "Kontoen har allerede et @ tag — det kan ikke endres. Bruk det samme tag og bekreft din e-post."
     },
     "confirmTitle": "Bekrefter din e-post",
     "confirmWorking": "Et øyeblikk — din e-post bekreftes, og du kommer inn på din profil…",
@@ -57,7 +61,11 @@
     "showPassword": "Vis passord",
     "hidePassword": "Skjul passord",
     "ageLabel": "Jeg bekrefter at jeg er minst 18 år — se",
-    "ageLink": "Handelsbetingelsene, avsnitt 12"
+    "ageLink": "Handelsbetingelsene, avsnitt 12",
+    "handle": "@ tag (valgfritt)",
+    "handlePlaceholder": "f.eks. nordlys-film — blir ditt @-navn",
+    "handleHint": "Små bokstaver, tall og bindestreker (3–40 tegn). Reserverer din fremtidige skaper-adresse og kan ikke endres senere.",
+    "handleAvailable": "Tag'et er ledig!"
   },
   "footer": {
     "tagline": "Uavhengige dokumentarer. Ingen reklamer. Aldri.",
@@ -557,7 +565,16 @@
     "followingHeading": "Skapere du følger",
     "followingSubtitle": "Din private liste — sist fulgte skaper øverst.",
     "followingEmpty": "Du følger ingen skapere ennå. Trykk \"Følg\" på en skaperprofil, så dukker skaperen opp her.",
-    "unfollowButton": "Følg ikke lenger"
+    "unfollowButton": "Følg ikke lenger",
+    "handleMissing": "Velg din @ tag",
+    "handleMissingSub": "Små bokstaver, tall og bindestreker (3–40 tegn). Tag'et reserverer din fremtidige skaper-adresse og kan kun velges én gang.",
+    "handleLabel": "@ tag",
+    "handlePlaceholder": "f.eks. nordlys-film",
+    "handleSave": "Reserver @ tag",
+    "handleSaved": "Ditt @ tag er reservert.",
+    "handleAvailable": "Ledig!",
+    "handleTaken": "Det @ tag er allerede brukt — velg et annet.",
+    "handleError": "Tag'et kunne ikke reserveres ennå — prøv igjen senere."
   },
   "watchHistory": {
     "completed": "Fullført",

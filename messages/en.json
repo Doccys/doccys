@@ -49,7 +49,11 @@
       "nameMissing": "Choose your username before creating the account.",
       "generic": "Something went wrong. Please try again.",
       "rateLimited": "Too many attempts — please wait a moment and try again.",
-      "ageRequired": "You must confirm that you are at least 18 years old before the account is created."
+      "ageRequired": "You must confirm that you are at least 18 years old before the account is created.",
+      "handleInvalid": "The @ handle is not valid — use lowercase letters, numbers, and hyphens (3–40 characters).",
+      "handleTaken": "The @ handle is already taken — please choose another.",
+      "handleReserved": "The @ handle is reserved — please choose another.",
+      "handleLocked": "The account already has an @ handle — it cannot be changed. Use the same handle and confirm your email."
     },
     "confirmTitle": "Confirming your email",
     "confirmWorking": "Just a moment — your email is being confirmed, and you'll be taken to your profile…",
@@ -57,7 +61,11 @@
     "showPassword": "Show password",
     "hidePassword": "Hide password",
     "ageLabel": "I confirm that I am at least 18 years old — see",
-    "ageLink": "Terms and Conditions, section 12"
+    "ageLink": "Terms and Conditions, section 12",
+    "handle": "@ handle (optional)",
+    "handlePlaceholder": "e.g., nordlys-film — becomes your @ name",
+    "handleHint": "Lowercase letters, numbers, and hyphens (3–40 characters). Reserves your future creator address and cannot be changed later.",
+    "handleAvailable": "The handle is available!"
   },
   "footer": {
     "tagline": "Independent documentaries. No ads. Ever.",
@@ -557,7 +565,16 @@
     "followingHeading": "Creators you follow",
     "followingSubtitle": "Your private list — most recently followed creator at the top.",
     "followingEmpty": "You are not following any creators yet. Press \"Follow\" on a creator profile to have them appear here.",
-    "unfollowButton": "Unfollow"
+    "unfollowButton": "Unfollow",
+    "handleMissing": "Choose your @ handle",
+    "handleMissingSub": "Lowercase letters, numbers, and hyphens (3–40 characters). The handle reserves your future creator address and can only be chosen once.",
+    "handleLabel": "@ handle",
+    "handlePlaceholder": "e.g. northern-lights-films",
+    "handleSave": "Reserve @ handle",
+    "handleSaved": "Your @ handle is reserved.",
+    "handleAvailable": "Available!",
+    "handleTaken": "The @ handle is already taken — choose another.",
+    "handleError": "The handle could not be reserved yet — please try again later."
   },
   "watchHistory": {
     "completed": "Completed",

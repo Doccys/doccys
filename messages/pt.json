@@ -49,7 +49,11 @@
       "nameMissing": "Escolha seu nome de usuário antes de criar a conta.",
       "generic": "Algo deu errado. Tente novamente.",
       "rateLimited": "Muitas tentativas — aguarde um pouco e tente novamente.",
-      "ageRequired": "Você deve confirmar que tem pelo menos 18 anos antes que a conta seja criada."
+      "ageRequired": "Você deve confirmar que tem pelo menos 18 anos antes que a conta seja criada.",
+      "handleInvalid": "Esse @ tag não é válido — use letras minúsculas, números e hífens (3–40 caracteres).",
+      "handleTaken": "Esse @ tag já está em uso — escolha outro.",
+      "handleReserved": "Esse @ tag está reservado — escolha outro.",
+      "handleLocked": "A conta já possui um @ tag — ele não pode ser alterado. Use o mesmo tag e confirme seu e-mail."
     },
     "confirmTitle": "Confirmando seu e-mail",
     "confirmWorking": "Um momento — seu e-mail está sendo confirmado, e você será direcionado para seu perfil…",
@@ -57,7 +61,11 @@
     "showPassword": "Mostrar senha",
     "hidePassword": "Ocultar senha",
     "ageLabel": "Eu confirmo que tenho pelo menos 18 anos — veja",
-    "ageLink": "Os termos e condições, seção 12"
+    "ageLink": "Os termos e condições, seção 12",
+    "handle": "@ tag (opcional)",
+    "handlePlaceholder": "ex. nordlys-film — será seu nome @",
+    "handleHint": "Letras minúsculas, números e hífens (3–40 caracteres). Reserva seu endereço de criador futuro e não pode ser alterado depois.",
+    "handleAvailable": "Tag disponível!"
   },
   "footer": {
     "tagline": "Documentários independentes. Sem anúncios. Nunca.",
@@ -557,7 +565,16 @@
     "followingHeading": "Criadores que você segue",
     "followingSubtitle": "Sua lista privada — criador mais recente no topo.",
     "followingEmpty": "Você ainda não segue nenhum criador. Toque em \"Seguir\" no perfil de um criador para que ele apareça aqui.",
-    "unfollowButton": "Deixar de seguir"
+    "unfollowButton": "Deixar de seguir",
+    "handleMissing": "Escolha sua @ tag",
+    "handleMissingSub": "Letras minúsculas, números e hífens (3–40 caracteres). A tag reserva seu futuro endereço de criador e só pode ser escolhida uma vez.",
+    "handleLabel": "@ tag",
+    "handlePlaceholder": "ex: filmes-aurora",
+    "handleSave": "Reservar @ tag",
+    "handleSaved": "Sua @ tag está reservada.",
+    "handleAvailable": "Disponível!",
+    "handleTaken": "A @ tag já está em uso — escolha outra.",
+    "handleError": "Não foi possível reservar a tag ainda — tente novamente mais tarde."
   },
   "watchHistory": {
     "completed": "Concluído",
