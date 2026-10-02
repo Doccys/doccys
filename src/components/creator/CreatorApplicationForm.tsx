@@ -5,6 +5,10 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import type { CreatorApplication } from "@/lib/types";
 import { createClient } from "@/lib/supabase/client";
+import {
+  normalizeHandle,
+  validateHandleSyntax,
+} from "@/lib/handles";
 import { formatDate } from "@/lib/utils/format";
 
 /**
@@ -16,26 +20,32 @@ import { formatDate } from "@/lib/utils/format";
  * View'et er prop-truth: server-komponenten genhentes efter hver
  * skrivning (router.refresh()), så statuskortet altid afspejler
  * databasen — ikke lokal gætværk.
+ *
+ * Handle-reglerne (mønster + reserverede ord) deles med signup og
+ * profilen via @/lib/handles — DB'ens trigger håndhæver desuden, at
+ * en ansøgning ikke tager en ANDEN kontos reserverede @ tag.
  */
-
-/** Statiske ruter skygger for /creator/[handle] — disse handles er reserverede. */
-const RESERVED_HANDLES = ["apply", "studio"];
-
-const HANDLE_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 const inputClassName =
   "w-full rounded-lg border border-smoke bg-onyx px-4 py-2.5 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none";
 
 export default function CreatorApplicationForm({
   application,
+  reservedHandle,
 }: {
   application: CreatorApplication | null;
+  /** kontoens reserverede @ tag (user_handles) — forudfylder feltet */
+  reservedHandle: string | null;
 }) {
   const t = useTranslations("creatorApply");
   const locale = useLocale();
   const router = useRouter();
   const [name, setName] = useState(application?.name ?? "");
-  const [handle, setHandle] = useState(application?.handle ?? "");
+  // Egen ansøgning først; ellers kontoens reserverede @ tag — det ER
+  // jo fremtidsskaber-adressen, hvis den findes.
+  const [handle, setHandle] = useState(
+    application?.handle ?? reservedHandle ?? "",
+  );
   const [bio, setBio] = useState(application?.bio ?? "");
   const [foundedYear, setFoundedYear] = useState(
     application ? String(application.foundedYear) : "",
@@ -48,21 +58,31 @@ export default function CreatorApplicationForm({
   const isRejected = application?.status === "rejected";
 
   const validateHandle = async (): Promise<string | null> => {
-    const trimmed = handle.trim();
-    if (
-      trimmed.length < 3 ||
-      trimmed.length > 40 ||
-      !HANDLE_PATTERN.test(trimmed)
-    ) {
+    const trimmed = normalizeHandle(handle);
+    const syntax = validateHandleSyntax(trimmed);
+    if (syntax === "invalid") {
       return t("handleHint");
     }
-    if (RESERVED_HANDLES.includes(trimmed)) {
+    if (syntax === "reserved") {
       return t("errors.reserved");
     }
-    // Ledighed kan kun tjekkes mod eksisterende skaber-profiler
-    // (offentligt læsbare) — ansøgninger fra andre kan RLS ikke vise;
-    // unik-constrainten fanger dem i stedet.
+    // Ledighed tjekkes mod eksisterende skaber-profiler OG andre
+    // kontos reserverede @ tags (begge offentligt læsbare) — med
+    // ejer-tjek, så EGEN reservation ikke er "taget". Ansøgninger
+    // fra andre kan RLS ikke vise; unik-constrainten og triggeren
+    // fanger dem i stedet.
     const supabase = createClient();
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const { data: reserved } = await supabase
+      .from("user_handles")
+      .select("handle, user_id")
+      .eq("handle", trimmed)
+      .maybeSingle();
+    if (reserved && session && reserved.user_id !== session.user.id) {
+      return t("errors.handleTaken");
+    }
     const { data: taken } = await supabase
       .from("creators")
       .select("handle")
@@ -110,7 +130,7 @@ export default function CreatorApplicationForm({
 
       const fields = {
         name: name.trim(),
-        handle: handle.trim(),
+        handle: normalizeHandle(handle),
         bio: bio.trim(),
         founded_year: year,
         country: country.trim(),
@@ -128,7 +148,16 @@ export default function CreatorApplicationForm({
           .select("*")
           .single();
         if (updateError || !data) {
-          setError(updateError ? t("errors.generic") : t("errors.stale"));
+          // 23505/P0001: unik-constrainten ELLER triggeren afviste —
+          // fx en anden kontos reserverede @ tag undervejs.
+          if (
+            updateError &&
+            (updateError.code === "23505" || updateError.code === "P0001")
+          ) {
+            setError(t("errors.handleTaken"));
+          } else {
+            setError(updateError ? t("errors.generic") : t("errors.stale"));
+          }
           return;
         }
       } else {
@@ -136,7 +165,13 @@ export default function CreatorApplicationForm({
           .from("creator_applications")
           .insert({ ...fields, user_id: session.user.id });
         if (insertError) {
-          setError(insertError.code === "23505" ? t("errors.handleTaken") : t("errors.generic"));
+          // 23505 (unique) ELLER P0001 (triggeren afviste — fx en
+          // anden kontos reserverede @ tag) = tag'et er taget.
+          setError(
+            insertError.code === "23505" || insertError.code === "P0001"
+              ? t("errors.handleTaken")
+              : t("errors.generic"),
+          );
           return;
         }
       }

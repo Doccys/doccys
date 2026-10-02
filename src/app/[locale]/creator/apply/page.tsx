@@ -51,6 +51,22 @@ export default async function CreatorApplyPage({ params }: ApplyPageProps) {
 
   const application = await getMyApplication(user.id);
 
+  // Kontoens reserverede @ tag (user_handles) forudfylder handle-
+  // feltet — det ER jo fremtidsskaber-adressen, hvis den findes.
+  // Læsefejl (bl.a. PGRST205 pre-migration) → null = tomt felt som før.
+  const {
+    data: handleRow,
+    error: handleReadError,
+  } = await supabase
+    .from("user_handles")
+    .select("handle")
+    .eq("user_id", user.id)
+    .maybeSingle();
+  if (handleReadError) {
+    console.warn("apply: user_handles-læsning fejlede:", handleReadError.message);
+  }
+  const reservedHandle = handleReadError ? null : handleRow?.handle ?? null;
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <SectionHeading
@@ -59,7 +75,10 @@ export default async function CreatorApplyPage({ params }: ApplyPageProps) {
         subtitle={t("subtitle")}
       />
       <div className="mt-10">
-        <CreatorApplicationForm application={application} />
+        <CreatorApplicationForm
+          application={application}
+          reservedHandle={reservedHandle}
+        />
       </div>
     </div>
   );
