@@ -2,6 +2,47 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-10-02
 ==========================================================
 
+SEER-STATUS — TITLER DER BELØNNER SETE MINUTTER (2/10) — BYGGET, E2E AFVENTER
+Gamificering af forbruget: profilens nye seer-status belønner sete
+minutter — og på pay-per-minut er sete minutter PRÆCIS forbrugte
+minutter (= penge brugt): afregn_session trækker credit_ledger
+uanset anti-fraud-verdict (verdict-filteret gælder KUN skabernes
+udbetaling). Derfor INTET verdict-filter her — bevidst afvigelse
+fra getSupportLedger (valide minutter = udbetalingsbevis). Konsekvens:
+seer-status-minutter >= "Din støtte"-minutter er FORVENTET.
+- BESLUTNINGER MED BRUGEREN: synlighed v1 = KUN egen profil (intet
+  kommentar-flair — trin 2 hvis det ønskes) · samlede trin 100 /
+  1.000 / 10.000 min m. titlerne Nysgerrig / Pioner / Legende ·
+  genre-titel ("Natur-nørd") paa den mest sete genre ved 100+ min i
+  genren m. minuttal som undertekst · en films minutter tæller
+  FULDT i alle dens genrer (1-5 pr. film — genre-summe ma derfor
+  overstige totalen).
+- ARKITEKTUR: JS-aggregering, INGEN migration — RLS dækker allerede
+  egen-laesning af view_sessions og documentaries er offentligt
+  laesbart; præcis getSupportLedger-mønstret. (creator_tal er RPC
+  fordi den aggregerer paa tværs af alle seere m. daglig serie —
+  det gør denne ikke.)
+- KODE: src/lib/viewerStatus.ts (3bd757c) — SEER_TRAE-tabellen +
+  seerTrae() (titelNoegle/naesteNoegle/minutterTilNaeste; ene kilde
+  til tærsklerne) · src/lib/data/viewerStatus.ts (eb20c7c) —
+  getViewerStatus: egne sessioner (status <> 'active', watched_
+  seconds > 0), tom slug-liste vogtes FØR .in() (PostgREST-kant-
+  case), afpublicerede film tæller i totalen men ikke i genre-
+  summen, top-genre deterministet ved lige store (dansk nøgle
+  stigende) · ViewerStatusSection + profil-wiring ret efter
+  MinutesSection (ed6d4c0) — 0 min = kun teaser-linjen ("100
+  minutter til at blive Nysgerrig"), kun datafejl (null) udelader
+  kortet · i18n: NYT viewerStatus-namespace, 10 nøgler ×13 (6e3029f)
+  → 568 nøgler fuld paritet; genre-titel via genres-namespacet +
+  ICU-mønster "{genre}-nørd" (en: "{genre} nerd", ja: "{genre}オタク")
+  — ingen 17×13 titler.
+- E2E AFVENTER (brugeren): kortet paa /da/profile · grund-sandhed
+  i SQL Editor (sum(watched_seconds)/60 match) · genre-række ·
+  fremgangslinje + top-trin · /en/profile med Curious/Pioneer/
+  Legend · frisk konto = kun teaser.
+- KOMMENDE TRIN 2 (efter e2e, naer brugerens go): offentligt flair
+  ved kommentarnavne (kræver privatlivs-afklaring — se backlog 13).
+
 @ TAG VED SIGNUP — RESERVEREDE BRUGER-HANDLES (2/10) — BYGGET, MIGRATION KØRT OG VERIFICERET, E2E AFVENTER
 Alle nye brugere kan nu vælge deres eget unikke @ tag allerede ved
 kontooprettelse — tag'et reserverer kontoens fremtidige skaber-
@@ -1599,28 +1640,12 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
     (brugerens sprog, som auth-mailsene), afmeldingslink i hver
     mail. Bygges sammen med det øvrige notifikations-fundament —
     se også punkt 5 (branded mail-udbyder).
-13. SEER-STATUS/TITLER (2/10-idé, IKKE BYGGET — afventer go,
-    parallelt til hundecenter-donationen): gamificering der
-    belønner afholdt forbrug — to lag: (1) samlet trin i SETE
-    MINUTTER (brugeren bekræftede 2/10 at minutter er målet),
-    fx pioner-trin ala 100/1.000/10.000 min; (2) genre-titel på
-    den mest sete genre (bruger-eksempel "nature freak"),
-    undertekst med minutter i genren, fx aktiveret ved 100 min
-    i genren. Kernen er økonomisk: status bygger på sete
-    minutter, og på pay-per-minut er det lig med penge brugt
-    på platformen. Genrerne findes (FILM_GENRES ×17) og er
-    allerede i18n ×13 — genre-titlen komponeres via genres-
-    namespace + ICU-mønster (ét sufiks pr. sprog, fx {genre}-
-    nørd), ikke 17 titler × 13 sprog. Design-valg truffet:
-    en films minutter tæller FULDT i alle dens genrer (op til
-    5). Datakilderne findes (view_sessions → documentaries.
-    genres-aggregat, mønstrene fra film_faedighedsstats og
-    creator-tal-RPC'en). AFKLARINGER DER KRÆVES FØR BYG:
-    (a) synlighed — seerdata er et privatlivspolitik-område;
-    offentlig visning (fx flair ved kommentarnavne) kræver
-    beslutning om opt-in vs. kun egen profil (anbefalet v1:
-    kun egen profil); (b) grænseværdier for trinene; (c) de
-    sidste i18n-tekster ×13. Ingen kode før brugerens go.
+13. SEER-STATUS — OFFENTLIGT FLAIR (trin 2): v1 ER BYGGET (se sektionen
+    øverst; 2/10, kun egen profil). Tilbage her er kun trin 2: synligt
+    badge ved brugerens navn i kommentarer (evt. uden undertekst),
+    som kræver privatlivs-afklaring (seerdata offentligt) og
+    brugerens go. Titler/trin/grænseværdier er i src/lib/viewerStatus.ts
+    og viewerStatus-namespacet — redigeres ét sted.
 
 GOD ARBEJDSGANG I DETTE PROJEKT
 - Plan-mode + Plan-agent ved større features; små trin, commit pr. trin,
@@ -1635,6 +1660,12 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+6e3029f seer-status: oversaettelser paa 12 sprog (translate + keys-verify)
+ed6d4c0 seer-status: statuskort paa profilen + da-noegler
+eb20c7c seer-status: getViewerStatus i datalaget — egne sessioner, intet verdict-filter
+3bd757c seer-status: trae-tabel og ren trae-logik i src/lib/viewerStatus.ts
+83f7c27 docs: e2e-status gemt + seer-status-idé på backlog
+ac13bc7 docs: seer-status-idé refineret — minutter + genre-titler i backlog 13
 3e8c7f3 i18n: creatorApply.handleHint viste raa noegle — ICU-escapet {handle}
 146dd61 docs: user_handles-migrationen koert og verificeret
 55d9f30 docs: rettet rls-negativtest i user_handles-migrationen
