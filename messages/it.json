@@ -386,7 +386,7 @@
     "subtitle": "Doccys è curato: tutti i creatori sono approvati dalla redazione prima che i loro film possano essere mostrati. Dicci chi sei e cosa fai.",
     "nameLabel": "Nome del creatore",
     "handleLabel": "Handle (URL)",
-    "handleHint": "Lettere minuscole, numeri e trattini, ad es. \"nordlys-film\". Se approvato, il profilo sarà su /creator/{handle}.",
+    "handleHint": "Lettere minuscole, numeri e trattini, ad es. \"nordlys-film\". Se approvato, il profilo sarà su /creator/'{'handle'}'.",
     "countryLabel": "Paese",
     "foundedYearLabel": "Anno di fondazione",
     "bioLabel": "Breve biografia",

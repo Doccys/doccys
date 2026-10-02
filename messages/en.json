@@ -386,7 +386,7 @@
     "subtitle": "Doccys is curated: every creator is approved by the editorial team before their films can be shown. Tell us who you are and what you make.",
     "nameLabel": "Creator name",
     "handleLabel": "Handle (URL)",
-    "handleHint": "Lowercase letters, numbers and hyphens, e.g. \"nordlys-film\". Once approved, your profile lives at /creator/{handle}.",
+    "handleHint": "Lowercase letters, numbers and hyphens, e.g. \"nordlys-film\". Once approved, your profile lives at /creator/'{'handle'}'.",
     "countryLabel": "Country",
     "foundedYearLabel": "Year founded",
     "bioLabel": "Short bio",

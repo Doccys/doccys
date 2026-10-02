@@ -386,7 +386,7 @@
     "subtitle": "Doccysはキュレーションされています：すべてのクリエイターは、彼らの映画が表示される前に編集部によって承認されます。あなたが誰で、何をしているのか教えてください。",
     "nameLabel": "クリエイター名",
     "handleLabel": "ハンドル (URL)",
-    "handleHint": "小文字、数字、ハイフンを使用してください。例: \"nordlys-film\"。承認されると、プロフィールは /creator/{handle} に配置されます。",
+    "handleHint": "小文字、数字、ハイフンを使用してください。例: \"nordlys-film\"。承認されると、プロフィールは /creator/'{'handle'}' に配置されます。",
     "countryLabel": "国",
     "foundedYearLabel": "設立年",
     "bioLabel": "短いバイオ",

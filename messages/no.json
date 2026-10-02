@@ -386,7 +386,7 @@
     "subtitle": "Doccys er kuratert: alle skapere godkjennes av redaksjonen før filmene deres kan vises. Fortell oss hvem dere er, og hva dere lager.",
     "nameLabel": "Skaperens navn",
     "handleLabel": "Handle (URL)",
-    "handleHint": "Små bokstaver, tall og bindestreker, f.eks. \"nordlys-film\". Blir dere godkjent, ligger profilen på /creator/{handle}.",
+    "handleHint": "Små bokstaver, tall og bindestreker, f.eks. \"nordlys-film\". Blir dere godkjent, ligger profilen på /creator/'{'handle'}'.",
     "countryLabel": "Land",
     "foundedYearLabel": "Grunnlagt år",
     "bioLabel": "Kort bio",

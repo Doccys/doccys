@@ -386,7 +386,7 @@
     "subtitle": "Doccys on kuratoitu: jokainen tekijä hyväksytään toimituksen toimesta, ennen kuin heidän elokuvansa voidaan näyttää. Kerro meille, keitä olette ja mitä teette.",
     "nameLabel": "Tekijän nimi",
     "handleLabel": "Handle (URL)",
-    "handleHint": "Pienet kirjaimet, numerot ja väliviivat, esim. \"nordlys-film\". Hyväksynnän jälkeen profiilinne löytyy osoitteesta /creator/{handle}.",
+    "handleHint": "Pienet kirjaimet, numerot ja väliviivat, esim. \"nordlys-film\". Hyväksynnän jälkeen profiilinne löytyy osoitteesta /creator/'{'handle'}'.",
     "countryLabel": "Maa",
     "foundedYearLabel": "Perustamisvuosi",
     "bioLabel": "Lyhyt kuvaus",

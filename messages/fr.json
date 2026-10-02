@@ -386,7 +386,7 @@
     "subtitle": "Doccys est une plateforme éditorialisée : chaque créateur est approuvé par l'équipe éditoriale avant que ses films puissent être montrés. Dites-nous qui vous êtes et ce que vous faites.",
     "nameLabel": "Nom du créateur",
     "handleLabel": "Handle (URL)",
-    "handleHint": "Lettres minuscules, chiffres et tirets, p. ex. « nordlys-film ». Une fois approuvé, votre profil vivra sur /creator/{handle}.",
+    "handleHint": "Lettres minuscules, chiffres et tirets, p. ex. « nordlys-film ». Une fois approuvé, votre profil vivra sur /creator/'{'handle'}'.",
     "countryLabel": "Pays",
     "foundedYearLabel": "Année de fondation",
     "bioLabel": "Courte bio",

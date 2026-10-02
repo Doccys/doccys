@@ -386,7 +386,7 @@
     "subtitle": "Doccys是经过策划的：所有创作者都需经过编辑部的批准，才能展示他们的电影。告诉我们你们是谁，以及你们在做什么。",
     "nameLabel": "创作者姓名",
     "handleLabel": "用户名（URL）",
-    "handleHint": "小写字母、数字和连字符，例如“nordlys-film”。如果您被批准，个人资料将位于/creator/{handle}。",
+    "handleHint": "小写字母、数字和连字符，例如“nordlys-film”。如果您被批准，个人资料将位于/creator/'{'handle'}'。",
     "countryLabel": "国家",
     "foundedYearLabel": "成立年份",
     "bioLabel": "简短简介",
