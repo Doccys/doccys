@@ -2,7 +2,7 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-10-02
 ==========================================================
 
-@ TAG VED SIGNUP — RESERVEREDE BRUGER-HANDLES (2/10) — BYGGET, MIGRATION AFVENTER KØRT AF BRUGEREN
+@ TAG VED SIGNUP — RESERVEREDE BRUGER-HANDLES (2/10) — BYGGET, MIGRATION KØRT OG VERIFICERET, E2E AFVENTER
 Alle nye brugere kan nu vælge deres eget unikke @ tag allerede ved
 kontooprettelse — tag'et reserverer kontoens fremtidige skaber-
 handle (user_handles), så ingen andre kan tage det i mellemtiden.
@@ -24,9 +24,13 @@ signup + claim-kort på profilen bagefter, UFORANDERLIGT når valgt
   er ok) OG creator_application_status (ERSTATTET wholesale m.
   20260915-krop + handle-tjek → dansk fejl ved godkendelse).
   EXECUTE-hullet: revoke fra public/anon/authenticated ×4.
-  AFVENTER KØRT AF BRUGEREN (SQL Editor; idempotent, kør to
-  gange, verifikations-SQL i headeren: 2 policies, proacl,
-  negativ-insert 42501, dansk exception på seedet creators-handle).
+  KØRT OG VERIFICERET AF BRUGEREN 2/10: præcis 2 policies, proacl
+  uden anon/authenticated, 42501 på anon-insert, dansk exception fra
+  user_handles_tjek på seedet creators-handle, 3 triggers 'O'.
+  NB LÆRING (verifikation 3 rettet i 55d9f30): SQL Editor kører som
+  postgres, som EJER tabellen og dermed OMGÅR RLS — RLS-negativtests
+  kræver "set role anon" foer insert (uden det rammer testen i
+  stedet FK-fejl 23503, der beviser cascade-referencen, ikke RLS).
   NB: KODEN FEJLER PÆNT PRE-MIGRATION (PGRST205 → intet live-
   tjek, intet claim-kort, signup fortsætter uden tag).
 - AFVIST DESIGN (vigtig læring): admin.deleteUser-rollback efter
@@ -1601,6 +1605,7 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+55d9f30 docs: rettet rls-negativtest i user_handles-migrationen
 62fd2a9 i18n: @ tag-tekster oversat til 12 oevrige sprog
 0152447 ansoegning: forudfyldning fra reserveret tag + udvidet tjek
 987147b profil: claim-formular til @ tag
