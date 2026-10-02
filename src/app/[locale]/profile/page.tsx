@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import SectionHeading from "@/components/ui/SectionHeading";
 import DisplayNameForm from "@/components/profile/DisplayNameForm";
+import HandleClaimForm from "@/components/profile/HandleClaimForm";
 import DeleteAccountSection from "@/components/profile/DeleteAccountSection";
 import MinutesSection from "@/components/profile/MinutesSection";
 import SupportLedgerSection from "@/components/profile/SupportLedgerSection";
@@ -76,6 +77,23 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
   const rawName = (user.user_metadata?.full_name as string | undefined)?.trim();
   const displayName = rawName ?? t("eyebrow");
 
+  // @ tag (user_handles): valgfrit valgt ved signup eller krævet
+  // senere her. Læsefejl (bl.a. PGRST205 pre-migration, tabellen
+  // findes endnu ikke) → null UDEN claim-kort — insenen ville fejle
+  // alligevel; koden fejler altså pænt indtil migrationen er kørt.
+  const {
+    data: handleRow,
+    error: handleReadError,
+  } = await supabase
+    .from("user_handles")
+    .select("handle")
+    .eq("user_id", user.id)
+    .maybeSingle();
+  const userHandle = handleReadError ? null : handleRow?.handle ?? null;
+  if (handleReadError) {
+    console.warn("profile: user_handles-læsning fejlede:", handleReadError.message);
+  }
+
   const history = await getWatchHistory(user.id);
   const historyEntries = await Promise.all(
     history.map(async (entry: WatchHistoryEntry) => ({
@@ -116,6 +134,10 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
         subtitle={t("memberSince", { date: formatDate(memberSince, locale) })}
       />
 
+      {userHandle && (
+        <p className="mt-2 text-sm text-champagne">@{userHandle}</p>
+      )}
+
       <MinutesSection
         locale={locale}
         balanceSeconds={balanceSeconds}
@@ -145,6 +167,22 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
         )}
         <DisplayNameForm initialName={rawName ?? ""} />
       </section>
+
+      {/* @ tag: konti uden reserveret tag får et fremhævet CTA-kort
+          (navn-mønstret) med claim-formularen — har kontoen allerede
+          et tag, står det ved overskriften og intet kort vises.
+          handleReadError = pre-migration: kortet holdes også væk. */}
+      {!userHandle && !handleReadError && (
+        <section className="mt-16 rounded-xl border border-champagne/50 bg-onyx px-6 py-6">
+          <h2 className="font-display text-2xl text-champagne">
+            {t("handleMissing")}
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-ash">
+            {t("handleMissingSub")}
+          </p>
+          <HandleClaimForm />
+        </section>
+      )}
 
       <section className="mt-16">
         <h2 className="font-display text-2xl text-bone">{t("creatorHeading")}</h2>
