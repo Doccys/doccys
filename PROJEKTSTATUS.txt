@@ -55,20 +55,28 @@ signup + claim-kort på profilen bagefter, UFORANDERLIGT når valgt
 - i18n (62fd2a9): 17 nye nøgler (8 auth + 9 profile) oversat ×12
   via script → 558 nøgler ×13 fuld paritet; tsc + i18n-verify ALLE
   11 TJEK GRØNNE (BASE=3002).
+- BUG FUNDET AF E2E'EN (3e8c7f3): creatorApply.handleHint har ALTID
+  vist rå nøgle — teksten "/creator/{handle}" er i ICU-syntax et
+  ARGUMENT, og kaldet leverer aldrig værdien → next-intl falder
+  tilbage til rå nøgle. Fix: bogklammerne ICU-escapet ('{'
+  handle'}') i alle 13 sprog. Alle andre pladsholder-nøgler er
+  auditeret og leverer deres værdier. LÆRING: bogstavelige klammer
+  i messages-filer SKAL escapes.
 - AFVIGELSE FRA PLANEN: intet "stille kort" på profilen når tag'et
   findes — KUN @-visningen ved titlen (claim-kortet vises udelukkende
   ved manglende tag).
-- E2E (AFVENTER, efter migrationen — fuld liste i planen): signup
-  m. tag → mail → bekræft → profilen viser @tag · signup uden tag →
-  claim-kort → reserver · duplikat: A tager X, signup B med X →
-  live-rød + 409 handleTaken · race-sim: reservér i SQL Editor,
-  signup m. samme tag → 409 FØR kontooprettelse · ansøgning
-  forudfyldes fra egen reservation · anden konto force-submitter på
-  reserveret tag → dansk trigger-fejl → handleTaken · godkendelse
-  af ansøgning på en andens reserverede handle → dansk EXCEPTION,
-  ingen creators-række · apply/studio → 422 handleReserved ·
-  ab/Foo_Bar → 422 handleInvalid · kontosletning m. tag → rækken
-  cascade-slettes.
+- E2E (brugeren, 2/10 — DELVIS VERIFICERET): live-tjek "Tag'et er
+  ledigt!" ✓ · signup m. tag → mail → bekræft → @tag på profilen ✓ ·
+  signup uden tag → claim-kort → reserver → @tag vises, kortet
+  forsvinder ✓ · duplikat-tag → handleTaken ✓ · race-sim (reserveret
+  i SQL Editor) → afvist FØR kontooprettelse ✓ · ansøgning på en
+  anden kontos reserverede tag → trigger-afvisning ✓ · anon-læsning
+  af user_handles udefra (PostgREST) ✓.
+  AFVENTER: forudfyldning i ansøgningen (feltet sås tomt — formoden-
+  ligeligt en STALE FANE fra før reservationen; afventer F5-test),
+  apply/studio reserverede ord, ab/Foo_Bar syntaks, kontosletning m.
+  cascade — dertil OPRYDNING: race-test-rækken + testkonti
+  (test6@doccy.com m.fl.) i Authentication → Users.
 
 SEERE FØLGER SKABERE — creator_followers (1/10) — BYGGET, MIGRATION KØRT, E2E OK
 Vækst-gennemgangens pull-kanal: intet bragte en seer tilbage efter et
@@ -1591,6 +1599,22 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
     (brugerens sprog, som auth-mailsene), afmeldingslink i hver
     mail. Bygges sammen med det øvrige notifikations-fundament —
     se også punkt 5 (branded mail-udbyder).
+13. SEER-STATUS/TITLER (2/10-idé, IKKE BYGGET — afventer go,
+    parallelt til hundecenter-donationen): gamificering der
+    belønner afholdt forbrug — titler ala "pioner" efter 1000
+    sete minutter / genre-titler ala "hardcore krim-seer" med
+    seertallet som undertekst. Kernen er økonomisk: status bygger
+    på sete minutter/færdiggjorte film, og på pay-per-minut er
+    det lig med penge brugt på platformen. Datakilderne findes
+    allerede (view_sessions/watch_history-aggregater, mønstrene
+    fra film_faedighedsstats og creator-tal-RPC'en). AFKLARINGER
+    SOM KRÆVES FØR BYG: (a) synlighed — seerdata er et privat-
+    livspolitik-område; offentlig visning (fx flair ved kommentar-
+    navne) kræver beslutning om opt-in/anonymousering vs. kun
+    egen profil; (b) grænseværdier — 1000 film er urealistisk på
+    en kurateret platform, sæt trin der kan NÅS (fx minutter:
+    100/1000/10000); (c) titlerne skal i18n ×13. Ingen kode før
+    brugerens eksplicitte go.
 
 GOD ARBEJDSGANG I DETTE PROJEKT
 - Plan-mode + Plan-agent ved større features; små trin, commit pr. trin,
@@ -1605,6 +1629,8 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+3e8c7f3 i18n: creatorApply.handleHint viste raa noegle — ICU-escapet {handle}
+146dd61 docs: user_handles-migrationen koert og verificeret
 55d9f30 docs: rettet rls-negativtest i user_handles-migrationen
 62fd2a9 i18n: @ tag-tekster oversat til 12 oevrige sprog
 0152447 ansoegning: forudfyldning fra reserveret tag + udvidet tjek
