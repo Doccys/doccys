@@ -1,9 +1,15 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
+import {
+  HANDLE_MAX_LENGTH,
+  normalizeHandle,
+  probeHandleTakenClient,
+  validateHandleSyntax,
+} from "@/lib/handles";
 import PasswordInput from "./PasswordInput";
 
 type Mode = "login" | "signup";
@@ -41,6 +47,12 @@ export default function AuthForm() {
   const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [handle, setHandle] = useState("");
+  // Live ledighedstjek for @ tag'et — advisivt (serveren afgør);
+  // "unknown" = tabellen findes ikke endnu el. netværksfejl → intet vises
+  const [handleStatus, setHandleStatus] = useState<
+    "idle" | "checking" | "free" | "taken" | "unknown"
+  >("idle");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   // 18+-bekræftelse (Handelsbetingelserne afsnit 12): nulstilles ved
@@ -54,6 +66,8 @@ export default function AuthForm() {
     setMode(next);
     setPasswordConfirm("");
     setAgeAccepted(false);
+    setHandle("");
+    setHandleStatus("idle");
     setErrorKey(null);
     setShowConfirmNotice(false);
   };
@@ -61,6 +75,26 @@ export default function AuthForm() {
   const handleError = (code: string | undefined) => {
     setErrorKey(code && ERROR_KEYS[code] ? ERROR_KEYS[code] : "generic");
   };
+
+  // Debounced live-tjek af @ tag'et (kun signup-mode og kun ved
+  // syntaktisk gyldigt tag — formatfejl vises lokalt uden DB-kald).
+  // prober creators + user_handles; pending ansøgninger kan RLS ikke
+  // vise, så serveren er backstop. Fejl (bl.a. PGRST205 pre-migration)
+  // → "unknown", der intet viser.
+  useEffect(() => {
+    if (mode !== "signup") return;
+    const tag = normalizeHandle(handle);
+    if (tag === "" || validateHandleSyntax(tag) !== null) {
+      setHandleStatus("idle");
+      return;
+    }
+    setHandleStatus("checking");
+    const timer = setTimeout(async () => {
+      const taken = await probeHandleTakenClient(createClient(), tag);
+      setHandleStatus(taken === null ? "unknown" : taken ? "taken" : "free");
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [handle, mode]);
 
   const goToProfile = () => {
     // refresh() lets server components re-read the session cookies.
@@ -84,6 +118,21 @@ export default function AuthForm() {
     if (mode === "signup" && name.trim() === "") {
       setErrorKey("nameMissing");
       return;
+    }
+    // Valgfrit @ tag: kun FORMATET tjekes klient-side — ledighed
+    // afgøres af signup-ruten (live-tjekket er advisivt og kan tage
+    // fejl pre-migration eller i racer).
+    const tag = normalizeHandle(handle);
+    if (mode === "signup" && tag !== "") {
+      const syntax = validateHandleSyntax(tag);
+      if (syntax === "invalid") {
+        setErrorKey("handleInvalid");
+        return;
+      }
+      if (syntax === "reserved") {
+        setErrorKey("handleReserved");
+        return;
+      }
     }
     // 18+: boksen er altid afkrydset, når knappen kan trykkes — tjekket
     // er en guard mod manipuleret/disabled-knap og matcher studiets
@@ -120,6 +169,8 @@ export default function AuthForm() {
             // chippen, profilen og kommentarer har det umiddelbart efter
             // første login — e-mailen vises aldrig som identitet
             name: name.trim(),
+            // tomt tag sendes som tom streng — ruten springer den over
+            handle: tag,
             locale,
             ageAccepted: true,
           }),
@@ -221,6 +272,40 @@ export default function AuthForm() {
                   placeholder={t("usernamePlaceholder")}
                   className={inputClassName}
                 />
+              </div>
+            )}
+
+            {mode === "signup" && (
+              <div>
+                <label
+                  htmlFor="handle"
+                  className="text-xs uppercase tracking-widest text-ash"
+                >
+                  {t("handle")}
+                </label>
+                <input
+                  id="handle"
+                  type="text"
+                  maxLength={HANDLE_MAX_LENGTH}
+                  autoComplete="off"
+                  value={handle}
+                  onChange={(e) => setHandle(e.target.value.toLowerCase())}
+                  placeholder={t("handlePlaceholder")}
+                  className={inputClassName}
+                />
+                <span className="mt-1.5 block text-xs text-ash/70">
+                  {t("handleHint")}
+                </span>
+                {handleStatus === "free" && (
+                  <p className="mt-1 text-xs text-champagne">
+                    {t("handleAvailable")}
+                  </p>
+                )}
+                {handleStatus === "taken" && (
+                  <p className="mt-1 text-xs text-red-400">
+                    {t("errors.handleTaken")}
+                  </p>
+                )}
               </div>
             )}
 
