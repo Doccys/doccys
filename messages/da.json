@@ -610,6 +610,18 @@
     "empty": "Ingen afregnede afspilninger endnu.",
     "emptyHint": "Minutter og kroner lander her, første gang du ser en film færdig."
   },
+  "viewerStatus": {
+    "heading": "Seer-status",
+    "subtitle": "Din rejse gennem dokumentarernes verden — målt i minutter.",
+    "minutesLine": "Du har set {minutes} minutter",
+    "tier1": "Nysgerrig",
+    "tier2": "Pioner",
+    "tier3": "Legende",
+    "toNextTier": "{minutes} minutter til at blive {title}",
+    "topTierReached": "Højeste trin nået — tak for alle minutterne.",
+    "genreTitle": "{genre}-nørd",
+    "genreSubtitle": "{minutes} minutter i genren"
+  },
   "genres": {
     "Klima": "Klima",
     "Portræt": "Portræt",

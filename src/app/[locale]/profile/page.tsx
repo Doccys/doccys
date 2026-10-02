@@ -6,6 +6,7 @@ import DisplayNameForm from "@/components/profile/DisplayNameForm";
 import HandleClaimForm from "@/components/profile/HandleClaimForm";
 import DeleteAccountSection from "@/components/profile/DeleteAccountSection";
 import MinutesSection from "@/components/profile/MinutesSection";
+import ViewerStatusSection from "@/components/profile/ViewerStatusSection";
 import SupportLedgerSection from "@/components/profile/SupportLedgerSection";
 import WatchHistoryList from "@/components/profile/WatchHistoryList";
 import UnfollowCreatorButton from "@/components/profile/UnfollowCreatorButton";
@@ -23,6 +24,7 @@ import {
   getWatchHistory,
 } from "@/lib/data/catalog";
 import { getSupportLedger } from "@/lib/data/support";
+import { getViewerStatus } from "@/lib/data/viewerStatus";
 import type { Documentary, WatchHistoryEntry } from "@/lib/types";
 import { formatDate } from "@/lib/utils/format";
 
@@ -126,6 +128,10 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
   // fejlside.
   const supportLedger = await getSupportLedger(user.id);
 
+  // Seer-status: ALLE afregnede minutter (intet verdict-filter — sete
+  // minutter ER forbrugte minutter). Null (datafejl) udelader kortet.
+  const viewerStatus = await getViewerStatus(user.id);
+
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
       <SectionHeading
@@ -144,6 +150,12 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
         referralCode={referralCode}
         purchaseSuccess={koeb === "ok"}
       />
+
+      {/* Seer-status: præstationen følger straks minut-økonomien.
+          Status-beregningen er pynt — datafejl udelader kortet. */}
+      {viewerStatus && (
+        <ViewerStatusSection locale={locale} status={viewerStatus} />
+      )}
 
       {/* Brugernavn: navnløse konti (fra før signup-feltet) får et
           fremhævet CTA-kort — ellers en stille redigerings-mulighed.

@@ -44,6 +44,8 @@ export interface SeerTraeResult {
   index: number;
   /** titlen på det SENESTE nåede trin — null under første trin */
   titelNoegle: string | null;
+  /** titlen på det NÆSTE trin — null ved øverste trin */
+  naesteNoegle: string | null;
   /** minutter til næste trin — motivationen; null ved øverste trin */
   minutterTilNaeste: number | null;
 }
@@ -65,6 +67,7 @@ export function seerTrae(totalMinutes: number): SeerTraeResult {
   return {
     index: naaet,
     titelNoegle: naaet > 0 ? SEER_TRAE[naaet - 1].titelNoegle : null,
+    naesteNoegle: naeste ? naeste.titelNoegle : null,
     minutterTilNaeste: naeste
       ? naeste.minMinutter - totalMinutes
       : null,
