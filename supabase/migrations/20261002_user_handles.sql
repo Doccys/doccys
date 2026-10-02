@@ -220,11 +220,18 @@ revoke execute on function public.creator_application_status()
 --   from pg_proc
 --   where proname in ('handle_optaget', 'user_handles_tjek',
 --     'creator_ansoegning_handle_tjek', 'creator_application_status');
--- 3) Negativ test — SQL Editor kører uden auth.uid(), insert SKAL
---    fejle (fail-closed, 42501):
+-- 3) Negativ test — NB: SQL Editor kører SOM POSTGRES, som ejer
+--    tabellen og dermed OMGÅR RLS (owner-bypass). 42501-tjekket
+--    kræver rolleskift — anon er ikke ejer, og uden JWT er
+--    auth.uid() null, så insert-policyn bestås aldrig. RLS-tjekket
+--    afvikles FØR fremmednøglen, så uuid'et er ligegyldigt her:
+--   set role anon;
 --   insert into public.user_handles (user_id, handle)
 --   values ('00000000-0000-0000-0000-000000000000', 'test-helt-ny');
+--   reset role;
 --   → forventet: ERROR 42501 (row-level security)
+--   (Kører du insert'en UDEN set role, rammer du i stedet FK-fejl
+--   23503 — det beviser cascade-referencen, ikke RLS.)
 -- 4) Negativ test 2 — postgres omgår RLS, men triggeren fanger et
 --    seedet skaber-handle med DANSK fejl:
 --   insert into public.user_handles (user_id, handle)
