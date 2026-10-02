@@ -712,5 +712,17 @@
     "founded": "成立于 {year}",
     "films": "{count, plural, one {# 部电影} other {# 部电影}}",
     "followers": "{count, plural, one {# 位关注者} other {# 位关注者}}"
+  },
+  "viewerStatus": {
+    "heading": "观众状态",
+    "subtitle": "您在纪录片世界的旅程 — 以分钟为单位。",
+    "minutesLine": "您观看了 {minutes} 分钟",
+    "tier1": "好奇者",
+    "tier2": "先锋",
+    "tier3": "传奇",
+    "toNextTier": "距离成为 {title} 还有 {minutes} 分钟",
+    "topTierReached": "已达到最高等级 — 感谢您观看的所有分钟。",
+    "genreTitle": "{genre} 爱好者",
+    "genreSubtitle": "在该类型中观看了 {minutes} 分钟"
   }
 }

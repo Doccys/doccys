@@ -712,5 +712,17 @@
     "founded": "Grunnlagt {year}",
     "films": "{count, plural, one {# film} other {# filmer}}",
     "followers": "{count, plural, one {# følger} other {# følgere}}"
+  },
+  "viewerStatus": {
+    "heading": "Seer-status",
+    "subtitle": "Din reise gjennom dokumentarenes verden — målt i minutter.",
+    "minutesLine": "Du har sett {minutes} minutter",
+    "tier1": "Nysgjerrig",
+    "tier2": "Pioner",
+    "tier3": "Legende",
+    "toNextTier": "{minutes} minutter til å bli {title}",
+    "topTierReached": "Høyeste nivå nådd — takk for alle minuttene.",
+    "genreTitle": "{genre}-nerd",
+    "genreSubtitle": "{minutes} minutter i sjangeren"
   }
 }

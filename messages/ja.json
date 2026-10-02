@@ -712,5 +712,17 @@
     "founded": "設立年 {year}",
     "films": "{count, plural, one {# 本の映画} other {# 本の映画}}",
     "followers": "{count, plural, one {# フォロワー} other {# フォロワー}}"
+  },
+  "viewerStatus": {
+    "heading": "視聴者ステータス",
+    "subtitle": "ドキュメンタリーの世界を旅する — 分で測定されます。",
+    "minutesLine": "あなたは{minutes}分視聴しました",
+    "tier1": "好奇心旺盛",
+    "tier2": "パイオニア",
+    "tier3": "レジェンド",
+    "toNextTier": "{minutes}分で{title}になります",
+    "topTierReached": "最高ランクに到達しました — すべての分数に感謝します。",
+    "genreTitle": "{genre}オタク",
+    "genreSubtitle": "ジャンルで{minutes}分"
   }
 }

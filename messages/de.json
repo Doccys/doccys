@@ -712,5 +712,17 @@
     "founded": "Gegründet {year}",
     "films": "{count, plural, one {# Film} other {# Filme}}",
     "followers": "{count, plural, one {# Follower} other {# Follower}}"
+  },
+  "viewerStatus": {
+    "heading": "Zuschauerstatus",
+    "subtitle": "Deine Reise durch die Welt der Dokumentationen — gemessen in Minuten.",
+    "minutesLine": "Du hast {minutes} Minuten gesehen",
+    "tier1": "Neugierig",
+    "tier2": "Pionier",
+    "tier3": "Legende",
+    "toNextTier": "{minutes} Minuten bis du {title} wirst",
+    "topTierReached": "Höchstes Level erreicht — danke für all die Minuten.",
+    "genreTitle": "{genre}-Nerd",
+    "genreSubtitle": "{minutes} Minuten im Genre"
   }
 }

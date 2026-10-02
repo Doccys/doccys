@@ -712,5 +712,17 @@
     "founded": "Fundado en {year}",
     "films": "{count, plural, one {# película} other {# películas}}",
     "followers": "{count, plural, one {# seguidor} other {# seguidores}}"
+  },
+  "viewerStatus": {
+    "heading": "Estado del espectador",
+    "subtitle": "Tu viaje a través del mundo de los documentales — medido en minutos.",
+    "minutesLine": "Has visto {minutes} minutos",
+    "tier1": "Curioso",
+    "tier2": "Pionero",
+    "tier3": "Leyenda",
+    "toNextTier": "{minutes} minutos para convertirte en {title}",
+    "topTierReached": "Nivel máximo alcanzado — gracias por todos los minutos.",
+    "genreTitle": "Nerd de {genre}",
+    "genreSubtitle": "{minutes} minutos en el género"
   }
 }

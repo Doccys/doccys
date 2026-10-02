@@ -712,5 +712,17 @@
     "founded": "Perustettu {year}",
     "films": "{count, plural, one {# elokuva} other {# elokuvaa}}",
     "followers": "{count, plural, one {# seuraaja} other {# seuraajaa}}"
+  },
+  "viewerStatus": {
+    "heading": "Katselijan tila",
+    "subtitle": "Matkasi dokumenttimaailmassa — mitattuna minuutteina.",
+    "minutesLine": "Olet katsonut {minutes} minuuttia",
+    "tier1": "Uteliaskas",
+    "tier2": "Pioneer",
+    "tier3": "Legenda",
+    "toNextTier": "{minutes} minuuttia päästäksesi {title}",
+    "topTierReached": "Korkein taso saavutettu — kiitos kaikista minuuteista.",
+    "genreTitle": "{genre}-nörtti",
+    "genreSubtitle": "{minutes} minuuttia genressä"
   }
 }

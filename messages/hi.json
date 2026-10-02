@@ -712,5 +712,17 @@
     "founded": "स्थापित {year}",
     "films": "{count, plural, one {# फ़िल्म} other {# फ़िल्म}}",
     "followers": "{count, plural, one {# अनुयायी} other {# अनुयायी}}"
+  },
+  "viewerStatus": {
+    "heading": "दर्शक स्थिति",
+    "subtitle": "आपकी यात्रा दस्तावेज़ों की दुनिया में — मिनटों में मापी गई।",
+    "minutesLine": "आपने {minutes} मिनट देखे हैं",
+    "tier1": "जिज्ञासु",
+    "tier2": "पायनियर",
+    "tier3": "दंतकथा",
+    "toNextTier": "{minutes} मिनट {title} बनने के लिए",
+    "topTierReached": "उच्चतम स्तर प्राप्त — सभी मिनटों के लिए धन्यवाद।",
+    "genreTitle": "{genre} का प्रशंसक",
+    "genreSubtitle": "{minutes} मिनट इस शैली में"
   }
 }

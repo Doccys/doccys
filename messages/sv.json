@@ -712,5 +712,17 @@
     "founded": "Grundad {year}",
     "films": "{count, plural, one {# film} other {# filmer}}",
     "followers": "{count, plural, one {# följare} other {# följare}}"
+  },
+  "viewerStatus": {
+    "heading": "Tittarstatus",
+    "subtitle": "Din resa genom dokumentärernas värld — mätt i minuter.",
+    "minutesLine": "Du har sett {minutes} minuter",
+    "tier1": "Nyfiken",
+    "tier2": "Pionjär",
+    "tier3": "Legend",
+    "toNextTier": "{minutes} minuter kvar till att bli {title}",
+    "topTierReached": "Högsta nivå nådd — tack för alla minuter.",
+    "genreTitle": "{genre}-nörd",
+    "genreSubtitle": "{minutes} minuter i genren"
   }
 }
