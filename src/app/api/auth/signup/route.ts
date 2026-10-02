@@ -3,6 +3,7 @@ import { createServiceClient } from "@/lib/supabase/service";
 import { sendAuthMail } from "@/lib/mail";
 import { hitRateLimit, recentlySent, markSent } from "@/lib/rateLimit";
 import { routing } from "@/i18n/routing";
+import { normalizeHandle, validateHandleSyntax } from "@/lib/handles";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +30,13 @@ const AGE_TERMS_VERSION = "2026-09-28";
  * ageAccepted === true og skriver selv beviset (servertid + version)
  * i raw_user_meta_data — klienten sender ingen tid, intet klient-ur.
  *
+ * Valgfrit @ tag (body.handle): reserveres i user_handles ÉN gang pr.
+ * konto (uforanderligt). Ledighedstjekket kaldes FØR generateLink
+ * (intet oprettes ved konflikt), reservationen skrives EFTER og er
+ * idempotent — genforsøg med samme tag er en ren resend, andet tag
+ * afvises med handleLocked. Fejlene er auth.errors-nøgler som resten
+ * af ruten (handleInvalid/handleReserved/handleTaken/handleLocked).
+ *
  * Supabase udsender ingen egne mails fra admin-API'et; "Confirm email"
  * forbliver slået til i dashboardet, så login stadig kræver bekræftelse.
  *
@@ -43,6 +51,8 @@ export async function POST(request: NextRequest) {
     name?: string;
     locale?: string;
     ageAccepted?: boolean;
+    /** valgfrit @ tag — normaliseres og reserveres i user_handles */
+    handle?: string;
   };
   try {
     body = await request.json();
@@ -78,6 +88,23 @@ export async function POST(request: NextRequest) {
     ? ((body.locale ?? routing.defaultLocale) as (typeof routing.locales)[number])
     : routing.defaultLocale;
 
+  // Valgfrit @ tag: normaliseres (ledende "@"-pynt ignoreres, lowercase
+  // tvunget af DB'ens check-constraint). Format- og reserveret-tjek
+  // ligger blandt felt-valideringerne FØR rate-limit — et afvist kald
+  // koster ingen bucket (ageAccepted-mønstret). Det DB-baserede
+  // ledighedstjek ligger derimod EFTER rate-limit: det koster en
+  // forespørgsel og må ikke være gratis at hammere på.
+  const handle = normalizeHandle(body.handle ?? "");
+  if (handle !== "") {
+    const handleSyntax = validateHandleSyntax(handle);
+    if (handleSyntax === "invalid") {
+      return NextResponse.json({ error: "handleInvalid" }, { status: 422 });
+    }
+    if (handleSyntax === "reserved") {
+      return NextResponse.json({ error: "handleReserved" }, { status: 422 });
+    }
+  }
+
   // Mail-bombing-vagt: admin-API'et omgår Supabases egne limiter, så
   // app-niveauet er den eneste beskyttelse (se rateLimit.ts).
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
@@ -85,9 +112,26 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "rateLimited" }, { status: 429 });
   }
 
+  // Ledigheds-FOR-TJEK: stopper friske racer FØR kontoen oprettes, så
+  // et "taget"-svar aldrig efterlader en konto eller spilder en mail.
+  // p_user_id udelades = null = rent "findes tag'et?"-tjek — en ny
+  // bruger ejer intet. RPC-fejl (PGRST202 pre-migration el. andet) er
+  // graceful: kontoen oprettes uden tag, og claim-formen på profilen
+  // fanger den bagefter — triggeren håndhæver, når tabellen findes.
+  const supabase = createServiceClient();
+  if (handle !== "") {
+    const { data: optaget, error: rpcError } = await supabase.rpc(
+      "handle_optaget",
+      { p_handle: handle },
+    );
+    if (rpcError) {
+      console.warn("auth/signup: handle_optaget fejlede:", rpcError.message);
+    } else if (optaget === true) {
+      return NextResponse.json({ error: "handleTaken" }, { status: 409 });
+    }
+  }
   // Ét kald: opretter (eller re-udsteder token for) den ubekræftede
   // bruger med password og metadata.
-  const supabase = createServiceClient();
   const { data, error } = await supabase.auth.admin.generateLink({
     type: "signup",
     email,
@@ -117,6 +161,52 @@ export async function POST(request: NextRequest) {
     }
     console.warn("auth/signup: generateLink fejlede:", msg);
     return NextResponse.json({ error: "generic" }, { status: 500 });
+  }
+
+  // Reservation af @ tag'et — FØR mailen, så et race aldrig spilder en
+  // afsendelse. ALLE fejlgrene lader kontoen bestå og intet deleteUser:
+  // generateLink re-udsteder token ved genforsøg, så ruten kan ikke
+  // skelne et frisk kald fra et tidligere — et deleteUser kunne ramme
+  // en konto med en allerede afsendt bekræftelsesmail.
+  if (handle !== "") {
+    const { data: existing, error: selectError } = await supabase
+      .from("user_handles")
+      .select("handle")
+      .eq("user_id", data.user.id)
+      .maybeSingle();
+
+    if (selectError) {
+      // PGRST205 pre-migration el. andet — kontoen oprettes uden tag.
+      console.warn(
+        "auth/signup: user_handles-læsning fejlede:",
+        selectError.message,
+      );
+    } else if (existing) {
+      if (existing.handle !== handle) {
+        // Tag'et er valgt og uforanderligt — resend kræver samme tag.
+        return NextResponse.json({ error: "handleLocked" }, { status: 409 });
+      }
+      // Samme tag = ren resend af bekræftelsesmailen; reservationen består.
+    } else {
+      const { error: insertError } = await supabase
+        .from("user_handles")
+        .insert({ user_id: data.user.id, handle });
+      if (insertError) {
+        console.warn(
+          "auth/signup: handle-reservation fejlede:",
+          insertError.message,
+        );
+        // 23505 (unique) / P0001 (trigger): racet mellem for-tjekket og
+        // commit, eller triggeren afviste — kontoen består, brugeren
+        // vælger et andet tag og resubmitter (idempotent via læsningen
+        // ovenfor). Alt andet er uventet → generic (som mail-fejlen).
+        const taget = insertError.code === "23505" || insertError.code === "P0001";
+        return NextResponse.json(
+          { error: taget ? "handleTaken" : "generic" },
+          { status: taget ? 409 : 500 },
+        );
+      }
+    }
   }
 
   // Linket bygges selv af hashed_token (enkelt-brug, kortlivet).
