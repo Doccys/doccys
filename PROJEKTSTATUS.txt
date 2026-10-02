@@ -1601,20 +1601,26 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
     se også punkt 5 (branded mail-udbyder).
 13. SEER-STATUS/TITLER (2/10-idé, IKKE BYGGET — afventer go,
     parallelt til hundecenter-donationen): gamificering der
-    belønner afholdt forbrug — titler ala "pioner" efter 1000
-    sete minutter / genre-titler ala "hardcore krim-seer" med
-    seertallet som undertekst. Kernen er økonomisk: status bygger
-    på sete minutter/færdiggjorte film, og på pay-per-minut er
-    det lig med penge brugt på platformen. Datakilderne findes
-    allerede (view_sessions/watch_history-aggregater, mønstrene
-    fra film_faedighedsstats og creator-tal-RPC'en). AFKLARINGER
-    SOM KRÆVES FØR BYG: (a) synlighed — seerdata er et privat-
-    livspolitik-område; offentlig visning (fx flair ved kommentar-
-    navne) kræver beslutning om opt-in/anonymousering vs. kun
-    egen profil; (b) grænseværdier — 1000 film er urealistisk på
-    en kurateret platform, sæt trin der kan NÅS (fx minutter:
-    100/1000/10000); (c) titlerne skal i18n ×13. Ingen kode før
-    brugerens eksplicitte go.
+    belønner afholdt forbrug — to lag: (1) samlet trin i SETE
+    MINUTTER (brugeren bekræftede 2/10 at minutter er målet),
+    fx pioner-trin ala 100/1.000/10.000 min; (2) genre-titel på
+    den mest sete genre (bruger-eksempel "nature freak"),
+    undertekst med minutter i genren, fx aktiveret ved 100 min
+    i genren. Kernen er økonomisk: status bygger på sete
+    minutter, og på pay-per-minut er det lig med penge brugt
+    på platformen. Genrerne findes (FILM_GENRES ×17) og er
+    allerede i18n ×13 — genre-titlen komponeres via genres-
+    namespace + ICU-mønster (ét sufiks pr. sprog, fx {genre}-
+    nørd), ikke 17 titler × 13 sprog. Design-valg truffet:
+    en films minutter tæller FULDT i alle dens genrer (op til
+    5). Datakilderne findes (view_sessions → documentaries.
+    genres-aggregat, mønstrene fra film_faedighedsstats og
+    creator-tal-RPC'en). AFKLARINGER DER KRÆVES FØR BYG:
+    (a) synlighed — seerdata er et privatlivspolitik-område;
+    offentlig visning (fx flair ved kommentarnavne) kræver
+    beslutning om opt-in vs. kun egen profil (anbefalet v1:
+    kun egen profil); (b) grænseværdier for trinene; (c) de
+    sidste i18n-tekster ×13. Ingen kode før brugerens go.
 
 GOD ARBEJDSGANG I DETTE PROJEKT
 - Plan-mode + Plan-agent ved større features; små trin, commit pr. trin,
