@@ -224,6 +224,27 @@ export type CreatorApplicationUpdate = {
   status?: string;
 };
 
+/* ---------- user_handles (reserverede @ tags) ---------- */
+
+export type UserHandleRow = {
+  /** én konto, ét tag — PK er user_id, så rækken forsvinder automatisk
+   *  ved kontosletning (on delete cascade fra auth.users) */
+  user_id: string;
+  handle: string;
+  created_at: string;
+};
+
+/** signup-ruten skriver som service role; profilens claim-form som sig
+ *  selv (RLS: auth.uid() = user_id) */
+export type UserHandleInsert = {
+  user_id: string;
+  handle: string;
+  created_at?: string;
+};
+
+/** tag'et er uforanderligt, når det er valgt — der findes ingen update-sti */
+export type UserHandleUpdate = never;
+
 /* ---------- view_sessions (anti-fraud) ---------- */
 
 export type ViewSessionRow = {
@@ -747,6 +768,13 @@ export type Database = {
         Update: CreatorApplicationUpdate;
         Relationships: [];
       };
+      user_handles: {
+        Row: UserHandleRow;
+        Insert: UserHandleInsert;
+        /** tag'et er uforanderligt — ingen update-sti findes */
+        Update: never;
+        Relationships: [];
+      };
       credit_ledger: {
         Row: CreditLedgerRow;
         Insert: CreditLedgerInsert;
@@ -909,6 +937,14 @@ export type Database = {
          *  offentligt Top 10-leaderboard, gyldige minutter/30 dage
          *  (20260928_top_creators) */
         Returns: unknown;
+      };
+      handle_optaget: {
+        Args: { p_handle: string; p_user_id?: string | null };
+        /** true = tag'et findes i creators, creator_applications eller
+         *  er reserveret af en ANDEN konto (p_user_ids egne rækker er
+         *  tilladt) — kaldes kun af signup-ruten (service role);
+         *  triggerne bruger samme prædikat (20261002_user_handles) */
+        Returns: boolean;
       };
     };
     Enums: {
