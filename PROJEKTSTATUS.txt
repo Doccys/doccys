@@ -1,6 +1,38 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-10-02
+Sidst opdateret: 2026-10-31
 ==========================================================
+
+FLYTNING TIL STATIONÆR COMMAND CENTER (31/10) — GIT FØRT OVER, ENV KLAR
+Aftalen med brugeren: flytning til den stationære (command center, 3
+monitors) følger TING-JE-LISTE Del 1–2. Status 31/10:
+- GIT: alt kode + alle migrationer på GitHub — 34 commits pushet
+  (4c68511..4d5c4d6), inkl. FUNKTIONSLISTE.txt + TING-JE-LISTE.txt som
+  NØGLE-commits (de to lister lå hidtil KUN lokalt — nu i privat-repoet
+  Doccys/doccys). Arbejds-tricket: FUNKTIONSLISTE's punkter om
+  "ikke i git" gælder brugen i MARKETING-materiale (NB-sektionen
+  slettes først dér) — som backup i repoet er de fine.
+- GIT-IDENTITET RETTET (backlog-punkt 9 LUKKET for fremtiden):
+  user.email = contact@doccys.com fra og med commit 4d5c4d6.
+  De 33 tidligere commits bærer stadig jesper@doccys.local —
+  omskrivning af historik er bevidst UNDGÅET (kosmetik på et privat
+  repo; history-rewrite-risikoen vejer tungere).
+- KLONE-RUTINEN PÅ DEN STATIONÆRE: git clone https://github.com/
+  Doccys/doccys.git → .env.local i projektroden → npm install
+  (ALDRIG node_modules eller .next kopieret) → npm run dev.
+- MANUSKAL — kan IKKE med git (huskes før afrejse fra laptoppen):
+  .env.local (service_role + Stripe-nøgler — USB/krypteret, ALDRIG
+  chat/mail/sky) · .claude/-mappen (Claudes hukommelse + planer) ·
+  MakeBestMusic-licenscertifikatet (punkt 1 i TING-JE-LISTEN —
+  kun downloadbart, mens abonnementet er aktivt; FØR alt andet).
+- STRIPE-RUTEN I MORGEN (1/11): REVOLUT ERHVERVS-KONTO OPRETTET
+  (31/10) — TING-JE-punkt 23 delvist klaret (kontoen koster intet at
+  stå klar). Rækkefølge: punkt 24 (produkter/priser på TEST-kontoen)
+  → 25 (stripe listen lokalt, NY whsec pr. kørsel → env + genstart)
+  → 26 (fuldt testkøb). Live-nøgler (punkt 28) ALTID allersidst.
+  NB fra TING-JE-LISTEN: Revolut har INGEN lokale DK-kontodetaljer
+  (DKK kun via SWIFT) — lancering-payout = dansk bank (Setup A);
+  multi-currency er skala-ting, ikke lancering-ting.
+Vercel forbliver PAUSET under hele flytningen — alt tester lokalt.
 
 SEER-STATUS — TITLER DER BELØNNER SETE MINUTTER (2/10) — BYGGET, E2E AFVENTER
 Gamificering af forbruget: profilens nye seer-status belønner sete
@@ -888,9 +920,9 @@ DEPLOY + MOBIL-HEADER (21/9)
   mobil-headeren. "Skabere" bliver i nav. KUN header.nav.home-
   nøglen røres (hjemmesidens egne tekster ligger i separat
   home-namespace). tsc + i18n-verify GRØNNE, røgtestet /da + /en.
-- NB: git-identiteten er STADIG "jesper@doccys.local" — commits
-  på GitHub viser det lokale alias. Skift til ægte e-mail
-  (git config user.email) før historikken vokser meget mere.
+- NB: git-identiteten var dengang "jesper@doccys.local" — den er
+  rettet til contact@doccys.com 31/10 (fra og med 4d5c4d6); de ældre
+  commits på GitHub viser stadig det lokale alias.
 
 OM PROJEKTET
 Doccys = kurateret niche-streamingtjeneste for uafhængige dokumentarer.
@@ -1610,10 +1642,11 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
    permanent webhook-endpoint i stedet for lokal CLI-lytter.
 9. Git remote — DONE (21/9): privat GitHub-repo Doccys/doccys +
    Vercel auto-deploy på push (https://doccys.vercel.app).
-   RESTER: lokal identitet "Jesper Hansen <jesper@doccys.local>"
-   skal rettes til ægte e-mail — gør det SNART, inden historikken
-   vokser (git config user.email; allerede push'ede commits kan
-   evt. omskrives senere, men det bliver kun sværere med tiden).
+   Identiteten er RETTET (31/10): user.email = contact@doccys.com
+   fra og med commit 4d5c4d6 — fremtidige commits er rene.
+   De ældre commits (indtil da, inkl. de 34 push'ede ved flytningen)
+   bærer "jesper@doccys.local" — bevidst IKKE omskrevet (kosmetik
+   på privat repo; history-rewrite-risikoen > gevinsten).
 10. Dedikeret /film-katalogside med genre-filtre (21/9-idé,
     skudt til filmantallet vokser): "Film" i nav peger indtil da
     på forsiden som ER kataloget. Genrebaseret browsen findes
@@ -1660,6 +1693,7 @@ GOD ARBEJDSGANG I DETTE PROJEKT
   og brug curl.exe -d "@fil".
 
 SIDSTE GIT-LOG (nyeste først)
+4d5c4d6 docs: ting-je-liste og funktionsliste ind i git — fuld backup foer flytning til stationaer
 6e3029f seer-status: oversaettelser paa 12 sprog (translate + keys-verify)
 ed6d4c0 seer-status: statuskort paa profilen + da-noegler
 eb20c7c seer-status: getViewerStatus i datalaget — egne sessioner, intet verdict-filter
