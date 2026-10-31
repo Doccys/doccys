@@ -1,5 +1,5 @@
 DOCCYS — TING-JE-LISTE FØR LANCERING
-Opdateret: 11/10 2026 (2. udg.) — i rækkefølge, prik én af gangen
+Opdateret: 31/10 2026 (3. udg.) — i rækkefølge, prik én af gangen
 ==========================================================
 DEADLINE: 1. DECEMBER 2026 — platformen skal være 100 %
 klar (tekster, jura, tests, deploy, live-betalinger), så
@@ -23,6 +23,13 @@ TIDLINJE (ca. — justér undervejs):
     rejsen testet "som fra udlandet" (anden IP, mobil, tz)
   1/12: ALT GRØNT → Mexico = pkt 33 (skaber-rekruttering)
 
+STATUS-FORSPRANG (31/10 aften, brugerens aftenpause):
+  git-side af flytningen er FÆRDIG (punkt 6 — alt på GitHub).
+  Stationæren tages FØRST tidligt 1/11: clone + .env.local (via
+  USB/krypteret) + .claude/-mappen + certifikatet → npm install →
+  npm run dev. Stripe-test-ruten (pkt 24–26) tager 1/11, efter
+  eftersjekket af Revolut. Lanceringslåsen forbliver aktiv hele tiden.
+
 ==========================================================
 
 DEL 1 — FØR PC-FLYTNINGEN (gøres på DENNE laptop)
@@ -40,7 +47,10 @@ DEL 1 — FØR PC-FLYTNINGEN (gøres på DENNE laptop)
     ikke i git).
 5.  Kopiér jingle-filer + licenscertifikat (fra punkt 1).
 6.  Kør "git status" og push evt. upublicerede commits —
-    alt kode og alle migrationer skal være på GitHub.
+    alt kode og alle migrationer skal være på GitHub. FØRT 31/10:
+    34 commits pushet (4c68511..4d5c4d6) — inkl. de to lister
+    (FUNKTIONSLISTE.txt + TING-JE-LISTE.txt), der hidtil kun lå
+    lokalt. Statusfiler opdateret og pushed til og med cfab01e.
 
 DEL 2 — PÅ DEN NYE PC (3 monitors)
 ----------------------------------------------------------
@@ -161,7 +171,11 @@ DEL 6 — VERCEL (siden skal OP, men stadig låst)
 DEL 7 — STRIPE (brug ALTID --api-key — to konti: test + live)
 ----------------------------------------------------------
 23. Revolut erhvervskonto:
-    - Opret kontoen (kan stå klar, koster intet).
+    - Opret kontoen (kan stå klar, koster intet). PÅBEGYNDT 31/10:
+      kontoen er oprettet hos brugeren, men der var FORHINDRINGER
+      undervejs — eftertjek at alt (CVR-dokumentation, virksomheds-
+      detaljer, evt. bank-opkobling) er gennemført, før Stripe-
+      setuppen i punkt 24 bruger den til noget.
     - NB: Revolut har INGEN lokale danske kontodetaljer
       (DKK kun via SWIFT) — Stripe payout i DKK kræver
       almindelig dansk bank.
