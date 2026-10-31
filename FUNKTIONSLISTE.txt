@@ -1,0 +1,97 @@
+DOCCYS — FUNKTIONSLISTE (til markedsføring præ-lancering)
+Opdateret: 3/10 2026
+==========================================================
+
+KERNEIDÉEN (the pitch)
+----------------------------------------------------------
+Doccys er en kurateret streamingplatform for uafhængige
+dokumentarer — hvor du betaler pr. set minut, og pengene
+går direkte til skaberen. Ingen abonnement, ingen licenstillids-
+køb: skaberen tjener på HVER sete minut, i hele filmens
+levetid. Kvalitet frem for algoritme — alt indhold er
+set igennem af en redaktion.
+
+TIL SEEREN
+----------------------------------------------------------
+- Betal kun for det, du ser: minutpakker forud, forbrug pr.
+  sete minut. Saldoen er altid synlig.
+- Konto uden blottet e-mail: opret med brugernavn, 18+-
+  bekræftelse, velkomstmail på DIT sprog.
+- Personligt @ tag allerede ved oprettelsen — unikt på hele
+  platformen (og det reserverer din adresse, hvis du senere
+  selv vil udgive film: /creator/dit-navn).
+- Afspilleren: undertekster på flere sprog, trailer-forsmag,
+  genoptag hvor du slap ("Fortsæt se"-rille på forsiden).
+- Dit personlige bibliotek: seerhistorik med færdigheds-
+  procent, gemte film, oversigt over skabere du følger.
+- Kommentarer der er noget værd: kun seere, der har SET
+  filmen, kan skrive med — kvalificeret samtale, modereret,
+  med svar-tråde. Diskutér filmen der, hvor du så den.
+- Følg dine skabere med ét klik; follower-tallet er
+  offentligt og vises på skaberprofilen.
+- Seer-status (gamificering): titler for sete minutter —
+  Nysgerrig (100 min), Pioner (1.000), Legende (10.000) —
+  plus genre-titel (fx "Natur-nørd") for din mest sete genre,
+  med minuttalet som undertekst.
+- "Din støtte": dit minutregnskab — se præcis hvilke skabere
+  dine sete minutter (og kroner) endte hos.
+- Deling: flotte link-billeder (OG-kort) pr. film, delbare
+  bevis-links og henvisningskode, der giver bonus, når en
+  ven køber sit første minutpakke.
+- Fuld selvbetjening: skift visningsnavn, slet din konto
+  selv med ét klik (GDPR).
+- 13 sprog: dansk, engelsk, tysk, spansk, fransk, finsk,
+  norsk, svensk, japansk, kinesisk, italiensk, portugisisk,
+  hindi — hele platformen, ikke kun menuerne.
+
+TIL SKABEREN
+----------------------------------------------------------
+- Udbetaling pr. sete minut — en livrente i filmens
+  levetid, ikke et engangsbeløb der holder op. Din sats pr.
+  film er synlig for dig.
+- Egen adresse: /creator/dit-navn med filmografi og dit
+  følger-tal. Dit @ tag er reserveret, før du nogensinde
+  uploader.
+- Studioet: upload med filvælger, licensaftale bekræftes ved
+  upload, publiceringskrav (undertekster + trailer) der
+  sikrer ensartet kvalitet på tværs af platformen.
+- "Dine tal": indtjening pr. film, daglig kurve, seernes
+  sprog og enheder, retention-graf (hvor langt seerne når),
+  færdighedstal og follower-tal — alt på ét sted.
+- Selvbetjent udbetaling fra 150 kr.
+- Synlighed: top-10 leaderboard over skabere, færdigheds-
+  badges på filmene ("87 % så den færdig"), kuraterede
+  samlinger og tematiser.
+- Din opslagstavle: skriv direkte til dine følgere på din
+  profil.
+
+INDHOLD & OPDAGELSE
+----------------------------------------------------------
+- Kurateret katalog: 17 genrer, redaktionelt udvalgt indhold.
+- Søgning på tværs af film, skabere og genrer.
+- Tema-samlinger med egne sider.
+- Filmstatistik med socialt bevis (færdigheds-procent).
+
+TILLID & ANSVAR (gode fakta i markedsføringen)
+----------------------------------------------------------
+- Dansk selskab, CVR-registreret, momsregistreret.
+- Betingelser og privatlivspolitik på alle sprog —
+  kontosletning som selvbetjening.
+- Anti-fraud: hver seersession valideres (kun naturlig
+  afspilning tæller) — beskytter både seerens penge og
+  skaberens udbetaling. Ingen bot-minutter i tallene.
+- Sikre betalinger via Stripe; kvitteringer på modtagerens
+  eget sprog.
+
+PÅ VEJEN (kan nævnes som "kommer" i præ-lancering)
+----------------------------------------------------------
+- Notifikationer: "din skaber har lagt en ny film op" og
+  svar på dine kommentarer.
+- Seer-status som synligt badge ved kommentar-navne.
+
+NB (internt — slet før brug i materiale)
+----------------------------------------------------------
+- Lov kun det, der er E2E-verificeret: seer-status og @ tag
+  er bygget men afventer de sidste brugertest.
+- Platformen er pt. skjult for søgemaskiner (lancerings-lås)
+  og nede i Vercel — funktionerne er i koden, ikke live endnu.

@@ -1,0 +1,237 @@
+DOCCYS — TING-JE-LISTE FØR LANCERING
+Opdateret: 11/10 2026 (2. udg.) — i rækkefølge, prik én af gangen
+==========================================================
+DEADLINE: 1. DECEMBER 2026 — platformen skal være 100 %
+klar (tekster, jura, tests, deploy, live-betalinger), så
+ferien i Mexico kan bruges på skaber-anskaffelse.
+Mexico-fasen = ansøgninger ind, godkend/afvis med standard-
+e-mails, film uploadet. Derfor: HELE skaber-rejsen (ansøgning
+→ godkendelse → studie → upload → licens → udbetaling) skal
+være E2E-testet og live FØR afrejse — og KURATERINGSKRITERIER
+(punkt 13) skal være skrevet, før den første ansøgning lander.
+Lancering med 50 film + fjernelse af lanceringslåsen sker
+FØRST når kataloget er fyldt — EFTER ferien.
+
+TIDLINJE (ca. — justér undervejs):
+  Uge 1 (pr. 13/10): pkt 1–11 (flytning) + book revisor
+  Uge 2 (pr. 20/10): pkt 12 (tekster + 4 klausuler + i18n)
+  Uge 3 (pr. 27/10): pkt 13–15 (kriterier + seer-status/@tag)
+  Uge 4 (pr. 3/11):  pkt 16–18 (2 GB-kode, skaber-side, DB)
+  Uge 5 (pr. 10/11): pkt 19–22 (Vercel)
+  Uge 6 (pr. 17/11): pkt 23–28 (Stripe, incl. live-nøgler)
+  Uge 7 (pr. 24/11): buffer + sidste gennemgang + skaber-
+    rejsen testet "som fra udlandet" (anden IP, mobil, tz)
+  1/12: ALT GRØNT → Mexico = pkt 33 (skaber-rekruttering)
+
+==========================================================
+
+DEL 1 — FØR PC-FLYTNINGEN (gøres på DENNE laptop)
+----------------------------------------------------------
+1.  Hent licenscertifikatet fra MakeBestMusic og gem det i
+    samme mappe som jingle-filerne. NB: kan KUN downloades,
+    mens abonnementet er aktivt. Gøres FØR alt andet.
+2.  Kopiér .env.local sikkert til en USB-nøgle/krypteret
+    lagring (aldrig via chat, mail eller sky uden kryptering).
+    Det er projektets mest følsomme fil (service_role-nøglen).
+3.  Kopiér .claude/-mappen (Claudes hukommelse + planer) til
+    samme sikre sted — uden den starter den nye PC med tom
+    hukommelse.
+4.  Kopiér FUNKTIONSLISTE.txt (ligger kun på laptoppen,
+    ikke i git).
+5.  Kopiér jingle-filer + licenscertifikat (fra punkt 1).
+6.  Kør "git status" og push evt. upublicerede commits —
+    alt kode og alle migrationer skal være på GitHub.
+
+DEL 2 — PÅ DEN NYE PC (3 monitors)
+----------------------------------------------------------
+7.  git clone af repoet.
+8.  Placér .env.local i roden af projektet.
+9.  npm install (kopér IKKE node_modules eller .next).
+10. npm run dev — tjek at siden kører.
+11. (Valgfrit) Kør verificerings-spørgsmålene fra samtalen
+    mod Supabase igen, hvis du vil dobbelttjekke sync.
+
+DEL 3 — SIDEGENNEMGANG (du + maskinaudit)
+----------------------------------------------------------
+12. Gennemgå hele sidens tekster manuelt — find småfejl,
+    mangler, uoversatte bidder, mærkelige formuleringer.
+    (Sig til, hvis du vil have et maskinaudit kørt samtidig:
+    rå nøgler, placeholder-fejl, sproglæk, døde links.)
+    - HERIBLANDT (aftalt 11/10): skaber-ansøgningens navnefelt
+      → "Skaber- eller virksomhedsnavn" + hint ("skriv jeres
+      firmanavn, hvis I har et — ellers jeres eget"), så
+      solo-talenter/filmstuderende ikke mødes af et krav om
+      virksomhed. Ren i18n-tekstændring, 13 sprog, ingen
+      migration. Grundlagt-år + land bruges til opslag på
+      medarbejderantal ved kuratering.
+    - HERIBLANDT (aftalt 11/10): skatteklausul i Betingelserne —
+      "skat og afgifter på modtagne udbetalinger er skaberens
+      eget ansvar iht. gældende lokal lovgivning; Doccys yder
+      ikke skatterådgivning". Intet løfte om rapportering.
+      FORUDSÆTNING: én revisor-samtale FØR ordlyden endgøres —
+      a) Kontoservice-indberetning (DK, privatpersoner >1.000
+      kr/md for arbejde/ydelser), b) DAC7-pligt for EU-platforme.
+      13 sprog, translate + keys-verify.
+    - HERIBLANDT (aftalt 11/10): friholdelses-punkt i
+      Betingelserne afsnit 11 (skaberlicensen): "Skaberen er
+      alene ansvarlig for filmens indhold og friholder Doccys
+      for krav fra tredjeparter, der er relateret til filmen."
+      Doccys er KUN distributør — aftalen er ellers komplet
+      (garanti, ikke-eksklusiv licens, fjernelses-rettighed,
+      tidsstemplet accept). Samme i18n-opgave som ovenfor.
+    - HERIBLANDT (aftalt 11/10): kuraterings-forbehold — ny
+      sektion i Betingelserne ("Skabere: kuratering og
+      udbetaling", fx afsnit 13): Doccys er ikke forpligtet
+      til at godkende ansøgninger/offentliggøre film (eget
+      skøn), kan til enhver tid fjerne film eller tilbagekalde
+      skaber-adgang — men optjente udbetalinger bliver ALTID
+      udbetalt ("fjern filmen, aldrig pengene"). Intet løfte
+      om begrundelse i betingelserne (begrundelse forbliver
+      e-mail-praksis/goodwill, ikke kontrakt). Overvej at flytte
+      skatteklausul + friholdelse ind i samme sektion. Husk at
+      opdatere "Senest opdateret"-datoen i introen.
+13. Skriv KURATERINGSKRITERIER.txt (intern — gøres FØR første
+    ansøgninger ankommer):
+    - "For meget AI"-reglerne + standard-afvisnings-e-mails
+      MED begrundelse (afvisning = feedback, genafsend-flow).
+    - Red-flag: >3 film/år pr. skaber → ekstra gennemgang af
+      research/kilder — IKKE auto-afslag (undtagelser: teams,
+      kortformater, fælles research-base).
+    - Opslags-procedurer: virksomhedsnavn oplyst → tjek
+      medarbejderantal (CVR/registre) mod udgivelsesfrekvens.
+    - Trailer-bitrate-disciplin (trailere kodes lavt — de er
+      den eneste gratis-egress).
+    Beslut: lokal fil eller commit til git (den gør smagen
+    overdragelig — også ved exit).
+
+DEL 4 — DE SIDSTE TESTS (E2E — kræver kørende site)
+----------------------------------------------------------
+14. Seer-status E2E:
+    - Kort på /da/profile: "Du har set X minutter" — X skal
+      være = eller større end "Din støtte" (større er
+      FORVENTET pga. verdict-split).
+    - SQL grund-sandhed:
+      select floor(sum(watched_seconds)/60) from public.view_sessions
+      where user_id = '<din-id>' and status <> 'active'
+        and watched_seconds > 0;   → skal matche kortet.
+    - Genre-række: top-genre + minutter i genren.
+    - /en/profile: Curious / Pioneer / Legend + "{genre} nerd".
+    - Frisk konto / 0 min: kun teaser-linjen, ingen titel.
+15. @ tag E2E (parkerede tests):
+    - Prefill-F5-test (gammel fane-teori).
+    - Reserverede ord (@apply, @studio) afvises.
+    - Syntaks (@ab, @Foo_Bar) afvises.
+    - Kontosletning rydder handle og alt andet (cascade).
+16. Generelle sidste tests: køb-flow, afspiller, upload,
+    kommentarer — alt det, der skal være perfekt pr. lancering.
+    - HERIBLANDD (opdaget 11/10): HÅNDHÆV 2 GB-grænsen — den er
+      i dag kun tekst i fileLabel ("maks 2 GB"), ingen kode
+      måler størrelsen. Ét klient-tjek (File.size ved filvalg,
+      ved siden af mp4-tjekket) + ét server-tjek i POST
+      /api/films (content-length fra den HEAD, der alligevel
+      hentes til egress-estimatet) → afvis over 2 GB.
+      720p forbliver VEJLEDNING (ikke håndhævet): 2 GB-taget
+      disciplinerer bitraten naturligt, og hård 720p-mur ville
+      blokere fremtidig Bunny-adaptive (1080p-upload).
+    - HERIBLANDD: skaber-siden — udbetalingsoplysninger gemmes,
+      udbetalingsanmodning under/over 150 kr-grænsen opfører
+      sig rigtigt (afvis under, opret over).
+
+DEL 5 — DB-OPRYDNING (engangs-oprydning)
+----------------------------------------------------------
+17. Kør i SQL Editor:
+    delete from public.user_handles where handle = 'race-test';
+18. Slet testkonti (test6@doccy.com osv.) i Supabase:
+    Authentication → Users.
+
+DEL 6 — VERCEL (siden skal OP, men stadig låst)
+----------------------------------------------------------
+19. Opret Vercel-projekt og forbind GitHub-repoet.
+20. Tilføj ALLE miljøvariabler fra .env.local i Vercel
+    (gå dem igennem én for én — mangler én, fejler produktion).
+21. Deploy og tjek at siden kører — sørg for at
+    lanceringslåsen (skjul for søgemaskiner) stadig er aktiv.
+22. Vercel-billing (betalt 11/10, $25/md):
+    - Tilføj CVR 46804147 i forretningsprofilen → B2B-faktura
+      uden deres moms (selvafgift i indberetningen, fradrags-
+      berettiget — netto-nul).
+    - Skift til ÅRSfakturering: $20/md i stedet for $25
+      (~400 kr/år sparet).
+
+DEL 7 — STRIPE (brug ALTID --api-key — to konti: test + live)
+----------------------------------------------------------
+23. Revolut erhvervskonto:
+    - Opret kontoen (kan stå klar, koster intet).
+    - NB: Revolut har INGEN lokale danske kontodetaljer
+      (DKK kun via SWIFT) — Stripe payout i DKK kræver
+      almindelig dansk bank.
+    - Lancering: payout = DKK til dansk bank (Setup A).
+    - Multi-currency (USD/EUR/GBP i hver sin Revolut-konto
+      via Stripe multi-currency settlement) er en SKALA-ting,
+      ikke en lanceringsting — kræver prissætning i lokale
+      valutaer + gebyr pr. ikke-primær valuta.
+    - Moms: Stripe Tax beregner/opkræver, men registrering
+      og indberetning (OSS m.m.) er stadig egen opgave.
+24. Testkonto: opret produkter/priser for minutpakkerne.
+25. Webhook: kør lytteren lokalt og gem whsec PR. kørsel.
+26. Test et fuldt køb i testtilstand: pakke → saldo →
+    afspilning → afregning → skaber-udbetalingsspor.
+27. Moms-registrering via API (CVR 46804147, DK-moms).
+    NB: allerede gjort på TESTKONTOen (taxreg_1UGhUC…) —
+    skal GENTAGES på livekontoen, når den oprettes.
+28. Først når ALT andet er grønt: skift til live-nøgler.
+
+DEL 8 — LANCERING (rækkefølgen er vigtig!)
+----------------------------------------------------------
+29. Sidste fulde gennemgang af hele siden — alt skal være
+    grønt: tests, tekster, betalinger, deploy. (PR. 24/11-
+    ugen — FØR afrejse.)
+30. MEXICO-FASEN: skaber-anskaffelse + sociale medier (ro og
+    fred = byg infrastrukturen dér):
+    - Henvend dig direkte til new-gen AI-talenter (solo,
+      filmstuderende, hobbyister): "giganterne lukker døren;
+      Doccys betaler pr. minut, i filmens levetid, fra
+      150 kr." Kuratering efter KURATERINGSKRITERIER.
+    - Opret Doccys-konti: X.com (inkl. abonnement), Facebook,
+      YouTube-kanal til Doccys.com. Jinglen + trailere
+      (kodede lavt — TUNGE afspilninger skal ligge på DERES
+      egress, ikke vores bucket).
+    - Slet NB-sektionen i FUNKTIONSLISTE.txt FØR brug i
+      materiale. Seer-tekster (FUNKTIONSLISTE) og skaber-
+      tekster holdes adskilt — to publikummer.
+    - NB: 2FA + gendannelses-koder på ALLE nye forretnings-
+      konti OPRETTES FØR afrejse-hjemme-arbejdet er færdigt —
+      aldrig fra udlandet uden backup af adgang.
+    Lanceringslåsen sidder stadig.
+31. EFTER ferien, når kataloget nærmer sig 50 film: sidste
+    tjek + fjern lanceringslåsen (x-robots / skjul for
+    søgemaskiner) — ALTID som det ALLERSIDSTE.
+32. Offentliggør: 50 film i kataloget ved start
+    (skaler indhold i takt med salg).
+33. Brug jinglen konsekvent på de sociale medier (kan starte
+    i Mexico — brandet bygges før kataloget).
+
+NB (internt)
+----------------------------------------------------------
+- Hundecenter-donation: byg KUN efter go-ahead — pt. ikke
+  en del af lanceringen.
+- FUNKTIONSLISTE.txt: slet NB-sektionen før brug i materiale.
+- Post-launch-idéer (IKKE lancering — gemmes her så de
+  ikke forsvinder): source-liste/metode-erklæring som
+  publiceringskrav, offentlig "hvad vi afviser og hvorfor"-
+  sektion, encoding-guide i studiet, "saldo løber lav"-
+  notifikation (re-purchase trigger + backlog 12),
+  skip-intro-knap (seeren sparer MINUTTER — goodwill, ikke
+  bandwidth: platformen mister også omsætningen pr. sprunget
+  minut; kræver intro-markering i studiet pr. film — seeren
+  kan allerede skippe via tidslinjen i dag).
+- Exit-DD-hygiejne: før en "gamle sager"-bekymring kan opstå —
+  ingen brugere endnu, alt jura laves FØR lancering (billigste
+  tidspunkt). Behold en lille compliance-log (dato for hver
+  terms-version, revisor-tjek, DB-verificering 11/10) — og
+  hold regnestykket på udestående minutsaldo klar (samme SQL
+  som skaber-reserven): det er det første tal, en opkøber
+  spørger til.
+- Maskinelle check der skal være grønne pr. commit:
+  npx tsc --noEmit, i18n-keys-verify (13 sprog),
+  i18n-verify mod kørende server.
