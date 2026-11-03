@@ -34,6 +34,33 @@ monitors) følger TING-JE-LISTE Del 1–2. Status 31/10:
   multi-currency er skala-ting, ikke lancering-ting.
 Vercel forbliver PAUSET under hele flytningen — alt tester lokalt.
 
+SUPABASE AUTO-PAUSE FÆLDEN — MIDDLEWARE FEJLET PÅ DOCCYS.COM (31/10-3/11)
+Symptom 3/11: doccys.com svarede "This request timed out — routing
+middleware for this page took too long to respond". ROD: Supabase
+free-tier auto-pauser projekter ved inaktivitet (brugeren fik selv
+varslen "pauset fordi du ikke var aktiv") — og under Vercel-pausen
+(1/10→3/11) kom ingen trafik, der kunne holde projektet vågent.
+SYMPTOM-TRICK: pausede projekter fjernes fra DNS — "Could not
+resolve host: xzwowumgvhkltkwrnpdo.supabase.co" (verificeret via
+8.8.8.8) ER pausen, ikke lokal netværksfejl. Middlewareen (update-
+Session → getUser() på ALLE side-visninger) hang på det døde host-
+navn, og Vercel dræbte routing-middleware'ens tidsbudget.
+- MIDDLEWARE-RESILIENS (4b551fd, tsc GRØN): SESSION_BUDGET_MS = 3000
+  + try omkring updateSession i src/middleware.ts — uopnåelig
+  Supabase = gæst-degradation (refresh prøves på næste side) i stedet
+  for dødt sit. VERIFICERET LOKALT UNDER UDFALDET: dev-server +
+  NXDOMAIN-Supabase → /da/ HTTP 200 (degraderet render, 21 s pga.
+  dev-kompilering + datalagets egne udloebende fetches — normal
+  tilstand efter Supabase-restore).
+- REST FOR BRUGEREN: Supabase-dashboardet → projektet → "Restore
+  project" (gratis-tier restore, tager nogle minutter; data +
+  migrationer er intakte). NB: SUPABASE SLETTER free-tier-projekter
+  efter 90 dage i pause — fremtidige pauser må ALDRIG rykke
+  sletter-grænsen (bogføringsbeviserne i credit_purchases!).
+- LAERING gemt i memory (supabase-free-tier-auto-pause): FØR
+  Vercel-genaktivering efter en pause: tjek AT Supabase responderer
+  først (curl på /rest/v1 m. anon-key).
+
 SEER-STATUS — TITLER DER BELØNNER SETE MINUTTER (2/10) — BYGGET, E2E AFVENTER
 Gamificering af forbruget: profilens nye seer-status belønner sete
 minutter — og på pay-per-minut er sete minutter PRÆCIS forbrugte
