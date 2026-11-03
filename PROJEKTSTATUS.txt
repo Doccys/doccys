@@ -52,11 +52,22 @@ navn, og Vercel dræbte routing-middleware'ens tidsbudget.
   NXDOMAIN-Supabase → /da/ HTTP 200 (degraderet render, 21 s pga.
   dev-kompilering + datalagets egne udloebende fetches — normal
   tilstand efter Supabase-restore).
-- REST FOR BRUGEREN: Supabase-dashboardet → projektet → "Restore
-  project" (gratis-tier restore, tager nogle minutter; data +
-  migrationer er intakte). NB: SUPABASE SLETTER free-tier-projekter
-  efter 90 dage i pause — fremtidige pauser må ALDRIG rykke
-  sletter-grænsen (bogføringsbeviserne i credit_purchases!).
+- RESTORE FØRT + FULDVERIFICERET 3/11: brugeren restored projektet
+  i dashboardet. Eftervist af Claude: REST 200 /rest/v1/documentaries
+  (0,18 s) OG collections OG user_handles → alle migrationer + data
+  intakt · doccys.com/da HTTP 200 (3,3 s koldstart; NB: apex 308 →
+  www.doccys.com = Vercels domæne-setup, korrekt) · lanceringslåsen
+  AKTIV (www.doccys.com/robots.txt = "User-Agent: * / Disallow: /")
+  · middleware-fix 4b551fd deployet af Vercel.
+- NB OBSERVATION 3/11: Vercel-projektet er GENAKTIVERET af brugeren
+  (doccys.com svarer; supabase-env'erne er på plads — middlewareen
+  kaldte ellers no-op og havde ikke hangt). Del 6's punkt 19+21 er
+  dermed FØRT (lånser-tjek ✓) — punkt 20 (alle env-variabler ÉN for
+  én) + SMTP_HOST/PORT/USER/PASS i Vercel-env (mail-links skal pege
+  på https://doccys.com) er det endelige eftersjek ved Stripe-ruten.
+  NB: SUPABASE SLETTER free-tier-projekter efter 90 dage i pause —
+  fremtidige pauser må ALDRIG rykke sletter-grænsen
+  (bogføringsbeviserne i credit_purchases!).
 - LAERING gemt i memory (supabase-free-tier-auto-pause): FØR
   Vercel-genaktivering efter en pause: tjek AT Supabase responderer
   først (curl på /rest/v1 m. anon-key).
