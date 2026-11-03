@@ -1,5 +1,6 @@
+import { NextResponse, type NextRequest } from "next/server";
 import createIntlMiddleware from "next-intl/middleware";
-import { updateSession } from "./lib/supabase/middleware";
+import { updateSession, type SessionUpdate } from "./lib/supabase/middleware";
 import { routing } from "./i18n/routing";
 
 /**
@@ -15,9 +16,34 @@ import { routing } from "./i18n/routing";
  */
 const handleI18nRouting = createIntlMiddleware(routing);
 
-export async function middleware(request: Parameters<typeof handleI18nRouting>[0]) {
-  // 1 — refresh the Supabase auth session (no-op when not configured)
-  const { response: authResponse } = await updateSession(request);
+// Session-refreshens budget i ms før sitet fortsætter som gæst. middlewareen
+// kører for ALLE sider — hvis Supabase er uopnåelig (pauset projekt, DNS
+// væk, netværksfejl), hænger getUser() ellers hele siten, og Vercel
+// afskærer med "routing middleware took too long to respond" (3/11-udfaldet
+// på doccys.com da Supabase var auto-pauset). Udløb/fejl = gæst-session;
+// refresh'et prøves stille igen på næste side-visning.
+const SESSION_BUDGET_MS = 3_000;
+
+function guestSession(request: NextRequest): SessionUpdate {
+  return { response: NextResponse.next({ request }), user: null };
+}
+
+export async function middleware(request: NextRequest) {
+  // 1 — refresh the Supabase auth session (no-op when not configured).
+  // Fail-open for hele middlewareen: en Supabase-udfald degraderer til
+  // gæst — den DÆMR IKKE sitets routing.
+  let authResponse: NextResponse;
+  try {
+    const { response } = await Promise.race([
+      updateSession(request),
+      new Promise<SessionUpdate>((resolve) =>
+        setTimeout(() => resolve(guestSession(request)), SESSION_BUDGET_MS),
+      ),
+    ]);
+    authResponse = response;
+  } catch {
+    authResponse = guestSession(request).response;
+  }
 
   // 2 — locale-aware routing for the (possibly updated) request
   const response = await handleI18nRouting(request);
