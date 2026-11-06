@@ -187,13 +187,36 @@ DEL 7 — STRIPE (brug ALTID --api-key — to konti: test + live)
     - Moms: Stripe Tax beregner/opkræver, men registrering
       og indberetning (OSS m.m.) er stadig egen opgave.
 24. Testkonto: opret produkter/priser for minutpakkerne.
-25. Webhook: kør lytteren lokalt og gem whsec PR. kørsel.
+    UNØDVENDIGT — appens checkout opretter priserne on-the-fly
+    (price_data i checkout-ruten); tom produktliste er forventet.
+25. Webhook: den PERMANENTE endpoint kører nu på live-kontoen
+    (we_1UYc72JLHMHYyZgtgmV9gf2d → www.doccys.com/api/stripe/webhook,
+    events: checkout.session.completed + …expired, whsec i Vercel)
+    — den lokale CLI-lytter er overflødig for produktion (og
+    CLI'ens afviser sk_live uden stripe login-pairing).
 26. Test et fuldt køb i testtilstand: pakke → saldo →
     afspilning → afregning → skaber-udbetalingsspor.
+    FØRT (verificeret 17-18/9 + bruger-afkrydset 6/11): køb →
+    kreditering ✓ · webhook ✓ · afregning ✓ · skaber-spor ✓
+    (0,04 kr kryds-tjekket 20/9). billing_country='DK' bekræftet
+    6/11 med det LIVE-køb (se punkt 28). OBS fundet 6/11:
+    12 gamle pending-rækker (forladte checkouts) → markeres
+    'failed' i DB-oprydningen (punkt 17-18-territorium).
 27. Moms-registrering via API (CVR 46804147, DK-moms).
-    NB: allerede gjort på TESTKONTOen (taxreg_1UGhUC…) —
-    skal GENTAGES på livekontoen, når den oprettes.
+    FØRT 6/11 på LIVE-kontoen: taxreg_1UYc3BJLHMHYyZgtGHGmL2jf
+    (DK, standard-ordning, place_of_supply_scheme=standard).
+    NB: Stripe's API kræver den NYE form (country_options[dk][type]
+    =standard) — gammel form (options[standard][rate]) afvises.
+    NB: taxreg_1UGhUC… var på test-kontoen.
 28. Først når ALT andet er grønt: skift til live-nøgler.
+    FØRT 6/11 (brugerens bevidste beslutning, før resten af
+    listen er grøn): live-nøgle + live-webhook-whsec i Vercel
+    (production + preview) → fuld live-E2E VERIFICERET: ægte køb
+    49 kr (moms 9,80) → status paid + billing_country DK →
+    +60.000 s i ledger → saldo. NB: statement/navn sat til
+    doccys.com af brugeren. REST: rul live-nøglen (har stået i
+    chat/output) + evt. re-create webhook-endpoint efter samme
+    grund; refunder evt. testkøbet i dashboardet.
 
 DEL 8 — LANCERING (rækkefølgen er vigtig!)
 ----------------------------------------------------------
