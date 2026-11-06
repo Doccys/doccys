@@ -223,6 +223,11 @@
         "title": "Conversa durante o filme",
         "body": "Cada filme tem sua própria discussão. Nenhum algoritmo no caminho — apenas pessoas que assistiram ao mesmo que você."
       }
+    },
+    "recruitment": {
+      "eyebrow": "Doccys está recrutando criadores",
+      "body": "A plataforma será lançada em dezembro — faça o upload do seu documentário e ganhe 2 R$ a cada 100 minutos assistidos, durante a vida do filme, com pagamento a partir de 150 R$.",
+      "cta": "Candidate-se como criador"
     }
   },
   "creators": {

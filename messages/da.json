@@ -221,6 +221,11 @@
       "title": "Hvor du slap",
       "subtitle": "Din afspilning genoptages automatisk, hvor du stoppede."
     },
+    "recruitment": {
+      "eyebrow": "Doccys søger skabere",
+      "body": "Platformen lanceres i december — upload din dokumentar og optjen 2 kr pr. 100 sete minutter, i filmens levetid, med udbetaling fra 150 kr.",
+      "cta": "Ansøg som skaber"
+    },
     "catalog": {
       "eyebrow": "Kataloget",
       "title": "Uafhængige dokumentarer",

@@ -223,6 +223,11 @@
         "title": "Das Gespräch unter dem Film",
         "body": "Jeder Film hat seine eigene Diskussion. Keine Algorithmen im Weg — nur Menschen, die dasselbe gesehen haben wie Sie."
       }
+    },
+    "recruitment": {
+      "eyebrow": "Doccys sucht Creator",
+      "body": "Die Plattform wird im Dezember gestartet – lade deine Dokumentation hoch und verdiene 2 € pro 100 gesehenen Minuten, während der Lebensdauer des Films, mit Auszahlungen ab 150 €.",
+      "cta": "Bewirb dich als Creator"
     }
   },
   "creators": {

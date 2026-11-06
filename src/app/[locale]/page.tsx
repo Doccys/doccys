@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import CreatorRecruitmentBanner from "@/components/home/CreatorRecruitmentBanner";
 import HeroBanner from "@/components/home/HeroBanner";
 import DocumentaryGrid from "@/components/documentary/DocumentaryGrid";
 import CollectionRail from "@/components/collection/CollectionRail";
@@ -42,6 +43,8 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div>
+      {/* MIDLERTIDIG: rekrutteringsbanner (fjernes, når kataloget har film) */}
+      <CreatorRecruitmentBanner />
       {featured && <HeroBanner documentary={featured} />}
 
       {continueItems.length > 0 && (

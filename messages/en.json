@@ -223,6 +223,11 @@
         "title": "The conversation beneath the film",
         "body": "Every film has its own discussion. No algorithms in the way — just people who watched the same thing you did."
       }
+    },
+    "recruitment": {
+      "eyebrow": "Doccys is looking for creators",
+      "body": "The platform launches in December — upload your documentary and earn 2 DKK per 100 minutes watched, for the lifetime of the film, with payouts starting at 150 DKK.",
+      "cta": "Apply as a creator"
     }
   },
   "creators": {

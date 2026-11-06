@@ -223,6 +223,11 @@
         "title": "Conversazione durante il film",
         "body": "Ogni film ha la sua discussione. Nessun algoritmo in mezzo — solo persone che hanno visto le stesse cose che hai visto tu."
       }
+    },
+    "recruitment": {
+      "eyebrow": "Doccys cerca creatori",
+      "body": "La piattaforma sarà lanciata a dicembre — carica il tuo documentario e guadagna 2 kr per ogni 100 minuti visti, per tutta la durata del film, con pagamento a partire da 150 kr.",
+      "cta": "Candidati come creatore"
     }
   },
   "creators": {

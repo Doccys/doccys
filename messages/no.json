@@ -223,6 +223,11 @@
         "title": "Samtalen under filmen",
         "body": "Hver film har sin egen diskusjon. Ingen algoritmer i veien — bare folk som har sett det samme som deg."
       }
+    },
+    "recruitment": {
+      "eyebrow": "Doccys søker skapere",
+      "body": "Plattformen lanseres i desember — last opp dokumentaren din og tjen 2 kr per 100 viste minutter, i filmens levetid, med utbetaling fra 150 kr.",
+      "cta": "Søk som skaper"
     }
   },
   "creators": {

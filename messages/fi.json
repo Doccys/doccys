@@ -223,6 +223,11 @@
         "title": "Keskustelu elokuvan alla",
         "body": "Jokaisella elokuvalla on oma keskustelunsa. Ei algoritmeja tiellä — vain ihmisiä, jotka katsoivat saman kuin sinä."
       }
+    },
+    "recruitment": {
+      "eyebrow": "Doccys etsii luojia",
+      "body": "Alustaa lanseerataan joulukuussa — lataa dokumenttisi ja ansaitse 2 € jokaista 100 katsottua minuuttia kohti elokuvan eliniän aikana, maksut alkaen 150 €.",
+      "cta": "Hae luojaksi"
     }
   },
   "creators": {

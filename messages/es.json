@@ -223,6 +223,11 @@
         "title": "La conversación bajo la película",
         "body": "Cada película tiene su propia discusión. Sin algoritmos en el camino — solo personas que vieron lo mismo que tú."
       }
+    },
+    "recruitment": {
+      "eyebrow": "Doccys busca creadores",
+      "body": "La plataforma se lanzará en diciembre: sube tu documental y gana 2 kr por cada 100 minutos vistos, durante la vida de la película, con un pago a partir de 150 kr.",
+      "cta": "Aplica como creador"
     }
   },
   "creators": {
