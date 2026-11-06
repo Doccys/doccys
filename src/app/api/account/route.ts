@@ -22,7 +22,7 @@ export const dynamic = "force-dynamic";
  *      dermed håndhævet server-side, ikke kun i UI'et.
  *   3. Skaber-lås: konti der ejer en creator-profil afvises — film,
  *      udbetalingshistorik og storage-objekter kræver redaktionel
- *      håndtering (support@doccys.com).
+ *      håndtering (contact@doccys.com).
  *   4. Købsdata anonymiseres: user_id = null på credit_purchases +
  *      credit_ledger, FØR deleteUser — kaskaden (on delete cascade)
  *      æder ellers rækkerne, og beviserne forsvinder med dem.

@@ -73,7 +73,7 @@ export default function DeleteAccountSection({
       <p className="mt-5 text-sm leading-relaxed text-ash">
         {t("deleteCreatorBlocked")}{" "}
         <a
-          href="mailto:support@doccys.com"
+          href="mailto:contact@doccys.com"
           className="text-champagne underline underline-offset-4 hover:text-bone"
         >
           {t("deleteContact")}
