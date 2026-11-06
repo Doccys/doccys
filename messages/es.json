@@ -1,7 +1,7 @@
 {
   "header": {
     "nav": {
-      "home": "PelÃ­culas",
+      "home": "Películas",
       "creators": "Creadores",
       "creator": "Estudio",
       "profile": "Mi perfil",
@@ -10,181 +10,181 @@
     "language": "Cambiar idioma"
   },
   "auth": {
-    "loginTitle": "Iniciar sesiÃ³n",
-    "loginSubtitle": "Bienvenido de nuevo. Tus pelÃ­culas te esperan.",
+    "loginTitle": "Iniciar sesión",
+    "loginSubtitle": "Bienvenido de nuevo. Tus películas te esperan.",
     "signupTitle": "Crear cuenta",
-    "signupSubtitle": "Una cuenta para espectadores y creadores â€” nunca anuncios.",
-    "passwordConfirm": "Confirmar contraseÃ±a",
-    "email": "Correo electrÃ³nico",
+    "signupSubtitle": "Una cuenta para espectadores y creadores — nunca anuncios.",
+    "passwordConfirm": "Confirmar contraseña",
+    "email": "Correo electrónico",
     "emailPlaceholder": "tu@ejemplo.com",
     "username": "Nombre de usuario",
-    "usernamePlaceholder": "El nombre que otros verÃ¡n en tus comentarios",
-    "password": "ContraseÃ±a",
-    "login": "Iniciar sesiÃ³n",
+    "usernamePlaceholder": "El nombre que otros verán en tus comentarios",
+    "password": "Contraseña",
+    "login": "Iniciar sesión",
     "signup": "Crear cuenta",
-    "noAccount": "Â¿No tienes cuenta?",
-    "hasAccount": "Â¿Ya tienes cuenta?",
-    "checkEmail": "Cuenta creada. Revisa tu bandeja de entrada y confirma tu correo antes de iniciar sesiÃ³n.",
-    "forgotPassword": "Â¿Has olvidado la contraseÃ±a?",
-    "resetTitle": "Restablecer contraseÃ±a",
-    "resetSubtitle": "Introduce tu correo y te enviaremos un enlace para elegir una contraseÃ±a nueva.",
+    "noAccount": "¿No tienes cuenta?",
+    "hasAccount": "¿Ya tienes cuenta?",
+    "checkEmail": "Cuenta creada. Revisa tu bandeja de entrada y confirma tu correo antes de iniciar sesión.",
+    "forgotPassword": "¿Has olvidado la contraseña?",
+    "resetTitle": "Restablecer contraseña",
+    "resetSubtitle": "Introduce tu correo y te enviaremos un enlace para elegir una contraseña nueva.",
     "resetSend": "Enviar enlace",
-    "resetSent": "Si existe una cuenta, hemos enviado un enlace a tu correo. Revisa tambiÃ©n la carpeta de spam.",
-    "newPasswordTitle": "Elige una contraseÃ±a nueva",
-    "newPasswordSubtitle": "Introduce una contraseÃ±a nueva para tu cuenta de Doccys.",
-    "newPassword": "ContraseÃ±a nueva",
-    "newPasswordConfirm": "Repite la contraseÃ±a",
-    "passwordUpdated": "Tu contraseÃ±a se ha actualizado.",
+    "resetSent": "Si existe una cuenta, hemos enviado un enlace a tu correo. Revisa también la carpeta de spam.",
+    "newPasswordTitle": "Elige una contraseña nueva",
+    "newPasswordSubtitle": "Introduce una contraseña nueva para tu cuenta de Doccys.",
+    "newPassword": "Contraseña nueva",
+    "newPasswordConfirm": "Repite la contraseña",
+    "passwordUpdated": "Tu contraseña se ha actualizado.",
     "goToProfile": "Ir a tu perfil",
-    "loggedInAs": "SesiÃ³n iniciada como",
+    "loggedInAs": "Sesión iniciada como",
     "fallbackName": "Usuario",
-    "logout": "Cerrar sesiÃ³n",
-    "working": "Un momentoâ€¦",
+    "logout": "Cerrar sesión",
+    "working": "Un momento…",
     "errors": {
-      "invalidCredentials": "Correo o contraseÃ±a no vÃ¡lidos.",
+      "invalidCredentials": "Correo o contraseña no válidos.",
       "emailExists": "Ya existe una cuenta con ese correo.",
-      "emailNotConfirmed": "Confirma tu correo antes de iniciar sesiÃ³n.",
-      "weakPassword": "La contraseÃ±a es demasiado dÃ©bil: usa al menos 6 caracteres.",
-      "passwordMismatch": "Las contraseÃ±as no coinciden.",
+      "emailNotConfirmed": "Confirma tu correo antes de iniciar sesión.",
+      "weakPassword": "La contraseña es demasiado débil: usa al menos 6 caracteres.",
+      "passwordMismatch": "Las contraseñas no coinciden.",
       "nameMissing": "Elige tu nombre de usuario antes de crear la cuenta.",
-      "generic": "Algo saliÃ³ mal. IntÃ©ntalo de nuevo.",
+      "generic": "Algo salió mal. Inténtalo de nuevo.",
       "rateLimited": "Demasiados intentos: espera un momento y vuelve a intentarlo.",
-      "ageRequired": "Debes confirmar que tienes al menos 18 aÃ±os antes de que se cree la cuenta.",
-      "handleInvalid": "La etiqueta @ no es vÃ¡lida â€” usa letras minÃºsculas, nÃºmeros y guiones (3â€“40 caracteres).",
-      "handleTaken": "La etiqueta @ ya estÃ¡ en uso â€” elige otra.",
-      "handleReserved": "La etiqueta @ estÃ¡ reservada â€” elige otra.",
-      "handleLocked": "La cuenta ya tiene una etiqueta @ â€” no se puede cambiar. Usa la misma etiqueta y confirma tu correo electrÃ³nico."
+      "ageRequired": "Debes confirmar que tienes al menos 18 años antes de que se cree la cuenta.",
+      "handleInvalid": "La etiqueta @ no es válida — usa letras minúsculas, números y guiones (3–40 caracteres).",
+      "handleTaken": "La etiqueta @ ya está en uso — elige otra.",
+      "handleReserved": "La etiqueta @ está reservada — elige otra.",
+      "handleLocked": "La cuenta ya tiene una etiqueta @ — no se puede cambiar. Usa la misma etiqueta y confirma tu correo electrónico."
     },
-    "confirmTitle": "Confirmando tu correo electrÃ³nico",
-    "confirmWorking": "Un momento â€” tu correo electrÃ³nico estÃ¡ siendo confirmado y accederÃ¡s a tu perfilâ€¦",
-    "confirmError": "El enlace ha caducado o ya ha sido utilizado. Intenta iniciar sesiÃ³n â€” si tu correo electrÃ³nico estÃ¡ confirmado, accederÃ¡s directamente a tu perfil.",
-    "showPassword": "Mostrar contraseÃ±a",
-    "hidePassword": "Ocultar contraseÃ±a",
-    "ageLabel": "Confirmo que tengo al menos 18 aÃ±os â€” ver",
-    "ageLink": "TÃ©rminos y condiciones, secciÃ³n 12",
+    "confirmTitle": "Confirmando tu correo electrónico",
+    "confirmWorking": "Un momento — tu correo electrónico está siendo confirmado y accederás a tu perfil…",
+    "confirmError": "El enlace ha caducado o ya ha sido utilizado. Intenta iniciar sesión — si tu correo electrónico está confirmado, accederás directamente a tu perfil.",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "ageLabel": "Confirmo que tengo al menos 18 años — ver",
+    "ageLink": "Términos y condiciones, sección 12",
     "handle": "@ etiqueta (opcional)",
-    "handlePlaceholder": "por ejemplo, nordlys-film â€” serÃ¡ tu nombre @",
-    "handleHint": "Letras minÃºsculas, nÃºmeros y guiones (3â€“40 caracteres). Reserva tu futura direcciÃ³n de creador y no se puede cambiar mÃ¡s tarde.",
-    "handleAvailable": "Â¡La etiqueta estÃ¡ disponible!"
+    "handlePlaceholder": "por ejemplo, nordlys-film — será tu nombre @",
+    "handleHint": "Letras minúsculas, números y guiones (3–40 caracteres). Reserva tu futura dirección de creador y no se puede cambiar más tarde.",
+    "handleAvailable": "¡La etiqueta está disponible!"
   },
   "footer": {
     "tagline": "Documentales independientes. Sin anuncios. Nunca.",
     "contact": "Contacto",
-    "terms": "TÃ©rminos y condiciones",
-    "privacy": "PolÃ­tica de privacidad"
+    "terms": "Términos y condiciones",
+    "privacy": "Política de privacidad"
   },
   "legal": {
     "contact": {
       "title": "Contacta con Doccys",
-      "intro": "Â¿Preguntas, errores o ayuda? Leemos todo lo que llega a nuestro buzÃ³n.",
+      "intro": "¿Preguntas, errores o ayuda? Leemos todo lo que llega a nuestro buzón.",
       "sections": {
         "s1": {
-          "title": "EscrÃ­benos",
-          "body": "Puedes escribirnos siempre a contact@doccys.com. CuÃ©ntanos de quÃ© pelÃ­cula y pÃ¡gina se trata, y quÃ© dispositivo o navegador usas â€” asÃ­ podemos ayudarte mÃ¡s rÃ¡pido."
+          "title": "Escríbenos",
+          "body": "Puedes escribirnos siempre a contact@doccys.com. Cuéntanos de qué película y página se trata, y qué dispositivo o navegador usas — así podemos ayudarte más rápido."
         },
         "s2": {
-          "title": "Sobre quÃ© puedes escribir",
-          "body": "â€¢ Errores tÃ©cnicos del sitio\nâ€¢ Compras de minutos y pagos\nâ€¢ Derechos de autor â€” Â¿deberÃ­a (o no) estar aquÃ­ una pelÃ­cula?\nâ€¢ Tus datos personales, p. ej. eliminar tu cuenta\nâ€¢ Colaborar con Doccys como creador"
+          "title": "Sobre qué puedes escribir",
+          "body": "• Errores técnicos del sitio\n• Compras de minutos y pagos\n• Derechos de autor — ¿debería (o no) estar aquí una película?\n• Tus datos personales, p. ej. eliminar tu cuenta\n• Colaborar con Doccys como creador"
         },
         "s3": {
           "title": "Tiempo de respuesta",
-          "body": "Intentamos responder en un plazo de dos dÃ­as laborables. En festivos y lanzamientos puede tardar un poco mÃ¡s."
+          "body": "Intentamos responder en un plazo de dos días laborables. En festivos y lanzamientos puede tardar un poco más."
         }
       }
     },
     "terms": {
-      "title": "TÃ©rminos y condiciones",
-      "intro": "Estas condiciones se aplican al uso de Doccys y a la compra de minutos. Ãšltima actualizaciÃ³n: 29 de septiembre de 2026.",
+      "title": "Términos y condiciones",
+      "intro": "Estas condiciones se aplican al uso de Doccys y a la compra de minutos. Última actualización: 29 de septiembre de 2026.",
       "sections": {
         "s1": {
           "title": "Sobre Doccys",
-          "body": "Doccys es un servicio de streaming de documentales independientes: solo pagas por lo que realmente ves, minuto a minuto. El servicio lo gestiona Doccys â€” nÃºmero de registro (CVR) 46804147."
+          "body": "Doccys es un servicio de streaming de documentales independientes: solo pagas por lo que realmente ves, minuto a minuto. El servicio lo gestiona Doccys — número de registro (CVR) 46804147."
         },
         "s2": {
-          "title": "CreaciÃ³n de cuenta",
-          "body": "Crear una cuenta es gratis. Al registrarte debes indicar una direcciÃ³n de correo vÃ¡lida y confirmarla con el enlace del correo que te enviamos â€” solo entonces se puede usar la cuenta. TÃº eres responsable de mantener tus datos de acceso en secreto y de toda la actividad que ocurra a travÃ©s de tu cuenta."
+          "title": "Creación de cuenta",
+          "body": "Crear una cuenta es gratis. Al registrarte debes indicar una dirección de correo válida y confirmarla con el enlace del correo que te enviamos — solo entonces se puede usar la cuenta. Tú eres responsable de mantener tus datos de acceso en secreto y de toda la actividad que ocurra a través de tu cuenta."
         },
         "s3": {
-          "title": "Minutos y reproducciÃ³n",
-          "body": "Las pelÃ­culas se reproducen con los minutos de tu cuenta. El consumo se mide por el tiempo que realmente reproduces â€” si paras a mitad de pelÃ­cula, solo pagas el tiempo visto. La tarifa por minuto de cada pelÃ­cula aparece en su pÃ¡gina antes de iniciar la reproducciÃ³n.\nTu reproducciÃ³n se registra como consumo medido (tu â€œpruebaâ€) â€” consulta tambiÃ©n la polÃ­tica de privacidad. Esa prueba es decisiva si hay dudas sobre quÃ© viste y quÃ© se descontÃ³ de tu saldo."
+          "title": "Minutos y reproducción",
+          "body": "Las películas se reproducen con los minutos de tu cuenta. El consumo se mide por el tiempo que realmente reproduces — si paras a mitad de película, solo pagas el tiempo visto. La tarifa por minuto de cada película aparece en su página antes de iniciar la reproducción.\nTu reproducción se registra como consumo medido (tu “prueba”) — consulta también la política de privacidad. Esa prueba es decisiva si hay dudas sobre qué viste y qué se descontó de tu saldo."
         },
         "s4": {
           "title": "Compra y pago",
-          "body": "Los minutos se compran en paquetes a los precios indicados en la compra. El pago lo gestiona nuestro socio de pagos Stripe, y el recibo se envÃ­a a tu correo. Los precios se muestran sin IVA; el IVA se calcula segÃºn tu paÃ­s de facturaciÃ³n y se incluye en el importe total al pagar."
+          "body": "Los minutos se compran en paquetes a los precios indicados en la compra. El pago lo gestiona nuestro socio de pagos Stripe, y el recibo se envía a tu correo. Los precios se muestran sin IVA; el IVA se calcula según tu país de facturación y se incluye en el importe total al pagar."
         },
         "s5": {
           "title": "Validez de los minutos",
-          "body": "Los minutos no caducan y se pueden usar mientras exista tu cuenta. Son personales, no se pueden transferir a otros ni canjearse por dinero. Los minutos ganados como bonificaciÃ³n por referidos siguen las mismas reglas."
+          "body": "Los minutos no caducan y se pueden usar mientras exista tu cuenta. Son personales, no se pueden transferir a otros ni canjearse por dinero. Los minutos ganados como bonificación por referidos siguen las mismas reglas."
         },
         "s6": {
           "title": "Desistimiento y errores",
-          "body": "Los minutos son contenido digital: una vez iniciada la reproducciÃ³n, el derecho de desistimiento expira segÃºn las reglas de la ley danesa de contratos de consumo para contenido digital. Si aÃºn no has iniciado la reproducciÃ³n, puedes escribir a contact@doccys.com dentro de los 14 dÃ­as posteriores a la compra y recuperar el importe completo.\nSi te cobraron algo que no pudiste ver por un error tÃ©cnico, o el pago se procesÃ³ dos veces, escrÃ­benos â€” lo solucionamos."
+          "body": "Los minutos son contenido digital: una vez iniciada la reproducción, el derecho de desistimiento expira según las reglas de la ley danesa de contratos de consumo para contenido digital. Si aún no has iniciado la reproducción, puedes escribir a contact@doccys.com dentro de los 14 días posteriores a la compra y recuperar el importe completo.\nSi te cobraron algo que no pudiste ver por un error técnico, o el pago se procesó dos veces, escríbenos — lo solucionamos."
         },
         "s7": {
           "title": "Derechos de los creadores",
-          "body": "Parte del consumo de minutos va al creador de la pelÃ­cula. No puedes descargar, grabar ni compartir pelÃ­culas o fragmentos de pelÃ­culas de Doccys. Si crees que una pelÃ­cula en Doccys infringe tus derechos, escribe a contact@doccys.com."
+          "body": "Parte del consumo de minutos va al creador de la película. No puedes descargar, grabar ni compartir películas o fragmentos de películas de Doccys. Si crees que una película en Doccys infringe tus derechos, escribe a contact@doccys.com."
         },
         "s8": {
           "title": "Responsabilidad y contenido",
-          "body": "Doccys no es el editor de las pelÃ­culas â€” el contenido y las opiniones de las pelÃ­culas son de sus creadores. El servicio se ofrece â€œtal cualâ€. No respondemos de pÃ©rdidas indirectas o beneficios no obtenidos, incluidas caÃ­das del servicio, pero corregimos errores tan rÃ¡pido como podemos.\nPodemos cambiar precios futuros con aviso razonable; los cambios nunca afectan a minutos ya comprados."
+          "body": "Doccys no es el editor de las películas — el contenido y las opiniones de las películas son de sus creadores. El servicio se ofrece “tal cual”. No respondemos de pérdidas indirectas o beneficios no obtenidos, incluidas caídas del servicio, pero corregimos errores tan rápido como podemos.\nPodemos cambiar precios futuros con aviso razonable; los cambios nunca afectan a minutos ya comprados."
         },
         "s9": {
           "title": "Cambios en estas condiciones",
-          "body": "Podemos actualizar estas condiciones. La versiÃ³n vigente estÃ¡ siempre en esta pÃ¡gina, y anunciamos los cambios importantes en el sitio. Si sigues usando Doccys tras un cambio, aceptas la nueva versiÃ³n."
+          "body": "Podemos actualizar estas condiciones. La versión vigente está siempre en esta página, y anunciamos los cambios importantes en el sitio. Si sigues usando Doccys tras un cambio, aceptas la nueva versión."
         },
         "s10": {
           "title": "Reclamaciones y contacto",
-          "body": "Puedes escribir siempre a contact@doccys.com. Los consumidores daneses tambiÃ©n pueden acudir a la junta danesa de reclamaciones de consumo en caso de reclamaciones de compra â€” ver forbrugerklagenaevnet.dk. Estas condiciones se rigen por la legislaciÃ³n danesa."
+          "body": "Puedes escribir siempre a contact@doccys.com. Los consumidores daneses también pueden acudir a la junta danesa de reclamaciones de consumo en caso de reclamaciones de compra — ver forbrugerklagenaevnet.dk. Estas condiciones se rigen por la legislación danesa."
         },
         "s11": {
-          "title": "Licencia al subir pelÃ­culas (creadores)",
-          "body": "Cuando subes una pelÃ­cula a Doccys, confirmas lo siguiente:\nâ€¢ Posees todos los derechos de la pelÃ­cula, incluyendo mÃºsica y material de archivo, y la pelÃ­cula no infringe los derechos de terceros.\nâ€¢ Concedes a Doccys una licencia no exclusiva, mundial y perpetua para transmitir la pelÃ­cula en la plataforma, crear subtÃ­tulos y trÃ¡ilers basados en la pelÃ­cula, y promocionar la pelÃ­cula en la plataforma.\nâ€¢ Puedes solicitar al equipo editorial que elimine tu pelÃ­cula en cualquier momento â€” escribe a contact@doccys.com.\nâ€¢ Tu aceptaciÃ³n se registra con la hora y el nÃºmero de versiÃ³n en cada carga y se aplica a la pelÃ­cula que subes.\nEn caso de discrepancia entre las traducciones, prevalece el texto en danÃ©s (ver secciÃ³n 10)."
+          "title": "Licencia al subir películas (creadores)",
+          "body": "Cuando subes una película a Doccys, confirmas lo siguiente:\n• Posees todos los derechos de la película, incluyendo música y material de archivo, y la película no infringe los derechos de terceros.\n• Concedes a Doccys una licencia no exclusiva, mundial y perpetua para transmitir la película en la plataforma, crear subtítulos y tráilers basados en la película, y promocionar la película en la plataforma.\n• Puedes solicitar al equipo editorial que elimine tu película en cualquier momento — escribe a contact@doccys.com.\n• Tu aceptación se registra con la hora y el número de versión en cada carga y se aplica a la película que subes.\nEn caso de discrepancia entre las traducciones, prevalece el texto en danés (ver sección 10)."
         },
         "s12": {
-          "title": "LÃ­mite de edad de 18 aÃ±os",
-          "body": "Doccys es un servicio de streaming para adultos: para crear una cuenta y usar la plataforma, debes tener al menos 18 aÃ±os.\nAl crear la cuenta, confirmas marcando que tienes al menos 18 aÃ±os. La confirmaciÃ³n se registra con la fecha y el nÃºmero de versiÃ³n junto con tu cuenta.\nUna cuenta no debe ser puesta a disposiciÃ³n de jÃ³venes menores de 18 aÃ±os: el contenido en Doccys no estÃ¡ seleccionado ni etiquetado por edad para niÃ±os y jÃ³venes.\nSi nos damos cuenta de que un usuario es menor de 18 aÃ±os, podemos cerrar la cuenta con efecto inmediato (ver secciÃ³n 2 sobre la responsabilidad de tu cuenta)."
+          "title": "Límite de edad de 18 años",
+          "body": "Doccys es un servicio de streaming para adultos: para crear una cuenta y usar la plataforma, debes tener al menos 18 años.\nAl crear la cuenta, confirmas marcando que tienes al menos 18 años. La confirmación se registra con la fecha y el número de versión junto con tu cuenta.\nUna cuenta no debe ser puesta a disposición de jóvenes menores de 18 años: el contenido en Doccys no está seleccionado ni etiquetado por edad para niños y jóvenes.\nSi nos damos cuenta de que un usuario es menor de 18 años, podemos cerrar la cuenta con efecto inmediato (ver sección 2 sobre la responsabilidad de tu cuenta)."
         }
       }
     },
     "privacy": {
-      "title": "PolÃ­tica de privacidad",
-      "intro": "AquÃ­ puedes leer quÃ© datos personales trata Doccys, por quÃ© lo hace y quÃ© derechos tienes. Ãšltima actualizaciÃ³n: 29 de septiembre de 2026.",
+      "title": "Política de privacidad",
+      "intro": "Aquí puedes leer qué datos personales trata Doccys, por qué lo hace y qué derechos tienes. Última actualización: 29 de septiembre de 2026.",
       "sections": {
         "s1": {
           "title": "Responsable del tratamiento",
-          "body": "Doccys â€” nÃºmero de registro (CVR) 46804147. Contacto: contact@doccys.com."
+          "body": "Doccys — número de registro (CVR) 46804147. Contacto: contact@doccys.com."
         },
         "s2": {
-          "title": "QuÃ© datos tratamos",
-          "body": "â€¢ Cuenta: tu direcciÃ³n de correo (y su confirmaciÃ³n) y tu contraseÃ±a, que se guarda cifrada.\nâ€¢ Compras: quÃ© paquetes compraste, cuÃ¡ndo y el identificador de transacciÃ³n. Las tarjetas de pago nunca las tratamos nosotros â€” eso ocurre en Stripe.\nâ€¢ ReproducciÃ³n: cuÃ¡ndo empiezas y paras, saltos y tiempo visto por pelÃ­cula. El consumo medido (la â€œpruebaâ€) es lo que descuenta minutos de tu saldo y remunera al creador.\nâ€¢ Comentarios: el nombre con el que publicas, tus comentarios y â€œme gustaâ€, y su moderaciÃ³n.\nâ€¢ Referidos: si llegas a travÃ©s de un enlace de referido, guardamos el cÃ³digo en una cookie hasta 30 dÃ­as para poder abonar a quien te recomendÃ³ en tu primera compra."
+          "title": "Qué datos tratamos",
+          "body": "• Cuenta: tu dirección de correo (y su confirmación) y tu contraseña, que se guarda cifrada.\n• Compras: qué paquetes compraste, cuándo y el identificador de transacción. Las tarjetas de pago nunca las tratamos nosotros — eso ocurre en Stripe.\n• Reproducción: cuándo empiezas y paras, saltos y tiempo visto por película. El consumo medido (la “prueba”) es lo que descuenta minutos de tu saldo y remunera al creador.\n• Comentarios: el nombre con el que publicas, tus comentarios y “me gusta”, y su moderación.\n• Referidos: si llegas a través de un enlace de referido, guardamos el código en una cookie hasta 30 días para poder abonar a quien te recomendó en tu primera compra."
         },
         "s3": {
-          "title": "Finalidad y base jurÃ­dica",
-          "body": "Tratamos datos para prestar el servicio â€” crear tu cuenta, descontar minutos de tu saldo y remunerar a los creadores (contrato), mantener el servicio seguro y evitar abusos (interÃ©s legÃ­timo) y cumplir obligaciones contables y fiscales (obligaciÃ³n legal). Nunca vendemos tus datos ni los usamos para perfilar publicidad â€” Doccys no muestra anuncios, nunca."
+          "title": "Finalidad y base jurídica",
+          "body": "Tratamos datos para prestar el servicio — crear tu cuenta, descontar minutos de tu saldo y remunerar a los creadores (contrato), mantener el servicio seguro y evitar abusos (interés legítimo) y cumplir obligaciones contables y fiscales (obligación legal). Nunca vendemos tus datos ni los usamos para perfilar publicidad — Doccys no muestra anuncios, nunca."
         },
         "s4": {
           "title": "Terceros",
-          "body": "Usamos los siguientes encargados del tratamiento:\nâ€¢ Supabase â€” inicio de sesiÃ³n y base de datos\nâ€¢ Stripe â€” pagos y recibos\nâ€¢ Vercel â€” operaciÃ³n y hosting\nSolo tratan datos en nuestro nombre y para las finalidades indicadas arriba."
+          "body": "Usamos los siguientes encargados del tratamiento:\n• Supabase — inicio de sesión y base de datos\n• Stripe — pagos y recibos\n• Vercel — operación y hosting\nSolo tratan datos en nuestro nombre y para las finalidades indicadas arriba."
         },
         "s5": {
           "title": "Cookies",
-          "body": "Doccys solo coloca una cookie: doccys_ref, que recuerda un enlace de referido hasta 30 dÃ­as. Tu idioma se guarda en la direcciÃ³n de la pÃ¡gina, no en una cookie. No usamos rastreo de terceros ni cookies publicitarias."
+          "body": "Doccys solo coloca una cookie: doccys_ref, que recuerda un enlace de referido hasta 30 días. Tu idioma se guarda en la dirección de la página, no en una cookie. No usamos rastreo de terceros ni cookies publicitarias."
         },
         "s6": {
-          "title": "ConservaciÃ³n",
-          "body": "Los datos de cuenta y comentarios se eliminan cuando nos lo pides. Los datos de compra y las pruebas se conservan cinco aÃ±os para poder auditar la contabilidad y los pagos a creadores â€” la ley danesa de contabilidad lo exige."
+          "title": "Conservación",
+          "body": "Los datos de cuenta y comentarios se eliminan cuando nos lo pides. Los datos de compra y las pruebas se conservan cinco años para poder auditar la contabilidad y los pagos a creadores — la ley danesa de contabilidad lo exige."
         },
         "s7": {
           "title": "Tus derechos",
-          "body": "Tienes derecho a:\nâ€¢ acceder a los datos que tratamos sobre ti\nâ€¢ rectificar datos inexactos\nâ€¢ eliminar datos (con las excepciones que exige la ley de contabilidad)\nâ€¢ recibir tus datos en un formato legible (portabilidad de datos)\nâ€¢ oponerte al tratamiento\nEnvÃ­a tu solicitud a contact@doccys.com â€” respondemos en un mes como mÃ¡ximo."
+          "body": "Tienes derecho a:\n• acceder a los datos que tratamos sobre ti\n• rectificar datos inexactos\n• eliminar datos (con las excepciones que exige la ley de contabilidad)\n• recibir tus datos en un formato legible (portabilidad de datos)\n• oponerte al tratamiento\nEnvía tu solicitud a contact@doccys.com — respondemos en un mes como máximo."
         },
         "s8": {
           "title": "Reclamaciones",
-          "body": "Si no estÃ¡s conforme con nuestra respuesta, puedes reclamar a la agencia danesa de protecciÃ³n de datos â€” ver datatilsynet.dk."
+          "body": "Si no estás conforme con nuestra respuesta, puedes reclamar a la agencia danesa de protección de datos — ver datatilsynet.dk."
         },
         "s9": {
           "title": "Cambios",
-          "body": "Si actualizamos esta polÃ­tica, la nueva versiÃ³n aparece en esta pÃ¡gina. Anunciamos los cambios importantes en el sitio."
+          "body": "Si actualizamos esta política, la nueva versión aparece en esta página. Anunciamos los cambios importantes en el sitio."
         }
       }
     }
@@ -199,48 +199,48 @@
     "continue": {
       "eyebrow": "Seguir viendo",
       "title": "Donde lo dejaste",
-      "subtitle": "La reproducciÃ³n continÃºa automÃ¡ticamente donde la dejaste."
+      "subtitle": "La reproducción continúa automáticamente donde la dejaste."
     },
     "catalog": {
-      "eyebrow": "El catÃ¡logo",
+      "eyebrow": "El catálogo",
       "title": "Documentales independientes",
-      "subtitle": "PelÃ­culas seleccionadas a mano sin ni un solo corte publicitario. Paga solo por lo que terminas de ver."
+      "subtitle": "Películas seleccionadas a mano sin ni un solo corte publicitario. Paga solo por lo que terminas de ver."
     },
     "how": {
-      "eyebrow": "CÃ³mo funciona Doccys",
+      "eyebrow": "Cómo funciona Doccys",
       "title": "El creador primero. Siempre."
     },
     "features": {
       "noAds": {
         "title": "Sin anuncios",
-        "body": "Sin anuncios previos, sin interrupciones, sin contenido patrocinado. El catÃ¡logo se financia Ãºnicamente con paquetes de minutos."
+        "body": "Sin anuncios previos, sin interrupciones, sin contenido patrocinado. El catálogo se financia únicamente con paquetes de minutos."
       },
       "payPerMinute": {
         "title": "Pago por minuto visto",
-        "body": "El creador gana 2 kr por cada 100 minutos vÃ¡lidos vistos â€” solo cuentan las reproducciones con sesiÃ³n iniciada que superan la validaciÃ³n antifraude."
+        "body": "El creador gana 2 kr por cada 100 minutos válidos vistos — solo cuentan las reproducciones con sesión iniciada que superan la validación antifraude."
       },
       "community": {
-        "title": "La conversaciÃ³n bajo la pelÃ­cula",
-        "body": "Cada pelÃ­cula tiene su propia discusiÃ³n. Sin algoritmos en el camino â€” solo personas que vieron lo mismo que tÃº."
+        "title": "La conversación bajo la película",
+        "body": "Cada película tiene su propia discusión. Sin algoritmos en el camino — solo personas que vieron lo mismo que tú."
       }
     },
     "recruitment": {
       "eyebrow": "Doccys busca creadores",
-      "body": "La plataforma se lanzarÃ¡ en diciembre: sube tu documental y gana 2 kr por cada 100 minutos vistos, durante la vida de la pelÃ­cula, con un pago a partir de 150 kr.",
+      "body": "La plataforma se lanzará en diciembre: sube tu documental y gana 2 kr por cada 100 minutos vistos, durante la vida de la película, con un pago a partir de 150 kr.",
       "cta": "Aplica como creador"
     }
   },
   "creators": {
     "eyebrow": "La comunidad",
     "title": "Creadores en Doccys",
-    "subtitle": "Las productoras y colectivos independientes que llenan el catÃ¡logo.",
-    "films": "{count} pelÃ­culas",
+    "subtitle": "Las productoras y colectivos independientes que llenan el catálogo.",
+    "films": "{count} películas",
     "views": "{count} visualizaciones",
     "topEyebrow": "Top 10",
-    "topHeading": "Los creadores mÃ¡s vistos",
-    "topIntro": "Clasificado por minutos vistos reales y vÃ¡lidos en los Ãºltimos 30 dÃ­as. La lista se actualiza automÃ¡ticamente: solo cuentan las pelÃ­culas publicadas.",
-    "topEmpty": "AÃºn no hay minutos vistos para clasificar este mes.",
-    "topMinutes": "{minutes} min vÃ¡lidos"
+    "topHeading": "Los creadores más vistos",
+    "topIntro": "Clasificado por minutos vistos reales y válidos en los últimos 30 días. La lista se actualiza automáticamente: solo cuentan las películas publicadas.",
+    "topEmpty": "Aún no hay minutos vistos para clasificar este mes.",
+    "topMinutes": "{minutes} min válidos"
   },
   "finishBadge": {
     "label": "El {percent} % la vio hasta el final"
@@ -248,9 +248,9 @@
   "collections": {
     "railTitle": "Colecciones",
     "indexTitle": "Colecciones curadas",
-    "indexSubtitle": "Temas seleccionados a mano en todo el catÃ¡logo: los rieles propios de la redacciÃ³n.",
-    "filmCount": "{count} pelÃ­culas",
-    "empty": "Esta colecciÃ³n estÃ¡ vacÃ­a por ahora.",
+    "indexSubtitle": "Temas seleccionados a mano en todo el catálogo: los rieles propios de la redacción.",
+    "filmCount": "{count} películas",
+    "empty": "Esta colección está vacía por ahora.",
     "viewAll": "Ver todas las colecciones"
   },
   "creatorProfile": {
@@ -259,73 +259,73 @@
     "statViews": "Reproducciones",
     "statCompletions": "Finalizaciones",
     "completionsSub": "{rate}% de todas las visualizaciones",
-    "statValid": "Finalizaciones vÃ¡lidas",
+    "statValid": "Finalizaciones válidas",
     "validSub": "Verificadas por el sistema anti-fraude",
     "statEarnings": "Ingresos totales",
     "earningsSub": "2 kr por cada 100 minutos vistos",
     "earningsHeading": "Ingresos",
-    "filmographyHeading": "FilmografÃ­a",
+    "filmographyHeading": "Filmografía",
     "follow": "Seguir",
-    "followLogin": "Inicia sesiÃ³n para seguir a {name}",
-    "following": "Siguiendo âœ“",
+    "followLogin": "Inicia sesión para seguir a {name}",
+    "following": "Siguiendo ✓",
     "followers": "{count, plural, one {# seguidor} other {# seguidores}}"
   },
   "earningsPanel": {
     "eyebrow": "Ingresos",
     "rate": "2 kr por cada 100 minutos vistos",
-    "explainer": "Ganas {rate} en Doccys. Solo cuentan las reproducciones de usuarios conectados aprobadas por la validaciÃ³n anti-fraude â€” la manipulaciÃ³n nunca se paga.",
+    "explainer": "Ganas {rate} en Doccys. Solo cuentan las reproducciones de usuarios conectados aprobadas por la validación anti-fraude — la manipulación nunca se paga.",
     "earned": "Total ganado",
     "paidOut": "Pagado",
-    "watchedMinutes": "Minutos vistos vÃ¡lidos",
+    "watchedMinutes": "Minutos vistos válidos",
     "threshold": "Se paga cuando el saldo disponible alcanza los 150 kr."
   },
   "payoutPanel": {
     "eyebrow": "Pago",
-    "intro": "Guarda los datos de tu cuenta y solicita el pago cuando tu saldo llegue a 150 kr. La transferencia la realiza el equipo editorial; el dinero suele llegar en pocos dÃ­as laborables.",
+    "intro": "Guarda los datos de tu cuenta y solicita el pago cuando tu saldo llegue a 150 kr. La transferencia la realiza el equipo editorial; el dinero suele llegar en pocos días laborables.",
     "methodTitle": "Cuenta de pago",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
-    "methodHint": "El IBAN es el nÃºmero internacional de tu cuenta â€” tu banca en lÃ­nea lo muestra en los datos de la cuenta.",
+    "methodHint": "El IBAN es el número internacional de tu cuenta — tu banca en línea lo muestra en los datos de la cuenta.",
     "bicHint": "El BIC/SWIFT es opcional: solo se necesita para cuentas fuera del SEPA.",
     "save": "Guardar datos",
-    "saving": "Guardandoâ€¦",
+    "saving": "Guardando…",
     "saved": "Tus datos se han guardado.",
     "saveError": "No se pudieron guardar tus datos.",
     "payoutTitle": "Solicitar pago",
-    "locked": "El botÃ³n se desbloquea cuando tu saldo disponible llega a 150 kr.",
+    "locked": "El botón se desbloquea cuando tu saldo disponible llega a 150 kr.",
     "noMethod": "Guarda tus datos bancarios antes de solicitar un pago.",
-    "pending": "Ya tienes una solicitud pendiente â€” el equipo editorial harÃ¡ la transferencia en breve.",
+    "pending": "Ya tienes una solicitud pendiente — el equipo editorial hará la transferencia en breve.",
     "button": "Pagar {amount}",
-    "requesting": "Enviandoâ€¦",
+    "requesting": "Enviando…",
     "requestError": "No se pudo crear la solicitud.",
     "receipt": "Recibo (PDF)",
     "history": "Solicitudes anteriores",
-    "empty": "TodavÃ­a no hay pagos.",
+    "empty": "Todavía no hay pagos.",
     "pendingLabel": "Pendiente",
     "paidLabel": "Pagado",
     "rejectedLabel": "Rechazado"
   },
   "currencyHint": {
     "title": "Tu moneda local",
-    "rate": "1 DKK â‰ˆ {rate} {currency}",
-    "balance": "tu saldo disponible â‰ˆ {amount}",
+    "rate": "1 DKK ≈ {rate} {currency}",
+    "balance": "tu saldo disponible ≈ {amount}",
     "disclaimer": "El tipo de cambio es orientativo (tipo medio de hoy) y cambia con el mercado de divisas. Los ingresos y los pagos son siempre en DKK."
   },
   "filmography": {
-    "film": "PelÃ­cula",
-    "year": "AÃ±o",
+    "film": "Película",
+    "year": "Año",
     "views": "Visualizaciones",
     "completions": "Terminadas",
     "watchedMinutes": "Min. vistos",
     "earnings": "Ganado"
   },
   "watch": {
-    "playerNote": "Los datos de visualizaciÃ³n se registran de forma estructurada (pausas, saltos, pulsaciones, metadatos del dispositivo y marcas de tiempo) y los valida el sistema antifraude de Doccys antes de liquidar tus minutos vistos.",
-    "playerStartFailed": "No se pudieron iniciar los datos de visualizaciÃ³n â€” la reproducciÃ³n sigue funcionando.",
-    "verdictValid": "âœ“ VisualizaciÃ³n validada â€” tus minutos vistos cuentan para las ganancias del creador.",
-    "verdictSuspicious": "â–³ La visualizaciÃ³n estÃ¡ marcada para revisiÃ³n manual del sistema antifraude.",
-    "verdictInvalid": "âœ— VisualizaciÃ³n rechazada â€” los minutos se descontaron de tu saldo, pero no cuentan para las ganancias del creador.",
-    "verdictError": "La validaciÃ³n no se pudo completar ahora mismo.",
+    "playerNote": "Los datos de visualización se registran de forma estructurada (pausas, saltos, pulsaciones, metadatos del dispositivo y marcas de tiempo) y los valida el sistema antifraude de Doccys antes de liquidar tus minutos vistos.",
+    "playerStartFailed": "No se pudieron iniciar los datos de visualización — la reproducción sigue funcionando.",
+    "verdictValid": "✓ Visualización validada — tus minutos vistos cuentan para las ganancias del creador.",
+    "verdictSuspicious": "△ La visualización está marcada para revisión manual del sistema antifraude.",
+    "verdictInvalid": "✗ Visualización rechazada — los minutos se descontaron de tu saldo, pero no cuentan para las ganancias del creador.",
+    "verdictError": "La validación no se pudo completar ahora mismo.",
     "proofEyebrow": "Comprobante de apoyo",
     "proofMinutes": "Viste {minutes} min en total",
     "proofSupport": "{amount} fueron directamente a {creator}",
@@ -337,249 +337,249 @@
     "creator": "Creador",
     "discussionEyebrow": "La comunidad",
     "discussionTitle": "Comentarios y debate",
-    "discussionSubtitle": "La conversaciÃ³n sobre la pelÃ­cula continÃºa justo bajo el reproductor."
+    "discussionSubtitle": "La conversación sobre la película continúa justo bajo el reproductor."
   },
   "saveButton": {
-    "loginToSave": "Inicia sesiÃ³n para guardar la pelÃ­cula",
-    "saved": "Guardada âœ“",
-    "save": "Guardar pelÃ­cula"
+    "loginToSave": "Inicia sesión para guardar la película",
+    "saved": "Guardada ✓",
+    "save": "Guardar película"
   },
   "share": {
     "label": "Compartir",
     "shareOn": "Compartir en {platform}",
     "email": "Correo",
     "copyLink": "Copiar enlace",
-    "copied": "Copiado âœ“"
+    "copied": "Copiado ✓"
   },
   "comments": {
     "title": "Debate",
-    "subtitle": "Comparte tus impresiones de la pelÃ­cula con otros espectadores â€” sin spoilers sin aviso, por favor.",
+    "subtitle": "Comparte tus impresiones de la película con otros espectadores — sin spoilers sin aviso, por favor.",
     "postingAs": "Comentando como",
     "noNameShort": "Espectador",
     "nameMissing": "Elige tu nombre de usuario en tu perfil antes de comentar.",
-    "bodyPlaceholder": "Escribe tu comentarioâ€¦",
+    "bodyPlaceholder": "Escribe tu comentario…",
     "submit": "Publicar comentario",
-    "submitting": "Enviandoâ€¦",
+    "submitting": "Enviando…",
     "loggedInNote": "Tu comentario se publica con tu perfil.",
-    "loading": "Cargando el debateâ€¦",
-    "empty": "AÃºn no hay comentarios â€” sÃ© el primero en poner la pelÃ­cula en palabras.",
+    "loading": "Cargando el debate…",
+    "empty": "Aún no hay comentarios — sé el primero en poner la película en palabras.",
     "loadError": "No se pudieron cargar los comentarios.",
-    "submitError": "No se pudo enviar el comentario. IntÃ©ntalo de nuevo.",
+    "submitError": "No se pudo enviar el comentario. Inténtalo de nuevo.",
     "likeAria": "Dar me gusta a este comentario",
-    "likeGuestHint": "Inicia sesiÃ³n para dar me gusta a comentarios.",
-    "likeError": "No se pudo registrar el me gusta. IntÃ©ntalo de nuevo.",
-    "gateLogin": "Inicia sesiÃ³n para comentar",
-    "gateLoginSuffix": "â€” solo los espectadores pueden comentar bajo la pelÃ­cula.",
-    "gateWatch": "El debate se abre cuando hayas visto la pelÃ­cula â€” es solo para espectadores, para que siga valiendo la pena leerlo.",
+    "likeGuestHint": "Inicia sesión para dar me gusta a comentarios.",
+    "likeError": "No se pudo registrar el me gusta. Inténtalo de nuevo.",
+    "gateLogin": "Inicia sesión para comentar",
+    "gateLoginSuffix": "— solo los espectadores pueden comentar bajo la película.",
+    "gateWatch": "El debate se abre cuando hayas visto la película — es solo para espectadores, para que siga valiendo la pena leerlo.",
     "pin": "Fijar",
     "unpin": "Quitar fijado",
     "pinnedLabel": "Fijado por el creador",
     "delete": "Eliminar",
-    "deleteConfirm": "Â¿Eliminar el comentario? No se puede deshacer.",
-    "deleteError": "No se pudo eliminar el comentario. IntÃ©ntalo de nuevo.",
-    "pinError": "No se pudo fijar el comentario â€” ya hay otro fijado. IntÃ©ntalo de nuevo.",
+    "deleteConfirm": "¿Eliminar el comentario? No se puede deshacer.",
+    "deleteError": "No se pudo eliminar el comentario. Inténtalo de nuevo.",
+    "pinError": "No se pudo fijar el comentario — ya hay otro fijado. Inténtalo de nuevo.",
     "reply": "Responder",
     "cancel": "Cancelar",
-    "replyError": "No se pudo enviar la respuesta. IntÃ©ntalo de nuevo."
+    "replyError": "No se pudo enviar la respuesta. Inténtalo de nuevo."
   },
   "creatorApply": {
     "eyebrow": "Creadores",
-    "loginTitle": "Inicia sesiÃ³n para solicitarlo",
-    "loginSubtitle": "Las solicitudes de creador requieren una cuenta â€” crearla solo toma un momento.",
-    "loginCta": "Iniciar sesiÃ³n",
-    "title": "ConviÃ©rtete en creador de Doccys",
-    "subtitle": "Doccys estÃ¡ curado: cada creador es aprobado por el equipo editorial antes de que sus pelÃ­culas puedan mostrarse. CuÃ©ntanos quiÃ©nes son y quÃ© hacen.",
+    "loginTitle": "Inicia sesión para solicitarlo",
+    "loginSubtitle": "Las solicitudes de creador requieren una cuenta — crearla solo toma un momento.",
+    "loginCta": "Iniciar sesión",
+    "title": "Conviértete en creador de Doccys",
+    "subtitle": "Doccys está curado: cada creador es aprobado por el equipo editorial antes de que sus películas puedan mostrarse. Cuéntanos quiénes son y qué hacen.",
     "nameLabel": "Nombre del creador",
     "handleLabel": "Handle (URL)",
-    "handleHint": "Letras minÃºsculas, nÃºmeros y guiones, p. ej. \"nordlys-film\". Una vez aprobados, su perfil estarÃ¡ en /creator/'{'handle'}'.",
-    "countryLabel": "PaÃ­s",
-    "foundedYearLabel": "AÃ±o de fundaciÃ³n",
+    "handleHint": "Letras minúsculas, números y guiones, p. ej. \"nordlys-film\". Una vez aprobados, su perfil estará en /creator/'{'handle'}'.",
+    "countryLabel": "País",
+    "foundedYearLabel": "Año de fundación",
     "bioLabel": "Bio breve",
-    "motivationLabel": "MotivaciÃ³n",
-    "motivationHint": "Â¿Por quÃ© deberÃ­an estar sus pelÃ­culas en Doccys? Unas frases concretas bastan.",
+    "motivationLabel": "Motivación",
+    "motivationHint": "¿Por qué deberían estar sus películas en Doccys? Unas frases concretas bastan.",
     "submit": "Enviar solicitud",
     "resubmit": "Enviar de nuevo",
-    "working": "Enviandoâ€¦",
-    "statusPending": "Tu solicitud estÃ¡ pendiente de aprobaciÃ³n.",
-    "statusPendingSub": "Enviada el {date}. El equipo editorial responde aquÃ­ â€” el estado se actualiza automÃ¡ticamente.",
-    "statusApproved": "Â¡Enhorabuena â€” eres un creador aprobado!",
-    "statusApprovedSub": "Tu perfil ha sido creado y tu estudio estÃ¡ abierto. Ya puedes subir pelÃ­culas (solo se publican cuando el equipo editorial las aprueba).",
+    "working": "Enviando…",
+    "statusPending": "Tu solicitud está pendiente de aprobación.",
+    "statusPendingSub": "Enviada el {date}. El equipo editorial responde aquí — el estado se actualiza automáticamente.",
+    "statusApproved": "¡Enhorabuena — eres un creador aprobado!",
+    "statusApprovedSub": "Tu perfil ha sido creado y tu estudio está abierto. Ya puedes subir películas (solo se publican cuando el equipo editorial las aprueba).",
     "statusApprovedCta": "Abrir el estudio",
     "statusRejected": "Tu solicitud no fue aprobada esta vez.",
     "statusRejectedSub": "Decidida el {date}. Puedes editar la solicitud y enviarla de nuevo.",
     "errors": {
-      "handleTaken": "Ese handle ya estÃ¡ en uso â€” elige otro.",
-      "reserved": "Ese handle estÃ¡ reservado â€” elige otro.",
-      "stale": "El estado de la solicitud ha cambiado â€” recarga la pÃ¡gina.",
-      "generic": "Revisa todos los campos e intÃ©ntalo de nuevo."
+      "handleTaken": "Ese handle ya está en uso — elige otro.",
+      "reserved": "Ese handle está reservado — elige otro.",
+      "stale": "El estado de la solicitud ha cambiado — recarga la página.",
+      "generic": "Revisa todos los campos e inténtalo de nuevo."
     }
   },
   "creatorStudio": {
     "eyebrow": "Estudio de creadores",
-    "loginTitle": "Inicia sesiÃ³n para abrir el estudio",
+    "loginTitle": "Inicia sesión para abrir el estudio",
     "loginSubtitle": "El estudio es solo para creadores aprobados.",
-    "loginCta": "Iniciar sesiÃ³n",
-    "uploadHeading": "Subir una nueva pelÃ­cula",
-    "uploadSubtitle": "La pelÃ­cula se guarda como borrador y solo se publica cuando el equipo editorial la aprueba.",
-    "titleLabel": "TÃ­tulo",
-    "yearLabel": "AÃ±o",
-    "genresLabel": "GÃ©neros (elige hasta 5)",
+    "loginCta": "Iniciar sesión",
+    "uploadHeading": "Subir una nueva película",
+    "uploadSubtitle": "La película se guarda como borrador y solo se publica cuando el equipo editorial la aprueba.",
+    "titleLabel": "Título",
+    "yearLabel": "Año",
+    "genresLabel": "Géneros (elige hasta 5)",
     "synopsisLabel": "Sinopsis",
     "posterLabel": "Imagen de portada",
     "requiredMark": "Obligatorio",
-    "posterHint": "Obligatorio (jpg/png/webp, mÃ¡x. 10 MB, mÃ­nimo 640Ã—360 pÃ­xeles) â€” la imagen de portada de la pelÃ­cula en toda la plataforma.",
-    "posterDetected": "Imagen: {width}Ã—{height} pÃ­xeles",
-    "fileLabel": "Archivo de vÃ­deo (mp4, mÃ¡x. 2 GB)",
-    "durationDetected": "DuraciÃ³n de la pelÃ­cula: {seconds} segundos",
-    "submit": "Subir pelÃ­cula",
-    "working": "Trabajandoâ€¦",
-    "probing": "Leyendo los metadatos del archivoâ€¦",
-    "uploading": "Subiendo el vÃ­deoâ€¦",
-    "saving": "Creando la pelÃ­culaâ€¦",
-    "success": "Â¡Subida! La pelÃ­cula queda como borrador pendiente de aprobaciÃ³n.",
-    "creatorNote": "La pelÃ­cula se asocia a tu perfil de creador @{handle}.",
+    "posterHint": "Obligatorio (jpg/png/webp, máx. 10 MB, mínimo 640×360 píxeles) — la imagen de portada de la película en toda la plataforma.",
+    "posterDetected": "Imagen: {width}×{height} píxeles",
+    "fileLabel": "Archivo de vídeo (mp4, máx. 2 GB)",
+    "durationDetected": "Duración de la película: {seconds} segundos",
+    "submit": "Subir película",
+    "working": "Trabajando…",
+    "probing": "Leyendo los metadatos del archivo…",
+    "uploading": "Subiendo el vídeo…",
+    "saving": "Creando la película…",
+    "success": "¡Subida! La película queda como borrador pendiente de aprobación.",
+    "creatorNote": "La película se asocia a tu perfil de creador @{handle}.",
     "errors": {
       "notMp4": "Solo se pueden subir archivos mp4.",
-      "notPoster": "Solo se pueden usar imÃ¡genes jpg, png y webp.",
-      "posterRequired": "Sube una imagen de portada â€” sin ella la pelÃ­cula no puede publicarse.",
-      "posterProbe": "No se pudo leer la imagen â€” Â¿es una imagen vÃ¡lida?",
-      "posterTooSmall": "La imagen es demasiado pequeÃ±a â€” mÃ­nimo 640Ã—360 pÃ­xeles.",
-      "posterTooBig": "La imagen es demasiado grande â€” mÃ¡x. 10 MB.",
-      "posterFailed": "La imagen de portada no se pudo subir â€” intÃ©ntalo de nuevo.",
-      "probe": "No se pudieron leer los metadatos del archivo â€” Â¿es un mp4 vÃ¡lido?",
-      "missingFields": "Rellena el tÃ­tulo y la sinopsis, elige al menos un gÃ©nero y selecciona un archivo de vÃ­deo.",
-      "notLoggedIn": "Ya no estÃ¡s conectado â€” inicia sesiÃ³n e intÃ©ntalo de nuevo.",
-      "uploadFailed": "La subida fallÃ³ â€” intÃ©ntalo de nuevo.",
-      "rowFailed": "No se pudo crear la pelÃ­cula â€” intÃ©ntalo de nuevo.",
-      "license": "Debe confirmar los tÃ©rminos de la licencia antes de poder subir."
+      "notPoster": "Solo se pueden usar imágenes jpg, png y webp.",
+      "posterRequired": "Sube una imagen de portada — sin ella la película no puede publicarse.",
+      "posterProbe": "No se pudo leer la imagen — ¿es una imagen válida?",
+      "posterTooSmall": "La imagen es demasiado pequeña — mínimo 640×360 píxeles.",
+      "posterTooBig": "La imagen es demasiado grande — máx. 10 MB.",
+      "posterFailed": "La imagen de portada no se pudo subir — inténtalo de nuevo.",
+      "probe": "No se pudieron leer los metadatos del archivo — ¿es un mp4 válido?",
+      "missingFields": "Rellena el título y la sinopsis, elige al menos un género y selecciona un archivo de vídeo.",
+      "notLoggedIn": "Ya no estás conectado — inicia sesión e inténtalo de nuevo.",
+      "uploadFailed": "La subida falló — inténtalo de nuevo.",
+      "rowFailed": "No se pudo crear la película — inténtalo de nuevo.",
+      "license": "Debe confirmar los términos de la licencia antes de poder subir."
     },
-    "filmsHeading": "Tus pelÃ­culas",
-    "statusDraft": "Borrador â€” pendiente de aprobaciÃ³n",
+    "filmsHeading": "Tus películas",
+    "statusDraft": "Borrador — pendiente de aprobación",
     "statusPublished": "Publicada",
-    "draftNote": "Un borrador puede eliminarse; una pelÃ­cula publicada pertenece al equipo editorial.",
-    "publishGateNote": "La pelÃ­cula solo puede publicarse cuando los subtÃ­tulos estÃ¡n listos en todos los idiomas y el trÃ¡iler estÃ¡ terminado.",
+    "draftNote": "Un borrador puede eliminarse; una película publicada pertenece al equipo editorial.",
+    "publishGateNote": "La película solo puede publicarse cuando los subtítulos están listos en todos los idiomas y el tráiler está terminado.",
     "requiredBadge": "Obligatorio",
     "delete": "Eliminar borrador",
-    "deleteConfirm": "Â¿Eliminar este borrador? El vÃ­deo tambiÃ©n se eliminarÃ¡.",
-    "empty": "AÃºn no hay pelÃ­culas â€” sube la primera arriba.",
-    "retentionHeading": "RetenciÃ³n",
-    "retentionIntro": "Hasta dÃ³nde llegaron tus espectadores: la proporciÃ³n que alcanzÃ³ el 10 %, 20 % â€¦ 100 % de la pelÃ­cula.",
-    "retentionEmpty": "AÃºn no hay suficientes reproducciones terminadas para un grÃ¡fico de retenciÃ³n (mÃ­nimo 5).",
+    "deleteConfirm": "¿Eliminar este borrador? El vídeo también se eliminará.",
+    "empty": "Aún no hay películas — sube la primera arriba.",
+    "retentionHeading": "Retención",
+    "retentionIntro": "Hasta dónde llegaron tus espectadores: la proporción que alcanzó el 10 %, 20 % … 100 % de la película.",
+    "retentionEmpty": "Aún no hay suficientes reproducciones terminadas para un gráfico de retención (mínimo 5).",
     "retentionSessions": "{count} reproducciones terminadas",
-    "subtitlesHeading": "SubtÃ­tulos",
-    "subtitlesIntro": "La IA genera una transcripciÃ³n del audio de la pelÃ­cula en {language} y la traduce a todos los idiomas de la plataforma.",
+    "subtitlesHeading": "Subtítulos",
+    "subtitlesIntro": "La IA genera una transcripción del audio de la película en {language} y la traduce a todos los idiomas de la plataforma.",
     "spokenLanguageLabel": "Idioma hablado",
-    "spokenLanguageHint": "El idioma que se habla en la pelÃ­cula; los subtÃ­tulos se generan a partir de Ã©l.",
-    "subtitlesGenerate": "Generar subtÃ­tulos",
+    "spokenLanguageHint": "El idioma que se habla en la película; los subtítulos se generan a partir de él.",
+    "subtitlesGenerate": "Generar subtítulos",
     "subtitlesRegenerate": "Generar de nuevo",
-    "subtitlesWorking": "Generando subtÃ­tulos â€” puede tardar varios minutos en pelÃ­culas largas.",
+    "subtitlesWorking": "Generando subtítulos — puede tardar varios minutos en películas largas.",
     "subtitlesReady": "Listo",
-    "subtitlesProcessing": "Generandoâ€¦",
-    "subtitlesFailed": "FallÃ³",
+    "subtitlesProcessing": "Generando…",
+    "subtitlesFailed": "Falló",
     "subtitlesMissing": "No generado",
-    "subtitlesError": "No se pudieron generar todos los subtÃ­tulos â€” intÃ©ntalo de nuevo. Los idiomas fallidos pueden reintentarse con el mismo botÃ³n.",
-    "trailerHeading": "TrÃ¡iler",
-    "trailerIntro": "Recorta 90 segundos de la pelÃ­cula como muestra gratuita â€” los invitados la ven tras el muro de pago, y los enlaces compartidos muestran la pelÃ­cula como tarjeta de vÃ­deo.",
+    "subtitlesError": "No se pudieron generar todos los subtítulos — inténtalo de nuevo. Los idiomas fallidos pueden reintentarse con el mismo botón.",
+    "trailerHeading": "Tráiler",
+    "trailerIntro": "Recorta 90 segundos de la película como muestra gratuita — los invitados la ven tras el muro de pago, y los enlaces compartidos muestran la película como tarjeta de vídeo.",
     "trailerStartLabel": "Empezar en el segundo",
-    "trailerGenerate": "Generar trÃ¡iler",
+    "trailerGenerate": "Generar tráiler",
     "trailerRegenerate": "Generar de nuevo",
-    "trailerWorking": "Generando el trÃ¡iler â€” puede tardar unos minutos.",
+    "trailerWorking": "Generando el tráiler — puede tardar unos minutos.",
     "trailerReady": "Listo",
-    "trailerFailed": "FallÃ³",
+    "trailerFailed": "Falló",
     "trailerMissing": "No generado",
-    "trailerError": "El trÃ¡iler no se pudo generar â€” intÃ©ntalo de nuevo.",
+    "trailerError": "El tráiler no se pudo generar — inténtalo de nuevo.",
     "shareHeading": "Compartir e insertar",
-    "copyWatchLink": "Copiar enlace de la pelÃ­cula",
-    "copyEmbedCode": "Copiar cÃ³digo para insertar",
-    "licenseLabel": "Confirmo que poseo todos los derechos de la pelÃ­cula, incluyendo mÃºsica y material de archivo, y otorgo a Doccys una licencia no exclusiva, mundial y perpetua para transmitir la pelÃ­cula, producir subtÃ­tulos y trÃ¡ilers, asÃ­ como para su comercializaciÃ³n.",
-    "licenseLink": "Lea los tÃ©rminos de la licencia en los TÃ©rminos y Condiciones, secciÃ³n 11.",
+    "copyWatchLink": "Copiar enlace de la película",
+    "copyEmbedCode": "Copiar código para insertar",
+    "licenseLabel": "Confirmo que poseo todos los derechos de la película, incluyendo música y material de archivo, y otorgo a Doccys una licencia no exclusiva, mundial y perpetua para transmitir la película, producir subtítulos y tráilers, así como para su comercialización.",
+    "licenseLink": "Lea los términos de la licencia en los Términos y Condiciones, sección 11.",
     "retentionAxisStart": "0 %",
-    "retentionAxisEnd": "100 % de la pelÃ­cula",
-    "talHeading": "Tus nÃºmeros",
-    "talIntro": "Tus ganancias son completamente transparentes: ganas {rate} por cada 100 minutos vÃ¡lidos vistos por pelÃ­cula, y cada nÃºmero aquÃ­ se puede rastrear hasta reproducciones reales.",
-    "talGuestNote": "Los espectadores anÃ³nimos cuentan como reproducciones, pero solo los espectadores registrados con una reproducciÃ³n vÃ¡lida son contabilizados â€” de ellos provienen los minutos y las coronas a continuaciÃ³n.",
-    "talEmpty": "AÃºn no hay espectadores. Cuando una pelÃ­cula publicada es vista por un usuario registrado, los minutos y las coronas aparecerÃ¡n aquÃ­ â€” con todo el cÃ¡lculo.",
-    "talSummary30dKr": "Ganado, Ãºltimos 30 dÃ­as",
-    "talSummary30dMin": "Minutos vÃ¡lidos, Ãºltimos 30 dÃ­as",
+    "retentionAxisEnd": "100 % de la película",
+    "talHeading": "Tus números",
+    "talIntro": "Tus ganancias son completamente transparentes: ganas {rate} por cada 100 minutos válidos vistos por película, y cada número aquí se puede rastrear hasta reproducciones reales.",
+    "talGuestNote": "Los espectadores anónimos cuentan como reproducciones, pero solo los espectadores registrados con una reproducción válida son contabilizados — de ellos provienen los minutos y las coronas a continuación.",
+    "talEmpty": "Aún no hay espectadores. Cuando una película publicada es vista por un usuario registrado, los minutos y las coronas aparecerán aquí — con todo el cálculo.",
+    "talSummary30dKr": "Ganado, últimos 30 días",
+    "talSummary30dMin": "Minutos válidos, últimos 30 días",
     "talSummaryTotalKr": "Ganado en total",
-    "talSummaryTotalMin": "Minutos vÃ¡lidos en total",
-    "talChartHeading": "Ganancias diarias â€” Ãºltimos 30 dÃ­as",
+    "talSummaryTotalMin": "Minutos válidos en total",
+    "talChartHeading": "Ganancias diarias — últimos 30 días",
     "talChartBar": "{date}: {amount}",
-    "talSeereHeading": "QuiÃ©n ve tus pelÃ­culas",
+    "talSeereHeading": "Quién ve tus películas",
     "talLanguage": "Idioma",
     "talDevice": "Dispositivo",
-    "talDeviceMobile": "MÃ³vil",
+    "talDeviceMobile": "Móvil",
     "talDeviceTablet": "Tableta",
     "talDeviceDesktop": "Computadora",
     "talDeviceUnknown": "Desconocido",
-    "talFilmHeading": "Por pelÃ­cula",
-    "talThFilm": "PelÃ­cula",
+    "talFilmHeading": "Por película",
+    "talThFilm": "Película",
     "talThViews": "Reproducciones",
-    "talThMinutes": "Minutos vÃ¡lidos",
+    "talThMinutes": "Minutos válidos",
     "talThEarnings": "Ganado",
     "talThRate": "Tarifa por 100 min",
     "talThFinish": "Completado",
     "talThComments": "Comentarios",
     "talThLikes": "Me gusta",
-    "talNoSessions": "AÃºn no hay reproducciones",
-    "posterPickButton": "Seleccionar imagenâ€¦",
-    "filePickButton": "Seleccionar archivo de videoâ€¦",
-    "fileNoneChosen": "NingÃºn archivo seleccionado",
+    "talNoSessions": "Aún no hay reproducciones",
+    "posterPickButton": "Seleccionar imagen…",
+    "filePickButton": "Seleccionar archivo de video…",
+    "fileNoneChosen": "Ningún archivo seleccionado",
     "talFollowers": "Seguidores",
     "visitHeading": "Tu tarjeta de visita",
-    "visitIntro": "Una tarjeta con tu perfil y tus estadÃ­sticas â€” lista para compartir en redes sociales, por correo electrÃ³nico o en festivales.",
+    "visitIntro": "Una tarjeta con tu perfil y tus estadísticas — lista para compartir en redes sociales, por correo electrónico o en festivales.",
     "visitDownload": "Descargar tarjeta de visita (PNG)"
   },
   "profile": {
-    "loginTitle": "Inicia sesiÃ³n para ver tu perfil",
-    "loginSubtitle": "Tu correo, tu saldo de minutos y tus pelÃ­culas guardadas te esperan tras el inicio de sesiÃ³n.",
-    "loginCta": "Iniciar sesiÃ³n",
+    "loginTitle": "Inicia sesión para ver tu perfil",
+    "loginSubtitle": "Tu correo, tu saldo de minutos y tus películas guardadas te esperan tras el inicio de sesión.",
+    "loginCta": "Iniciar sesión",
     "eyebrow": "Mi cuenta",
     "memberSince": "Miembro desde {date}",
-    "historyHeading": "Mi historial de visualizaciÃ³n",
-    "historySubtitle": "ContinÃºa donde lo dejaste â€” o revisita un viejo favorito.",
-    "historyEmpty": "TodavÃ­a no has visto ninguna pelÃ­cula. Termina un documental y aparecerÃ¡ aquÃ­ â€” solo se registran las finalizaciones vÃ¡lidas.",
-    "savedHeading": "PelÃ­culas guardadas",
+    "historyHeading": "Mi historial de visualización",
+    "historySubtitle": "Continúa donde lo dejaste — o revisita un viejo favorito.",
+    "historyEmpty": "Todavía no has visto ninguna película. Termina un documental y aparecerá aquí — solo se registran las finalizaciones válidas.",
+    "savedHeading": "Películas guardadas",
     "savedSubtitle": "Tu lista privada.",
-    "savedEmpty": "AÃºn no hay pelÃ­culas guardadas. Pulsa \"Guardar pelÃ­cula\" bajo un reproductor y la pelÃ­cula aparecerÃ¡ aquÃ­.",
+    "savedEmpty": "Aún no hay películas guardadas. Pulsa \"Guardar película\" bajo un reproductor y la película aparecerá aquí.",
     "creatorHeading": "Creador",
     "creatorSub": "Solicita convertirte en creador y accede a subir tus documentales.",
-    "creatorOwnedSub": "Eres un creador aprobado â€” el estudio estÃ¡ abierto.",
+    "creatorOwnedSub": "Eres un creador aprobado — el estudio está abierto.",
     "creatorApplyCta": "Convertirse en creador",
     "creatorStudioCta": "Abrir el estudio",
     "nameMissing": "Elige tu nombre de usuario",
-    "nameMissingSub": "Tu correo nunca se muestra a otros â€” elige el nombre que verÃ¡n en tus comentarios.",
+    "nameMissingSub": "Tu correo nunca se muestra a otros — elige el nombre que verán en tus comentarios.",
     "nameLabel": "Nombre de usuario",
     "nameSave": "Guardar nombre de usuario",
     "nameSaved": "Tu nombre de usuario se ha guardado.",
-    "nameError": "No se pudo guardar el nombre de usuario. IntÃ©ntalo de nuevo.",
+    "nameError": "No se pudo guardar el nombre de usuario. Inténtalo de nuevo.",
     "deleteHeading": "Eliminar cuenta",
-    "deleteIntro": "La eliminaciÃ³n es permanente: tu cuenta, tu historial de visualizaciÃ³n y tus pelÃ­culas guardadas desaparecerÃ¡n, y tus comentarios se eliminarÃ¡n por completo. Los datos de compra se almacenan de forma anÃ³nima durante cinco aÃ±os segÃºn la ley de contabilidad â€” sin conexiÃ³n contigo.",
-    "deleteConfirmLabel": "Escribe tu nombre de usuario (â€œ{name}â€) para confirmar",
+    "deleteIntro": "La eliminación es permanente: tu cuenta, tu historial de visualización y tus películas guardadas desaparecerán, y tus comentarios se eliminarán por completo. Los datos de compra se almacenan de forma anónima durante cinco años según la ley de contabilidad — sin conexión contigo.",
+    "deleteConfirmLabel": "Escribe tu nombre de usuario (“{name}”) para confirmar",
     "deletePlaceholder": "Tu nombre de usuario",
     "deleteButton": "Eliminar mi cuenta permanentemente",
-    "deleteWorking": "Eliminandoâ€¦",
-    "deleteCreatorBlocked": "Tu cuenta posee un perfil de creador con pelÃ­culas, reproducciones y pagos â€” por lo tanto, no se puede eliminar de forma autÃ³noma. Escribe al equipo editorial y te ayudaremos:",
+    "deleteWorking": "Eliminando…",
+    "deleteCreatorBlocked": "Tu cuenta posee un perfil de creador con películas, reproducciones y pagos — por lo tanto, no se puede eliminar de forma autónoma. Escribe al equipo editorial y te ayudaremos:",
     "deleteContact": "contact@doccys.com",
-    "deleteNameMissing": "Primero selecciona tu nombre de usuario arriba â€” es la confirmaciÃ³n que pedimos cuando se debe eliminar la cuenta.",
+    "deleteNameMissing": "Primero selecciona tu nombre de usuario arriba — es la confirmación que pedimos cuando se debe eliminar la cuenta.",
     "deleteErrors": {
-      "generic": "La cuenta no se pudo eliminar aÃºn. Intenta de nuevo â€” no hay nada de malo en intentar varias veces, y si el error persiste, escribe a contact@doccys.com.",
-      "nameMismatch": "El nombre no coincide con tu nombre de usuario. Verifica la ortografÃ­a y vuelve a intentarlo.",
-      "creatorBlocked": "Tu cuenta posee un perfil de creador y no se puede eliminar aquÃ­. Escribe a contact@doccys.com."
+      "generic": "La cuenta no se pudo eliminar aún. Intenta de nuevo — no hay nada de malo en intentar varias veces, y si el error persiste, escribe a contact@doccys.com.",
+      "nameMismatch": "El nombre no coincide con tu nombre de usuario. Verifica la ortografía y vuelve a intentarlo.",
+      "creatorBlocked": "Tu cuenta posee un perfil de creador y no se puede eliminar aquí. Escribe a contact@doccys.com."
     },
     "followingHeading": "Creadores que sigues",
-    "followingSubtitle": "Tu lista privada â€” el creador mÃ¡s reciente seguido en la parte superior.",
-    "followingEmpty": "AÃºn no sigues a ningÃºn creador. Presiona \"Seguir\" en un perfil de creador y aparecerÃ¡ aquÃ­.",
+    "followingSubtitle": "Tu lista privada — el creador más reciente seguido en la parte superior.",
+    "followingEmpty": "Aún no sigues a ningún creador. Presiona \"Seguir\" en un perfil de creador y aparecerá aquí.",
     "unfollowButton": "Dejar de seguir",
     "handleMissing": "Elige tu @ etiqueta",
-    "handleMissingSub": "Letras minÃºsculas, nÃºmeros y guiones (3â€“40 caracteres). La etiqueta reserva tu futura direcciÃ³n de creador y solo se puede elegir una vez.",
+    "handleMissingSub": "Letras minúsculas, números y guiones (3–40 caracteres). La etiqueta reserva tu futura dirección de creador y solo se puede elegir una vez.",
     "handleLabel": "@ etiqueta",
     "handlePlaceholder": "ej. aurora-boreal-peliculas",
     "handleSave": "Reservar @ etiqueta",
-    "handleSaved": "Tu @ etiqueta estÃ¡ reservada.",
-    "handleAvailable": "Â¡Disponible!",
-    "handleTaken": "La @ etiqueta ya estÃ¡ en uso â€” elige otra.",
-    "handleError": "No se pudo reservar la etiqueta aÃºn â€” intÃ©ntalo de nuevo mÃ¡s tarde."
+    "handleSaved": "Tu @ etiqueta está reservada.",
+    "handleAvailable": "¡Disponible!",
+    "handleTaken": "La @ etiqueta ya está en uso — elige otra.",
+    "handleError": "No se pudo reservar la etiqueta aún — inténtalo de nuevo más tarde."
   },
   "watchHistory": {
     "completed": "Finalizada",
@@ -587,27 +587,27 @@
   },
   "support": {
     "heading": "Tu apoyo",
-    "subtitle": "AdÃ³nde fueron tus minutos â€” y quÃ© fue directamente a los creadores.",
+    "subtitle": "Adónde fueron tus minutos — y qué fue directamente a los creadores.",
     "totalMinutes": "Has visto {minutes} minutos",
     "totalAmount": "{amount} fue directamente a los creadores",
-    "creatorFilms": "{count, plural, one {# pelÃ­cula} other {# pelÃ­culas}}",
-    "entryMeta": "{minutes} min Â· {amount}",
-    "empty": "AÃºn no hay reproducciones validadas.",
-    "emptyHint": "Los minutos y las coronas llegan aquÃ­ la primera vez que terminas de ver una pelÃ­cula."
+    "creatorFilms": "{count, plural, one {# película} other {# películas}}",
+    "entryMeta": "{minutes} min · {amount}",
+    "empty": "Aún no hay reproducciones validadas.",
+    "emptyHint": "Los minutos y las coronas llegan aquí la primera vez que terminas de ver una película."
   },
   "genres": {
     "Klima": "Clima",
-    "PortrÃ¦t": "Retrato",
+    "Portræt": "Retrato",
     "Kunst": "Arte",
     "Historie": "Historia",
     "Byrum": "Espacio urbano",
-    "FÃ¦llesskab": "Comunidad",
+    "Fællesskab": "Comunidad",
     "Natur": "Naturaleza",
     "Eksperimentel": "Experimental",
-    "Teknologi": "TecnologÃ­a",
+    "Teknologi": "Tecnología",
     "Kultur": "Cultura",
     "Mad": "Comida",
-    "Musik": "MÃºsica",
+    "Musik": "Música",
     "Sand krim": "Crimen real",
     "Rejse": "Viajes",
     "Videnskab": "Ciencia",
@@ -615,39 +615,39 @@
     "Samfund": "Sociedad"
   },
   "search": {
-    "eyebrow": "BÃºsqueda",
-    "placeholder": "Buscar pelÃ­culas, creadores, gÃ©nerosâ€¦",
+    "eyebrow": "Búsqueda",
+    "placeholder": "Buscar películas, creadores, géneros…",
     "searchLabel": "Buscar",
-    "landingTitle": "Â¿QuÃ© quieres ver esta noche?",
-    "landingHint": "Busca pelÃ­culas, creadores y gÃ©neros â€” o explora un gÃ©nero directamente.",
-    "exploreGenres": "Explorar gÃ©neros",
-    "resultsTitle": "Resultados para Â«{q}Â»",
-    "filmsSection": "PelÃ­culas",
+    "landingTitle": "¿Qué quieres ver esta noche?",
+    "landingHint": "Busca películas, creadores y géneros — o explora un género directamente.",
+    "exploreGenres": "Explorar géneros",
+    "resultsTitle": "Resultados para «{q}»",
+    "filmsSection": "Películas",
     "creatorsSection": "Creadores",
-    "noResults": "No hay resultados para Â«{q}Â».",
-    "noResultsHint": "Prueba con otra bÃºsqueda â€” o explora los gÃ©neros a continuaciÃ³n."
+    "noResults": "No hay resultados para «{q}».",
+    "noResultsHint": "Prueba con otra búsqueda — o explora los géneros a continuación."
   },
   "countries": {
     "Island": "Islandia",
     "Danmark": "Dinamarca"
   },
   "meta": {
-    "title": "Doccys â€” Documentales independientes sin anuncios",
-    "description": "Doccys es un servicio de streaming minimalista y sin anuncios para documentales independientes. Paga solo por los minutos que realmente ves â€” el creador recibe su parte, tÃº recibes la calma."
+    "title": "Doccys — Documentales independientes sin anuncios",
+    "description": "Doccys es un servicio de streaming minimalista y sin anuncios para documentales independientes. Paga solo por los minutos que realmente ves — el creador recibe su parte, tú recibes la calma."
   },
   "paywall": {
-    "loginTitle": "Inicia sesiÃ³n para ver la pelÃ­cula",
-    "loginBody": "Crea una cuenta o inicia sesiÃ³n â€” y compra un paquete de minutos cuando quieras verla.",
-    "loginCta": "Iniciar sesiÃ³n",
+    "loginTitle": "Inicia sesión para ver la película",
+    "loginBody": "Crea una cuenta o inicia sesión — y compra un paquete de minutos cuando quieras verla.",
+    "loginCta": "Iniciar sesión",
     "buyTitle": "No tienes minutos suficientes",
-    "buyBody": "La pelÃ­cula requiere {minutes} minutos y tu saldo es de {balance}. Compra un paquete para empezar a reproducirla.",
+    "buyBody": "La película requiere {minutes} minutos y tu saldo es de {balance}. Compra un paquete para empezar a reproducirla.",
     "buyCta": "Comprar minutos",
-    "trailerLabel": "TrÃ¡iler",
-    "priceLine": "aprox. {price} por la pelÃ­cula completa â€” si nunca la ves, cuesta 0 kr."
+    "trailerLabel": "Tráiler",
+    "priceLine": "aprox. {price} por la película completa — si nunca la ves, cuesta 0 kr."
   },
   "embed": {
-    "cta": "Ver la pelÃ­cula completa en Doccys",
-    "trailerLabel": "TrÃ¡iler"
+    "cta": "Ver la película completa en Doccys",
+    "trailerLabel": "Tráiler"
   },
   "minutes": {
     "heading": "Minutos",
@@ -657,77 +657,77 @@
     "packPrice": "{price}",
     "vatNote": "IVA incl.",
     "packBuy": "Comprar",
-    "purchaseSuccess": "Â¡Gracias por tu compra! Los minutos se aÃ±aden a tu saldo en cuanto se confirme el pago.",
-    "purchaseError": "La compra no se pudo completar â€” intÃ©ntalo de nuevo.",
-    "referralUnavailable": "Tu enlace de recomendaciÃ³n no se puede mostrar ahora mismo."
+    "purchaseSuccess": "¡Gracias por tu compra! Los minutos se añaden a tu saldo en cuanto se confirme el pago.",
+    "purchaseError": "La compra no se pudo completar — inténtalo de nuevo.",
+    "referralUnavailable": "Tu enlace de recomendación no se puede mostrar ahora mismo."
   },
   "affiliate": {
-    "explainer": "Comparte tu enlace con tus amigos. Cuando un amigo compra su primer paquete de minutos a travÃ©s de tu enlace, recibes 250 minutos en tu saldo.",
+    "explainer": "Comparte tu enlace con tus amigos. Cuando un amigo compra su primer paquete de minutos a través de tu enlace, recibes 250 minutos en tu saldo.",
     "yourLink": "Tu enlace",
     "copy": "Copiar",
-    "copied": "Â¡Copiado!",
+    "copied": "¡Copiado!",
     "reward": "250 minutos por cada amigo que compre su primer paquete."
   },
   "bulletinBoard": {
     "title": "Novedades del creador",
     "subtitle": "Mensajes y anuncios directamente del creador.",
-    "placeholder": "Escribe un mensaje a tus espectadoresâ€¦",
+    "placeholder": "Escribe un mensaje a tus espectadores…",
     "submit": "Publicar",
-    "submitting": "Publicandoâ€¦",
+    "submitting": "Publicando…",
     "edit": "Editar",
-    "editingPlaceholder": "Edita el mensajeâ€¦",
+    "editingPlaceholder": "Edita el mensaje…",
     "save": "Guardar cambios",
-    "saving": "Guardandoâ€¦",
+    "saving": "Guardando…",
     "cancel": "Cancelar",
     "delete": "Eliminar",
-    "deleteConfirm": "Â¿Eliminar el mensaje? No se puede deshacer.",
+    "deleteConfirm": "¿Eliminar el mensaje? No se puede deshacer.",
     "pin": "Fijar",
     "unpin": "Quitar fijado",
     "pinnedLabel": "Fijado",
     "editedLabel": "Editado",
-    "empty": "El creador aÃºn no ha publicado nada.",
-    "emptyOwner": "Publica tu primer mensaje â€” tus espectadores lo verÃ¡n aquÃ­.",
-    "submitError": "No se pudo publicar el mensaje. IntÃ©ntalo de nuevo.",
-    "updateError": "No se pudo guardar el mensaje. IntÃ©ntalo de nuevo.",
-    "deleteError": "No se pudo eliminar el mensaje. IntÃ©ntalo de nuevo.",
-    "pinError": "No se pudo fijar el mensaje â€” ya hay otro fijado. IntÃ©ntalo de nuevo."
+    "empty": "El creador aún no ha publicado nada.",
+    "emptyOwner": "Publica tu primer mensaje — tus espectadores lo verán aquí.",
+    "submitError": "No se pudo publicar el mensaje. Inténtalo de nuevo.",
+    "updateError": "No se pudo guardar el mensaje. Inténtalo de nuevo.",
+    "deleteError": "No se pudo eliminar el mensaje. Inténtalo de nuevo.",
+    "pinError": "No se pudo fijar el mensaje — ya hay otro fijado. Inténtalo de nuevo."
   },
   "mail": {
     "tagline": "Documentales independientes. Sin anuncios. Nunca.",
-    "support": "Â¿Preguntas? Escribe a contact@doccys.com.",
+    "support": "¿Preguntas? Escribe a contact@doccys.com.",
     "signup": {
-      "subject": "Confirma tu correo electrÃ³nico para tu cuenta de Doccys",
+      "subject": "Confirma tu correo electrónico para tu cuenta de Doccys",
       "heading": "Bienvenido a Doccys",
-      "body": "Hola {name} â€” haz clic en el botÃ³n de abajo para confirmar tu correo electrÃ³nico y comenzar.",
-      "button": "Confirma mi correo electrÃ³nico",
-      "expiry": "El enlace caduca despuÃ©s de un corto tiempo y solo puede usarse una vez.",
+      "body": "Hola {name} — haz clic en el botón de abajo para confirmar tu correo electrónico y comenzar.",
+      "button": "Confirma mi correo electrónico",
+      "expiry": "El enlace caduca después de un corto tiempo y solo puede usarse una vez.",
       "ignore": "Si no creaste una cuenta en Doccys, puedes ignorar este correo con seguridad."
     },
     "reset": {
-      "subject": "Restablece tu contraseÃ±a en Doccys",
-      "heading": "Restablece tu contraseÃ±a",
-      "body": "Hemos recibido una solicitud para restablecer la contraseÃ±a de tu cuenta de Doccys. Haz clic en el botÃ³n de abajo para elegir una nueva.",
-      "button": "Elige una nueva contraseÃ±a",
-      "expiry": "El enlace caduca despuÃ©s de un corto tiempo y solo puede usarse una vez.",
-      "security": "Si no solicitaste esto, puedes ignorar el correo con tranquilidad â€” tu contraseÃ±a no ha cambiado."
+      "subject": "Restablece tu contraseña en Doccys",
+      "heading": "Restablece tu contraseña",
+      "body": "Hemos recibido una solicitud para restablecer la contraseña de tu cuenta de Doccys. Haz clic en el botón de abajo para elegir una nueva.",
+      "button": "Elige una nueva contraseña",
+      "expiry": "El enlace caduca después de un corto tiempo y solo puede usarse una vez.",
+      "security": "Si no solicitaste esto, puedes ignorar el correo con tranquilidad — tu contraseña no ha cambiado."
     }
   },
   "visitkort": {
     "eyebrow": "Creador en Doccys",
     "founded": "Fundado en {year}",
-    "films": "{count, plural, one {# pelÃ­cula} other {# pelÃ­culas}}",
+    "films": "{count, plural, one {# película} other {# películas}}",
     "followers": "{count, plural, one {# seguidor} other {# seguidores}}"
   },
   "viewerStatus": {
     "heading": "Estado del espectador",
-    "subtitle": "Tu viaje a travÃ©s del mundo de los documentales â€” medido en minutos.",
+    "subtitle": "Tu viaje a través del mundo de los documentales — medido en minutos.",
     "minutesLine": "Has visto {minutes} minutos",
     "tier1": "Curioso",
     "tier2": "Pionero",
     "tier3": "Leyenda",
     "toNextTier": "{minutes} minutos para convertirte en {title}",
-    "topTierReached": "Nivel mÃ¡ximo alcanzado â€” gracias por todos los minutos.",
+    "topTierReached": "Nivel máximo alcanzado — gracias por todos los minutos.",
     "genreTitle": "Nerd de {genre}",
-    "genreSubtitle": "{minutes} minutos en el gÃ©nero"
+    "genreSubtitle": "{minutes} minutos en el género"
   }
 }
