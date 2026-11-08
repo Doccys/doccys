@@ -33,24 +33,28 @@ export default async function HomePage({ params }: HomePageProps) {
   setRequestLocale(locale);
 
   const t = await getTranslations("home");
-  const documentaries = await getDocumentaries(locale);
+  // Parallellisering (8/11 — hastigheds-udgaven): katalog + samlinger
+  // + auth-tjek kører i ÉN runde i stedet for fire i rækkefølge (fra1
+  // var ~80 ms v. forspørgsel — samtidighed halverer sidetiden);
+  // fortsæt-se-rillen afhænger af auth-tjekket og venter så alene.
+  const supabase = await createClient();
+  const [{ data: { user } }, documentaries, collections] = await Promise.all([
+    supabase.auth.getUser(),
+    getDocumentaries(locale),
+    getCollections(locale),
+  ]);
   const [featured, ...rest] = documentaries;
 
   // Forsidens første personalisering: "Fortsæt se"-rillen for
   // loggede seere (uafsluttede film + hvor langt de kom). Anonyme
   // besøgende ser den ikke — positionen gemmes i watch_history
   // under brugerens RLS, så rillen kræver en konto.
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
   const continueItems = user
     ? await getContinueWatching(user.id, locale)
     : [];
   const progressBySlug = Object.fromEntries(
     continueItems.map((item) => [item.documentary.slug, item.progressRatio]),
   );
-  const collections = await getCollections(locale);
 
   return (
     <div>
