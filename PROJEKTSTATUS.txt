@@ -1614,6 +1614,15 @@ PNG-signaturer OK, /da head-tags OK, tsc + i18n-verify).
   fuldskærm med noir-ikon. iOS Safari: Del → "Føj til startskærm"
   (virker også i dev, ingen SW behøves der). Offline-støtte er
   fravalgt (kan bygges senere hvis ønsket).
+- INSTALL-CHIP PÅ FORSIDEN (8/11, commit 6ec3553 — E2E-VERIFICERET
+  AF BRUGEREN SAMME DAG: "virker, også på pc, forsvinder når appen
+  er installeret"): InstallAppChip (client) fanger beforeinstall-
+  prompt → knap "Installer appen" fremkaller den native dialog;
+  iOS (som ALDRIG fyrer event'et) → instruktionslinje (Del → Føj
+  til startskærm); display-mode standalone → hele striben skjuler
+  sig. Placeret i tynd stribe over kataloget; namespace installApp
+  (3 nøgler ×13 — 575 i alt). i dev renderes knappen IKKE (event
+  fyrer kun i production) — forventet, forveksles IKKE med en bug.
 
 STRIPE — VIGTIGE FALDGRUBER (se også memory-fil doccys-stripe-setup.md)
 
