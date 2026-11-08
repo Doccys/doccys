@@ -175,18 +175,29 @@ EMNE: Invitation — din [FILMNAVN] på Doccys
 
 Hej [NAVN] — jeg så [FILMNAVN], og jeg tænkte straks på dig.
 
-Jeg bygger Doccys: en kurateret dokumentar-streamtjeneste der
- lanceres, hvor giganterne lukker døren. Modellen:
-- betalt pr. minut: 2 kr pr. 100 sete minutter, i filmens levetid —
-  ikke en engangskøbspris, du aldrig at se pengene fra
-- kuratering: 500 film pr. år, ingen AI-slop, ingen reklamer
-- kataloget forventes lanceret med 50 film — nu er det tidspunkt
-  hvor nogle af dem er ledige
+Jeg bygger Doccys: en kurateret dokumentar-tjeneste der lanceres,
+hvor giganterne lukker døren. Det du får som skaber:
+
+- BETALT PR. MINUT: 2 kr pr. 100 sete minutter, i filmens levetid —
+  aldrig et engangskøb. Selvbetjent udbetaling fra 150 kr (IBAN
+  ind i studiet, du trykker selv)
+- GLOBAL UDSPREDNING I ÉT KLIK: undertekster + trailer genereres
+  automatisk på ALLE 13 sprog i dit studie — du skal ikke bruge en
+  oversætter eller et undervisnings-budget
+- ÆRLIGE TAL: sete minutter, indtjening og følgere pr. film i
+  realtid — plus et offentligt Top-10 leaderboard (indtjeningens
+  bevis, kan aldrig købes)
+- DU BEHOLDER EJERSKABET: ikke-eksklusiv licens — du kan til hver
+  en tid bede redaktionen fjerne filmen, men optjente udbetalinger
+  betales ALTID ("fjern filmen, aldrig pengene")
+- KURATERING: ingen AI-slop, ingen reklamer, ingen 27.000-titlers
+  jungle hvor din film drukner — kataloget lanceres med 50 film,
+  og nogle pladser er ledige NU
 
 Hvis det lyder som en ramme til din [FILMNAVN], så ansøg med to
-klik: doccys.com/creator/apply. Jeg svarer hurtigt — selv på
-danske ansøgninger. [FILL-IN evt. konkrete ting du fandt i filmen
-— gør den personnlig]
+klik: doccys.com/creator/apply. Jeg svarer hurtigt. [FILL-IN:
+én konkret ting du fandt i filmen — det er det, der gør den
+personal]
 
 Mvh Jesper — Doccys
 
@@ -194,17 +205,27 @@ ENGLISH VERSION — SUBJECT: Invitation — your [FILM TITLE] on Doccys
 
 Hi [NAME] — I watched [FILM TITLE], and thought of you instantly.
 
-I am building Doccys: a curated documentary streaming service
-launching as the giants close their doors. The model:
-- paid per minute: DKK 2 per 100 watched minutes, for the film's
-  lifetime — not a one-off buyout
-- curation: 500 films per year, no AI slop, no ads
-- the catalog launches with 50 films — some slots are open now
+I'm building Doccys: a curated documentary service launching as
+the giants close their doors. What you get as a creator:
+
+- PAID PER MINUTE: DKK 2 per 100 watched minutes, for the film's
+  lifetime — never a one-off buyout. Self-serve payouts from DKK
+  150 (your IBAN in the studio, you click the button)
+- GLOBAL REACH IN ONE CLICK: subtitles + trailer auto-generated in
+  ALL 13 languages in your studio — no translator, no budget
+- HONEST NUMBERS: minutes watched, earnings and followers per
+  film in real time — plus a public Top-10 leaderboard (proof of
+  income, can never be bought)
+- YOU KEEP OWNERSHIP: non-exclusive license — ask the editorial
+  team to remove your film anytime, but every earned payout is
+  ALWAYS paid ("remove the film, never the money")
+- CURATION: no AI slop, no ads, no 27,000-title jungle where your
+  film drowns — the catalog launches with 50 films, some slots
+  are open NOW
 
 If that sounds like a home for [FILM TITLE], apply in two clicks:
-doccys.com/creator/apply. I reply fast — even to Danish
-applications. [OPTIONAL: one concrete line about what you found
-in the film — this is what makes it personal]
+doccys.com/creator/apply. I reply fast. [OPTIONAL: one concrete
+thing you found in the film — this is what makes it personal]
 
 Best, Jesper — Doccys
 
