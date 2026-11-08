@@ -730,5 +730,10 @@
     "topTierReached": "Nivel máximo alcanzado — gracias por todos los minutos.",
     "genreTitle": "Nerd de {genre}",
     "genreSubtitle": "{minutes} minutos en el género"
+  },
+  "installApp": {
+    "title": "Doccys como app — pantalla completa, sin barra de navegador, y tu sugerencia lista directamente desde la pantalla de inicio.",
+    "button": "Instalar la app",
+    "iosHint": "iPhone/iPad: Toca Compartir en Safari y selecciona „Agregar a la pantalla de inicio“ — así Doccys será una app sin App Store."
   }
 }

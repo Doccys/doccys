@@ -730,5 +730,10 @@
     "topTierReached": "已达到最高等级 — 感谢您观看的所有分钟。",
     "genreTitle": "{genre} 爱好者",
     "genreSubtitle": "在该类型中观看了 {minutes} 分钟"
+  },
+  "installApp": {
+    "title": "Doccys 作为应用程序 — 无需商店：全屏，无浏览器地址栏，您的建议直接从主屏幕准备就绪。",
+    "button": "安装应用",
+    "iosHint": "iPhone/iPad：在 Safari 中点击分享并选择“添加到主屏幕” — 这样 Doccys 就是一个无需 App Store 的应用。"
   }
 }

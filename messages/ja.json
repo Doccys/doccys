@@ -730,5 +730,10 @@
     "topTierReached": "最高ランクに到達しました — すべての分数に感謝します。",
     "genreTitle": "{genre}オタク",
     "genreSubtitle": "ジャンルで{minutes}分"
+  },
+  "installApp": {
+    "title": "Doccysをアプリとしてインストール — フルスクリーン、ブラウザバーなし、そしてあなたの提案がホーム画面から直接表示されます。",
+    "button": "アプリをインストール",
+    "iosHint": "iPhone/iPad: Safariで「共有」をタップし、「ホーム画面に追加」を選択 — これでDoccysがApp Storeなしのアプリになります。"
   }
 }

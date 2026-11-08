@@ -209,6 +209,11 @@
       }
     }
   },
+  "installApp": {
+    "title": "Doccys som app — uden butik: fuldskærm, ingen browser-bar, og dit forslag står klar direkte fra startskærmen.",
+    "button": "Installer appen",
+    "iosHint": "iPhone/iPad: Tryk Del i Safari og vælg „Føj til startskærm“ — så er Doccys en app uden App Store."
+  },
   "home": {
     "featured": {
       "eyebrow": "Månedens udvalgte dokumentar",

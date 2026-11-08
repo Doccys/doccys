@@ -730,5 +730,10 @@
     "topTierReached": "Høyeste nivå nådd — takk for alle minuttene.",
     "genreTitle": "{genre}-nerd",
     "genreSubtitle": "{minutes} minutter i sjangeren"
+  },
+  "installApp": {
+    "title": "Doccys som app — uten butikk: fullskjerm, ingen nettleserlinje, og ditt forslag er klart direkte fra startskjermen.",
+    "button": "Installer appen",
+    "iosHint": "iPhone/iPad: Trykk Del i Safari og velg „Legg til på startskjerm“ — så blir Doccys en app uten App Store."
   }
 }

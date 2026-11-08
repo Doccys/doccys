@@ -730,5 +730,10 @@
     "topTierReached": "Höchstes Level erreicht — danke für all die Minuten.",
     "genreTitle": "{genre}-Nerd",
     "genreSubtitle": "{minutes} Minuten im Genre"
+  },
+  "installApp": {
+    "title": "Doccys als App – im Vollbildmodus, ohne Browser-Leiste, und dein Vorschlag ist direkt vom Startbildschirm bereit.",
+    "button": "App installieren",
+    "iosHint": "iPhone/iPad: Tippe auf Teilen in Safari und wähle „Zum Home-Bildschirm hinzufügen“ – dann ist Doccys eine App ohne App Store."
   }
 }

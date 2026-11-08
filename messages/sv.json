@@ -730,5 +730,10 @@
     "topTierReached": "Högsta nivå nådd — tack för alla minuter.",
     "genreTitle": "{genre}-nörd",
     "genreSubtitle": "{minutes} minuter i genren"
+  },
+  "installApp": {
+    "title": "Doccys som app — utan butik: helskärm, ingen webbläsarverktygsrad, och ditt förslag är klart direkt från startskärmen.",
+    "button": "Installera appen",
+    "iosHint": "iPhone/iPad: Tryck på Dela i Safari och välj „Lägg till på hemskärmen“ — då blir Doccys en app utan App Store."
   }
 }

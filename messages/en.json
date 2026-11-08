@@ -730,5 +730,10 @@
     "topTierReached": "Highest tier reached — thank you for all the minutes.",
     "genreTitle": "{genre} nerd",
     "genreSubtitle": "{minutes} minutes in the genre"
+  },
+  "installApp": {
+    "title": "Doccys as an app — fullscreen, no browser bar, and your suggestion is ready right from the home screen.",
+    "button": "Install the app",
+    "iosHint": "iPhone/iPad: Tap Share in Safari and select 'Add to Home Screen' — then Doccys is an app without the App Store."
   }
 }

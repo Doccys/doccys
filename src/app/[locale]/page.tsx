@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import CreatorRecruitmentBanner from "@/components/home/CreatorRecruitmentBanner";
 import HeroBanner from "@/components/home/HeroBanner";
+import InstallAppChip from "@/components/home/InstallAppChip";
 import DocumentaryGrid from "@/components/documentary/DocumentaryGrid";
 import CollectionRail from "@/components/collection/CollectionRail";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -62,6 +63,12 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </section>
       )}
+
+      {/* PWA-nedlasting: synlig for gæster på forsiden (knap i Chrome/
+          Edge, iOS-instrukser ellers; skjuler sig i installed-PWA) */}
+      <div className="border-y border-smoke/40 bg-noir py-4">
+        <InstallAppChip />
+      </div>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
         <SectionHeading

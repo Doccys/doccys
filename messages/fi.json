@@ -730,5 +730,10 @@
     "topTierReached": "Korkein taso saavutettu — kiitos kaikista minuuteista.",
     "genreTitle": "{genre}-nörtti",
     "genreSubtitle": "{minutes} minuuttia genressä"
+  },
+  "installApp": {
+    "title": "Doccys sovelluksena — ilman kauppaa: koko näyttö, ei selainpalkkia, ja ehdotuksesi on valmis suoraan aloitusnäytöltä.",
+    "button": "Asenna sovellus",
+    "iosHint": "iPhone/iPad: Napauta Jaa Safarissa ja valitse „Lisää aloitusnäytölle“ — näin Doccys on sovellus ilman App Storea."
   }
 }
