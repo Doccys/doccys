@@ -1,0 +1,248 @@
+DOCCYS — STANDARD-MAILS TIL SKABERE (intern)
+Opdateret: 8/11 2026 — punkt 13 i TING-JE-LISTEN
+==========================================================
+
+SÅDAN BRUGES FILEN
+- Alle mails sendes fra contact@doccys.com (catch-all'et modtager
+  svar — det er den eneste mailboks der er live).
+- Erstat ALLE pladser i [SQUARE BRACKETS] før du sender.
+- Kilder: betingelserne (s11 licens, s13 kuratering/udbetaling,
+  s12 skatteklausul), betalingsmodellen (2 kr/100 gyldige minutter,
+  udbetalings-tærskel 150 kr) og KURATERINGSKRITERIER (NB: stadig
+  ikke skrevet — mails nedenfor forudsætter kriterierne).
+- NB-DENNE SECTION ER INTERN: kopier KUN selve mail-teksten pr.
+  afsendelse — aldrig denne brugs-side.
+- Svar der afventer jura-revisor-tjek (skatten/DAC7-klausulens
+  endelige ordlyd) er markeret. [REVISOR]
+- Alle godkendelser SKER i Supabase-dashboardet (status = approved)
+  FØR godkendelsesmailen sendes — mailen er bekræftelsen, DB'en er
+  sandheden.
+
+-----------------------------------------------------------
+A) GODKENDELSESMAIL (send EFTER status = approved i dashboardet)
+-----------------------------------------------------------
+
+EMNE: Din skaber-ansøgning er godkendt — velkommen til Doccys
+
+Hej [NAVN],
+
+Godt nyheder — din ansøgning er godkendt, og du er nu skaber på
+Doccys med handle [@HANDLE].
+
+Sådan kommer du i gang:
+1. Log ind på doccys.com med den konto, du ansøgte med.
+2. Gå til "Dit studie" (via Min profil) — her uploader du film og
+   ser dine tal: sete minutter, indtjening og udbetalinger.
+3. Upload din første film: forsidebillede og titel skal på, og dine
+   undertekster + trailer genereres i studiet.
+4. Inden filmen kan publiceres, accepterer du skaberlicensen
+   (krydsfelt i forbindelse med upload) — det er din bekræftelse
+   af ejerskabet og Doccys' brugsret til at streame/marketføre den.
+5. Når filmen er publiceret, optjener du 2 kr pr. 100 sete
+   minutter — udbetalt fra 150 kr (du gemmer dine bankoplysninger
+   i studiet).
+
+Et par ting, du skal vide:
+- Doccys er kurateret: redaktionen kan vælge at fjerne en film
+  (se Handelsbetingelserne) — optjente udbetalinger forbliver dine.
+- Skat og afgifter på udbetalinger er dit eget ansvar iht. lokal
+  lovgivning. [REVISOR: vent evt. med denne linje]
+- Vælg godt @-handle allerede ved ansøgning/registrering — det kan
+  ikke ændres bagefter (det er din identitet på platformen).
+
+Vi glæder os til at se din film i kataloget. Skriv hvis du sidder
+fast — vi vender tilbage hurtigt.
+
+Velkommen,
+Jesper
+Doccys — uafhængige dokumentarer uden reklamer
+
+ENGLISH VERSION — SUBJECT: Your creator application is approved — welcome to Doccys
+
+Hi [NAME],
+
+Good news — your application is approved, and you are now a creator
+on Doccys with the handle [@HANDLE].
+
+Getting started:
+1. Sign in at doccys.com with the account you applied with.
+2. Open "Your studio" (via My profile) — this is where you upload
+   films and see your numbers: minutes watched, earnings, payouts.
+3. Upload your first film: poster image and title required; your
+   subtitles and trailer are generated in the studio.
+4. Before a film can be published, you accept the creator license
+   (checkbox during upload) — it confirms your ownership and
+   Doccys' right to stream and market the film.
+5. Once published, you earn DKK 2 per 100 watched minutes — paid
+   out from DKK 150 (you add your bank details in the studio).
+
+Three things to know:
+- Doccys is curated: the editorial team can decide to remove a
+  film (see Terms) — earnings already accrued are always yours.
+- Taxes and levies on payouts are your own responsibility under
+  local law. [ACCOUNTANT: you may hold this line]
+- Your @handle is permanent — it is your identity on the platform.
+
+We look forward to seeing your film in the catalog. Write us if
+you get stuck — we reply fast.
+
+Welcome,
+Jesper
+Doccys — independent documentaries, no ads
+
+-----------------------------------------------------------
+B) AFVISNINGS-MAIL MED BEGRUNDELSE (afvisning = feedback)
+-----------------------------------------------------------
+
+EMNE: Om din skaber-ansøgning til Doccys
+
+Hej [NAVN],
+
+Tak fordi du overvejede Doccys. Vi har behandlet din ansøgning,
+og vi vælger desværre at sige nej — på nuværende tidspunkt.
+
+Vores bedste begrundelse er denne: [GRUND — fx ét af disse:
+"filmen er overvejende AI-genereret uden synlig menneskelig
+research- og skaberproces, og det er Doccys' centrale kuraterings-
+kriterium", "vi kan ikke i ansøgningen se filmens research- og
+kildegrundlag tydeligt nok til kuratering", "kataloget har allerede
+bedækning i genren/landet lige nu — vi tager gerne nye film
+senere, hvis profilen opfylder kriterierne"].
+
+Det er ikke en dom over dit arbejde, vi kan tage fejl — men
+kataloget er bevidst lille og kurateret, så vi må træffe hårdere
+valg end de store platforme.
+
+Hvis du vil, er døren ikke lukket: ret/udfyld ovenstående og send
+en ny ansøgning på doccys.com/creator/apply — vi genbruger gerne
+noget af din tidligere ansøgning som udgangspunkt og revurderer.
+
+Med venlig hilsen,
+Jesper
+Doccys — kurateret: ikke enhver film, men enhver film er betalt
+pr. minut
+
+ENGLISH VERSION — SUBJECT: About your creator application to Doccys
+
+Hi [NAME],
+
+Thank you for considering Doccys. We have reviewed your
+application and have decided not to proceed for now.
+
+Our best reasoning: [REASON — e.g. one of these:
+"the film is predominantly AI-generated without a visible human
+research and authoring process, which is Doccys' core curation
+criterion", "we cannot see your research/source basis clearly
+enough in the application to curate it", "the catalog already
+has coverage of this genre/country — we happily review new films
+later if your profile meets the criteria"].
+
+It is not a verdict on your work, and we can be wrong — but the
+catalog is deliberately small and curated, which forces harder
+choices than the big platforms make.
+
+The door is not closed: revise/complete the above and send a new
+application at doccys.com/creator/apply — we are happy to reuse
+your previous application as a starting point and re-review.
+
+Kind regards,
+Jesper
+Doccys — curated: not every film, but every film is paid per minute
+
+-----------------------------------------------------------
+C) FØRSTE HENVENDELSE (outreach — den du sendte til YouTube-skaberne)
+-----------------------------------------------------------
+
+EMNE: Invitation — din [FILMNAVN] på Doccys
+
+Hej [NAVN] — jeg så [FILMNAVN], og jeg tænkte straks på dig.
+
+Jeg bygger Doccys: en kurateret dokumentar-streamtjeneste der
+ lanceres, hvor giganterne lukker døren. Modellen:
+- betalt pr. minut: 2 kr pr. 100 sete minutter, i filmens levetid —
+  ikke en engangskøbspris, du aldrig at se pengene fra
+- kuratering: 500 film pr. år, ingen AI-slop, ingen reklamer
+- kataloget forventes lanceret med 50 film — nu er det tidspunkt
+  hvor nogle af dem er ledige
+
+Hvis det lyder som en ramme til din [FILMNAVN], så ansøg med to
+klik: doccys.com/creator/apply. Jeg svarer hurtigt — selv på
+danske ansøgninger. [FILL-IN evt. konkrete ting du fandt i filmen
+— gør den personnlig]
+
+Mvh Jesper — Doccys
+
+ENGLISH VERSION — SUBJECT: Invitation — your [FILM TITLE] on Doccys
+
+Hi [NAME] — I watched [FILM TITLE], and thought of you instantly.
+
+I am building Doccys: a curated documentary streaming service
+launching as the giants close their doors. The model:
+- paid per minute: DKK 2 per 100 watched minutes, for the film's
+  lifetime — not a one-off buyout
+- curation: 500 films per year, no AI slop, no ads
+- the catalog launches with 50 films — some slots are open now
+
+If that sounds like a home for [FILM TITLE], apply in two clicks:
+doccys.com/creator/apply. I reply fast — even to Danish
+applications. [OPTIONAL: one concrete line about what you found
+in the film — this is what makes it personal]
+
+Best, Jesper — Doccys
+
+-----------------------------------------------------------
+D) OPFØLGNING (hvis der intet svar efter ~5 dage)
+-----------------------------------------------------------
+
+EMNE: Kort opfølgning — din [FILMNAVN] / Doccys
+
+Hej [NAVN] — kort follow-up på min invitation: er Doccys noget
+for [FILMNAVEN], eller skal den bare væk fra indbakken? Enten
+er fint — jeg stopper efter denne ene gentag.
+
+Hvis du har spørgsmål til modellen (betalt pr. minut, kuratering,
+udbetalinger — alt står på doccys.com/terms), svarer jeg med det
+samme.
+
+Mvh Jesper — Doccys
+
+ENGLISH VERSION — SUBJECT: Quick follow-up — [FILM TITLE] / Doccys
+
+Hi [NAME] — a short follow-up on my invitation: is Doccys a fit
+for [FILM TITLE], or can I take it off your plate? Either is
+fine — this is the only reminder I send.
+
+If you have questions about the model (paid per minute, curation,
+payouts — all documented at doccys.com/terms), I reply right away.
+
+Best, Jesper — Doccys
+
+-----------------------------------------------------------
+NB (INTERN — SLETDENNE SECTION FØR BRUG I MATERIALE)
+-----------------------------------------------------------
+- Send ALDRIG uden at have læst KURATERINGSKRITERIER — begrundelses-
+  teksterne ovenfor er eksempler, ikke regler; den faktiske begrund-
+  else skal matche kriterierne (eller din bedste vurdering ved
+  særskilte caser).
+- Godkendelsesmailen nævner intet beløb eller garantier — kun
+  rate/tærskel/modellen (det er det eneste, "s13" garanterer:
+  optjente udbetalinger betales altid).
+- Skatteklausulens endelige ordlyd er PENDING revisor-tjek
+  (Kontoservice/DAC7) — punkt 12 i TING-JE-LISTEN. Inden den er
+  endelig, hold formuleringen simpel ("dit eget ansvar" pr. lokal
+  lovgivning) og undgå alle løfter om indberetning/rapportering.
+- "500 film pr. år" i outreach-teksten er en markedsføringsplads —
+  tjek at det stemmer overens med dine egne (revisor/kuraterings-)
+  regler inden afsendelse; justér tallet eller slet linjen.
+- Links i mails: doccys.com/creator/apply og doccys.com/terms —
+  ingen korte/tracking-link.
+- Godkend/afvis kun via Supabase-dashboardet (status-flip) — den
+  trigger opretter skaber-profilen med dansk fejl ved tag-konflikt.
+  Mail EFTER flipet (DB'en = sandheden).
+- Genafsend-flow: afvist → ansøger kan sende ny ansøgning (DB'en
+  understøtter "afvist → pending igen"); du kan også selv sætte
+  status ='pending' igen i dashboardet, hvis ansøgeren retter og
+  du vil revurderes.
+- Alle tal-angivelser (2 kr/100 min, 150 kr-tærskel) skal stemme
+  med de publicerede betingelser — hvis de ændres fremadrettet,
+  revideres filen SAMMED (findes den i git, ses at skrider).
