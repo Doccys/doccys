@@ -204,7 +204,8 @@
     "catalog": {
       "eyebrow": "Katalogen",
       "title": "Uavhengige dokumentarer",
-      "subtitle": "Håndplukkede filmer uten en eneste reklamepause. Betal bare for det du ser ferdig."
+      "subtitle": "Håndplukkede filmer uten en eneste reklamepause. Betal bare for det du ser ferdig.",
+      "count": "{count} dokumentarer"
     },
     "how": {
       "eyebrow": "Slik fungerer Doccys",

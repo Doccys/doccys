@@ -14,6 +14,16 @@ import {
 
 const FEATURE_KEYS = ["noAds", "payPerMinute", "community"] as const;
 
+/**
+ * Film-tællingen i kataloget er bevidst SKJULT, indtil der er volumen
+ * (brugerens valg 8/11 — et ellers småt katalog signalerer "tom" mere
+ * end "voksende"). Under tærsklen renderes ingen tælling; over den
+ * dukker "N dokumentarer" af sig selv op under Kataloget-overskriften,
+ * voksende med hver ny publicering. Ingen migration — tallet er altså
+ * serverberegnede documentary-count.
+ */
+const FILM_COUNT_MINIMUM = 20;
+
 interface HomePageProps {
   params: Promise<{ locale: string }>;
 }
@@ -74,7 +84,11 @@ export default async function HomePage({ params }: HomePageProps) {
         <SectionHeading
           eyebrow={t("catalog.eyebrow")}
           title={t("catalog.title")}
-          subtitle={t("catalog.subtitle")}
+          subtitle={
+            documentaries.length >= FILM_COUNT_MINIMUM
+              ? `${t("catalog.count", { count: documentaries.length })} — ${t("catalog.subtitle")}`
+              : t("catalog.subtitle")
+          }
         />
         <div className="mt-10">
           <DocumentaryGrid documentaries={rest} />

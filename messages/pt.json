@@ -204,7 +204,8 @@
     "catalog": {
       "eyebrow": "Catálogo",
       "title": "Documentários independentes",
-      "subtitle": "Filmes selecionados sem um único intervalo comercial. Pague apenas pelo que você assistir até o fim."
+      "subtitle": "Filmes selecionados sem um único intervalo comercial. Pague apenas pelo que você assistir até o fim.",
+      "count": "{count} documentários"
     },
     "how": {
       "eyebrow": "Como funciona o Doccys",

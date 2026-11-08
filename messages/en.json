@@ -204,7 +204,8 @@
     "catalog": {
       "eyebrow": "The catalogue",
       "title": "Independent documentaries",
-      "subtitle": "Hand-picked films without a single ad break. Pay only for what you finish watching."
+      "subtitle": "Hand-picked films without a single ad break. Pay only for what you finish watching.",
+      "count": "{count} documentaries"
     },
     "how": {
       "eyebrow": "How Doccys works",

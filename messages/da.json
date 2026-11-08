@@ -233,6 +233,7 @@
     },
     "catalog": {
       "eyebrow": "Kataloget",
+      "count": "{count} dokumentarer",
       "title": "Uafhængige dokumentarer",
       "subtitle": "Håndplukket film uden en eneste reklamepause. Betal kun for det, du ser færdigt."
     },

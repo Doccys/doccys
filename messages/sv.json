@@ -204,7 +204,8 @@
     "catalog": {
       "eyebrow": "Katalogen",
       "title": "Oberoende dokumentärer",
-      "subtitle": "Handplockade filmer utan ett enda reklaminslag. Betala bara för det du ser klart."
+      "subtitle": "Handplockade filmer utan ett enda reklaminslag. Betala bara för det du ser klart.",
+      "count": "{count} dokumentärer"
     },
     "how": {
       "eyebrow": "Så fungerar Doccys",

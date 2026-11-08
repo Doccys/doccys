@@ -246,7 +246,12 @@ DEL 8 — LANCERING (rækkefølgen er vigtig!)
     tjek + fjern lanceringslåsen (x-robots / skjul for
     søgemaskiner) — ALTID som det ALLERSIDSTE.
 32. Offentliggør: 50 film i kataloget ved start
-    (skaler indhold i takt med salg).
+    (skaler indhold i takt med salg). NB: film-tællingen i
+    Katalog-overskriften AKTIVERER SIG SELV fra 20 film
+    (bygget 8/11 med brugerens valg — under tærsklen er tællingen
+    bevidst skjult, så et ikke-volument katalog aldrig signalerer
+    "tom"; FILM_COUNT_MINIMUM i page.tsx, nøgle home.catalog.count
+    ×13).
 33. Brug jinglen konsekvent på de sociale medier (kan starte
     i Mexico — brandet bygges før kataloget).
 
