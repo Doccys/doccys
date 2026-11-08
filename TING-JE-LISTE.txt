@@ -133,15 +133,18 @@ DEL 4 — DE SIDSTE TESTS (E2E — kræver kørende site)
     - Kontosletning rydder handle og alt andet (cascade).
 16. Generelle sidste tests: køb-flow, afspiller, upload,
     kommentarer — alt det, der skal være perfekt pr. lancering.
-    - HERIBLANDD (opdaget 11/10): HÅNDHÆV 2 GB-grænsen — den er
-      i dag kun tekst i fileLabel ("maks 2 GB"), ingen kode
-      måler størrelsen. Ét klient-tjek (File.size ved filvalg,
-      ved siden af mp4-tjekket) + ét server-tjek i POST
-      /api/films (content-length fra den HEAD, der alligevel
-      hentes til egress-estimatet) → afvis over 2 GB.
-      720p forbliver VEJLEDNING (ikke håndhævet): 2 GB-taget
-      disciplinerer bitraten naturligt, og hård 720p-mur ville
-      blokere fremtidig Bunny-adaptive (1080p-upload).
+    - HERIBLANDD (opdaget 11/10): HÅNDHÆV 2 GB-grænsen — BYGGET
+      8/11 (commit 2e09433): led 1 = klient-tjek i StudioUploadForm
+      (File.size ved filvalg, ved siden af mp4-tjekket → errors.
+      videoTooBig, KOSTER INGENTING — upload sker aldrig); led 2 =
+      server-tjek i POST /api/films (HEAD'ens content-length —
+      File.size kan lyves) → 400, dansk tekst; formens fejl-vej
+      rydder allerede de netop uploadede objekter. Konstanten
+      VIDEO_MAX_BYTES bor i src/lib/storage/filmVideos.ts (ÉN
+      kilde). 720p forbliver VEJLEDNING (ikke håndhævet):
+      2 GB-taget disciplinerer bitraten naturligt, og hård 720p-mur
+      ville blokere fremtidig Bunny-adaptive (1080p-upload).
+      E2E: vælg en >2 GB-fil i studiet → fejlbesked FOER upload.
     - HERIBLANDD: skaber-siden — udbetalingsoplysninger gemmes,
       udbetalingsanmodning under/over 150 kr-grænsen opfører
       sig rigtigt (afvis under, opret over).
