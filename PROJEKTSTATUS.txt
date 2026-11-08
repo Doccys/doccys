@@ -34,6 +34,33 @@ monitors) følger TING-JE-LISTE Del 1–2. Status 31/10:
   multi-currency er skala-ting, ikke lancering-ting.
 Vercel forbliver PAUSET under hele flytningen — alt tester lokalt.
 
+HASTIGHEDS-OMGANG: FUNCTION-REGION IAD1→FRA1 + PARALLELISERET FORSIDE (8/11)
+Brugerens PWA-mærkning: "skifter side og åbner langsom ift. andre
+apps". Målinger bevisede: doccys.com /da TTFB 1,3-1,4 s WARM.
+ROD (X-Vercel-Id: arn1::iad1::…): CDN-edge pænt i Stockholm (arn1),
+men server-FUNKTIONEN eksekverede i iad1 (VIRGINIA, USA) — hver
+dynamisk side betalte transatlantiske ture, HVER Supabase-forespørgsel
+~300 ms over Atlanten (forsiden 2-4 sekventielle). FÆLDE: Vercel Pro
+sætter funktionsregionen i panelet (Settings → Functions → Function
+Region) — CLI-token rækker IKKE til projects-REST (env-REST gør).
+- FUNKTION I fra1 (brugerens valg — Frankfurt, co-lokeret med
+  Supabase; Region-reglen: SAMME region som Supabase, fordi DB-ture
+  dominerer; cph1 fandtes ikke i rullemenuen) + REDUKTION:
+  forsiden PARALLELISERET (f6c92e7) — katalog + samlinger + auth
+  i ÉN Promise.all-runde i stedet for 4 i rækkefølge.
+  RESULTAT ttfb: /da 1,42 → 0,46-0,49 s · creators 1,51 → 0,46 s ·
+  watch 0,43 s · /ja/ 0,46 s (alle mål fra DK).
+- WEB-APP-NATUR (forventet, ikke en fejl): installeret PWA henter
+  netværk ved åbning (nativ læser disken) + Supabase free-tier
+  computer-millisekunder — mærkes i de sidste tal; forsvinder ved
+  opskalering. NÆSTE HASTIGHEDS-TRIN (tilbage, valgfri): ISR-cache
+  af gæste-visningen (større tilgang, afvejes ved volumen).
+- SAMME TUR: film-tælling med volumen-tærskel (ab6c4fb — SKJULT
+  under 20 film, FILM_COUNT_MINIMUM i page.tsx; brugerens valg:
+  "måske vente til der er lidt volume i titler") + PWA-INSTALL-CHIP
+  på forsiden (6ec3553, E2E-verificeret 8/11: knap på pc + skjules
+  ved installering; iOS = instruktion, ingen event).
+
 SUPABASE AUTO-PAUSE FÆLDEN — MIDDLEWARE FEJLET PÅ DOCCYS.COM (31/10-3/11)
 Symptom 3/11: doccys.com svarede "This request timed out — routing
 middleware for this page took too long to respond". ROD: Supabase
