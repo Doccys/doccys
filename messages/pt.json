@@ -451,7 +451,8 @@
       "notLoggedIn": "Você não está mais logado — faça login e tente novamente.",
       "uploadFailed": "Falha no carregamento — tente novamente.",
       "rowFailed": "Não foi possível criar o filme — tente novamente.",
-      "license": "Você deve confirmar os termos da licença antes de poder fazer upload."
+      "license": "Você deve confirmar os termos da licença antes de poder fazer upload.",
+      "videoTooBig": "O vídeo é maior que 2 GB — comprima-o (por exemplo, 720p ou bitrate mais baixo) e selecione o arquivo novamente."
     },
     "filmsHeading": "Seus filmes",
     "statusDraft": "Rascunho — aguardando aprovação",

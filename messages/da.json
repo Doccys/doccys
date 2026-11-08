@@ -463,6 +463,7 @@
     "creatorNote": "Filmen tilknyttes din skaber-profil @{handle}.",
     "errors": {
       "notMp4": "Kun mp4-filer kan uploades.",
+      "videoTooBig": "Videoen er over 2 GB — komprimer den (fx 720p eller lavere bitrate) og vælg filen igen.",
       "notPoster": "Kun jpg-, png- og webp-billeder kan bruges.",
       "posterRequired": "Upload et forsidebillede — filmen kan ikke offentliggøres uden.",
       "posterProbe": "Billedet kunne ikke læses — er det et gyldigt billede?",

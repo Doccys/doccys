@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseEnv } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
+import { VIDEO_MAX_BYTES } from "@/lib/storage/filmVideos";
 import { POSTER_GRADIENTS, isPosterGradient } from "@/lib/data/gradients";
 import { isPlatformLocale } from "@/lib/i18n/languageNames";
 import type { DocumentaryRow } from "@/lib/supabase/database.types";
@@ -218,6 +219,20 @@ export async function POST(request: NextRequest) {
     }
   } catch {
     // ukendt størrelse → sessioner på filmen får egress-skønnet 0
+  }
+
+  // 2 GB-håndhævelsen, led 2 (punkt 16 i TING-JE): klienten tjekker
+  // File.size ved filvalg, men den kan LYVES om — HEAD'ens content-
+  // length er den reelle sandhed. Over grænsen = afvis; uploadformens
+  // fejl-vej fjerner allerede de netop uploadede objekter på en 400.
+  if (videoFileBytes !== null && videoFileBytes > VIDEO_MAX_BYTES) {
+    return NextResponse.json(
+      {
+        error:
+          "Videoen er over 2 GB — komprimer den (fx 720p eller lavere bitrate) og prøv igen.",
+      },
+      { status: 400 },
+    );
   }
 
   // sort_order 1000: default 0 ville straks overtage HeroBannerens

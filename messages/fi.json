@@ -451,7 +451,8 @@
       "notLoggedIn": "Et ole enää kirjautunut sisään — kirjaudu sisään ja yritä uudelleen.",
       "uploadFailed": "Lataus epäonnistui — yritä uudelleen.",
       "rowFailed": "Elokuvaa ei voitu luoda — yritä uudelleen.",
-      "license": "Sinun on vahvistettava lisenssiehdot ennen kuin voit ladata."
+      "license": "Sinun on vahvistettava lisenssiehdot ennen kuin voit ladata.",
+      "videoTooBig": "Video on yli 2 GB — pakkaa se (esim. 720p tai matalampi bittinopeus) ja valitse tiedosto uudelleen."
     },
     "filmsHeading": "Elokuvasi",
     "statusDraft": "Luonnos — odottaa hyväksyntää",

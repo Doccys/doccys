@@ -451,7 +451,8 @@
       "notLoggedIn": "You are no longer logged in — log in and try again.",
       "uploadFailed": "The upload failed — try again.",
       "rowFailed": "The film could not be created — try again.",
-      "license": "You must confirm the license terms before you can upload."
+      "license": "You must confirm the license terms before you can upload.",
+      "videoTooBig": "The video is over 2 GB — compress it (e.g. 720p or lower bitrate) and select the file again."
     },
     "filmsHeading": "Your films",
     "statusDraft": "Draft — awaiting approval",

@@ -451,7 +451,8 @@
       "notLoggedIn": "Du är inte längre inloggad — logga in och försök igen.",
       "uploadFailed": "Uppladdningen misslyckades — försök igen.",
       "rowFailed": "Filmen kunde inte skapas — försök igen.",
-      "license": "Du måste bekräfta licensvillkoren innan du kan ladda upp."
+      "license": "Du måste bekräfta licensvillkoren innan du kan ladda upp.",
+      "videoTooBig": "Videon är över 2 GB — komprimera den (t.ex. 720p eller lägre bitrate) och välj filen igen."
     },
     "filmsHeading": "Dina filmer",
     "statusDraft": "Utkast — väntar på godkännande",

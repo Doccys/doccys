@@ -451,7 +451,8 @@
       "notLoggedIn": "Vous n'êtes plus connecté — connectez-vous et réessayez.",
       "uploadFailed": "L'envoi a échoué — réessayez.",
       "rowFailed": "Le film n'a pas pu être créé — réessayez.",
-      "license": "Vous devez confirmer les conditions de licence avant de pouvoir télécharger."
+      "license": "Vous devez confirmer les conditions de licence avant de pouvoir télécharger.",
+      "videoTooBig": "La vidéo dépasse 2 Go — compressez-la (par exemple en 720p ou avec un débit binaire inférieur) et sélectionnez à nouveau le fichier."
     },
     "filmsHeading": "Vos films",
     "statusDraft": "Brouillon — en attente d'approbation",

@@ -451,7 +451,8 @@
       "notLoggedIn": "Non sei più connesso — accedi e riprova.",
       "uploadFailed": "Caricamento fallito — riprova.",
       "rowFailed": "Impossibile creare il film — riprova.",
-      "license": "Devi confermare i termini della licenza prima di poter caricare."
+      "license": "Devi confermare i termini della licenza prima di poter caricare.",
+      "videoTooBig": "Il video è superiore a 2 GB — comprimi il video (ad esempio 720p o bitrate inferiore) e seleziona di nuovo il file."
     },
     "filmsHeading": "I tuoi film",
     "statusDraft": "Bozza — in attesa di approvazione",

@@ -451,7 +451,8 @@
       "notLoggedIn": "Du bist nicht mehr angemeldet — melde dich an und versuche es erneut.",
       "uploadFailed": "Der Upload ist fehlgeschlagen — versuche es erneut.",
       "rowFailed": "Der Film konnte nicht erstellt werden — versuche es erneut.",
-      "license": "Sie müssen die Lizenzbedingungen bestätigen, bevor Sie hochladen können."
+      "license": "Sie müssen die Lizenzbedingungen bestätigen, bevor Sie hochladen können.",
+      "videoTooBig": "Das Video ist über 2 GB groß — komprimieren Sie es (z. B. 720p oder niedrigere Bitrate) und wählen Sie die Datei erneut aus."
     },
     "filmsHeading": "Deine Filme",
     "statusDraft": "Entwurf — wartet auf Freigabe",

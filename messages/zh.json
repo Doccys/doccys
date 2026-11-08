@@ -451,7 +451,8 @@
       "notLoggedIn": "您已退出登录—请重新登录并重试。",
       "uploadFailed": "上传失败—请重试。",
       "rowFailed": "无法创建电影—请重试。",
-      "license": "您必须确认许可条款才能上传。"
+      "license": "您必须确认许可条款才能上传。",
+      "videoTooBig": "视频超过 2 GB — 请压缩它（例如 720p 或更低比特率）并重新选择文件。"
     },
     "filmsHeading": "您的电影",
     "statusDraft": "草稿—等待批准",

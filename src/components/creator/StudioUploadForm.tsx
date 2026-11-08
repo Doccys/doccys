@@ -4,7 +4,10 @@ import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { FILM_VIDEOS_BUCKET } from "@/lib/storage/filmVideos";
+import {
+  FILM_VIDEOS_BUCKET,
+  VIDEO_MAX_BYTES,
+} from "@/lib/storage/filmVideos";
 import {
   FILM_POSTERS_BUCKET,
   POSTER_EXTENSIONS,
@@ -123,6 +126,15 @@ export default function StudioUploadForm({
       (selected.type === "" && selected.name.toLowerCase().endsWith(".mp4"));
     if (!isMp4) {
       setError(t("errors.notMp4"));
+      setFile(null);
+      return;
+    }
+    // 2 GB-håndhævelsen, led 1 (punkt 16): her koster det INGENTING —
+    // en overgrænse-fil uploades slet ikke (POST /api/films tjekker
+    // det samme igen server-side via HEAD'ens content-length, da
+    // File.size kan lyves om).
+    if (selected.size > VIDEO_MAX_BYTES) {
+      setError(t("errors.videoTooBig"));
       setFile(null);
       return;
     }

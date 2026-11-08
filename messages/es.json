@@ -451,7 +451,8 @@
       "notLoggedIn": "Ya no estás conectado — inicia sesión e inténtalo de nuevo.",
       "uploadFailed": "La subida falló — inténtalo de nuevo.",
       "rowFailed": "No se pudo crear la película — inténtalo de nuevo.",
-      "license": "Debe confirmar los términos de la licencia antes de poder subir."
+      "license": "Debe confirmar los términos de la licencia antes de poder subir.",
+      "videoTooBig": "El video es superior a 2 GB; comprímelo (por ejemplo, 720p o una tasa de bits más baja) y selecciona el archivo de nuevo."
     },
     "filmsHeading": "Tus películas",
     "statusDraft": "Borrador — pendiente de aprobación",
