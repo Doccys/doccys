@@ -2,6 +2,24 @@ DOCCYS — STANDARD-MAILS TIL SKABERE (intern)
 Opdateret: 8/11 2026 — punkt 13 i TING-JE-LISTEN
 ==========================================================
 
+KURATERING = BRUGERENS MANUELLE GENNEMGANG (besluttet 8/11)
+Smage er redaktionens (terms s13: Doccys' eget skøn, begrundelse
+er e-mail-praksis, ikke kontrakt). Kriterier skrives IKKE som
+formel fil — men jot-listen her er de 4 tjek pr. ansøgning:
+  1. FILMEN: er der synlig menneskelig research og skaberproces?
+     ("for meget AI uden menneskelige anstrengelser" = afvisning —
+     begrundelses-text findes færdig i mail B)
+  2. VIRksomhedsTJek: oplyst virksomhedsnavn/founded_year/land i
+     ansøgningen -> tjek medarbejderantal i offentlige registre
+     (CVR osv.) MOD udgivelsesfrekvensen — solokræfter hævder
+     sjældent 10 film/år; undtagelse: teams/kortformater.
+  3. RED-FLAG: >3 film/år pr. skaber -> ekstra gennemgang af
+     research/kilder — IKKE auto-afslag (jævnfør mail B's slots).
+  4. TRAILER-DISCIPLIN: trailere code' lavt (de er den eneste
+     gratis-egress) — accept-kravet beskrives for skaberen ved
+     upload-bekræftelsen (se punkt 13 forbitret: trailer-
+     bitrate-disciplin er en OPERATIONEL regel, ikke en smage).
+
 SÅDAN BRUGES FILEN
 - Alle mails sendes fra contact@doccys.com (catch-all'et modtager
   svar — det er den eneste mailboks der er live).

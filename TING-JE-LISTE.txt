@@ -100,19 +100,18 @@ DEL 3 — SIDEGENNEMGANG (du + maskinaudit)
       e-mail-praksis/goodwill, ikke kontrakt). Overvej at flytte
       skatteklausul + friholdelse ind i samme sektion. Husk at
       opdatere "Senest opdateret"-datoen i introen.
-13. Skriv KURATERINGSKRITERIER.txt (intern — gøres FØR første
-    ansøgninger ankommer):
-    - "For meget AI"-reglerne + standard-afvisnings-e-mails
-      MED begrundelse (afvisning = feedback, genafsend-flow).
-    - Red-flag: >3 film/år pr. skaber → ekstra gennemgang af
-      research/kilder — IKKE auto-afslag (undtagelser: teams,
-      kortformater, fælles research-base).
-    - Opslags-procedurer: virksomhedsnavn oplyst → tjek
-      medarbejderantal (CVR/registre) mod udgivelsesfrekvens.
-    - Trailer-bitrate-disciplin (trailere kodes lavt — de er
-      den eneste gratis-egress).
-    Beslut: lokal fil eller commit til git (den gør smagen
-    overdragelig — også ved exit).
+13. Skriv KURATERINGSKRITERIER.txt (intern) — OMSTÆLT AF BRUGEREN
+    8/11 (beslutning: kriterierne er redaktionens eget manuelle
+    skøn, gennemgås pr. ansøger ved at gennemse uploads — ingen
+    formel fil): ERSTATTET af
+    a) STANDARD-MAILS-SKABERE.txt (commit eab8813) — mail A-D (da
+       + en: godkendelse, afvisning m. begrundelses-slots
+       ("for meget AI"-reglens tekst lever dér), outreach,
+       opfølgning) + jot-listen med de 4 manuelle tjek (film/
+       virksomhedstjek via founded_year+land, >3 film/år-red-flag,
+       trailer-bitrate-disciplin).
+    b) PENDING revisor-tjek: skatteklausulens endelige ordlyd
+       (Kontoservice/DAC7) → eftergøres i punkt 12 + mail A.
 
 DEL 4 — DE SIDSTE TESTS (E2E — kræver kørende site)
 ----------------------------------------------------------
