@@ -205,10 +205,17 @@ LÆSNINGEN (hvorfor begge rækker skal ses samtidigt):
     (punkt 16): filbytes pr. minut er CENTRET i regningen, og den
     disciplineres ved upload — margin pr. FILM-MINUT er den rigtige
     metering, ikke margin pr. pakke.
-  * SKALA-LEVER: overage $0,09/GB er allerede billig—ved meget
-    volumen kan CDN/Bunny-konkurrence/egen cache presse den
-    videre, og payout_rate_dkk kan sættes pr. film — REELLE
-    knapper, post-lancering.
+  * SKALA-LEVER — BESLUT 9/11: BUNNY STREAM integreres DENNE UGE
+    (brugerens mål): video-egress flytter fra Supabase til Bunny
+    (CDN ≈ $0,01/GB ≈ 0,07 kr/GB) → ~90 % egress-besparelse.
+    Supabase (free-tier i første omgang) beholder KUN konti/DB/
+    godkendelser (KB-trafik — 5 GB/md rækker længe; NB free-tier
+    pauser ved inaktivitet, tjek den før genaktiveringer — se
+    auto-pause-sektionen i PROJEKTSTATUS). EFTERSpil: SKEMA's
+    sektion D/G genberegnes med Bunny-rater når integrationen er
+    E2E (worst case pack-1000: 13,86 → ~1,5 kr egress); Bunny's
+    Analytics/Usage-API kan oveni erstatte egress-SKØNNET med
+    reelle bytes pr. titel.
   NB TAL ER HYPOTETISKE — erstat 0,022 GB/min med
   sum(video_file_size_bytes) / sum(duration_sec) fra documentaries
   LIVE (og erstat 30 %-antagelsen med reel forbrugs-rate: sum af
