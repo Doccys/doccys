@@ -91,6 +91,45 @@ export async function getBunnyVideo(
   };
 }
 
+/** TUS-genoptageligt upload-støtte + helper: genkender en Bunny-
+ *  playback-URL og trækker guiden ud (trailer-sletning, kladsletning). */
+export function bunnyGuidFromUrl(url: string): string | null {
+  const match = /^https:\/\/[a-z0-9.-]+b-cdn\.net\/([0-9a-f-]{36})\//.exec(url);
+  return match ? match[1] : null;
+}
+
+/** Venter på, at Bunny er færdig med encodningen (status 3). */
+export async function waitForBunnyEncode(
+  guid: string,
+  timeoutMs = 300_000,
+): Promise<"ready" | "failed" | "timeout"> {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    const video = await getBunnyVideo(guid);
+    if (video && video.status >= 3) {
+      return video.status === 3 ? "ready" : "failed";
+    }
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+  }
+  return "timeout";
+}
+
+/** Direkte upload til et Bunny-video-objekt (server-side — små videoer
+ *  som 90 sec-trailere: ~20-40 MB buffer er fint for funktionens
+ *  hukommelse; TUS er kun for browserens store uploads). Kaldet er
+ *  verificeret: curl -T-formen = PUT med AccessKey. */
+export async function uploadBunnyBytes(guid: string, bytes: Buffer): Promise<void> {
+  const { streamApiKey, videoApiBase, libraryId } = getBunnyEnv();
+  const res = await fetch(`${videoApiBase}/library/${libraryId}/videos/${guid}`, {
+    method: "PUT",
+    headers: { AccessKey: streamApiKey },
+    body: new Uint8Array(bytes) as unknown as BodyInit,
+  });
+  if (!res.ok) {
+    throw new Error(`Bunny-uploaden af klippet fejlede (HTTP ${res.status})`);
+  }
+}
+
 export async function deleteBunnyVideo(guid: string): Promise<void> {
   await bunnyFetch(`/videos/${guid}`, { method: "DELETE" });
 }

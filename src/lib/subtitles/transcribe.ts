@@ -28,12 +28,19 @@ import type { SubtitleSegment } from "@/lib/subtitles/vtt";
 
 const execFileAsync = promisify(execFile);
 
-/** Streamer video-URL'en ned på disk — aldrig mere end én chunk i RAM. */
+/** Streamer video-URL'en ned på disk — aldrig mere end én chunk i RAM.
+ *  NB (9/11, Bunny-integrationen): CDN'ens BlockNoneReferrer-lås 403'er
+ *  anmodninger UDEN Referer — server-fetches skal sende sitet som
+ *  Referer, præcis som browseren gør (verificeret 200: Referer på →
+ *  film/klip hentbart; uden → 403). */
 export async function downloadVideoToDisk(
   videoUrl: string,
   targetPath: string,
 ): Promise<void> {
-  const res = await fetch(videoUrl, { redirect: "follow" });
+  const res = await fetch(videoUrl, {
+    redirect: "follow",
+    headers: { Referer: "https://www.doccys.com/" },
+  });
   if (!res.ok || !res.body) {
     throw new Error(
       `Videoen kunne ikke hentes (${res.status}) — tjek at video-URL'en stadig virker.`,
