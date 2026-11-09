@@ -285,6 +285,75 @@ NB's (REVISOR afkrydser — punkt 12/22):
   • Kontoservice/DAC7: påvirker RAPPORTERINGEN om skaberne, ikke
     skemaets resultat — punkt 12's revisor-gennemgang
 
+-----------------------------------------------------------
+J) SAMMENLIGNING — SUPABASE VIDEOS ETUP i dag vs BUNNY STREAM
+   (samme hypotetiske måned gennem begge infrastrukturer)
+-----------------------------------------------------------
+FÆLLES ANTAGELSER (identiske i begge kolonner):
+  salg: 120 × pack-1000 + 40 × pack-2000 + 20 × pack-3000
+        brutto 10.860,00 · moms 2.172,00 · NETTO 8.688,00 kr
+  forbrug: 30 % af de 260.000 solgte minutter = 78.000 min set
+  skaber-udbetaling: 78.000 × 2,00/100 = 1.560,00 kr
+  Stripe-gebyrer (1,5 % + 2 kr pr. salg):           526,00 kr
+  egress fra forbrug (0,022 GB/min):        1.716 GB
+  seer-mix (HYPOTETISK — erstat med live når Bunny Analytics
+  kan vise realt):
+    70 % Europa/Nordamerika = 1.201 GB
+    15 % Asien/Oceanien     =   257 GB   (ja/zh/hi!)
+    10 % Sydamerika         =   172 GB
+     5 % Mellemøsten/Afrika =    86 GB
+
+FÆLLES (indtægt minus skaber minus Stripe):
+  8.688,00 − 1.560,00 − 526,00 = 6.602,00 kr  (begge setup)
+
+┌──────────────────────────────┬───────────────┬────────────────┐
+│                              │ SUPABASE-SETUP│ BUNNY SETUP    │
+│                              │ (Pro + videos)│ (denne uge)    │
+├──────────────────────────────┼───────────────┼────────────────┤
+│ video-egress                 │               │                │
+│  EU/NA 1.201 GB × 0,63       │  756,63       │ 1.201 × 0,070  │
+│  Asia  257 GB × 0,63         │  161,91       │  257 × 0,210   │
+│  Syd-A 172 GB × 0,63         │  108,36       │  172 × 0,315   │
+│  ME/A  86 GB  × 0,63         │   54,18       │   86 × 0,420   │
+│   (250 GB incl. først:       │  −157,50      │   —            │
+│    egress SUBTOTAL           │    923,58 kr  │   228,34 kr    │
+│ video-storage (50 film ≈     │               │                │
+│ 100 GB)                      │ (incl.)       │ [tjek Bunny    │
+│                              │               │  Stream Storage│
+│                              │               │  ~$0,005/GB →  │
+│                              │               │  ≈   3,50 kr]  │
+│ FASTE (Vercel 140 + mail 6   │               │                │
+│  + domæne 7 + OpenAI 150     │   303,00      │   303,00       │
+│  · Supabase: Pro 175 /       │   175,00      │     0,00       │
+│    FREE-tier til konti)      │               │                │
+├──────────────────────────────┼───────────────┼────────────────┤
+│ TOTAL OMKOSTNING TILBAGE     │   (e + f)     │                │
+│  egress + storage + faste    │ 1.401,58 kr   │   534,84 kr    │
+├──────────────────────────────┼───────────────┼────────────────┤
+│ RESULTAT FØR SKAT            │ 5.200,42 kr   │ 6.067,16 kr    │
+│ selskabsskat 22 %            │ 1.144,09      │ 1.334,78       │
+│ DISPOSERBAR (78 %)           │ 4.056,33 kr   │ 4.732,38 kr    │
+└──────────────────────────────┴───────────────┴────────────────┘
+
+SAMMENLIGNINGENS PUNKTER:
+  • bunny setup giver +866,74 kr/md FØR SKAT i dette scenarie
+    (disponibel: +676,05 kr ≈ +16,7 %), og der er MEGET mindre
+    varians: Supabase-egress skalerer LINEÆRT ved 0,63 kr/GB
+    (hver nye seertimer koster 6 gange mere), Bunny holder
+    0,070-0,420 pr. region → gap VOKSER med volumen.
+  • besparelsen "≈ 90 %" er EU/Nordamerika-baseline (0,070 af
+    0,63 ≈ 11 %); reelle mix gør det til ~76 % total i dette
+    eksempel (228 mod 923 kr).
+  • Supabase's 250 GB-inklusive er nyttig KUN som video-lager;
+    ved bunny-setup er den 5 GB/md free-tier råde til KUN
+    konti/DB/godkendelser (KB-trafik) — 5 GB er langt nok.
+  • SKAL HUSKES VED EFTER-FØLGE: Bunny Stream Storage har egen
+    rate (tjek panelet — skemnet forudsætter ~$0,005/GB/md),
+    og bunny egress-målingen (reelle bytes) kan udskifte
+    0,022-GB/min-skoennen, så D/G renses live.
+  NB TAL ER HYPOTETISKE, MEN RATE-NEDERSTEN er reelle (Supabase
+  250 GB/0,63 kr + bunny-regionlisten). Kurs 7,0 DKK/USD.
+
 NB'S
 - Momsen passerer igennem: brutto → netto er ALLE tal her.
 - Skaber-udbetaling skyldes KUN gyldige minutter — men du MÅ altid
