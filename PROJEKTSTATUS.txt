@@ -1023,6 +1023,16 @@ FORRETNINGSMODELLEN — FÆRDIG OG LIVE-VERIFICERET
   minutpakker (der findes ingen abonnementer!) og meta-beskrivelsen
   ("betal kun for de minutter, du faktisk ser"). NB: stat-NAVNE som
   "Færdigsetninger" er rene metrik-navne og røres ikke.
+- FALSK REKLAME, ANDEN FREMSENDE (726143a, 9/11 — brugerens opdagede
+  på /en): katalog-subtitle lovede stadig pay-per-completion — da
+  "Betal kun for det, du ser færdigt" / en "pay only for what you
+  FINISH watching" (gled under 19/9-løsningen; oversættelserne
+  oversatte den fejlaktige kilde trofaste på ALLE 13 sprog — same
+  tekst i alle). RETTET til "betal kun for de minutter, du faktisk
+  ser" ("the minutes you actually watch") — højst håndskrevet pr.
+  sprog (ingen --force genoversættelse af hele home-namespace).
+  LAERING: kilde-teksten er altid rettelsesstedet — oversættelserne
+  arver fejlen trofaste i alle sprog på én gang.
 
 KOEBS-land (billing_country) — MIGRATION KØRT af brugeren (20/9)
 Formål: redaktionen skal vide hvilke lande der sælger bedst ift.
