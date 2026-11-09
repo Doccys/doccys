@@ -208,7 +208,44 @@ HYPOTETISK EKSEMPEL med tallene ovenfor (850 GB egress md., 30 %-for-
 brug, 180 salg):
   8.688,00 − 700,00 − 526,00 − 372,00 − 478,00 = 6.612,00 kr/md
   (≈ 76 % af netto ved de antagelser — RE-RENS med live tal!)
-  SKAT/selskab + Kontoservice/DAC7: REVISOR (punkt 12/22).
+
+-----------------------------------------------------------
+I) SELSKABSSKAT → HVAD DER ER TIL REINVEST
+-----------------------------------------------------------
+Sats (ApS, brugerens plan fra resume-checklisten): selskabsskat
+  22 % af selskabets skattepligtige resultat. BEMÆRK: udgiften er
+  allerede MODTRUKKET i H (skaber-udbetaling, gebyrer, egress,
+  fastomkostninger er alle fradragsberettigede driftsudgifter) —
+  så basis herfor er sektion H's resultat før skat.
+FORMEL:
+  resultat før skat (H) .................... =
+  × 0,22  selskabsskat ..................... =
+  = RESULTAT EFTER SKAT (78 %) — disponible midler .... =
+    a) REINVEST (= bliver STÅENDE på selskabskontoen: filmindkøb,
+       egress-ekspansion, annoncer, nye funktioner) .... =
+    b) og/eller UDBETALES som udbytte til dig (beskattes PÅNY i
+       din personindkomst — udbytteskatsprog og personlig skat;
+       tal til din opgørelse, ikke selskabets)
+
+HYPOTETISK (fortsætter H's eksempel, 6.612 kr/md):
+  resultat før skat ......................... 6.612,00 kr
+  − selskabsskat (22 %) ......................... 1.454,64 kr
+  = DISPOSICERER EFTER SKAT ................... 5.157,36 kr/md
+  (≈ 59 % af netto-omsetningen er til reinvest ved antagelserne)
+  NB pr. 12-md er det ≈ 61.900 kr til reinvest — deraf 2-3 film-
+  indledende udgifter (underskriftens opskalinger osv.)
+
+NB's (REVISOR afkrydser — punkt 12/22):
+  • B-skatter/provisionelle skatter: selskabet betaler skatten
+    i 10-skatter på FORHÅND i 2027-år — budgetér likviditeten
+  • 3-års aktieskat-loven (ApS): aktieskapitalen er bundet i 3 år
+    efter stiftelsen — reinvesteringen SKER INDE i selskabet i
+    den periode (passer netop med din plan)
+  • små-virksomhedsordning/indg. skat pr. skattemæssige-afskrivning
+    (regnskabsperioder er ÅR, ikke måned — skemaet er månedsvis
+    for plan-legning; renskningen sker på årsregnskabet)
+  • Kontoservice/DAC7: påvirker RAPPORTERINGEN om skaberne, ikke
+    skemaets resultat — punkt 12's revisor-gennemgang
 
 NB'S
 - Momsen passerer igennem: brutto → netto er ALLE tal her.
