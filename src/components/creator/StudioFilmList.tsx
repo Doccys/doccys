@@ -182,9 +182,13 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
                 <StudioDeleteFilmButton
                   documentaryId={film.id}
                   videoUrl={film.videoUrl}
+                  bunnyVideoId={film.bunnyVideoId}
                   posterUrl={film.posterUrl}
                   subtitleVttUrls={subtitleVttUrls}
-                  trailerUrl={trailerStatus?.trailerUrl}
+                  trailerUrl={trailerStatus?.trailerUrl ?? null}
+                  trailerBunnyVideoId={
+                    trailerStatus?.trailerBunnyVideoId ?? null
+                  }
                 />
                 <span className="text-xs text-ash/70">{t("draftNote")}</span>
                 {/* Publiceringskravet håndhæves af DB-triggeren

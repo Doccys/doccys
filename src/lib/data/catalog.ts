@@ -69,6 +69,7 @@ function toDocumentary(row: DocumentaryRow, locale?: string): Documentary {
     gradient: row.gradient,
     posterUrl: row.poster_url,
     videoUrl: row.video_url,
+    bunnyVideoId: row.bunny_video_id ?? null,
     videoFileSizeBytes: row.video_file_size_bytes ?? null,
     status: row.status as Documentary["status"],
     createdAt: row.created_at,

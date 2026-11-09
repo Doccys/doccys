@@ -59,6 +59,7 @@ export async function getFilmTrailerStatus(
     startSec: row.start_sec,
     lengthSec: row.length_sec,
     trailerUrl: row.trailer_url,
+    trailerBunnyVideoId: row.bunny_video_id ?? null,
     status,
     error: row.error,
   };

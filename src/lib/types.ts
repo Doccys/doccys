@@ -66,6 +66,8 @@ export interface Documentary {
   posterUrl: string | null;
   /** Placeholder-video indtil medie-server/CDN kobles på */
   videoUrl: string;
+  /** Bunny Stream-videoens guid (9/11) — null = legacy Supabase-video */
+  bunnyVideoId: string | null;
   /**
    * Filens størrelse i bytes — server-side HEAD ved upload.
    * Grundlag for egress-skønnet (sete sekunder × bytes/længde);
@@ -101,6 +103,8 @@ export interface FilmTrailerStatus {
   startSec: number;
   lengthSec: number;
   trailerUrl: string | null;
+  /** Bunny-videoens guid (9/11) — null = legacy Supabase-trailer */
+  trailerBunnyVideoId: string | null;
   status: "processing" | "ready" | "failed";
   error: string | null;
 }
