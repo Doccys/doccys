@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseEnv } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
-import { VIDEO_MAX_BYTES } from "@/lib/storage/filmVideos";
+import { VIDEO_MAX_BYTES, bunnyDirectPlayUrl } from "@/lib/storage/filmVideos";
+import { hasBunnyEnv } from "@/lib/bunny/config";
+import { getBunnyVideo, pickMp4Resolution } from "@/lib/bunny/stream";
 import { POSTER_GRADIENTS, isPosterGradient } from "@/lib/data/gradients";
 import { isPlatformLocale } from "@/lib/i18n/languageNames";
 import type { DocumentaryRow } from "@/lib/supabase/database.types";
@@ -72,6 +74,10 @@ export async function POST(request: NextRequest) {
       : POSTER_GRADIENTS[0];
   const durationSec = body.durationSec;
   const videoUrl = body.videoUrl;
+  // Bunny-flowet (9/11): videoens guid frem for en storage-URL —
+  // ruten henter selv video-objektet, validerer ejerskabus/titel,
+  // og afleder playback-URL'en af de encodet opløsninger.
+  const bunnyVideoId = body.bunnyVideoId;
   const posterUrl = body.posterUrl;
   const spokenLanguage = body.spokenLanguage;
   // Licens-accept: strikt !== true — fx strengen "true" afvises.
@@ -162,12 +168,72 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Videoen SKAL ligge i uploaderens egen mappe i film-videos-bucketet
   const { url: supabaseUrl } = getSupabaseEnv();
-  const ownFolderPrefix = `${supabaseUrl}/storage/v1/object/public/film-videos/${user.id}/`;
-  if (typeof videoUrl !== "string" || !videoUrl.startsWith(ownFolderPrefix)) {
+  // Video-kilden: ENTEN Bunny-guid (nyt flow) ELLER legacy storage-URL
+  // i uploaderens egen mappe (seed-filmene/kladder oprettet før 9/11).
+  let resolvedVideoUrl: string;
+  let bunnyVideoGuid: string | null = null;
+  let videoFileBytes: number | null = null;
+  if (typeof bunnyVideoId === "string" &&
+      /^[0-9a-f-]{36}$/i.test(bunnyVideoId)) {
+    if (!hasBunnyEnv()) {
+      return NextResponse.json(
+        { error: "Video-CDN er ikke konfigureret — prøv igen" },
+        { status: 503 },
+      );
+    }
+    const bunny = await getBunnyVideo(bunnyVideoId);
+    if (!bunny || bunny.title !== `doccys:${user.id}`) {
+      return NextResponse.json(
+        { error: "Videoen hører ikke til din konto" },
+        { status: 403 },
+      );
+    }
+    if (bunny.status !== 3) {
+      return NextResponse.json(
+        {
+          error:
+            "Videoen er endnu ikke encodet færdig i video-CDN — prøv igen om lidt",
+        },
+        { status: 400 },
+      );
+    }
+    const oplosning = pickMp4Resolution(bunny.availableResolutions);
+    if (!oplosning) {
+      return NextResponse.json(
+        {
+          error:
+            "Encoding afvist af video-CDN — prøv igen, eller kontakt redaktionen",
+        },
+        { status: 400 },
+      );
+    }
+    // 2 GB-håndhævelsen (punkt 16): Bunny's reelle storageSize —
+    // samme grænse som storage-HEAD-ledet (klienten kan ikke lyve).
+    videoFileBytes = bunny.storageSize || null;
+    if (videoFileBytes !== null && videoFileBytes > VIDEO_MAX_BYTES) {
+      return NextResponse.json(
+        {
+          error:
+            "Videoen er over 2 GB — komprimer den (fx 720p eller lavere bitrate) og prøv igen.",
+        },
+        { status: 400 },
+      );
+    }
+    resolvedVideoUrl = bunnyDirectPlayUrl(bunnyVideoId, oplosning);
+    bunnyVideoGuid = bunnyVideoId;
+  } else if (typeof videoUrl === "string") {
+    const ownFolderPrefix = `${supabaseUrl}/storage/v1/object/public/film-videos/${user.id}/`;
+    if (!videoUrl.startsWith(ownFolderPrefix)) {
+      return NextResponse.json(
+        { error: "Video-URL hører ikke til din upload-mappe" },
+        { status: 400 },
+      );
+    }
+    resolvedVideoUrl = videoUrl;
+  } else {
     return NextResponse.json(
-      { error: "Video-URL hører ikke til din upload-mappe" },
+      { error: "Videoen mangler" },
       { status: 400 },
     );
   }
@@ -209,30 +275,32 @@ export async function POST(request: NextRequest) {
   // Filens størrelse til egress-estimatet: server-side HEAD på den
   // offentlige URL (klientens File.size kan lyves om; HEAD koster ingen
   // egress — kun headers). Best-effort: fejl ⇒ null, blokerer ALDRIG
-  // uploaden.
-  let videoFileBytes: number | null = null;
-  try {
-    const head = await fetch(videoUrl, { method: "HEAD" });
-    const length = Number(head.headers.get("content-length"));
-    if (head.ok && Number.isFinite(length) && length > 0) {
-      videoFileBytes = length;
+  // uploaden. (Bunny-Flowet kom reelt med storageSize ovenfor —
+  // HEAD-ledet gælder kun legacy storage-URL'en.)
+  if (bunnyVideoGuid === null) {
+    try {
+      const head = await fetch(resolvedVideoUrl, { method: "HEAD" });
+      const length = Number(head.headers.get("content-length"));
+      if (head.ok && Number.isFinite(length) && length > 0) {
+        videoFileBytes = length;
+      }
+    } catch {
+      // ukendt størrelse → sessioner på filmen får egress-skønnet 0
     }
-  } catch {
-    // ukendt størrelse → sessioner på filmen får egress-skønnet 0
-  }
 
-  // 2 GB-håndhævelsen, led 2 (punkt 16 i TING-JE): klienten tjekker
-  // File.size ved filvalg, men den kan LYVES om — HEAD'ens content-
-  // length er den reelle sandhed. Over grænsen = afvis; uploadformens
-  // fejl-vej fjerner allerede de netop uploadede objekter på en 400.
-  if (videoFileBytes !== null && videoFileBytes > VIDEO_MAX_BYTES) {
-    return NextResponse.json(
-      {
-        error:
-          "Videoen er over 2 GB — komprimer den (fx 720p eller lavere bitrate) og prøv igen.",
-      },
-      { status: 400 },
-    );
+    // 2 GB-håndhævelsen, led 2 (punkt 16 i TING-JE): klienten tjekker
+    // File.size ved filvalg, men den kan LYVES om — HEAD'ens content-
+    // length er den reelle sandhed. Over grænsen = afvis; uploadformens
+    // fejl-vej fjerner allerede de netop uploadede objekter på en 400.
+    if (videoFileBytes !== null && videoFileBytes > VIDEO_MAX_BYTES) {
+      return NextResponse.json(
+        {
+          error:
+            "Videoen er over 2 GB — komprimer den (fx 720p eller lavere bitrate) og prøv igen.",
+        },
+        { status: 400 },
+      );
+    }
   }
 
   // sort_order 1000: default 0 ville straks overtage HeroBannerens
@@ -251,7 +319,8 @@ export async function POST(request: NextRequest) {
       creator_handle: owned.handle,
       spoken_language: spoken,
       gradient,
-      video_url: videoUrl,
+      video_url: resolvedVideoUrl,
+      bunny_video_id: bunnyVideoGuid,
       video_file_size_bytes: videoFileBytes,
       poster_url: posterUrl,
       status: "draft",

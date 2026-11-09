@@ -1,0 +1,128 @@
+/**
+ * Bunny Stream-serverhjælpere (9/11-integrationen) — KUN server-side:
+ * bibliotekets AccessKey-nøgle (getBunnyEnv) må aldrig nå klienten.
+ *
+ * Formler/quirks verificeret mod bibliotek 804139 (memory
+ * bunny-stream-setup):
+ * - opret-svarets id-felt hedder "guid" (ikke VideoId)
+ * - uploaden går via TUS (tusupload) med signaturen
+ *   SHA256(libraryId + apiKey + expires + guid) som hex —
+ *   headere: AuthorizationSignature / AuthorizationExpire /
+ *   LibraryId / VideoId
+ * - delete er DELETE /library/{id}/videos/{guid} → 200 "success":true
+ * - video-objektets "status": 0 Created · 2 Processing · 3 Finished ·
+ *   4 Error (1-sec-klippers quirk: 4 med afspilbar 240p alligevel)
+ * - "availableResolutions" er en komma-adskilt streng ("1080p,720p,…")
+ */
+
+import { createHash } from "node:crypto";
+import { getBunnyEnv } from "./config";
+
+export interface BunnyVideoInfo {
+  guid: string;
+  /** 0=Created 1=Uploaded 2=Processing 3=Finished 4=Error 5/6=JIT */
+  status: number;
+  encodeProgress: number;
+  /** f.eks. "1080p,720p,480p,360p,240p" eller null */
+  availableResolutions: string | null;
+  storageSize: number;
+  lengthSec: number;
+  title: string;
+}
+
+async function bunnyFetch(
+  path: string,
+  init: RequestInit = {},
+): Promise<Response> {
+  const { streamApiKey, libraryId, videoApiBase } = getBunnyEnv();
+  const res = await fetch(`${videoApiBase}/library/${libraryId}${path}`, {
+    ...init,
+    headers: {
+      AccessKey: streamApiKey,
+      ...init.headers,
+    },
+  });
+  return res;
+}
+
+/** Opretter et Bunny-video-objekt (kladen/klippet) — guid'et er
+ *  identiteten; TUS-signaturen hænger på uploaden. */
+export async function createBunnyVideo(title: string): Promise<string> {
+  const res = await bunnyFetch("/videos", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title }),
+  });
+  if (!res.ok) {
+    throw new Error(`Bunny-opret foreslog fejlet (HTTP ${res.status})`);
+  }
+  const data = (await res.json()) as { guid?: string };
+  if (!data.guid) {
+    throw new Error("Bunny-opret svarede uden guid");
+  }
+  return data.guid;
+}
+
+export async function getBunnyVideo(
+  guid: string,
+): Promise<BunnyVideoInfo | null> {
+  const res = await bunnyFetch(`/videos/${guid}`);
+  if (res.status === 404) return null;
+  if (!res.ok) {
+    throw new Error(`Bunny-status fejl (HTTP ${res.status})`);
+  }
+  const d = (await res.json()) as {
+    guid: string;
+    status: number;
+    encodeProgress: number;
+    availableResolutions: string | null;
+    storageSize: number;
+    length: number;
+    title: string;
+  };
+  return {
+    guid: d.guid,
+    status: d.status,
+    encodeProgress: d.encodeProgress,
+    availableResolutions: d.availableResolutions,
+    storageSize: d.storageSize,
+    lengthSec: d.length,
+    title: d.title,
+  };
+}
+
+export async function deleteBunnyVideo(guid: string): Promise<void> {
+  await bunnyFetch(`/videos/${guid}`, { method: "DELETE" });
+}
+
+/** TUS-presignaturen: SHA256(libraryId + apiKey + expires + guid) hex —
+ *  KUN her (server), aldrig i klient-koden. */
+export function tusSignature(guid: string, expiresSec: number): string {
+  const { libraryId, streamApiKey } = getBunnyEnv();
+  return createHash("sha256")
+    .update(`${libraryId}${streamApiKey}${expiresSec}${guid}`)
+    .digest("hex");
+}
+
+/** Vælger den fineste direkte-MP4-opløsning en Bunny-video reelt har
+ *  encodet — foretrækker 720p (afspillerens v1-standard), faldt til
+ *  de laveste som findes. Returnerer fx "720p" eller null hvis
+ *  intet er encodet endnu (publiceringsgaten tager det fra her). */
+export function pickMp4Resolution(
+  availableResolutions: string | null,
+): string | null {
+  if (!availableResolutions) return null;
+  const liste = availableResolutions
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (liste.includes("720p")) return "720p";
+  const tallene = liste
+    .map((s) => /^\D*(\d+)p$/.exec(s)?.[1])
+    .filter((s): s is string => Boolean(s))
+    .map((s) => Number(s));
+  if (tallene.length === 0) return null;
+  const lavere = tallene.filter((n) => n <= 720);
+  const valgt = Math.max(...(lavere.length ? lavere : tallene));
+  return `${valgt}p`;
+}
