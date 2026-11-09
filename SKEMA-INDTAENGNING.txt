@@ -206,16 +206,27 @@ LÆSNINGEN (hvorfor begge rækker skal ses samtidigt):
     disciplineres ved upload — margin pr. FILM-MINUT er den rigtige
     metering, ikke margin pr. pakke.
   * SKALA-LEVER — BESLUT 9/11: BUNNY STREAM integreres DENNE UGE
-    (brugerens mål): video-egress flytter fra Supabase til Bunny
-    (CDN ≈ $0,01/GB ≈ 0,07 kr/GB) → ~90 % egress-besparelse.
+    (brugerens mål): video-egress flytter fra Supabase til Bunny.
+    REELLE Bunny-CDN-rater (brugerens prisliste 9/11, kurs 7,0):
+      Europa + Nordamerika  $0,010/GB ≈ 0,070 kr/GB  (baseline)
+      Sydamerika            $0,045/GB ≈ 0,315 kr/GB
+      Asien + Oceanien      $0,030/GB ≈ 0,210 kr/GB  (japan/zh/hi!)
+      Mellemøsten + Afrika  $0,060/GB ≈ 0,420 kr/GB
+    → ~90 % egress-besparelse i baseline; internationalt seere er
+      op til 6x baseline — men ALLE regioner stadig 2-9x billigere
+      end Supabase's flade 0,63 kr/GB.
+    WORST-CASE pack-1000 (100 % forbrug, 90-min titel; egress 22 GB):
+      EU/NA: 1,54 kr → margin +15,07 · Asien: 4,62 → +11,99 ·
+      Sydamerika: 6,93 → +9,68 · Mellemøsten/afrika: 9,24 → +6,67
+      (alle POSITIVE — selv den dyreste region holder pack-1000
+      over vand ved fuldt forbrug på en 90-min-titel!)
     Supabase (free-tier i første omgang) beholder KUN konti/DB/
     godkendelser (KB-trafik — 5 GB/md rækker længe; NB free-tier
     pauser ved inaktivitet, tjek den før genaktiveringer — se
     auto-pause-sektionen i PROJEKTSTATUS). EFTERSpil: SKEMA's
     sektion D/G genberegnes med Bunny-rater når integrationen er
-    E2E (worst case pack-1000: 13,86 → ~1,5 kr egress); Bunny's
-    Analytics/Usage-API kan oveni erstatte egress-SKØNNET med
-    reelle bytes pr. titel.
+    E2E; Bunny's Analytics/Usage-API kan oveni erstatte egress-
+    SKØNNET med reelle bytes pr. titel (evt. per region).
   NB TAL ER HYPOTETISKE — erstat 0,022 GB/min med
   sum(video_file_size_bytes) / sum(duration_sec) fra documentaries
   LIVE (og erstat 30 %-antagelsen med reel forbrugs-rate: sum af
