@@ -453,7 +453,11 @@
       "uploadFailed": "The upload failed — try again.",
       "rowFailed": "The film could not be created — try again.",
       "license": "You must confirm the license terms before you can upload.",
-      "videoTooBig": "The video is over 2 GB — compress it (e.g. 720p or lower bitrate) and select the file again."
+      "videoTooBig": "The video is over 2 GB — compress it (e.g. 720p or lower bitrate) and select the file again.",
+      "bunnyStart": "The video CDN could not be prepared — please try again.",
+      "tusUpload": "The upload to video CDN failed — please try again (the upload will resume where it left off).",
+      "bunnyEncode": "The encoding of the film failed in video CDN — please try again.",
+      "bunnyEncodeTimeout": "The encoding took too long in video CDN — please try uploading again shortly."
     },
     "filmsHeading": "Your films",
     "statusDraft": "Draft — awaiting approval",
@@ -530,7 +534,10 @@
     "talFollowers": "Followers",
     "visitHeading": "Your business card",
     "visitIntro": "A card with your profile and your stats — ready to share on social media, in emails, or at festivals.",
-    "visitDownload": "Download business card (PNG)"
+    "visitDownload": "Download business card (PNG)",
+    "bunnyPrepare": "Preparing video CDN…",
+    "bunnyUpload": "Uploading to video CDN: {percent} %",
+    "bunnyEncode": "Encoding in video CDN… (please wait)"
   },
   "profile": {
     "loginTitle": "Log in to see your profile",

@@ -1,8 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { hasBunnyEnv } from "@/lib/bunny/config";
+import { hasBunnyEnv, getBunnyEnv, TUS_SIGNATURE_TTL_SEC } from "@/lib/bunny/config";
 import { createBunnyVideo, tusSignature } from "@/lib/bunny/stream";
-import { TUS_SIGNATURE_TTL_SEC } from "@/lib/bunny/config";
 
 export const dynamic = "force-dynamic";
 
@@ -53,6 +52,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const env = getBunnyEnv();
     const guid = await createBunnyVideo(`doccys:${user.id}`);
     const tusExpire = Math.floor(Date.now() / 1000) + TUS_SIGNATURE_TTL_SEC;
     const signature = tusSignature(guid, tusExpire);
@@ -61,6 +61,7 @@ export async function POST(request: NextRequest) {
         videoId: guid,
         tusSignature: signature,
         tusExpire,
+        libraryId: env.libraryId,
       },
       { status: 201 },
     );

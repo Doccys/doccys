@@ -453,7 +453,11 @@
       "uploadFailed": "Falha no carregamento — tente novamente.",
       "rowFailed": "Não foi possível criar o filme — tente novamente.",
       "license": "Você deve confirmar os termos da licença antes de poder fazer upload.",
-      "videoTooBig": "O vídeo é maior que 2 GB — comprima-o (por exemplo, 720p ou bitrate mais baixo) e selecione o arquivo novamente."
+      "videoTooBig": "O vídeo é maior que 2 GB — comprima-o (por exemplo, 720p ou bitrate mais baixo) e selecione o arquivo novamente.",
+      "bunnyStart": "Não foi possível preparar o video-CDN — tente novamente.",
+      "tusUpload": "A transferência para o video-CDN falhou — tente novamente (o upload será retomado de onde parou).",
+      "bunnyEncode": "A codificação do filme falhou no video-CDN — tente novamente.",
+      "bunnyEncodeTimeout": "A codificação demorou muito no video-CDN — tente fazer o upload novamente em breve."
     },
     "filmsHeading": "Seus filmes",
     "statusDraft": "Rascunho — aguardando aprovação",
@@ -530,7 +534,10 @@
     "talFollowers": "Seguidores",
     "visitHeading": "Seu cartão de visita",
     "visitIntro": "Um cartão com seu perfil e suas estatísticas — pronto para compartilhar nas redes sociais, por e-mail ou em festivais.",
-    "visitDownload": "Baixar cartão de visita (PNG)"
+    "visitDownload": "Baixar cartão de visita (PNG)",
+    "bunnyPrepare": "Preparando video-CDN…",
+    "bunnyUpload": "Transferindo para video-CDN: {percent} %",
+    "bunnyEncode": "Codificando no video-CDN… (aguarde um momento)"
   },
   "profile": {
     "loginTitle": "Faça login para ver seu perfil",

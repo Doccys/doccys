@@ -36,7 +36,112 @@ import {
  * har ingen progress-callback.
  */
 
-type Phase = "idle" | "probing" | "uploading" | "saving" | "done";
+type Phase =
+  | "idle"
+  | "probing"
+  | "uploading"
+  | "bunnyPrepare"
+  | "bunnyUpload"
+  | "bunnyEncode"
+  | "saving"
+  | "done";
+
+/**
+ * TUS-genoptageligt upload (Bunny Stream, 9/11): serveren (bunny-start)
+ * opretter videorækken og signerer; klienten uploader herefter DIREKTE
+ * til video.bunnycdn.com/tusupload — Vercels 4,5 MB request-body-grænse
+ * forbyder server-gennemstrømning af 2 GB-filer, og Bunnys TUS-endpoint
+ * tager browser-opload med CORS. Headere gentages ved PATCH (Bunny
+ * validerer signaturen ved hvert kald); chunk-størrelse 16 MB med
+ * 3 forsøg pr. chunk, og HEAD-forsøget genoptager, hvis forbindelsen
+ * ryger midtvejs.
+ */
+const TUS_ENDPOINT = "https://video.bunnycdn.com/tusupload";
+const TUS_CHUNK_BYTES = 16 * 1024 * 1024;
+const TUS_CHUNK_RETRIES = 3;
+
+interface BunnyUploadTicket {
+  videoId: string;
+  tusSignature: string;
+  tusExpire: number;
+  libraryId: string;
+}
+
+async function tusUpload(
+  file: File,
+  ticket: BunnyUploadTicket,
+  onProgress?: (andel: number) => void,
+): Promise<void> {
+  const headers = (): Record<string, string> => ({
+    AuthorizationSignature: ticket.tusSignature,
+    AuthorizationExpire: String(ticket.tusExpire),
+    LibraryId: ticket.libraryId,
+    VideoId: ticket.videoId,
+  });
+
+  // Genoptagelse: TUS-HEAD afslører, hvor uploaden kom fra — en
+  // gensendt side/brudt fetch fortsätter, hvor den slap.
+  let offset = 0;
+  let head = await fetch(TUS_ENDPOINT, {
+    method: "HEAD",
+    headers: headers(),
+  });
+  if (!head.ok && head.status !== 404) {
+    throw new Error(`tus-head-${head.status}`);
+  }
+  const headOffset = Number(head.headers.get("Upload-Offset"));
+  if (Number.isFinite(headOffset) && headOffset > 0 && headOffset <= file.size) {
+    offset = headOffset;
+  }
+
+  while (offset < file.size) {
+    const slutt = Math.min(offset + TUS_CHUNK_BYTES, file.size);
+    const chunk = file.slice(offset, slutt);
+    let ny = Number.NaN;
+    for (let attempt = 0; attempt < TUS_CHUNK_RETRIES; attempt++) {
+      const res = await fetch(TUS_ENDPOINT, {
+        method: "PATCH",
+        headers: {
+          ...headers(),
+          "Upload-Offset": String(offset),
+          "Content-Type": "application/offset+octet-stream",
+        },
+        body: chunk,
+      });
+      if (res.status === 204) {
+        const resOffset = Number(res.headers.get("Upload-Offset"));
+        if (Number.isFinite(resOffset)) ny = resOffset;
+        break;
+      }
+      if (attempt === TUS_CHUNK_RETRIES - 1) {
+        throw new Error(`tus-patch-${res.status}`);
+      }
+    }
+    if (!Number.isFinite(ny) || ny <= offset) {
+      throw new Error("tus-offset");
+    }
+    offset = ny;
+    if (onProgress) {
+      onProgress(offset / file.size);
+    }
+  }
+}
+
+/** Encoder-pollen: Bunny klargør kladen efter upload (status 3 =
+ * Finished). Venter op til ~10 minutter i 3-sekunders runde. */
+async function pollBunnyEncode(
+  videoId: string,
+): Promise<"ready" | "failed" | "timeout"> {
+  for (let runde = 0; runde < 200; runde++) {
+    const res = await fetch(`/api/films/bunny-status?id=${videoId}`);
+    if (res.ok) {
+      const body = (await res.json()) as { status: number };
+      if (body.status >= 3) return body.status === 3 ? "ready" : "failed";
+    }
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+  }
+  return "timeout";
+}
 
 const inputClassName =
   "w-full rounded-lg border border-smoke bg-onyx px-4 py-2.5 text-sm text-bone placeholder:text-ash/60 focus:border-champagne focus:outline-none";
@@ -106,8 +211,10 @@ export default function StudioUploadForm({
 
   const [phase, setPhase] = useState<Phase>("idle");
   const [error, setError] = useState<string | null>(null);
+  /** TUS-uploadens andel (0-100) — visning pr. pro-cent i statuslinjen */
+  const [bunnyPercent, setBunnyPercent] = useState(0);
 
-  const busy = phase === "uploading" || phase === "saving" || phase === "probing";
+  const busy = phase !== "idle" && phase !== "done";
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     setError(null);
@@ -275,45 +382,93 @@ export default function StudioUploadForm({
       return;
     }
 
-    // 2) Upload video til egen mappe i film-videos-bucketet
-    const path = `${session.user.id}/${crypto.randomUUID()}.mp4`;
-    // File-objekter uden mime (file.type === "") sender tom type i
-    // FormData og afvises af bucketen — tving video/mp4 for filer, der
-    // netop er valideret som mp4 i handleFileChange.
-    const videoBody =
-      file.type === "" ? new Blob([file], { type: "video/mp4" }) : file;
-    const { error: uploadError } = await supabase.storage
-      .from(FILM_VIDEOS_BUCKET)
-      .upload(path, videoBody, { contentType: "video/mp4" });
-    if (uploadError) {
-      console.warn("StudioUploadForm (upload):", uploadError.message);
-      setPhase("idle");
-      // Bedste indsats: plakaten er allerede oppe — fjern den igen
+    // 2) Bunny Stream (9/11): serveren opretter videorækken + signerer,
+    //    klienten uploader DIREKTE til TUS-endpointet (browser-to-Bunny —
+    //    Vercels body-grænse forbyder gennemstrømning). 2 GB-tjekket
+    //    (led 1) er allerede gjort ved filvalget.
+    setPhase("bunnyPrepare");
+    let ticket: BunnyUploadTicket;
+    try {
+      const res = await fetch("/api/films/bunny-start", { method: "POST" });
+      const body = (await res.json().catch(() => ({}))) as {
+        error?: string;
+      } & Partial<BunnyUploadTicket>;
+      if (!res.ok) {
+        throw new Error(body.error ?? "bunny-start");
+      }
+      if (
+        !body.videoId ||
+        !body.tusSignature ||
+        !body.tusExpire ||
+        !body.libraryId
+      ) {
+        throw new Error("bunny-ticket");
+      }
+      ticket = {
+        videoId: body.videoId,
+        tusSignature: body.tusSignature,
+        tusExpire: body.tusExpire,
+        libraryId: body.libraryId,
+      };
+    } catch (err) {
       await supabase.storage
         .from(FILM_POSTERS_BUCKET)
         .remove([posterPath])
         .catch(() => undefined);
-      // Bucketens mime-tjek er skrapt (storage-js sender filens EGEN
-      // type, ikke vores option) — omdøbte filer fejler her med 415.
-      // En udløbet session giver en RLS-fejl i stedet.
-      const msg = uploadError.message ?? "";
-      if (msg.includes("mime type")) {
-        setError(t("errors.notMp4"));
-      } else if (msg.includes("row-level security")) {
-        setError(t("errors.notLoggedIn"));
-      } else {
-        setError(t("errors.uploadFailed"));
-      }
+      setPhase("idle");
+      console.warn("StudioUploadForm (bunny-start):", err);
+      setError(
+        err instanceof Error && err.message !== "bunny-start"
+          ? err.message
+          : t("errors.bunnyStart"),
+      );
       return;
     }
 
-    // 3) Opret film-rækken som kladde via API'en (validering +
-    //    tvungen draft-status + slug-generering)
+    setPhase("bunnyUpload");
+    setBunnyPercent(0);
+    try {
+      await tusUpload(file, ticket, (andel) =>
+        setBunnyPercent(Math.round(andel * 100)),
+      );
+    } catch (err) {
+      // Uploaden fejlede — ryd plakaten + det forladte Bunny-objekt
+      // (bunny-delete er titeltbundet til kontoen og idempotent).
+      await supabase.storage
+        .from(FILM_POSTERS_BUCKET)
+        .remove([posterPath])
+        .catch(() => undefined);
+      await fetch(`/api/films/bunny-delete?id=${ticket.videoId}`, {
+        method: "POST",
+      }).catch(() => undefined);
+      setPhase("idle");
+      console.warn("StudioUploadForm (tus):", err);
+      setError(t("errors.tusUpload"));
+      return;
+    }
+
+    // 3) Encoding-venten: Bunny klargør kladen — playback-URL'en er
+    //    der, når de første opløsninger er encodet (status 3).
+    setPhase("bunnyEncode");
+    const encode = await pollBunnyEncode(ticket.videoId);
+    if (encode !== "ready") {
+      await supabase.storage
+        .from(FILM_POSTERS_BUCKET)
+        .remove([posterPath])
+        .catch(() => undefined);
+      await fetch(`/api/films/bunny-delete?id=${ticket.videoId}`, {
+        method: "POST",
+      }).catch(() => undefined);
+      setPhase("idle");
+      setError(
+        encode === "timeout" ? t("errors.bunnyEncodeTimeout") : t("errors.bunnyEncode"),
+      );
+      return;
+    }
+
+    // 4) Opret film-rækken som kladde via API'en (validering +
+    //    tvungen draft-status + slug-generering + Bunny-ledet)
     setPhase("saving");
-    const { data } = supabase.storage
-      .from(FILM_VIDEOS_BUCKET)
-      .getPublicUrl(path);
-    const publicUrl = `${data.publicUrl}`;
     const { data: posterData } = supabase.storage
       .from(FILM_POSTERS_BUCKET)
       .getPublicUrl(posterPath);
@@ -329,7 +484,7 @@ export default function StudioUploadForm({
           year: Number(year),
           genres,
           durationSec,
-          videoUrl: publicUrl,
+          bunnyVideoId: ticket.videoId,
           spokenLanguage,
           posterUrl,
           licenseAccepted: true,
@@ -351,6 +506,7 @@ export default function StudioUploadForm({
       setFile(null);
       setDurationSec(null);
       setLicenseAccepted(false);
+      setBunnyPercent(0);
       clearPoster();
       if (fileInputRef.current) fileInputRef.current.value = "";
       if (posterInputRef.current) posterInputRef.current.value = "";
@@ -358,9 +514,11 @@ export default function StudioUploadForm({
       router.refresh();
     } catch (err) {
       // Rækken kunne ikke oprettes → fjern de netop uploadede
-      // objekter, så intet hænger løst i bucketene
-      await supabase.storage.from(FILM_VIDEOS_BUCKET).remove([path]);
+      // objekter, så intet hænger løst (bunny-delete er idempotent)
       await supabase.storage.from(FILM_POSTERS_BUCKET).remove([posterPath]);
+      await fetch(`/api/films/bunny-delete?id=${ticket.videoId}`, {
+        method: "POST",
+      }).catch(() => undefined);
       setPhase("idle");
       setError(
         err instanceof Error && err.message !== "row"
@@ -587,11 +745,17 @@ export default function StudioUploadForm({
       <p className="mt-4 text-xs text-ash/70">
         {phase === "uploading"
           ? t("uploading")
-          : phase === "saving"
-            ? t("saving")
-            : phase === "probing"
-              ? t("probing")
-              : t("creatorNote", { handle: creatorHandle })}
+          : phase === "bunnyPrepare"
+            ? t("bunnyPrepare")
+            : phase === "bunnyUpload"
+              ? t("bunnyUpload", { percent: bunnyPercent })
+              : phase === "bunnyEncode"
+                ? t("bunnyEncode")
+                : phase === "saving"
+                  ? t("saving")
+                  : phase === "probing"
+                    ? t("probing")
+                    : t("creatorNote", { handle: creatorHandle })}
       </p>
 
       <div className="mt-6">

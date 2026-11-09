@@ -453,7 +453,11 @@
       "uploadFailed": "Lataus epäonnistui — yritä uudelleen.",
       "rowFailed": "Elokuvaa ei voitu luoda — yritä uudelleen.",
       "license": "Sinun on vahvistettava lisenssiehdot ennen kuin voit ladata.",
-      "videoTooBig": "Video on yli 2 GB — pakkaa se (esim. 720p tai matalampi bittinopeus) ja valitse tiedosto uudelleen."
+      "videoTooBig": "Video on yli 2 GB — pakkaa se (esim. 720p tai matalampi bittinopeus) ja valitse tiedosto uudelleen.",
+      "bunnyStart": "Video-CDN:ää ei voitu valmistella — yritä uudelleen.",
+      "tusUpload": "Siirto video-CDN:ään epäonnistui — yritä uudelleen (siirto jatkuu siitä, mihin se jäi).",
+      "bunnyEncode": "Elokuvan koodaus epäonnistui video-CDN:ssä — yritä uudelleen.",
+      "bunnyEncodeTimeout": "Koodaus kesti liian kauan video-CDN:ssä — yritä ladata uudelleen hetken kuluttua."
     },
     "filmsHeading": "Elokuvasi",
     "statusDraft": "Luonnos — odottaa hyväksyntää",
@@ -530,7 +534,10 @@
     "talFollowers": "Seuraajat",
     "visitHeading": "Käyntikorttisi",
     "visitIntro": "Kortti, jossa on profiilisi ja tietosi — valmis jaettavaksi sosiaalisessa mediassa, sähköposteissa tai festivaaleilla.",
-    "visitDownload": "Lataa käyntikortti (PNG)"
+    "visitDownload": "Lataa käyntikortti (PNG)",
+    "bunnyPrepare": "Valmistellaan video-CDN:ää…",
+    "bunnyUpload": "Siirretään video-CDN:ään: {percent} %",
+    "bunnyEncode": "Koodataan video-CDN:ssä… (odota hetki)"
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",

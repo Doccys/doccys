@@ -453,7 +453,11 @@
       "uploadFailed": "Der Upload ist fehlgeschlagen — versuche es erneut.",
       "rowFailed": "Der Film konnte nicht erstellt werden — versuche es erneut.",
       "license": "Sie müssen die Lizenzbedingungen bestätigen, bevor Sie hochladen können.",
-      "videoTooBig": "Das Video ist über 2 GB groß — komprimieren Sie es (z. B. 720p oder niedrigere Bitrate) und wählen Sie die Datei erneut aus."
+      "videoTooBig": "Das Video ist über 2 GB groß — komprimieren Sie es (z. B. 720p oder niedrigere Bitrate) und wählen Sie die Datei erneut aus.",
+      "bunnyStart": "Video-CDN konnte nicht vorbereitet werden — bitte erneut versuchen.",
+      "tusUpload": "Der Upload zu Video-CDN ist fehlgeschlagen — bitte erneut versuchen (der Upload wird dort fortgesetzt, hvor den slap).",
+      "bunnyEncode": "Die Kodierung des Films ist in Video-CDN fehlgeschlagen — bitte erneut versuchen.",
+      "bunnyEncodeTimeout": "Die Kodierung hat zu lange gedauert in Video-CDN — bitte versuchen Sie es in Kürze erneut."
     },
     "filmsHeading": "Deine Filme",
     "statusDraft": "Entwurf — wartet auf Freigabe",
@@ -530,7 +534,10 @@
     "talFollowers": "Follower",
     "visitHeading": "Deine Visitenkarte",
     "visitIntro": "Eine Karte mit deinem Profil und deinen Zahlen – bereit zum Teilen in sozialen Medien, per E-Mail oder auf Festivals.",
-    "visitDownload": "Visitenkarte herunterladen (PNG)"
+    "visitDownload": "Visitenkarte herunterladen (PNG)",
+    "bunnyPrepare": "Bereite Video-CDN vor…",
+    "bunnyUpload": "Übertrage zu Video-CDN: {percent} %",
+    "bunnyEncode": "Kodierung in Video-CDN… (bitte warten)"
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",

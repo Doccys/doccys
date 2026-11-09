@@ -453,7 +453,11 @@
       "uploadFailed": "Opplastingen feilet — prøv igjen.",
       "rowFailed": "Filmen kunne ikke opprettes — prøv igjen.",
       "license": "Du må bekrefte lisensvilkårene før du kan laste opp.",
-      "videoTooBig": "Videoen er over 2 GB — komprimer den (f.eks. 720p eller lavere bitrate) og velg filen igjen."
+      "videoTooBig": "Videoen er over 2 GB — komprimer den (f.eks. 720p eller lavere bitrate) og velg filen igjen.",
+      "bunnyStart": "Video-CDN kunne ikke forberedes — prøv igjen.",
+      "tusUpload": "Overføringen til video-CDN feilet — prøv igjen (opplastingen gjenopptas der den slapp).",
+      "bunnyEncode": "Koding av filmen feilet i video-CDN — prøv igjen.",
+      "bunnyEncodeTimeout": "Koding tok for lang tid i video-CDN — prøv å laste opp igjen om litt."
     },
     "filmsHeading": "Filmene dine",
     "statusDraft": "Kladd — venter på godkjenning",
@@ -530,7 +534,10 @@
     "talFollowers": "Følgere",
     "visitHeading": "Ditt visittkort",
     "visitIntro": "Et kort med profilen din og tallene dine — klart til å dele på sosiale medier, i e-poster eller på festivaler.",
-    "visitDownload": "Last ned visittkort (PNG)"
+    "visitDownload": "Last ned visittkort (PNG)",
+    "bunnyPrepare": "Forbereder video-CDN…",
+    "bunnyUpload": "Overfører til video-CDN: {percent} %",
+    "bunnyEncode": "Koder i video-CDN… (vent litt)"
   },
   "profile": {
     "loginTitle": "Logg inn for å se profilen din",

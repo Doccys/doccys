@@ -453,7 +453,11 @@
       "uploadFailed": "L'envoi a échoué — réessayez.",
       "rowFailed": "Le film n'a pas pu être créé — réessayez.",
       "license": "Vous devez confirmer les conditions de licence avant de pouvoir télécharger.",
-      "videoTooBig": "La vidéo dépasse 2 Go — compressez-la (par exemple en 720p ou avec un débit binaire inférieur) et sélectionnez à nouveau le fichier."
+      "videoTooBig": "La vidéo dépasse 2 Go — compressez-la (par exemple en 720p ou avec un débit binaire inférieur) et sélectionnez à nouveau le fichier.",
+      "bunnyStart": "Le CDN vidéo n'a pas pu être préparé — veuillez réessayer.",
+      "tusUpload": "Le transfert vers le CDN vidéo a échoué — veuillez réessayer (le téléchargement reprendra là où il s'est arrêté).",
+      "bunnyEncode": "L'encodage du film a échoué dans le CDN vidéo — veuillez réessayer.",
+      "bunnyEncodeTimeout": "L'encodage a pris trop de temps dans le CDN vidéo — veuillez essayer de télécharger à nouveau dans un instant."
     },
     "filmsHeading": "Vos films",
     "statusDraft": "Brouillon — en attente d'approbation",
@@ -530,7 +534,10 @@
     "talFollowers": "Abonnés",
     "visitHeading": "Votre carte de visite",
     "visitIntro": "Une carte avec votre profil et vos statistiques — prête à être partagée sur les réseaux sociaux, par e-mail ou lors de festivals.",
-    "visitDownload": "Télécharger la carte de visite (PNG)"
+    "visitDownload": "Télécharger la carte de visite (PNG)",
+    "bunnyPrepare": "Préparation du CDN vidéo…",
+    "bunnyUpload": "Transfert vers le CDN vidéo : {percent} %",
+    "bunnyEncode": "Encodage dans le CDN vidéo… (veuillez patienter)"
   },
   "profile": {
     "loginTitle": "Connectez-vous pour voir votre profil",

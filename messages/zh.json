@@ -453,7 +453,11 @@
       "uploadFailed": "上传失败—请重试。",
       "rowFailed": "无法创建电影—请重试。",
       "license": "您必须确认许可条款才能上传。",
-      "videoTooBig": "视频超过 2 GB — 请压缩它（例如 720p 或更低比特率）并重新选择文件。"
+      "videoTooBig": "视频超过 2 GB — 请压缩它（例如 720p 或更低比特率）并重新选择文件。",
+      "bunnyStart": "无法准备视频CDN — 请重试。",
+      "tusUpload": "上传到视频CDN失败 — 请重试（上传将从中断处恢复）。",
+      "bunnyEncode": "视频CDN中的影片编码失败 — 请重试。",
+      "bunnyEncodeTimeout": "视频CDN中的编码耗时过长 — 请稍后重新上传。"
     },
     "filmsHeading": "您的电影",
     "statusDraft": "草稿—等待批准",
@@ -530,7 +534,10 @@
     "talFollowers": "关注者",
     "visitHeading": "您的名片",
     "visitIntro": "包含您的个人资料和数据的卡片——准备好在社交媒体、电子邮件或节日中分享。",
-    "visitDownload": "下载名片 (PNG)"
+    "visitDownload": "下载名片 (PNG)",
+    "bunnyPrepare": "正在准备视频CDN…",
+    "bunnyUpload": "正在上传到视频CDN：{percent} %",
+    "bunnyEncode": "正在编码视频CDN…（请稍候）"
   },
   "profile": {
     "loginTitle": "登录以查看您的个人资料",
