@@ -1,0 +1,207 @@
+DOCCYS — SKEMA: INDTJENING EFTER UDgifter OG SKABER-UDBETALINGER
+Opdateret: 9/11 2026 · punkt 22-territorium + Exit-DD-hygiejne
+==========================================================
+
+SÅDAN BRUGES DEN
+- Sættene nedenfor regnes i RÆKKEFØLGE (A→F) — hver sektion har
+  HYPOTETISK tal (til planlegning) + den SQL, der erstatter dem med
+  LIVE-tal (til regnskabet/kvartalsopgørelsen).
+- Alle tal i DKK inkl./ekskl. momser markeres — momsen er ALDRIG
+  din indtægt, den passerer igennem (afgives til SKAT).
+- Grundsands: afregnens forbrugte minutter (credit_ledger 'forbrug')
+  = seerens udgaver. KUN gyldige sessioner (verdict=valid) udbetaler
+  til skabere — invalid/suspicious-sessioner indsamler ingen skaber-
+  udbetaling. Det betyder: SKABER-KOSTEDEN < seer-forbrug — en
+  "gratis" margin-tilfældighed der er vigtig.
+
+-----------------------------------------------------------
+A) BRUTTOINDTÆGT (pakkesalget)
+-----------------------------------------------------------
+HYPOTETISK (fyldt ud med eksempel: måned 1 efter lancering):
+  pack-1000  (49 kr, netto 39,20)   : [ 120 stk ] = 5.880,00 kr incl. moms
+  pack-2000  (75 kr, netto 60,00)   : [  40 stk ] = 3.000,00 kr incl. moms
+  pack-3000  (99 kr, netto 79,20)   : [  20 stk ] = 1.980,00 kr incl. moms
+  BRUTTO SUM                                      = 10.860,00 kr incl. moms
+  HERAF MOMS (afgives — IKKE din indtægt)
+    moms = brutto − netto                          ≈ 25 % af netto-summen
+  NETTO OMSETNING (price_dkk_excl, det du kan regne videre på)
+                                                 ≈  8.688,00 kr
+
+LIVE (SQL Editor — erstatter den hypotetiske blok 1:1):
+  select pack_id, count(*) antal, sum(price_dkk_excl) netto
+    from public.credit_purchases
+   where status = 'paid'
+     and paid_at >= date_trunc('month', now())
+   group by pack_id;
+  -- brutto (inkl. det indkrævede moms) hentes fra STRIPE's
+  -- Balances-side (indkrævet sum) — eller = netto + moms.
+  -- billing_country-gruppering (redaktions-statistieken):
+  select coalesce(billing_country,'?') land, count(*),
+         sum(price_dkk_excl) netto
+    from public.credit_purchases where status='paid'
+   group by 1 order by 2 desc;
+
+-----------------------------------------------------------
+B) SKABER-UDBETALINGER (koster kun af GYLDIGE minutter)
+-----------------------------------------------------------
+FORMEL: gyldige gyldige-forbrugte minutter × 2,00 kr / 100
+        (rate pr. film: documentaries.payout_rate_dkk —
+         de fleste står på 2,00; sum per film i creator_tal)
+
+HYPOTETISK (eksempel):
+  forbrugte gyldige minutter i måneden      : [ 42.000 ]
+  SKABER-OMSÆTNINGS-OMKOSTNING (42.000 × 2,00/100): 840,00 kr
+  ud af dem der rammer 150 kr-tærsklen og PAYOUT-anmoder    : [ 700,00 ]
+  resten forbliver i skaber-salden (forpligtelse! se F)    : [ 140,00 ]
+
+LIVE:
+  select sum(seconds)::numeric / 60 * 2.0 / 100 as skaber_omk
+    from public.credit_ledger
+   where reason = 'forbrug';  -- ≈ gyldige; for PRAECIS sum brug
+  -- creator_tal(p_handle) RPC per skaber (eller creator_payouts-
+  -- tabellen for udbetalte beløb):
+  select sum(amount) as udbetalte_kroner
+    from public.creator_payouts
+   where created_at >= date_trunc('month', now());
+  -- PENDING forpligelse (der SKAL udbetales!):
+  select sum(amount) from public.creator_payout_requests
+   where status = 'pending';
+  -- og den REELLE skaber-omkostning (kun valid, pr. rate):
+  -- creator_tal-RPC's ialt.kr — sum den per skaber (studiet kan vise).
+
+NB: FORBRUG på gratis-minutter (se D) genererer skaber-udbetaling
+    uden indtægt — det er platformens dyreste lille-linje.
+
+-----------------------------------------------------------
+C) PAYMENT-UDgifter (Stripe gebyrer)
+-----------------------------------------------------------
+Stripe DK-kort: ca. 1,4-2,9 % + fast pr. salg (tjek dit dashboard:
+Payouts → fee-kolonne). EKSEMPEL med 1,5 % + 2,00 kr:
+  (180 salg × (10.860×0,015) + 180×2,00) ≈ 526,00 kr
+LIVE: Stripe-dashboard → Reports → "Fees collected" pr. periode.
+
+-----------------------------------------------------------
+D) BANDBREDDE (egress) — DEN STORE VARIABEL
+-----------------------------------------------------------
+Formel: sum(estimated_egress_bytes) pr. måned ÷ 1.000.000.000 → GB
+        × din pris pr. GB. (SKØNNET er skrevet i view_sessions;
+        kalibrér mod Supabase-dashboaredet efter første seer-uge.)
+HYPOTETISK:
+  estimeret GB i måneden                    : [  850 GB ]
+  pris pr. GB (tjek Supabase-prislisten)    : [ 0,80 kr ]
+  EGRESS-OMKOSTNING                          =  680,00 kr
+NB: affiliate/admin gratis-minutter (uden indtægt) brækker her:
+    hver gratis-minut set er et GB uden afregning.
+LIVE:
+  select pg_size_pretty(sum(estimated_egress_bytes)) total,
+         round(sum(estimated_egress_bytes)/1e9::numeric, 2) gb
+    from public.view_sessions
+   where started_at >= date_trunc('month', now());
+
+-----------------------------------------------------------
+E) FASTE OMKOSTNINGER (pr. måned, amortiseret)
+-----------------------------------------------------------
+  Vercel Pro (+års-rabat $20/md)                ≈  140,00 kr
+  Supabase (free-tier nu; ved skala Pro ~$25)   ≈    0,00 kr
+  Namecheap e-mail (fordelt i 2 år)             ≈    6,00 kr
+  domæne doccys.com (fordelt i år)              ≈    7,00 kr
+  OpenAI (undertekster ~5 kr/film + genkøringer): [ 150,00 kr ]
+  I ALT FASTE                                   ≈  303,00 kr
+
+-----------------------------------------------------------
+F) UDSTÅENDE FORPLIGTELSE — DET FØRSTE TAL EN OPKØBER SPØRGER TIL
+-----------------------------------------------------------
+(Hvad platformen SKAL levere i fremtiden, for pengene allerede
+er optjent — jf. Exit-DD-hygiejne i TING-JE-LISTEN.)
+1) UDBETALTE SKABER-SALDER (tilgængelig, afventer 150 kr-tærskel)
+   LIVE: sum af creator_indtjening "Tilgængelig" per skaber minus
+         creator_payouts-sum i udbetalt — eller:
+   select coalesce(sum(t.kr - coalesce(b.udbetalt,0)),0)
+     from (select 1) t ...  -- NB: brug creator_tal(p_handle) med
+     -- "Tilgængelig" fra studiet som praksis-nær tal,
+     -- eller lav en dedikeret RPC når volumen kræver det.
+2) UDSPENDT MEN IKKE-BRUgte SEER-MINUTTER (seernes saldo)
+   LIVE:
+   select floor(sum(seconds)/60.0) minutter
+     from public.credit_ledger
+    where seconds > 0;
+   minus
+   select floor(abs(sum(seconds))/60.0)
+     from public.credit_ledger
+    where reason = 'forbrug';
+   (= minutter købt/foræret, der fortsat kan bruges — hvert af dem
+    er potentielt egress + skaber-udbetaling uden NY indtægt)
+
+-----------------------------------------------------------
+G) PER-PAKKE-REGNSKAB (to scenarier pr. pakke)
+-----------------------------------------------------------
+FORMEL pr. pakke:
+  netto (price_dkk_excl) − Stripe-gebyr − skaber-udbetaling
+  − forventet egress = margin
+  * skaber: forbrugte minutter × 2,00 kr/100 (rate kan sættes pr.
+    film: documentaries.payout_rate_dkk, default 2,00)
+  * egress: filbytes pr. minut × forbrugte minutter ÷ 1e9 × kr/GB
+    (kalibrering pr. 9/11: test-filmene ≈ 2 GB / 90 min ≈ 0,022
+    GB pr. minut; RATE pr. GB er hypotetisk 0,80 — erstat med
+    Supabase/EV. CDN-volumenpris ved skala)
+  * scenarier: FULLT forbrug (= 100 % af salgte minutter set) og
+    REALISTISK (= 30 % set i første måned, saldoen forbliver ufor-
+    brugt — se F2 for den udestående forpligtelse)
+
+                       pack-1000    pack-2000    pack-3000
+  brutto (incl. moms)     49,00        75,00        99,00
+  heraf moms (afgives)     9,80        15,00        19,80
+  NETTO                   39,20        60,00        79,20
+  − Stripe (~1,5% + 2kr)   2,59         2,90         3,49
+  [30 % forbrug]
+  − skaber                 6,00        12,00        18,00
+  − egress (0,022 GB/min)  5,28        10,56        15,84
+  = MARGIN (realistisk)   25,33        34,54        41,87  ✓
+  [100 % forbrug — worst case]
+  − skaber                20,00        40,00        60,00
+  − egress                17,60        35,20        52,80
+  = MARGIN (worst case)    -1,01       -18,10       -37,09  !
+
+LÆSNINGEN (hvorfor begge rækker skal ses samtidigt):
+  * REALISTISK er den styre-til: små faste gebyrer amortiseres, og
+    de større pakker VINDER pr. forbrugt minut (Stripe's faste
+    del er lille; skaber + egress koster per FORBRUGT minut, ikke
+    per salg) — større pakker er en god deal for OS, ikke kun kunden.
+  * WORST CASE er risiken der kan ske hvis ALLE minutter bruges og
+    bitraterne er høje: egress + skaber spiser det hele. DET er
+    grunden til 2 GB-håndhævelsen + 720p-vejlåsning (punkt 16):
+    filbytes pr. minut er KONMEN i denne regning, og den disciplineres
+    ved upload — margin pr. FILM-MINUT er den rigtige metering, ikke
+    margin pr. pakke.
+  * SKALA-LEVER: pris pr. GB falder ved volumen (CDN/Bunny), og
+    payout_rate_dkk kan sættes pr. film — der er REELLE knapper,
+    men post-lancering.
+  NB TAL ER HYPOTETISKE — erstat 0,022 GB/min med
+  sum(video_file_size_bytes) / sum(duration_sec) fra documentaries
+  LIVE (og erstat 30 %-antagelsen med reel forbrugs-rate: sum af
+  'forbrug' i ledger ÷ sum af solgte minutter).
+
+-----------------------------------------------------------
+H) RESULTAT — SUMMEN
+-----------------------------------------------------------
+  NETTO OMSETNING  (A)                        =
+  − SKABER-UDBETALINGER (B: udbetalte + pending)  =
+  − PAYMENT-GEBYRER (C)                       =
+  − EGRESS (D)                                =
+  − FASTE (E)                                 =
+  = NETTO RESULTAT FØR SKAT (pr. måned)       =
+
+HYPOTETISK EKSEMPEL med tallene ovenfor:
+  8.688,00 − 700,00 − 526,00 − 680,00 − 303,00 = 6.479,00 kr/md
+  (≈ 60 % af netto ved de antagelser — RE-RENS med live tal!)
+  SKAT/selskab + Kontoservice/DAC7: REVISOR (punkt 12/22).
+
+NB'S
+- Momsen passerer igennem: brutto → netto er ALLE tal her.
+- Skaber-udbetaling skyldes KUN gyldige minutter — men du MÅ altid
+  udbetale det OPTJENTE ("fjern filmen, aldrig pengene", terms s13).
+- Egress-skønnet er en SKØN pr. session (CBR-antagelse, range-
+  overshoot 10-20 % højer); kalibrér mod Supabase-dashboaredets
+  baandbredde-tal efter første rigtige seer-uge.
+- Fyld IKKE nye tal ind i koden — dette skema er til regnskab,
+  ikke til sitet.
