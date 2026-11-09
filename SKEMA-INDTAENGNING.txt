@@ -83,13 +83,18 @@ LIVE: Stripe-dashboard → Reports → "Fees collected" pr. periode.
 -----------------------------------------------------------
 D) BANDBREDDE (egress) — DEN STORE VARIABEL
 -----------------------------------------------------------
-Formel: sum(estimated_egress_bytes) pr. måned ÷ 1.000.000.000 → GB
-        × din pris pr. GB. (SKØNNET er skrevet i view_sessions;
+REELLE RATER (brugerens oplysninger 9/11, Supabase Pro):
+  • $25/md fast — INKL. 250 GB bandbredde pr. måned
+  • overage: $0,09 pr. GB ≈ 0,63 kr/GB (kurs ≈ 7,0 DKK/USD —
+    opdatér ved regnskabet)
+Formel: sum(estimated_egress_bytes) pr. måned ÷ 1e9 → GB; 250 GB er
+        INCLUDED i den faste pris (sekt. E) — kun OVERSKRIBENTEN
+        betaler overage. (SKØNNET er skrevet i view_sessions;
         kalibrér mod Supabase-dashboaredet efter første seer-uge.)
 HYPOTETISK:
   estimeret GB i måneden                    : [  850 GB ]
-  pris pr. GB (tjek Supabase-prislisten)    : [ 0,80 kr ]
-  EGRESS-OMKOSTNING                          =  680,00 kr
+  − inkluderet i Pro                        :   250 GB
+  overage (600 GB × 0,62 kr)                 =  372,00 kr
 NB: affiliate/admin gratis-minutter (uden indtægt) brækker her:
     hver gratis-minut set er et GB uden afregning.
 LIVE:
@@ -102,11 +107,13 @@ LIVE:
 E) FASTE OMKOSTNINGER (pr. måned, amortiseret)
 -----------------------------------------------------------
   Vercel Pro (+års-rabat $20/md)                ≈  140,00 kr
-  Supabase (free-tier nu; ved skala Pro ~$25)   ≈    0,00 kr
+  Supabase Pro $25/md — INKL. 250 GB bandbredde ≈  175,00 kr
   Namecheap e-mail (fordelt i 2 år)             ≈    6,00 kr
   domæne doccys.com (fordelt i år)              ≈    7,00 kr
   OpenAI (undertekster ~5 kr/film + genkøringer): [ 150,00 kr ]
-  I ALT FASTE                                   ≈  303,00 kr
+  I ALT FASTE                                   ≈  478,00 kr
+  (Supabase free-tier KAN holde længere — men Pro 250 GB er
+   den reelle plan ved volume; free-tier pauser jo ved inaktivitet)
 
 -----------------------------------------------------------
 F) UDSTÅENDE FORPLIGTELSE — DET FØRSTE TAL EN OPKØBER SPØRGER TIL
@@ -153,29 +160,35 @@ FORMEL pr. pakke:
   heraf moms (afgives)     9,80        15,00        19,80
   NETTO                   39,20        60,00        79,20
   − Stripe (~1,5% + 2kr)   2,59         2,90         3,49
-  [30 % forbrug]
+  [30 % forbrug — egress KUN hvis måneden har oversteget 250 GB]
   − skaber                 6,00        12,00        18,00
-  − egress (0,022 GB/min)  5,28        10,56        15,84
-  = MARGIN (realistisk)   25,33        34,54        41,87  ✓
+  − egress (0,63 kr/GB)    4,16         8,32        12,47
+  = MARGIN (realistisk)   26,45        36,78        45,24  ✓
   [100 % forbrug — worst case]
   − skaber                20,00        40,00        60,00
-  − egress                17,60        35,20        52,80
-  = MARGIN (worst case)    -1,01       -18,10       -37,09  !
+  − egress (0,63 kr/GB)   13,86        27,72        41,58
+  = MARGIN (worst case)    +2,75       -10,62       -25,87
 
 LÆSNINGEN (hvorfor begge rækker skal ses samtidigt):
-  * REALISTISK er den styre-til: små faste gebyrer amortiseres, og
-    de større pakker VINDER pr. forbrugt minut (Stripe's faste
-    del er lille; skaber + egress koster per FORBRUGT minut, ikke
-    per salg) — større pakker er en god deal for OS, ikke kun kunden.
-  * WORST CASE er risiken der kan ske hvis ALLE minutter bruges og
-    bitraterne er høje: egress + skaber spiser det hele. DET er
-    grunden til 2 GB-håndhævelsen + 720p-vejlåsning (punkt 16):
-    filbytes pr. minut er KONMEN i denne regning, og den disciplineres
-    ved upload — margin pr. FILM-MINUT er den rigtige metering, ikke
-    margin pr. pakke.
-  * SKALA-LEVER: pris pr. GB falder ved volumen (CDN/Bunny), og
-    payout_rate_dkk kan sættes pr. film — der er REELLE knapper,
-    men post-lancering.
+  * 250 GB INKLUDERET forandrer regningen: under 250 GB/md koster
+    hver pakkes egress 0 — tallene ovenfor gælder kun, når
+    måneden har oversteget; ellers margin = netto − Stripe − skaber
+    (realistisk: 30,61 / 45,10 / 57,71 ✓✓✓).
+  * REALISTISK er den styre-til: fastgebyrer amortiseres, større
+    pakker VINDER pr. forbrugt minut (skaber + egress koster per
+    FORBRUGT minut, ikke per salg) — større pakker er en god deal
+    for OS, ikke kun kunden.
+  * WORST CASE er risiken der kan ske hvis ALLE minutter bruges.
+    Med 0,62 kr/GB ser pack-1000 nogenlunde ud (+2,75), de store
+    pakker TABER hvis bitraterne er høje OG alle minutter bruges.
+    DET er grunden til 2 GB-håndhævelsen + 720p-vejledningen
+    (punkt 16): filbytes pr. minut er CENTRET i regningen, og den
+    disciplineres ved upload — margin pr. FILM-MINUT er den rigtige
+    metering, ikke margin pr. pakke.
+  * SKALA-LEVER: overage $0,09/GB er allerede billig—ved meget
+    volumen kan CDN/Bunny-konkurrence/egen cache presse den
+    videre, og payout_rate_dkk kan sættes pr. film — REELLE
+    knapper, post-lancering.
   NB TAL ER HYPOTETISKE — erstat 0,022 GB/min med
   sum(video_file_size_bytes) / sum(duration_sec) fra documentaries
   LIVE (og erstat 30 %-antagelsen med reel forbrugs-rate: sum af
@@ -191,9 +204,10 @@ H) RESULTAT — SUMMEN
   − FASTE (E)                                 =
   = NETTO RESULTAT FØR SKAT (pr. måned)       =
 
-HYPOTETISK EKSEMPEL med tallene ovenfor:
-  8.688,00 − 700,00 − 526,00 − 680,00 − 303,00 = 6.479,00 kr/md
-  (≈ 60 % af netto ved de antagelser — RE-RENS med live tal!)
+HYPOTETISK EKSEMPEL med tallene ovenfor (850 GB egress md., 30 %-for-
+brug, 180 salg):
+  8.688,00 − 700,00 − 526,00 − 372,00 − 478,00 = 6.612,00 kr/md
+  (≈ 76 % af netto ved de antagelser — RE-RENS med live tal!)
   SKAT/selskab + Kontoservice/DAC7: REVISOR (punkt 12/22).
 
 NB'S
