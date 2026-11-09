@@ -223,10 +223,12 @@ LÆSNINGEN (hvorfor begge rækker skal ses samtidigt):
     Supabase (free-tier i første omgang) beholder KUN konti/DB/
     godkendelser (KB-trafik — 5 GB/md rækker længe; NB free-tier
     pauser ved inaktivitet, tjek den før genaktiveringer — se
-    auto-pause-sektionen i PROJEKTSTATUS). EFTERSpil: SKEMA's
-    sektion D/G genberegnes med Bunny-rater når integrationen er
-    E2E; Bunny's Analytics/Usage-API kan oveni erstatte egress-
-    SKØNNET med reelle bytes pr. titel (evt. per region).
+    auto-pause-sektionen i PROJEKTSTATUS). EFTERSPIL (BYGGET 9/11 —
+    integrationen kode-side E2E-afventer: se PROJEKTSTATUS' Bunny-
+    sektion; film-migration 20261109_bunny_stream.sql af brugeren):
+    SKEMA's sektion D/G genberegnes med bunny-rater når E2E er grøn;
+    bunny's Analytics/Usage-API kan oveni erstatte egress-SKØNNET
+    med reelle bytes pr. titel (evt. per region).
   NB TAL ER HYPOTETISKE — erstat 0,022 GB/min med
   sum(video_file_size_bytes) / sum(duration_sec) fra documentaries
   LIVE (og erstat 30 %-antagelsen med reel forbrugs-rate: sum af

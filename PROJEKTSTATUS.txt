@@ -34,6 +34,64 @@ monitors) følger TING-JE-LISTE Del 1–2. Status 31/10:
   multi-currency er skala-ting, ikke lancering-ting.
 Vercel forbliver PAUSET under hele flytningen — alt tester lokalt.
 
+BUNNY STREAM-INTEGRATION — VIDEO-EGRESS PÅ BUNNY (9/11) — E2E AFVENTER
+Beslutning 9/11 (SKEMA-INDTAENGNING.txt sektion J): video-egress flytter
+fra Supabase (0,63 kr/GB) til Bunny Stream (0,070-0,42 kr/GB pr. region)
+→ ≈90 % egress-besparelse i Europe-standarten; Supabase (free-tier)
+beholder KUN konti/DB/undertekster/plakater. Bibliotek "doccys" = id
+804139 · PullZone 6974057 · host vz-d6678dae-1f6.b-cdn.net. API-forudsæt-
+ningerne VERIFICERET END-TO-END (opret-200 med "guid"-felt · TUS-upload
+200 (NB curl --data-binary 500 / -T 200) · slet 200 · playback 200 med
+browser-Referer · Range 206 video/mp4 · playlist.m3u8 (HLS) 200).
+403-FÆLDENS tre led (kostede gætterier — LAERING i memory
+bunny-stream-setup): biblioteket kræver AllowDirectPlay til (default FRA
+= kun deres player-iframe) · zone-token var TIL ved oprettelse ·
+**BlockNoneReferrer=true** var den sidste lås — server/browser-skellen:
+curl/API uden Referer = 403, browsere (med Referer) = 200. Låsen er
+bevidst HOLT (hotlink-afvigelse).
+- ARKITEKTUR (TUS-presigned browser-upload — Vercels 4,5 MB body-grænse
+  forbyder server-gennemstrømning): 1) POST /api/films/bunny-start
+  (skaber-auth + ejerskabs-titel "doccys:{userId}" på Bunny-objektet)
+  → {videoId, tusSignature=SHA256(libraryId+key+expires+guid), tusExpire
+  (+24 h), libraryId} 2) StudioUploadForm uploader DIREKTE til
+  video.bunnycdn.com/tusupload med IN-HOUSE TUS-klient (HEAD-genoptagelse
+  + PATCH-chunks 16 MB × 3 forsøg — INGEN ny npm-afhængighed) 3) encode-
+  poll via /api/films/bunny-status 4) POST /api/films med bunnyVideoId:
+  ruten GET'er objektet (titel=ejer-sjek, status=3-sjek, storageSize→
+  2 GB-tjek, pickMp4Resolution [foretrækker 720p] → playback-URL) og
+  giver documentaries.bunny_video_id + video_file_size_bytes.
+- MIGRATION 20261109_bunny_stream.sql (KØRES AF BRUGEREN): 2 nullable
+  kolonner (documentaries.bunny_video_id, film_trailers.bunny_video_id).
+  Verifikations-SQL i filen.
+- COMMITS: af9eb61 (C1: bunny/config + filmVideos-hjælpere + typer +
+  migration) · 57dce57 (C2: bunny-start/-status + films-branch) ·
+  9fea133 (C3: in-house TUS-klient + formens 3 nye faser [bunnyPrepare/
+  bunnyUpload m. %-progress/bunnyEncode] + oprydnings-calls på ALLE
+  fejlveje via bunny-delete [titeltbundet, idempotent] + 7 nye
+  creatorStudio-nøgler — 583 ×13) · 8242949 (C4: trailer-klippene som
+  eget Bunny-objekt [PUT-200, encode-wait], film_trailers.bunny_video_id,
+  legacy-Supabase-branchen beholden; downloaderens Referer-header i
+  transcribe.ts [trailer+undertekster — BlockNoneReferrer]) ·
+  6acfc77 (C5: kladsletning via bunny-delete for film-+trailer-guids,
+  bunnyVideoId gennem domæne-typer/StudioFilmList) · denne commit (C6:
+  egress-kommentar fra Bunny storageSize, .env.example BUNNY_*).
+- BEVIDST UÆNDRIT: poster-pipeline (film-posters i Supabase) ·
+  undertekster (film-subtitles i Supabase — VTT små + ACAO + crossOrigin
+  beståer, verificeret) · afregn/validate/watch_sessions (egress-skønnet
+  læser video_file_size_bytes, nu Bunny storageSize) · publishGate ·
+  PaywallCard/embed (modtager den nye trailer-URL) · SEED-FILMENE
+  (forbliver Supabase — bunny_video_id null; brugerens beslutning).
+- E2E (brugeren): studie-upload af 10-30 s mp4 (talesprog da) → tus →
+  encode → kladden → afspilning fra b-cdn.net → trailer-generering →
+  (hvis 13 sprog) undertekster → kladsletning (VideoCount ned i
+  bibliotek 804139). NB encoding-køen kan drøje minutter — statuslinjen
+  viser %-progress + encode-tekst.
+- BEVIDST UCEDLT (backlog): signed playback (BUNNY-token-nøglen gemt;
+  BlockNoneReferrer er hotlink-afvigen) · HLS-adaptiv (hls.js) ·
+  Bunny Analytics som real-egress-lag · nøglerotation (BUNNY_ACCOUNT_KEY
+  + BUNNY_API_KEY + sk_live — ALLE stod i chat/output! EFTER den
+  verificerede E2E-deploy).
+
 HASTIGHEDS-OMGANG: FUNCTION-REGION IAD1→FRA1 + PARALLELISERET FORSIDE (8/11)
 Brugerens PWA-mærkning: "skifter side og åbner langsom ift. andre
 apps". Målinger bevisede: doccys.com /da TTFB 1,3-1,4 s WARM.
