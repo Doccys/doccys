@@ -169,6 +169,26 @@ FORMEL pr. pakke:
   − egress (0,63 kr/GB)   13,86        27,72        41,58
   = MARGIN (worst case)    +2,75       -10,62       -25,87
 
+  2 GB-LOFTET PR. TITEL — sådan sætter det rækkevidden af egress:
+  reelt GB pr. minut = filbytes ÷ filmens længde, og loftet (2 GiB)
+  bestemmer TOPPEN pr. minut afhængig af lengden:
+    120 min → 0,017 GB/min · 90 min → 0,022 · 60 min → 0,033 ·
+    45 min → 0,044 · 30 min → 0,067 GB/min
+  WORST-CASE pack-1000 (100 % forbrug, en 30-min-titel på loftet):
+    1.000 min × 0,067 = 66,7 GB × 0,63 kr ≈ 42,00 kr egress
+    → margin ≈ −25,40 kr (!)
+  (tabellens −1,01/-10,62/-25,87 gælder 90-min-titler paa loftet;
+   en kort-film-og-højt-bitrate-titel er den reelle dyrestneste)
+  KNAPPER imod loftet-situations-tabet:
+    • bitrate-disciplinen i kurateringen (jot-listens tjek 4 —
+      afvis eller bed om komprimering VED ACCEPT, ikke bagefter)
+    • 720p-vejledningen (punkt 16)
+    • encoding-guide i studiet (NB-listen, post-launch) +
+      trailere kodes ALTID lavt (gratis egress — jot-liste pkt 4)
+  KONKLUSION: 2 GB-loftet er et INDTJENINGSBESKYTTELSE-greb, ikke
+  kun en teknisk grænse — det afvisninger der gør det reelt, er
+  redaktionens bitrate-gennemgang af CLADS/UPLOADS.
+
 LÆSNINGEN (hvorfor begge rækker skal ses samtidigt):
   * 250 GB INKLUDERET forandrer regningen: under 250 GB/md koster
     hver pakkes egress 0 — tallene ovenfor gælder kun, når
