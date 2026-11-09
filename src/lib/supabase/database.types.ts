@@ -64,6 +64,9 @@ export type DocumentaryRow = {
   creator_handle: string;
   gradient: string;
   video_url: string;
+  /** Bunny Stream-videoens GUID (9/11-integrationen) — null = legacy
+   *  Supabase-URL (seed-filmene forbliver i Supabase, bevidst) */
+  bunny_video_id: string | null;
   /** filens størrelse i bytes — egress-estimatets grundlag (null = ukendt) */
   video_file_size_bytes: number | null;
   /** plakat-billede i film-posters — null = gradienten bruges */
@@ -98,7 +101,9 @@ export type DocumentaryInsert = {
   creator_handle: string;
   gradient: string;
   video_url: string;
-  /** sættes af POST /api/films (server-side HEAD) — null = ukendt størrelse */
+  /** sættes af POST /api/films ved Bunny-upload (null = legacy Supabase) */
+  bunny_video_id?: string | null;
+  /** sættes af POST /api/films (server-side; Bunny storageSize eller HEAD) */
   video_file_size_bytes?: number | null;
   poster_url?: string | null;
   total_views?: number;
@@ -127,6 +132,7 @@ export type DocumentaryUpdate = {
   creator_handle?: string;
   gradient?: string;
   video_url?: string;
+  bunny_video_id?: string | null;
   video_file_size_bytes?: number | null;
   poster_url?: string | null;
   total_views?: number;
@@ -657,8 +663,11 @@ export type FilmTrailerRow = {
   start_sec: number;
   /** klippets længde — fast 90 fra API'et, håndhæves af check */
   length_sec: number;
-  /** public Storage-URL på trailer-MP4'en; null mens ikke 'ready' */
+  /** public URL på trailer-MP4'en (Bunny eller legacy Supabase);
+   *  null mens ikke 'ready' */
   trailer_url: string | null;
+  /** Bunny-videoens GUID (9/11) — null = legacy Supabase-URL */
+  bunny_video_id: string | null;
   /** 'processing' | 'ready' | 'failed' — håndhæves af check-constraint */
   status: string;
   /** fejlbesked når status = 'failed' */
@@ -673,6 +682,7 @@ export type FilmTrailerInsert = {
   start_sec?: number;
   length_sec?: number;
   trailer_url?: string | null;
+  bunny_video_id?: string | null;
   status?: string;
   error?: string | null;
   created_at?: string;
@@ -683,6 +693,7 @@ export type FilmTrailerUpdate = {
   start_sec?: number;
   length_sec?: number;
   trailer_url?: string | null;
+  bunny_video_id?: string | null;
   status?: string;
   error?: string | null;
   updated_at?: string;
