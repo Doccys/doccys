@@ -17,7 +17,7 @@ export default async function CollectionCard({
   return (
     <Link href={`/collections/${collection.slug}`} className="group block">
       <div
-        className={`relative aspect-[16/9] overflow-hidden rounded-lg border border-smoke bg-linear-to-br ${collection.previewGradient} transition-transform duration-300 group-hover:-translate-y-1`}
+        className={`relative aspect-[16/9] overflow-hidden rounded-lg border border-champagne/45 bg-linear-to-br ${collection.previewGradient} transition-transform duration-300 group-hover:-translate-y-1`}
       >
         {collection.previewPosterUrl && (
           /* eslint-disable-next-line @next/next/no-img-element -- storage-URL, ikke Next-billedpipeline */

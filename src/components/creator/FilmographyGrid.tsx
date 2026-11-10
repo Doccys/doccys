@@ -37,7 +37,7 @@ export default async function FilmographyGrid({
         return (
           <Link key={film.id} href={`/watch/${film.slug}`} className="group block">
             <div
-              className={`relative aspect-[16/9] overflow-hidden rounded-lg border border-smoke bg-linear-to-br ${film.gradient} transition-transform duration-300 group-hover:-translate-y-1`}
+              className={`relative aspect-[16/9] overflow-hidden rounded-lg border border-champagne/45 bg-linear-to-br ${film.gradient} transition-transform duration-300 group-hover:-translate-y-1`}
             >
               {/* uploadet forsidebillede ligger oveni gradienten
                   (object-cover); mangler det, viser gradienten +
