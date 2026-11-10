@@ -203,7 +203,13 @@ export default async function WatchPage({ params }: WatchPageProps) {
       {player}
 
       <header className="mt-10">
-        <h1 className="font-display text-4xl text-bone">{documentary.title}</h1>
+        <h1 className="font-display text-4xl text-bone">
+          {/* Guld-hårlinjen (brugerens ønske 10/11): champagne-ramme
+              omkring titlen — eksklusiv-udtrykket, brandets "guld" */}
+          <span className="inline-block rounded-md border border-champagne/45 px-4 py-1.5">
+            {documentary.title}
+          </span>
+        </h1>
         <p className="mt-2 text-sm text-ash">
           {documentary.year} · {formatDuration(documentary.durationSec)} ·{" "}
           {genres.join(" · ")}

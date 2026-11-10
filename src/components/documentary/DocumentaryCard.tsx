@@ -61,7 +61,11 @@ export default async function DocumentaryCard({
         )}
         <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-noir via-noir/80 to-transparent p-3 pt-8">
           <h3 className="font-display text-base leading-snug text-bone">
-            {documentary.title}
+            {/* Guld-hårlinjen (10/11): samme champagne-ramme som
+                watch-sidens titel — genkendelige alle steder */}
+            <span className="inline-block rounded border border-champagne/45 px-1.5 py-0.5">
+              {documentary.title}
+            </span>
           </h3>
           <p className="mt-1 text-xs text-ash">
             {genres.join(" · ")}
