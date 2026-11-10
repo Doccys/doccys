@@ -12,6 +12,7 @@ import WatchHistoryList from "@/components/profile/WatchHistoryList";
 import UnfollowCreatorButton from "@/components/profile/UnfollowCreatorButton";
 import DocumentaryGrid from "@/components/documentary/DocumentaryGrid";
 import { createClient } from "@/lib/supabase/server";
+import { seerTrae } from "@/lib/viewerStatus";
 import {
   getBalanceSeconds,
   getOrCreateReferralCode,
@@ -48,6 +49,7 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
   setRequestLocale(locale);
 
   const t = await getTranslations("profile");
+  const statusT = await getTranslations("viewerStatus");
   const supabase = await createClient();
   const {
     data: { user },
@@ -142,6 +144,19 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
 
       {userHandle && (
         <p className="mt-2 text-sm text-champagne">@{userHandle}</p>
+      )}
+
+      {/* Seer-status ved overskriften (brugerens ønske 10/11): guld-
+          chip med den aktuel titel — samme piller som badges-skålen
+          nede i status-sektionen; ejer-siden, ingen offentlig flair. */}
+      {viewerStatus && (
+        <p className="mt-3">
+          <span className="inline-flex items-center gap-2 rounded-full border border-champagne/60 bg-champagne/10 px-4 py-1.5 text-xs font-medium text-champagne">
+            {statusT(
+              seerTrae(viewerStatus.totalMinutes).titelNoegle ?? "tier0",
+            )}
+          </span>
+        </p>
       )}
 
       <MinutesSection
