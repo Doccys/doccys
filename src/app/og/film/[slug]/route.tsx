@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import OgBrand from "@/components/og/OgBrand";
 
 /**
  * Auto-genereret Open Graph-billede pr. film:
@@ -80,18 +81,7 @@ export async function GET(
         background: bg,
       }}
     >
-      <div style={{ display: "flex" }}>
-        <div
-          style={{
-            color: CHAMPAGNE,
-            fontSize: 34,
-            fontWeight: 700,
-            letterSpacing: 14,
-          }}
-        >
-          DOCCYS
-        </div>
-      </div>
+      <OgBrand />
 
       <div
         style={{

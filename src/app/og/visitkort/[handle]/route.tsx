@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { createTranslator } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { localizedCountry } from "@/lib/i18n/content";
+import OgBrand from "@/components/og/OgBrand";
 
 /**
  * Skaberens delbare visitkort som PNG (1200×630):
@@ -120,21 +121,9 @@ export async function GET(
         background: NOIR,
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div
-          style={{
-            color: CHAMPAGNE,
-            fontSize: 34,
-            fontWeight: 700,
-            letterSpacing: 14,
-          }}
-        >
-          DOCCYS
-        </div>
-        <div style={{ color: ASH, fontSize: 24, letterSpacing: 6 }}>
-          {BRAND_DOMAIN}
-        </div>
-      </div>
+      {/* logoet + ordmærket + domænet: delt brand-hoved (film-OG'en
+          matcher) — objektivring + play fra DoccysMark */}
+      <OgBrand />
 
       <div
         style={{
@@ -169,7 +158,9 @@ export async function GET(
           {creator.name}
         </div>
         <div style={{ color: ASH, fontSize: 28, marginTop: 12 }}>
-          @{creator.handle}
+          {/* NB: én samlet streng — @ + udtryk er to JSX-undren uden
+              display:flex = satori-fejl (ruten 500'ede ude i det) */}
+          {`@${creator.handle}`}
         </div>
         <div style={{ color: ASH, fontSize: 26, marginTop: 16 }}>
           {metaLine}
@@ -187,8 +178,11 @@ export async function GET(
       </div>
 
       <div style={{ display: "flex" }}>
+        {/* NB: én samlet streng — flere JSX-udtryk i én div uden
+            display:flex fælges af satori (nederste-linjen var først
+            tre adskilte udtryk, der crashed runden) */}
         <div style={{ color: BONE, fontSize: 24, letterSpacing: 3 }}>
-          {BRAND_DOMAIN}/creator/{creator.handle}
+          {`${BRAND_DOMAIN}/creator/${creator.handle}`}
         </div>
       </div>
     </div>,
