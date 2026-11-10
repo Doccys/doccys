@@ -501,7 +501,11 @@ function toCollection(row: CollectionJoinRow, locale?: string): Collection {
   return {
     id: row.id,
     slug: row.slug,
-    title: localizedText(row.title, row.title_i18n, locale),
+    // Titel i CANONISK sprog (brugerens princip 10/11: "titler skal
+    // stå i original sprog i respekt for værkerne") — samme regel som
+    // filmene; title_i18n findes i DB men læses altså ikke. Beskriv-
+    // elsen er redaktionstekst og oversætter stadig (som synopser).
+    title: row.title,
     description: localizedText(row.description, row.description_i18n, locale),
     filmCount: films.length,
     previewGradient: first?.gradient ?? "from-[#232526] via-[#414345] to-[#6b6d70]",
