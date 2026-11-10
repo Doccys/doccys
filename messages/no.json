@@ -738,7 +738,8 @@
     "topTierReached": "Høyeste nivå nådd — takk for alle minuttene.",
     "genreTitle": "{genre}-nerd",
     "genreSubtitle": "{minutes} minutter i sjangeren",
-    "badgesShelf": "Milepæler"
+    "badgesShelf": "Milepæler",
+    "tier0": "Oppdager"
   },
   "installApp": {
     "title": "Doccys som app — uten butikk: fullskjerm, ingen nettleserlinje, og ditt forslag er klart direkte fra startskjermen.",

@@ -738,7 +738,8 @@
     "topTierReached": "Korkein taso saavutettu — kiitos kaikista minuuteista.",
     "genreTitle": "{genre}-nörtti",
     "genreSubtitle": "{minutes} minuuttia genressä",
-    "badgesShelf": "Virstanot"
+    "badgesShelf": "Virstanot",
+    "tier0": "Löytää"
   },
   "installApp": {
     "title": "Doccys sovelluksena — ilman kauppaa: koko näyttö, ei selainpalkkia, ja ehdotuksesi on valmis suoraan aloitusnäytöltä.",

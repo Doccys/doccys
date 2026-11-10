@@ -55,7 +55,9 @@ export async function getViewerStatus(
     // Tom slug-liste vogtes FØR .in()-kaldet — et tomt array til PostgREST
     // er en kantcase, der ikke skal røres.
     if (secondsBySlug.size === 0) {
-      return { totalMinutes: 0, tierIndex: 0, genre: null };
+      // NB: tier0 (Opdager) kræver 0 minutter — "nået"-tællet er 1
+      // for alle konti, så 0-min-kontoens tidlige-retur giver tier1
+      return { totalMinutes: 0, tierIndex: 1, genre: null };
     }
 
     const { data: filmRows, error: filmError } = await supabase

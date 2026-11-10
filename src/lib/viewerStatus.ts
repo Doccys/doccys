@@ -12,8 +12,12 @@ interface SeerTrin {
   titelNoegle: string;
 }
 
-/** Trinene i stigende rækkefølge — titlerne: Nysgerrig / Pioner / Legende. */
+/** Trinene i stigende rækkefølge — titlerne: Opdager / Nysgerrig /
+ *  Pioner / Legende. Tier 0 (Opdager) kræver 0 minutter: titlen er
+ *  brugerens FRA START (brugerens ønske 10/11) — badges-skålen har
+ *  aldrig en tom række, og profilens titellinje er aldrig skjult. */
 export const SEER_TRAE: readonly SeerTrin[] = [
+  { minMinutter: 0, titelNoegle: "tier0" },
   { minMinutter: 100, titelNoegle: "tier1" },
   { minMinutter: 1000, titelNoegle: "tier2" },
   { minMinutter: 10000, titelNoegle: "tier3" },

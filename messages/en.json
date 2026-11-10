@@ -738,7 +738,8 @@
     "topTierReached": "Highest tier reached — thank you for all the minutes.",
     "genreTitle": "{genre} nerd",
     "genreSubtitle": "{minutes} minutes in the genre",
-    "badgesShelf": "Milestones"
+    "badgesShelf": "Milestones",
+    "tier0": "Discoverer"
   },
   "installApp": {
     "title": "Doccys as an app — fullscreen, no browser bar, and your suggestion is ready right from the home screen.",

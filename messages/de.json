@@ -738,7 +738,8 @@
     "topTierReached": "Höchstes Level erreicht — danke für all die Minuten.",
     "genreTitle": "{genre}-Nerd",
     "genreSubtitle": "{minutes} Minuten im Genre",
-    "badgesShelf": "Meilensteine"
+    "badgesShelf": "Meilensteine",
+    "tier0": "Entdecker"
   },
   "installApp": {
     "title": "Doccys als App – im Vollbildmodus, ohne Browser-Leiste, und dein Vorschlag ist direkt vom Startbildschirm bereit.",

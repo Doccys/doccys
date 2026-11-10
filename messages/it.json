@@ -738,7 +738,8 @@
     "topTierReached": "Massimo livello raggiunto — grazie per tutti i minuti.",
     "genreTitle": "nerd del {genre}",
     "genreSubtitle": "{minutes} minuti nel genere",
-    "badgesShelf": "Traguardi"
+    "badgesShelf": "Traguardi",
+    "tier0": "Scopre"
   },
   "installApp": {
     "title": "Doccys come app — a schermo intero, senza barra del browser, e la tua proposta è pronta direttamente dalla schermata iniziale.",
