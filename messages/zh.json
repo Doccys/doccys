@@ -737,7 +737,8 @@
     "toNextTier": "距离成为 {title} 还有 {minutes} 分钟",
     "topTierReached": "已达到最高等级 — 感谢您观看的所有分钟。",
     "genreTitle": "{genre} 爱好者",
-    "genreSubtitle": "在该类型中观看了 {minutes} 分钟"
+    "genreSubtitle": "在该类型中观看了 {minutes} 分钟",
+    "badgesShelf": "里程碑"
   },
   "installApp": {
     "title": "Doccys 作为应用程序 — 无需商店：全屏，无浏览器地址栏，您的建议直接从主屏幕准备就绪。",

@@ -737,7 +737,8 @@
     "toNextTier": "{minutes} minutos para convertirte en {title}",
     "topTierReached": "Nivel máximo alcanzado — gracias por todos los minutos.",
     "genreTitle": "Nerd de {genre}",
-    "genreSubtitle": "{minutes} minutos en el género"
+    "genreSubtitle": "{minutes} minutos en el género",
+    "badgesShelf": "Hitos"
   },
   "installApp": {
     "title": "Doccys como app — pantalla completa, sin barra de navegador, y tu sugerencia lista directamente desde la pantalla de inicio.",

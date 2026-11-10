@@ -737,7 +737,8 @@
     "toNextTier": "{minutes} minuter kvar till att bli {title}",
     "topTierReached": "Högsta nivå nådd — tack för alla minuter.",
     "genreTitle": "{genre}-nörd",
-    "genreSubtitle": "{minutes} minuter i genren"
+    "genreSubtitle": "{minutes} minuter i genren",
+    "badgesShelf": "Milstolpar"
   },
   "installApp": {
     "title": "Doccys som app — utan butik: helskärm, ingen webbläsarverktygsrad, och ditt förslag är klart direkt från startskärmen.",

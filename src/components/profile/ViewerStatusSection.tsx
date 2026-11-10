@@ -1,6 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { localizedGenres } from "@/lib/i18n/content";
-import { seerTrae, type ViewerStatus } from "@/lib/viewerStatus";
+import {
+  seerTrae,
+  SEER_TRAE,
+  type ViewerStatus,
+} from "@/lib/viewerStatus";
 import { formatNumber } from "@/lib/utils/format";
 
 interface ViewerStatusSectionProps {
@@ -50,6 +54,48 @@ export default async function ViewerStatusSection({
               })
             : t("topTierReached")}
         </p>
+
+        {/* Milepæls-badges (brugerens ønske 10/11): optjenes løbende —
+            nåede trin i champagne-guld (hårlinjesammengraf med
+            plakat-rammerne), u-nåede svage med tærsklen som mål.
+            Genre-titlen lænes bagerst som en ekstra "nørd"-
+            kategori-badge. */}
+        <p className="mt-5 text-xs uppercase tracking-[0.3em] text-ash">
+          {t("badgesShelf")}
+        </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {SEER_TRAE.map((et, ix) => {
+            const naaet = ix < trin.index;
+            return naaet ? (
+              <span
+                key={et.titelNoegle}
+                className="inline-flex items-center gap-2 rounded-full border border-champagne/60 bg-champagne/10 px-4 py-1.5 text-xs font-medium text-champagne"
+              >
+                {t(et.titelNoegle)}
+                <span className="text-[10px] font-normal text-champagne/60">
+                  {formatNumber(et.minMinutter, locale)} min
+                </span>
+              </span>
+            ) : (
+              <span
+                key={et.titelNoegle}
+                className="inline-flex items-center gap-2 rounded-full border border-smoke px-4 py-1.5 text-xs text-ash/50"
+              >
+                {t(et.titelNoegle)}
+                <span className="text-[10px] font-normal">
+                  {formatNumber(et.minMinutter, locale)} min
+                </span>
+              </span>
+            );
+          })}
+          {status.genre && (
+            <span className="inline-flex items-center gap-2 rounded-full border border-champagne/60 bg-champagne/10 px-4 py-1.5 text-xs font-medium text-champagne">
+              {t("genreTitle", {
+                genre: (await localizedGenres([status.genre.genre], locale))[0],
+              })}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Genre-titel: den mest sete genre ved 100+ minutter i den.

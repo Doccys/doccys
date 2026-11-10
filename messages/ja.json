@@ -737,7 +737,8 @@
     "toNextTier": "{minutes}分で{title}になります",
     "topTierReached": "最高ランクに到達しました — すべての分数に感謝します。",
     "genreTitle": "{genre}オタク",
-    "genreSubtitle": "ジャンルで{minutes}分"
+    "genreSubtitle": "ジャンルで{minutes}分",
+    "badgesShelf": "マイルストーン"
   },
   "installApp": {
     "title": "Doccysをアプリとしてインストール — フルスクリーン、ブラウザバーなし、そしてあなたの提案がホーム画面から直接表示されます。",

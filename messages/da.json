@@ -632,6 +632,7 @@
   "viewerStatus": {
     "heading": "Seer-status",
     "subtitle": "Din rejse gennem dokumentarernes verden — målt i minutter.",
+    "badgesShelf": "Milepæle",
     "minutesLine": "Du har set {minutes} minutter",
     "tier1": "Nysgerrig",
     "tier2": "Pioner",
