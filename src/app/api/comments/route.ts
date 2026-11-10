@@ -42,8 +42,36 @@ export async function GET(request: NextRequest) {
     }
   }
 
+  const comments = await doccysStore.listComments(slug, user?.id ?? null);
+
+  // Offentlig flair (backlog 13, beslutning 10/11): forfatterens grove
+  // tier fra seer_flair-viewet (migration 20261110) — ÉN .in-læsning
+  // for alle forfattere; læsefejl (viewet findes endnu ikke) = ingen
+  // chips, aldrig fejlside. user_id følger med til klienten som i dag.
+  const authorIds = [
+    ...new Set(
+      comments
+        .map((c) => c.userId)
+        .filter((id): id is string => Boolean(id)),
+    ),
+  ];
+  const flair = new Map<string, number>();
+  if (authorIds.length > 0) {
+    const { data: flairRows } = await supabase
+      .from("seer_flair")
+      .select("user_id, tier")
+      .in("user_id", authorIds);
+    for (const row of flairRows ?? []) {
+      flair.set(row.user_id, row.tier);
+    }
+  }
+
   return NextResponse.json({
-    comments: await doccysStore.listComments(slug, user?.id ?? null),
+    comments: comments.map((c) => ({
+      ...c,
+      authorTier:
+        c.userId != null ? (flair.get(c.userId) ?? 0) : null,
+    })),
     viewer: { canComment },
   });
 }

@@ -895,7 +895,18 @@ export type Database = {
       };
     };
     Views: {
-      [_ in never]: never;
+      seer_flair: {
+        /** Offentlig flair (migration 20261110): KUN user_id + grove
+         *  tier-tal — seer_flair-viewet eksponerer ingen sessioner/
+         *  enheder/film/dommer, kun milepæl-rådata-mønsteret. */
+        Row: {
+          user_id: string;
+          total_seconds: number;
+          tier: number;
+        };
+        IsReadOnly: true;
+        Relationships: [];
+      };
     };
     Functions: {
       saldo_sekunder: {

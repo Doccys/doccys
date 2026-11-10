@@ -36,6 +36,7 @@ interface CommentsResponse {
  */
 export default function CommentSection({ slug, isCreatorOwner }: CommentSectionProps) {
   const t = useTranslations("comments");
+  const statusT = useTranslations("viewerStatus");
   const locale = useLocale();
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -264,9 +265,23 @@ export default function CommentSection({ slug, isCreatorOwner }: CommentSectionP
         }
       >
         <div className="flex items-baseline justify-between gap-4">
-          <p className="break-all font-medium text-champagne">
-            {comment.authorName}
-          </p>
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
+            <p className="break-all font-medium text-champagne">
+              {comment.authorName}
+            </p>
+            {/* Offentlig flair (backlog 13, beslutning 10/11): forfatterens
+                grove seer-tier som lille guld-chip — data kommer fra
+                seer_flair-viewet via kommentar-rutens GET. */}
+            {comment.authorTier != null && (
+              <span
+                className="inline-flex shrink-0 items-center rounded-full border border-champagne/60 bg-champagne/10 px-2 py-0.5 text-[10px] font-medium text-champagne"
+              >
+                {statusT(
+                  `tier${Math.min(3, Math.max(0, comment.authorTier))}`,
+                )}
+              </span>
+            )}
+          </div>
           <div className="flex shrink-0 items-center gap-2">
             {isCreatorOwner && (
               <>

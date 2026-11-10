@@ -115,6 +115,10 @@ export interface Comment {
   authorName: string;
   /** Sættes server-side, når kommentaren kommer fra en logget-in bruger. */
   userId?: string | null;
+  /** Offentlig seer-flair (backlog 13, beslutning 10/11): forfatterens
+   *  grove tier (0=Opdager…3=Legende) fra seer_flair-viewet — null =
+   *  anonym/flair-udfald i ruten, chip vises da ikke. */
+  authorTier?: number | null;
   body: string;
   createdAt: number; // ms epoch
   /** Samlet antal likes — likes kræver en logget-ind konto. */
