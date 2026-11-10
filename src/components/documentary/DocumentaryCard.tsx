@@ -30,7 +30,7 @@ export default async function DocumentaryCard({
   return (
     <Link href={href} className="group block">
       <div
-        className={`relative aspect-[16/9] overflow-hidden rounded-lg border border-smoke bg-linear-to-br ${documentary.gradient} transition-transform duration-300 group-hover:-translate-y-1`}
+        className={`relative aspect-[16/9] overflow-hidden rounded-lg border border-champagne/45 bg-linear-to-br ${documentary.gradient} transition-transform duration-300 group-hover:-translate-y-1`}
       >
         {/* uploadet forsidebillede ligger oveni gradienten (object-cover);
             mangler det, viser gradienten + typografisk vandmærke som før */}
@@ -61,11 +61,7 @@ export default async function DocumentaryCard({
         )}
         <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-noir via-noir/80 to-transparent p-3 pt-8">
           <h3 className="font-display text-base leading-snug text-bone">
-            {/* Guld-hårlinjen (10/11): samme champagne-ramme som
-                watch-sidens titel — genkendelige alle steder */}
-            <span className="inline-block rounded border border-champagne/45 px-1.5 py-0.5">
-              {documentary.title}
-            </span>
+            {documentary.title}
           </h3>
           <p className="mt-1 text-xs text-ash">
             {genres.join(" · ")}
