@@ -725,7 +725,8 @@
     "eyebrow": "Luojat Doccysissä",
     "founded": "Perustettu {year}",
     "films": "{count, plural, one {# elokuva} other {# elokuvaa}}",
-    "followers": "{count, plural, one {# seuraaja} other {# seuraajaa}}"
+    "followers": "{count, plural, one {# seuraaja} other {# seuraajaa}}",
+    "memberSince": "Jäsen vuodesta {date}"
   },
   "viewerStatus": {
     "heading": "Katselijan tila",

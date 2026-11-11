@@ -725,7 +725,8 @@
     "eyebrow": "在Doccys上创建",
     "founded": "成立于 {year}",
     "films": "{count, plural, one {# 部电影} other {# 部电影}}",
-    "followers": "{count, plural, one {# 位关注者} other {# 位关注者}}"
+    "followers": "{count, plural, one {# 位关注者} other {# 位关注者}}",
+    "memberSince": "成为会员于 {date}"
   },
   "viewerStatus": {
     "heading": "观众状态",

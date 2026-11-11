@@ -725,7 +725,8 @@
     "eyebrow": "Creators on Doccys",
     "founded": "Founded {year}",
     "films": "{count, plural, one {# film} other {# films}}",
-    "followers": "{count, plural, one {# follower} other {# followers}}"
+    "followers": "{count, plural, one {# follower} other {# followers}}",
+    "memberSince": "Member since {date}"
   },
   "viewerStatus": {
     "heading": "Viewer Status",

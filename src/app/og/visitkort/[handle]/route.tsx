@@ -37,6 +37,7 @@ interface CreatorRow {
   handle: string;
   founded_year: number;
   country: string;
+  created_at: string;
 }
 
 async function restFetch(path: string): Promise<unknown | null> {
@@ -51,6 +52,16 @@ async function restFetch(path: string): Promise<unknown | null> {
   return res.json();
 }
 
+interface VisitkortMessages {
+  visitkort: {
+    eyebrow: string;
+    founded: string;
+    memberSince: string;
+    films: string;
+    followers: string;
+  };
+}
+
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ handle: string }> },
@@ -63,7 +74,7 @@ export async function GET(
 
   // Skaberprofilen (offentlig række — creators er select using (true))
   const creators = (await restFetch(
-    `creators?select=id,name,handle,founded_year,country&handle=eq.${encodeURIComponent(handle)}`,
+    `creators?select=id,name,handle,founded_year,country,created_at&handle=eq.${encodeURIComponent(handle)}`,
   )) as CreatorRow[] | null;
   const creator = creators?.[0];
   if (!creator) {
@@ -91,22 +102,22 @@ export async function GET(
   // Projectet har ingen global Messages-type-deklaration (next-intl
   // AppConfig), så createTranslator får namespace-formen eksplicit —
   // ellers udledes nøglerne som never.
-  interface VisitkortMessages {
-    visitkort: {
-      eyebrow: string;
-      founded: string;
-      films: string;
-      followers: string;
-    };
-  }
   const messages = (await import(`../../../../../messages/${locale}.json`))
     .default as unknown as VisitkortMessages;
   const t = createTranslator({ locale, namespace: "visitkort", messages });
 
   const country = await localizedCountry(creator.country, locale);
+  // Medlem-siden (brugerens ønske 11/11): måned + år i seerens sprog
+  // (`marts 2026`-form; datoformatteren laver sprogets eget format).
+  // Grundlæggelses-året (kun for redaktionens kuratering) vises ikke
+  // længere på kortet.
+  const medlemsSiden = new Intl.DateTimeFormat(locale, {
+    month: "long",
+    year: "numeric",
+  }).format(Date.parse(creator.created_at));
   // NB: én samlet streng pr. tekst-div — satori fejler på flere
   // tekst-children uden display:flex (samme faldgrube som /og/film)
-  const metaLine = `${t("founded", { year: creator.founded_year })} · ${country}`;
+  const metaLine = `${t("memberSince", { date: medlemsSiden })} · ${country}`;
   const countsLine = `${t("films", { count: films?.length ?? 0 })} · ${t("followers", { count: followerCount })}`;
 
   return new ImageResponse(

@@ -725,7 +725,8 @@
     "eyebrow": "Erstellt auf Doccys",
     "founded": "Gegründet {year}",
     "films": "{count, plural, one {# Film} other {# Filme}}",
-    "followers": "{count, plural, one {# Follower} other {# Follower}}"
+    "followers": "{count, plural, one {# Follower} other {# Follower}}",
+    "memberSince": "Mitglied seit {date}"
   },
   "viewerStatus": {
     "heading": "Zuschauerstatus",

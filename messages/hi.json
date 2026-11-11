@@ -725,7 +725,8 @@
     "eyebrow": "Doccys पर निर्माता",
     "founded": "स्थापित {year}",
     "films": "{count, plural, one {# फ़िल्म} other {# फ़िल्म}}",
-    "followers": "{count, plural, one {# अनुयायी} other {# अनुयायी}}"
+    "followers": "{count, plural, one {# अनुयायी} other {# अनुयायी}}",
+    "memberSince": "सदस्यता {date} से"
   },
   "viewerStatus": {
     "heading": "दर्शक स्थिति",

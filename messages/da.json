@@ -743,6 +743,7 @@
   "visitkort": {
     "eyebrow": "Skaber på Doccys",
     "founded": "Grundlagt {year}",
+    "memberSince": "Medlem siden {date}",
     "films": "{count, plural, one {# film} other {# film}}",
     "followers": "{count, plural, one {# følger} other {# følgere}}"
   }

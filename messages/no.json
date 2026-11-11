@@ -725,7 +725,8 @@
     "eyebrow": "Skaper på Doccys",
     "founded": "Grunnlagt {year}",
     "films": "{count, plural, one {# film} other {# filmer}}",
-    "followers": "{count, plural, one {# følger} other {# følgere}}"
+    "followers": "{count, plural, one {# følger} other {# følgere}}",
+    "memberSince": "Medlem siden {date}"
   },
   "viewerStatus": {
     "heading": "Seer-status",

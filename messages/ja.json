@@ -725,7 +725,8 @@
     "eyebrow": "Doccysで作成",
     "founded": "設立年 {year}",
     "films": "{count, plural, one {# 本の映画} other {# 本の映画}}",
-    "followers": "{count, plural, one {# フォロワー} other {# フォロワー}}"
+    "followers": "{count, plural, one {# フォロワー} other {# フォロワー}}",
+    "memberSince": "{date} からのメンバー"
   },
   "viewerStatus": {
     "heading": "視聴者ステータス",
