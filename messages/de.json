@@ -746,5 +746,33 @@
     "title": "Doccys als App – im Vollbildmodus, ohne Browser-Leiste, und dein Vorschlag ist direkt vom Startbildschirm bereit.",
     "button": "App installieren",
     "iosHint": "iPhone/iPad: Tippe auf Teilen in Safari und wähle „Zum Home-Bildschirm hinzufügen“ – dann ist Doccys eine App ohne App Store."
+  },
+  "viewerAarbog": {
+    "heading": "Dein Jahrbuch",
+    "subtitle": "Das Jahrbuch öffnet sich bei 1.000 Minuten — deine Sehhistorie, Monat für Monat.",
+    "totalLine": "{minutes} Minuten in den letzten 12 Monaten",
+    "empty": "Keine abgerechneten Minuten in den letzten 12 Monaten — das Jahrbuch füllt sich, während du schaust.",
+    "topGenres": "Deine Genres",
+    "topCreators": "Deine Creator",
+    "topEmpty": "Noch keine Filme"
+  },
+  "klub": {
+    "heading": "Klubzimmer",
+    "subtitle": "Ein kleiner Ort für die Legenden — die engagiertesten Zuschauer der Plattform.",
+    "lockLabel": "Gesperrt",
+    "doorTitle": "Das Klubzimmer ist geschlossen",
+    "doorIntro": "Hinter der Tür ist ein kleiner Ort, wo die Legenden sich treffen. Die Legenden sind diejenigen, die 10.000 Minuten gesehen haben — und die Tür öffnet sich, wenn du das erreichst.",
+    "doorRequirement": "Legende = 10.000 Minuten",
+    "doorMembers": "{count, plural, =1 {# Mitglied} other {# Mitglieder}}",
+    "doorPosts": "{count, plural, =1 {# Beitrag} other {# Beiträge}}",
+    "ctaLogin": "Einloggen",
+    "ctaProfile": "Sieh dir deinen Status an",
+    "membershipNote": "Als Legende kannst du lesen und schreiben.",
+    "placeholder": "Schreibe an die anderen Legenden…",
+    "submit": "Schreiben",
+    "submitting": "Wird gesendet…",
+    "submitError": "Der Beitrag konnte nicht gesendet werden. Bitte versuche es erneut.",
+    "empty": "Es ist still im Zimmer — sei die erste Legende, die spricht.",
+    "authorFallback": "Legende"
   }
 }

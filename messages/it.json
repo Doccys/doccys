@@ -746,5 +746,33 @@
     "title": "Doccys come app — a schermo intero, senza barra del browser, e la tua proposta è pronta direttamente dalla schermata iniziale.",
     "button": "Installa l'app",
     "iosHint": "iPhone/iPad: Tocca Condividi in Safari e seleziona „Aggiungi alla schermata Home“ — così Doccys diventa un'app senza App Store."
+  },
+  "viewerAarbog": {
+    "heading": "Il tuo anno",
+    "subtitle": "L'anno si apre a 1.000 minuti — la tua cronologia di visione, mese per mese.",
+    "totalLine": "{minutes} minuti negli ultimi 12 mesi",
+    "empty": "Nessun minuto registrato negli ultimi 12 mesi — l'anno si riempie mentre guardi.",
+    "topGenres": "I tuoi generi",
+    "topCreators": "I tuoi creatori",
+    "topEmpty": "Nessun film ancora"
+  },
+  "klub": {
+    "heading": "Sala Club",
+    "subtitle": "Un piccolo posto per le Leggende — i più dedicati spettatori della piattaforma.",
+    "lockLabel": "Bloccato",
+    "doorTitle": "La Sala Club è chiusa",
+    "doorIntro": "Dietro la porta c'è un piccolo posto dove si incontrano le Leggende. Le Leggende sono coloro che hanno visto 10.000 minuti — e la porta si apre quando raggiungi questo traguardo.",
+    "doorRequirement": "Leggenda = 10.000 minuti",
+    "doorMembers": "{count, plural, =1 {# membro} other {# membri}}",
+    "doorPosts": "{count, plural, =1 {# post} other {# post}}",
+    "ctaLogin": "Accedi",
+    "ctaProfile": "Guarda il tuo stato",
+    "membershipNote": "Come Leggenda puoi leggere e scrivere.",
+    "placeholder": "Scrivi agli altri Leggende…",
+    "submit": "Invia",
+    "submitting": "Invio in corso…",
+    "submitError": "Il post non è stato inviato. Riprova.",
+    "empty": "C'è silenzio nella sala — sii la prima Leggenda a parlare.",
+    "authorFallback": "Leggenda"
   }
 }

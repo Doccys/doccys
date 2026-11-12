@@ -746,5 +746,33 @@
     "title": "Doccys como aplicativo — sem loja: tela cheia, sem barra de navegador, e sua sugestão está pronta diretamente da tela inicial.",
     "button": "Instalar o aplicativo",
     "iosHint": "iPhone/iPad: Toque em Compartilhar no Safari e selecione \"Adicionar à Tela de Início\" — assim, Doccys se torna um aplicativo sem a App Store."
+  },
+  "viewerAarbog": {
+    "heading": "Seu anuário",
+    "subtitle": "O anuário é aberto com 1.000 minutos — seu histórico de visualização, mês a mês.",
+    "totalLine": "{minutes} minutos nos últimos 12 meses",
+    "empty": "Nenhum minuto assistido nos últimos 12 meses — o anuário será preenchido enquanto você assiste.",
+    "topGenres": "Seus gêneros",
+    "topCreators": "Seus criadores",
+    "topEmpty": "Nenhum filme ainda"
+  },
+  "klub": {
+    "heading": "Sala do Clube",
+    "subtitle": "Um pequeno lugar para as Lendas — os espectadores mais dedicados da plataforma.",
+    "lockLabel": "Trancado",
+    "doorTitle": "A Sala do Clube está fechada",
+    "doorIntro": "Atrás da porta há um pequeno lugar onde as Lendas se encontram. As Lendas são aqueles que assistiram 10.000 minutos — e a porta se abre quando você atinge isso.",
+    "doorRequirement": "Lenda = 10.000 minutos",
+    "doorMembers": "{count, plural, =1 {# membro} other {# membros}}",
+    "doorPosts": "{count, plural, =1 {# postagem} other {# postagens}}",
+    "ctaLogin": "Entrar",
+    "ctaProfile": "Ver seu status",
+    "membershipNote": "Como Lenda, você pode ler e escrever.",
+    "placeholder": "Escreva para as outras Lendas…",
+    "submit": "Enviar",
+    "submitting": "Enviando…",
+    "submitError": "A postagem não pôde ser enviada. Tente novamente.",
+    "empty": "Está silencioso na sala — seja a primeira Lenda a falar.",
+    "authorFallback": "Lenda"
   }
 }

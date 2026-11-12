@@ -643,6 +643,34 @@
     "genreTitle": "{genre}-nørd",
     "genreSubtitle": "{minutes} minutter i genren"
   },
+  "viewerAarbog": {
+    "heading": "Din årbog",
+    "subtitle": "Årbogen åbner ved 1.000 minutter — din seerhistorik, måned for måned.",
+    "totalLine": "{minutes} minutter i de seneste 12 måneder",
+    "empty": "Ingen afregnede minutter i de seneste 12 måneder — årbogen fyldes, mens du ser.",
+    "topGenres": "Dine genrer",
+    "topCreators": "Dine skabere",
+    "topEmpty": "Ingen film endnu"
+  },
+  "klub": {
+    "heading": "Klubstuen",
+    "subtitle": "Et lille sted for Legenderne — platformens mest dedikerede seere.",
+    "lockLabel": "Låst",
+    "doorTitle": "Klubstuen er lukket",
+    "doorIntro": "Bag døren er et lille sted, hvor Legenderne mødes. Legenderne er dem, der har set 10.000 minutter — og døren åbner sig, når du når det.",
+    "doorRequirement": "Legende = 10.000 minutter",
+    "doorMembers": "{count, plural, =1 {# medlem} other {# medlemmer}}",
+    "doorPosts": "{count, plural, =1 {# indlæg} other {# indlæg}}",
+    "ctaLogin": "Log ind",
+    "ctaProfile": "Se din status",
+    "membershipNote": "Som Legende kan du læse og skrive.",
+    "placeholder": "Skriv til de andre Legender…",
+    "submit": "Skriv",
+    "submitting": "Sender…",
+    "submitError": "Indlægget kunne ikke sendes. Prøv igen.",
+    "empty": "Der er stille i stuen — vær den første Legende, der taler.",
+    "authorFallback": "Legende"
+  },
   "genres": {
     "Klima": "Klima",
     "Portræt": "Portræt",

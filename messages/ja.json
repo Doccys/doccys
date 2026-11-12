@@ -746,5 +746,33 @@
     "title": "Doccysをアプリとしてインストール — フルスクリーン、ブラウザバーなし、そしてあなたの提案がホーム画面から直接表示されます。",
     "button": "アプリをインストール",
     "iosHint": "iPhone/iPad: Safariで「共有」をタップし、「ホーム画面に追加」を選択 — これでDoccysがApp Storeなしのアプリになります。"
+  },
+  "viewerAarbog": {
+    "heading": "あなたの年鑑",
+    "subtitle": "年鑑は1,000分で開きます — あなたの視聴履歴、月ごとに。",
+    "totalLine": "過去12ヶ月で{minutes}分",
+    "empty": "過去12ヶ月で視聴した分はありません — 視聴することで年鑑が埋まります。",
+    "topGenres": "あなたのジャンル",
+    "topCreators": "あなたのクリエイター",
+    "topEmpty": "まだ映画はありません"
+  },
+  "klub": {
+    "heading": "クラブルーム",
+    "subtitle": "レジェンドたちのための小さな場所 — プラットフォームで最も献身的な視聴者たち。",
+    "lockLabel": "ロック",
+    "doorTitle": "クラブルームは閉まっています",
+    "doorIntro": "ドアの向こうには、レジェンドたちが集まる小さな場所があります。レジェンドとは、10,000分視聴した人々です — その時、ドアは開きます。",
+    "doorRequirement": "レジェンド = 10,000分",
+    "doorMembers": "{count, plural, one {# メンバー} other {# メンバー}}",
+    "doorPosts": "{count, plural, one {# 投稿} other {# 投稿}}",
+    "ctaLogin": "ログイン",
+    "ctaProfile": "あなたのステータスを見る",
+    "membershipNote": "レジェンドとして、あなたは読むことと書くことができます。",
+    "placeholder": "他のレジェンドにメッセージを書く…",
+    "submit": "送信",
+    "submitting": "送信中…",
+    "submitError": "投稿を送信できませんでした。もう一度お試しください。",
+    "empty": "ルームは静かです — 最初のレジェンドとして話しましょう。",
+    "authorFallback": "レジェンド"
   }
 }

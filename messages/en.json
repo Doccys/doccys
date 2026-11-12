@@ -746,5 +746,33 @@
     "title": "Doccys as an app — fullscreen, no browser bar, and your suggestion is ready right from the home screen.",
     "button": "Install the app",
     "iosHint": "iPhone/iPad: Tap Share in Safari and select 'Add to Home Screen' — then Doccys is an app without the App Store."
+  },
+  "viewerAarbog": {
+    "heading": "Your Yearbook",
+    "subtitle": "The yearbook opens at 1,000 minutes — your viewing history, month by month.",
+    "totalLine": "{minutes} minutes in the last 12 months",
+    "empty": "No watched minutes in the last 12 months — the yearbook fills up as you watch.",
+    "topGenres": "Your genres",
+    "topCreators": "Your creators",
+    "topEmpty": "No films yet"
+  },
+  "klub": {
+    "heading": "The Club Room",
+    "subtitle": "A small place for the Legends — the platform's most dedicated viewers.",
+    "lockLabel": "Locked",
+    "doorTitle": "The Club Room is closed",
+    "doorIntro": "Behind the door is a small place where the Legends meet. The Legends are those who have watched 10,000 minutes — and the door opens when you reach that.",
+    "doorRequirement": "Legend = 10,000 minutes",
+    "doorMembers": "{count, plural, one {# member} other {# members}}",
+    "doorPosts": "{count, plural, one {# post} other {# posts}}",
+    "ctaLogin": "Log in",
+    "ctaProfile": "View your status",
+    "membershipNote": "As a Legend, you can read and write.",
+    "placeholder": "Write to the other Legends…",
+    "submit": "Submit",
+    "submitting": "Sending…",
+    "submitError": "The post could not be sent. Please try again.",
+    "empty": "It’s quiet in the room — be the first Legend to speak.",
+    "authorFallback": "Legend"
   }
 }

@@ -7,6 +7,7 @@ import HandleClaimForm from "@/components/profile/HandleClaimForm";
 import DeleteAccountSection from "@/components/profile/DeleteAccountSection";
 import MinutesSection from "@/components/profile/MinutesSection";
 import ViewerStatusSection from "@/components/profile/ViewerStatusSection";
+import AarbogSection from "@/components/profile/AarbogSection";
 import SupportLedgerSection from "@/components/profile/SupportLedgerSection";
 import WatchHistoryList from "@/components/profile/WatchHistoryList";
 import UnfollowCreatorButton from "@/components/profile/UnfollowCreatorButton";
@@ -26,6 +27,7 @@ import {
 } from "@/lib/data/catalog";
 import { getSupportLedger } from "@/lib/data/support";
 import { getViewerStatus } from "@/lib/data/viewerStatus";
+import { getViewerAarbog } from "@/lib/data/viewerAarbog";
 import type { Documentary, WatchHistoryEntry } from "@/lib/types";
 import { formatDate } from "@/lib/utils/format";
 
@@ -134,6 +136,15 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
   // minutter ER forbrugte minutter). Null (datafejl) udelader kortet.
   const viewerStatus = await getViewerStatus(user.id);
 
+  // Årbogen (Pioner-gaven, 12/11): hentes KUN når Pioner-trinnet er
+  // nået — tierIndex tæller tier0 med fra start, så tierIndex >= 3
+  // er Pioner (0/1/2 = Opdager/Nysgerrig/Pioner), 4 = Legende.
+  // Mindre trin rører datalaget ikke: ét valgfrit opslag spares.
+  const aarbog =
+    viewerStatus && viewerStatus.tierIndex >= 3
+      ? await getViewerAarbog(user.id)
+      : null;
+
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
       <SectionHeading
@@ -171,6 +182,10 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
       {viewerStatus && (
         <ViewerStatusSection locale={locale} status={viewerStatus} />
       )}
+
+      {/* Årbogen: Pioner-gaven — måneds-fra-måned-søjler + top-genrer +
+          top-skabere. Null (datafejl eller under Pioner) udelader. */}
+      {aarbog && <AarbogSection locale={locale} aarbog={aarbog} />}
 
       {/* Brugernavn: navnløse konti (fra før signup-feltet) får et
           fremhævet CTA-kort — ellers en stille redigerings-mulighed.

@@ -746,5 +746,33 @@
     "title": "Doccys sovelluksena — ilman kauppaa: koko näyttö, ei selainpalkkia, ja ehdotuksesi on valmis suoraan aloitusnäytöltä.",
     "button": "Asenna sovellus",
     "iosHint": "iPhone/iPad: Napauta Jaa Safarissa ja valitse „Lisää aloitusnäytölle“ — näin Doccys on sovellus ilman App Storea."
+  },
+  "viewerAarbog": {
+    "heading": "Vuosiarkistosi",
+    "subtitle": "Vuosiarkisto avautuu 1.000 minuutin kohdalla — katseluhistoriasi, kuukausi kuukaudelta.",
+    "totalLine": "{minutes} minuuttia viimeisten 12 kuukauden aikana",
+    "empty": "Ei laskutettuja minuutteja viimeisten 12 kuukauden aikana — vuosiarkistosi täyttyy katsellessasi.",
+    "topGenres": "Genresi",
+    "topCreators": "Luojasi",
+    "topEmpty": "Ei elokuvia vielä"
+  },
+  "klub": {
+    "heading": "Klubihuone",
+    "subtitle": "Pieni paikka Legendoille — alustan omistautuneimmille katsojille.",
+    "lockLabel": "Lukittu",
+    "doorTitle": "Klubihuone on suljettu",
+    "doorIntro": "Oven takana on pieni paikka, jossa Legendat kokoontuvat. Legendat ovat niitä, jotka ovat katsoneet 10.000 minuuttia — ja ovi avautuu, kun saavutat sen.",
+    "doorRequirement": "Legenda = 10.000 minuuttia",
+    "doorMembers": "{count, plural, one {# jäsen} other {# jäsentä}}",
+    "doorPosts": "{count, plural, one {# viesti} other {# viestiä}}",
+    "ctaLogin": "Kirjaudu sisään",
+    "ctaProfile": "Näe tilasi",
+    "membershipNote": "Legendoina voit lukea ja kirjoittaa.",
+    "placeholder": "Kirjoita muille Legendoille…",
+    "submit": "Lähetä",
+    "submitting": "Lähetetään…",
+    "submitError": "Viestiä ei voitu lähettää. Yritä uudelleen.",
+    "empty": "Huoneessa on hiljaista — ole ensimmäinen Legenda, joka puhuu.",
+    "authorFallback": "Legenda"
   }
 }

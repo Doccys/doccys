@@ -746,5 +746,33 @@
     "title": "Doccys som app — uten butikk: fullskjerm, ingen nettleserlinje, og ditt forslag er klart direkte fra startskjermen.",
     "button": "Installer appen",
     "iosHint": "iPhone/iPad: Trykk Del i Safari og velg „Legg til på startskjerm“ — så blir Doccys en app uten App Store."
+  },
+  "viewerAarbog": {
+    "heading": "Din årbok",
+    "subtitle": "Årboken åpner ved 1.000 minutter — din seerhistorikk, måned for måned.",
+    "totalLine": "{minutes} minutter de siste 12 månedene",
+    "empty": "Ingen avregnede minutter de siste 12 månedene — årboken fylles mens du ser.",
+    "topGenres": "Dine sjangre",
+    "topCreators": "Dine skapere",
+    "topEmpty": "Ingen filmer ennå"
+  },
+  "klub": {
+    "heading": "Klubstuen",
+    "subtitle": "Et lite sted for Legenderne — plattformens mest dedikerte seere.",
+    "lockLabel": "Låst",
+    "doorTitle": "Klubstuen er stengt",
+    "doorIntro": "Bak døren er et lite sted hvor Legenderne møtes. Legenderne er de som har sett 10.000 minutter — og døren åpner seg når du når det.",
+    "doorRequirement": "Legende = 10.000 minutter",
+    "doorMembers": "{count, plural, =1 {# medlem} other {# medlemmer}}",
+    "doorPosts": "{count, plural, =1 {# innlegg} other {# innlegg}}",
+    "ctaLogin": "Logg inn",
+    "ctaProfile": "Se din status",
+    "membershipNote": "Som Legende kan du lese og skrive.",
+    "placeholder": "Skriv til de andre Legender…",
+    "submit": "Skriv",
+    "submitting": "Sender…",
+    "submitError": "Innlegget kunne ikke sendes. Prøv igjen.",
+    "empty": "Det er stille i stuen — vær den første Legende som snakker.",
+    "authorFallback": "Legende"
   }
 }

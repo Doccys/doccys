@@ -746,5 +746,33 @@
     "title": "Doccys 作为应用程序 — 无需商店：全屏，无浏览器地址栏，您的建议直接从主屏幕准备就绪。",
     "button": "安装应用",
     "iosHint": "iPhone/iPad：在 Safari 中点击分享并选择“添加到主屏幕” — 这样 Doccys 就是一个无需 App Store 的应用。"
+  },
+  "viewerAarbog": {
+    "heading": "你的年鉴",
+    "subtitle": "年鉴在 1,000 分钟时开启 — 你的观看历史，逐月记录。",
+    "totalLine": "过去 12 个月 {minutes} 分钟",
+    "empty": "过去 12 个月没有结算的分钟 — 年鉴会随着你的观看而填充。",
+    "topGenres": "你的类型",
+    "topCreators": "你的创作者",
+    "topEmpty": "还没有电影"
+  },
+  "klub": {
+    "heading": "俱乐部大厅",
+    "subtitle": "传奇者的小地方——平台上最忠实的观众。",
+    "lockLabel": "锁定",
+    "doorTitle": "俱乐部大厅已关闭",
+    "doorIntro": "门后是一个小地方，传奇者们在这里聚会。传奇者是指观看了10,000分钟的人——当你达到这个时间，门就会打开。",
+    "doorRequirement": "传奇 = 10,000分钟",
+    "doorMembers": "{count, plural, =1 {# 会员} other {# 会员}}",
+    "doorPosts": "{count, plural, =1 {# 帖子} other {# 帖子}}",
+    "ctaLogin": "登录",
+    "ctaProfile": "查看你的状态",
+    "membershipNote": "作为传奇者，你可以阅读和写作。",
+    "placeholder": "给其他传奇者写消息…",
+    "submit": "发送",
+    "submitting": "发送中…",
+    "submitError": "帖子无法发送。请再试一次。",
+    "empty": "大厅里很安静——成为第一个发言的传奇者。",
+    "authorFallback": "传奇者"
   }
 }

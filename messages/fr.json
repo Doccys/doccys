@@ -746,5 +746,33 @@
     "title": "Doccys en tant qu'application — plein écran, sans barre de navigateur, et votre suggestion est prête directement depuis l'écran d'accueil.",
     "button": "Installer l'application",
     "iosHint": "iPhone/iPad : Appuyez sur Partager dans Safari et sélectionnez « Ajouter à l'écran d'accueil » — Doccys sera alors une application sans App Store."
+  },
+  "viewerAarbog": {
+    "heading": "Votre annuaire",
+    "subtitle": "L'annuaire s'ouvre à 1 000 minutes — votre historique de visionnage, mois par mois.",
+    "totalLine": "{minutes} minutes au cours des 12 derniers mois",
+    "empty": "Aucune minute visionnée au cours des 12 derniers mois — l'annuaire se remplit pendant que vous regardez.",
+    "topGenres": "Vos genres",
+    "topCreators": "Vos créateurs",
+    "topEmpty": "Aucun film pour l'instant"
+  },
+  "klub": {
+    "heading": "Salon des Légendes",
+    "subtitle": "Un petit endroit pour les Légendes — les spectateurs les plus dévoués de la plateforme.",
+    "lockLabel": "Verrouillé",
+    "doorTitle": "La salon des Légendes est fermé",
+    "doorIntro": "Derrière la porte se trouve un petit endroit où les Légendes se rencontrent. Les Légendes sont ceux qui ont regardé 10 000 minutes — et la porte s'ouvre lorsque vous atteignez ce seuil.",
+    "doorRequirement": "Légende = 10 000 minutes",
+    "doorMembers": "{count, plural, =1 {# membre} other {# membres}}",
+    "doorPosts": "{count, plural, =1 {# message} other {# messages}}",
+    "ctaLogin": "Se connecter",
+    "ctaProfile": "Voir votre statut",
+    "membershipNote": "En tant que Légende, vous pouvez lire et écrire.",
+    "placeholder": "Écrivez aux autres Légendes…",
+    "submit": "Écrire",
+    "submitting": "Envoi…",
+    "submitError": "Le message n'a pas pu être envoyé. Veuillez réessayer.",
+    "empty": "Il fait calme dans la salon — soyez la première Légende à parler.",
+    "authorFallback": "Légende"
   }
 }
