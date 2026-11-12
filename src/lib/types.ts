@@ -185,6 +185,15 @@ export interface CreatorPost {
   updatedAt: number; // ms epoch
 }
 
+export interface KlubPost {
+  id: string;
+  /** forfatterens auth-id — vises offentligt som @handle via user_handles */
+  userId: string;
+  body: string;
+  pinned: boolean;
+  createdAt: number; // ms epoch
+}
+
 export type CreatorApplicationStatus = "pending" | "approved" | "rejected";
 
 /** Pipeline-status pr. (film, sprog) i film_subtitles. */

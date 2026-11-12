@@ -544,6 +544,29 @@ export type CreatorPostRow = {
   updated_at: string;
 };
 
+export type KlubPostRow = {
+  id: string;
+  /** forfatteren af sig selv — RLS-politikken kræver Legende-status */
+  user_id: string;
+  /** 1..2000 tegn efter trim — håndhæves af check-constraint */
+  body: string;
+  /** fastgjort øverst; ét pr. væg (partial unique index) — dashboard-only */
+  pinned: boolean;
+  created_at: string;
+};
+
+export type KlubPostInsert = {
+  /** forfatteren sættes altid eksplicit af den indskrivende klient */
+  user_id: string;
+  body: string;
+  pinned?: boolean;
+};
+
+export type KlubPostUpdate = {
+  body?: string;
+  pinned?: boolean;
+};
+
 export type CreatorPostInsert = {
   id?: string;
   creator_id: string;
@@ -843,6 +866,15 @@ export type Database = {
         Update: CollectionUpdate;
         Relationships: [];
       };
+      klub_posts: {
+        Row: KlubPostRow;
+        /** medlems-væg: RLS-politikerne er autoriteten
+         *  (select/insert kun for Legender via er_klub_medlem) */
+        Insert: KlubPostInsert;
+        /** ingen update/delete-policies = moderation er dashboard-arbejde */
+        Update: never;
+        Relationships: [];
+      };
       collection_films: {
         Row: CollectionFilmRow;
         /** dashboard-only — ingen RLS-write-policy */
@@ -936,6 +968,16 @@ export type Database = {
         Args: { p_slug: string };
         /** true hvis auth.uid() har afregnet seertid på filmen (kvalitetsfilter for kommentarer) */
         Returns: boolean;
+      };
+      er_klub_medlem: {
+        Args: Record<string, never>;
+        /** true hvis auth.uid() er i Legende-ti-eren (seer_flair.tier = 3, migration 20261112) */
+        Returns: boolean;
+      };
+      klub_taeler: {
+        Args: Record<string, never>;
+        /** offentlige tal til den låste dør — ingen navne/indhold */
+        Returns: { medlemmer: number; indlaeg: number; seneste_tid: string | null };
       };
       film_faedighedsstats: {
         Args: { p_slug?: string | null };
