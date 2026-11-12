@@ -176,6 +176,17 @@ export default function UserMenu() {
           >
             {navT("nav.creator")}
           </Link>
+          {/* Klubstuen (Legende-gaven, 12/11): synligt for ALLE
+              indloggede — døren på /klubben håndterer adgang selv
+              (låst dør m. offentlige tal for under-Legender). */}
+          <Link
+            href="/klubben"
+            role="menuitem"
+            onClick={() => setOpen(false)}
+            className="block px-4 py-2 text-xs text-ash transition-colors hover:bg-smoke/30 hover:text-bone"
+          >
+            {navT("nav.klub")}
+          </Link>
           {/* direkte vej til udbetaling (ankret til panelet) — kun for
               konti der ejer en skaber-profil, andre ser intet punkt */}
           {creatorHandle && (
