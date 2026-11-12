@@ -1,6 +1,71 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-10-31
+Sidst opdateret: 2026-11-12
 ==========================================================
+
+SEER-STATUS MILEPÆLS-GAVER: ÅRBOGEN + KLUBSTUEN (12/11) — BYGGET, DEPLOYET,
+E2E AFVENTER
+Trappe-model (brugerens beslutninger 12/11 via Ask-runder): hver milepæl
+giver sin gave — Nysgerrig (100 min) = offentligt flair ALLEREDE BYGGET
+(9794390 + migration 20261110, se backlog 13 LUKKET) · Pioner (1.000 min)
+= ÅRBOGEN · Legende (10.000 min) = KLUBSTUEN. Kriteriet "brugbare
+seer-features som bonus", ikke kosmetik.
+- ÅRBOGEN (5b1b82d): getViewerAarbog (ren JS-aggregation,
+  getViewerStatus-mønsteret — INGEN migration; intet verdict-filter, som
+  status-sektionen) — måneder = seneste 12 mdr båndet på ended_at ??
+  started_at (afregnings-tidspunkt) med 0-udfyldte måneder, top-3 genrer
+  + top-3 skabere (documentaries.creator_handle) i DEN deterministiske
+  orden (minutter faldende / dansk nøgle stigende). UI: AarbogSection —
+  ren CSS-søjler på 12 måneder + to top-lister, INGEN chart-lib,
+  server-rendered. Profilen henter KUN når tierIndex >= 3 — tierIndex
+  tæller NÅEDE trin inkl. tier0 (1 = kun Opdager, 2 = +Nysgerrig,
+  3 = +Pioner, 4 = +Legende), så tierIndex >= 3 ER Pioner nået.
+  viewerAarbog-namespace 7 nøgler ×13.
+- KLUBSTUEN (1098307 + menuen ca56902): eksklusiv indsæt-kun væg, KUN
+  Legender kan læse OG skrive (brugerens valg af tre: klubstue [IKKE
+  tråd-forum], låst dør-teaser, kun Legender inde — Pioner har INGEN
+  læsning). MIGRATION 20261112_klubstuen.sql KØRT AF BRUGEREN 12/11
+  (verificeret: er_klub_medlem-kerne grøn): klub_posts (user_id FK
+  cascade, body 1-2.000, ÉT pinned via partial unique index — ingen
+  updated_at, ingen redigering) · er_klub_medlem() PARAMETRELØS security
+  definer over seer_flair.tier = 3 (flair-view'et er medlemsregisteret —
+  ingen tærskel-duplikering; uden parameter kan funktionen kun afsløre
+  DEN KALDENDES egen status) · klub_taeler() offentlig RPC
+  {medlemmer, indlaeg, seneste_tid} til den låste dør (top_creators-
+  mønsteret) · RLS: policy select/insert CALLEDE er_klub_medlem, INGEN
+  update/delete-policies = fastgørelse/sletning er DASHBOARD-arbejde
+  (creator_payout_requests-præcedens; arbejdsgangen står i filens hoved)
+  · grants eksplisitte FØRST efter oprettelsen (kør 1 fejlede 42883 på
+  klub_taeler-grant FØR create — RÆKKEFØLGEN er nu: tabel → funktioner
+  → policies → grants sidst; LEARNING: Supabase SQL Editor fejler ved
+  grant-præ-create og gen-kørsel skal være HELLE filen, den er
+  idempotent) · anon HAR execute på er_klub_medlem (policy-udtryk
+  evalueres med den kaldende rolles privilegier — uden grant ville
+  anon-SELECT give permission denied i stedet for pænt tomt svar) ·
+  realtime: replica identity full + publikations-tillføjelsen.
+  - RUTE /klubben: server-side afgøres døren af er_klub_medlem-RPC'en;
+    KlubWall (client) skriver DIREKTE mod tabellen (RLS er autoriteten,
+    ingen API-rute) + realtime uden filter (tabellen er lille) +
+    forfatter-visning via user_handles (@handle — offentligt læsbar;
+    manglende tag → authorFallback "Legende"). DØREN viser kun
+    klub_taeler-tal, ALDRIG indhold/navne; null-tæller (pre-migration)
+    = dør uden tal — KODEN FEJLER PÆNT (PGRST205-graceful, flair-
+    mønsteret).
+  - MENU-punkt (ca56902): "Klubstuen" i UserMenu-rullemenuen mellem
+    Studio og Udbetaling, synlig for ALLE indloggede (døren håndterer
+    selv adgang); nav.klub x13. Bruger-verificeret i PWA 12/11 EFTER
+    push (PWA = produktion: koden er usynlig indtil push → Vercel-byg).
+  - i18n: klub-namespace 17 nøgler ×13 → 611 nøgler FULD PARITET; tsc +
+    i18n-verify ALLE TJEK GRØNNE; røgtest /da|/en|/ja/klubben 200 (dør,
+    ingen indholdsglimt i HTML).
+- E2E AFVENTER (brugerens, SQL-opskrifter står i
+  20261112_klubstuen_verifikation.sql — læs-only tjek-fil, IKKE
+  migration): årbogen på /da/profile når Pioner-trinnet nås · døren i
+  inkognito (lås + tal) · POSITIV: hejs en test-konto til Legende
+  (600.000-s-session — RYD den efter: test-sekunder må ikke bo i
+  afregnings-regnskabet) → væggen + skriv + realtime i 2. fane ·
+  pinned-flowet i SQL Editor (23505 ved anden fastgjort).
+- BACKLOG 13 (seer-flair trin 2) er nu LUKKET: flair = Nysgerrig-
+  trinets gave i trappen.
 
 FLYTNING TIL STATIONÆR COMMAND CENTER (31/10) — GIT FØRT OVER, ENV KLAR
 Aftalen med brugeren: flytning til den stationære (command center, 3
