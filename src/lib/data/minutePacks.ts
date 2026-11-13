@@ -4,17 +4,20 @@
  *
  * USD er Doccys' ENE afregningsvaluta. Pakkernes priser er BRUTTO
  * (prisen kunden betaler, inkludering lokal moms): checkout'en sender
- * beløbet (5.99/9.49/11.99 USD) med tax_behavior: "inclusive", og
+ * beløbet (6.99/10.99/13.99 USD) med tax_behavior: "inclusive", og
  * Stripe udreder moms efter kundens faktureringsland — en dansker
- * betaler præcis $5.99 med dansk moms indbagt, en amerikaner $5.99
+ * betaler præcis $6.99 med dansk moms indbagt, en amerikaner $6.99
  * uden moms. UI'et viser nøjaktig det samme tal → visning = betaling
- * i 100 % af tilfældene. Øre-beløbene er heltal (599/949/1199).
+ * i 100 % af tilfældene. Øre-beløbene er heltal (699/1099/1399).
  *
- * TALLENE er valgt konkurrencedygtigt mod de gamle DKK-priser
- * (brugerens beslutning 13/13): 49/75/99 kr ved kurs ~6,74 kr/USD
- * bliver ca. 43/68/88 kr — ca. 10 % under de gamle, så en stigende
- * USD/DKK-kurs har buffer, før danskeren rammer de gamle priser igen.
- * FX-hintet "(≈ kr …)" fortæller danskeren dagens pris hver gang.
+ * TALLENE er PRIS-PARITET med de gamle DKK-priser (beslutning 13/11,
+ * 2. gang: $6.99/$10.99/$13.99 blev først skiftet ned til $5.99-
+ * stigen efter et "110 kr"-tjek, der byggede på en forkert kurs —
+ * dagskursen 6,744 kr/USD giver 47/74/94 kr, dvs. paritet med
+ * 49/75/99 — og pakkens NETTO i DK (brutto ÷ 1,25 = $5.59/$8.79/
+ * $11.19) genvinder samtidig de gamle netto-tal (39,20/60,00/79,20
+ * kr), som den billigere stige havde ædt. Worst-caserne (G-regnskabet
+ * i SKEMA-INDTJENING) bliver samtidig grønne i EU).
  *
  * Skabernes sats er stadig $0.30 pr. 100 gyldige minutter (net-økonomi
  * afleder momsen, som før) og selvbetjenings-tærsklen $25.
@@ -31,9 +34,9 @@ export type MinutePack = {
 };
 
 export const MINUTE_PACKS: MinutePack[] = [
-  { id: "pack-1000", minutes: 1000, priceUsd: 5.99 },
-  { id: "pack-2000", minutes: 2000, priceUsd: 9.49 },
-  { id: "pack-3000", minutes: 3000, priceUsd: 11.99 },
+  { id: "pack-1000", minutes: 1000, priceUsd: 6.99 },
+  { id: "pack-2000", minutes: 2000, priceUsd: 10.99 },
+  { id: "pack-3000", minutes: 3000, priceUsd: 13.99 },
 ];
 
 /** Affiliate-belønning: 250 minutter til koderens ejer ved køberens første køb */

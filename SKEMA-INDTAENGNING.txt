@@ -24,18 +24,21 @@ SÅDAN BRUGES DEN
 -----------------------------------------------------------
 A) BRUTTOINDTÆGT (pakkesalget) — USD, moms udredet af beløbet
 -----------------------------------------------------------
-PRISMODEL (13/11): pakkens pris er BRUTTO (tax_behavior: inclusive):
-  pack-1000  $5.99  · pack-2000  $9.49  · pack-3000  $11.99
+PRISMODEL (13/11, 2. rensning): pakkens pris er BRUTTO (tax_behavior:
+  inclusive) — PRISPARITET med de gamle DKK-priser (dagskurs 6,744
+  giver 47/74/94 kr ≈ 49/75/99), fordi den billigere $5.99-stigen
+  havde ædt nettet til under de gamle regnskabstal:
+  pack-1000  $6.99  · pack-2000  $10.99  · pack-3000  $13.99
   UI viser det samme tal som checkout-total (100 % match), og Stripes
   Tax-linje udreder lokal moms UD af beløbet pr. faktureringsland:
 
 HYPOTETISK (måned 1: dansk-domineret — momssatsen 25 %):
-  pack-1000  (netto 5.99 ÷ 1,25 = 4.79) : [ 120 stk ] =  718,80 brutto
-  pack-2000  (netto        9.49 ÷ 1,25 = 7.59) : [  40 stk ] =  379,60
-  pack-3000  (netto       11.99 ÷ 1,25 = 9.59) : [  20 stk ] =  239,80
-  BRUTTO SUM (Stripe Balance)                   = $1.338,20 (≈ 9.024 kr)
-  HERAF MOMS/GEYRER (udreder til SKAT) — brutto − netto ≈ 267,64
-  NETTO OMSETNING (Stripe Reports "net volume") ≈ $1.070,56 (≈ 7.219 kr)
+  pack-1000  (netto 6.99 ÷ 1,25 = 5.59) : [ 120 stk ] =  838,80 brutto
+  pack-2000  (netto       10.99 ÷ 1,25 = 8.79) : [  40 stk ] =  439,60
+  pack-3000  (netto       13.99 ÷ 1,25 = 11.19) : [  20 stk ] =  279,80
+  BRUTTO SUM (Stripe Balance)                   = $1.558,20 (≈ 10.505 kr)
+  HERAF MOMS (udreder til SKAT) — brutto − netto ≈ 311,64
+  NETTO OMSETNING (Stripe Reports "net volume") ≈ $1.246,56 (≈ 8.405 kr)
 
   NB NYTTIG KENDSGERNING: netto er ikke længere fast 80 % af brutto —
   i moms-lande varierer den med landets sats (DE 19 % → netto 89 %),
@@ -90,7 +93,7 @@ Reports → "Fees collected" efter det første test-køb og brug de
 REELLE tal herunder. Estimat fortsat: %s + fixed pr. salg.
 
 EKSEMPEL med 1,5 % + $0,35 pr. salg (180 salg):
-  (1.338,20 × 0,015) + (180 × 0,35) ≈ $83,07 (≈ 560 kr)
+  (1.558,20 × 0,015) + (180 × 0,35) ≈ $86,37 (≈ 582 kr)
 
 -----------------------------------------------------------
 D) VIDEO-EGRESS — BUNNY STREAM (DECIDERET 9/11, INTEGRERET 13/11)
@@ -180,40 +183,38 @@ FORMEL pr. pakke (DK-kunde, 25 % moms):
     hjørnet 0,022 vises nederst)
 
                      pack-1000    pack-2000    pack-3000
-  brutto                5,99         9,49        11,99
-  netto (DK, 25 %)      4,79         7,59         9,59
-  − Stripe (1,5 %+0,35) 0,44         0,49         0,53
+  brutto                6,99        10,99        13,99
+  netto (DK, 25 %)      5,59         8,79        11,19
+  − Stripe (1,5 %+0,35) 0,45         0,52         0,56
   [REALISTISK — 30 % forbrug; egress 0,012 GB/min]
   − skaber              0,90         1,80         2,70
   − egress EU / dyrest  0,04/0,22    0,07/0,43    0,11/0,65
-  = MARGIN             3,41/3,23    5,23/4,87    6,25/5,71
-                       (23/22 kr · 35/33 kr · 42/38 kr)  ✓✓✓
+  = MARGIN             4,20/4,02    6,40/6,04    7,82/7,28
+                       (28/27 kr · 43/41 kr · 53/49 kr)  ✓✓✓
   [WORST CASE — 100 % forbrug]
   − skaber              3,00         6,00         9,00
-  − egress EU / dyrest  0,12/0,72    0,24/1,44    0,36/2,16
-  = MARGIN             1,23/0,63    0,86/−0,34  −0,30/−2,10
-                       (8/4 kr · 6/−2 kr · −2/−14 kr)
+  − egress EU / dyrest  0,14/0,72    0,29/1,44    0,43/2,16
+  = MARGIN             2,00/1,42    1,98/0,83    1,20/−0,53
+                       (14/10 kr · 13/6 kr · 8/−4 kr)
 
-KRITISK LÆSNING — WORST-CASE ER NU SATS-BUNDET, IKKE EGRESS-BUNDET:
-  * pack-3000 ved fuldt forbrug: netto 9,59 − Stripe 0,53 − skaber
-    9,00 = $0,06 — FØR noget egress. Selv ved NUL egress er der kun
-    6 cent tilbage. Satsen × 30 (0,30 × 3.000 min ÷ 100) æder 75 %
-    af nettoen. Bitrate-disciplin kan IKKE redde pack-3000's
-    hjørne — kun en lavere sats (≈ $0,25) eller en højere pakkepris
-    (≈ $12,99) kan.
-  * pack-1000/2000: renditions-mix (dine 480p-seere) holder dem i
-   /near vand ved fuldt forbrug; ved 0,022-hjørnet falder til
-    1,13/0,03 og 0,66/−1,54 (D-hjørnet over).
+KRITISK LÆSNING — WORST-CASE ER SATS-BUNDET (pack-3000), EGRESS SAGT:
+  * Pris-renseringen (13/11, 2. gang: tilbage til .99-ankrene) flyttede
+    worst-caserne fra skæve til FUNDAMENTALT sunde — ved 0,012 GB/min
+    er ALLE pack-1000/2000-hjørner positive i alle regioner, og
+    pack-3000 er grøn i EU og kun svag negativ i den dyreste region.
+  * Ved NUL egress er pack-3000 stadigt +$1,66 — egress er altså ikke
+    længere en worst-case-driver på grundlaget; bitrate-disciplinen
+    (2 GB-loftet, kurateringens tjek 4) fortsætter som sikkerhed, hvor
+    renditions-efterprøvelsen (dine 480p-seere) giver den tynde luft.
   * VED 30 MIN-TITEL (0,067 GB/min loftet) på pack-1000 worst case:
-    67 GB × rate → margin $0,68 (EU) / −$2,65 (dyrest) — bitrate-
-    gennemgangen (kurateringens tjek 4) er stadig reelt, men den
-    nuværende skaber-kost er den dominerende variabel.
+    67 GB × rate → margin $1,55 (EU) / −$0,42 (dyrest) — bitrate-
+    gennemgangen er stadig reelt, men den nuværende skaber-kost er
+    den dominerende variabel i yderhjørnet.
   * KONKLUSION (13/11): satsen fungerer som STYRE- til — de
-    realistiske marginer er sunde på alle tre pakker og regioner
-    (30-42 kr pr. pakke). Worst-caserne er det ekstreme hjørne
-    (HELE pakken forbrugt på én max-bitrate titel); accepter dem
-    bevidst, og genbereg hvis seer-adfærden viser forbrugs-% over
-    50 % eller ME/A-volumen vokser.
+    realistiske marginer er 28-53 kr pr. pakke på tværs af regioner,
+    og worst-caserne er nu bevidst accepteret som det ekstreme hjørne
+    (HELE pakken forbrugt på én max-bitrate titel). Genbereg hvis
+    seer-adfærden viser forbrugs-% over 50 % eller ME/A-volumen vokser.
 
 -----------------------------------------------------------
 H) RESULTAT — SUMMEN
@@ -227,10 +228,11 @@ H) RESULTAT — SUMMEN
 
 HYPOTETISK med tallene ovenfor (dansk-domineret, 30 % forbrug,
 180 salg, 936 GB):
-  1.070,56 − 234,00 − 83,07 − 18,27 − 42,50 = $686,72
-  (≈ 4.630 kr pr. md · ≈ 64 % af netto — RE-RENS med live tal!)
-  [skemaets Supabase-æra gav 6.612 kr/md på samme antagelser;
-   faldet er prismatikken: −10 % priser + kurs 6,74 mot 7,0]
+  1.246,56 − 234,00 − 86,37 − 18,27 − 42,50 = $865,42
+  (≈ 5.836 kr pr. md · ≈ 69 % af netto — RE-RENS med live tal!)
+  [skemaets Supabase-æra gav 6.612 kr/md på de samme antagelser;
+   .99-renseringen bringer resultatet tilbage PÅ niveau med æraen,
+   med Bunny-kursen og USD-basis som fordelene oveni]
 
 -----------------------------------------------------------
 I) SELSKABSSKAT → HVAD DER ER TIL REINVEST
@@ -244,9 +246,9 @@ FORMEL:
     a) REINVEST (filmindkøb, egress-ekspansion, annoncer, funktioner)
     b) og/eller udbytte (beskattes PÅNY personligt)
 
-HYPOTETISK (H, $686,72 ≈ 4.630 kr):
-  selskabsskat 22 % ≈ $151,08 → disponibel ≈ $535,64 (≈ 3.612 kr/md)
-  NB pr. 12 md ≈ $6.400 ≈ 43.340 kr til reinvest (2-3 film-udgifter)
+HYPOTETISK (H, $865,42 ≈ 5.836 kr):
+  selskabsskat 22 % ≈ $190,39 → disponibel ≈ $675,03 (≈ 4.551 kr/md)
+  NB pr. 12 md ≈ $8.100 ≈ 54.600 kr til reinvest (2-3 film-udgifter)
   NB TAL I USD: selskabets bogføring er i DKK/EUR (den danske
   regnskabsplight gælder) — omregn til bogføringskursen ved
   kvartalsopgørelsen; Stripe-payout lander i DKK/EUR uanset.
