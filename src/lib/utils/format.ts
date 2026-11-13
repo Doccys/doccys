@@ -35,7 +35,11 @@ export function formatCurrency(value: number, locale?: string): string {
     // klarer LocalPriceHint/CurrencyHint oveni.
     currency: "USD",
     currencyDisplay: "narrowSymbol",
-    maximumFractionDigits: Math.abs(value) < 10 ? 2 : 0,
+    // ALTID to decimaler: USD-priserne ER øre-ankre ($13.99) — den
+    // gamle DKK-hukommelse (< 10 → ingen decimaler, til 49/75/99 kr)
+    // runde dem til "$14" og brød visningen = betaling mot Stripe.
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   }).format(value);
 }
 
