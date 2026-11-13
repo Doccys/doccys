@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} 分",
     "packMinutes": "{minutes} 分",
     "packPrice": "{price}",
-    "vatNote": "+ 税金はあなたの国に応じて",
+    "vatNote": "現地の消費税を含む",
     "packBuy": "購入",
     "purchaseSuccess": "ご購入ありがとうございます！お支払いが確認され次第、分が残高に追加されます。",
     "purchaseError": "購入を完了できませんでした — もう一度お試しください。",

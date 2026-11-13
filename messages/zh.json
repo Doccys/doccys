@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} 分钟",
     "packMinutes": "{minutes} 分钟",
     "packPrice": "{price}",
-    "vatNote": "+ 增值税根据您的国家",
+    "vatNote": "含当地增值税",
     "packBuy": "购买",
     "purchaseSuccess": "感谢您的购买！一旦付款确认，分钟数将添加到您的余额中。",
     "purchaseError": "购买未成功 - 请重试。",

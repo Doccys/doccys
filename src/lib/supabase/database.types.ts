@@ -402,8 +402,8 @@ export type CreditPurchaseRow = {
   user_id: string | null;
   pack_id: string;
   minutes: number;
-  /** numeric → string fra Postgres — mappes med Number() */
-  price_usd_excl: string;
+  /** USD BRUTTO (inkl. lokal moms) — den sendte Stripe-pris */
+  price_usd: string;
   stripe_session_id: string;
   status: string;
   /** koderens ejer hvis købet indfri en affiliate-henvisning */
@@ -420,7 +420,7 @@ export type CreditPurchaseInsert = {
   user_id: string;
   pack_id: string;
   minutes: number;
-  price_usd_excl: string | number;
+  price_usd: string | number;
   stripe_session_id: string;
   status?: string;
   referrer_user_id?: string | null;

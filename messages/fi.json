@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "+ alv. maasi mukaan",
+    "vatNote": "sis. paikallinen arvonlisävero",
     "packBuy": "Osta",
     "purchaseSuccess": "Kiitos ostosta! Minuutit ilmestyvät saldoillesi, kun maksu on vahvistettu.",
     "purchaseError": "Osto ei onnistunut — yritä uudelleen.",

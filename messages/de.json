@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} Min.",
     "packMinutes": "{minutes} Min.",
     "packPrice": "{price}",
-    "vatNote": "+ MwSt. gemäß deinem Land",
+    "vatNote": "inkl. lokale Steuern",
     "packBuy": "Kaufen",
     "purchaseSuccess": "Danke für deinen Kauf! Die Minuten landen auf deinem Guthaben, sobald die Zahlung bestätigt ist.",
     "purchaseError": "Der Kauf konnte nicht abgeschlossen werden — versuch es noch einmal.",

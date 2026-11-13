@@ -103,11 +103,11 @@ export async function POST(request: NextRequest) {
       request.headers.get("origin") ?? request.nextUrl.origin;
 
     // Find/opret Stripe-kunde, så checkouten kan forudfylde e-mail og
-    // faktureringsland. Uden forudfyldt land står momslinjen på 0,00 USD,
-    // indtil kunden selv har valgt land — med DK som udgangspunkt ser
-    // danske kunder moms (dansk sats) oveni basisprisen fra første
-    // sekund. Kunder i andre lande retter selv landet, og totalen
-    // tilpasser sig.
+    // faktureringsland. Prisen er BRUTTO (inkl. moms), så totalen er
+    // $6.99/$10.99/$13.99 uanset land — men momslinjen kræver landet
+    // for at udredes: med DK som udgangspunkt ser danske kunder dansk
+    // moms udredet af beløbet fra første sekund. Kunder i andre lande
+    // retter selv landet, og momsen udreder derefter.
     let customerId: string | undefined;
     if (user.email) {
       const existing = await stripe.customers.list({
@@ -140,16 +140,21 @@ export async function POST(request: NextRequest) {
         {
           quantity: 1,
           price_data: {
-            // USD er Doccys' ene afregningsvaluta (brugerens beslutning
-            // 13/11) — UI'et viser samme $-tal som basisprisen her
+            // USD er Doccys' ene afregningsvaluta, og beløbet er BRUTTO:
+            // tax_behavior "inclusive" udreder lokal moms INGEN beløbet
+            // pr. faktureringsland — danskeren betaler præcis $6.99 med
+            // DK-moms indbagt, en amerikaner $6.99 uden moms. UI viser
+            // samme tal → visning = betaling (brugerens gamle 49 kr-
+            // model, i USD som beslutningen 13/11).
             currency: "usd",
-            // USD → øre (basispriserne 6.99/10.99/13.99 giver heltals-øre)
-            unit_amount: Math.round(pack.priceUsdExcl * 100),
+            // USD → øre (brutto-priserne giver heltals-øre)
+            unit_amount: Math.round(pack.priceUsd * 100),
             product_data: {
               name: `${pack.minutes} minutter — Doccys`,
             },
-            // moms beregnes pr. land af Stripe Tax oveni basisprisen
-            tax_behavior: "exclusive",
+            // moms beregnes pr. land af Stripe Tax, inclusive (ude af
+            // prisen, ikke oveni)
+            tax_behavior: "inclusive",
           },
         },
       ],
@@ -169,7 +174,7 @@ export async function POST(request: NextRequest) {
     user_id: user.id,
     pack_id: pack.id,
     minutes: pack.minutes,
-    price_usd_excl: pack.priceUsdExcl,
+    price_usd: pack.priceUsd,
     stripe_session_id: session.id,
     referrer_user_id: referrerUserId,
   });

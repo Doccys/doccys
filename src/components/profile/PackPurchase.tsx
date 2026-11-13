@@ -60,12 +60,13 @@ export default function PackPurchase({ locale }: PackPurchaseProps) {
               </p>
               <p className="mt-1 text-sm text-champagne">
                 {t("packPrice", {
-                  price: formatCurrency(pack.priceUsdExcl, locale),
+                  price: formatCurrency(pack.priceUsd, locale),
                 })}{" "}
-                {/* Vejledende lokal valuta (danskerne ser "≈ kr") —
-                    USD forbliver den faktiske trækvaluta (Stripe). */}
+                {/* Vejledende lokal valuta ved siden af brutto-prisen —
+                    prisen ER inkl. lokal moms (Stripe udreder pr. land),
+                    så UI-tallet og checkout-totalen er identiske. */}
                 <LocalPriceHint
-                  usd={pack.priceUsdExcl}
+                  usd={pack.priceUsd}
                   className="text-champagne/70"
                 />
               </p>

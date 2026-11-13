@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} मिनट",
     "packMinutes": "{minutes} मिनट",
     "packPrice": "{price}",
-    "vatNote": "+ कर आपके देश के अनुसार",
+    "vatNote": "स्थानीय जीएसटी सहित",
     "packBuy": "खरीदें",
     "purchaseSuccess": "खरीदारी के लिए धन्यवाद! भुगतान की पुष्टि होते ही मिनट आपके खाते में जुड़ जाएंगे।",
     "purchaseError": "खरीदारी पूरी नहीं हो सकी — कृपया पुनः प्रयास करें।",
