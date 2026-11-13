@@ -95,7 +95,7 @@
     },
     "terms": {
       "title": "Términos y condiciones",
-      "intro": "Estas condiciones se aplican al uso de Doccys y a la compra de minutos. Última actualización: 29 de septiembre de 2026.",
+      "intro": "Estas condiciones se aplican al uso de Doccys y a la compra de minutos. Última actualización: 13 de noviembre de 2026.",
       "sections": {
         "s1": {
           "title": "Sobre Doccys",
@@ -111,7 +111,7 @@
         },
         "s4": {
           "title": "Compra y pago",
-          "body": "Los minutos se compran en paquetes a los precios indicados en la compra. El pago lo gestiona nuestro socio de pagos Stripe, y el recibo se envía a tu correo. Los precios se muestran sin IVA; el IVA se calcula según tu país de facturación y se incluye en el importe total al pagar."
+          "body": "Los minutos se compran en paquetes a los precios que se indican al momento de la compra. El pago es gestionado por nuestro socio de pagos Stripe, y el recibo se envía a tu e-mail. El precio indicado incluye impuestos: el impuesto es calculado por Stripe Tax según tu país de facturación y se deduce del monto (el impuesto aparece como una línea separada en la página de pago).\nTodos los montos están en dólares estadounidenses (USD) — ver sección 13."
         },
         "s5": {
           "title": "Validez de los minutos",
@@ -144,6 +144,10 @@
         "s12": {
           "title": "Límite de edad de 18 años",
           "body": "Doccys es un servicio de streaming para adultos: para crear una cuenta y usar la plataforma, debes tener al menos 18 años.\nAl crear la cuenta, confirmas marcando que tienes al menos 18 años. La confirmación se registra con la fecha y el número de versión junto con tu cuenta.\nUna cuenta no debe ser puesta a disposición de jóvenes menores de 18 años: el contenido en Doccys no está seleccionado ni etiquetado por edad para niños y jóvenes.\nSi nos damos cuenta de que un usuario es menor de 18 años, podemos cerrar la cuenta con efecto inmediato (ver sección 2 sobre la responsabilidad de tu cuenta)."
+        },
+        "s13": {
+          "title": "Moneda",
+          "body": "Todos los montos en Doccys están indicados y cobrados en dólares estadounidenses (USD). Cuando la página de pago y estos términos muestran un monto con “$”, significa dólares estadounidenses (USD) — no otra moneda con signo de dólar (por ejemplo, pesos mexicanos (MXN), dólares canadienses (CAD) o pesos argentinos (ARS)).\nCon una tarjeta denominada en otra moneda, la conversión se realiza en tu emisor de tarjeta o banco a su tipo de cambio y posibles comisiones — esto está fuera del control de Doccys; el monto en la página de pago es siempre el monto en USD.\nEl impuesto es calculado por Stripe Tax según tu país de facturación y se deduce del precio indicado — el precio incluye impuestos (ver sección 4)."
         }
       }
     },

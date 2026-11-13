@@ -95,7 +95,7 @@
     },
     "terms": {
       "title": "Terms & Conditions",
-      "intro": "These terms apply to your use of Doccys and to the purchase of minutes. Last updated: 29 September 2026.",
+      "intro": "These terms apply to your use of Doccys and to the purchase of minutes. Last updated: 13 November 2026.",
       "sections": {
         "s1": {
           "title": "About Doccys",
@@ -111,7 +111,7 @@
         },
         "s4": {
           "title": "Purchases and payment",
-          "body": "Minutes are bought as packs at the prices shown at checkout. Payment is handled by our payment partner Stripe, and the receipt is emailed to you. Prices are shown excluding VAT; VAT is calculated based on your billing country and included in the total at payment."
+          "body": "Minutes are purchased in packages at the prices displayed at the time of purchase. Payment is handled by our payment partner Stripe, and the receipt is sent to your e-mail. The stated price includes VAT: the VAT is calculated by Stripe Tax based on your billing country and is included in the amount (the VAT appears as a separate line on the payment page).\nAll amounts are in US dollars (USD) — see section 13."
         },
         "s5": {
           "title": "Validity of minutes",
@@ -144,6 +144,10 @@
         "s12": {
           "title": "Age limit of 18 years",
           "body": "Doccys is a streaming service for adults: to create an account and use the platform, you must be at least 18 years old.\nBy creating the account, you confirm by checking that you are at least 18 years old. The confirmation is recorded with the timestamp and version number along with your account.\nAn account must not be made available to individuals under 18 years old — the content on Doccys is not selected or age-rated for children and young people.\nIf we become aware that a user is under 18 years old, we may close the account with immediate effect (see section 2 regarding your account responsibility)."
+        },
+        "s13": {
+          "title": "Currency",
+          "body": "All amounts on Doccys are stated and charged in US dollars (USD). When the payment page and these terms show an amount with “$”, it means US dollars (USD) — not another currency with a dollar sign (for example, Mexican pesos (MXN), Canadian dollars (CAD), or Argentine pesos (ARS)).\nWith a card denominated in another currency, the conversion is done by your card issuer or bank at their rate and any fees — this is outside of Doccys' control; the amount on the payment page is always the USD amount.\nThe VAT is calculated by Stripe Tax based on your billing country and is included in the stated price — the price includes VAT (see section 4)."
         }
       }
     },

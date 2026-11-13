@@ -115,7 +115,7 @@
     },
     "terms": {
       "title": "Handelsbetingelser",
-      "intro": "Disse betingelser gælder for brug af Doccys og for køb af minutter. Senest opdateret: 29. september 2026.",
+      "intro": "Disse betingelser gælder for brug af Doccys og for køb af minutter. Senest opdateret: 13. november 2026.",
       "sections": {
         "s1": {
           "title": "Om Doccys",
@@ -131,7 +131,7 @@
         },
         "s4": {
           "title": "Køb og betaling",
-          "body": "Minutter købes som pakker til de priser, der fremgår ved købet. Betalingen håndteres af vores betalingspartner Stripe, og kvitteringen sendes til din e-mail. Priserne er angivet eksklusive moms; momsen beregnes efter dit faktureringsland og indgår i det samlede beløb ved betalingen."
+          "body": "Minutter købes som pakker til de priser, der fremgår ved købet. Betalingen håndteres af vores betalingspartner Stripe, og kvitteringen sendes til din e-mail. Den angivne pris er inklusive moms: momsen beregnes af Stripe Tax efter dit faktureringsland og udredes af beløbet (momsen fremgår som særskilt linje på betalingssiden).\nAlle beløb er i amerikanske dollars (USD) — se afsnit 13."
         },
         "s5": {
           "title": "Minutternes gyldighed",
@@ -164,6 +164,10 @@
         "s12": {
           "title": "Aldersgrænse på 18 år",
           "body": "Doccys er en streamingtjeneste for voksne: for at oprette en konto og bruge platformen skal du være mindst 18 år.\nVed oprettelsen af kontoen bekræfter du med afkrydsning, at du er mindst 18 år. Bekræftelsen registreres med tidspunkt og versionsnummer sammen med din konto.\nEn konto må ikke stilles til rådighed for unge under 18 år — indholdet på Doccys er ikke udvalgt eller aldersmærket til børn og unge.\nBliver vi opmærksomme på, at en bruger er under 18 år, kan vi lukke kontoen med omgående virkning (jf. afsnit 2 om ansvaret for din konto)."
+        },
+        "s13": {
+          "title": "Valuta",
+          "body": "Alle beløb på Doccys er angivet og opkrævet i amerikanske dollars (USD). Når betalingssiden og disse betingelser viser et beløb med ”$”, betyder det amerikanske dollars (USD) — ikke en anden valuta med dollartegn (for eksempel mexicanske pesos (MXN), canadiske dollars (CAD) eller argentinske pesos (ARS)).\nMed et kort denomineret i en anden valuta sker omregningen hos din kortudsteder eller bank til deres kurs og eventuelle gebyrer — det ligger uden for Doccys' kontrol; beløbet på betalingssiden er altid USD-beløbet.\nMomsen beregnes af Stripe Tax efter dit faktureringsland og udredes af den angivne pris — prisen er inklusive moms (se afsnit 4)."
         }
       }
     },

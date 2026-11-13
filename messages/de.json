@@ -95,7 +95,7 @@
     },
     "terms": {
       "title": "AGB",
-      "intro": "Diese Bedingungen gelten für die Nutzung von Doccys und den Kauf von Minuten. Zuletzt aktualisiert: 29. September 2026.",
+      "intro": "Diese Bedingungen gelten für die Nutzung von Doccys und den Kauf von Minuten. Zuletzt aktualisiert: 13. November 2026.",
       "sections": {
         "s1": {
           "title": "Über Doccys",
@@ -111,7 +111,7 @@
         },
         "s4": {
           "title": "Kauf und Zahlung",
-          "body": "Minuten werden als Pakete zu den beim Kauf angegebenen Preisen gekauft. Die Zahlung wird von unserem Zahlungspartner Stripe abgewickelt, und die Quittung wird dir per E-Mail zugesandt. Preise sind ohne MwSt. angegeben; die MwSt. wird nach deinem Rechnungsland berechnet und ist im Gesamtbetrag bei der Zahlung enthalten."
+          "body": "Minuten werden in Paketen zu den Preisen gekauft, die beim Kauf angezeigt werden. Die Zahlung wird von unserem Zahlungsanbieter Stripe abgewickelt, und die Quittung wird an Ihre E-Mail-Adresse gesendet. Der angegebene Preis versteht sich inklusive Mehrwertsteuer: Die Mehrwertsteuer wird von Stripe Tax basierend auf Ihrem Rechnungsland berechnet und vom Betrag abgezogen (die Mehrwertsteuer wird als separate Zeile auf der Zahlungsseite angezeigt).\nAlle Beträge sind in US-Dollar (USD) angegeben — siehe Abschnitt 13."
         },
         "s5": {
           "title": "Gültigkeit der Minuten",
@@ -144,6 +144,10 @@
         "s12": {
           "title": "Mindestalter von 18 Jahren",
           "body": "Doccys ist ein Streamingdienst für Erwachsene: Um ein Konto zu erstellen und die Plattform zu nutzen, musst du mindestens 18 Jahre alt sein.\nMit der Erstellung des Kontos bestätigst du durch Ankreuzen, dass du mindestens 18 Jahre alt bist. Die Bestätigung wird zusammen mit deinem Konto mit Zeitstempel und Versionsnummer registriert.\nEin Konto darf nicht für Personen unter 18 Jahren zur Verfügung gestellt werden – die Inhalte auf Doccys sind nicht für Kinder und Jugendliche ausgewählt oder gekennzeichnet.\nWenn wir feststellen, dass ein Benutzer unter 18 Jahren ist, können wir das Konto mit sofortiger Wirkung schließen (siehe Abschnitt 2 über die Verantwortung für dein Konto)."
+        },
+        "s13": {
+          "title": "Währung",
+          "body": "Alle Beträge auf Doccys sind in US-Dollar (USD) angegeben und werden auch in US-Dollar (USD) abgerechnet. Wenn die Zahlungsseite und diese Bedingungen einen Betrag mit „$“ anzeigen, bedeutet dies US-Dollar (USD) — nicht eine andere Währung mit Dollarzeichen (zum Beispiel mexikanische Pesos (MXN), kanadische Dollar (CAD) oder argentinische Pesos (ARS)).\nBei einer Karte, die in einer anderen Währung denominiert ist, erfolgt die Umrechnung bei Ihrem Kartenaussteller oder Ihrer Bank zu deren Kurs und eventuellen Gebühren — dies liegt außerhalb der Kontrolle von Doccys; der Betrag auf der Zahlungsseite ist immer der USD-Betrag.\nDie Mehrwertsteuer wird von Stripe Tax basierend auf Ihrem Rechnungsland berechnet und vom angegebenen Preis abgezogen — der Preis versteht sich inklusive Mehrwertsteuer (siehe Abschnitt 4)."
         }
       }
     },

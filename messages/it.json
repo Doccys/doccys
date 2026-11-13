@@ -95,7 +95,7 @@
     },
     "terms": {
       "title": "Termini e condizioni",
-      "intro": "Questi termini si applicano all'uso di Doccys e all'acquisto di minuti. Ultimo aggiornamento: 29 settembre 2026.",
+      "intro": "Questi termini si applicano all'uso di Doccys e all'acquisto di minuti. Ultimo aggiornamento: 13 novembre 2026.",
       "sections": {
         "s1": {
           "title": "Informazioni su Doccys",
@@ -111,7 +111,7 @@
         },
         "s4": {
           "title": "Acquisto e pagamento",
-          "body": "I minuti vengono acquistati come pacchetti ai prezzi indicati al momento dell'acquisto. Il pagamento è gestito dal nostro partner di pagamento Stripe e la ricevuta viene inviata alla tua e-mail. I prezzi sono indicati al netto dell'IVA; l'IVA è calcolata in base al tuo paese di fatturazione e inclusa nell'importo totale al momento del pagamento."
+          "body": "I minuti sono acquistati in pacchetti ai prezzi indicati al momento dell'acquisto. Il pagamento è gestito dal nostro partner di pagamento Stripe e la ricevuta viene inviata al tuo indirizzo e-mail. Il prezzo indicato è comprensivo di IVA: l'IVA è calcolata da Stripe Tax in base al tuo paese di fatturazione e viene inclusa nell'importo (l'IVA appare come voce separata nella pagina di pagamento).\nTutti gli importi sono in dollari americani (USD) — vedi sezione 13."
         },
         "s5": {
           "title": "Validità dei minuti",
@@ -144,6 +144,10 @@
         "s12": {
           "title": "Limite di età di 18 anni",
           "body": "Doccys è un servizio di streaming per adulti: per creare un account e utilizzare la piattaforma devi avere almeno 18 anni.\nCreando l'account, confermi con un segno di spunta di avere almeno 18 anni. La conferma viene registrata con data e numero di versione insieme al tuo account.\nUn account non deve essere messo a disposizione di giovani sotto i 18 anni — i contenuti su Doccys non sono selezionati o contrassegnati per bambini e giovani.\nSe veniamo a conoscenza che un utente ha meno di 18 anni, possiamo chiudere l'account con effetto immediato (cfr. sezione 2 sulla responsabilità del tuo account)."
+        },
+        "s13": {
+          "title": "Valuta",
+          "body": "Tutti gli importi su Doccys sono indicati e addebitati in dollari americani (USD). Quando la pagina di pagamento e questi termini mostrano un importo con “$”, significa dollari americani (USD) — non un'altra valuta con il simbolo del dollaro (ad esempio pesos messicani (MXN), dollari canadesi (CAD) o pesos argentini (ARS)).\nCon una carta denominata in un'altra valuta, la conversione avviene presso l'emittente della tua carta o la banca al loro tasso e eventuali commissioni — questo è al di fuori del controllo di Doccys; l'importo sulla pagina di pagamento è sempre l'importo in USD.\nL'IVA è calcolata da Stripe Tax in base al tuo paese di fatturazione e inclusa nel prezzo indicato — il prezzo è comprensivo di IVA (vedi sezione 4)."
         }
       }
     },

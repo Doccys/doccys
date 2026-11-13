@@ -95,7 +95,7 @@
     },
     "terms": {
       "title": "Ehdot",
-      "intro": "Nämä ehdot koskevat Doccysin käyttöä ja minuuttien ostamista. Viimeksi päivitetty 29.9.2026.",
+      "intro": "Nämä ehdot koskevat Doccysin käyttöä ja minuuttien ostamista. Viimeksi päivitetty 13.11.2026.",
       "sections": {
         "s1": {
           "title": "Doccysistä",
@@ -111,7 +111,7 @@
         },
         "s4": {
           "title": "Ostaminen ja maksaminen",
-          "body": "Minuutteja ostetaan paketteina oston yhteydessä näkyviin hintoihin. Maksun hoitaa maksukumppanimme Stripe, ja kuitti lähetetään sähköpostiisi. Hinnat näytetään ilman alv:tä; alv lasketaan laskutusmaasi mukaan ja sisältyy kokonaissummaan maksun yhteydessä."
+          "body": "Minuutit ostetaan paketteina niihin hintoihin, jotka näkyvät oston yhteydessä. Maksun käsittelee maksukumppanimme Stripe, ja kuitti lähetetään sähköpostiisi. Ilmoitettu hinta sisältää arvonlisäveron: arvonlisävero lasketaan Stripe Taxin mukaan laskutusmaasi perusteella ja se vähennetään summasta (arvonlisävero näkyy erillisenä rivinä maksusivulla).\nKaikki summat ovat Yhdysvaltain dollareissa (USD) — katso jakso 13."
         },
         "s5": {
           "title": "Minuuttien voimassaolo",
@@ -144,6 +144,10 @@
         "s12": {
           "title": "Ikäraja 18 vuotta",
           "body": "Doccys on aikuisille suunnattu suoratoistopalvelu: tilin luomiseksi ja alustan käyttämiseksi sinun on oltava vähintään 18-vuotias.\nTilin luomisen yhteydessä vahvistat rastittamalla, että olet vähintään 18-vuotias. Vahvistus rekisteröidään aikaleiman ja versionumeron kanssa tilisi yhteyteen.\nTiliä ei saa antaa alle 18-vuotiaiden käyttöön — Doccysissä oleva sisältö ei ole valikoitu tai ikämerkattu lapsille ja nuorille.\nJos huomaamme, että käyttäjä on alle 18-vuotias, voimme sulkea tilin välittömästi (ks. jakso 2 tilisi vastuusta)."
+        },
+        "s13": {
+          "title": "Valuutta",
+          "body": "Kaikki Doccysissä olevat summat on ilmoitettu ja veloitettu Yhdysvaltain dollareissa (USD). Kun maksusivulla ja näissä ehdoissa näkyy summa, jossa on ”$”, se tarkoittaa Yhdysvaltain dollareita (USD) — ei muuta valuuttaa, jossa on dollarimerkki (esimerkiksi meksikon pesot (MXN), kanadan dollarit (CAD) tai argentiinan pesot (ARS)).\nToisessa valuutassa nimetty kortti muuntaa summan kortin myöntäjän tai pankin kurssin ja mahdollisten maksujen mukaan — tämä on Doccysin hallinnan ulkopuolella; maksusivun summa on aina USD-summa.\nArvonlisävero lasketaan Stripe Taxin mukaan laskutusmaasi perusteella ja se vähennetään ilmoitetusta hinnasta — hinta sisältää arvonlisäveron (katso jakso 4)."
         }
       }
     },
