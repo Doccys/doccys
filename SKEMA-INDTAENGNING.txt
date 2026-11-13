@@ -1,367 +1,275 @@
-DOCCYS — SKEMA: INDTJENING EFTER UDgifter OG SKABER-UDBETALINGER
-Opdateret: 9/11 2026 · punkt 22-territorium + Exit-DD-hygiejne
+DOCCYS — SKEMA: INDTJENING EFTER UDGAFTER OG SKABER-UDBETALINGER
+Opdateret: 13/11 2026 · USD-skiftet (beslutningerne 13/11) + BUNNY
+STREAM EGRESS (integration gennemfoert 9-13/11, E2E-afventer)
 ==========================================================
 
 SÅDAN BRUGES DEN
-- Sættene nedenfor regnes i RÆKKEFØLGE (A→F) — hver sektion har
-  HYPOTETISK tal (til planlegning) + den SQL, der erstatter dem med
-  LIVE-tal (til regnskabet/kvartalsopgørelsen).
-- Alle tal i DKK inkl./ekskl. momser markeres — momsen er ALDRIG
-  din indtægt, den passerer igennem (afgives til SKAT).
-- Grundsands: afregnens forbrugte minutter (credit_ledger 'forbrug')
-  = seerens udgaver. KUN gyldige sessioner (verdict=valid) udbetaler
+- Sætten regnes i RÆKKEFØLGE (A→I) — hver sektion har HYPOTETISK tal
+  (til planlægning) + den SQL, der erstatter dem med LIVE-tal.
+- Alle tal er i USD — afregningsvalutaen (brugerens beslutning 13/11,
+  $5.99/$9.49/$11.99 · sats $0.30/100 min · tærskel $25). DKK-tal
+  vises i parentes til orientering, kurs 6,744 kr/USD (13/11, live
+  fra open.er-api.com — opdater ved hver regnskabs-runde; kurserne
+  ændrer sig dagligt).
+- MOMSEN er ALDRIG din indtægt, den udreder igennem — og med
+  tax_behavior: "inclusive" er pakkens pris BRUTTO i alle lande;
+  netto-omsetningen står på STRIPE REPORTS ("net volume"), for den
+  danske sats er netto = brutto ÷ 1,25.
+- Grundands: afregnens forbrugte minutter (credit_ledger 'forbrug')
+  = seerens udgift. KUN gyldige sessioner (verdict=valid) udbetaler
   til skabere — invalid/suspicious-sessioner indsamler ingen skaber-
-  udbetaling. Det betyder: SKABER-KOSTEDEN < seer-forbrug — en
-  "gratis" margin-tilfældighed der er vigtig.
+  udbetaling. SKABER-KOSTEDEN < seer-forbrug — en permanent margin-
+  fordel der er vigtig.
 
 -----------------------------------------------------------
-A) BRUTTOINDTÆGT (pakkesalget)
+A) BRUTTOINDTÆGT (pakkesalget) — USD, moms udredet af beløbet
 -----------------------------------------------------------
-HYPOTETISK (fyldt ud med eksempel: måned 1 efter lancering):
-  pack-1000  (49 kr, netto 39,20)   : [ 120 stk ] = 5.880,00 kr incl. moms
-  pack-2000  (75 kr, netto 60,00)   : [  40 stk ] = 3.000,00 kr incl. moms
-  pack-3000  (99 kr, netto 79,20)   : [  20 stk ] = 1.980,00 kr incl. moms
-  BRUTTO SUM                                      = 10.860,00 kr incl. moms
-  HERAF MOMS (afgives — IKKE din indtægt)
-    moms = brutto − netto                          ≈ 25 % af netto-summen
-  NETTO OMSETNING (price_dkk_excl, det du kan regne videre på)
-                                                 ≈  8.688,00 kr
+PRISMODEL (13/11): pakkens pris er BRUTTO (tax_behavior: inclusive):
+  pack-1000  $5.99  · pack-2000  $9.49  · pack-3000  $11.99
+  UI viser det samme tal som checkout-total (100 % match), og Stripes
+  Tax-linje udreder lokal moms UD af beløbet pr. faktureringsland:
 
-LIVE (SQL Editor — erstatter den hypotetiske blok 1:1):
-  select pack_id, count(*) antal, sum(price_dkk_excl) netto
+HYPOTETISK (måned 1: dansk-domineret — momssatsen 25 %):
+  pack-1000  (netto 5.99 ÷ 1,25 = 4.79) : [ 120 stk ] =  718,80 brutto
+  pack-2000  (netto        9.49 ÷ 1,25 = 7.59) : [  40 stk ] =  379,60
+  pack-3000  (netto       11.99 ÷ 1,25 = 9.59) : [  20 stk ] =  239,80
+  BRUTTO SUM (Stripe Balance)                   = $1.338,20 (≈ 9.024 kr)
+  HERAF MOMS/GEYRER (udreder til SKAT) — brutto − netto ≈ 267,64
+  NETTO OMSETNING (Stripe Reports "net volume") ≈ $1.070,56 (≈ 7.219 kr)
+
+  NB NYTTIG KENDSGERNING: netto er ikke længere fast 80 % af brutto —
+  i moms-lande varierer den med landets sats (DE 19 % → netto 89 %),
+  og uden moms (US osv.) er netto =
+  100 % af brutto. Brug STRIPE REPORTS som sandheden, ikke en fast faktor!
+
+LIVE (SQL Editor):
+  select pack_id, count(*) antal, sum(price_usd) brutto
     from public.credit_purchases
    where status = 'paid'
      and paid_at >= date_trunc('month', now())
    group by pack_id;
-  -- brutto (inkl. det indkrævede moms) hentes fra STRIPE's
-  -- Balances-side (indkrævet sum) — eller = netto + moms.
-  -- billing_country-gruppering (redaktions-statistieken):
+  -- MOMS/netto pr. land hentes fra STRIPE REPORTS (net volume +
+  -- tax collected pr. periode) — eller pr. faktureringsland:
   select coalesce(billing_country,'?') land, count(*),
-         sum(price_dkk_excl) netto
+         sum(price_usd) brutto
     from public.credit_purchases where status='paid'
    group by 1 order by 2 desc;
 
 -----------------------------------------------------------
-B) SKABER-UDBETALINGER (koster kun af GYLDIGE minutter)
+B) SKABER-UDGAFTER (koster kun af GYLDIGE minutter)
 -----------------------------------------------------------
-FORMEL: gyldige gyldige-forbrugte minutter × 2,00 kr / 100
-        (rate pr. film: documentaries.payout_rate_dkk —
-         de fleste står på 2,00; sum per film i creator_tal)
+FORMEL: gyldige forbrugte minutter × $0,30 / 100
+        (rate pr. film: documentaries.payout_rate_usd, default 0,30;
+        seed-filmene står på 0,23-0,34 efter re-pricing — sum per film
+        i creator_tal-RPC'en ('usd') og creator_indtjening
+        ('optjent_usd')).
 
-HYPOTETISK (eksempel):
-  forbrugte gyldige minutter i måneden      : [ 42.000 ]
-  SKABER-OMSÆTNINGS-OMKOSTNING (42.000 × 2,00/100): 840,00 kr
-  ud af dem der rammer 150 kr-tærsklen og PAYOUT-anmoder    : [ 700,00 ]
-  resten forbliver i skaber-salden (forpligtelse! se F)    : [ 140,00 ]
+HYPOTETISK:
+  forbrugte gyldige minutter i måneden : [ 42.000 ]
+  SKABER-OMKOSTNING (42.000 × 0,30/100): $126,00 (≈ 849 kr)
+  ud af dem der rammer $25-tærsklen og anmoder   : [ 105,00 ]
+  resten forbliver i skaber-salden (forpligtelse! se F) : [ 21,00 ]
 
 LIVE:
-  select sum(seconds)::numeric / 60 * 2.0 / 100 as skaber_omk
-    from public.credit_ledger
-   where reason = 'forbrug';  -- ≈ gyldige; for PRAECIS sum brug
-  -- creator_tal(p_handle) RPC per skaber (eller creator_payouts-
-  -- tabellen for udbetalte beløb):
-  select sum(amount) as udbetalte_kroner
-    from public.creator_payouts
-   where created_at >= date_trunc('month', now());
-  -- PENDING forpligelse (der SKAL udbetales!):
-  select sum(amount) from public.creator_payout_requests
+  -- PENDING forpligtelse (der SKAL udbetales!):
+  select sum(amount_usd) from public.creator_payout_requests
    where status = 'pending';
   -- og den REELLE skaber-omkostning (kun valid, pr. rate):
-  -- creator_tal-RPC's ialt.kr — sum den per skaber (studiet kan vise).
+  -- creator_tal(p_handle)-RPC'ens ialt.usd — sum den per skaber.
 
-NB: FORBRUG på gratis-minutter (se D) genererer skaber-udbetaling
-    uden indtægt — det er platformens dyreste lille-linje.
-
------------------------------------------------------------
-C) PAYMENT-UDgifter (Stripe gebyrer)
------------------------------------------------------------
-Stripe DK-kort: ca. 1,4-2,9 % + fast pr. salg (tjek dit dashboard:
-Payouts → fee-kolonne). EKSEMPEL med 1,5 % + 2,00 kr:
-  (180 salg × (10.860×0,015) + 180×2,00) ≈ 526,00 kr
-LIVE: Stripe-dashboard → Reports → "Fees collected" pr. periode.
+NB: FORBRUG på gratis-minutter (affiliate/admin, se F) genererer
+    skaber-udbetaling uden indtægt — platformens dyreste lille-linje.
 
 -----------------------------------------------------------
-D) BANDBREDDE (egress) — DEN STORE VARIABEL
+C) PAYMENT-UDGAFTER (Stripe gebyrer)
 -----------------------------------------------------------
-REELLE RATER (brugerens oplysninger 9/11, Supabase Pro):
-  • $25/md fast — INKL. 250 GB bandbredde pr. måned
-  • overage: $0,09 pr. GB ≈ 0,63 kr/GB (kurs ≈ 7,0 DKK/USD —
-    opdatér ved regnskabet)
-Formel: sum(estimated_egress_bytes) pr. måned ÷ 1e9 → GB; 250 GB er
-        INCLUDED i den faste pris (sekt. E) — kun OVERSKRIBENTEN
-        betaler overage. (SKØNNET er skrevet i view_sessions;
-        kalibrér mod Supabase-dashboaredet efter første seer-uge.)
-HYPOTETISK:
-  estimeret GB i måneden                    : [  850 GB ]
-  − inkluderet i Pro                        :   250 GB
-  overage (600 GB × 0,62 kr)                 =  372,00 kr
-NB: affiliate/admin gratis-minutter (uden indtægt) brækker her:
-    hver gratis-minut set er et GB uden afregning.
+NB NYTTIG KENDSGERNING (USD på en DK-konto): Stripe-konti med
+DKK/EUR settlement kan pålægge et CURRENCY-KONVERTERINGS-gebyr
+(~2 %) på USD-priser + fixed gebyr per salg — tjek Dashboard →
+Reports → "Fees collected" efter det første test-køb og brug de
+REELLE tal herunder. Estimat fortsat: %s + fixed pr. salg.
+
+EKSEMPEL med 1,5 % + $0,35 pr. salg (180 salg):
+  (1.338,20 × 0,015) + (180 × 0,35) ≈ $83,07 (≈ 560 kr)
+
+-----------------------------------------------------------
+D) VIDEO-EGRESS — BUNNY STREAM (DECIDERET 9/11, INTEGRERET 13/11)
+-----------------------------------------------------------
+REELLE RATER (brugerens prisliste 9/11; kurs 6,744 ved 13/11):
+  Europa + Nordamerika   $0,010/GB  ≈ 0,067 kr/GB  (baseline)
+  Asien + Oceanien       $0,030/GB  ≈ 0,202 kr/GB  (ja/zh/hi!)
+  Sydamerika             $0,045/GB  ≈ 0,303 kr/GB
+  Mellemøsten + Afrika   $0,060/GB  ≈ 0,405 kr/GB
+  Storage (50 film ≈ 100 GB) ~$0,005/GB/md ≈ $0,50 — tjek panelet!
+
+RENDITIONS-MODELLEN (brugerens observation 13/11 — regnskabsvigtig!):
+  Egress regnes på den afspillede RENDITION, ikke kildefilen:
+    · Bunny transcoder til en HLS-stige; lavbandwidth-seere får
+      ~480p (≈ 1 Mbps ≈ 0,0075 GB/min), broadband ~720p
+      (≈ 2,5-3 Mbps ≈ 0,019 GB/min).
+    · Vores opstartsspor er single-MP4 720p (pickMp4Resolution) —
+      Bunny's 720p-rendition er typisk 1-1,5 GB/90 min ≈
+      0,011-0,017 GB/min UANSET at kilden må fylde 2 GB.
+    · TEORETISK loft: 2 GiB / 90 min = 0,022 GB/min (kun hvis ALLE
+      seere henter top-renditionen hele filen).
+  TYPISK ANTAGELSE (30/60/10-mix)  : 0,012 GB/min
+  Loft-antagelse (alle på top)     : 0,022 GB/min
+  hls.js (backlog: "HLS-adaptiv") gør adaptationen dynamisk og
+  fanger de mobilitet/lavbandwidth-seere som 480p-renditionen allerede
+  redder.
+
+HYPOTETISK (0,012 GB/min mix; 78.000 min set):
+  estimeret GB i måneden          :    936 GB
+  × rate-mix (70 % EU $0,010 · 15 % Asien $0,030 · 10 % Syd-A $0,045
+    · 5 % ME/A $0,060)            : ≈ $17,77 (≈ 120 kr)
+  (skemaets Supabase-æra betalte til sammenligning 923 kr for den
+   samme måned — Bunny-kursen har flyttet egress til en lille-linje)
+
 LIVE:
   select pg_size_pretty(sum(estimated_egress_bytes)) total,
          round(sum(estimated_egress_bytes)/1e9::numeric, 2) gb
     from public.view_sessions
    where started_at >= date_trunc('month', now());
+  -- SKØNNET (estimated_egress_bytes) forbliver skrevet ved validate —
+  -- kalibrér mot Bunny Analytics/Usage-API (reelle bytes pr. titel og
+  -- evt. pr. region), der kan erstatte 0,012 GB/min-skønnet live.
+  NB: der findes IKKE en 250 GB-gratis-fordeling i bunny-setup —
+  hver KB egress koster, og egress er en lille-linje ALLTID.
 
 -----------------------------------------------------------
-E) FASTE OMKOSTNINGER (pr. måned, amortiseret)
+E) FASTE UDGAFTER (pr. måned, amortiseret)
 -----------------------------------------------------------
-  Vercel Pro (+års-rabat $20/md)                ≈  140,00 kr
-  Supabase Pro $25/md — INKL. 250 GB bandbredde ≈  175,00 kr
-  Namecheap e-mail (fordelt i 2 år)             ≈    6,00 kr
-  domæne doccys.com (fordelt i år)              ≈    7,00 kr
-  OpenAI (undertekster ~5 kr/film + genkøringer): [ 150,00 kr ]
-  I ALT FASTE                                   ≈  478,00 kr
-  (Supabase free-tier KAN holde længere — men Pro 250 GB er
-   den reelle plan ved volume; free-tier pauser jo ved inaktivitet)
+  Vercel Pro (+års-rabat $20/md)                ≈  20,00 $
+  Supabase free-tier (kun konti/DB/undertekster/plakater
+  — KB-trafik, pauser ved inaktivitet!)         ≈   0,00 $  (Pro $25
+                                                   når volumet kræver)
+  Namecheap e-mail (fordelt i 2 år)             ≈   0,90 $
+  domæne doccys.com (fordelt i år)              ≈   1,10 $
+  OpenAI (undertekster ~$0,70/film + genkøringer): [ 20,00 $ ]
+  Bunny Stream Storage (100 GB × 0,005)         ≈   0,50 $ [tjek]
+  I ALT FASTE                                   ≈  42,50 $ (≈ 287 kr)
+  (kurs 6,744: ≈ 287 kr — skemaets gamle 478 kr præsenterede 250 GB
+   inkl. video-egress; i bunny-setup er det tal GÅET af drift.)
 
 -----------------------------------------------------------
 F) UDSTÅENDE FORPLIGTELSE — DET FØRSTE TAL EN OPKØBER SPØRGER TIL
 -----------------------------------------------------------
-(Hvad platformen SKAL levere i fremtiden, for pengene allerede
-er optjent — jf. Exit-DD-hygiejne i TING-JE-LISTEN.)
-1) UDBETALTE SKABER-SALDER (tilgængelig, afventer 150 kr-tærskel)
-   LIVE: sum af creator_indtjening "Tilgængelig" per skaber minus
-         creator_payouts-sum i udbetalt — eller:
-   select coalesce(sum(t.kr - coalesce(b.udbetalt,0)),0)
-     from (select 1) t ...  -- NB: brug creator_tal(p_handle) med
-     -- "Tilgængelig" fra studiet som praksis-nær tal,
-     -- eller lav en dedikeret RPC når volumen kræver det.
-2) UDSPENDT MEN IKKE-BRUgte SEER-MINUTTER (seernes saldo)
-   LIVE:
+1) SKABER-SALDER (tilgængelig, afventer $25-tærskel)
+   LIVE: creator_indtjening "tilgaengelig_usd" per skaber, eller:
+   select coalesce(sum(t.tilgaengelig_usd),0) ...
+   (brug creator_tal(p_handle) som praksis-nær tal, eller lav en
+    dedikeret RPC når volumet kræver det)
+2) SEER-MINUTTER DER KAN BRUGES (seernes saldo — hvert minut er
+   potentielt egress + skaber-udbetaling uden NY indtægt):
    select floor(sum(seconds)/60.0) minutter
-     from public.credit_ledger
-    where seconds > 0;
+     from public.credit_ledger where seconds > 0;
    minus
    select floor(abs(sum(seconds))/60.0)
-     from public.credit_ledger
-    where reason = 'forbrug';
-   (= minutter købt/foræret, der fortsat kan bruges — hvert af dem
-    er potentielt egress + skaber-udbetaling uden NY indtægt)
+     from public.credit_ledger where reason = 'forbrug';
 
 -----------------------------------------------------------
-G) PER-PAKKE-REGNSKAB (to scenarier pr. pakke)
+G) PER-PAKKE-REGNSKAB — DE NYE SATSER ($0,30, brutto-priser)
 -----------------------------------------------------------
-FORMEL pr. pakke:
-  netto (price_dkk_excl) − Stripe-gebyr − skaber-udbetaling
+FORMEL pr. pakke (DK-kunde, 25 % moms):
+  netto (brutto ÷ 1,25) − Stripe-gebyr − skaber-udbetaling
   − forventet egress = margin
-  * skaber: forbrugte minutter × 2,00 kr/100 (rate kan sættes pr.
-    film: documentaries.payout_rate_dkk, default 2,00)
-  * egress: filbytes pr. minut × forbrugte minutter ÷ 1e9 × kr/GB
-    (kalibrering pr. 9/11: test-filmene ≈ 2 GB / 90 min ≈ 0,022
-    GB pr. minut; RATE pr. GB er hypotetisk 0,80 — erstat med
-    Supabase/EV. CDN-volumenpris ved skala)
-  * scenarier: FULLT forbrug (= 100 % af salgte minutter set) og
-    REALISTISK (= 30 % set i første måned, saldoen forbliver ufor-
-    brugt — se F2 for den udestående forpligtelse)
+  * skaber: forbrugte minutter × 0,30/100 (rate pr. film kan sættes)
+  * egress: GB/min × forbrugte minutter × regionsrate (D)
+  * scenarier: REALISTISK = 30 % forbrug · WORST CASE = 100 %
+    (begge på en 90-min-titel · renditions-typisk 0,012 GB/min;
+    hjørnet 0,022 vises nederst)
 
-                       pack-1000    pack-2000    pack-3000
-  brutto (incl. moms)     49,00        75,00        99,00
-  heraf moms (afgives)     9,80        15,00        19,80
-  NETTO                   39,20        60,00        79,20
-  − Stripe (~1,5% + 2kr)   2,59         2,90         3,49
-  [30 % forbrug — egress KUN hvis måneden har oversteget 250 GB]
-  − skaber                 6,00        12,00        18,00
-  − egress (0,63 kr/GB)    4,16         8,32        12,47
-  = MARGIN (realistisk)   26,45        36,78        45,24  ✓
-  [100 % forbrug — worst case]
-  − skaber                20,00        40,00        60,00
-  − egress (0,63 kr/GB)   13,86        27,72        41,58
-  = MARGIN (worst case)    +2,75       -10,62       -25,87
+                     pack-1000    pack-2000    pack-3000
+  brutto                5,99         9,49        11,99
+  netto (DK, 25 %)      4,79         7,59         9,59
+  − Stripe (1,5 %+0,35) 0,44         0,49         0,53
+  [REALISTISK — 30 % forbrug; egress 0,012 GB/min]
+  − skaber              0,90         1,80         2,70
+  − egress EU / dyrest  0,04/0,22    0,07/0,43    0,11/0,65
+  = MARGIN             3,41/3,23    5,23/4,87    6,25/5,71
+                       (23/22 kr · 35/33 kr · 42/38 kr)  ✓✓✓
+  [WORST CASE — 100 % forbrug]
+  − skaber              3,00         6,00         9,00
+  − egress EU / dyrest  0,12/0,72    0,24/1,44    0,36/2,16
+  = MARGIN             1,23/0,63    0,86/−0,34  −0,30/−2,10
+                       (8/4 kr · 6/−2 kr · −2/−14 kr)
 
-  2 GB-LOFTET PR. TITEL — sådan sætter det rækkevidden af egress:
-  reelt GB pr. minut = filbytes ÷ filmens længde, og loftet (2 GiB)
-  bestemmer TOPPEN pr. minut afhængig af lengden:
-    120 min → 0,017 GB/min · 90 min → 0,022 · 60 min → 0,033 ·
-    45 min → 0,044 · 30 min → 0,067 GB/min
-  WORST-CASE pack-1000 (100 % forbrug, en 30-min-titel på loftet):
-    1.000 min × 0,067 = 66,7 GB × 0,63 kr ≈ 42,00 kr egress
-    → margin ≈ −25,40 kr (!)
-  (tabellens −1,01/-10,62/-25,87 gælder 90-min-titler paa loftet;
-   en kort-film-og-højt-bitrate-titel er den reelle dyrestneste)
-  KNAPPER imod loftet-situations-tabet:
-    • bitrate-disciplinen i kurateringen (jot-listens tjek 4 —
-      afvis eller bed om komprimering VED ACCEPT, ikke bagefter)
-    • 720p-vejledningen (punkt 16)
-    • encoding-guide i studiet (NB-listen, post-launch) +
-      trailere kodes ALTID lavt (gratis egress — jot-liste pkt 4)
-  KONKLUSION: 2 GB-loftet er et INDTJENINGSBESKYTTELSE-greb, ikke
-  kun en teknisk grænse — det afvisninger der gør det reelt, er
-  redaktionens bitrate-gennemgang af CLADS/UPLOADS.
-
-LÆSNINGEN (hvorfor begge rækker skal ses samtidigt):
-  * 250 GB INKLUDERET forandrer regningen: under 250 GB/md koster
-    hver pakkes egress 0 — tallene ovenfor gælder kun, når
-    måneden har oversteget; ellers margin = netto − Stripe − skaber
-    (realistisk: 30,61 / 45,10 / 57,71 ✓✓✓).
-  * REALISTISK er den styre-til: fastgebyrer amortiseres, større
-    pakker VINDER pr. forbrugt minut (skaber + egress koster per
-    FORBRUGT minut, ikke per salg) — større pakker er en god deal
-    for OS, ikke kun kunden.
-  * WORST CASE er risiken der kan ske hvis ALLE minutter bruges.
-    Med 0,62 kr/GB ser pack-1000 nogenlunde ud (+2,75), de store
-    pakker TABER hvis bitraterne er høje OG alle minutter bruges.
-    DET er grunden til 2 GB-håndhævelsen + 720p-vejledningen
-    (punkt 16): filbytes pr. minut er CENTRET i regningen, og den
-    disciplineres ved upload — margin pr. FILM-MINUT er den rigtige
-    metering, ikke margin pr. pakke.
-  * SKALA-LEVER — BESLUT 9/11: BUNNY STREAM integreres DENNE UGE
-    (brugerens mål): video-egress flytter fra Supabase til Bunny.
-    REELLE Bunny-CDN-rater (brugerens prisliste 9/11, kurs 7,0):
-      Europa + Nordamerika  $0,010/GB ≈ 0,070 kr/GB  (baseline)
-      Sydamerika            $0,045/GB ≈ 0,315 kr/GB
-      Asien + Oceanien      $0,030/GB ≈ 0,210 kr/GB  (japan/zh/hi!)
-      Mellemøsten + Afrika  $0,060/GB ≈ 0,420 kr/GB
-    → ~90 % egress-besparelse i baseline; internationalt seere er
-      op til 6x baseline — men ALLE regioner stadig 2-9x billigere
-      end Supabase's flade 0,63 kr/GB.
-    WORST-CASE pack-1000 (100 % forbrug, 90-min titel; egress 22 GB):
-      EU/NA: 1,54 kr → margin +15,07 · Asien: 4,62 → +11,99 ·
-      Sydamerika: 6,93 → +9,68 · Mellemøsten/afrika: 9,24 → +6,67
-      (alle POSITIVE — selv den dyreste region holder pack-1000
-      over vand ved fuldt forbrug på en 90-min-titel!)
-    Supabase (free-tier i første omgang) beholder KUN konti/DB/
-    godkendelser (KB-trafik — 5 GB/md rækker længe; NB free-tier
-    pauser ved inaktivitet, tjek den før genaktiveringer — se
-    auto-pause-sektionen i PROJEKTSTATUS). EFTERSPIL (BYGGET 9/11 —
-    integrationen kode-side E2E-afventer: se PROJEKTSTATUS' Bunny-
-    sektion; film-migration 20261109_bunny_stream.sql af brugeren):
-    SKEMA's sektion D/G genberegnes med bunny-rater når E2E er grøn;
-    bunny's Analytics/Usage-API kan oveni erstatte egress-SKØNNET
-    med reelle bytes pr. titel (evt. per region).
-  NB TAL ER HYPOTETISKE — erstat 0,022 GB/min med
-  sum(video_file_size_bytes) / sum(duration_sec) fra documentaries
-  LIVE (og erstat 30 %-antagelsen med reel forbrugs-rate: sum af
-  'forbrug' i ledger ÷ sum af solgte minutter).
+KRITISK LÆSNING — WORST-CASE ER NU SATS-BUNDET, IKKE EGRESS-BUNDET:
+  * pack-3000 ved fuldt forbrug: netto 9,59 − Stripe 0,53 − skaber
+    9,00 = $0,06 — FØR noget egress. Selv ved NUL egress er der kun
+    6 cent tilbage. Satsen × 30 (0,30 × 3.000 min ÷ 100) æder 75 %
+    af nettoen. Bitrate-disciplin kan IKKE redde pack-3000's
+    hjørne — kun en lavere sats (≈ $0,25) eller en højere pakkepris
+    (≈ $12,99) kan.
+  * pack-1000/2000: renditions-mix (dine 480p-seere) holder dem i
+   /near vand ved fuldt forbrug; ved 0,022-hjørnet falder til
+    1,13/0,03 og 0,66/−1,54 (D-hjørnet over).
+  * VED 30 MIN-TITEL (0,067 GB/min loftet) på pack-1000 worst case:
+    67 GB × rate → margin $0,68 (EU) / −$2,65 (dyrest) — bitrate-
+    gennemgangen (kurateringens tjek 4) er stadig reelt, men den
+    nuværende skaber-kost er den dominerende variabel.
+  * KONKLUSION (13/11): satsen fungerer som STYRE- til — de
+    realistiske marginer er sunde på alle tre pakker og regioner
+    (30-42 kr pr. pakke). Worst-caserne er det ekstreme hjørne
+    (HELE pakken forbrugt på én max-bitrate titel); accepter dem
+    bevidst, og genbereg hvis seer-adfærden viser forbrugs-% over
+    50 % eller ME/A-volumen vokser.
 
 -----------------------------------------------------------
 H) RESULTAT — SUMMEN
 -----------------------------------------------------------
-  NETTO OMSETNING  (A)                        =
-  − SKABER-UDBETALINGER (B: udbetalte + pending)  =
-  − PAYMENT-GEBYRER (C)                       =
-  − EGRESS (D)                                =
-  − FASTE (E)                                 =
-  = NETTO RESULTAT FØR SKAT (pr. måned)       =
+  NETTO OMSETNING  (Stripe Reports net volume) =
+  − SKABER-UDGAFTER (B: udbetalte + pending)   =
+  − PAYMENT-GEBYRER (C)                        =
+  − EGRESS + STORAGE (D)                       =
+  − FASTE (E)                                  =
+  = NETTO RESULTAT FØR SKAT (pr. måned)        =
 
-HYPOTETISK EKSEMPEL med tallene ovenfor (850 GB egress md., 30 %-for-
-brug, 180 salg):
-  8.688,00 − 700,00 − 526,00 − 372,00 − 478,00 = 6.612,00 kr/md
-  (≈ 76 % af netto ved de antagelser — RE-RENS med live tal!)
+HYPOTETISK med tallene ovenfor (dansk-domineret, 30 % forbrug,
+180 salg, 936 GB):
+  1.070,56 − 234,00 − 83,07 − 18,27 − 42,50 = $686,72
+  (≈ 4.630 kr pr. md · ≈ 64 % af netto — RE-RENS med live tal!)
+  [skemaets Supabase-æra gav 6.612 kr/md på samme antagelser;
+   faldet er prismatikken: −10 % priser + kurs 6,74 mot 7,0]
 
 -----------------------------------------------------------
 I) SELSKABSSKAT → HVAD DER ER TIL REINVEST
 -----------------------------------------------------------
-Sats (ApS, brugerens plan fra resume-checklisten): selskabsskat
-  22 % af selskabets skattepligtige resultat. BEMÆRK: udgiften er
-  allerede MODTRUKKET i H (skaber-udbetaling, gebyrer, egress,
-  fastomkostninger er alle fradragsberettigede driftsudgifter) —
-  så basis herfor er sektion H's resultat før skat.
+Sats (ApS): 22 % af selskabets skattepligtige resultat (udgifterne
+er allerede MODTRUKKET i H — fradragsberettigede driftsudgifter).
 FORMEL:
   resultat før skat (H) .................... =
   × 0,22  selskabsskat ..................... =
   = RESULTAT EFTER SKAT (78 %) — disponible midler .... =
-    a) REINVEST (= bliver STÅENDE på selskabskontoen: filmindkøb,
-       egress-ekspansion, annoncer, nye funktioner) .... =
-    b) og/eller UDBETALES som udbytte til dig (beskattes PÅNY i
-       din personindkomst — udbytteskatsprog og personlig skat;
-       tal til din opgørelse, ikke selskabets)
+    a) REINVEST (filmindkøb, egress-ekspansion, annoncer, funktioner)
+    b) og/eller udbytte (beskattes PÅNY personligt)
 
-HYPOTETISK (fortsætter H's eksempel, 6.612 kr/md):
-  resultat før skat ......................... 6.612,00 kr
-  − selskabsskat (22 %) ......................... 1.454,64 kr
-  = DISPOSICERER EFTER SKAT ................... 5.157,36 kr/md
-  (≈ 59 % af netto-omsetningen er til reinvest ved antagelserne)
-  NB pr. 12-md er det ≈ 61.900 kr til reinvest — deraf 2-3 film-
-  indledende udgifter (underskriftens opskalinger osv.)
+HYPOTETISK (H, $686,72 ≈ 4.630 kr):
+  selskabsskat 22 % ≈ $151,08 → disponibel ≈ $535,64 (≈ 3.612 kr/md)
+  NB pr. 12 md ≈ $6.400 ≈ 43.340 kr til reinvest (2-3 film-udgifter)
+  NB TAL I USD: selskabets bogføring er i DKK/EUR (den danske
+  regnskabsplight gælder) — omregn til bogføringskursen ved
+  kvartalsopgørelsen; Stripe-payout lander i DKK/EUR uanset.
 
-NB's (REVISOR afkrydser — punkt 12/22):
-  • B-skatter/provisionelle skatter: selskabet betaler skatten
-    i 10-skatter på FORHÅND i 2027-år — budgetér likviditeten
-  • 3-års aktieskat-loven (ApS): aktieskapitalen er bundet i 3 år
-    efter stiftelsen — reinvesteringen SKER INDE i selskabet i
-    den periode (passer netop med din plan)
-  • små-virksomhedsordning/indg. skat pr. skattemæssige-afskrivning
-    (regnskabsperioder er ÅR, ikke måned — skemaet er månedsvis
-    for plan-legning; renskningen sker på årsregnskabet)
-  • Kontoservice/DAC7: påvirker RAPPORTERINGEN om skaberne, ikke
-    skemaets resultat — punkt 12's revisor-gennemgang
+NB'S (REVISOR afkrydser — punkt 12/22):
+  • B-skatter/provisionelle skatter: budgetér likviditeten
+  • 3-års aktieskat-loven (ApS): reinvesteringen SKER i selskabet
+  • små-virksomhedsordning/indg. skat: regskabsperioder er ÅR —
+    skemaet er månedsvis til planlægning; renskning på årsregnskabet
+  • Kontoservice/DAC7: rapportering om skaberne — punkt 12's revisor
+  • STRIPE CROSS-CURRENCY (~2 % på USD på DK-konto — tjek Reports
+    efter første test-køb; opdater C med de reelle gebyrer)
 
------------------------------------------------------------
-J) SAMMENLIGNING — SUPABASE VIDEOS ETUP i dag vs BUNNY STREAM
-   (samme hypotetiske måned gennem begge infrastrukturer)
------------------------------------------------------------
-FÆLLES ANTAGELSER (identiske i begge kolonner):
-  salg: 120 × pack-1000 + 40 × pack-2000 + 20 × pack-3000
-        brutto 10.860,00 · moms 2.172,00 · NETTO 8.688,00 kr
-  forbrug: 30 % af de 260.000 solgte minutter = 78.000 min set
-  skaber-udbetaling: 78.000 × 2,00/100 = 1.560,00 kr
-  Stripe-gebyrer (1,5 % + 2 kr pr. salg):           526,00 kr
-  egress fra forbrug (0,022 GB/min):        1.716 GB
-  seer-mix (HYPOTETISK — erstat med live når Bunny Analytics
-  kan vise realt):
-    70 % Europa/Nordamerika = 1.201 GB
-    15 % Asien/Oceanien     =   257 GB   (ja/zh/hi!)
-    10 % Sydamerika         =   172 GB
-     5 % Mellemøsten/Afrika =    86 GB
-
-FÆLLES (indtægt minus skaber minus Stripe):
-  8.688,00 − 1.560,00 − 526,00 = 6.602,00 kr  (begge setup)
-
-┌──────────────────────────────┬───────────────┬────────────────┐
-│                              │ SUPABASE-SETUP│ BUNNY SETUP    │
-│                              │ (Pro + videos)│ (denne uge)    │
-├──────────────────────────────┼───────────────┼────────────────┤
-│ video-egress                 │               │                │
-│  EU/NA 1.201 GB × 0,63       │  756,63       │ 1.201 × 0,070  │
-│  Asia  257 GB × 0,63         │  161,91       │  257 × 0,210   │
-│  Syd-A 172 GB × 0,63         │  108,36       │  172 × 0,315   │
-│  ME/A  86 GB  × 0,63         │   54,18       │   86 × 0,420   │
-│   (250 GB incl. først:       │  −157,50      │   —            │
-│    egress SUBTOTAL           │    923,58 kr  │   228,34 kr    │
-│ video-storage (50 film ≈     │               │                │
-│ 100 GB)                      │ (incl.)       │ [tjek Bunny    │
-│                              │               │  Stream Storage│
-│                              │               │  ~$0,005/GB →  │
-│                              │               │  ≈   3,50 kr]  │
-│ FASTE (Vercel 140 + mail 6   │               │                │
-│  + domæne 7 + OpenAI 150     │   303,00      │   303,00       │
-│  · Supabase: Pro 175 /       │   175,00      │     0,00       │
-│    FREE-tier til konti)      │               │                │
-├──────────────────────────────┼───────────────┼────────────────┤
-│ TOTAL OMKOSTNING TILBAGE     │   (e + f)     │                │
-│  egress + storage + faste    │ 1.401,58 kr   │   534,84 kr    │
-├──────────────────────────────┼───────────────┼────────────────┤
-│ RESULTAT FØR SKAT            │ 5.200,42 kr   │ 6.067,16 kr    │
-│ selskabsskat 22 %            │ 1.144,09      │ 1.334,78       │
-│ DISPOSERBAR (78 %)           │ 4.056,33 kr   │ 4.732,38 kr    │
-└──────────────────────────────┴───────────────┴────────────────┘
-
-SAMMENLIGNINGENS PUNKTER:
-  • bunny setup giver +866,74 kr/md FØR SKAT i dette scenarie
-    (disponibel: +676,05 kr ≈ +16,7 %), og der er MEGET mindre
-    varians: Supabase-egress skalerer LINEÆRT ved 0,63 kr/GB
-    (hver nye seertimer koster 6 gange mere), Bunny holder
-    0,070-0,420 pr. region → gap VOKSER med volumen.
-  • besparelsen "≈ 90 %" er EU/Nordamerika-baseline (0,070 af
-    0,63 ≈ 11 %); reelle mix gør det til ~76 % total i dette
-    eksempel (228 mod 923 kr).
-  • Supabase's 250 GB-inklusive er nyttig KUN som video-lager;
-    ved bunny-setup er den 5 GB/md free-tier råde til KUN
-    konti/DB/godkendelser (KB-trafik) — 5 GB er langt nok.
-  • SKAL HUSKES VED EFTER-FØLGE: Bunny Stream Storage har egen
-    rate (tjek panelet — skemnet forudsætter ~$0,005/GB/md),
-    og bunny egress-målingen (reelle bytes) kan udskifte
-    0,022-GB/min-skoennen, så D/G renses live.
-  NB TAL ER HYPOTETISKE, MEN RATE-NEDERSTEN er reelle (Supabase
-  250 GB/0,63 kr + bunny-regionlisten). Kurs 7,0 DKK/USD.
-
-NB'S
-- Momsen passerer igennem: brutto → netto er ALLE tal her.
-- Skaber-udbetaling skyldes KUN gyldige minutter — men du MÅ altid
-  udbetale det OPTJENTE ("fjern filmen, aldrig pengene", terms s13).
-- Egress-skønnet er en SKØN pr. session (CBR-antagelse, range-
-  overshoot 10-20 % højer); kalibrér mod Supabase-dashboaredets
-  baandbredde-tal efter første rigtige seer-uge.
-- Fyld IKKE nye tal ind i koden — dette skema er til regnskab,
-  ikke til sitet.
+NB'S ALMINDELIGT
+- Momsen udreder igennem: brutto → netto (Stripe Reports) er ALLE
+  tal her; "net volume" er sandheden — ikke en fast ÷1,25-faktor.
+- Skaber-udbetaling skyldes KUN gyldige minutter — men du SKAL
+  altid udbetale det OPTJENTE ("fjern filmen, aldrig pengene").
+- Renditions-skønnet (0,012 GB/min) er en antagelse af SEER-mix —
+  Bunny Analytics kan erstatte det med reelle bytes pr. titel/region
+  når E2E er grøn + seervolumen er i.
+- FYLD IKKE nye tal ind i koden — dette skema er regnskabsværktøj;
+  priser/satser redigeres i src/lib/data/minutePacks.ts + de tre
+  tærskel-steder (minutePacks-kommentaren viser vejen).
+- Bunny-kursnote: raterne er oplyst i $/GB; de kr-tal i parentes er
+  VEJLEDENDE til kurs 6,744 (13/11) — opdater ved regnskabs-runden.
