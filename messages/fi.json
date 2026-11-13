@@ -219,7 +219,7 @@
       },
       "payPerMinute": {
         "title": "Maksu katsotusta minuutista",
-        "body": "Tekijä ansaitsee 2 kr / 100 kelvollista katsottua minuuttia — mukaan lasketaan vain kirjautuneet katselut, jotka huijauksenesto hyväksyy."
+        "body": "Luojalle maksetaan $0.30 jokaista 100 voimassa olevaa katsottua minuuttia kohti — vain kirjautuneet toistot, jotka anti-petossysteemi validoi, lasketaan mukaan."
       },
       "community": {
         "title": "Keskustelu elokuvan alla",
@@ -228,7 +228,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys etsii luojia",
-      "body": "Alustaa lanseerataan joulukuussa — lataa dokumenttisi ja ansaitse 2 € jokaista 100 katsottua minuuttia kohti elokuvan eliniän aikana, maksut alkaen 150 €.",
+      "body": "Alusta julkaistaan joulukuussa — lataa dokumenttisi ja ansaitse $0.30 jokaista 100 katsottua minuuttia kohti elokuvan elinkaaren aikana, maksut alkaen $25.",
       "cta": "Hae luojaksi"
     }
   },
@@ -264,7 +264,7 @@
     "statValid": "Kelvolliset katsomiset",
     "validSub": "Petostentorjunnan vahvistama",
     "statEarnings": "Tulot yhteensä",
-    "earningsSub": "2 kr / 100 katsottua minuuttia",
+    "earningsSub": "$0.30 per 100 katsottua minuuttia",
     "earningsHeading": "Tulot",
     "filmographyHeading": "Filmografia",
     "follow": "Seuraa",
@@ -274,16 +274,16 @@
   },
   "earningsPanel": {
     "eyebrow": "Tulot",
-    "rate": "2 kr / 100 katsottua minuuttia",
+    "rate": "$0.30 per 100 katsottua minuuttia",
     "explainer": "Ansaitset {rate} Doccysissa. Vain kirjautuneiden katselut, jotka anti-fraud-tarkistus hyväksyy, lasketaan mukaan — manipulointia ei koskaan makseta.",
     "earned": "Ansaittu yhteensä",
     "paidOut": "Maksettu",
     "watchedMinutes": "Kelvolliset katsotut minuutit",
-    "threshold": "Maksetaan, kun käytettävissä oleva saldo saavuttaa 150 kr."
+    "threshold": "Maksetaan, kun saatavilla oleva saldo saavuttaa $25."
   },
   "payoutPanel": {
     "eyebrow": "Maksu",
-    "intro": "Tallenna tilisi tiedot ja pyydä maksua, kun salosi saavuttaa 150 kr. Siirron tekee toimitus — rahat saapuvat yleensä muutamassa arkipäivässä.",
+    "intro": "Tallenna tilisi ja pyydä maksua, kun saldo saavuttaa $25. Siirto tehdään toimituksen toimesta, ja rahat saapuvat yleensä muutamassa arkipäivässä.",
     "methodTitle": "Maksutili",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
@@ -294,7 +294,7 @@
     "saved": "Tietosi on tallennettu.",
     "saveError": "Tietoja ei voitu tallentaa.",
     "payoutTitle": "Pyydä maksua",
-    "locked": "Painike avautuu, kun käytettävissä oleva salosi saavuttaa 150 kr.",
+    "locked": "Nappi avautuu, kun käytettävissä oleva saldo saavuttaa $25.",
     "noMethod": "Tallenna pankkitietosi ennen maksun pyytämistä.",
     "pending": "Sinulla on jo käynnissä oleva pyyntö — toimitus siirtää rahat pian.",
     "button": "Maksa {amount}",
@@ -309,9 +309,9 @@
   },
   "currencyHint": {
     "title": "Paikallinen valuuttasi",
-    "rate": "1 DKK ≈ {rate} {currency}",
+    "rate": "1 USD ≈ {rate} {currency}",
     "balance": "käytettävissä oleva saldosi ≈ {amount}",
-    "disclaimer": "Kurssi on suuntaa-antava (päivän keskikurssi) ja muuttuu valuuttamarkkinoiden mukana. Tulot ja maksut ovat aina DKK:ssa."
+    "disclaimer": "Kursi on ohjeellinen (päivän keskikurssi) ja muuttuu valuuttamarkkinoiden mukaan. Ansaitseminen ja maksaminen tapahtuu aina USD:ssä."
   },
   "filmography": {
     "film": "Elokuva",
@@ -504,8 +504,8 @@
     "retentionAxisEnd": "100 % elokuvasta",
     "talHeading": "Tilastosi",
     "talIntro": "Tulosi ovat täysin läpinäkyviä: ansaitset {rate} per 100 kelvollista katsottua minuuttia per elokuva, ja jokainen luku täällä voidaan jäljittää todellisiin toistoihin.",
-    "talGuestNote": "Anonyymit katsojat lasketaan toistoiksi, mutta vain kirjautuneet katsojat, joilla on kelvollinen toisto, maksetaan — heiltä tulevat alla olevat minuutit ja kruunut.",
-    "talEmpty": "Ei vielä katsojia. Kun julkaistu elokuva katsotaan kirjautuneen käyttäjän toimesta, minuutit ja kruunut ilmestyvät tänne — koko laskelma mukana.",
+    "talGuestNote": "Anonyymit katsojat lasketaan katselukertoina, mutta vain kirjautuneet katsojat, joilla on voimassa oleva katselu, lasketaan mukaan — heistä, minuuteista ja summista alla on kyse.",
+    "talEmpty": "Ei katsojia vielä. Kun julkaistu elokuva katsotaan kirjautuneen käyttäjän toimesta, minuutit ja summat ilmestyvät tänne — koko laskelma.",
     "talSummary30dKr": "Ansaittu, viimeiset 30 päivää",
     "talSummary30dMin": "Kelvolliset minuutit, viimeiset 30 päivää",
     "talSummaryTotalKr": "Ansaittu yhteensä",
@@ -603,7 +603,7 @@
     "creatorFilms": "{count, plural, one {# elokuva} other {# elokuvaa}}",
     "entryMeta": "{minutes} min · {amount}",
     "empty": "Ei vielä vahvistettuja katselukertoja.",
-    "emptyHint": "Minuutit ja kruunut ilmestyvät tänne, kun katsot elokuvan loppuun ensimmäistä kertaa."
+    "emptyHint": "Minuutit ja kruunut tulevat tänne, kun näet elokuvan loppuun ensimmäistä kertaa."
   },
   "genres": {
     "Klima": "Ilmasto",
@@ -653,7 +653,7 @@
     "buyBody": "Elokuva vaatii {minutes} minuuttia ja saldosi on {balance} minuuttia. Osta paketti aloittaaksesi toiston.",
     "buyCta": "Osta minuutteja",
     "trailerLabel": "Traileri",
-    "priceLine": "n. {price} koko elokuvasta — jos et koskaan katso sitä, se maksaa 0 kr."
+    "priceLine": "noin {price} koko elokuvasta — jos et katso sitä koskaan, se maksaa $0."
   },
   "embed": {
     "cta": "Katso koko elokuva Doccys-palvelussa",
@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "sis. ALV",
+    "vatNote": "+ alv. maasi mukaan",
     "packBuy": "Osta",
     "purchaseSuccess": "Kiitos ostosta! Minuutit ilmestyvät saldoillesi, kun maksu on vahvistettu.",
     "purchaseError": "Osto ei onnistunut — yritä uudelleen.",

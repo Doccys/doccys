@@ -219,7 +219,7 @@
       },
       "payPerMinute": {
         "title": "Paiement à la minute",
-        "body": "Le créateur gagne 2 kr pour 100 minutes valables vues — seuls les visionnages connectés validés par l'anti-fraude comptent."
+        "body": "Le créateur gagne 0,30 $ pour 100 minutes visionnées valides — seules les lectures enregistrées, validées par le système anti-fraude, sont comptées."
       },
       "community": {
         "title": "La conversation sous le film",
@@ -228,7 +228,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys recherche des créateurs",
-      "body": "La plateforme sera lancée en décembre — téléchargez votre documentaire et gagnez 2 kr pour 100 minutes visionnées, pendant la durée de vie du film, avec un paiement à partir de 150 kr.",
+      "body": "La plateforme sera lancée en décembre — téléchargez votre documentaire et gagnez 0,30 $ pour 100 minutes visionnées, pendant la durée de vie du film, avec un paiement à partir de 25 $.",
       "cta": "Postulez en tant que créateur"
     }
   },
@@ -264,7 +264,7 @@
     "statValid": "Fins de visionnage valides",
     "validSub": "Vérifiées par l'anti-fraude",
     "statEarnings": "Revenus totaux",
-    "earningsSub": "2 kr pour 100 minutes vues",
+    "earningsSub": "0,30 $ par 100 minutes vues",
     "earningsHeading": "Revenus",
     "filmographyHeading": "Filmographie",
     "follow": "Suivre",
@@ -274,16 +274,16 @@
   },
   "earningsPanel": {
     "eyebrow": "Revenus",
-    "rate": "2 kr par 100 minutes regardées",
+    "rate": "0,30 $ par 100 minutes visionnées",
     "explainer": "Vous gagnez {rate} sur Doccys. Seuls les visionnages connectés approuvés par la validation anti-fraude comptent — la manipulation n'est jamais payée.",
     "earned": "Total gagné",
     "paidOut": "Versé",
     "watchedMinutes": "Minutes regardées valides",
-    "threshold": "Versement lorsque le solde disponible atteint 150 kr."
+    "threshold": "Paye lorsque le solde disponible atteint 25 $."
   },
   "payoutPanel": {
     "eyebrow": "Paiement",
-    "intro": "Enregistrez vos coordonnées bancaires et demandez un versement dès que votre solde atteint 150 kr. Le virement est effectué par l'équipe éditoriale — l'argent arrive généralement sous quelques jours ouvrés.",
+    "intro": "Sauvegardez votre compte et demandez un paiement lorsque le solde atteint 25 $. Le transfert est effectué par la rédaction et l'argent arrive généralement dans quelques jours ouvrables.",
     "methodTitle": "Compte de versement",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
@@ -294,7 +294,7 @@
     "saved": "Vos coordonnées ont été enregistrées.",
     "saveError": "Impossible d'enregistrer vos coordonnées.",
     "payoutTitle": "Demander un versement",
-    "locked": "Le bouton se déverrouille quand votre solde disponible atteint 150 kr.",
+    "locked": "Le bouton se déverrouille lorsque votre solde disponible atteint 25 $.",
     "noMethod": "Enregistrez vos coordonnées bancaires avant de demander un versement.",
     "pending": "Vous avez déjà une demande en attente — l'équipe éditoriale effectuera le virement prochainement.",
     "button": "Verser {amount}",
@@ -309,9 +309,9 @@
   },
   "currencyHint": {
     "title": "Votre devise locale",
-    "rate": "1 DKK ≈ {rate} {currency}",
+    "rate": "1 USD ≈ {rate} {currency}",
     "balance": "votre solde disponible ≈ {amount}",
-    "disclaimer": "Le taux est indicatif (taux moyen du jour) et évolue avec le marché des changes. Les revenus et les versements sont toujours en DKK."
+    "disclaimer": "Le taux est indicatif (taux moyen du jour) et varie avec le marché des changes. Les gains et les paiements se font toujours en USD."
   },
   "filmography": {
     "film": "Film",
@@ -504,8 +504,8 @@
     "retentionAxisEnd": "100 % du film",
     "talHeading": "Vos chiffres",
     "talIntro": "Vos revenus sont entièrement transparents : vous gagnez {rate} pour 100 minutes valides regardées par film, et chaque chiffre ici peut être retracé jusqu'aux lectures réelles.",
-    "talGuestNote": "Les spectateurs anonymes sont comptés comme des lectures, mais seuls les spectateurs connectés avec une lecture valide sont rémunérés — ce sont eux qui génèrent les minutes et les couronnes ci-dessous.",
-    "talEmpty": "Pas encore de spectateurs. Lorsqu'un film publié est regardé par un utilisateur connecté, les minutes et les couronnes apparaissent ici — avec tous les calculs.",
+    "talGuestNote": "Les spectateurs anonymes sont comptés comme des vues, mais seuls les spectateurs connectés avec une vue valide sont rémunérés — c'est d'eux que proviennent les minutes et les montants ci-dessous.",
+    "talEmpty": "Aucun spectateur pour l'instant. Lorsque un film publié est regardé par un utilisateur connecté, les minutes et les montants apparaîtront ici — avec tout le calcul.",
     "talSummary30dKr": "Gains, derniers 30 jours",
     "talSummary30dMin": "Minutes valides, derniers 30 jours",
     "talSummaryTotalKr": "Total des gains",
@@ -603,7 +603,7 @@
     "creatorFilms": "{count, plural, one {# film} other {# films}}",
     "entryMeta": "{minutes} min · {amount}",
     "empty": "Pas encore de lectures validées.",
-    "emptyHint": "Les minutes et les couronnes arrivent ici dès que vous terminez votre premier film."
+    "emptyHint": "Les minutes et les couronnes apparaîtront ici la première fois que vous regardez un film en entier."
   },
   "genres": {
     "Klima": "Climat",
@@ -653,7 +653,7 @@
     "buyBody": "Le film nécessite {minutes} minutes et votre solde est de {balance}. Achetez un pack pour lancer la lecture.",
     "buyCta": "Acheter des minutes",
     "trailerLabel": "Bande-annonce",
-    "priceLine": "env. {price} pour tout le film — si vous ne le regardez jamais, il coûte 0 kr."
+    "priceLine": "environ {price} pour le film entier — si vous ne le regardez jamais, cela coûte 0 $."
   },
   "embed": {
     "cta": "Voir le film entier sur Doccys",
@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "TVA incl.",
+    "vatNote": "+ TVA selon votre pays",
     "packBuy": "Acheter",
     "purchaseSuccess": "Merci pour votre achat ! Les minutes arrivent sur votre solde dès que le paiement est confirmé.",
     "purchaseError": "L'achat n'a pas pu être finalisé — réessayez.",

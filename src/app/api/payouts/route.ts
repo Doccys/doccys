@@ -13,12 +13,12 @@ export const dynamic = "force-dynamic";
  * anmodningen kan kun skrives på auth.uid() selv, og anmodningens
  * status er låst til 'pending' for app-klienter (ingen update-policy).
  * Beløbet beregnes SERVER-side via creator_indtjening (kunnet ikke
- * forfalskes af klienten) og skal være >= 150 kr for at bankgebyret
+ * forfalskes af klienten) og skal være >= $25 for at bankgebyret
  * kan forsvares.
  */
 
-/** minimum for en udbetaling — skal matche DB-check amount_dkk >= 150 */
-const PAYOUT_THRESHOLD_DKK = 150;
+/** minimum for en udbetaling — skal matche DB-check amount_usd >= 25 */
+const PAYOUT_THRESHOLD_USD = 25;
 
 export async function PUT(request: NextRequest) {
   let body: { iban?: string; bic?: string };
@@ -132,19 +132,19 @@ export async function POST(request: NextRequest) {
     );
   }
   const available = Number(
-    (earnings as { tilgaengelig_dkk?: string | number }).tilgaengelig_dkk ?? 0,
+    (earnings as { tilgaengelig_usd?: string | number }).tilgaengelig_usd ?? 0,
   );
-  if (available < PAYOUT_THRESHOLD_DKK) {
+  if (available < PAYOUT_THRESHOLD_USD) {
     return NextResponse.json(
-      { error: `Udbetaling kræver en saldo på mindst ${PAYOUT_THRESHOLD_DKK} kr.` },
+      { error: `Udbetaling kræver en saldo på mindst ${PAYOUT_THRESHOLD_USD} USD` },
       { status: 400 },
     );
   }
 
   const { data: payoutRequest, error: insertError } = await supabase
     .from("creator_payout_requests")
-    .insert({ user_id: user.id, amount_dkk: available })
-    .select("id, amount_dkk, status, created_at, processed_at")
+    .insert({ user_id: user.id, amount_usd: available })
+    .select("id, amount_usd, status, created_at, processed_at")
     .single();
 
   if (insertError) {
@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
     {
       request: {
         id: payoutRequest.id,
-        amountDkk: Number(payoutRequest.amount_dkk),
+        amountUsd: Number(payoutRequest.amount_usd),
         status: payoutRequest.status,
         createdAt: payoutRequest.created_at,
         processedAt: payoutRequest.processed_at,

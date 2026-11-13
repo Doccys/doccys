@@ -9,9 +9,9 @@ import StudioTidsserieChart from "@/components/creator/StudioTidsserieChart";
  * pyntetal, der vises på den offentlige profil til feedback-runden.
  *
  * Det bevidste skel, gæstenoten også forklarer: adfærd (afspilninger,
- * unikke seere) tæller alle sessioner, mens minutter og kr KUN
- * kommer fra loggede, gyldige sessioner — dem der kan afregnes.
- * Dermed kan skaberen efterprøve hvert kron-beløb tilbage til
+ * unikke seere) tæller alle sessioner, mens minutter og beløb (USD)
+ * KUN kommer fra loggede, gyldige sessioner — dem der kan afregnes.
+ * Dermed kan skaberen efterprøve hvert $-beløb tilbage til
  * gyldige minutter × filmens sats.
  */
 export default async function StudioStatsSection({
@@ -26,14 +26,14 @@ export default async function StudioStatsSection({
   const locale = await getLocale();
 
   // 30-dagssummer regnes på serien (DK-døgn), totalerne er altid
-  const kr30 = tal.daily.reduce((sum, d) => sum + d.dkk, 0);
+  const usd30 = tal.daily.reduce((sum, d) => sum + d.usd, 0);
   const min30 = tal.daily.reduce((sum, d) => sum + d.minutes, 0);
   const plays = tal.films.reduce((sum, f) => sum + f.plays, 0);
 
   // Intet data endnu → venlig empty-state i stedet for nuller.
   // Følger-tallet er reelt uanset afspilninger, så det får sit
   // kort også her.
-  if (plays === 0 && tal.totalDkk === 0 && tal.totalMinutes === 0) {
+  if (plays === 0 && tal.totalUsd === 0 && tal.totalMinutes === 0) {
     return (
       <section className="mt-16">
         <h2 className="font-display text-2xl text-bone">{t("talHeading")}</h2>
@@ -54,7 +54,7 @@ export default async function StudioStatsSection({
 
   // Intro-satsen: filmenes sats (max, hvis de en dag varierer)
   const maxRate = tal.films.length
-    ? Math.max(...tal.films.map((f) => f.rateDkk))
+    ? Math.max(...tal.films.map((f) => f.rateUsd))
     : 2;
 
   const deviceRows = [
@@ -67,12 +67,12 @@ export default async function StudioStatsSection({
   const langMax = Math.max(1, ...tal.seere.languages.map((l) => l.count));
 
   const summary = [
-    { label: t("talSummary30dKr"), value: formatCurrency(kr30, locale) },
+    { label: t("talSummary30dKr"), value: formatCurrency(usd30, locale) },
     {
       label: t("talSummary30dMin"),
       value: `${formatNumber(min30, locale)} min`,
     },
-    { label: t("talSummaryTotalKr"), value: formatCurrency(tal.totalDkk, locale) },
+    { label: t("talSummaryTotalKr"), value: formatCurrency(tal.totalUsd, locale) },
     {
       label: t("talSummaryTotalMin"),
       value: `${formatNumber(tal.totalMinutes, locale)} min`,
@@ -176,7 +176,7 @@ export default async function StudioStatsSection({
         </div>
       </div>
 
-      {/* Pr. film — bevisføringen: gyldige minutter × sats = kr */}
+      {/* Pr. film — bevisføringen: gyldige minutter × sats = USD */}
       <div className="mt-10">
         <h3 className="text-sm font-medium text-bone">{t("talFilmHeading")}</h3>
         <div className="mt-3 overflow-x-auto rounded-xl border border-smoke bg-onyx">
@@ -234,10 +234,10 @@ function FilmRow({
         {formatNumber(film.validMinutes, locale)}
       </td>
       <td className="px-4 py-3 text-right text-ash">
-        {formatCurrency(film.rateDkk, locale)}
+        {formatCurrency(film.rateUsd, locale)}
       </td>
       <td className="px-4 py-3 text-right font-medium text-champagne">
-        {formatCurrency(film.earnedDkk, locale)}
+        {formatCurrency(film.earnedUsd, locale)}
       </td>
       <td className="px-4 py-3 text-right text-ash">{film.finishPct} %</td>
       <td className="px-4 py-3 text-right text-ash">

@@ -75,7 +75,7 @@ export type DocumentaryRow = {
   total_completions: number;
   valid_completions: number;
   /** numeric returneres som string fra Postgres — mappes med Number() */
-  payout_rate_dkk: string;
+  payout_rate_usd: string;
   sort_order: number;
   /** ISO 639-1: sproget der tales i filmen — whisper-hint i undertekst-pipelinen */
   spoken_language: string;
@@ -109,7 +109,7 @@ export type DocumentaryInsert = {
   total_views?: number;
   total_completions?: number;
   valid_completions?: number;
-  payout_rate_dkk?: string | number;
+  payout_rate_usd?: string | number;
   sort_order?: number;
   /** ISO 639-1: sproget der tales i filmen — default 'da' (databasen) */
   spoken_language?: string;
@@ -138,7 +138,7 @@ export type DocumentaryUpdate = {
   total_views?: number;
   total_completions?: number;
   valid_completions?: number;
-  payout_rate_dkk?: string | number;
+  payout_rate_usd?: string | number;
   sort_order?: number;
   /** ISO 639-1: sproget der tales i filmen — whisper-hint i undertekst-pipelinen */
   spoken_language?: string;
@@ -403,7 +403,7 @@ export type CreditPurchaseRow = {
   pack_id: string;
   minutes: number;
   /** numeric → string fra Postgres — mappes med Number() */
-  price_dkk_excl: string;
+  price_usd_excl: string;
   stripe_session_id: string;
   status: string;
   /** koderens ejer hvis købet indfri en affiliate-henvisning */
@@ -420,7 +420,7 @@ export type CreditPurchaseInsert = {
   user_id: string;
   pack_id: string;
   minutes: number;
-  price_dkk_excl: string | number;
+  price_usd_excl: string | number;
   stripe_session_id: string;
   status?: string;
   referrer_user_id?: string | null;
@@ -460,7 +460,7 @@ export type CreatorPayoutRow = {
   id: string;
   user_id: string;
   /** numeric → string fra Postgres — mappes med Number() */
-  amount_dkk: string;
+  amount_usd: string;
   note: string | null;
   paid_at: string;
 };
@@ -509,7 +509,7 @@ export type CreatorPayoutRequestRow = {
   id: string;
   user_id: string;
   /** numeric → string fra Postgres — mappes med Number(); >= 150 (DB-check) */
-  amount_dkk: string;
+  amount_usd: string;
   /** 'pending' | 'paid' | 'rejected' — kun service role kan ændre */
   status: string;
   note: string | null;
@@ -520,7 +520,7 @@ export type CreatorPayoutRequestRow = {
 export type CreatorPayoutRequestInsert = {
   id?: string;
   user_id: string;
-  amount_dkk: string | number;
+  amount_usd: string | number;
   status?: string;
   note?: string | null;
   created_at?: string;
@@ -961,7 +961,7 @@ export type Database = {
       };
       creator_indtjening: {
         Args: { p_creator_handle: string };
-        /** jsonb: { optjent_dkk, udbetalt_dkk, tilgaengelig_dkk, sete_minutter, film } */
+        /** jsonb: { optjent_usd, udbetalt_usd, tilgaengelig_usd, sete_minutter, film } */
         Returns: unknown;
       };
       har_set_film: {

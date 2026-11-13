@@ -5,14 +5,14 @@
  * Teknik: standardfontene Helvetica/Helvetica-Bold + WinAnsiEncoding
  * gør æøå mulige (de ligger i Latin-1/WinAnsi), og alle strenge
  * skrives som latin1-bytes. Beløb og datoer formateres i da-DK —
- * kvitteringen er et dansk dokument (valuta-kontrakten er DKK),
- * uanset seerens UI-sprog.
+ * kvitteringen er et dansk dokument (valuta-kontrakten er USD,
+ * brugerens beslutning 13/11), uanset seerens UI-sprog.
  */
 
 export type KvitteringData = {
   creatorName: string;
   creatorHandle: string;
-  amountDkk: number;
+  amountUsd: number;
   /** creatorens egen gemte konto — står på kvitteringen som dokumentation */
   iban: string | null;
   requestId: string;
@@ -26,11 +26,11 @@ function esc(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
 }
 
-const fmtDkk = (n: number) =>
+const fmtUsd = (n: number) =>
   new Intl.NumberFormat("da-DK", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(n) + " DKK";
+  }).format(n) + " USD";
 
 const fmtDato = (d: Date) =>
   new Intl.DateTimeFormat("da-DK", { dateStyle: "long" }).format(d);
@@ -49,7 +49,7 @@ export function bygKvitteringPdf(data: KvitteringData): Buffer {
     { f: "F1", s: 10.5, x: 72, y: 634, t: "Skaberprofil:" },
     { f: "F2", s: 10.5, x: 160, y: 634, t: "@" + data.creatorHandle },
     { f: "F1", s: 10.5, x: 72, y: 606, t: "Beløb:" },
-    { f: "F2", s: 13, x: 160, y: 606, t: fmtDkk(data.amountDkk) },
+    { f: "F2", s: 13, x: 160, y: 606, t: fmtUsd(data.amountUsd) },
     { f: "F1", s: 10.5, x: 72, y: 582, t: "Udbetalt den:" },
     { f: "F2", s: 10.5, x: 160, y: 582, t: fmtDato(data.processedAt) },
     { f: "F1", s: 10.5, x: 72, y: 562, t: "Anmodning oprettet:" },

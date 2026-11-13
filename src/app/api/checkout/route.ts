@@ -103,10 +103,11 @@ export async function POST(request: NextRequest) {
       request.headers.get("origin") ?? request.nextUrl.origin;
 
     // Find/opret Stripe-kunde, så checkouten kan forudfylde e-mail og
-    // faktureringsland. Uden forudfyldt land står momslinjen på 0,00 kr,
+    // faktureringsland. Uden forudfyldt land står momslinjen på 0,00 USD,
     // indtil kunden selv har valgt land — med DK som udgangspunkt ser
-    // danske kunder 49/75/99 kr inkl. moms fra første sekund. Kunder i
-    // andre lande retter selv landet ved køb, og totalen tilpasser sig.
+    // danske kunder moms (dansk sats) oveni basisprisen fra første
+    // sekund. Kunder i andre lande retter selv landet, og totalen
+    // tilpasser sig.
     let customerId: string | undefined;
     if (user.email) {
       const existing = await stripe.customers.list({
@@ -139,14 +140,15 @@ export async function POST(request: NextRequest) {
         {
           quantity: 1,
           price_data: {
-            currency: "dkk",
-            // DKK → øre (afrundet: komma-priser som 39,20 giver ikke
-            // heltals-øre i flydende komma)
-            unit_amount: Math.round(pack.priceDkkExcl * 100),
+            // USD er Doccys' ene afregningsvaluta (brugerens beslutning
+            // 13/11) — UI'et viser samme $-tal som basisprisen her
+            currency: "usd",
+            // USD → øre (basispriserne 6.99/10.99/13.99 giver heltals-øre)
+            unit_amount: Math.round(pack.priceUsdExcl * 100),
             product_data: {
               name: `${pack.minutes} minutter — Doccys`,
             },
-            // moms beregnes pr. land af Stripe Tax oveni prisen
+            // moms beregnes pr. land af Stripe Tax oveni basisprisen
             tax_behavior: "exclusive",
           },
         },
@@ -167,7 +169,7 @@ export async function POST(request: NextRequest) {
     user_id: user.id,
     pack_id: pack.id,
     minutes: pack.minutes,
-    price_dkk_excl: pack.priceDkkExcl,
+    price_usd_excl: pack.priceUsdExcl,
     stripe_session_id: session.id,
     referrer_user_id: referrerUserId,
   });

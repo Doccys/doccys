@@ -24,7 +24,7 @@ interface VideoPlayerProps {
   /** Skaberens navn til støtte-beviset (undefined → unævnt i teksten) */
   creatorName?: string;
   /** Filmens sats pr. 100 sete minutter — bevisets beløb regnes heraf */
-  payoutRateDkk: number;
+  payoutRateUsd: number;
   /**
    * Klar-undertekster (kun 'ready'-rækker). Native <track>-elementer
    * giver browserens egen CC-menu gratis — ingen afspiller-UI at
@@ -68,7 +68,7 @@ export default function VideoPlayer({
   documentarySlug,
   videoUrl,
   creatorName,
-  payoutRateDkk,
+  payoutRateUsd,
   subtitleTracks,
 }: VideoPlayerProps) {
   const t = useTranslations("watch");
@@ -333,14 +333,14 @@ export default function VideoPlayer({
                   {creatorName
                     ? t("proofSupport", {
                         amount: formatCurrency(
-                          (proof.watchedSeconds / 60) * payoutRateDkk / 100,
+                          (proof.watchedSeconds / 60) * payoutRateUsd / 100,
                           locale,
                         ),
                         creator: creatorName,
                       })
                     : t("proofSupportUnnamed", {
                         amount: formatCurrency(
-                          (proof.watchedSeconds / 60) * payoutRateDkk / 100,
+                          (proof.watchedSeconds / 60) * payoutRateUsd / 100,
                           locale,
                         ),
                       })}

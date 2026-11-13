@@ -15,14 +15,14 @@ import type {
 /* ---------- Row → domæne-mapping ---------- */
 
 type IndtjeningJson = {
-  optjent_dkk?: number | string;
-  udbetalt_dkk?: number | string;
-  tilgaengelig_dkk?: number | string;
+  optjent_usd?: number | string;
+  udbetalt_usd?: number | string;
+  tilgaengelig_usd?: number | string;
   sete_minutter?: number | string;
   film?: Array<{
     slug?: string;
     sete_minutter?: number | string;
-    optjent_dkk?: number | string;
+    optjent_usd?: number | string;
   }>;
 };
 
@@ -30,15 +30,15 @@ function toFilmEarnings(film: NonNullable<IndtjeningJson["film"]>[number]): Crea
   return {
     slug: film.slug ?? "",
     watchedMinutes: Number(film.sete_minutter ?? 0),
-    earnedDkk: Number(film.optjent_dkk ?? 0),
+    earnedUsd: Number(film.optjent_usd ?? 0),
   };
 }
 
 function toCreatorEarnings(json: IndtjeningJson | null | undefined): CreatorEarnings {
   return {
-    earnedDkk: Number(json?.optjent_dkk ?? 0),
-    paidDkk: Number(json?.udbetalt_dkk ?? 0),
-    availableDkk: Number(json?.tilgaengelig_dkk ?? 0),
+    earnedUsd: Number(json?.optjent_usd ?? 0),
+    paidUsd: Number(json?.udbetalt_usd ?? 0),
+    availableUsd: Number(json?.tilgaengelig_usd ?? 0),
     validWatchedMinutes: Number(json?.sete_minutter ?? 0),
     films: (json?.film ?? []).map(toFilmEarnings),
   };

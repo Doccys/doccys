@@ -219,7 +219,7 @@
       },
       "payPerMinute": {
         "title": "Betaling per sete minutt",
-        "body": "Skaperen tjener 2 kr per 100 gyldige sete minutter — kun innloggede avspillinger som svindelkontrollen godkjenner, teller."
+        "body": "Skaperen tjener $0.30 per 100 gyldige viste minutter — kun innloggede avspillinger, som anti-svindelsystemet validerer, telles med."
       },
       "community": {
         "title": "Samtalen under filmen",
@@ -228,7 +228,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys søker skapere",
-      "body": "Plattformen lanseres i desember — last opp dokumentaren din og tjen 2 kr per 100 viste minutter, i filmens levetid, med utbetaling fra 150 kr.",
+      "body": "Plattformen lanseres i desember — last opp dokumentaren din og tjen $0.30 per 100 viste minutter, i filmens levetid, med utbetaling fra $25.",
       "cta": "Søk som skaper"
     }
   },
@@ -264,7 +264,7 @@
     "statValid": "Gyldige fullføringer",
     "validSub": "Validert av anti-fraud",
     "statEarnings": "Inntjening totalt",
-    "earningsSub": "2 kr per 100 sette minutter",
+    "earningsSub": "$0.30 per 100 viste minutter",
     "earningsHeading": "Inntjening",
     "filmographyHeading": "Filmografi",
     "follow": "Følg",
@@ -274,16 +274,16 @@
   },
   "earningsPanel": {
     "eyebrow": "Inntjening",
-    "rate": "2 kr pr. 100 sette minutter",
+    "rate": "$0.30 per 100 viste minutter",
     "explainer": "Du tjener {rate} på Doccys. Kun innloggede avspillinger som anti-fraud-valideringen godkjenner, teller med — manipulasjon utbetales aldri.",
     "earned": "Tjent totalt",
     "paidOut": "Utbetalt",
     "watchedMinutes": "Gyldige sette minutter",
-    "threshold": "Utbetales når tilgjengelig saldo når 150 kr."
+    "threshold": "Utbetales når den tilgjengelige saldoen når $25."
   },
   "payoutPanel": {
     "eyebrow": "Utbetaling",
-    "intro": "Lagre kontoinformasjonen din og be om utbetaling når saldoen når 150 kr. Overføringen gjøres av redaksjonen — pengene kommer vanligvis innen noen virkedager.",
+    "intro": "Behold kontoen din, og be om utbetaling når saldoen når $25. Overføringen utføres av redaksjonen, og pengene kommer vanligvis innen et par virkedager.",
     "methodTitle": "Konto for utbetaling",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
@@ -294,7 +294,7 @@
     "saved": "Opplysningene er lagret.",
     "saveError": "Kunne ikke lagre opplysningene.",
     "payoutTitle": "Be om utbetaling",
-    "locked": "Knappen låses opp når tilgjengelig saldo når 150 kr.",
+    "locked": "Knappen låses opp når din tilgjengelige saldo når $25.",
     "noMethod": "Lagre bankopplysningene dine før du ber om utbetaling.",
     "pending": "Du har allerede en ventende forespørsel — redaksjonen overfører snart.",
     "button": "Betal ut {amount}",
@@ -309,9 +309,9 @@
   },
   "currencyHint": {
     "title": "Din lokale valuta",
-    "rate": "1 DKK ≈ {rate} {currency}",
+    "rate": "1 USD ≈ {rate} {currency}",
     "balance": "din tilgjengelige saldo ≈ {amount}",
-    "disclaimer": "Kursen er veiledende (dagens midtkurs) og endres med valutamarkedet. Inntjening og utbetaling skjer alltid i DKK."
+    "disclaimer": "Kursen er veiledende (dagens midtkurs) og endrer seg med valutamarkedet. Opptjening og utbetaling skjer alltid i USD."
   },
   "filmography": {
     "film": "Film",
@@ -504,8 +504,8 @@
     "retentionAxisEnd": "100 % av filmen",
     "talHeading": "Dine tall",
     "talIntro": "Din inntjening er fullt gjennomsiktig: du tjener {rate} per 100 gyldige sette minutter per film, og hvert tall her kan spores tilbake til reelle avspillinger.",
-    "talGuestNote": "Anonyme seere telles som avspillinger, men kun innloggede seere med en gyldig avspilling blir avregnet — det er dem, minuttene og kronene nedenfor kommer fra.",
-    "talEmpty": "Ingen seere ennå. Når en utgitt film blir sett av en innlogget bruker, dukker minuttene og kronene opp her — med hele regnestykket.",
+    "talGuestNote": "Anonyme seere telles som avspillinger, men kun innloggede seere med en gyldig avspilling blir avregnet — det er dem, minuttene og beløpene nedenfor kommer fra.",
+    "talEmpty": "Ingen seere ennå. Når en utgitt film blir sett av en innlogget bruker, dukker minuttene og beløpene her — med hele regnestykket.",
     "talSummary30dKr": "Tjent, siste 30 dager",
     "talSummary30dMin": "Gyldige minutter, siste 30 dager",
     "talSummaryTotalKr": "Tjent totalt",
@@ -603,7 +603,7 @@
     "creatorFilms": "{count, plural, one {# film} other {# filmer}}",
     "entryMeta": "{minutes} min · {amount}",
     "empty": "Ingen avregnede avspillinger ennå.",
-    "emptyHint": "Minutter og kroner havner her første gang du ser en film ferdig."
+    "emptyHint": "Minutter og kroner vil lande her, første gang du ser en film ferdig."
   },
   "genres": {
     "Klima": "Klima",
@@ -653,7 +653,7 @@
     "buyBody": "Filmen krever {minutes} minutter, og saldoen din er {balance}. Kjøp en pakke for å starte avspillingen.",
     "buyCta": "Kjøp minutter",
     "trailerLabel": "Trailer",
-    "priceLine": "ca. {price} for hele filmen — ser du den aldri, koster den 0 kr."
+    "priceLine": "ca. {price} for hele filmen — ser du den aldri, koster den $0."
   },
   "embed": {
     "cta": "Se hele filmen på Doccys",
@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "inkl. mva",
+    "vatNote": "+ moms etter ditt land",
     "packBuy": "Kjøp",
     "purchaseSuccess": "Takk for kjøpet! Minuttene lander på saldoen din så snart betalingen er bekreftet.",
     "purchaseError": "Kjøpet kunne ikke gjennomføres — prøv igjen.",

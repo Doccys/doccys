@@ -40,7 +40,7 @@ export default async function SupportLedgerSection({
             </p>
             <p className="mt-2 font-display text-4xl text-bone">
               {t("totalAmount", {
-                amount: formatCurrency(ledger.totalAmountDkk, locale),
+                amount: formatCurrency(ledger.totalAmountUsd, locale),
               })}
             </p>
           </div>
@@ -66,7 +66,7 @@ export default async function SupportLedgerSection({
                         Math.round(entry.watchedSeconds / 60),
                         locale,
                       ),
-                      amount: formatCurrency(entry.amountDkk, locale),
+                      amount: formatCurrency(entry.amountUsd, locale),
                     })}
                   </p>
                 </Link>

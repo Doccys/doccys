@@ -127,7 +127,7 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
   const balanceSeconds = await getBalanceSeconds();
   const referralCode = await getOrCreateReferralCode(user.id);
 
-  // Minutregnskab: seerens validede minutter → kroner direkte til
+  // Minutregnskab: seerens validede minutter → USD direkte til
   // skaberne. Null (datafejl) udelader sektionen — pynt, ikke en
   // fejlside.
   const supportLedger = await getSupportLedger(user.id);

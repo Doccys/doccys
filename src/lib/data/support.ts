@@ -8,13 +8,13 @@ export interface SupportEntry {
   creatorName: string | null;
   filmCount: number;
   watchedSeconds: number;
-  amountDkk: number;
+  amountUsd: number;
 }
 
 /** Seerens minutregnskab — "Din støtte" i profilen. */
 export interface SupportLedger {
   totalSeconds: number;
-  totalAmountDkk: number;
+  totalAmountUsd: number;
   /** pr. skaber, dybeste beløb først */
   creators: SupportEntry[];
 }
@@ -22,7 +22,7 @@ export interface SupportLedger {
 /**
  * Seerens minutregnskab: de VALIDEREDE afspilninger (status <> 'active'
  * og verdict.verdict = 'valid') summeret pr. skaber og omregnet til
- * kroner med filmens payout_rate_dkk — samme formel som
+ * USD med filmens payout_rate_usd (USD-skiftet 13/11) — samme formel som
  * creator_indtjening-RPC'ens (sekunder × sats / 60 / 100), så seerens
  * regnskab og skaberens indtjening altid stemmer overens.
  *
@@ -55,7 +55,7 @@ export async function getSupportLedger(
         row.watched_seconds > 0,
     );
     if (valid.length === 0) {
-      return { totalSeconds: 0, totalAmountDkk: 0, creators: [] };
+      return { totalSeconds: 0, totalAmountUsd: 0, creators: [] };
     }
 
     // Sekunder pr. film først — satsen hentes ét opslag for alle slugene
@@ -69,7 +69,7 @@ export async function getSupportLedger(
 
     const { data: filmRows, error: filmError } = await supabase
       .from("documentaries")
-      .select("slug, creator_handle, payout_rate_dkk")
+      .select("slug, creator_handle, payout_rate_usd")
       .in("slug", [...secondsBySlug.keys()]);
     if (filmError) throw new Error(filmError.message);
 
@@ -80,30 +80,30 @@ export async function getSupportLedger(
     // Aggregér pr. skaber; ukendt slug (slettet film) springes over
     const byCreator = new Map<string, SupportEntry>();
     let totalSeconds = 0;
-    let totalAmountDkk = 0;
+    let totalAmountUsd = 0;
     for (const [slug, seconds] of secondsBySlug) {
       const film = filmBySlug.get(slug);
       if (!film) {
         console.warn(`getSupportLedger: ukendt film-slug ${slug}`);
         continue;
       }
-      const amountDkk = (seconds * Number(film.payout_rate_dkk)) / 60 / 100;
+      const amountUsd = (seconds * Number(film.payout_rate_usd)) / 60 / 100;
       const entry = byCreator.get(film.creator_handle);
       if (entry) {
         entry.filmCount += 1;
         entry.watchedSeconds += seconds;
-        entry.amountDkk += amountDkk;
+        entry.amountUsd += amountUsd;
       } else {
         byCreator.set(film.creator_handle, {
           creatorHandle: film.creator_handle,
           creatorName: null,
           filmCount: 1,
           watchedSeconds: seconds,
-          amountDkk,
+          amountUsd,
         });
       }
       totalSeconds += seconds;
-      totalAmountDkk += amountDkk;
+      totalAmountUsd += amountUsd;
     }
 
     // Skaber-navne — ét opslag pr. handle; mangler profilen, vises
@@ -117,8 +117,8 @@ export async function getSupportLedger(
 
     return {
       totalSeconds,
-      totalAmountDkk,
-      creators: creators.sort((a, b) => b.amountDkk - a.amountDkk),
+      totalAmountUsd,
+      creators: creators.sort((a, b) => b.amountUsd - a.amountUsd),
     };
   } catch (err) {
     console.warn("getSupportLedger:", err);

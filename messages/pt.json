@@ -219,7 +219,7 @@
       },
       "payPerMinute": {
         "title": "Pagamento por minuto assistido",
-        "body": "O criador ganha 2 DKK por cada 100 minutos assistidos válidos — apenas reproduções registradas, que o sistema antifraude valida, são contabilizadas."
+        "body": "O criador ganha $0,30 a cada 100 minutos assistidos válidos — apenas reproduções logadas, que são validadas pelo sistema anti-fraude, contam."
       },
       "community": {
         "title": "Conversa durante o filme",
@@ -228,7 +228,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys está recrutando criadores",
-      "body": "A plataforma será lançada em dezembro — faça o upload do seu documentário e ganhe 2 R$ a cada 100 minutos assistidos, durante a vida do filme, com pagamento a partir de 150 R$.",
+      "body": "A plataforma será lançada em dezembro — envie seu documentário e ganhe $0,30 a cada 100 minutos assistidos, durante a vida do filme, com pagamento a partir de $25.",
       "cta": "Candidate-se como criador"
     }
   },
@@ -264,7 +264,7 @@
     "statValid": "Conclusões válidas",
     "validSub": "Validado por anti-fraude",
     "statEarnings": "Ganhos totais",
-    "earningsSub": "2 DKK por 100 minutos assistidos",
+    "earningsSub": "R$0,30 por 100 minutos assistidos",
     "earningsHeading": "Ganhos",
     "filmographyHeading": "Filmografia",
     "follow": "Seguir",
@@ -274,16 +274,16 @@
   },
   "earningsPanel": {
     "eyebrow": "Ganhos",
-    "rate": "2 kr por 100 minutos assistidos",
+    "rate": "R$0,30 a cada 100 minutos assistidos",
     "explainer": "Você ganha {rate} no Doccys. Apenas reproduções registradas, aprovadas pela validação anti-fraude, são contabilizadas — manipulações nunca são pagas.",
     "earned": "Total ganho",
     "paidOut": "Pago",
     "watchedMinutes": "Minutos assistidos válidos",
-    "threshold": "Pago quando o saldo disponível atingir 150 kr."
+    "threshold": "Liberado quando o saldo disponível atingir R$25."
   },
   "payoutPanel": {
     "eyebrow": "Pagamento",
-    "intro": "Salve sua conta e solicite o pagamento quando o saldo atingir 150 DKK. A transferência é feita pela equipe editorial e o dinheiro geralmente chega em alguns dias úteis.",
+    "intro": "Salve sua conta e solicite um pagamento quando o saldo atingir R$25. A transferência é feita pela equipe editorial e o dinheiro geralmente chega em alguns dias úteis.",
     "methodTitle": "Conta para pagamento",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
@@ -294,7 +294,7 @@
     "saved": "Informações salvas.",
     "saveError": "Não foi possível salvar as informações.",
     "payoutTitle": "Solicitar pagamento",
-    "locked": "O botão será desbloqueado quando seu saldo disponível atingir 150 DKK.",
+    "locked": "O botão será desbloqueado quando seu saldo disponível atingir R$25.",
     "noMethod": "Salve suas informações de pagamento antes de solicitar o pagamento.",
     "pending": "Você já tem uma solicitação pendente — a equipe editorial fará o pagamento em breve.",
     "button": "Pagar {amount}",
@@ -309,9 +309,9 @@
   },
   "currencyHint": {
     "title": "Sua moeda local",
-    "rate": "1 DKK ≈ {rate} {currency}",
+    "rate": "1 USD ≈ {rate} {currency}",
     "balance": "seu saldo disponível ≈ {amount}",
-    "disclaimer": "A taxa é indicativa (taxa média do dia) e muda com o mercado de câmbio. Ganhos e pagamentos são sempre em DKK."
+    "disclaimer": "A taxa é indicativa (média do dia) e muda com o mercado de câmbio. Os ganhos e pagamentos sempre ocorrem em USD."
   },
   "filmography": {
     "film": "Filme",
@@ -504,8 +504,8 @@
     "retentionAxisEnd": "100 % do filme",
     "talHeading": "Seus números",
     "talIntro": "Seu ganho é totalmente transparente: você ganha {rate} por 100 minutos válidos assistidos por filme, e cada número aqui pode ser rastreado até reproduções reais.",
-    "talGuestNote": "Visualizações anônimas contam como reproduções, mas apenas visualizações válidas de usuários logados são contabilizadas — são delas que vêm os minutos e o dinheiro abaixo.",
-    "talEmpty": "Ainda sem visualizações. Quando um filme publicado for assistido por um usuário logado, os minutos e o dinheiro aparecerão aqui — com todo o cálculo.",
+    "talGuestNote": "Visualizadores anônimos são contados como reproduções, mas apenas visualizadores logados com uma reprodução válida serão contabilizados — é deles que vêm os minutos e os valores abaixo.",
+    "talEmpty": "Nenhum visualizador ainda. Quando um filme publicado é assistido por um usuário logado, os minutos e os valores aparecem aqui — com toda a contagem.",
     "talSummary30dKr": "Ganho nos últimos 30 dias",
     "talSummary30dMin": "Minutos válidos nos últimos 30 dias",
     "talSummaryTotalKr": "Ganho total",
@@ -603,7 +603,7 @@
     "creatorFilms": "{count, plural, one {# filme} other {# filmes}}",
     "entryMeta": "{minutes} min · {amount}",
     "empty": "Nenhuma reprodução faturada ainda.",
-    "emptyHint": "Minutos e coroas aparecem aqui na primeira vez que você termina de assistir a um filme."
+    "emptyHint": "Minutos e reais aparecem aqui na primeira vez que você assiste a um filme completo."
   },
   "genres": {
     "Klima": "Clima",
@@ -653,7 +653,7 @@
     "buyBody": "O filme requer {minutes} minutos, e seu saldo é {balance}. Compre um pacote para começar a reprodução.",
     "buyCta": "Comprar minutos",
     "trailerLabel": "Trailer",
-    "priceLine": "aprox. {price} pelo filme inteiro — se você nunca assistir, custa 0 kr."
+    "priceLine": "cerca de {price} pelo filme inteiro — se você nunca assistir, custa $0."
   },
   "embed": {
     "cta": "Assista ao filme completo no Doccys",
@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "incl. impostos",
+    "vatNote": "+ IVA de acordo com seu país",
     "packBuy": "Comprar",
     "purchaseSuccess": "Obrigado pela compra! Os minutos serão adicionados ao seu saldo assim que o pagamento for confirmado.",
     "purchaseError": "A compra não pôde ser concluída — tente novamente.",

@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import LocalPriceHint from "@/components/fx/LocalPriceHint";
-import { estimateFilmPriceDkk } from "@/lib/data/minutePacks";
+import { estimateFilmPriceUsd } from "@/lib/data/minutePacks";
 import { formatCurrency } from "@/lib/utils/format";
 
 interface PaywallCardProps {
@@ -11,7 +11,7 @@ interface PaywallCardProps {
    */
   mode: "login" | "buy";
   /**
-   * Filmens længde i minutter — driver kr-pris-linjen. Sættes i dag i
+   * Filmens længde i minutter — driver $-pris-linjen. Sættes i dag i
    * BEGGE varianter (login + buy); mangler den, udelades linjen.
    */
   requiredMinutes?: number;
@@ -52,18 +52,18 @@ export default async function PaywallCard({
   const ctaHref = mode === "login" ? "/login" : "/profile#minutter";
   const ctaText = mode === "login" ? t("loginCta") : t("buyCta");
 
-  // Prisen i kroner — paywallens stærkeste argument. Konservativt
-  // estimat (mindste pakkes kr/min); vises kun med en kendt
+  // Prisen i USD — paywallens stærkeste argument. Konservativt
+  // estimat (mindste pakkes $/min); vises kun med en kendt
   // filmlængde. Ikke-danske seere får desuden en vejledende
-  // oversættelse til deres lokale valuta (DKK forbliver canonical).
-  const priceDkk =
+  // oversættelse til deres lokale valuta (USD forbliver canonical).
+  const priceUsd =
     requiredMinutes && requiredMinutes > 0
-      ? estimateFilmPriceDkk(requiredMinutes)
+      ? estimateFilmPriceUsd(requiredMinutes)
       : null;
   const priceLine =
-    priceDkk !== null
+    priceUsd !== null
       ? t("priceLine", {
-          price: formatCurrency(priceDkk, await getLocale()),
+          price: formatCurrency(priceUsd, await getLocale()),
         })
       : null;
 
@@ -91,8 +91,8 @@ export default async function PaywallCard({
               {priceLine && (
                 <p className="text-sm font-medium text-champagne">
                   {priceLine}{" "}
-                  {priceDkk !== null && (
-                    <LocalPriceHint dkk={priceDkk} className="text-champagne/70" />
+                  {priceUsd !== null && (
+                    <LocalPriceHint usd={priceUsd} className="text-champagne/70" />
                   )}
                 </p>
               )}
@@ -124,9 +124,9 @@ export default async function PaywallCard({
                 {priceLine && (
                   <p className="mt-2 text-sm font-medium text-champagne">
                     {priceLine}{" "}
-                    {priceDkk !== null && (
+                    {priceUsd !== null && (
                       <LocalPriceHint
-                        dkk={priceDkk}
+                        usd={priceUsd}
                         className="text-champagne/70"
                       />
                     )}

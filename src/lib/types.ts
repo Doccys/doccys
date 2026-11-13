@@ -26,7 +26,7 @@ export interface Creator {
 /**
  * Række i det offentlige Top 10-leaderboard på /creators
  * (top_creators-RPC'en, 20260928): gyldige minutter de seneste
- * 30 dage — adfærd, ikke penge (kr forbliver privat i studiet).
+ * 30 dage — adfærd, ikke penge (USD forbliver privat i studiet).
  */
 export interface TopCreator {
   handle: string;
@@ -88,12 +88,12 @@ export interface Documentary {
    */
   finishRate: number | null;
   /**
-   * Skaberens sats pr. 100 sete minutter (kr) — SANDHEDEN for
+   * Skaberens sats pr. 100 sete minutter (USD) — SANDHEDEN for
    * indtjeningen siden 20260920_payout_rate (creator_indtjening og
-   * støtte-beviset bruger begge denne kolonne). numeric fra
-   * Postgres, mappet med Number().
+   * støtte-beviset bruger begge denne kolonne; USD-skiftet 13/11 satte
+   * defaulten til $0.30). numeric fra Postgres, mappet med Number().
    */
-  payoutRateDkk: number;
+  payoutRateUsd: number;
   /** ISO-tidsstempel fra created_at — bruges af VideoObject-JSON-LD */
   createdAt: string;
 }
@@ -238,20 +238,20 @@ export interface CreatorStats {
 }
 
 /**
- * Creator-økonomi fra creator_indtjening-RPC'en: 2 kr pr. 100
- * gyldigt sete minutter, udbetalt manuelt i dashboardet ved
- * tilgængelig saldo ≥ 150 kr.
+ * Creator-økonomi fra creator_indtjening-RPC'en: $0.30 pr. 100
+ * gyldigt sete minutter (USD-skiftet 13/11), udbetalt manuelt i
+ * dashboardet ved tilgængelig saldo ≥ $25.
  */
 export interface CreatorFilmEarnings {
   slug: string;
   watchedMinutes: number;
-  earnedDkk: number;
+  earnedUsd: number;
 }
 
 export interface CreatorEarnings {
-  earnedDkk: number;
-  paidDkk: number;
-  availableDkk: number;
+  earnedUsd: number;
+  paidUsd: number;
+  availableUsd: number;
   validWatchedMinutes: number;
   films: CreatorFilmEarnings[];
 }
@@ -261,21 +261,21 @@ export interface CreatorEarnings {
 /**
  * Én films række i studiets tal-tabel. Adfærd (afspilninger,
  * unikke seere, færdigsået %) tæller ALLE sessioner; minutter og
- * kr er KUN det afregnede grundlag (loggede + gyldige) — det er
+ * USD er KUN det afregnede grundlag (loggede + gyldige) — det er
  * bevisføringen bag satsen pr. 100 min.
  */
 export interface CreatorTalFilm {
   slug: string;
   title: string;
   status: string;
-  /** filmens sats pr. 100 gyldigt sete minutter (kr) */
-  rateDkk: number;
+  /** filmens sats pr. 100 gyldigt sete minutter (USD) */
+  rateUsd: number;
   /** alle sessioner på filmen, inkl. aktive og anonyme gæster */
   plays: number;
   /** count(distinct user_id) — kun loggede seere tælles */
   uniqueViewers: number;
   validMinutes: number;
-  earnedDkk: number;
+  earnedUsd: number;
   /** set færdig-andel af afsluttede afspilninger (0–100, live) */
   finishPct: number;
   comments: number;
@@ -287,7 +287,7 @@ export interface CreatorTalDay {
   /** "2026-09-26" — DK-døgngrænser, sorteret ældst først */
   date: string;
   minutes: number;
-  dkk: number;
+  usd: number;
 }
 
 /** Seer-opdeling over alle sessioner — "hvem ser", ingen identiteter */
@@ -303,7 +303,7 @@ export interface CreatorTalSeere {
  */
 export interface CreatorTal {
   totalMinutes: number;
-  totalDkk: number;
+  totalUsd: number;
   films: CreatorTalFilm[];
   daily: CreatorTalDay[];
   seere: CreatorTalSeere;

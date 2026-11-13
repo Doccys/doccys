@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { formatCurrency, formatDate } from "@/lib/utils/format";
 
 /** min. beløb for en anmodning — skal matche API + DB-check */
-const PAYOUT_THRESHOLD_DKK = 150;
+const PAYOUT_THRESHOLD_USD = 150;
 
 export type PayoutMethod = {
   iban: string | null;
@@ -14,7 +14,7 @@ export type PayoutMethod = {
 
 export type PayoutRequest = {
   id: string;
-  amountDkk: number;
+  amountUsd: number;
   status: "pending" | "paid" | "rejected";
   createdAt: string;
   processedAt: string | null;
@@ -23,7 +23,7 @@ export type PayoutRequest = {
 interface PayoutPanelProps {
   /** bruges til ejerskabs-tjekket i POST /api/payouts */
   creatorHandle: string;
-  availableDkk: number;
+  availableUsd: number;
   /** server-renderet starttilstand — ingen tom-flash */
   initialMethod: PayoutMethod | null;
   initialRequests: PayoutRequest[];
@@ -32,13 +32,13 @@ interface PayoutPanelProps {
 /**
  * Selvbetjent udbetaling for creatorens egen profil-side: bank-
  * oplysninger gemmes af creatoren selv (RLS: kun egen række), og
- * "Udbetal"-knappen opretter en anmodning, når saldoen er >= 150 kr.
+ * "Udbetal"-knappen opretter en anmodning, når saldoen er >= $25.
  * Den faktiske pengeoverførsel foretager redaktionen manuelt — her
  * er der kun tale om en kø, creatoren aldrig kan kvittere selv.
  */
 export default function PayoutPanel({
   creatorHandle,
-  availableDkk,
+  availableUsd,
   initialMethod,
   initialRequests,
 }: PayoutPanelProps) {
@@ -58,7 +58,7 @@ export default function PayoutPanel({
 
   const hasPending = requests.some((r) => r.status === "pending");
   const canPayout =
-    availableDkk >= PAYOUT_THRESHOLD_DKK && method !== null && !hasPending;
+    availableUsd >= PAYOUT_THRESHOLD_USD && method !== null && !hasPending;
 
   async function handleSaveMethod(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -164,10 +164,10 @@ export default function PayoutPanel({
         <div className="space-y-5">
           <h3 className="font-display text-lg text-bone">{t("payoutTitle")}</h3>
 
-          {availableDkk < PAYOUT_THRESHOLD_DKK && (
+          {availableUsd < PAYOUT_THRESHOLD_USD && (
             <p className="text-sm text-ash">{t("locked")}</p>
           )}
-          {availableDkk >= PAYOUT_THRESHOLD_DKK && !method && (
+          {availableUsd >= PAYOUT_THRESHOLD_USD && !method && (
             <p className="text-sm text-ash">{t("noMethod")}</p>
           )}
           {hasPending && <p className="text-sm text-ash">{t("pending")}</p>}
@@ -182,7 +182,7 @@ export default function PayoutPanel({
           >
             {requesting
               ? t("requesting")
-              : t("button", { amount: formatCurrency(availableDkk, locale) })}
+              : t("button", { amount: formatCurrency(availableUsd, locale) })}
           </button>
 
           <div>
@@ -199,7 +199,7 @@ export default function PayoutPanel({
                     className="flex items-baseline justify-between gap-3 rounded-lg border border-smoke bg-noir px-4 py-2.5 text-sm"
                   >
                     <span className="tabular-nums text-bone">
-                      {formatCurrency(r.amountDkk, locale)}
+                      {formatCurrency(r.amountUsd, locale)}
                       <span className="ml-2 text-xs text-ash/70">
                         {formatDate(Date.parse(r.createdAt), locale)}
                       </span>

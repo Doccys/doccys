@@ -39,7 +39,7 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
 
   const { data: payoutRequest, error: reqError } = await supabase
     .from("creator_payout_requests")
-    .select("id, amount_dkk, status, created_at, processed_at")
+    .select("id, amount_usd, status, created_at, processed_at")
     .eq("id", id)
     .eq("user_id", user.id)
     .maybeSingle();
@@ -70,7 +70,7 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
   const pdf = bygKvitteringPdf({
     creatorName: creator?.name ?? "—",
     creatorHandle: creator?.handle ?? "—",
-    amountDkk: Number(payoutRequest.amount_dkk), // numeric → string fra Postgres
+    amountUsd: Number(payoutRequest.amount_usd), // numeric → string fra Postgres
     iban: method?.iban ?? null,
     requestId: payoutRequest.id,
     createdAt: new Date(payoutRequest.created_at),

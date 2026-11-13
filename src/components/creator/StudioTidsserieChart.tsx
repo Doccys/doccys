@@ -34,11 +34,11 @@ export default async function StudioTidsserieChart({
   const t = await getTranslations("creatorStudio");
   const locale = await getLocale();
   const bars = daily.length > 0 ? daily : [];
-  const max = Math.max(1, ...bars.map((d) => d.dkk));
+  const max = Math.max(1, ...bars.map((d) => d.usd));
   const slot = (W - PAD_X * 2) / Math.max(1, bars.length);
   const barW = slot * 0.6;
 
-  const yFor = (dkk: number) => PAD_TOP + CHART_H * (1 - dkk / max);
+  const yFor = (usd: number) => PAD_TOP + CHART_H * (1 - usd / max);
 
   return (
     <svg
@@ -72,8 +72,8 @@ export default async function StudioTidsserieChart({
 
       {bars.map((day, i) => {
         const x = PAD_X + slot * i + (slot - barW) / 2;
-        const h = CHART_H * (day.dkk / max);
-        const y = yFor(day.dkk);
+        const h = CHART_H * (day.usd / max);
+        const y = yFor(day.usd);
         return (
           <rect
             key={day.date}
@@ -84,7 +84,7 @@ export default async function StudioTidsserieChart({
             rx={2}
             fill={CHAMPAGNE}
           >
-            <title>{t("talChartBar", { date: day.date, amount: formatCurrency(day.dkk, locale) })}</title>
+            <title>{t("talChartBar", { date: day.date, amount: formatCurrency(day.usd, locale) })}</title>
           </rect>
         );
       })}

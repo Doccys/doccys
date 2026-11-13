@@ -60,12 +60,12 @@ export default function PackPurchase({ locale }: PackPurchaseProps) {
               </p>
               <p className="mt-1 text-sm text-champagne">
                 {t("packPrice", {
-                  price: formatCurrency(pack.priceDkkInclDkVat, locale),
+                  price: formatCurrency(pack.priceUsdExcl, locale),
                 })}{" "}
-                {/* Vejledende lokal valuta for internationale seere —
-                    DKK forbliver den faktiske trækvaluta (Stripe). */}
+                {/* Vejledende lokal valuta (danskerne ser "≈ kr") —
+                    USD forbliver den faktiske trækvaluta (Stripe). */}
                 <LocalPriceHint
-                  dkk={pack.priceDkkInclDkVat}
+                  usd={pack.priceUsdExcl}
                   className="text-champagne/70"
                 />
               </p>

@@ -11,7 +11,7 @@ import { siteUrl } from "@/lib/site";
  *   /api/bevis/{slug}?lang={locale}
  *
  * Delbart modstykke til bevis-overlayet i afspilleren — seeren kan
- * hente kortet og dele det ("Jeg så X — Y kr gik direkte til
+ * hente kortet og dele det ("Jeg så X — Y USD gik direkte til
  * skaberen"). Ruten er TVUNGET dynamisk (persondata: seerens egne
  * afspilninger) og må aldrig caches.
  *
@@ -75,8 +75,8 @@ export async function GET(
 
   // Samme tal som overlayet: minutter + beløb efter filmens sats
   const minutes = Math.round(valid.watched_seconds / 60);
-  const amountDkk =
-    ((valid.watched_seconds / 60) * documentary.payoutRateDkk) / 100;
+  const amountUsd =
+    ((valid.watched_seconds / 60) * documentary.payoutRateUsd) / 100;
 
   const t = await getTranslations({ locale, namespace: "watch" });
   const minutesLine = t("proofMinutes", {
@@ -84,11 +84,11 @@ export async function GET(
   });
   const supportLine = creator
     ? t("proofSupport", {
-        amount: formatCurrency(amountDkk, locale),
+        amount: formatCurrency(amountUsd, locale),
         creator: creator.name,
       })
     : t("proofSupportUnnamed", {
-        amount: formatCurrency(amountDkk, locale),
+        amount: formatCurrency(amountUsd, locale),
       });
 
   // NB: én samlet streng pr. tekst-div — satori fejler på flere

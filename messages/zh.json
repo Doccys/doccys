@@ -219,7 +219,7 @@
       },
       "payPerMinute": {
         "title": "按观看分钟付费",
-        "body": "创作者每获得100个有效观看分钟可赚取2 DKK — 只有经过反欺诈系统验证的登录播放才计入。"
+        "body": "创作者每观看100分钟有效观看时间赚取$0.30——只有经过反欺诈系统验证的登录播放计入。"
       },
       "community": {
         "title": "影片下的讨论",
@@ -228,7 +228,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys正在寻找创作者",
-      "body": "平台将在12月上线——上传你的纪录片，按每100分钟观看赚取2元，在影片的生命周期内，最低提现150元。",
+      "body": "平台将在12月上线——上传您的纪录片，并在影片的生命周期内每观看100分钟赚取$0.30，最低提现金额为$25。",
       "cta": "作为创作者申请"
     }
   },
@@ -264,7 +264,7 @@
     "statValid": "有效完成观看",
     "validSub": "通过反欺诈验证",
     "statEarnings": "总收入",
-    "earningsSub": "每观看100分钟赚2克朗",
+    "earningsSub": "每100分钟观看收入$0.30",
     "earningsHeading": "收入",
     "filmographyHeading": "作品集",
     "follow": "关注",
@@ -274,16 +274,16 @@
   },
   "earningsPanel": {
     "eyebrow": "收入",
-    "rate": "每观看100分钟2元",
+    "rate": "每100分钟观看收入$0.30",
     "explainer": "您在Doccys上赚取{rate}。只有通过反欺诈验证的登录播放才会被计入——操纵行为永远不会支付。",
     "earned": "总收入",
     "paidOut": "已支付",
     "watchedMinutes": "有效观看分钟数",
-    "threshold": "当可用余额达到150元时支付。"
+    "threshold": "当可用余额达到$25时进行支付。"
   },
   "payoutPanel": {
     "eyebrow": "付款",
-    "intro": "保存您的账户信息，当余额达到150 DKK时请求付款。转账由编辑部处理，通常在几个工作日内到账。",
+    "intro": "保存您的账户，当余额达到 $25 时请求提款。转账由编辑部处理，资金通常在几个工作日内到账。",
     "methodTitle": "付款账户",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
@@ -294,7 +294,7 @@
     "saved": "信息已保存。",
     "saveError": "无法保存信息。",
     "payoutTitle": "请求付款",
-    "locked": "当您的可用余额达到150 DKK时，按钮将解锁。",
+    "locked": "当您的可用余额达到 $25 时，按钮将解锁。",
     "noMethod": "在请求付款之前，请保存您的付款信息。",
     "pending": "您已经有一个待处理的请求——编辑部将尽快付款。",
     "button": "支付 {amount}",
@@ -309,9 +309,9 @@
   },
   "currencyHint": {
     "title": "您的本地货币",
-    "rate": "1 DKK ≈ {rate} {currency}",
+    "rate": "1 USD ≈ {rate} {currency}",
     "balance": "您的可用余额 ≈ {amount}",
-    "disclaimer": "汇率为参考（当天中间汇率），随外汇市场变化。收入和支付始终以DKK进行。"
+    "disclaimer": "汇率仅供参考（当天中间价），会随外汇市场变化。赚取和支付始终以美元（USD）进行。"
   },
   "filmography": {
     "film": "电影",
@@ -504,8 +504,8 @@
     "retentionAxisEnd": "电影的100 %",
     "talHeading": "您的数据",
     "talIntro": "您的收入完全透明：每部电影每观看100分钟您赚取{rate}，这里的每个数字都可以追溯到实际播放。",
-    "talGuestNote": "匿名观众计为播放，但只有登录的观众的有效播放才会结算——分钟数和金额都来自他们。",
-    "talEmpty": "尚无观众。当发布的电影被登录用户观看时，分钟数和金额将显示在这里——附完整计算。",
+    "talGuestNote": "匿名观众被计算为播放次数，但只有具有有效播放的登录观众才会被结算——下面的分钟数和金额来自他们。",
+    "talEmpty": "还没有观众。当一部发布的电影被登录用户观看时，分钟数和金额会出现在这里——包括整个计算。",
     "talSummary30dKr": "过去30天收入",
     "talSummary30dMin": "过去30天有效分钟数",
     "talSummaryTotalKr": "总收入",
@@ -603,7 +603,7 @@
     "creatorFilms": "{count, plural, one {# 部电影} other {# 部电影}}",
     "entryMeta": "{minutes} 分钟 · {amount}",
     "empty": "尚无结算播放。",
-    "emptyHint": "首次完整观看电影时，分钟数和金额将显示在此处。"
+    "emptyHint": "分钟和克朗将在这里显示，第一次观看完整电影时。"
   },
   "genres": {
     "Klima": "气候",
@@ -653,7 +653,7 @@
     "buyBody": "电影需要{minutes}分钟，您的余额是{balance}。购买一个包以开始播放。",
     "buyCta": "购买分钟",
     "trailerLabel": "预告片",
-    "priceLine": "整部电影约{price}——如果您从未观看，它将花费0元。"
+    "priceLine": "大约 {price} 观看整部电影 — 如果你从未观看，它将花费 $0."
   },
   "embed": {
     "cta": "在Doccys上观看完整电影",
@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} 分钟",
     "packMinutes": "{minutes} 分钟",
     "packPrice": "{price}",
-    "vatNote": "含增值税",
+    "vatNote": "+ 增值税根据您的国家",
     "packBuy": "购买",
     "purchaseSuccess": "感谢您的购买！一旦付款确认，分钟数将添加到您的余额中。",
     "purchaseError": "购买未成功 - 请重试。",

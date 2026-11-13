@@ -8,7 +8,7 @@ interface FilmographyGridProps {
   /** true når den besøgende er creatorens ejer — ellers skjules ALLE tal */
   isOwner: boolean;
   /**
-   * per-film sete minutter + optjent kr fra creator_indtjening-RPC'en.
+   * per-film sete minutter + optjent USD fra creator_indtjening-RPC'en.
    * Gives kun med på creatorens egen side (isOwner) — udefra er
    * tallene skjult.
    */
@@ -19,7 +19,7 @@ interface FilmographyGridProps {
  * Filmografien som små poster-kort (gradient eller uploadet
  * forsidebillede) der linker direkte til filmen — samme udtryk som
  * DocumentaryCard, bare mere kompakt. Ejeren får sine private tal
- * (visninger/færdigsete/sete min./kr.) under hvert kort; gæster
+ * (visninger/færdigsete/sete min./USD) under hvert kort; gæster
  * ser kun filmen og året.
  */
 export default async function FilmographyGrid({
@@ -74,7 +74,7 @@ export default async function FilmographyGrid({
               <p className="text-xs tabular-nums text-champagne">
                 {formatNumber(filmEarnings?.watchedMinutes ?? 0, locale)}{" "}
                 {t("watchedMinutes")} ·{" "}
-                {formatCurrency(filmEarnings?.earnedDkk ?? 0, locale)}{" "}
+                {formatCurrency(filmEarnings?.earnedUsd ?? 0, locale)}{" "}
                 {t("earnings")}
               </p>
             )}

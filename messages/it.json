@@ -219,7 +219,7 @@
       },
       "payPerMinute": {
         "title": "Pagamento per minuto visto",
-        "body": "Il creatore guadagna 2 DKK per ogni 100 minuti validi visti — solo le riproduzioni registrate, convalidate dal sistema anti-frode, vengono conteggiate."
+        "body": "Il creatore guadagna $0.30 per ogni 100 minuti visti validi — solo le riproduzioni registrate, validate dal sistema anti-frode, vengono conteggiate."
       },
       "community": {
         "title": "Conversazione durante il film",
@@ -228,7 +228,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys cerca creatori",
-      "body": "La piattaforma sarà lanciata a dicembre — carica il tuo documentario e guadagna 2 kr per ogni 100 minuti visti, per tutta la durata del film, con pagamento a partire da 150 kr.",
+      "body": "La piattaforma sarà lanciata a dicembre — carica il tuo documentario e guadagna $0.30 per ogni 100 minuti visti, durante la vita del film, con un pagamento a partire da $25.",
       "cta": "Candidati come creatore"
     }
   },
@@ -264,7 +264,7 @@
     "statValid": "Completamenti validi",
     "validSub": "Validato da anti-frode",
     "statEarnings": "Guadagni totali",
-    "earningsSub": "2 DKK per 100 minuti visualizzati",
+    "earningsSub": "$0,30 per 100 minuti visti",
     "earningsHeading": "Guadagni",
     "filmographyHeading": "Filmografia",
     "follow": "Segui",
@@ -274,16 +274,16 @@
   },
   "earningsPanel": {
     "eyebrow": "Guadagni",
-    "rate": "2 kr per 100 minuti visti",
+    "rate": "$0.30 per 100 minuti visti",
     "explainer": "Guadagni {rate} su Doccys. Solo le visualizzazioni registrate, che superano la validazione anti-frode, vengono conteggiate — la manipolazione non viene mai pagata.",
     "earned": "Guadagnato in totale",
     "paidOut": "Pagato",
     "watchedMinutes": "Minuti validi visti",
-    "threshold": "Pagato quando il saldo disponibile raggiunge 150 kr."
+    "threshold": "Pagabile quando il saldo disponibile raggiunge $25."
   },
   "payoutPanel": {
     "eyebrow": "Pagamento",
-    "intro": "Salva il tuo conto e richiedi il pagamento quando il saldo raggiunge 150 DKK. Il trasferimento viene effettuato dalla redazione e i soldi arrivano di solito entro un paio di giorni lavorativi.",
+    "intro": "Salva il tuo account e richiedi un pagamento quando il saldo raggiunge $25. Il trasferimento è effettuato dalla redazione e i fondi di solito arrivano entro pochi giorni lavorativi.",
     "methodTitle": "Conto per il pagamento",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
@@ -294,7 +294,7 @@
     "saved": "Le informazioni sono state salvate.",
     "saveError": "Impossibile salvare le informazioni.",
     "payoutTitle": "Richiedi pagamento",
-    "locked": "Il pulsante si sblocca quando il tuo saldo disponibile raggiunge 150 DKK.",
+    "locked": "Il pulsante si sblocca quando il tuo saldo disponibile raggiunge $25.",
     "noMethod": "Salva le tue informazioni di pagamento prima di richiedere il pagamento.",
     "pending": "Hai già una richiesta in sospeso — la redazione effettuerà il pagamento al più presto.",
     "button": "Paga {amount}",
@@ -309,9 +309,9 @@
   },
   "currencyHint": {
     "title": "La tua valuta locale",
-    "rate": "1 DKK ≈ {rate} {currency}",
+    "rate": "1 USD ≈ {rate} {currency}",
     "balance": "il tuo saldo disponibile ≈ {amount}",
-    "disclaimer": "Il tasso è indicativo (tasso medio del giorno) e varia con il mercato valutario. Guadagni e pagamenti avvengono sempre in DKK."
+    "disclaimer": "Il tasso è indicativo (il tasso medio di oggi) e cambia con il mercato valutario. Gli incassi e i pagamenti avvengono sempre in USD."
   },
   "filmography": {
     "film": "Film",
@@ -504,8 +504,8 @@
     "retentionAxisEnd": "100 % del film",
     "talHeading": "I tuoi dati",
     "talIntro": "I tuoi guadagni sono completamente trasparenti: guadagni {rate} per 100 minuti validi visti per film, e ogni cifra qui può essere tracciata fino alle riproduzioni reali.",
-    "talGuestNote": "Gli spettatori anonimi contano come riproduzioni, ma solo gli spettatori registrati con una riproduzione valida vengono conteggiati — sono loro che generano i minuti e le corone qui sotto.",
-    "talEmpty": "Ancora nessuno spettatore. Quando un film pubblicato viene visto da un utente registrato, i minuti e le corone appariranno qui — con tutto il calcolo.",
+    "talGuestNote": "Gli spettatori anonimi vengono conteggiati come visualizzazioni, ma solo gli spettatori registrati con una visualizzazione valida vengono contabilizzati — sono loro da cui provengono i minuti e gli importi qui sotto.",
+    "talEmpty": "Nessuno spettatore ancora. Quando un film pubblicato viene visto da un utente registrato, i minuti e gli importi appariranno qui — con tutto il conteggio.",
     "talSummary30dKr": "Guadagnato, ultimi 30 giorni",
     "talSummary30dMin": "Minuti validi, ultimi 30 giorni",
     "talSummaryTotalKr": "Guadagnato in totale",
@@ -603,7 +603,7 @@
     "creatorFilms": "{count, plural, one {# film} other {# film}}",
     "entryMeta": "{minutes} min · {amount}",
     "empty": "Nessuna riproduzione compensata ancora.",
-    "emptyHint": "Minuti e corone appariranno qui la prima volta che completi la visione di un film."
+    "emptyHint": "I minuti e le corone arriveranno qui, la prima volta che guardi un film completo."
   },
   "genres": {
     "Klima": "Clima",
@@ -653,7 +653,7 @@
     "buyBody": "Il film richiede {minutes} minuti e il tuo saldo è {balance}. Acquista un pacchetto per avviare la riproduzione.",
     "buyCta": "Acquista minuti",
     "trailerLabel": "Trailer",
-    "priceLine": "circa {price} per l'intero film — se non lo guardi mai, costa 0 kr."
+    "priceLine": "circa {price} per l'intero film — se non lo guardi mai, costa $0."
   },
   "embed": {
     "cta": "Guarda l'intero film su Doccys",
@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "incl. IVA",
+    "vatNote": "+ IVA secondo il tuo paese",
     "packBuy": "Acquista",
     "purchaseSuccess": "Grazie per l'acquisto! I minuti verranno aggiunti al tuo saldo non appena il pagamento sarà confermato.",
     "purchaseError": "L'acquisto non è riuscito — riprova.",

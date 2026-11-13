@@ -10,7 +10,7 @@ import { localizedCountry } from "@/lib/i18n/content";
  * sete minutter de seneste 30 dage (top_creators-RPC'en).
  *
  * Bevidst offentligt: adfærds-aggregater er OK (præcedens:
- * film_faedighedsstats), mens kr forbliver private i studiet.
+ * film_faedighedsstats), mens USD forbliver private i studiet.
  * Listen er redaktionel bevisføring — placeringer kan aldrig
  * købes. Tom liste (ingen gyldige minutter i vinduet, fx når
  * alle film er kladder) giver en venlig empty-state, ikke fejl.

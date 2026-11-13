@@ -1,7 +1,7 @@
 /**
  * Formateringshjælpere. `locale` er valgfri og forventes et Doccys-sprog
- * ("da", "en", …) — der formateres da i `<sprog>-DK`, så beløb stadig
- * vises i kroner. Udelades locale, bruges dansk (standardssproget).
+ * ("da", "en", …). Valutaen er USD overalt (brugerens beslutning 13/
+ * 11) — beløb formateres "$X" med sprogets egen decimal-notation.
  */
 
 function intlLocale(locale?: string): string {
@@ -20,15 +20,14 @@ export function formatNumber(value: number, locale?: string): string {
 }
 
 export function formatCurrency(value: number, locale?: string): string {
-  return new Intl.NumberFormat(intlLocale(locale), {
+  return new Intl.NumberFormat(locale ? `${locale}-US` : "en-US", {
     style: "currency",
-    currency: "DKK",
-    // Beløbet er ALTID DKK — der omregnes aldrig til lokal valuta
-    // (optjeningen er defineret og udbetales i kroner; en omregnet
-    // visning ville aldrig matche udbetalingen). Kun dansk bruger
-    // det native "kr." — alle andre sprog ser ISO-koden DKK, så en
-    // svensk/norsk seer ikke forveksler den med SEK/NOK.
-    currencyDisplay: locale === "da" ? "symbol" : "code",
+    // USD er Doccys' ene afregningsvaluta (brugerens beslutning 13/
+    // 11) — beløbene er defineret, gemt og udbetalt i USD, og der
+    // omregnes aldrig ("$6.99"); en vejledende lokalvaluta-omregning
+    // klarer LocalPriceHint/CurrencyHint oveni.
+    currency: "USD",
+    currencyDisplay: "narrowSymbol",
     maximumFractionDigits: Math.abs(value) < 10 ? 2 : 0,
   }).format(value);
 }

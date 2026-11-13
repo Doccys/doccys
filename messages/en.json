@@ -219,7 +219,7 @@
       },
       "payPerMinute": {
         "title": "Pay per watched minute",
-        "body": "Creators earn 2 kr per 100 valid minutes watched — only logged-in plays that pass anti-fraud validation count."
+        "body": "The creator earns $0.30 per 100 valid viewed minutes — only logged plays validated by the anti-fraud system count."
       },
       "community": {
         "title": "The conversation beneath the film",
@@ -228,7 +228,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys is looking for creators",
-      "body": "The platform launches in December — upload your documentary and earn 2 DKK per 100 minutes watched, for the lifetime of the film, with payouts starting at 150 DKK.",
+      "body": "The platform launches in December — upload your documentary and earn $0.30 per 100 viewed minutes, over the film's lifetime, with payouts starting at $25.",
       "cta": "Apply as a creator"
     }
   },
@@ -264,7 +264,7 @@
     "statValid": "Valid completions",
     "validSub": "Verified by anti-fraud",
     "statEarnings": "Total earnings",
-    "earningsSub": "2 kr per 100 minutes watched",
+    "earningsSub": "$0.30 per 100 viewed minutes",
     "earningsHeading": "Earnings",
     "filmographyHeading": "Filmography",
     "follow": "Follow",
@@ -274,16 +274,16 @@
   },
   "earningsPanel": {
     "eyebrow": "Earnings",
-    "rate": "DKK 2 per 100 watched minutes",
+    "rate": "$0.30 per 100 watched minutes",
     "explainer": "You earn {rate} on Doccys. Only logged-in viewings approved by the anti-fraud validation count — manipulation is never paid out.",
     "earned": "Total earned",
     "paidOut": "Paid out",
     "watchedMinutes": "Valid watched minutes",
-    "threshold": "Paid out when the available balance reaches DKK 150."
+    "threshold": "Payouts are made when the available balance reaches $25."
   },
   "payoutPanel": {
     "eyebrow": "Payout",
-    "intro": "Save your account details and request a payout once your balance reaches DKK 150. The transfer is made by the editorial team — the money usually arrives within a few business days.",
+    "intro": "Save your account and request a payout when your balance reaches $25. The transfer is made by the editorial team, and the money typically arrives within a few business days.",
     "methodTitle": "Payout account",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
@@ -294,7 +294,7 @@
     "saved": "Your details have been saved.",
     "saveError": "Could not save your details.",
     "payoutTitle": "Request a payout",
-    "locked": "The button unlocks when your available balance reaches DKK 150.",
+    "locked": "The button will unlock when your available balance reaches $25.",
     "noMethod": "Save your bank details before requesting a payout.",
     "pending": "You already have a pending request — the editorial team will transfer the money shortly.",
     "button": "Pay out {amount}",
@@ -309,9 +309,9 @@
   },
   "currencyHint": {
     "title": "Your local currency",
-    "rate": "1 DKK ≈ {rate} {currency}",
+    "rate": "1 USD ≈ {rate} {currency}",
     "balance": "your available balance ≈ {amount}",
-    "disclaimer": "The rate is indicative (today's mid-market rate) and changes with the currency market. Earnings and payouts are always in DKK."
+    "disclaimer": "The exchange rate is indicative (today's average rate) and changes with the currency market. Earnings and withdrawals are always made in USD."
   },
   "filmography": {
     "film": "Film",
@@ -504,8 +504,8 @@
     "retentionAxisEnd": "100 % of the film",
     "talHeading": "Your Numbers",
     "talIntro": "Your earnings are fully transparent: you earn {rate} per 100 valid watched minutes per film, and every number here can be traced back to real plays.",
-    "talGuestNote": "Anonymous viewers count as plays, but only logged-in viewers with a valid play are accounted for — they are where the minutes and kroner below come from.",
-    "talEmpty": "No viewers yet. When a published film is watched by a logged-in user, the minutes and kroner will appear here — with the full calculation.",
+    "talGuestNote": "Anonymous viewers are counted as plays, but only logged viewers with a valid play will be settled — this is where the minutes and amounts below come from.",
+    "talEmpty": "No viewers yet. When a published film is watched by a logged-in user, the minutes and amounts will appear here — with the full calculation.",
     "talSummary30dKr": "Earned, last 30 days",
     "talSummary30dMin": "Valid minutes, last 30 days",
     "talSummaryTotalKr": "Total earned",
@@ -603,7 +603,7 @@
     "creatorFilms": "{count, plural, one {# film} other {# films}}",
     "entryMeta": "{minutes} min · {amount}",
     "empty": "No validated playbacks yet.",
-    "emptyHint": "Minutes and kroner land here the first time you finish watching a film."
+    "emptyHint": "Minutes and kroner will land here the first time you finish watching a movie."
   },
   "genres": {
     "Klima": "Climate",
@@ -653,7 +653,7 @@
     "buyBody": "The film requires {minutes} minutes, and your balance is {balance}. Buy a pack to start playing.",
     "buyCta": "Buy minutes",
     "trailerLabel": "Trailer",
-    "priceLine": "approx. {price} for the whole film — if you never watch it, it costs 0 kr."
+    "priceLine": "about {price} for the whole movie — if you never watch it, it costs $0."
   },
   "embed": {
     "cta": "Watch the full film on Doccys",
@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "incl. VAT",
+    "vatNote": "+ VAT according to your country",
     "packBuy": "Buy",
     "purchaseSuccess": "Thanks for your purchase! The minutes land on your balance as soon as the payment is confirmed.",
     "purchaseError": "The purchase could not be completed — try again.",

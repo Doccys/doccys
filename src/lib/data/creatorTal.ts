@@ -7,7 +7,7 @@
  * (fx før migrationen er kørt).
  *
  * Bemærk det bevidste skel, studiet også kommunikerer: adfærdstal
- * (afspilninger, seere) tæller ALLE sessioner, mens minutter og kr
+ * (afspilninger, seere) tæller ALLE sessioner, mens minutter og USD
  * KUN kommer fra loggede, gyldige sessioner — det er dem, der kan
  * afregnes, og derfor dem, satsen skal retfærdiggøres ud fra.
  */
@@ -15,7 +15,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { CreatorTal, CreatorTalDay, CreatorTalFilm, CreatorTalSeere } from "@/lib/types";
 
 type TalJson = {
-  ialt?: { minutter?: number | string; kr?: number | string };
+  ialt?: { minutter?: number | string; usd?: number | string };
   film?: Array<Record<string, unknown>>;
   daglig?: Array<Record<string, unknown>>;
   seere?: {
@@ -51,11 +51,11 @@ export async function getCreatorTal(
       slug: String(f.slug ?? ""),
       title: String(f.titel ?? ""),
       status: String(f.status ?? "draft"),
-      rateDkk: Number(f.sats ?? 0),
+      rateUsd: Number(f.sats ?? 0),
       plays: Number(f.afspilninger ?? 0),
       uniqueViewers: Number(f.unikke_seere ?? 0),
       validMinutes: Number(f.gyldige_minutter ?? 0),
-      earnedDkk: Number(f.optjent_dkk ?? 0),
+      earnedUsd: Number(f.optjent_usd ?? 0),
       finishPct: Number(f.faerdigspct ?? 0),
       comments: Number(f.kommentarer ?? 0),
       likes: Number(f.likes ?? 0),
@@ -64,7 +64,7 @@ export async function getCreatorTal(
     const daily: CreatorTalDay[] = (json.daglig ?? []).map((d) => ({
       date: String(d.dato ?? ""),
       minutes: Number(d.minutter ?? 0),
-      dkk: Number(d.kr ?? 0),
+      usd: Number(d.usd ?? 0),
     }));
 
     const seere: CreatorTalSeere = {
@@ -82,7 +82,7 @@ export async function getCreatorTal(
 
     return {
       totalMinutes: Number(json.ialt?.minutter ?? 0),
-      totalDkk: Number(json.ialt?.kr ?? 0),
+      totalUsd: Number(json.ialt?.usd ?? 0),
       films,
       daily,
       seere,

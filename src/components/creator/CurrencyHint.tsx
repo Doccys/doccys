@@ -2,19 +2,20 @@
 
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { detectLocalCurrency, fetchDkkRates } from "@/lib/fx/localCurrency";
+import { detectLocalCurrency, fetchUsdRates } from "@/lib/fx/localCurrency";
 
 interface CurrencyHintProps {
-  availableDkk: number;
+  availableUsd: number;
 }
 
 /**
  * Vejledende valutakurs for creatorens LOKALE valuta — kun som
- * orientering. Hovedtallene på siden er altid DKK (optjeningen er
- * defineret som 2 kr pr. 100 min og udbetales i kroner); denne
- * boks oversætter til dagens middelkurs, så en creator i fx
- * Mexico kan læse sin saldo i MXN. Kurserne mærkes tydeligt
- * som ca. — det er information, ikke løfte om et udbetalingsbeløb.
+ * orientering. Hovedtallene på siden er altid USD (optjeningen er
+ * defineret som $0.30 pr. 100 min og udbetales i USD — brugerens
+ * beslutning 13/11); denne boks oversætter til dagens middelkurs, så
+ * en creator i fx Mexico kan læse sin saldo i MXN. Kurserne mærkes
+ * tydeligt som ca. — det er information, ikke løfte om et
+ * udbetalingsbeløb.
  *
  * Region-detektion + kurskilde ligger i det delte modul
  * (src/lib/fx/localCurrency.ts) — LocalPriceHint genbruger dem til
@@ -22,7 +23,7 @@ interface CurrencyHintProps {
  * kalenderdag, da kurserne skifter én gang i døgnet.
  */
 
-export default function CurrencyHint({ availableDkk }: CurrencyHintProps) {
+export default function CurrencyHint({ availableUsd }: CurrencyHintProps) {
   const t = useTranslations("currencyHint");
   const locale = useLocale();
   const [state, setState] = useState<{ rate: number; currency: string } | null>(
@@ -34,7 +35,7 @@ export default function CurrencyHint({ availableDkk }: CurrencyHintProps) {
     if (!local) return;
     let cancelled = false;
     void (async () => {
-      const rates = await fetchDkkRates();
+      const rates = await fetchUsdRates();
       const rate = rates?.[local];
       if (!cancelled && typeof rate === "number" && rate > 0) {
         setState({ rate, currency: local });
@@ -45,10 +46,10 @@ export default function CurrencyHint({ availableDkk }: CurrencyHintProps) {
     };
   }, []);
 
-  // intet at vise: dansk seer, ukendt region eller fejlende kurskilde
+  // intet at vise: ukendt region eller fejlende kurskilde
   if (!state) return null;
 
-  const intlTag = `${locale}-DK`;
+  const intlTag = `${locale}-US`;
   const rateText = new Intl.NumberFormat(intlTag, {
     maximumFractionDigits: 2,
   }).format(state.rate);
@@ -56,7 +57,7 @@ export default function CurrencyHint({ availableDkk }: CurrencyHintProps) {
     style: "currency",
     currency: state.currency,
     maximumFractionDigits: 2,
-  }).format(availableDkk * state.rate);
+  }).format(availableUsd * state.rate);
 
   return (
     <div className="mt-3 rounded-xl border border-smoke/70 bg-noir p-5 text-xs leading-relaxed text-ash">

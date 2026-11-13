@@ -219,7 +219,7 @@
       },
       "payPerMinute": {
         "title": "Bezahlung pro gesehenen Minute",
-        "body": "Creators verdienen 2 kr pro 100 gültig gesehenen Minuten — nur angemeldete Wiedergaben, die die Anti-Fraud-Prüfung bestehen, zählen."
+        "body": "Der Ersteller verdient $0.30 pro 100 gültigen angesehenen Minuten – nur angemeldete Wiedergaben, die vom Anti-Betrugssystem validiert werden, zählen."
       },
       "community": {
         "title": "Das Gespräch unter dem Film",
@@ -228,7 +228,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys sucht Creator",
-      "body": "Die Plattform wird im Dezember gestartet – lade deine Dokumentation hoch und verdiene 2 € pro 100 gesehenen Minuten, während der Lebensdauer des Films, mit Auszahlungen ab 150 €.",
+      "body": "Die Plattform wird im Dezember gestartet – lade deine Dokumentation hoch und verdiene $0.30 pro 100 angesehenen Minuten, während der Lebensdauer des Films, mit Auszahlungen ab $25.",
       "cta": "Bewirb dich als Creator"
     }
   },
@@ -264,7 +264,7 @@
     "statValid": "Gültige Fertigstellungen",
     "validSub": "Von der Anti-Fraud-Prüfung verifiziert",
     "statEarnings": "Gesamteinnahmen",
-    "earningsSub": "2 kr pro 100 angesehenen Minuten",
+    "earningsSub": "$0,30 pro 100 angesehenen Minuten",
     "earningsHeading": "Einnahmen",
     "filmographyHeading": "Filmografie",
     "follow": "Folgen",
@@ -274,16 +274,16 @@
   },
   "earningsPanel": {
     "eyebrow": "Einnahmen",
-    "rate": "2 kr je 100 gesehene Minuten",
+    "rate": "$0,30 pro 100 gesehene Minuten",
     "explainer": "Du verdienst {rate} auf Doccys. Nur angemeldete Wiedergaben, die die Anti-Fraud-Prüfung akzeptiert, zählen — Manipulation wird nie ausgezahlt.",
     "earned": "Insgesamt verdient",
     "paidOut": "Ausgezahlt",
     "watchedMinutes": "Gültige gesehene Minuten",
-    "threshold": "Wird ausgezahlt, wenn das verfügbare Guthaben 150 kr erreicht."
+    "threshold": "Ausgezahlt, wenn der verfügbare Saldo $25 erreicht."
   },
   "payoutPanel": {
     "eyebrow": "Auszahlung",
-    "intro": "Hinterlege deine Kontodaten und fordere eine Auszahlung an, sobald dein Guthaben 150 kr erreicht. Die Überweisung führt die Redaktion durch — das Geld ist meist in wenigen Werktagen da.",
+    "intro": "Speichern Sie Ihr Konto und beantragen Sie eine Auszahlung, wenn das Guthaben $25 erreicht. Die Überweisung erfolgt durch die Redaktion, und das Geld trifft in der Regel innerhalb weniger Werktage ein.",
     "methodTitle": "Auszahlungskonto",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
@@ -294,7 +294,7 @@
     "saved": "Deine Daten wurden gespeichert.",
     "saveError": "Daten konnten nicht gespeichert werden.",
     "payoutTitle": "Auszahlung anfordern",
-    "locked": "Die Schaltfläche wird freigeschaltet, wenn dein verfügbares Guthaben 150 kr erreicht.",
+    "locked": "Der Button wird freigeschaltet, wenn Ihr verfügbares Guthaben $25 erreicht.",
     "noMethod": "Hinterlege deine Bankdaten, bevor du eine Auszahlung anforderst.",
     "pending": "Du hast bereits eine offene Anfrage — die Redaktion überweist in Kürze.",
     "button": "{amount} auszahlen",
@@ -309,9 +309,9 @@
   },
   "currencyHint": {
     "title": "Deine Landeswährung",
-    "rate": "1 DKK ≈ {rate} {currency}",
+    "rate": "1 USD ≈ {rate} {currency}",
     "balance": "dein verfügbares Guthaben ≈ {amount}",
-    "disclaimer": "Der Kurs ist ein Richtwert (heutiger Mittelkurs) und ändert sich mit dem Devisenmarkt. Einnahmen und Auszahlungen erfolgen immer in DKK."
+    "disclaimer": "Der Kurs ist unverbindlich (täglicher Mittelkurs) und ändert sich mit dem Devisenmarkt. Verdienste und Auszahlungen erfolgen immer in USD."
   },
   "filmography": {
     "film": "Film",
@@ -504,8 +504,8 @@
     "retentionAxisEnd": "100 % des Films",
     "talHeading": "Deine Zahlen",
     "talIntro": "Dein Verdienst ist völlig transparent: Du verdienst {rate} pro 100 gültig gesehene Minuten pro Film, und jede Zahl hier kann auf reale Wiedergaben zurückgeführt werden.",
-    "talGuestNote": "Anonyme Zuschauer zählen als Wiedergaben, aber nur eingeloggte Zuschauer mit einer gültigen Wiedergabe werden abgerechnet — von ihnen stammen die Minuten und Kronen unten.",
-    "talEmpty": "Noch keine Zuschauer. Wenn ein veröffentlichter Film von einem eingeloggten Benutzer angesehen wird, erscheinen die Minuten und Kronen hier — mit der gesamten Berechnung.",
+    "talGuestNote": "Anonyme Zuschauer werden als Aufrufe gezählt, aber nur angemeldete Zuschauer mit einem gültigen Aufruf werden abgerechnet — die Minuten und Beträge unten stammen von ihnen.",
+    "talEmpty": "Noch keine Zuschauer. Wenn ein veröffentlichtes Video von einem angemeldeten Benutzer angesehen wird, erscheinen hier die Minuten und Beträge — mit der gesamten Berechnung.",
     "talSummary30dKr": "Verdient, letzte 30 Tage",
     "talSummary30dMin": "Gültige Minuten, letzte 30 Tage",
     "talSummaryTotalKr": "Insgesamt verdient",
@@ -603,7 +603,7 @@
     "creatorFilms": "{count, plural, one {# Film} other {# Filme}}",
     "entryMeta": "{minutes} Min · {amount}",
     "empty": "Noch keine abgerechneten Wiedergaben.",
-    "emptyHint": "Minuten und Kronen landen hier, sobald du das erste Mal einen Film zu Ende siehst."
+    "emptyHint": "Minuten und Kronen erscheinen hier, wenn du zum ersten Mal einen Film zu Ende siehst."
   },
   "genres": {
     "Klima": "Klima",
@@ -653,7 +653,7 @@
     "buyBody": "Der Film erfordert {minutes} Minuten, dein Guthaben beträgt {balance}. Kaufe ein Paket, um die Wiedergabe zu starten.",
     "buyCta": "Minuten kaufen",
     "trailerLabel": "Trailer",
-    "priceLine": "ca. {price} für den ganzen Film — siehst du ihn nie, kostet er 0 kr."
+    "priceLine": "ca. {price} für den ganzen Film — wenn du ihn nie siehst, kostet er $0."
   },
   "embed": {
     "cta": "Den ganzen Film auf Doccys ansehen",
@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} Min.",
     "packMinutes": "{minutes} Min.",
     "packPrice": "{price}",
-    "vatNote": "inkl. MwSt.",
+    "vatNote": "+ MwSt. gemäß deinem Land",
     "packBuy": "Kaufen",
     "purchaseSuccess": "Danke für deinen Kauf! Die Minuten landen auf deinem Guthaben, sobald die Zahlung bestätigt ist.",
     "purchaseError": "Der Kauf konnte nicht abgeschlossen werden — versuch es noch einmal.",

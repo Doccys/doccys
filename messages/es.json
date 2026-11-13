@@ -219,7 +219,7 @@
       },
       "payPerMinute": {
         "title": "Pago por minuto visto",
-        "body": "El creador gana 2 kr por cada 100 minutos válidos vistos — solo cuentan las reproducciones con sesión iniciada que superan la validación antifraude."
+        "body": "El creador gana $0.30 por cada 100 minutos válidos vistos: solo las reproducciones registradas, que valida el sistema anti-fraude, cuentan."
       },
       "community": {
         "title": "La conversación bajo la película",
@@ -228,7 +228,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys busca creadores",
-      "body": "La plataforma se lanzará en diciembre: sube tu documental y gana 2 kr por cada 100 minutos vistos, durante la vida de la película, con un pago a partir de 150 kr.",
+      "body": "La plataforma se lanzará en diciembre: sube tu documental y gana $0.30 por cada 100 minutos vistos, durante la vida de la película, con un pago a partir de $25.",
       "cta": "Aplica como creador"
     }
   },
@@ -264,7 +264,7 @@
     "statValid": "Finalizaciones válidas",
     "validSub": "Verificadas por el sistema anti-fraude",
     "statEarnings": "Ingresos totales",
-    "earningsSub": "2 kr por cada 100 minutos vistos",
+    "earningsSub": "$0.30 por cada 100 minutos vistos",
     "earningsHeading": "Ingresos",
     "filmographyHeading": "Filmografía",
     "follow": "Seguir",
@@ -274,16 +274,16 @@
   },
   "earningsPanel": {
     "eyebrow": "Ingresos",
-    "rate": "2 kr por cada 100 minutos vistos",
+    "rate": "$0.30 por cada 100 minutos vistos",
     "explainer": "Ganas {rate} en Doccys. Solo cuentan las reproducciones de usuarios conectados aprobadas por la validación anti-fraude — la manipulación nunca se paga.",
     "earned": "Total ganado",
     "paidOut": "Pagado",
     "watchedMinutes": "Minutos vistos válidos",
-    "threshold": "Se paga cuando el saldo disponible alcanza los 150 kr."
+    "threshold": "Se paga cuando el saldo disponible alcanza $25."
   },
   "payoutPanel": {
     "eyebrow": "Pago",
-    "intro": "Guarda los datos de tu cuenta y solicita el pago cuando tu saldo llegue a 150 kr. La transferencia la realiza el equipo editorial; el dinero suele llegar en pocos días laborables.",
+    "intro": "Guarda tu cuenta y solicita un pago cuando el saldo alcance $25. La transferencia es realizada por el equipo editorial y el dinero generalmente llega dentro de unos días hábiles.",
     "methodTitle": "Cuenta de pago",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
@@ -294,7 +294,7 @@
     "saved": "Tus datos se han guardado.",
     "saveError": "No se pudieron guardar tus datos.",
     "payoutTitle": "Solicitar pago",
-    "locked": "El botón se desbloquea cuando tu saldo disponible llega a 150 kr.",
+    "locked": "El botón se desbloqueará cuando tu saldo disponible alcance $25.",
     "noMethod": "Guarda tus datos bancarios antes de solicitar un pago.",
     "pending": "Ya tienes una solicitud pendiente — el equipo editorial hará la transferencia en breve.",
     "button": "Pagar {amount}",
@@ -309,9 +309,9 @@
   },
   "currencyHint": {
     "title": "Tu moneda local",
-    "rate": "1 DKK ≈ {rate} {currency}",
+    "rate": "1 USD ≈ {rate} {currency}",
     "balance": "tu saldo disponible ≈ {amount}",
-    "disclaimer": "El tipo de cambio es orientativo (tipo medio de hoy) y cambia con el mercado de divisas. Los ingresos y los pagos son siempre en DKK."
+    "disclaimer": "El tipo de cambio es orientativo (el tipo medio del día) y cambia con el mercado de divisas. Las ganancias y los pagos siempre se realizan en USD."
   },
   "filmography": {
     "film": "Película",
@@ -504,8 +504,8 @@
     "retentionAxisEnd": "100 % de la película",
     "talHeading": "Tus números",
     "talIntro": "Tus ganancias son completamente transparentes: ganas {rate} por cada 100 minutos válidos vistos por película, y cada número aquí se puede rastrear hasta reproducciones reales.",
-    "talGuestNote": "Los espectadores anónimos cuentan como reproducciones, pero solo los espectadores registrados con una reproducción válida son contabilizados — de ellos provienen los minutos y las coronas a continuación.",
-    "talEmpty": "Aún no hay espectadores. Cuando una película publicada es vista por un usuario registrado, los minutos y las coronas aparecerán aquí — con todo el cálculo.",
+    "talGuestNote": "Los espectadores anónimos se cuentan como reproducciones, pero solo los espectadores registrados con una reproducción válida son compensados; de ellos provienen los minutos y las cantidades a continuación.",
+    "talEmpty": "Aún no hay espectadores. Cuando una película publicada es vista por un usuario registrado, los minutos y las cantidades aparecerán aquí — con todo el cálculo.",
     "talSummary30dKr": "Ganado, últimos 30 días",
     "talSummary30dMin": "Minutos válidos, últimos 30 días",
     "talSummaryTotalKr": "Ganado en total",
@@ -603,7 +603,7 @@
     "creatorFilms": "{count, plural, one {# película} other {# películas}}",
     "entryMeta": "{minutes} min · {amount}",
     "empty": "Aún no hay reproducciones validadas.",
-    "emptyHint": "Los minutos y las coronas llegan aquí la primera vez que terminas de ver una película."
+    "emptyHint": "Minutos y coronas aparecerán aquí la primera vez que veas una película completa."
   },
   "genres": {
     "Klima": "Clima",
@@ -653,7 +653,7 @@
     "buyBody": "La película requiere {minutes} minutos y tu saldo es de {balance}. Compra un paquete para empezar a reproducirla.",
     "buyCta": "Comprar minutos",
     "trailerLabel": "Tráiler",
-    "priceLine": "aprox. {price} por la película completa — si nunca la ves, cuesta 0 kr."
+    "priceLine": "aprox. {price} por toda la película — si nunca la ves, cuesta $0."
   },
   "embed": {
     "cta": "Ver la película completa en Doccys",
@@ -665,7 +665,7 @@
     "balanceValue": "{minutes} min",
     "packMinutes": "{minutes} min",
     "packPrice": "{price}",
-    "vatNote": "IVA incl.",
+    "vatNote": "+ IVA según tu país",
     "packBuy": "Comprar",
     "purchaseSuccess": "¡Gracias por tu compra! Los minutos se añaden a tu saldo en cuanto se confirme el pago.",
     "purchaseError": "La compra no se pudo completar — inténtalo de nuevo.",

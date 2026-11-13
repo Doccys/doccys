@@ -75,7 +75,7 @@ function toDocumentary(row: DocumentaryRow, locale?: string): Documentary {
     createdAt: row.created_at,
     finishRate: null,
     // numeric → string fra Postgres — satsen pr. 100 sete minutter
-    payoutRateDkk: Number(row.payout_rate_dkk),
+    payoutRateUsd: Number(row.payout_rate_usd),
     stats: {
       totalViews: row.total_views,
       totalCompletions: row.total_completions,
@@ -211,7 +211,7 @@ export async function getCreators(locale?: string): Promise<Creator[]> {
 /**
  * Top 10-skabere de seneste 30 dage — det offentlige leaderboard
  * på /creators (top_creators-RPC'en). Kun adfærds-aggregater
- * (gyldige minutter + afspilninger), aldrig kr. Ved fejl returneres
+ * (gyldige minutter + afspilninger), aldrig USD. Ved fejl returneres
  * en tom liste, så /creators loader normalt — TopCreatorsSection
  * viser selv en venlig empty-state.
  */

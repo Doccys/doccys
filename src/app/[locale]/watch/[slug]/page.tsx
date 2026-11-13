@@ -105,8 +105,8 @@ export default async function WatchPage({ params }: WatchPageProps) {
       <PaywallCard
         mode="login"
         trailerUrl={trailerUrl}
-        // Kr-pris-linjen skal også stå ved login-spærren — gæster
-        // skal se "ca. 4,50 kr for hele filmen", ikke kun minutter
+        // Pris-linjen skal også stå ved login-spærren — gæster
+        // skal se "ca. $1.23 for hele filmen", ikke kun minutter
         requiredMinutes={Math.ceil(documentary.durationSec / 60)}
       />
     );
@@ -149,7 +149,7 @@ export default async function WatchPage({ params }: WatchPageProps) {
           // sete minutter — beløbet efter en afspilning regnes i
           // klienten ud fra afregningens watched_seconds
           creatorName={creator?.name}
-          payoutRateDkk={documentary.payoutRateDkk}
+          payoutRateUsd={documentary.payoutRateUsd}
         />
       );
     }
@@ -229,15 +229,16 @@ export default async function WatchPage({ params }: WatchPageProps) {
             {/* Det økonomiske løfte, offentligt: filmens sats pr. 100
                 sete minutter — radikal transparens, ingen anden
                 streamingtjeneste viser pengene ved selve værket.
-                Ikke-danske seere ser satsen i egen valuta ved siden af
-                (vejledende kurs — DKK forbliver afregningsvalutaen). */}
+                Seere, hvis valuta afviger fra USD, ser satsen i egen
+                valuta ved siden af (vejledende kurs — USD forbliver
+                afregningsvalutaen). */}
             <p className="mt-1.5 text-xs text-champagne">
               {t("payoutLine", {
-                rate: formatCurrency(documentary.payoutRateDkk, locale),
+                rate: formatCurrency(documentary.payoutRateUsd, locale),
                 creator: creator.name,
               })}{" "}
               <LocalPriceHint
-                dkk={documentary.payoutRateDkk}
+                usd={documentary.payoutRateUsd}
                 className="text-champagne/70"
               />
             </p>

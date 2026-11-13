@@ -99,9 +99,9 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
   // (fx før migrationen er kørt) — panelet viser så 0'er.
   const creatorEarnings = isOwner
     ? ((await getCreatorEarnings(creator.handle)) ?? {
-        earnedDkk: 0,
-        paidDkk: 0,
-        availableDkk: 0,
+        earnedUsd: 0,
+        paidUsd: 0,
+        availableUsd: 0,
         validWatchedMinutes: 0,
         films: [],
       })
@@ -125,7 +125,7 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
           .maybeSingle(),
         supabaseAuth
           .from("creator_payout_requests")
-          .select("id, amount_dkk, status, created_at, processed_at")
+          .select("id, amount_usd, status, created_at, processed_at")
           .eq("user_id", user.id)
           .order("created_at", { ascending: false })
           .limit(20),
@@ -135,7 +135,7 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
       }
       payoutRequests = (requestsRes.data ?? []).map((r) => ({
         id: r.id,
-        amountDkk: Number(r.amount_dkk), // numeric → string fra Postgres
+        amountUsd: Number(r.amount_usd), // numeric → string fra Postgres
         status: (["pending", "paid", "rejected"] as const).includes(
           r.status as PayoutRequest["status"],
         )
@@ -201,7 +201,7 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
           />
           <StatCard
             label={t("statEarnings")}
-            value={formatCurrency(creatorEarnings.availableDkk, locale)}
+            value={formatCurrency(creatorEarnings.availableUsd, locale)}
             sub={t("earningsSub")}
           />
         </div>
@@ -224,14 +224,14 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
           <div className="mt-5">
             <PayoutPanel
               creatorHandle={creator.handle}
-              availableDkk={creatorEarnings.availableDkk}
+              availableUsd={creatorEarnings.availableUsd}
               initialMethod={payoutMethod}
               initialRequests={payoutRequests}
             />
           </div>
-          {/* vejledende kurs til creatorens lokale valuta — DK-seere
-              ser den slet ikke (DKK er deres egen valuta) */}
-          <CurrencyHint availableDkk={creatorEarnings.availableDkk} />
+          {/* vejledende kurs til creatorens lokale valuta — USD-seere
+              regioner med USD ser den ikke (afregningsvalutaen er USD) */}
+          <CurrencyHint availableUsd={creatorEarnings.availableUsd} />
         </section>
       )}
 
