@@ -77,6 +77,10 @@ async function tusUpload(
     AuthorizationExpire: String(ticket.tusExpire),
     LibraryId: ticket.libraryId,
     VideoId: ticket.videoId,
+    // tavls-spec: PÅ HVERT kald (creation/HEAD/PATCH) — Bunnys
+    // session-rutine svarer 404 (ikke 412) når den mangler, og dermed
+    // så alle PATCH'er som "session ikke fundet" (brugerens E2E 14/11).
+    "tus-resumable": "1.0.0",
   });
 
   // Upload-sessionen bor på sin EGEN URL (Location fra TUS-creationen)
