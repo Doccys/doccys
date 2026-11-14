@@ -93,6 +93,24 @@ async function tusUpload(
   if (Number.isFinite(headOffset) && headOffset > 0 && headOffset <= file.size) {
     offset = headOffset;
   }
+  // TUS-CREATION: sessionen skal oprettes med POST (Bunny's
+  // creation-extension) — en ny video har ingen upload-session, og
+  // PATCH direktes svarer 404 ("not found") indtil POST'en har skabt
+  // den (brugerens E2E-fejl 14/11: 16-MB-chunks alle 404, bibliotek
+  // blank). HEAD 200 med offset > 0 = sessionen findes — spring.
+  if (head.status === 404) {
+    const create = await fetch(TUS_ENDPOINT, {
+      method: "POST",
+      headers: {
+        ...headers(),
+        "Upload-Length": String(file.size),
+        "tus-resumable": "1.0.0",
+      },
+    });
+    if (!create.ok) {
+      throw new Error(`tus-create-${create.status}`);
+    }
+  }
 
   while (offset < file.size) {
     const slutt = Math.min(offset + TUS_CHUNK_BYTES, file.size);
