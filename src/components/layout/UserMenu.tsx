@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import type { User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
@@ -22,6 +22,8 @@ import { createClient } from "@/lib/supabase/client";
 export default function UserMenu() {
   const navT = useTranslations("header");
   const authT = useTranslations("auth");
+  const shareT = useTranslations("share");
+  const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const profileActive = pathname.startsWith("/profile");
@@ -30,6 +32,10 @@ export default function UserMenu() {
   // egen skaber-profil (hvis kontoen ejer én) — styrer om rullemenuen
   // viser "Udbetaling"-linket. creators er offentligt læsbar (RLS).
   const [creatorHandle, setCreatorHandle] = useState<string | null>(null);
+  // brugerens henvisningskode (RLS: egen række) — bruges af
+  // "Del min profil"-punktet, der kopierer profil-linket med koden.
+  const [refCode, setRefCode] = useState<string | null>(null);
+  const [profileLinkCopied, setProfileLinkCopied] = useState(false);
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -64,6 +70,14 @@ export default function UserMenu() {
       .eq("owner_user_id", user.id)
       .maybeSingle()
       .then(({ data }) => setCreatorHandle(data?.handle ?? null));
+    // henvisningskoden til "Del min profil" — egen række (RLS); null
+    // hvis konten endnu ikke har besøgt profilen (koden oprettes lazy dér)
+    void supabase
+      .from("user_referral_codes")
+      .select("code")
+      .eq("user_id", user.id)
+      .maybeSingle()
+      .then(({ data }) => setRefCode(data?.code ?? null));
   }, [user]);
 
   // Close the dropdown on clicks outside (same pattern as LanguageSwitcher).
@@ -168,6 +182,33 @@ export default function UserMenu() {
           >
             {navT("nav.profile")}
           </Link>
+          {/* Del min profil (under "Min profil" — brugerens ønske 14/
+              11): kopierer skaberprofil-linket med henvisnings-koden.
+              Kun for konti med egen skaber-profil, som Udbetaling. */}
+          {creatorHandle && (
+            <button
+              type="button"
+              role="menuitem"
+              onClick={async () => {
+                const url = `${window.location.origin}/${locale}/creator/${creatorHandle}${refCode ? `?ref=${refCode}` : ""}`;
+                try {
+                  await navigator.clipboard.writeText(url);
+                  setProfileLinkCopied(true);
+                  window.setTimeout(() => setProfileLinkCopied(false), 2000);
+                } catch {
+                  // kopi kan være nægtet (ældre apps) — fald tilbage til
+                  // at navigere til profilen, hvor Del-rækken står øverst
+                  setOpen(false);
+                  router.push(`/creator/${creatorHandle}`);
+                }
+              }}
+              className="block w-full px-4 py-2 text-left text-xs text-ash transition-colors hover:bg-smoke/30 hover:text-bone"
+            >
+              {profileLinkCopied
+                ? shareT("copied")
+                : navT("nav.shareProfile")}
+            </button>
+          )}
           <Link
             href="/creator/studio"
             role="menuitem"
