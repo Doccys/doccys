@@ -98,7 +98,12 @@ export function bunnyGuidFromUrl(url: string): string | null {
   return match ? match[1] : null;
 }
 
-/** Venter på, at Bunny er færdig med encodningen (status 3). */
+/** Venter på, at Bunny er færdig med encodningen (status 3).
+ *  QUIRK (14/11, transcodingMessages: "Source video stream has variable
+ *  framerate"): Bunny kan aflevere den FULLTE oplosningsstige
+ *  (1080p…240p + MP4-fallback) og ALLIGEVEL ende på status 4 — spillebar-
+ *  heden boer paa availableResolutions, ikke status-tallet. Derfor er
+ *  status 4 med opløsninger til stede = ready. */
 export async function waitForBunnyEncode(
   guid: string,
   timeoutMs = 300_000,
@@ -107,7 +112,10 @@ export async function waitForBunnyEncode(
   while (Date.now() < deadline) {
     const video = await getBunnyVideo(guid);
     if (video && video.status >= 3) {
-      return video.status === 3 ? "ready" : "failed";
+      if (video.status === 3 || video.availableResolutions) {
+        return "ready";
+      }
+      return "failed";
     }
     await new Promise((resolve) => setTimeout(resolve, 3000));
   }

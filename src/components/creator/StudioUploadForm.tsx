@@ -191,8 +191,18 @@ async function pollBunnyEncode(
   for (let runde = 0; runde < 200; runde++) {
     const res = await fetch(`/api/films/bunny-status?id=${videoId}`);
     if (res.ok) {
-      const body = (await res.json()) as { status: number };
-      if (body.status >= 3) return body.status === 3 ? "ready" : "failed";
+      const body = (await res.json()) as {
+        status: number;
+        availableResolutions?: string | null;
+      };
+      if (body.status >= 3) {
+        // status 4 med fuld oplosningsstige = Bunny's VFR-quirk
+        // ("variable framerate", 14/11-fundet) — filmen er spilable
+        if (body.status === 3 || body.availableResolutions) {
+          return "ready";
+        }
+        return "failed";
+      }
     }
     await new Promise((resolve) => setTimeout(resolve, 3000));
   }

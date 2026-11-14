@@ -189,7 +189,10 @@ export async function POST(request: NextRequest) {
         { status: 403 },
       );
     }
-    if (bunny.status !== 3) {
+    if (
+      bunny.status !== 3 &&
+      !(bunny.status === 4 && bunny.availableResolutions)
+    ) {
       return NextResponse.json(
         {
           error:

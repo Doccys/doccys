@@ -55,6 +55,8 @@ export async function GET(request: NextRequest) {
       {
         status: video.status,
         encodeProgress: video.encodeProgress,
+        // status 4 kan være Bunny's VFR-quirk MED fuld stige — poller-
+        // klienten skelner på opløsningerne, ikke status alene (14/11)
         availableResolutions: video.availableResolutions,
         storageSize: video.storageSize,
       },
