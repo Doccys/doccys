@@ -283,7 +283,7 @@
     "earned": "Total earned",
     "paidOut": "Paid out",
     "watchedMinutes": "Valid watched minutes",
-    "threshold": "Payouts are made when the available balance reaches $25."
+    "threshold": "Can be withdrawn when the available balance reaches $25."
   },
   "payoutPanel": {
     "eyebrow": "Payout",

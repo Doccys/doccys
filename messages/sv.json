@@ -283,7 +283,7 @@
     "earned": "Intjänat totalt",
     "paidOut": "Utbetalt",
     "watchedMinutes": "Giltiga sedda minuter",
-    "threshold": "Utbetalas när den tillgängliga saldot når $25."
+    "threshold": "Kan betalas ut när den tillgängliga saldot når $25."
   },
   "payoutPanel": {
     "eyebrow": "Utbetalning",

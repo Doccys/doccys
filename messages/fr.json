@@ -283,7 +283,7 @@
     "earned": "Total gagné",
     "paidOut": "Versé",
     "watchedMinutes": "Minutes regardées valides",
-    "threshold": "Paye lorsque le solde disponible atteint 25 $."
+    "threshold": "Peut être retiré lorsque le solde disponible atteint 25 $."
   },
   "payoutPanel": {
     "eyebrow": "Paiement",

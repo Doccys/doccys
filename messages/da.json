@@ -308,7 +308,7 @@
     "earned": "Optjent i alt",
     "paidOut": "Udbetalt",
     "watchedMinutes": "Gyldige sete minutter",
-    "threshold": "Udbetales, når den tilgængelige saldo når $25."
+    "threshold": "Kan udbetales, når den tilgængelige saldo når $25."
   },
   "payoutPanel": {
     "eyebrow": "Udbetaling",

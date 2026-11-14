@@ -283,7 +283,7 @@
     "earned": "総収益",
     "paidOut": "支払済み",
     "watchedMinutes": "有効視聴分数",
-    "threshold": "利用可能な残高が$25に達したときに支払われます。"
+    "threshold": "$25に達したときに引き出すことができます。"
   },
   "payoutPanel": {
     "eyebrow": "出金",

@@ -283,7 +283,7 @@
     "earned": "总收入",
     "paidOut": "已支付",
     "watchedMinutes": "有效观看分钟数",
-    "threshold": "当可用余额达到$25时进行支付。"
+    "threshold": "可在可用余额达到 $25 时提取。"
   },
   "payoutPanel": {
     "eyebrow": "付款",

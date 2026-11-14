@@ -283,7 +283,7 @@
     "earned": "Total ganho",
     "paidOut": "Pago",
     "watchedMinutes": "Minutos assistidos válidos",
-    "threshold": "Liberado quando o saldo disponível atingir R$25."
+    "threshold": "Pode ser retirado quando o saldo disponível atingir $25."
   },
   "payoutPanel": {
     "eyebrow": "Pagamento",

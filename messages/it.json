@@ -283,7 +283,7 @@
     "earned": "Guadagnato in totale",
     "paidOut": "Pagato",
     "watchedMinutes": "Minuti validi visti",
-    "threshold": "Pagabile quando il saldo disponibile raggiunge $25."
+    "threshold": "Può essere prelevato quando il saldo disponibile raggiunge $25."
   },
   "payoutPanel": {
     "eyebrow": "Pagamento",

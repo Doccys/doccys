@@ -283,7 +283,7 @@
     "earned": "Ansaittu yhteensä",
     "paidOut": "Maksettu",
     "watchedMinutes": "Kelvolliset katsotut minuutit",
-    "threshold": "Maksetaan, kun saatavilla oleva saldo saavuttaa $25."
+    "threshold": "Voidaan maksaa, kun käytettävissä oleva saldo saavuttaa 25 $."
   },
   "payoutPanel": {
     "eyebrow": "Maksu",

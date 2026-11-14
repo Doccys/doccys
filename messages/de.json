@@ -283,7 +283,7 @@
     "earned": "Insgesamt verdient",
     "paidOut": "Ausgezahlt",
     "watchedMinutes": "Gültige gesehene Minuten",
-    "threshold": "Ausgezahlt, wenn der verfügbare Saldo $25 erreicht."
+    "threshold": "Kann ausgezahlt werden, wenn der verfügbare Saldo $25 erreicht."
   },
   "payoutPanel": {
     "eyebrow": "Auszahlung",
