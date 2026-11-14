@@ -2,6 +2,81 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-11-14
 ==========================================================
 
+BUNNY STREAM E2E FULDFØRT — FØRSTE REELT PUBLICEREDE BUNNY-FILM (14/11)
+Brugerens E2E (film "kkskskks", 51 s, 85/149 MB mp4, VFR 29,99-fps):
+upload → TUS → 100% → encode → kladden → playback ✓ → undertekster
+13 ready ✓ → trailer ✓ → status 'published' FLIPPET i Supabase ✓ —
+den første reelt Bunny-hostede film live. FEM reelle fejler, alle
+fundet og fixet (commits 78bb89c→15b00c8):
+1) ENV-ORPHANEDLINJER (root: "Bunny Stream er ikke konfigureret"):
+   .env.local havde nøglerne pasted på ødelagte linjer (værdi på
+   egen linje uden `=`) + forkert variable-navn (BUNNY_LIBRARY_ID —
+   koden læser BUNNY_STREAM_LIBRARY_ID). Alle fire BUNNY_* nu
+   korrekt lokalt OG i Vercel (production+preview, via CLI'en —
+   værdierne læses fra .env.local uden echo).
+2) TUS-CREATION manglet: Bunny's tusupload kræver, at upload-sessionen
+   skabes med POST (Upload-Length + auth-hoveder) — klienten sprang
+   direkte til PATCH → 404 på hver 16-MB-chunk → kladsletningens
+   ryddede videoen (Bibliotek blank, kun 9/11-testobjektet).
+   Bunny's egen doc bekræfter creation-extensionen. LAERING:
+   9/11's "TUS 200" var server-PUT (trailer-vejen) — browser-TUS var
+   aldrig verificeret før nu.
+3) TUS-SESSION-URL: creation-POST'en svarer 201 + **Location**
+   (/tusupload/{session-id}) — og PATCH/HEAD skal ramme DENNE URL;
+   den generiske /tusupload med VideoId-hovedet giver 404 (server-
+   verificeret med og uden session). Resume: session-URL gemmes i
+   localStorage pr. videoId (tus-js-client-mønsteret), HEAD m. auth
+   → offset; 404 = gået → frisk creation. NB: PATCH ud over
+   erklæret Upload-Length = 413 (probe-fund).
+4) TUS-RESUMABLE-HOVDET på ALLE kald: TUS-spec kræver den pr.
+   anmodning; Bunny's session-rugne svarer 404 (ikke 412) når den
+   mangler. Diffen var fingerspidspræcist: curl-provet m. 204
+   sendte headeren, browser-fetch-gjorde ikke. Nu i basale headers().
+5) VFR-QUIRK +_RESOLUTION-RACE ×2 (Bunny transcodingMessages:
+   "Source video stream has variable framerate" — phone-VFR 29,99):
+   Bunny afleverer den FULLTE oplosningsstige (1080p…240p + MP4-
+   fallback, 26 thumbnails) og ALLIGEVEL ender status = 4 —
+   spillebarket er availableResolutions, IKKE status-tallet.
+   Tolerance i 4 led (waitForBunnyEncode + bunny-status + formens
+   poll + films-ruten accepterer status 4 med stige). Dertil flipper
+   Bunny status 3 FOER stigen fylder (sekunder-race) — films-ruten
+   OG trailer-rutens venter nu op til ~30 s paa oplosninger foer
+   "Encoding afvist". DIAGNOSTIK-MODE: encode-fejl sletter IKKE
+   laengere videoene (transcodingMessages laesbar via API; guid i
+   konsol) — rensning venrer naar root-causes er fundet.
+- PLAYBACK ✓ fra vz-…b-cdn.net (direct-play 720p). Publicerings-gaten
+  bestået (13 ready + trailer ready). Status-4-quirk gælder VFR-
+  uploads: konstant-framerate (ffmpeg -vsync cfr) giver ren status 3 —
+  ikke påkrævet (koden tager det).
+- SYSTEM-MITIGATIONS-LEARNING (FB-sagen, se FB-sektionen): Vercels
+  "System Bypass"(bypassSystem) er IKKE på Pro-planen (402) —
+  platform-lags spærret af Meta's HeadlessChrome-fetcher-pooler kan
+  kun løses via Vercel support eller pause-system-mitigationer
+  (24 t + ekstra-faktura-advarsel — bevidst IKKE brugt af brugeren).
+- LÆRING-ARKIV (memory bunny-stream-setup): session-URL + tus-
+  resumable + 413-reglen + VFR-quirken + status-koderne 0-6.
+
+FACEBOOK-SHARING — SYSTEMLAGET (14/11, OPEN)
+Efter www-fix + robots-allowlist ×5 UA'er + bypass-regler (firewall
+bypass-action, bekræftet i production-config) gælder: X-kort ✓,
+WhatsApp uafprøvet-forventes ✓ (Meta's egen infrastruktur), FB's
+fetcher-flåde (facebookexternalhit + meta-externalfetcher/agent,
+HeadlessChrome UA, fra Cloudflare/AWS/CustodianDC-pooler) FÅR STADIG
+403 — incl. rigtige gruppe-poster (ikke kun debuggeren). Diagnosis-
+kæde: bypass-reglen vises kun 1 request igennem (observability),
+spærretanmodningerne tilskrives den EGEN bypass-regel (log-attribution
+quirk) — penger på Vercels SYSTEMLAG over projekt-firewallen, som
+kun kan skrives med "bypassSystem" (402 — plan-grænse). ÅBNE veje:
+1) Vercel Support-sagen (Pro-planen; klistr-klar text forberedt)
+2) "Inverter-låsen": robots til allow-all + SE-spærret by name —
+   brugerens kald (lancering-locket formål bevaret, deny-liste-form)
+3) FB-cache: gamle delte URLs (brugerens 8fajebmv-variant) har
+   403-cache — ny ref-variant eller ny deling skriver frisk.
+PLACERINGEN er også forbi: Del-rækken ALLER OEVERST på skaberprofilen
+(d1a1a73) + "Del min profil" i UserMenu-rullemenuen lige under
+"Min profil" (4a14f39 — kopier profil-link m. egen ref-kode,
+Kopieret ✓-feedback, fallback → profilen; kun skaber-ejere).
+
 SITE-URL TIL WWW — FACEBOOK-SKABERKORT-FIX (14/11)
 Brugeren opdagede, at skaberprofiler vises som bar link uden visitkort
 på Facebook (WhatsApp viste dem). ROD: NEXT_PUBLIC_SITE_URL =
