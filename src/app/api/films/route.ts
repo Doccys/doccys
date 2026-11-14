@@ -198,8 +198,25 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
-    const oplosning = pickMp4Resolution(bunny.availableResolutions);
+    // 2 GB-håndhævelsen (punkt 16): Bunny's reelle storageSize —
+    // samme grænse som storage-HEAD-ledet (klienten kan ikke lyve).
+    // NB race (brugerens E2E 14/11): Bunny kan flippe status 3 FØR
+    // availableResolutions er fyldt ("Encoding afvist" på en hel
+    // encodet video) — vent op til ~30 s i 3-s runder før afvisning.
+    let oplosning = pickMp4Resolution(bunny.availableResolutions);
+    for (let wait = 0; !oplosning && wait < 10; wait++) {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      const senere = await getBunnyVideo(bunnyVideoId);
+      if (!senere) break;
+      oplosning = pickMp4Resolution(senere.availableResolutions);
+    }
     if (!oplosning) {
+      // DIAGNOSTIK: videoen LADDES STÅENDE (ingen bunny-delete her) —
+      // transcodingMessages kan læses via API'et; guid logget.
+      console.warn(
+        "bunny-encode uden opløsninger efter venten — video bevaret til diagnose:",
+        bunnyVideoId,
+      );
       return NextResponse.json(
         {
           error:
@@ -208,8 +225,6 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
-    // 2 GB-håndhævelsen (punkt 16): Bunny's reelle storageSize —
-    // samme grænse som storage-HEAD-ledet (klienten kan ikke lyve).
     videoFileBytes = bunny.storageSize || null;
     if (videoFileBytes !== null && videoFileBytes > VIDEO_MAX_BYTES) {
       return NextResponse.json(
