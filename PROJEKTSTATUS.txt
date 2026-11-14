@@ -1,6 +1,73 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-11-12
+Sidst opdateret: 2026-11-14
 ==========================================================
+
+USD-SKIFTET + SKABER-SVAR + S13 VALUTA-KLAUSUL (13-14/11) — DEPLOYET
+Brugerens beslutninger 13/11: USD er ENE afregningsvaluta ·$6.99/
+$10.99/$13.99 (1000/2000/3000 min) · sats $0.30 pr. 100 gyldige min ·
+udbetalingstærskel $25 · USD overalt.
+- PRISMATCHEN: prisen er BRUTTO med tax_behavior "inclusive" — Stripe
+  Tax udreder lokal moms UD af beløbet pr. faktureringsland →
+  UI-tal = checkout-total i ALLE lande (brugerens gamle inkl.-moms-
+  model, i USD). LIVE-VERIFICERET 13/11: checkout viser subtotal 6,99
+  + moms 1,40 + i alt 6,99 (DK) ✓. Netto i DK = brutto ÷1,25
+  (5.59/8.79/11.19) — paritet med de gamle 39,20/60,00/79,20 kr.
+  NB kurs-tjek-læring: $5.99-stigen blev prøvet og trukket tilbage
+  ("110 kr"-tjeket bygede på en forkert kurs; dagskurs 6,744 → .99-
+  ankrene ER paritet med 49/75/99; FX-hintet "(≈ kr …)" viser live
+  kurs).
+- FORMATERING: formatCurrency USD-narrowSymbol ALTID amerikansk
+  ("$13.99" — da-lokalen viser "13,99 $"; symbol-placering) + ALTID
+  2 decimaler (den gamle DKK-regel rundte $10.99→"$11" og brød
+  visning=betaling) — commits abdc6c2 + ea1f107.
+- KOLONNER/NAVNE (migrationer KØRT AF BRUGEREN 13/11, verificeret udefra
+  via anon-REST: payout_rate_usd 0,23-0,34 efter ÷7): payout_rate_usd
+  (default 0,30) · price_usd [excl→brutto i pakker_inkl_moms] ·
+  amount_usd ×2 · RPC-nøgler optjent_usd/udbetalt_usd/tilgaengelig_usd
+  + creator_tal 'usd' + 'optjent_usd' (migrationer 20261113_usd_
+  repricing + 20261113_usd_pakker_inkl_moms — repricing første kørsel
+  fejlede på grant-før-create 42883, rækkefølgen er nu: create FØRST).
+  Gamle rækker omregnet fast 7,00 DKK/USD (test-data).
+- SKEMA-INDTAENGNING.txt ER OMSKREVET til USD-basis (docs dc1ce46 +
+  dc2dc26): Bunny-regionrater + renditions-model (egress = afspillet
+  rendition — typisk 0,012 GB/min; 480p/720p-sikkerhed), G-regnskabet:
+  realistisk 28-53 kr margin pr. pakke ✓, worst case grønt i EU,
+  kun pack-3000+dyreste-region marginalt negativt (satsbundet, ikke
+  egress-bundet — $0,30 × 30 = $9,00 af $11,19 netto). H: resultat
+  før skat ≈ $865/md (69 % netto NB kurs 6,744). Relevante tjek i
+  drift: Stripe "Fees collected" pr. salg [cross-currency-gebyr
+  (≈2 % på DK-konto?) skal indfanges i første reelle salg] + Bunny
+  Storage-rate.
+- JURIDIK (8d32af0, 13 sprog): terms s13 VALUTA — "$" = amerikanske
+  dollars (ikke MXN/CAD/ARS), kortomregning = kortudstederens, momsen
+  udreder af prisen; S4 RETTET samtidig ("angivet eksklusive moms"
+  var blevet FAKTISK FORKERT efter inkl.-skiftet — nu "inklusive
+  moms … udreder af beløbet af Stripe Tax"); "Senest opdateret" til
+  13. november 2026 ×13 (hver sprogs datoformat); i18n-verify udvidet
+  med s13.titel + "USD" på /ja/terms — 613 nøgler paritet. ENDELIGT
+  JURIDISK EFTERSYN ved lancering er fortsat bevidst (backlog).
+- SKABER-SVAR I SEERGATEN (8f56b9a + e9947a8, MIGRATION KØRT 14/11):
+  filmens EJER kan kommentere OG svare på egen film uden egen seertid
+  (brugerens begrunding: diskussionen blandt sete folk holdt — men
+  ejeren har lavet værket og skal kunne svare). App: erFilmejer
+  (two-trins documentaries→creators) i GET canComment + POST 403-
+  gaten. DB: RLS "skriv_kommentar" tjekkede KUN user_id (bypass-kald
+  direkte til PostgREST var muligt — rutegat var den eneste porte);
+  klonen kræver har_set_film ELLER ejerskab ×2. SEERGATEN er uændret
+  for alle andre. Migrationens læring: RLS-udtryk refererer kolonner
+  UFORKLEDT (new./old. er kun triggers — 42P01 ved første kørsel).
+- STUDIO REVIEW-NOTE (c857fc5): creatorStudio.reviewNote ×13 på hver
+  film-kladde — "redaktionen gennemgår alle uploads, typisk et par
+  dage; ventetiden er kurateringsfiltret (spam og reklamer ude)" —
+  614 nøgler paritet.
+- E2E-STATUS 14/11: Stripe-checkout bekræftet ✓ (6,99/10,99/13,99 =
+  visning); REST-tal bekræftet ✓; KLAR: kredit af minutter (webhook) +
+  credit_purchases.price_usd = 6.99 + "Fees collected"-tal til
+  C-sektion + studiets tal i $ + udbetalingstærsklen $25 + svane- og
+  årbogs-tjek (se klubsøgen) + BUNNY-STUDIE-UPLOADEN (den ældste
+  afventende — blockeren for første reelle creator!) + seer-status
+  kortet + årbogen (Pioner) + klubstuen (positivtest med hejst
+  Legende-konto — verifikation i 20261112_klubstuen_verifikation.sql).
 
 SEER-STATUS MILEPÆLS-GAVER: ÅRBOGEN + KLUBSTUEN (12/11) — BYGGET, DEPLOYET,
 E2E AFVENTER
