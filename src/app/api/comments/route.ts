@@ -5,18 +5,45 @@ import { createClient } from "@/lib/supabase/server";
 export const dynamic = "force-dynamic";
 
 /**
+ * Er brugeren ejer af filmens skaber-profil? To-trins-læsning
+ * (documentaries.creator_handle → creators.owner_user_id), begge
+ * offentligt læselige — bruges til ejer-undtagelsen i comment-gaten
+ * (svare + egne indlæg på egen film, brugerens beslutning 14/11).
+ */
+async function erFilmejer(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  userId: string,
+  slug: string,
+): Promise<boolean> {
+  const { data: film } = await supabase
+    .from("documentaries")
+    .select("creator_handle")
+    .eq("slug", slug)
+    .maybeSingle();
+  if (!film?.creator_handle) return false;
+  const { data: owned } = await supabase
+    .from("creators")
+    .select("id")
+    .eq("handle", film.creator_handle)
+    .eq("owner_user_id", userId)
+    .maybeSingle();
+  return Boolean(owned);
+}
+
+/**
  * GET /api/comments?slug=... — henter diskussionen under én dokumentar.
  * POST /api/comments — opretter en kommentar.
  *
  * Forfatter-identiteten afgøres server-side ud fra Supabase-sessionen i
  * requestens cookies: brugernavnet (auth-metadata full_name) og
- * bruger-id kan ikke opgives fra klienten. Gæster kan ikke kommentere —
- * felterne er kun for folk der HAR SET filmen (se POST nedenfor).
+ * bruger-id kan ikke opgives fra klienten. Seer-gaten: felterne er kun
+ * for folk der HAR SET filmen — FILS SKABER-EJER er undtagelsen (kan
+ * kommentere og svare uden seertid).
  *
  * GET-svaret bærer desuden `viewer.canComment`: serverens afgørelse af
  * hvorvidt DENNE seer må skrive (logget ind + har_set_film-RPC'en, som
- * læser den append-only credit_ledger og ikke kan forfalskes).
- * Like-identiteten (likedByMe) afgøres samme sted.
+ * læser den append-only credit_ledger og ikke kan forfalskes — eller
+ * ejerskab). Like-identiteten (likedByMe) afgøres samme sted.
  */
 export async function GET(request: NextRequest) {
   const slug = new URL(request.url).searchParams.get("slug");
@@ -28,7 +55,10 @@ export async function GET(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Må seeren skrive? Kun kendte konti, der har set filmen.
+  // Må seeren skrive? Kun kendte konti, der har set filmen — ELLER
+  // filmens skaber-ejer (brugerens beslutning 14/11): ejeren har lavet
+  // filmen og skal kunne svare i sin egen diskussion uden at have
+  // "brugt" minutter på den. Gatten er uændret for ALLE andre.
   let canComment = false;
   if (user) {
     const { data: hasWatched, error: watchError } = await supabase.rpc(
@@ -39,6 +69,9 @@ export async function GET(request: NextRequest) {
       console.warn("har_set_film:", watchError.message);
     } else {
       canComment = Boolean(hasWatched);
+    }
+    if (!canComment) {
+      canComment = await erFilmejer(supabase, user.id, slug);
     }
   }
 
@@ -148,7 +181,10 @@ export async function POST(request: NextRequest) {
 
   // Kvalitetsfilteret: kun seere må kommentere. Tjekket går mod den
   // append-only credit_ledger (har_set_film-RPC'en) — forbruget kan
-  // ikke forfalskes af klienten.
+  // ikke forfalskes af klienten. Filens skaber-ejer er undtagelsen
+  // (brugerens beslutning 14/11): ejeren må kommentere OG svare —
+  // i sin EGEN film, hvor alle andre indlæg allerede er gennem
+  // seer-gaten, så ejerskabet aldrig åbner en støjflade.
   const { data: hasWatched, error: watchError } = await supabase.rpc(
     "har_set_film",
     { p_slug: documentarySlug },
@@ -160,7 +196,11 @@ export async function POST(request: NextRequest) {
       { status: 500 },
     );
   }
-  if (!hasWatched) {
+  let permission = Boolean(hasWatched);
+  if (!permission) {
+    permission = await erFilmejer(supabase, user.id, documentarySlug);
+  }
+  if (!permission) {
     return NextResponse.json(
       { error: "Se filmen først — kommentarfeltet er kun for seere" },
       { status: 403 },
