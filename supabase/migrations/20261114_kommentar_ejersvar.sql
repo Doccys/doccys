@@ -16,6 +16,8 @@
 --
 -- HAANDHAEVELSEN er identisk med ruten: user_id = auth.uid() OG
 -- (har set filmen ELLER ejer). Gæstekommentarer forbliver lukket.
+-- NB: RLS-policy-udtryk refererer række-kolonnerna UFORKLEDT (ingen
+-- new./old.-præfiks — det er kun trigger-funktioner).
 --
 -- VERIFIKATION (kør efter):
 --   1) Politiken (forventet: with check indeholder har_set_film):
@@ -35,12 +37,12 @@ create policy "skriv_kommentar" on public.comments
   for insert with check (
     user_id = auth.uid()
     and (
-      public.har_set_film(new.documentary_slug)
+      public.har_set_film(documentary_slug)
       or exists (
         select 1
           from public.documentaries d
           join public.creators c on c.handle = d.creator_handle
-         where d.slug = new.documentary_slug
+         where d.slug = documentary_slug
            and c.owner_user_id = auth.uid()
       )
     )
