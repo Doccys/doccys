@@ -79,26 +79,42 @@ async function tusUpload(
     VideoId: ticket.videoId,
   });
 
-  // Genoptagelse: TUS-HEAD afslører, hvor uploaden kom fra — en
-  // gensendt side/brudt fetch fortsätter, hvor den slap.
+  // Upload-sessionen bor på sin EGEN URL (Location fra TUS-creationen)
+  // — PATCH/HEAD mod den generiske /tusupload svarer 404 uanset VideoId
+  // (server-verificeret 14/11). Genoptagelse bruger session-URL'en,
+  // gemt i localStorage pr. videoId (tus-js-client-mønsteret).
+  const storageKey = `doccys-tus-${ticket.videoId}`;
+  let uploadUrl: string | null = null;
+  try {
+    uploadUrl = window.localStorage.getItem(storageKey);
+  } catch {
+    // storage kan være blokeret — ingen resume, frisk session
+  }
+
   let offset = 0;
-  let head = await fetch(TUS_ENDPOINT, {
-    method: "HEAD",
-    headers: headers(),
-  });
-  if (!head.ok && head.status !== 404) {
-    throw new Error(`tus-head-${head.status}`);
+  if (uploadUrl) {
+    const head = await fetch(uploadUrl, {
+      method: "HEAD",
+      headers: headers(),
+    });
+    if (head.ok) {
+      const headOffset = Number(head.headers.get("Upload-Offset"));
+      if (
+        Number.isFinite(headOffset) &&
+        headOffset > 0 &&
+        headOffset <= file.size
+      ) {
+        offset = headOffset;
+      }
+    } else {
+      // sessionen er gået (udløbet/ryddet) — opret frisk fra 0
+      uploadUrl = null;
+    }
   }
-  const headOffset = Number(head.headers.get("Upload-Offset"));
-  if (Number.isFinite(headOffset) && headOffset > 0 && headOffset <= file.size) {
-    offset = headOffset;
-  }
-  // TUS-CREATION: sessionen skal oprettes med POST (Bunny's
-  // creation-extension) — en ny video har ingen upload-session, og
-  // PATCH direktes svarer 404 ("not found") indtil POST'en har skabt
-  // den (brugerens E2E-fejl 14/11: 16-MB-chunks alle 404, bibliotek
-  // blank). HEAD 200 med offset > 0 = sessionen findes — spring.
-  if (head.status === 404) {
+
+  if (!uploadUrl) {
+    // TUS-creation: sessionen skabes med POST (Upload-Length + auth)
+    // — Bunny returnerer 201 + Location på den nye upload-URL.
     const create = await fetch(TUS_ENDPOINT, {
       method: "POST",
       headers: {
@@ -110,6 +126,16 @@ async function tusUpload(
     if (!create.ok) {
       throw new Error(`tus-create-${create.status}`);
     }
+    const loc = create.headers.get("location");
+    if (!loc) {
+      throw new Error("tus-create-uden-location");
+    }
+    uploadUrl = new URL(loc, TUS_ENDPOINT).href;
+    try {
+      window.localStorage.setItem(storageKey, uploadUrl);
+    } catch {
+      // caching er optional — genoptagelse virker uden
+    }
   }
 
   while (offset < file.size) {
@@ -117,7 +143,7 @@ async function tusUpload(
     const chunk = file.slice(offset, slutt);
     let ny = Number.NaN;
     for (let attempt = 0; attempt < TUS_CHUNK_RETRIES; attempt++) {
-      const res = await fetch(TUS_ENDPOINT, {
+      const res = await fetch(uploadUrl, {
         method: "PATCH",
         headers: {
           ...headers(),
@@ -142,6 +168,14 @@ async function tusUpload(
     if (onProgress) {
       onProgress(offset / file.size);
     }
+  }
+
+  // Uploaden er hel — session-URL'en ryddes (videoen afspilles fra
+  // CDN, ikke fra TUS-sessionen).
+  try {
+    window.localStorage.removeItem(storageKey);
+  } catch {
+    // optional
   }
 }
 
