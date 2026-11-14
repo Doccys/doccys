@@ -2,6 +2,21 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-11-14
 ==========================================================
 
+SITE-URL TIL WWW — FACEBOOK-SKABERKORT-FIX (14/11)
+Brugeren opdagede, at skaberprofiler vises som bar link uden visitkort
+på Facebook (WhatsApp viste dem). ROD: NEXT_PUBLIC_SITE_URL =
+https://doccys.com (apex), men Vercels domain-setup 308-redirecter
+apex → WWW — og FB's crawler droppe berygtet redirectede OG-billeder.
+Fix: env'en sat til https://www.doccys.com (sensitive-env opdateret
+via Vercel-plugin'et — NB: sensitive env's key/type kan IKKE ændres
+via PATCH, kun value+target) + redeploy. Kanonisk host = www (apex er
+kun redirect) — sitemap/OG/alle metadata peger nu www. Verifikation:
+og:image = https://www.doccys.com/og/visitkort/... 200 UDEN redirect.
+Efter deploy: FB-URL gennem developers.facebook.com/tools/debug
+("Scrape Again") deler sig frisk; WhatsApp nye delinger henter frisk.
+Laering gemt: FB-crawleren er flaky med redirectede billeder — kanoniske
+asset-URL'er skal ALDRIG befinde sig bag apex-redirect.
+
 USD-SKIFTET + SKABER-SVAR + S13 VALUTA-KLAUSUL (13-14/11) — DEPLOYET
 Brugerens beslutninger 13/11: USD er ENE afregningsvaluta ·$6.99/
 $10.99/$13.99 (1000/2000/3000 min) · sats $0.30 pr. 100 gyldige min ·
