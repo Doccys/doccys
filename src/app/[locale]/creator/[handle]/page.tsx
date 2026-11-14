@@ -158,6 +158,18 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
       />
       <p className="mt-6 max-w-3xl leading-relaxed text-ash">{creator.bio}</p>
 
+      {/* Del-rækken: profilen er skaberens visitkort — og står ALLER
+          øverst (brugerens ønske 14/11: deling under profilen, ikke ved
+          udbetaling). Logget-ind besøgende deler med deres EGEN
+          affiliate-kode på, som på watch-siden (?ref= → middleware →
+          doccys_ref-cookie). */}
+      <div className="mt-6">
+        <ShareButtons
+          title={creator.name}
+          refCode={user ? await getOrCreateReferralCode(user.id) : null}
+        />
+      </div>
+
       {/* Følge-rækken: ejeren kan ikke følge sig selv (DB'en
           håndhæver det) og ser kun sit tal som tekst. */}
       {isOwner ? (
@@ -172,16 +184,6 @@ export default async function CreatorPage({ params }: CreatorPageProps) {
           initialFollowerCount={follow.followerCount}
         />
       )}
-
-      {/* Del-rækken: profilen er skaberens visitkort — logget-ind
-          besøgende deler den med deres EGEN affiliate-kode på, som
-          på watch-siden (?ref= → middleware → doccys_ref-cookie). */}
-      <div className="mt-6">
-        <ShareButtons
-          title={creator.name}
-          refCode={user ? await getOrCreateReferralCode(user.id) : null}
-        />
-      </div>
 
       {isOwner && stats && creatorEarnings && (
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
