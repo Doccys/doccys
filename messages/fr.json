@@ -542,7 +542,8 @@
     "visitDownload": "Télécharger la carte de visite (PNG)",
     "bunnyPrepare": "Préparation du CDN vidéo…",
     "bunnyUpload": "Transfert vers le CDN vidéo : {percent} %",
-    "bunnyEncode": "Encodage dans le CDN vidéo… (veuillez patienter)"
+    "bunnyEncode": "Encodage dans le CDN vidéo… (veuillez patienter)",
+    "reviewNote": "L'équipe examine tous les téléchargements avant qu'un film puisse être rendu public — le délai typique est de quelques jours. Le temps d'attente est le filtre de la curation : il empêche le spam et les publicités, de sorte que le catalogue ne contienne que des documentaires. Le brouillon peut être supprimé ici jusqu'à la publication."
   },
   "profile": {
     "loginTitle": "Connectez-vous pour voir votre profil",

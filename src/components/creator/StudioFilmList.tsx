@@ -178,6 +178,17 @@ export default async function StudioFilmList({ films }: { films: Documentary[] }
             {!draft && <StudioShareRow slug={film.slug} title={film.title} />}
 
             {draft && (
+              <div className="mt-4 max-w-xl">
+                {/* Review-ventetid (brugerens ønske 14/11): skaberen skal
+                    høre, HVORFOR der kan gå dage — ellers læses kladden
+                    som "ødelagt eller ignoreret". Fristen er kurateringens
+                    filter: spam og reklamer filtreres af. */}
+                <p className="rounded-lg border border-smoke/70 bg-onyx px-4 py-3 text-xs leading-relaxed text-ash/80">
+                  {t("reviewNote")}
+                </p>
+              </div>
+            )}
+            {draft && (
               <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1">
                 <StudioDeleteFilmButton
                   documentaryId={film.id}

@@ -542,7 +542,8 @@
     "visitDownload": "Last ned visittkort (PNG)",
     "bunnyPrepare": "Forbereder video-CDN…",
     "bunnyUpload": "Overfører til video-CDN: {percent} %",
-    "bunnyEncode": "Koder i video-CDN… (vent litt)"
+    "bunnyEncode": "Koder i video-CDN… (vent litt)",
+    "reviewNote": "Redaksjonen gjennomgår alle opplastinger før en film kan bli offentlig — typisk svartid er et par dager. Ventetiden er kurateringens filter: den holder spam og reklame ute, så katalogen kun består av dokumentarer. Utkastet kan slettes her inntil publisering."
   },
   "profile": {
     "loginTitle": "Logg inn for å se profilen din",

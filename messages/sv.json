@@ -542,7 +542,8 @@
     "visitDownload": "Ladda ner visitkort (PNG)",
     "bunnyPrepare": "Förbereder video-CDN…",
     "bunnyUpload": "Överför till video-CDN: {percent} %",
-    "bunnyEncode": "Kodning i video-CDN… (vänta lite)"
+    "bunnyEncode": "Kodning i video-CDN… (vänta lite)",
+    "reviewNote": "Redaktionen går igenom alla uppladdningar innan en film kan bli offentlig — typisk svarstid är ett par dagar. Väntetiden är kurateringsfiltreringen: den håller spam och reklam borta, så katalogen endast består av dokumentärer. Utkastet kan raderas här fram till publicering."
   },
   "profile": {
     "loginTitle": "Logga in för att se din profil",

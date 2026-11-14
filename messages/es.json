@@ -542,7 +542,8 @@
     "visitDownload": "Descargar tarjeta de visita (PNG)",
     "bunnyPrepare": "Preparando video-CDN…",
     "bunnyUpload": "Transfiriendo a video-CDN: {percent} %",
-    "bunnyEncode": "Codificando en video-CDN… (por favor espera)"
+    "bunnyEncode": "Codificando en video-CDN… (por favor espera)",
+    "reviewNote": "El equipo editorial revisa todas las subidas antes de que una película pueda hacerse pública; el tiempo de respuesta típico es de un par de días. El tiempo de espera es el filtro de la curaduría: mantiene fuera el spam y la publicidad, de modo que el catálogo consista únicamente en documentales. El borrador se puede eliminar aquí hasta la publicación."
   },
   "profile": {
     "loginTitle": "Inicia sesión para ver tu perfil",

@@ -542,7 +542,8 @@
     "visitDownload": "Download business card (PNG)",
     "bunnyPrepare": "Preparing video CDN…",
     "bunnyUpload": "Uploading to video CDN: {percent} %",
-    "bunnyEncode": "Encoding in video CDN… (please wait)"
+    "bunnyEncode": "Encoding in video CDN… (please wait)",
+    "reviewNote": "The editorial team reviews all uploads before a film can go public — typical response time is a couple of days. The waiting period is the curation filter: it keeps spam and advertisements out, so the catalog consists only of documentaries. The draft can be deleted here until publication."
   },
   "profile": {
     "loginTitle": "Log in to see your profile",

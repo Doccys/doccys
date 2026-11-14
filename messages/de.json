@@ -542,7 +542,8 @@
     "visitDownload": "Visitenkarte herunterladen (PNG)",
     "bunnyPrepare": "Bereite Video-CDN vor…",
     "bunnyUpload": "Übertrage zu Video-CDN: {percent} %",
-    "bunnyEncode": "Kodierung in Video-CDN… (bitte warten)"
+    "bunnyEncode": "Kodierung in Video-CDN… (bitte warten)",
+    "reviewNote": "Die Redaktion überprüft alle Uploads, bevor ein Film veröffentlicht werden kann – die typische Bearbeitungszeit beträgt ein paar Tage. Die Wartezeit ist der Filter der Kuratierung: Sie hält Spam und Werbung fern, sodass das Katalog nur aus Dokumentarfilmen besteht. Der Entwurf kann hier bis zur Veröffentlichung gelöscht werden."
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",

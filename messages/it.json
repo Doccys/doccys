@@ -542,7 +542,8 @@
     "visitDownload": "Scarica il biglietto da visita (PNG)",
     "bunnyPrepare": "Preparazione del video-CDN…",
     "bunnyUpload": "Caricamento su video-CDN: {percent} %",
-    "bunnyEncode": "Codifica nel video-CDN… (attendere un attimo)"
+    "bunnyEncode": "Codifica nel video-CDN… (attendere un attimo)",
+    "reviewNote": "La redazione esamina tutti gli upload prima che un film possa diventare pubblico — il tempo di risposta tipico è di un paio di giorni. L'attesa è il filtro della curatela: tiene fuori spam e pubblicità, in modo che il catalogo consista solo di documentari. La bozza può essere eliminata qui fino alla pubblicazione."
   },
   "profile": {
     "loginTitle": "Accedi per vedere il tuo profilo",

@@ -501,6 +501,7 @@
     "statusDraft": "Kladde — afventer godkendelse",
     "statusPublished": "Udgivet",
     "draftNote": "En kladde kan slettes; en udgivet film er redaktionens.",
+    "reviewNote": "Redaktionen gennemgår alle uploads, før en film kan blive offentlig — typisk svartid er et par dage. Ventetiden er kurateringens filter: den holder spam og reklamer ude, så kataloget kun består af dokumentarer. Kladden kan slettes her indtil publicering.",
     "publishGateNote": "Filmen kan først udgives, når underteksterne er klar på alle sprog og traileren er færdig.",
     "requiredBadge": "Påkrævet",
     "delete": "Slet kladde",

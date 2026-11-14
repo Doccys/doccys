@@ -542,7 +542,8 @@
     "visitDownload": "Lataa käyntikortti (PNG)",
     "bunnyPrepare": "Valmistellaan video-CDN:ää…",
     "bunnyUpload": "Siirretään video-CDN:ään: {percent} %",
-    "bunnyEncode": "Koodataan video-CDN:ssä… (odota hetki)"
+    "bunnyEncode": "Koodataan video-CDN:ssä… (odota hetki)",
+    "reviewNote": "Toimitus tarkistaa kaikki lataukset ennen kuin elokuva voi tulla julkiseksi — tyypillinen vastausaika on muutama päivä. Odotusaika on kuratoinnin suodatin: se estää roskapostin ja mainokset, jotta katalogi koostuu vain dokumenteista. Luonnos voidaan poistaa täällä ennen julkaisua."
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",

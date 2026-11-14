@@ -542,7 +542,8 @@
     "visitDownload": "下载名片 (PNG)",
     "bunnyPrepare": "正在准备视频CDN…",
     "bunnyUpload": "正在上传到视频CDN：{percent} %",
-    "bunnyEncode": "正在编码视频CDN…（请稍候）"
+    "bunnyEncode": "正在编码视频CDN…（请稍候）",
+    "reviewNote": "编辑团队会在电影公开之前审核所有上传内容——通常的响应时间为几天。等待时间是策展的过滤器：它可以阻止垃圾邮件和广告，以确保目录仅包含纪录片。草稿可以在发布之前在此处删除。"
   },
   "profile": {
     "loginTitle": "登录以查看您的个人资料",
