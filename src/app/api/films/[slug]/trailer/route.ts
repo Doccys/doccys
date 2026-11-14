@@ -182,7 +182,16 @@ export async function POST(request: NextRequest, context: RouteContext) {
         throw new Error("Encode af trailer i video-CDN afvist eller timeout");
       }
       const video = await getBunnyVideo(trailerBunnyGuid);
-      const oplosning = pickMp4Resolution(video?.availableResolutions ?? null);
+      // Race (14/11, samme som films-rutens): Bunny kan flippe status 3
+      // FOER availableResolutions fylder — vent op til ~30 s i 3-s
+      // runder foer afvisning.
+      let oplosning = pickMp4Resolution(video?.availableResolutions ?? null);
+      for (let wait = 0; !oplosning && wait < 10; wait++) {
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+        const senere = await getBunnyVideo(trailerBunnyGuid);
+        if (!senere) break;
+        oplosning = pickMp4Resolution(senere.availableResolutions);
+      }
       if (!oplosning) {
         throw new Error("Ingen encodet opløsning i video-CDN efter encode");
       }
