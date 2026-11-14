@@ -24,8 +24,17 @@ import { siteUrl } from "@/lib/site";
  */
 const ÅBEN_NEDENFOR = false;
 
-/** Delings-crawlerne: kortene skal virke under låsen (14/11). */
-const DELINGS_CRAWLERE = ["facebookexternalhit", "Twitterbot"];
+/** Delings-crawlerne: kortene skal virke under låsen (14/11). De nye
+ *  Meta-fetcher-versioner (FB/WhatsApp's forhåndsvisninger) bruger et
+ *  HeadlessChrome/méta-external UA og falder ellers under "*" Disallow
+ *  → 403. */
+const DELINGS_CRAWLERE = [
+  "facebookexternalhit",
+  "Twitterbot",
+  "HeadlessChrome",
+  "meta-externalagent",
+  "meta-externalfetcher",
+];
 
 export default function robots(): MetadataRoute.Robots {
   if (!ÅBEN_NEDENFOR) {
