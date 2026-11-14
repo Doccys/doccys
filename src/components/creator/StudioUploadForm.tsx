@@ -508,13 +508,14 @@ export default function StudioUploadForm({
     setPhase("bunnyEncode");
     const encode = await pollBunnyEncode(ticket.videoId);
     if (encode !== "ready") {
-      await supabase.storage
-        .from(FILM_POSTERS_BUCKET)
-        .remove([posterPath])
-        .catch(() => undefined);
-      await fetch(`/api/films/bunny-delete?id=${ticket.videoId}`, {
-        method: "POST",
-      }).catch(() => undefined);
+      // DIAGNOSTIK (14/11): videoen LADES STÅENDE ved encode-fejl, så
+      // objektets transcodingMessages kan læses via Bunny-API'et —
+      // rensning (poster + bunny-delete) vender, når root-cause er
+      // fundet. Guid'et logges, så brugeren kan angive det.
+      console.warn(
+        "bunny-encode-fejl — videoen bevaret til diagnose:",
+        ticket.videoId,
+      );
       setPhase("idle");
       setError(
         encode === "timeout" ? t("errors.bunnyEncodeTimeout") : t("errors.bunnyEncode"),
