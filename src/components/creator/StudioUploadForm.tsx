@@ -289,15 +289,26 @@ export default function StudioUploadForm({
     setFile(selected);
     if (!selected) return;
 
-    // Ægte mp4: browseren melder video/mp4 (sjældent: tom type, når
-    // filen mangler mime-registrering, men har .mp4-endelse). Alt
-    // andet — omdøbt .mov/.mkv/.webm osv. — afvises HER i stedet for
-    // at fejle tavst ved upload (storage-js ignorerer contentType-
-    // optionen for File-objekter, og bucketen tillader kun video/mp4).
-    const isMp4 =
-      selected.type === "video/mp4" ||
-      (selected.type === "" && selected.name.toLowerCase().endsWith(".mp4"));
-    if (!isMp4) {
+    // Ægte video-filer: mp4 (browseren melder video/mp4), iPhone's
+    // quicktime/.MOV og webm — samt tom mime-type med kendt video-
+    // endelse (noje pickere uden registrering). Playability-vagten er
+    // probeDurationSec (metadata) + Bunny's transcoding — filmen rører
+    // slet ikke Supabase Storage mere (Bunny-TUS integreren 9/11), så
+    // den gamle mp4-only-bucket-grunden er forældet (brugerens onske
+    // 15/11: mobil/telefon-skabere med .MOV/HEVC-film).
+    const videoEndelser = [
+      ".mp4",
+      ".mov",
+      ".webm",
+      ".m4v",
+    ];
+    const erVideo =
+      selected.type.startsWith("video/") ||
+      (selected.type === "" &&
+        videoEndelser.some((x) =>
+          selected.name.toLowerCase().endsWith(x),
+        ));
+    if (!erVideo) {
       setError(t("errors.notMp4"));
       setFile(null);
       return;
@@ -362,7 +373,11 @@ export default function StudioUploadForm({
     // tavst ved upload med 415.
     const ext = POSTER_EXTENSIONS[selected.type];
     if (!ext) {
-      setError(t("errors.notPoster"));
+      setError(
+        // poster forbliver strengt jpg/png/webp — HEIC renderes ikke i
+        // browsers' <img> paa andre enheter; iPhone-skabere kan konvertere
+        t("errors.notPoster"),
+      );
       clearPoster();
       return;
     }
@@ -745,7 +760,7 @@ export default function StudioUploadForm({
           id="studio-video-input"
           ref={fileInputRef}
           type="file"
-          accept="video/mp4"
+          accept="video/*,video/mp4,video/quicktime,video/webm"
           onChange={handleFileChange}
           disabled={busy}
           className="sr-only"
