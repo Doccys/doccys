@@ -315,7 +315,12 @@ monitors) følger TING-JE-LISTE Del 1–2. Status 31/10:
   tilbudsteksterne (da/en/es-mx) + delings-stacken (X/FB-kort bevi-st)
   er vaerktoej-kassen; 4) rejsende-fejltriage: runtime-logs via
   vercel CLI/api + film_trailers/film_subtitles' error-felter er
-  offentligt laesbar.
+  offentligt laesbar. MEXICO-DELEN (valuta-hint, MX-checkout, adaptive
+  pricing-observation, iPhone-.MOV-testen, latency) tages op fra d.
+  1/12 — NB: det er SAMME dag som lancerings-datoen; lancering-
+  checklistens punkt (Stripe LIVE-noegler, SMTP til Vercel-env,
+  robots-flippet, vercel.app-redirect) skal derfor klares FOER
+  afrejse i november — eller lanceringen koeres fra Mexico.
 - STRIPE-RUTEN I MORGEN (1/11): REVOLUT ERHVERVS-KONTO OPRETTET
   (31/10) — TING-JE-punkt 23 delvist klaret (kontoen koster intet at
   stå klar). Rækkefølge: punkt 24 (produkter/priser på TEST-kontoen)
