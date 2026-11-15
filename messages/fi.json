@@ -229,6 +229,10 @@
       "community": {
         "title": "Keskustelu elokuvan alla",
         "body": "Jokaisella elokuvalla on oma keskustelunsa. Ei algoritmeja tiellä — vain ihmisiä, jotka katsoivat saman kuin sinä."
+      },
+      "subtitles13": {
+        "title": "Tekstitykset 13 kielellä — me maksamme",
+        "body": "Yksi napsautus luo tekstitykset koko elokuvalle: puhekielen transkriptio ja käännös kaikille alustan kielille. Me kattamme kustannukset — sinä et maksa mitään, koskaan."
       }
     },
     "recruitment": {

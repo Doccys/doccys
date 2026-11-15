@@ -229,6 +229,10 @@
       "community": {
         "title": "La conversation sous le film",
         "body": "Chaque film a sa propre discussion. Aucun algorithme sur le chemin — juste des personnes qui ont vu la même chose que vous."
+      },
+      "subtitles13": {
+        "title": "Sous-titres en 13 langues — nous payons",
+        "body": "Un clic génère des sous-titres pour tout le film : transcription de la langue parlée et traduction dans toutes les langues de la plateforme. Nous couvrons le coût — vous ne payez rien, jamais."
       }
     },
     "recruitment": {

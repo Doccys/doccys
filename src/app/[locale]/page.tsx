@@ -12,7 +12,7 @@ import {
   getDocumentaries,
 } from "@/lib/data/catalog";
 
-const FEATURE_KEYS = ["noAds", "payPerMinute", "community"] as const;
+const FEATURE_KEYS = ["noAds", "payPerMinute", "subtitles13", "community"] as const;
 
 /**
  * Film-tællingen i kataloget er bevidst SKJULT, indtil der er volumen
@@ -104,7 +104,9 @@ export default async function HomePage({ params }: HomePageProps) {
 
       <section className="mx-auto max-w-6xl px-6 pb-8">
         <SectionHeading eyebrow={t("how.eyebrow")} title={t("how.title")} />
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        {/* 4 kort: subtitles13 tilføjet 15/11 (reklame-ideen) —
+            sm:grid-cols-2 md:grid-cols-4 holder dem i én række */}
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
           {FEATURE_KEYS.map((key) => (
             <div
               key={key}
