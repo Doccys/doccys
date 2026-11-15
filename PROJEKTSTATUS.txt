@@ -118,26 +118,8 @@ fundet og fixet (commits 78bb89c→15b00c8):
 - LÆRING-ARKIV (memory bunny-stream-setup): session-URL + tus-
   resumable + 413-reglen + VFR-quirken + status-koderne 0-6.
 
-FACEBOOK-SHARING — SYSTEMLAGET (14/11, OPEN)
-Efter www-fix + robots-allowlist ×5 UA'er + bypass-regler (firewall
-bypass-action, bekræftet i production-config) gælder: X-kort ✓,
-WhatsApp uafprøvet-forventes ✓ (Meta's egen infrastruktur), FB's
-fetcher-flåde (facebookexternalhit + meta-externalfetcher/agent,
-HeadlessChrome UA, fra Cloudflare/AWS/CustodianDC-pooler) FÅR STADIG
-403 — incl. rigtige gruppe-poster (ikke kun debuggeren). Diagnosis-
-kæde: bypass-reglen vises kun 1 request igennem (observability),
-spærretanmodningerne tilskrives den EGEN bypass-regel (log-attribution
-quirk) — penger på Vercels SYSTEMLAG over projekt-firewallen, som
-kun kan skrives med "bypassSystem" (402 — plan-grænse). ÅBNE veje:
-1) Vercel Support-sagen (Pro-planen; klistr-klar text forberedt)
-2) "Inverter-låsen": robots til allow-all + SE-spærret by name —
-   brugerens kald (lancering-locket formål bevaret, deny-liste-form)
-3) FB-cache: gamle delte URLs (brugerens 8fajebmv-variant) har
-   403-cache — ny ref-variant eller ny deling skriver frisk.
-PLACERINGEN er også forbi: Del-rækken ALLER OEVERST på skaberprofilen
-(d1a1a73) + "Del min profil" i UserMenu-rullemenuen lige under
-"Min profil" (4a14f39 — kopier profil-link m. egen ref-kode,
-Kopieret ✓-feedback, fallback → profilen; kun skaber-ejere).
+FACEBOOK-SHARING — LUKKET (15/11): DEBUGGEN 200
+Efter www-fix + robots-allowlist x5 UA'er + bypass-regler + (ikke-noedvendigt: System Bypass 402 + pause-mitigations begge droppet bevidst af brugeren) rapporterer FB-debuggen nu **200** — og med og-metadata + Link Preview. Rod-sagen var FB's EGEN domain-level **robots.txt-cache** (~24-48 t) fra laasen-aearen (Disallow: /) — "Scrape Again" refresher IKKE robots; den udløber af sig selv. X ✓ og WhatsApp forventes ✓. LAERING: robots.txt-aedrer rammer delings-crawlers med forsinket effekt (FB-cache) — vent ~24-48 t foer ny diagnose; server-side kan altid bevises med curl + UA-sim (200) mens FB's cache sidder. Support-sagen/sendt-ikke; inverter-laasen sendt-ikke; begge droppet.
 
 SITE-URL TIL WWW — FACEBOOK-SKABERKORT-FIX (14/11)
 Brugeren opdagede, at skaberprofiler vises som bar link uden visitkort
