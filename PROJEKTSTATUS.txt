@@ -2,6 +2,22 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-11-15
 ==========================================================
 
+STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
+Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
+**1000 min krediteret MINUTTE saldoen** (brugerens bevi-st): live-
+webhook-endpointen sat og afleverer til /api/stripe/webhook med
+indfri_koeb-krediteringen ✓. Stripe-kongratulations-mail modtaget.
+Afbørdet bevis-punkter (brugeren kan tjekke kvarters visning):
+1) credit_purchases-rækken: status paid · price_usd (visning=betaling
+   i LIVE) · billing_country · 2) Stripe "Fees collected" (SKEMA C
+   første levende tal + cross-currency-svaret) · 3) momsen udredt i
+   kvitteringen (DK 25%). NB: brugerens EGEN koeb er reelt omsaatning
+   — ind i bogfoeringen; saldoen afprøver afregn_session + creator-
+   talene i $ som aegte seer. RESCUE (indfri_koeb-RPC m. service
+   noegle) er idempotent hvis et koeb nogensinde ikke krediterer.
+- LAUNCING-CHECKLISTEN nu: KUN SMTP til Vercel-env + robots-flippet
+  (+ vercel.app-redirect) tilbage foer 1/12.
+
 FFMPEG PÅ VERCELS SERVERLØSE — STATISK BINARY + KANDIDATGATE (15/11)
 Skaber-upload-pipelinen er nu FULDT bevist paa produktion (film
 "hhhhhhhh", 51 s VFR): upload (telefen-PWA) → TUS 100% → encoding →
