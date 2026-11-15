@@ -46,6 +46,15 @@ virker — maskinen har ffmpeg installeret). Tre led, alle bevidst:
   bruger-beslutning (.npmrc aktiverte ffmpeg-static+esbuild efter
   brugerens go); PowerShell-roer til vercel env add m. hemmelige
   vaerdier = NEVER (BOM — se BUNNY-ENV-sektionen over).
+- B2B-TILBUDDENE (brugerens kanal 15/11): henvendelse sendt til ZDF
+  og DR om hyldede arkiv-dokumentarer (stoevsamlere → arbejdsgivere:
+  non-eksklusiv licens, $0.30/100 sete min., 13 sprog gratis, fjern
+  til enhver tid) — intet svar endnu (store orgs = tid). TAKTISK:
+  DR har et SALES-arm (DR Sales) og ZDF har "ZDF Studios"
+  (distribution/arkiv-salg) — gen-send direkte til disse enheder;
+  payout_rate_usd kan saettes HOJERE pr. film (20260920-moenstret)
+  som forhandlings-loevede B2B-forhold. Pitch-mail (da/en/de)
+  tilbydes af Claude.
 - Pipeline-arkitektur NB: undertekster/trailere-pipelinen er synkron
   (Fluid 300 s-default) — en 51 s-film klaarer fint; LONGFILM (45-90
   min) kraever baggrunds-job-arkitektur paa Vercel (dokumenteret i
