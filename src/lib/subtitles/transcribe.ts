@@ -26,9 +26,10 @@ import { promisify } from "node:util";
 import { getOpenAiApiKey, OPENAI_API_BASE } from "@/lib/openai/client";
 import type { SubtitleSegment } from "@/lib/subtitles/vtt";
 // Static ffmpeg-binæren bundtes med deployet (Vercel's serverløse har
-// ingen system-ffmpeg — brugerens E2E 15/11); clipe.ts + transcribe.ts
-// deler den samme binære (next.config's outputFileTracingIncludes).
-import ffmpegPath from "ffmpeg-static";
+// ingen system-ffmpeg — brugerens E2E 15/11); findFfmpegBinary søger
+// efter binæren — ffmpeg-static's __dirname misviser i lambda-fladpak
+// (se src/lib/ffmpeg/binary.ts).
+import { findFfmpegBinary } from "@/lib/ffmpeg/binary";
 
 const execFileAsync = promisify(execFile);
 
@@ -65,7 +66,7 @@ export async function extractMp3(
   mp3Path: string,
 ): Promise<void> {
   try {
-    await execFileAsync(ffmpegPath as string, [
+    await execFileAsync(findFfmpegBinary(), [
       "-y",
       "-hide_banner",
       "-loglevel",

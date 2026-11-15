@@ -10,11 +10,12 @@ const nextConfig: NextConfig = {
   // påvirker KUN dev, aldrig produktion.
   allowedDevOrigins: ["*.trycloudflare.com"],
   // ffmpeg-static's binær skal med i funktionens fil-trace (trailer-
-  // klippet + undertekst-pipelinen spawn den); Vercel's serverløse har
-  // ingen system-ffmpeg (brugerens E2E 15/11: "ffmpeg er ikke installeret
-  // på serveren" fra produktionen).
+  // klippet + undertekst-pipelinen spawn den; binæren lander på
+  // /var/task/node_modules/ffmpeg-static/ffmpeg i lambdaen — server-
+  // verificeret 15/11); spawn-len går via findFfmpegBinary
+  // (src/lib/ffmpeg/binary.ts), da ffmpeg-static's __dirname misviser
+  // i Vercel's lambda-fladpak.
   outputFileTracingIncludes: {
-    "/api/ffmpeg-check": ["./node_modules/ffmpeg-static/**"],
     "/api/films/[slug]/trailer": ["./node_modules/ffmpeg-static/**"],
     "/api/films/[slug]/subtitles": ["./node_modules/ffmpeg-static/**"],
   },
