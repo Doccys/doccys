@@ -62,6 +62,8 @@ export async function generateMetadata({
     },
     openGraph: {
       type: "video.other",
+      // og:url (FB-debuggen's "missing properties" 15/11)
+      url: watchUrl,
       title: documentary.title,
       description: documentary.synopsis,
       images: [{ url: ogImage, width: 1200, height: 630, alt: documentary.title }],

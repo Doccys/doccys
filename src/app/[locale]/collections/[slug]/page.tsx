@@ -33,6 +33,8 @@ export async function generateMetadata({
     description: collection.description,
     openGraph: {
       type: "website",
+      // og:url (FB-debuggen's "missing properties" 15/11)
+      url: `${siteUrl()}/${locale}/collections/${collection.slug}`,
       title: collection.title,
       description: collection.description,
       images: ogImage ? [{ url: ogImage }] : undefined,

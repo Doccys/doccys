@@ -48,6 +48,9 @@ export async function generateMetadata({
     description: creator.bio,
     openGraph: {
       type: "profile",
+      // og:url (FB-debuggen's "missing properties" 15/11): den shared
+      // URL — Next sætter den ikke automatisk
+      url: `${siteUrl()}/${locale}/creator/${creator.handle}`,
       title: creator.name,
       description: creator.bio,
       images: [{ url: ogImage, width: 1200, height: 630, alt: creator.name }],
