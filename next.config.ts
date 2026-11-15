@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
   // ingen system-ffmpeg (brugerens E2E 15/11: "ffmpeg er ikke installeret
   // på serveren" fra produktionen).
   outputFileTracingIncludes: {
+    "/api/ffmpeg-check": ["./node_modules/ffmpeg-static/**"],
     "/api/films/[slug]/trailer": ["./node_modules/ffmpeg-static/**"],
     "/api/films/[slug]/subtitles": ["./node_modules/ffmpeg-static/**"],
   },
