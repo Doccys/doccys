@@ -34,6 +34,15 @@ virker — maskinen har ffmpeg installeret). Tre led, alle bevidst:
   (Fluid 300 s-default) — en 51 s-film klaarer fint; LONGFILM (45-90
   min) kraever baggrunds-job-arkitektur paa Vercel (dokumenteret i
   transcribe.ts' NB-kommentar) — backlog ved skaber-skala.
+- BEVISET X2 (15/11): filmen "hhhhhhhh" gennemkoert HELE kaeden paa
+  PRODUKTION fra telefonen (PWA) — upload, encode, kladden, trailer
+  ready, undertekster 13 ready, status 'published' flippen og playback
+  + CC-menue + trailer-kort verificeredes paa den levende watch-siden.
+  Film "kkskskks" fuldgorde foerste rund (slettet efter test). NB:
+  skarms-laa (pausescreen) afbrudt undertekst-runder foer — synkre
+  pipelines doer naar klienten sover (anmodningen kasseres) — HOLD
+  skarmen vaagen under "Generer"-klikket paa lange filmer (baggrunds-
+  arkitektur = longfilm-loesningen, se overst); oplyst til brugeren.
 
 BUNNY-ENV BOM-LÆRING — PWA-UPLOAD PÅ TELEFONEN (15/11)
 Brugerens PWA-upload på telefonen fejlede i bunny-start: production-
