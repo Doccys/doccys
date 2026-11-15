@@ -13,6 +13,10 @@
  */
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
+// Static ffmpeg-binæren bundtes med deployet — Vercel's serverløse har
+// ingen system-ffmpeg (brugerens E2E 15/11): ffmpeg-static installerer
+// den platformsriske binary ved build (linux på Vercel, .exe lokalt).
+import ffmpegPath from "ffmpeg-static";
 
 const execFileAsync = promisify(execFile);
 
@@ -23,7 +27,7 @@ export async function extractTrailerClip(
   lengthSec: number,
 ): Promise<void> {
   try {
-    await execFileAsync("ffmpeg", [
+    await execFileAsync(ffmpegPath as string, [
       "-y",
       "-hide_banner",
       "-loglevel",

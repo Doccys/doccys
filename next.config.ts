@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
   // tjek af valuta-visningen) — trycloudflare er whitelisted her;
   // påvirker KUN dev, aldrig produktion.
   allowedDevOrigins: ["*.trycloudflare.com"],
+  // ffmpeg-static's binær skal med i funktionens fil-trace (trailer-
+  // klippet + undertekst-pipelinen spawn den); Vercel's serverløse har
+  // ingen system-ffmpeg (brugerens E2E 15/11: "ffmpeg er ikke installeret
+  // på serveren" fra produktionen).
+  outputFileTracingIncludes: {
+    "/api/films/[slug]/trailer": ["./node_modules/ffmpeg-static/**"],
+    "/api/films/[slug]/subtitles": ["./node_modules/ffmpeg-static/**"],
+  },
   // Fremtidig: billed-domæner til plakater/thumbnails konfigureres her,
   // når CDN og asset-hosting kobles på (images.remotePatterns).
 };

@@ -25,6 +25,10 @@ import { promisify } from "node:util";
 
 import { getOpenAiApiKey, OPENAI_API_BASE } from "@/lib/openai/client";
 import type { SubtitleSegment } from "@/lib/subtitles/vtt";
+// Static ffmpeg-binæren bundtes med deployet (Vercel's serverløse har
+// ingen system-ffmpeg — brugerens E2E 15/11); clipe.ts + transcribe.ts
+// deler den samme binære (next.config's outputFileTracingIncludes).
+import ffmpegPath from "ffmpeg-static";
 
 const execFileAsync = promisify(execFile);
 
@@ -61,7 +65,7 @@ export async function extractMp3(
   mp3Path: string,
 ): Promise<void> {
   try {
-    await execFileAsync("ffmpeg", [
+    await execFileAsync(ffmpegPath as string, [
       "-y",
       "-hide_banner",
       "-loglevel",
@@ -81,7 +85,7 @@ export async function extractMp3(
     const code = (error as { code?: string }).code;
     if (code === "ENOENT") {
       throw new Error(
-        "ffmpeg er ikke installeret på serveren — installér det med: winget install ffmpeg",
+        "Serverens ffmpeg-binære mangler i deployet — tjek outputFileTracingIncludes",
       );
     }
     const stderr = (error as { stderr?: string }).stderr ?? "";
