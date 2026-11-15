@@ -305,6 +305,17 @@ monitors) følger TING-JE-LISTE Del 1–2. Status 31/10:
   verifieder derfra. Arbejds-regel: push foer maskine-skift; git pull
   (+ npm install ved deps) paa den anden; redeploy-knappen kun til
   env-aendringer/cache-bust.
+- REJSEPLAN (dec-jan): LAPTOP er primaer — tages til Mexico for
+  skaber-henvendelsen (dec) + julegave-iPhone-testen (.MOV/HEVC, kodet
+  faerdig f8c1800). REJSE-NB: 1) .env.local m. alle noegler ligger i
+  Documents\Doccys — sikkerhed: ingen sky-sync (OneDrive/Dropbox) maa
+  daekke filen under rejsen; 2) Supabase free-tier auto-pauser ved
+  inaktivitet (memory supabase-free-tier-auto-pause) — check sitet
+  (200 + forside-indhold) foer reelle skaber-demoer i Mexico; 3)
+  tilbudsteksterne (da/en/es-mx) + delings-stacken (X/FB-kort bevi-st)
+  er vaerktoej-kassen; 4) rejsende-fejltriage: runtime-logs via
+  vercel CLI/api + film_trailers/film_subtitles' error-felter er
+  offentligt laesbar.
 - STRIPE-RUTEN I MORGEN (1/11): REVOLUT ERHVERVS-KONTO OPRETTET
   (31/10) — TING-JE-punkt 23 delvist klaret (kontoen koster intet at
   stå klar). Rækkefølge: punkt 24 (produkter/priser på TEST-kontoen)
