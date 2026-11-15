@@ -233,7 +233,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys busca creadores",
-      "body": "La plataforma se lanzará en diciembre: sube tu documental y gana $0.30 por cada 100 minutos vistos, durante la vida de la película, con un pago a partir de $25.",
+      "body": "La plataforma se lanzará en diciembre: sube tu documental y gana $0.30 por cada 100 minutos vistos, durante la vida útil de la película, con pagos a partir de $25. Y subtítulos en 13 idiomas, gratis, con un solo clic: nosotros cubrimos el costo.",
       "cta": "Aplica como creador"
     }
   },
@@ -419,7 +419,9 @@
       "reserved": "Ese handle está reservado — elige otro.",
       "stale": "El estado de la solicitud ha cambiado — recarga la página.",
       "generic": "Revisa todos los campos e inténtalo de nuevo."
-    }
+    },
+    "subtitlesTitle": "Subtítulos gratuitos en 13 idiomas — con un solo clic",
+    "subtitlesBody": "Genera subtítulos para toda la película con un solo clic: transcripción del lenguaje hablado y traducción a todos los idiomas de la plataforma. Cubrimos el costo — no pagas nada, nunca."
   },
   "creatorStudio": {
     "eyebrow": "Estudio de creadores",

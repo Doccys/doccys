@@ -233,7 +233,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys sucht Creator",
-      "body": "Die Plattform wird im Dezember gestartet – lade deine Dokumentation hoch und verdiene $0.30 pro 100 angesehenen Minuten, während der Lebensdauer des Films, mit Auszahlungen ab $25.",
+      "body": "Die Plattform wird im Dezember gestartet — lade deinen Dokumentarfilm hoch und verdiene $0,30 pro 100 gesehene Minuten, während der gesamten Lebensdauer des Films, mit Auszahlungen ab $25. Und Untertitel in 13 Sprachen, kostenlos, mit einem Klick — wir übernehmen die Kosten.",
       "cta": "Bewirb dich als Creator"
     }
   },
@@ -419,7 +419,9 @@
       "reserved": "Dieser Handle ist reserviert — wähle einen anderen.",
       "stale": "Der Status der Bewerbung hat sich geändert — lade die Seite neu.",
       "generic": "Prüfe alle Felder und versuche es erneut."
-    }
+    },
+    "subtitlesTitle": "Kostenlose Untertitel in 13 Sprachen — mit einem Klick",
+    "subtitlesBody": "Erstellen Sie Untertitel für den gesamten Film mit einem Klick: Transkription der gesprochenen Sprache und Übersetzung in alle Plattformsprachen. Wir übernehmen die Kosten — Sie zahlen nichts, jemals."
   },
   "creatorStudio": {
     "eyebrow": "Schöpfer-Studio",

@@ -233,7 +233,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys söker skapare",
-      "body": "Plattformen lanseras i december — ladda upp din dokumentär och tjäna $0.30 per 100 visade minuter, under filmens livstid, med utbetalning från $25.",
+      "body": "Plattformen lanseras i december — ladda upp din dokumentär och tjäna $0,30 per 100 visade minuter, under filmens livstid, med utbetalning från $25. Och undertexter på 13 språk, gratis, med ett klick — vi täcker kostnaden.",
       "cta": "Ansök som skapare"
     }
   },
@@ -419,7 +419,9 @@
       "reserved": "Handlen är reserverad — välj en annan.",
       "stale": "Ansökningens status har ändrats — ladda om sidan.",
       "generic": "Kolla alla fält och försök igen."
-    }
+    },
+    "subtitlesTitle": "Gratis undertexter på 13 språk — med ett klick",
+    "subtitlesBody": "Generera undertexter för hela filmen med ett klick: transkription av talspråket och översättning till alla plattformens språk. Vi täcker kostnaden — du betalar inget, någonsin."
   },
   "creatorStudio": {
     "eyebrow": "Skaparstudio",

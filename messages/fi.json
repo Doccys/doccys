@@ -233,7 +233,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys etsii luojia",
-      "body": "Alusta julkaistaan joulukuussa — lataa dokumenttisi ja ansaitse $0.30 jokaista 100 katsottua minuuttia kohti elokuvan elinkaaren aikana, maksut alkaen $25.",
+      "body": "Alusta lanseerataan joulukuussa — lataa dokumenttisi ja ansaitse $0.30 per 100 katsottua minuuttia, elokuvan eliniän ajan, maksu alkaen $25. Ja tekstitykset 13 kielellä, ilmaiseksi, yhdellä klikkauksella — me kattamme kustannukset.",
       "cta": "Hae luojaksi"
     }
   },
@@ -419,7 +419,9 @@
       "reserved": "Handle on varattu — valitse toinen.",
       "stale": "Hakemuksen tila on muuttunut — lataa sivu uudelleen.",
       "generic": "Tarkista kaikki kentät ja yritä uudelleen."
-    }
+    },
+    "subtitlesTitle": "Ilmaiset tekstitykset 13 kielellä — yhdellä klikkauksella",
+    "subtitlesBody": "Luo tekstitykset koko elokuvalle yhdellä klikkauksella: puheen transkriptio ja käännös kaikille alustan kielille. Me kattamme kustannukset — et maksa mitään, koskaan."
   },
   "creatorStudio": {
     "eyebrow": "Tekijästudio",

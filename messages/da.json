@@ -234,7 +234,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys søger skabere",
-      "body": "Platformen lanceres i december — upload din dokumentar og optjen $0.30 pr. 100 sete minutter, i filmens levetid, med udbetaling fra $25.",
+      "body": "Platformen lanceres i december — upload din dokumentar og optjen $0.30 pr. 100 sete minutter, i filmens levetid, med udbetaling fra $25. Og undertekster på 13 sprog, gratis, med ét klik — vi dækker omkostningen.",
       "cta": "Ansøg som skaber"
     },
     "catalog": {
@@ -416,6 +416,8 @@
   },
   "creatorApply": {
     "eyebrow": "Skabere",
+    "subtitlesTitle": "Gratis undertekster på 13 sprog — med ét klik",
+    "subtitlesBody": "Generér undertekster til hele filmen med ét klik: transskription af talessproget og oversættelse til alle platformens sprog. Vi dækker omkostningen — du betaler intet, nogensinde.",
     "loginTitle": "Log ind for at ansøge",
     "loginSubtitle": "Skaber-ansøgninger kræver en konto — det tager et øjeblik at oprette en.",
     "loginCta": "Log ind",

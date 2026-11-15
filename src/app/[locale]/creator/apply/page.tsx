@@ -74,6 +74,20 @@ export default async function CreatorApplyPage({ params }: ApplyPageProps) {
         title={t("title")}
         subtitle={t("subtitle")}
       />
+
+      {/* Gratis-undertekster-blokken (brugerens reklamations-idee 15/
+          11): skaber-henvendelsens stærkeste gaven — 13 sprog med ét
+          klik, platformen dækker omkostningen (~5 kr/film), skaberen
+          betalet intet. Står FØR ansøgningens formularen. */}
+      <div className="mt-6 rounded-xl border border-champagne/40 bg-onyx px-6 py-5">
+        <p className="font-display text-xl text-champagne">
+          {t("subtitlesTitle")}
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-ash">
+          {t("subtitlesBody")}
+        </p>
+      </div>
+
       <div className="mt-10">
         <CreatorApplicationForm
           application={application}

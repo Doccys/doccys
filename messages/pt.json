@@ -233,7 +233,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys está recrutando criadores",
-      "body": "A plataforma será lançada em dezembro — envie seu documentário e ganhe $0,30 a cada 100 minutos assistidos, durante a vida do filme, com pagamento a partir de $25.",
+      "body": "A plataforma será lançada em dezembro — faça o upload do seu documentário e ganhe $0,30 por 100 minutos assistidos, durante a vida útil do filme, com pagamento a partir de $25. E legendas em 13 idiomas, grátis, com um clique — nós cobrimos o custo.",
       "cta": "Candidate-se como criador"
     }
   },
@@ -419,7 +419,9 @@
       "reserved": "Handle está reservado — escolha outro.",
       "stale": "O status da inscrição foi alterado — recarregue a página.",
       "generic": "Verifique todos os campos e tente novamente."
-    }
+    },
+    "subtitlesTitle": "Legendas gratuitas em 13 idiomas — com um clique",
+    "subtitlesBody": "Gere legendas para o filme inteiro com um clique: transcrição da fala e tradução para todos os idiomas da plataforma. Nós cobrimos o custo — você não paga nada, nunca."
   },
   "creatorStudio": {
     "eyebrow": "Estúdio do Criador",

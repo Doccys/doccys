@@ -233,7 +233,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys is looking for creators",
-      "body": "The platform launches in December — upload your documentary and earn $0.30 per 100 viewed minutes, over the film's lifetime, with payouts starting at $25.",
+      "body": "The platform launches in December — upload your documentary and earn $0.30 per 100 minutes watched, throughout the film's lifetime, with payouts starting at $25. And subtitles in 13 languages, free, with one click — we cover the cost.",
       "cta": "Apply as a creator"
     }
   },
@@ -419,7 +419,9 @@
       "reserved": "That handle is reserved — choose another.",
       "stale": "The application's status has changed — reload the page.",
       "generic": "Check all fields and try again."
-    }
+    },
+    "subtitlesTitle": "Free subtitles in 13 languages — with one click",
+    "subtitlesBody": "Generate subtitles for the entire film with one click: transcription of spoken language and translation into all platform languages. We cover the cost — you pay nothing, ever."
   },
   "creatorStudio": {
     "eyebrow": "Creator studio",
