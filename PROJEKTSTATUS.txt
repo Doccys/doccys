@@ -2,6 +2,39 @@ DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
 Sidst opdateret: 2026-11-15
 ==========================================================
 
+FFMPEG PÅ VERCELS SERVERLØSE — STATISK BINARY + KANDIDATGATE (15/11)
+Skaber-upload-pipelinen er nu FULDT bevist paa produktion (film
+"hhhhhhhh", 51 s VFR): upload (telefen-PWA) → TUS 100% → encoding →
+kladden → playback ✓ → undertekster 13 ready ✓ → trailer ✓ —
+afventer godkendelses-flippet. Trailere/undertekster fejlede paa
+produktion: Vercels serverloese har INGEN system-ffmpeg (localhost
+virker — maskinen har ffmpeg installeret). Tre led, alle bevidst:
+1) FFMPEG-STATIC bundtet med deployet: binary downloades af
+   postinstall ved Vercels build. NB npm 11's "allow-scripts"-port
+   skipper install-scripts til godkendelse (lokal bevist: binary
+   manglede til approved) — projektets .npmrc: allow-scripts=
+   ffmpeg-static,esbuild (brugerens godkendelse commit).
+2) TRACE-INCLUDES: next.config outputFileTracingIncludes for
+   /api/films/[slug]/trailer + /subtitles med ./node_modules/
+   ffmpeg-static/** — binæren lander bevi-st i lambdaen paa
+   /var/task/node_modules/ffmpeg-static/ffmpeg (79,8 MB, server-
+   verificeret via diagnostik-rutet).
+3) FINDFFMPEG-BINARY (src/lib/ffmpeg/binary.ts): ffmpeg-static's
+   EGEN sti beregnes fra __dirname — MISVISER i Vercel's lambda-
+   fladpak (modulet JS-fladpaket ind i rutens mappe
+   .next/server/app/api/…; binary er node_modules-stien). Kandidat-
+   soegning over cwd//var/task/__dirname x node_modules-varianter pr.
+   platform; clipe.ts + transcribe.ts bruger den. Diagnostik-rutet
+   /api/ffmpeg-check brugt til bevise og slettet.
+- LÆRING (memory + dette arkiv): npm-lifecycle-scripts aktivering =
+  bruger-beslutning (.npmrc aktiverte ffmpeg-static+esbuild efter
+  brugerens go); PowerShell-roer til vercel env add m. hemmelige
+  vaerdier = NEVER (BOM — se BUNNY-ENV-sektionen over).
+- Pipeline-arkitektur NB: undertekster/trailere-pipelinen er synkron
+  (Fluid 300 s-default) — en 51 s-film klaarer fint; LONGFILM (45-90
+  min) kraever baggrunds-job-arkitektur paa Vercel (dokumenteret i
+  transcribe.ts' NB-kommentar) — backlog ved skaber-skala.
+
 BUNNY-ENV BOM-LÆRING — PWA-UPLOAD PÅ TELEFONEN (15/11)
 Brugerens PWA-upload på telefonen fejlede i bunny-start: production-
 runtime-loggen viste TypeError "Cannot convert argument to a ByteString
