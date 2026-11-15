@@ -291,10 +291,14 @@ monitors) følger TING-JE-LISTE Del 1–2. Status 31/10:
   Doccys/doccys.git → .env.local i projektroden → npm install
   (ALDRIG node_modules eller .next kopieret) → npm run dev.
 - MANUSKAL — kan IKKE med git (huskes før afrejse fra laptoppen):
-  .env.local (service_role + Stripe-nøgler — USB/krypteret, ALDRIG
+  .env.local (service_role + Stripe + OpenAI + SMTP + BUNNY-API_KEY/
+  BUNNY_ACCOUNT_KEY-nøglerne [15/11] — USB/krypteret, ALDRIG
   chat/mail/sky) · .claude/-mappen (Claudes hukommelse + planer) ·
   MakeBestMusic-licenscertifikatet (punkt 1 i TING-JE-LISTEN —
   kun downloadbart, mens abonnementet er aktivt; FØR alt andet).
+  NB: .npmrc (allow-scripts) er nu i repo'et ✓; npm 11's port kan
+  stadig spørge ved install — godkend ffmpeg-static, eller:
+  node node_modules/ffmpeg-static/install.js hvis binaryen mangler.
 - STRIPE-RUTEN I MORGEN (1/11): REVOLUT ERHVERVS-KONTO OPRETTET
   (31/10) — TING-JE-punkt 23 delvist klaret (kontoen koster intet at
   stå klar). Rækkefølge: punkt 24 (produkter/priser på TEST-kontoen)
