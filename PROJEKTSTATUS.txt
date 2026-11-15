@@ -1,6 +1,26 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-11-14
+Sidst opdateret: 2026-11-15
 ==========================================================
+
+BUNNY-ENV BOM-LÆRING — PWA-UPLOAD PÅ TELEFONEN (15/11)
+Brugerens PWA-upload på telefonen fejlede i bunny-start: production-
+runtime-loggen viste TypeError "Cannot convert argument to a ByteString
+because the character at index 0 has a value of 65279" — **UTF-8-BOM
+(0xFEFF) som første tegn i BUNNY_API_KEY** på Vercel! Årsag: env-vars
+lagt ind via PowerShell-rør til vercel CLI (PS 5.1's native-stdin-
+encoding). Fix: alle 8 BUNNY_*-rækker (4 nøgler × production/preview)
+gensat via MCP edit_project_env med rene værdier (værdierne var allerede
+rigtige i .env.local) + redeploy. LEERING gemt i memory
+(powershell-utf8-textfile-trap: rør ALDRIG hemmelige værdier gennem
+PS-pipes til vercel env add — brug MCP-værdi-set eller filer skrevet
+med WriteAllText-UTF8-uden-BOM).
+- NB: accept="video/mp4" i studio-filvælgeren filtrerer iPhone's
+  .MOV/HEVC-optagelser UD på mobil (mobil-pickeres respekterer accept
+  næsten strakt) — bredere accept (mp4/quicktime/webm/video/*) er
+  backlog til skaber-upload-mobilen.
+- PWA-upload på telefon: bunny-start ✓ (efter redeploy) — resten af
+  kæden (TUS fra telefon-netværk, 16-MB-chunks) uafprøvet indtil
+  brugerens næste forsøg.
 
 BUNNY STREAM E2E FULDFØRT — FØRSTE REELT PUBLICEREDE BUNNY-FILM (14/11)
 Brugerens E2E (film "kkskskks", 51 s, 85/149 MB mp4, VFR 29,99-fps):
