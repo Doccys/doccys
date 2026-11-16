@@ -16,7 +16,10 @@ Afbørdet bevis-punkter (brugeren kan tjekke kvarters visning):
    talene i $ som aegte seer. RESCUE (indfri_koeb-RPC m. service
    noegle) er idempotent hvis et koeb nogensinde ikke krediterer.
 - LAUNCING-CHECKLISTEN nu: KUN SMTP til Vercel-env + robots-flippet
-  (+ vercel.app-redirect) tilbage foer 1/12.
+  tilbage foer 1/12. vercel.app-redirecten LUKKET (16/11): PATCH
+  /v9/projects/.../domains/doccys.vercel.app redirect=www.doccys.com
+  308 (bevi-st: curl -I → 308, sti bevaret); NB redirect-target skal
+  vare DOMAENET (bare) tilfoejet til projektet, ikk'e https-URL.
 
 FFMPEG PÅ VERCELS SERVERLØSE — STATISK BINARY + KANDIDATGATE (15/11)
 Skaber-upload-pipelinen er nu FULDT bevist paa produktion (film
