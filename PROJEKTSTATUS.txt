@@ -15,11 +15,19 @@ Afbørdet bevis-punkter (brugeren kan tjekke kvarters visning):
    — ind i bogfoeringen; saldoen afprøver afregn_session + creator-
    talene i $ som aegte seer. RESCUE (indfri_koeb-RPC m. service
    noegle) er idempotent hvis et koeb nogensinde ikke krediterer.
-- LAUNCING-CHECKLISTEN nu: KUN SMTP til Vercel-env + robots-flippet
-  tilbage foer 1/12. vercel.app-redirecten LUKKET (16/11): PATCH
+- SEARCH CONSOLE VERIFICERET (16/11, brugerens Google-konto):
+  Domain-ejendommen doccys.com (DNS TXT i Namecheap, @-host) ✓
+  grøn; sitemap-submit afventer/koeres. Den 1/12: Claude flipper
+  robots (AABEN_NEDENFOR=true) → sitemap-URL'erne kraevs straks;
+  brugerens kan "Request indexing" paa forsiden/watch-sider for
+  hurtigst indeksering. vercel.app-redirecten LUKKET (16/11): PATCH
   /v9/projects/.../domains/doccys.vercel.app redirect=www.doccys.com
-  308 (bevi-st: curl -I → 308, sti bevaret); NB redirect-target skal
-  vare DOMAENET (bare) tilfoejet til projektet, ikk'e https-URL.
+  308 (bevi-st: curl -I → 308, sti bevaret); NB redirect-target
+  skal vare DOMAENET (bare) tilfoejet til projektet, ikk'e
+  https-URL.
+- FÐFRTRE ÆGTE TRANSAKTION + vercel.app-redirect + Search Console:
+  lancerings-checklisten paa Vercel/Google-siden er da KUN
+  SMTP til Vercel-env + robots-flippet (claude, 1/12).
 
 FFMPEG PÅ VERCELS SERVERLØSE — STATISK BINARY + KANDIDATGATE (15/11)
 Skaber-upload-pipelinen er nu FULDT bevist paa produktion (film
