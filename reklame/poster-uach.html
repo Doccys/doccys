@@ -1,0 +1,173 @@
+<title>Doccys — Póster UACH</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Doccys plakat — Póster UACH (es-MX). Portrait A4, vektor (uendbar
+     skalering: print @100% = A4; skaler til A3/A2 i udskrift uden
+     kvalitetstab). Noir/champagne brandet. QR paa hvit kort (scan-
+     kontrast) → doccys.com med UTM-tag. */
+  :root {
+    --noir: #0b0b0f;
+    --onyx: #13131b;
+    --bone: #f3efe6;
+    --champagne: #d8b878;
+    --champagne-soft: rgba(216, 184, 120, 0.14);
+    --ash: #9a958a;
+    --smoke: #26262e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--noir); }
+  body {
+    background: var(--noir);
+    color: var(--bone);
+    font-family: Inter, "Segoe UI", system-ui, sans-serif;
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .kant {
+    position: absolute;
+    inset: 12mm;
+    border: 0.8mm solid rgba(216, 184, 120, 0.55);
+    border-radius: 6mm;
+    padding: 10mm 12mm;
+    display: flex;
+    flex-direction: column;
+  }
+  .mrk {
+    display: flex; align-items: center; gap: 6mm;
+  }
+  .mrk svg { width: 16mm; height: 16mm; flex: 0 0 auto; }
+  .mrk strong {
+    color: var(--champagne);
+    font-size: 11mm; letter-spacing: 0.32em; font-weight: 600;
+    font-family: Georgia, serif;
+  }
+  h1 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    font-size: 16.5mm;
+    line-height: 1.12;
+    margin-top: 14mm;
+  }
+  h1 em { color: var(--champagne); font-style: italic; }
+  .lede {
+    margin-top: 7mm;
+    font-size: 7.2mm;
+    line-height: 1.4;
+    color: var(--bone);
+  }
+  .punkt {
+    margin-top: 10mm;
+    display: grid;
+    gap: 5mm;
+  }
+  .punkt div {
+    display: flex; align-items: baseline; gap: 4.5mm;
+    background: var(--onyx);
+    border: 0.4mm solid var(--smoke);
+    border-radius: 3.5mm;
+    padding: 5mm 6mm;
+  }
+  .punkt svg { width: 6.5mm; height: 6.5mm; flex: 0 0 auto; transform: translateY(1.6mm); }
+  .punkt p { font-size: 6.4mm; line-height: 1.3; color: var(--ash); }
+  .punkt p b { color: var(--bone); font-weight: 600; }
+  .punkt p .guld { color: var(--champagne); font-weight: 600; }
+  .pris {
+    margin-top: auto;
+    text-align: center;
+    font-size: 7.6mm;
+    color: var(--champagne);
+    font-family: Georgia, serif;
+  }
+  .pris small { color: var(--ash); font-family: Inter, sans-serif; font-size: 5mm; }
+  .scan {
+    margin-top: 7mm;
+    display: flex; align-items: center; gap: 8mm;
+    background: #ffffff;
+    border-radius: 5mm;
+    padding: 7mm 9mm;
+  }
+  #qr { flex: 0 0 auto; }
+  #qr img, #qr canvas { width: 46mm !important; height: 46mm !important; display: block; }
+  .scan-tekst { text-align: left; color: #0b0b0f; }
+  .scan-tekst b { font-size: 7.4mm; display: block; line-height: 1.25; }
+  .scan-tekst small { font-size: 5.2mm; color: #44444c; display: block; margin-top: 2.5mm; line-height: 1.35; }
+  .fod {
+    margin-top: 6mm;
+    text-align: center;
+    font-size: 4.6mm;
+    letter-spacing: 0.14em;
+    color: var(--ash);
+  }
+  .fod b { color: var(--champagne); letter-spacing: 0.28em; font-weight: 600; }
+  @media print {
+    @page { size: 210mm 297mm; margin: 0; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;700&display=swap">
+
+<div class="kant">
+  <div class="mrk">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="13" fill="none" stroke="#d8b878" stroke-width="2.6"/>
+      <path d="M13 10.5 L22.5 16 L13 21.5 Z" fill="#d8b878"/>
+    </svg>
+    <strong>DOCCYS</strong>
+  </div>
+
+  <h1>Mira el documental <em>completo</em>. Paga solo por los minutos que ves.</h1>
+
+  <p class="lede">
+    Streaming curado de documentales independientes —
+    <span style="color:var(--champagne)">sin anuncios, sin suscripción</span>.
+  </p>
+
+  <div class="punkt">
+    <div>
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10.5 L8 15.5 L17 5.5" fill="none" stroke="#d8b878" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <p><b>Subtítulos en 13 idiomas — gratis,</b> generados con un clic. <b>Los pagamos nosotros</b>, tú no pagas nada, nunca.</p>
+    </div>
+    <div>
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10.5 L8 15.5 L17 5.5" fill="none" stroke="#d8b878" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <p>Paga solo lo que ves: <b>sube tu documental desde tu celular</b> o disfrútalo en cualquier pantalla. Sin anuncios en medio de tu película. <span class="guld">Nunca.</span></p>
+    </div>
+    <div>
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10.5 L8 15.5 L17 5.5" fill="none" stroke="#d8b878" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <p>Los cineastas reciben <span class="guld">$0.30 USD por cada 100 minutos vistos</span>, con comprobante de pago. Licencia no exclusiva: retirás tu película cuando quieras.</p>
+    </div>
+  </div>
+
+  <p class="pris">
+    Packs desde <b>$6.99 USD</b> · 1,000 minutos · incl. impuestos según tu país
+    <br><small>Precios en dólares americanos (USD).</small>
+  </p>
+
+  <div class="scan">
+    <div id="qr"></div>
+    <div class="scan-tekst">
+      <b>Escanea y mira</b>
+      <small>
+        <b>doccys.com</b><br>
+        Catálogo curado — hecho para los que aman los documentales
+      </small>
+    </div>
+  </div>
+
+  <p class="fod">CURADO · SIN ANUNCIOS · <b>PAGA POR MINUTO</b></p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  new QRCode(document.getElementById("qr"), {
+    text: "https://www.doccys.com/es?utm_source=poster&utm_medium=print&utm_campaign=uach-chihuahua",
+    width: 174,
+    height: 174,
+    colorDark: "#0b0b0f",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+</script>
