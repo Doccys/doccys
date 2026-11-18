@@ -37,10 +37,10 @@ Afbørdet bevis-punkter (brugeren kan tjekke kvarters visning):
 - SEED-FILMENE: 6 "film" viste sig at vare Googles offentlige
   DEMO-videoer (gtv-videos-bucket: Elephants Dream/Sintel/Tears of
   Steel…) med danske fake-titler/synopses — Google har tage dem af
-  luften (403) = brudt afspiller for alle. SQL-flip til kladde
-  forberedt (brugerens koersel afventende) — kataloget er da tyndt,
-  og fangst-listen er fangsten. REELT indhold = brugerens egne film
-  (pipeline bevi-st, 15 min/film) eller DR Sales/UACH-aansager.
+  luften (403) = brudt afspiller for alle. SQL-flip til kladde KØRT
+  18/11 (bevi-stit: SELECT viser de 6 som draft) — kataloget er da
+  tyndt, og fangst-listen er fangsten. REELT indhold = brugerens egne
+  film (pipeline bevi-st, 15 min/film) eller DR Sales/UACH-aansager.
 - LAUNCING-CHECKLISTEN FULDFORT (18/11) — robots-aaben koert + ægte
   transaktion koerende; KUN SMTP til Vercel-env er tilbage (signup/
   reset-mails gaar via Supabases standardafsender indtil da) —
