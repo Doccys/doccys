@@ -24,15 +24,33 @@ Afbørdet bevis-punkter (brugeren kan tjekke kvarters visning):
   308 (bevi-st: curl -I → 308, sti bevaret); NB redirect-target
   skal vare DOMAENET (bare) tilfoejet til projektet, ikk'e
   https-URL.
+- FANGST-LISTEN (17/11, brugerens spørgsmål: "noget på siden som kan
+  fange seere før der er indhold") — e-mail-venten bygget + VERIFICERET
+  udefra: migration 20261117_fangst_listen (notify_waitlist: insetbar
+  af anon m. RLS-regex+locale-check, IKKE laesbar via API — listen er
+  redaktionens; unique-index lower(trim(email)) — duplikat m. STORE
+  bogstaver = 23505 bevi-st); WaitlistCard paa forsiden efter
+  Samlings-rillen (browser-klienten, 23505 = Tilmeldt ✓); probes:
+  gyldig INSERT 201 · GET [] · duplikat 23505 · "noget" 42501 — alle
+  grene; probe-rækken slettet af brugeren i dashboardet. DA-teksten
+  sludret ord ("dokumentarikrar") rettet + gen-translateret ×12.
+- SEED-FILMENE: 6 "film" viste sig at vare Googles offentlige
+  DEMO-videoer (gtv-videos-bucket: Elephants Dream/Sintel/Tears of
+  Steel…) med danske fake-titler/synopses — Google har tage dem af
+  luften (403) = brudt afspiller for alle. SQL-flip til kladde
+  forberedt (brugerens koersel afventende) — kataloget er da tyndt,
+  og fangst-listen er fangsten. REELT indhold = brugerens egne film
+  (pipeline bevi-st, 15 min/film) eller DR Sales/UACH-aansager.
 - LAUNCING-CHECKLISTEN FULDFORT (18/11) — robots-aaben koert + ægte
-  transaktion koerende; KUN SMTP til Vercel-env er tilbage (_signup/
+  transaktion koerende; KUN SMTP til Vercel-env er tilbage (signup/
   reset-mails gaar via Supabases standardafsender indtil da) —
-  PLANLAGT TIL VIKENDEN (brugerens beslutning 18/11). Værktøjet:
+  PLANLAGT TIL VIKENDEN (brugerens beslutning 18/11). Runbook:
   SMTP_Host/Port/User/Pass hentes fra Supabase-dashboardet's
   SMTP-opsætning (smtp.privateemail.com:465, contact@doccys.com —
   sat 21/9), de fire noegler skrives til Vercel via MCP-værdi-set
-  (ALDRIG PowerShell-roer — BOM-fælden) + redeploy; derefter tester
-  en signup-mail og tjekker afsenderen er contact@doccys.com.
+  (ALDRIG PowerShell-roer — BOM-fælden, se BUNNY-sektionen) +
+  redeploy; derefter tester en signup-mail og tjekker afsenderen
+  er contact@doccys.com.
 
 FFMPEG PÅ VERCELS SERVERLØSE — STATISK BINARY + KANDIDATGATE (15/11)
 Skaber-upload-pipelinen er nu FULDT bevist paa produktion (film
