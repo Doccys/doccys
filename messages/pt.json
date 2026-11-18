@@ -787,5 +787,13 @@
     "submitError": "A postagem não pôde ser enviada. Tente novamente.",
     "empty": "Está silencioso na sala — seja a primeira Lenda a falar.",
     "authorFallback": "Lenda"
+  },
+  "waitlist": {
+    "title": "Curadoria em andamento — seja notificado quando novos documentários chegarem",
+    "body": "Novos documentários são adicionados continuamente. Deixe seu e-mail, e você receberá um único e-mail sempre que o catálogo crescer. Sem spam.",
+    "placeholder": "Seu e-mail",
+    "submit": "Mantenha-me atualizado",
+    "submitted": "Inscrito ✓ — você ouvirá da nossa equipe.",
+    "error": "Algo deu errado — tente novamente."
   }
 }

@@ -787,5 +787,13 @@
     "submitError": "Viestiä ei voitu lähettää. Yritä uudelleen.",
     "empty": "Huoneessa on hiljaista — ole ensimmäinen Legenda, joka puhuu.",
     "authorFallback": "Legenda"
+  },
+  "waitlist": {
+    "title": "Kuratoidaan parhaillaan — saat ilmoituksen, kun uusia dokumentteja saapuu",
+    "body": "Uusia dokumentteja lisätään jatkuvasti. Jätä sähköpostiosoitteesi, niin saat yksinkertaisen viestin aina, kun luettelo kasvaa. Ei roskapostia.",
+    "placeholder": "Sähköpostiosoitteesi",
+    "submit": "Pidä minut ajan tasalla",
+    "submitted": "Rekisteröity ✓ — toimitus ottaa sinuun yhteyttä.",
+    "error": "Jokin meni pieleen — yritä uudelleen."
   }
 }

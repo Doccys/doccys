@@ -355,6 +355,14 @@
     "watchedMinutes": "Sete min.",
     "earnings": "Optjent"
   },
+  "waitlist": {
+    "title": "Kuratering pågår — få besked når nye dokumentarer lander",
+    "body": "Nye dokumentarer tilknyttes løbende. Efterlad din e-mail, så får du en enkel mail, hver gang kataloget vokser. Ingen spam.",
+    "placeholder": "Din e-mail",
+    "submit": "Hold mig opdateret",
+    "submitted": "Tilmeldt ✓ — du hører fra redaktionen.",
+    "error": "Noget gik galt — prøv igen."
+  },
   "watch": {
     "playerNote": "Visningsdata logges struktureret (pauser, spoling, hjerteslag, enhedsmetadata og tidsstempler) og valideres af Doccys' anti-fraud-system, før dine sete minutter afregnes.",
     "playerStartFailed": "Visningsdata kunne ikke startes — afspilningen virker stadig.",

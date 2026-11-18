@@ -787,5 +787,13 @@
     "submitError": "Der Beitrag konnte nicht gesendet werden. Bitte versuche es erneut.",
     "empty": "Es ist still im Zimmer — sei die erste Legende, die spricht.",
     "authorFallback": "Legende"
+  },
+  "waitlist": {
+    "title": "Kurierung läuft — lassen Sie sich benachrichtigen, wenn neue Dokumentationen eintreffen",
+    "body": "Neue Dokumentationen werden laufend hinzugefügt. Hinterlassen Sie Ihre E-Mail, und Sie erhalten eine einfache Mail, jedes Mal wenn der Katalog wächst. Kein Spam.",
+    "placeholder": "Ihre E-Mail",
+    "submit": "Halten Sie mich auf dem Laufenden",
+    "submitted": "Angemeldet ✓ — Sie hören von der Redaktion.",
+    "error": "Etwas ist schiefgelaufen — bitte versuchen Sie es erneut."
   }
 }

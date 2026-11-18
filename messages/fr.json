@@ -787,5 +787,13 @@
     "submitError": "Le message n'a pas pu être envoyé. Veuillez réessayer.",
     "empty": "Il fait calme dans la salon — soyez la première Légende à parler.",
     "authorFallback": "Légende"
+  },
+  "waitlist": {
+    "title": "Curation en cours — recevez une notification lorsque de nouveaux documentaires arrivent",
+    "body": "De nouveaux documentaires sont ajoutés en permanence. Laissez votre e-mail, et vous recevrez un simple message chaque fois que le catalogue s'agrandit. Pas de spam.",
+    "placeholder": "Votre e-mail",
+    "submit": "Tenez-moi informé",
+    "submitted": "Inscrit ✓ — vous recevrez des nouvelles de la rédaction.",
+    "error": "Une erreur s'est produite — veuillez réessayer."
   }
 }

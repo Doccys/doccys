@@ -787,5 +787,13 @@
     "submitError": "No se pudo enviar la publicación. Intenta de nuevo.",
     "empty": "Está tranquilo en la sala — sé la primera Leyenda en hablar.",
     "authorFallback": "Leyenda"
+  },
+  "waitlist": {
+    "title": "Curación en progreso — recibe una notificación cuando lleguen nuevos documentales",
+    "body": "Nuevos documentales se añaden continuamente. Deja tu correo electrónico y recibirás un simple correo cada vez que el catálogo crezca. Sin spam.",
+    "placeholder": "Tu e-mail",
+    "submit": "Mantenme actualizado",
+    "submitted": "Inscrito ✓ — te contactaremos.",
+    "error": "Algo salió mal — inténtalo de nuevo."
   }
 }

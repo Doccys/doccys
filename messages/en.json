@@ -787,5 +787,13 @@
     "submitError": "The post could not be sent. Please try again.",
     "empty": "It’s quiet in the room — be the first Legend to speak.",
     "authorFallback": "Legend"
+  },
+  "waitlist": {
+    "title": "Curation in Progress — Get Notified When New Documentaries Arrive",
+    "body": "New documentaries are added continuously. Leave your email, and you'll receive a single email each time the catalog grows. No spam.",
+    "placeholder": "Your email",
+    "submit": "Keep me updated",
+    "submitted": "Subscribed ✓ — you'll hear from the editors.",
+    "error": "Something went wrong — please try again."
   }
 }

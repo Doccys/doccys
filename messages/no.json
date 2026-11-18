@@ -787,5 +787,13 @@
     "submitError": "Innlegget kunne ikke sendes. Prøv igjen.",
     "empty": "Det er stille i stuen — vær den første Legende som snakker.",
     "authorFallback": "Legende"
+  },
+  "waitlist": {
+    "title": "Kuratering pågår — få beskjed når nye dokumentarer lander",
+    "body": "Nye dokumentarer legges til fortløpende. Legg igjen e-posten din, så får du en enkel e-post hver gang katalogen vokser. Ingen spam.",
+    "placeholder": "Din e-post",
+    "submit": "Hold meg oppdatert",
+    "submitted": "Påmeldt ✓ — du hører fra redaksjonen.",
+    "error": "Noe gikk galt — prøv igjen."
   }
 }

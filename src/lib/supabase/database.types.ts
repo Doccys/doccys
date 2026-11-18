@@ -567,6 +567,22 @@ export type KlubPostUpdate = {
   pinned?: boolean;
 };
 
+export type NotifyWaitlistRow = {
+  id: string;
+  /** gemmes som indsendt — unique-index på lower(trim(email)) håndhæver
+   *  én gang pr. mail uanset case; udlæsning KUN i dashboardet (RLS) */
+  email: string;
+  locale: string;
+  created_at: string;
+  /** sat af redaktionen, når mailen er sendt (liste-udsendelsen) */
+  notified_at: string | null;
+};
+
+export type NotifyWaitlistInsert = {
+  email: string;
+  locale?: string;
+};
+
 export type CreatorPostInsert = {
   id?: string;
   creator_id: string;
@@ -872,6 +888,14 @@ export type Database = {
          *  (select/insert kun for Legender via er_klub_medlem) */
         Insert: KlubPostInsert;
         /** ingen update/delete-policies = moderation er dashboard-arbejde */
+        Update: never;
+        Relationships: [];
+      };
+      notify_waitlist: {
+        Row: NotifyWaitlistRow;
+        /** fangst-liste: insetbar af hvem-som-helst (RLS insert-policy),
+         *  IKKE læsbar via API (e-mail-listen er redaktionens) */
+        Insert: NotifyWaitlistInsert;
         Update: never;
         Relationships: [];
       };

@@ -787,5 +787,13 @@
     "submitError": "Il post non è stato inviato. Riprova.",
     "empty": "C'è silenzio nella sala — sii la prima Leggenda a parlare.",
     "authorFallback": "Leggenda"
+  },
+  "waitlist": {
+    "title": "Curazione in corso — ricevi una notifica quando arrivano nuovi documentari",
+    "body": "Nuovi documentari vengono aggiunti continuamente. Lascia la tua e-mail e riceverai un'unica mail ogni volta che il catalogo si espande. Nessun spam.",
+    "placeholder": "La tua e-mail",
+    "submit": "Tienimi aggiornato",
+    "submitted": "Iscritto ✓ — sentirai dalla redazione.",
+    "error": "Qualcosa è andato storto — riprova."
   }
 }

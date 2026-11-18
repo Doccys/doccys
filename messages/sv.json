@@ -787,5 +787,13 @@
     "submitError": "Inlägget kunde inte skickas. Försök igen.",
     "empty": "Det är tyst i stugan — var den första Legenden som talar.",
     "authorFallback": "Legend"
+  },
+  "waitlist": {
+    "title": "Kuratering pågår — få besked när nya dokumentärer landar",
+    "body": "Nya dokumentärer läggs till kontinuerligt. Lämna din e-post, så får du ett enkelt mejl varje gång katalogen växer. Ingen spam.",
+    "placeholder": "Din e-post",
+    "submit": "Håll mig uppdaterad",
+    "submitted": "Anmäld ✓ — du hör från redaktionen.",
+    "error": "Något gick fel — försök igen."
   }
 }
