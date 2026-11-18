@@ -26,7 +26,13 @@ Afbørdet bevis-punkter (brugeren kan tjekke kvarters visning):
   https-URL.
 - LAUNCING-CHECKLISTEN FULDFORT (18/11) — robots-aaben koert + ægte
   transaktion koerende; KUN SMTP til Vercel-env er tilbage (_signup/
-  reset-mails gaar via Supabases standardafsender indtil da).
+  reset-mails gaar via Supabases standardafsender indtil da) —
+  PLANLAGT TIL VIKENDEN (brugerens beslutning 18/11). Værktøjet:
+  SMTP_Host/Port/User/Pass hentes fra Supabase-dashboardet's
+  SMTP-opsætning (smtp.privateemail.com:465, contact@doccys.com —
+  sat 21/9), de fire noegler skrives til Vercel via MCP-værdi-set
+  (ALDRIG PowerShell-roer — BOM-fælden) + redeploy; derefter tester
+  en signup-mail og tjekker afsenderen er contact@doccys.com.
 
 FFMPEG PÅ VERCELS SERVERLØSE — STATISK BINARY + KANDIDATGATE (15/11)
 Skaber-upload-pipelinen er nu FULDT bevist paa produktion (film
