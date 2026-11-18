@@ -17,17 +17,16 @@ Afbørdet bevis-punkter (brugeren kan tjekke kvarters visning):
    noegle) er idempotent hvis et koeb nogensinde ikke krediterer.
 - SEARCH CONSOLE VERIFICERET (16/11, brugerens Google-konto):
   Domain-ejendommen doccys.com (DNS TXT i Namecheap, @-host) ✓
-  grøn; sitemap-submit afventer/koeres. Den 1/12: Claude flipper
-  robots (AABEN_NEDENFOR=true) → sitemap-URL'erne kraevs straks;
-  brugerens kan "Request indexing" paa forsiden/watch-sider for
-  hurtigst indeksering. vercel.app-redirecten LUKKET (16/11): PATCH
-  /v9/projects/.../domains/doccys.vercel.app redirect=www.doccys.com
+  grøn; sitemap submittet ✓; URL-inspektion + "ANMOD OM INDEKSERING"
+  koert paa /da (18/11) — "indeksering anmodet" ✓, i Googles koje
+  (typisk 1-2 dage til crawl). vercel.app-redirecten LUKKET (16/11):
+  PATCH /v9/projects/.../domains/doccys.vercel.app redirect=www.doccys.com
   308 (bevi-st: curl -I → 308, sti bevaret); NB redirect-target
   skal vare DOMAENET (bare) tilfoejet til projektet, ikk'e
   https-URL.
-- FÐFRTRE ÆGTE TRANSAKTION + vercel.app-redirect + Search Console:
-  lancerings-checklisten paa Vercel/Google-siden er da KUN
-  SMTP til Vercel-env + robots-flippet (claude, 1/12).
+- LAUNCING-CHECKLISTEN FULDFORT (18/11) — robots-aaben koert + ægte
+  transaktion koerende; KUN SMTP til Vercel-env er tilbage (_signup/
+  reset-mails gaar via Supabases standardafsender indtil da).
 
 FFMPEG PÅ VERCELS SERVERLØSE — STATISK BINARY + KANDIDATGATE (15/11)
 Skaber-upload-pipelinen er nu FULDT bevist paa produktion (film
