@@ -88,6 +88,27 @@ kladder røres IKKE (gate = upload-triage, ikke publiceringskravet —
 redaktionen kan stadig tvinge en film gennem via dashboardet).
 628 nøgler ×13 fuld paritet, tsc grøn.
 
+TANKESTREG-RYDNINGEN (21/11) — brugerens ønske: "fjern AI-tanke-
+stregerne i alt tekst ... de skræmmer folk" (— er blevet et AI-gen-
+kendelighedstegn). Gennemført i tre led:
+1) KILDEN (127 nøgler i da.json): GPT-omskrivning (gpt-4o via én
+   engangs-scriptet tmp/rewrite-dashes.mjs — pr. chunk med validering:
+   hele nøglesæt, pladsholdere- og linjeskift-udlighed, INGEN —; 3
+   forsøg), anvendt med tmp/apply-dash-rewrite.mjs (samme serializer
+   som i18n-translate; nøgleorden bevaret). da.json: 137 → 0.
+2) OVERSÆTTELSER: de 127 nøgler tømt i de 12 andre filer → gen-fyldt
+   med NYT regelsæt i scripts/i18n-translate.mjs (TONSTREG-REGLEN i
+   systemprompten + validering der AFVISER svær m. — og genkører,
+   undtaget ja/zh hvor — er legitimt CJK-tegn). RESULTAT: 0 tanke-
+   streger i ALLE 13 filer (også ja/zh endte ren), 628 nøgler ×13
+   fuld paritet, tsc grøn, i18n-verify samme 3 kendte seed-flip-fail.
+3) SRC (27 brugersynlige strenge): API-fejltekster, Stripe-produkt-
+   navnet, manifest-beskrivelsen, SIDETITLERNE (%s — Doccys →
+   %s · Doccys), aria-labels, retention-axen ("til" i stedet), årkog-
+   tilbehør, kvitteringens tom-fallback ("(ukendt)"). Resterende — i
+   src er UDVIKLER-log/kommentarer (ikke brugersynligt) + talrække-
+   en-dashes (– i fx 3–40 tegn, almindelig typografi).
+
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
 **1000 min krediteret MINUTTE saldoen** (brugerens bevi-st): live-
