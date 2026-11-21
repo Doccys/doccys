@@ -57,7 +57,8 @@
       "handleReserved": "Il tag @ è riservato. Scegline un altro.",
       "handleLocked": "L'account ha già un tag @. Non può essere cambiato. Usa lo stesso tag e conferma la tua e-mail.",
       "captchaFailed": "Il controllo CAPTCHA è fallito. Riprova.",
-      "passwordComplexity": "La password deve contenere almeno una lettera minuscola, una lettera MAIUSCOLA, un numero e un simbolo."
+      "passwordComplexity": "La password deve contenere almeno una lettera minuscola, una lettera MAIUSCOLA, un numero e un simbolo.",
+      "passwordLeaked": "Questa password è nota a causa di una precedente violazione dei dati. Scegli una password completamente unica."
     },
     "confirmTitle": "Conferma la tua e-mail",
     "confirmWorking": "Un momento. La tua e-mail è in fase di conferma e accederai al tuo profilo…",

@@ -88,10 +88,12 @@ export async function POST(request: NextRequest) {
 
   // Lækket-adgangskode-tjek (HaveIBeenPwned k-anonymitet) — erstatter
   // dashboardets Pro-gated "Leaked password protection" på HEDEN-tier.
-  // Failopen (null = slippes igennem), se lib/auth/leaked.ts.
+  // Failopen (null = slippes igennem), se lib/auth/leaked.ts. Egen
+  // fejltekst (passwordLeaked) i stedet for den generiske "for svag":
+  // her er grunden kendt og brugeren kan handle præcist på den.
   const laeket = await erLaegetAdgangskode(password);
   if (laeket === true) {
-    return NextResponse.json({ error: "weakPassword" }, { status: 422 });
+    return NextResponse.json({ error: "passwordLeaked" }, { status: 422 });
   }
   if (name.length < 1 || name.length > 120) {
     return NextResponse.json({ error: "nameMissing" }, { status: 400 });

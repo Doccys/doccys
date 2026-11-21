@@ -57,7 +57,8 @@
       "handleReserved": "Det @-tagget er reservert. Velg et annet.",
       "handleLocked": "Kontoen har allerede et @-tag. Det kan ikke endres. Bruk det samme tagget og bekreft e-posten din.",
       "captchaFailed": "CAPTCHA-kontrollen feilet. Prøv igjen.",
-      "passwordComplexity": "Passordet må også inneholde minst én liten bokstav, én STOR bokstav, ett tall og ett symbol."
+      "passwordComplexity": "Passordet må også inneholde minst én liten bokstav, én STOR bokstav, ett tall og ett symbol.",
+      "passwordLeaked": "Dette passordet er kjent fra tidligere datalekkasjer. Velg et helt unikt passord."
     },
     "confirmTitle": "Bekrefter din e-post",
     "confirmWorking": "Et øyeblikk. Din e-post bekreftes, og du logger inn på profilen din…",

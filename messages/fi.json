@@ -57,7 +57,8 @@
       "handleReserved": "@-tagi on varattu. Valitse toinen.",
       "handleLocked": "Tilillä on jo @-tagi. Sitä ei voi muuttaa. Käytä samaa tagia ja vahvista sähköpostisi.",
       "captchaFailed": "CAPTCHA-tarkistus epäonnistui. Yritä uudelleen.",
-      "passwordComplexity": "Salasanassa on oltava vähintään yksi pieni kirjain, yksi ISO kirjain, yksi numero ja yksi symboli."
+      "passwordComplexity": "Salasanassa on oltava vähintään yksi pieni kirjain, yksi ISO kirjain, yksi numero ja yksi symboli.",
+      "passwordLeaked": "Tämä salasana on tunnettu aiemmista tietovuodoista. Valitse täysin ainutlaatuinen salasana."
     },
     "confirmTitle": "Vahvistetaan sähköpostiasi",
     "confirmWorking": "Hetkinen. Sähköpostisi vahvistetaan ja pääset profiiliisi…",

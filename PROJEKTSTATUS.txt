@@ -172,7 +172,11 @@ signup-ruten returnerer passwordComplexity ×13 ("...mindst ét lille
 bogstav, ét STORT bogstav, ét tal og ét symbol") i stedet for den
 vildledende 8-tegns-tekst. VIGTIGT: login-validering ALDRIG politikkens
 (gamle konti har ældre kodeord). 630 nøgler ×13 paritet, tsc grøn,
-politik-stikprøve æøå-verificeret.
+politik-stikprøve æøå-verificeret. TREDJE FEJLTEKST (samme dag,
+brugerens go): HIBP-lækket kodeord → passwordLeaked ×13 ("Denne
+adgangskode er kendt fra tidligere datalæk. Vælg et helt unikt
+kodeord.") i stedet for den generiske weakPassword ("for svag") —
+signup-ruten + ResetPasswordForm. 631 nøgler ×13 paritet.
 
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —

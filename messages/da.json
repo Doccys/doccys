@@ -68,7 +68,8 @@
       "rateLimited": "For mange forsøg. Vent lidt og prøv igen.",
       "generic": "Noget gik galt. Prøv igen.",
       "captchaFailed": "CAPTCHA-kontrollen fejlede. Prøv igen.",
-      "passwordComplexity": "Adgangskoden skal også have mindst ét lille bogstav, ét STORT bogstav, ét tal og ét symbol."
+      "passwordComplexity": "Adgangskoden skal også have mindst ét lille bogstav, ét STORT bogstav, ét tal og ét symbol.",
+      "passwordLeaked": "Denne adgangskode er kendt fra tidligere datalæk. Vælg et helt unikt kodeord."
     }
   },
   "mail": {

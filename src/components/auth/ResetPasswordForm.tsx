@@ -155,9 +155,10 @@ export default function ResetPasswordForm() {
 
     // Lækket-adgangskode-tjek, samme som signup-ruten — her klient-side
     // (k-anonymitet: kun 5 SHA-1-tegn forlader browseren; failopen).
+    // Egen fejltekst: "kendt fra datalæk" i stedet for "for svag".
     const laeket = await erLaegetAdgangskode(password);
     if (laeket === true) {
-      setErrorKey("weakPassword");
+      setErrorKey("passwordLeaked");
       return;
     }
 
