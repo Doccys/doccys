@@ -56,7 +56,8 @@
       "handleTaken": "该 @ 标签已被使用。请选择其他标签。",
       "handleReserved": "该 @ 标签已被保留。请选择其他标签。",
       "handleLocked": "账户已拥有一个 @ 标签。无法更改。请使用相同的标签并确认您的电子邮件。",
-      "captchaFailed": "CAPTCHA 验证失败。请再试一次。"
+      "captchaFailed": "CAPTCHA 验证失败。请再试一次。",
+      "passwordComplexity": "密码必须至少包含一个小写字母，一个大写字母，一个数字和一个符号。"
     },
     "confirmTitle": "确认您的电子邮件",
     "confirmWorking": "请稍候。正在确认您的电子邮件，您将进入您的个人资料…",

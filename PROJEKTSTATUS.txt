@@ -160,6 +160,20 @@ TURNSTIILE (APP-LEVEL CAPTCHA) PA PLADS (21/11) — spam-signuppunkt
 - Lås (login/brugere ramt): ingen — login er signInWithPassword
   uændret; kun mail-udsendendes ruter er spærret.
 
+ADGANGSKODE-POLITIKKEN KLARET (21/11, brugerens lille issue: "der står
+ikke der skal symbol i fejlteksten — kun 8 tegn"): brugerens GEMTE
+Supabase-indstilling ("Lowercase, uppercase, digits and symbols …
+rejected as weak") er reelt aktiv server-side — generateLink afviser
+8-tegns-adgangskoder uden de fire kategorier. src/lib/auth/password-
+Policy.ts (ÉN kilde): min 8 (72-bcrypt-grænse) + lille/STORT/tal/symbol
+i Unicode-properti-udtryk (æøå tæller som bogstaver, ikke symboler).
+Klienten (AuthForm KUN i signup-mode + ResetPasswordForm før HIBP) og
+signup-ruten returnerer passwordComplexity ×13 ("...mindst ét lille
+bogstav, ét STORT bogstav, ét tal og ét symbol") i stedet for den
+vildledende 8-tegns-tekst. VIGTIGT: login-validering ALDRIG politikkens
+(gamle konti har ældre kodeord). 630 nøgler ×13 paritet, tsc grøn,
+politik-stikprøve æøå-verificeret.
+
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
 **1000 min krediteret MINUTTE saldoen** (brugerens bevi-st): live-

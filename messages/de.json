@@ -56,7 +56,8 @@
       "handleTaken": "Das @-Tag wird bereits verwendet. Wählen Sie ein anderes.",
       "handleReserved": "Das @-Tag ist reserviert. Wählen Sie ein anderes.",
       "handleLocked": "Das Konto hat bereits ein @-Tag. Es kann nicht geändert werden. Verwenden Sie dasselbe Tag und bestätigen Sie Ihre E-Mail.",
-      "captchaFailed": "Die CAPTCHA-Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+      "captchaFailed": "Die CAPTCHA-Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "passwordComplexity": "Das Passwort muss mindestens einen Kleinbuchstaben, einen GROSSBUCHSTABEN, eine Zahl und ein Symbol enthalten."
     },
     "confirmTitle": "Bestätigen Sie Ihre E-Mail",
     "confirmWorking": "Einen Moment bitte. Ihre E-Mail wird bestätigt und Sie gelangen zu Ihrem Profil…",

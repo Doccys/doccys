@@ -56,7 +56,8 @@
       "handleTaken": "Le tag @ est déjà utilisé. Choisissez un autre.",
       "handleReserved": "Le tag @ est réservé. Choisissez un autre.",
       "handleLocked": "Le compte a déjà un tag @. Il ne peut pas être changé. Utilisez le même tag et confirmez votre e-mail.",
-      "captchaFailed": "La vérification CAPTCHA a échoué. Veuillez réessayer."
+      "captchaFailed": "La vérification CAPTCHA a échoué. Veuillez réessayer.",
+      "passwordComplexity": "Le mot de passe doit également contenir au moins une lettre minuscule, une LETTRE MAJUSCULE, un chiffre et un symbole."
     },
     "confirmTitle": "Confirme votre e-mail",
     "confirmWorking": "Un instant. Votre e-mail est confirmé et vous accédez à votre profil…",

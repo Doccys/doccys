@@ -10,6 +10,7 @@ import {
   probeHandleTakenClient,
   validateHandleSyntax,
 } from "@/lib/handles";
+import { adgangskodeFejl } from "@/lib/auth/passwordPolicy";
 import PasswordInput from "./PasswordInput";
 import Turnstile from "./Turnstile";
 
@@ -147,6 +148,21 @@ export default function AuthForm() {
     if (mode === "signup" && !ageAccepted) {
       setErrorKey("ageRequired");
       return;
+    }
+
+    // Adgangskode-politikken (KUN signup — login må aldrig afvises af
+    // nye krav, gamle konti har ældre kodeord): samme regel som serveren
+    // og Supabase' sammensat-krav, så fejlteksten siger det præcise.
+    if (mode === "signup") {
+      const pwFejl = adgangskodeFejl(password);
+      if (pwFejl === "laengde") {
+        setErrorKey("weakPassword");
+        return;
+      }
+      if (pwFejl === "sammensaetning") {
+        setErrorKey("passwordComplexity");
+        return;
+      }
     }
 
     setBusy(true);

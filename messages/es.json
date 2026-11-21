@@ -56,7 +56,8 @@
       "handleTaken": "La etiqueta @ ya está en uso. Elige otra.",
       "handleReserved": "La etiqueta @ está reservada. Elige otra.",
       "handleLocked": "La cuenta ya tiene una etiqueta @. No se puede cambiar. Usa la misma etiqueta y confirma tu correo electrónico.",
-      "captchaFailed": "La verificación de CAPTCHA falló. Inténtalo de nuevo."
+      "captchaFailed": "La verificación de CAPTCHA falló. Inténtalo de nuevo.",
+      "passwordComplexity": "La contraseña también debe tener al menos una letra minúscula, una letra MAYÚSCULA, un número y un símbolo."
     },
     "confirmTitle": "Confirmando tu correo electrónico",
     "confirmWorking": "Un momento. Se está confirmando tu correo electrónico y accederás a tu perfil…",

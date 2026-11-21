@@ -56,7 +56,8 @@
       "handleTaken": "The @ tag is already in use. Choose another one.",
       "handleReserved": "The @ tag is reserved. Choose another one.",
       "handleLocked": "The account already has an @ tag. It cannot be changed. Use the same tag and confirm your email.",
-      "captchaFailed": "The CAPTCHA check failed. Please try again."
+      "captchaFailed": "The CAPTCHA check failed. Please try again.",
+      "passwordComplexity": "The password must also contain at least one lowercase letter, one UPPERCASE letter, one number, and one symbol."
     },
     "confirmTitle": "Confirming your email",
     "confirmWorking": "One moment. Your email is being verified, and you will be taken to your profile…",

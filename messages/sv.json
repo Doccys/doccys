@@ -56,7 +56,8 @@
       "handleTaken": "Det @ namnet används redan. Välj ett annat.",
       "handleReserved": "Det @ namnet är reserverat. Välj ett annat.",
       "handleLocked": "Kontot har redan ett @ namn. Det kan inte ändras. Använd samma namn och bekräfta din e-post.",
-      "captchaFailed": "CAPTCHA-kontrollen misslyckades. Försök igen."
+      "captchaFailed": "CAPTCHA-kontrollen misslyckades. Försök igen.",
+      "passwordComplexity": "Lösenordet måste också innehålla minst en liten bokstav, en STOR bokstav, en siffra och ett symbol."
     },
     "confirmTitle": "Bekräftar din e-post",
     "confirmWorking": "Ett ögonblick. Din e-post bekräftas och du kommer in på din profil…",

@@ -67,7 +67,8 @@
       "handleLocked": "Kontoen har allerede et @ tag. Det kan ikke ændres. Brug det samme tag og bekræft din e-mail.",
       "rateLimited": "For mange forsøg. Vent lidt og prøv igen.",
       "generic": "Noget gik galt. Prøv igen.",
-      "captchaFailed": "CAPTCHA-kontrollen fejlede. Prøv igen."
+      "captchaFailed": "CAPTCHA-kontrollen fejlede. Prøv igen.",
+      "passwordComplexity": "Adgangskoden skal også have mindst ét lille bogstav, ét STORT bogstav, ét tal og ét symbol."
     }
   },
   "mail": {

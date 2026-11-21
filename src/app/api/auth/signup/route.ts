@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { normalizeHandle, validateHandleSyntax } from "@/lib/handles";
 import { erLaegetAdgangskode } from "@/lib/auth/leaked";
 import { turnstileGodkendt } from "@/lib/auth/turnstile";
+import { adgangskodeFejl } from "@/lib/auth/passwordPolicy";
 
 export const dynamic = "force-dynamic";
 
@@ -69,15 +70,20 @@ export async function POST(request: NextRequest) {
   const name = body.name?.trim() ?? "";
 
   // Håndlavet validering à la comments-ruten (ingen zod i projektet):
-  // 8 = projektets minimum (brugerens beslutning 21/11, NIST: længde
-  // slår kræfterede sammensatte tegn), 72 = bcrypt-grænsen. NB: supabase-
-  // dashboardets "Minimum password length" skal sættes til 8 samtidig
-  // (leaked-password-check lever separat i dashboardet).
+  // Adgangskode-politikken (lib/auth/passwordPolicy.ts — én kilde til
+  // klient og server): min 8 tegn OG mindst ét lille bogstav, ét stort,
+  // ét tal og ét symbol. Sammensætnings-ledet matcher den regel, der
+  // reelt kører i Supabase (brugerens gemte indstilling "rejected as
+  // weak") — så vores fejltekst stemmer med serverens afvisning.
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: "generic" }, { status: 400 });
   }
-  if (password.length < 8 || password.length > 72) {
+  const pwFejl = adgangskodeFejl(password);
+  if (pwFejl === "laengde") {
     return NextResponse.json({ error: "weakPassword" }, { status: 422 });
+  }
+  if (pwFejl === "sammensaetning") {
+    return NextResponse.json({ error: "passwordComplexity" }, { status: 422 });
   }
 
   // Lækket-adgangskode-tjek (HaveIBeenPwned k-anonymitet) — erstatter

@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { erLaegetAdgangskode } from "@/lib/auth/leaked";
+import { adgangskodeFejl } from "@/lib/auth/passwordPolicy";
 import PasswordInput from "./PasswordInput";
 import Turnstile from "./Turnstile";
 
@@ -157,6 +158,20 @@ export default function ResetPasswordForm() {
     const laeket = await erLaegetAdgangskode(password);
     if (laeket === true) {
       setErrorKey("weakPassword");
+      return;
+    }
+
+    // Adgangskode-politikken før alt netværksarbejde: det nye kodeord
+    // skal opfylde den samme regel som signup (min 8 + de fire kate-
+    // gorier) — ellers ville Supabase afvise med den vildledende
+    // "weak"-mapping. (Nye kodeord følger nye krav; gamle konti røres.)
+    const pwFejl = adgangskodeFejl(password);
+    if (pwFejl === "laengde") {
+      setErrorKey("weakPassword");
+      return;
+    }
+    if (pwFejl === "sammensaetning") {
+      setErrorKey("passwordComplexity");
       return;
     }
 
