@@ -59,7 +59,9 @@ en spærring) der kun dukker op, når den reelt er relevant:
   arbejdsgangen: upload (TUS) → undertekster ×13 → trailer
   (publiceringskravet) — der opstår IKKE et varsel pr. film-række.
 - Tjek: tsc grøn · 627 nøgler ×13 fuld paritet · i18n-verify samme
-  3 kendte seed-flip-fejl (ingen nye).
+  3 kendte seed-flip-fejl (ingen nye). GRÆNSE 40 % (brugerens beslut-
+  ning 21/11 — "en sikker margin", varer nok til HELE arbejdsgangen:
+  upload → undertekster → trailer): BATTERI_ADVARSGRAENSE = 0.4.
 
 VAAGN-LÅS PÅ HELE UPLOAD-KÆDEN (21/11) — tredje led i skærm-forsvaret,
 brugerens ønske: "sikre de kan komme hele vejen igennem". useEffect på
