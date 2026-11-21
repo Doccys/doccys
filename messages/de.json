@@ -469,7 +469,8 @@
       "bunnyStart": "Video-CDN konnte nicht vorbereitet werden — bitte erneut versuchen.",
       "tusUpload": "Der Upload zu Video-CDN ist fehlgeschlagen — bitte erneut versuchen (der Upload wird dort fortgesetzt, hvor den slap).",
       "bunnyEncode": "Die Kodierung des Films ist in Video-CDN fehlgeschlagen — bitte erneut versuchen.",
-      "bunnyEncodeTimeout": "Die Kodierung hat zu lange gedauert in Video-CDN — bitte versuchen Sie es in Kürze erneut."
+      "bunnyEncodeTimeout": "Die Kodierung hat zu lange gedauert in Video-CDN — bitte versuchen Sie es in Kürze erneut.",
+      "tooShort": "Der Film (ca. {minutes} Min.) liegt unter dem Minimum von 20 Minuten — kürzere Filme können nicht hochgeladen werden."
     },
     "filmsHeading": "Deine Filme",
     "statusDraft": "Entwurf — wartet auf Freigabe",

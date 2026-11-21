@@ -469,7 +469,8 @@
       "bunnyStart": "Video-CDN:ää ei voitu valmistella — yritä uudelleen.",
       "tusUpload": "Siirto video-CDN:ään epäonnistui — yritä uudelleen (siirto jatkuu siitä, mihin se jäi).",
       "bunnyEncode": "Elokuvan koodaus epäonnistui video-CDN:ssä — yritä uudelleen.",
-      "bunnyEncodeTimeout": "Koodaus kesti liian kauan video-CDN:ssä — yritä ladata uudelleen hetken kuluttua."
+      "bunnyEncodeTimeout": "Koodaus kesti liian kauan video-CDN:ssä — yritä ladata uudelleen hetken kuluttua.",
+      "tooShort": "Elokuva (noin {minutes} min) on alle 20 minuutin minimirajan — lyhyempiä elokuvia ei voi ladata."
     },
     "filmsHeading": "Elokuvasi",
     "statusDraft": "Luonnos — odottaa hyväksyntää",

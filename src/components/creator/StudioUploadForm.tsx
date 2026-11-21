@@ -13,6 +13,7 @@ import { createClient } from "@/lib/supabase/client";
 import { holdSkarmenVagen, slipSkarmenVagen } from "@/lib/screenWake";
 import {
   FILM_VIDEOS_BUCKET,
+  FILM_MIN_DURATION_SEC,
   VIDEO_MAX_BYTES,
 } from "@/lib/storage/filmVideos";
 import {
@@ -345,6 +346,13 @@ export default function StudioUploadForm({
       const duration = await probeDurationSec(selected);
       if (!Number.isFinite(duration) || duration <= 0) {
         setError(t("errors.probe"));
+        setFile(null);
+        setDurationSec(null);
+      } else if (duration < FILM_MIN_DURATION_SEC) {
+        // Min 20 min (redaktions-triagen automatiseret, brugerens
+        // beslutning 21/11): afvis ved filvalget — API'en tjekker
+        // durationSec igen server-side (2 GB-grænse-mønstret).
+        setError(t("errors.tooShort", { minutes: Math.floor(duration / 60) }));
         setFile(null);
         setDurationSec(null);
       } else {

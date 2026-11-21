@@ -469,7 +469,8 @@
       "bunnyStart": "Le CDN vidéo n'a pas pu être préparé — veuillez réessayer.",
       "tusUpload": "Le transfert vers le CDN vidéo a échoué — veuillez réessayer (le téléchargement reprendra là où il s'est arrêté).",
       "bunnyEncode": "L'encodage du film a échoué dans le CDN vidéo — veuillez réessayer.",
-      "bunnyEncodeTimeout": "L'encodage a pris trop de temps dans le CDN vidéo — veuillez essayer de télécharger à nouveau dans un instant."
+      "bunnyEncodeTimeout": "L'encodage a pris trop de temps dans le CDN vidéo — veuillez essayer de télécharger à nouveau dans un instant.",
+      "tooShort": "Le film (environ {minutes} min) est en dessous du minimum de 20 minutes — les films plus courts ne peuvent pas être téléchargés."
     },
     "filmsHeading": "Vos films",
     "statusDraft": "Brouillon — en attente d'approbation",

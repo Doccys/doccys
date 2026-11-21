@@ -469,7 +469,8 @@
       "bunnyStart": "Video-CDN kunde inte förberedas — försök igen.",
       "tusUpload": "Överföringen till video-CDN misslyckades — försök igen (uppladdningen återupptas där den slutade).",
       "bunnyEncode": "Kodningen av filmen misslyckades i video-CDN — försök igen.",
-      "bunnyEncodeTimeout": "Kodningen tog för lång tid i video-CDN — försök att ladda upp igen om en stund."
+      "bunnyEncodeTimeout": "Kodningen tog för lång tid i video-CDN — försök att ladda upp igen om en stund.",
+      "tooShort": "Filmen (ca. {minutes} min) är under minimikravet på 20 minuter — kortare filmer kan inte laddas upp."
     },
     "filmsHeading": "Dina filmer",
     "statusDraft": "Utkast — väntar på godkännande",

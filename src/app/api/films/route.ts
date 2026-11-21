@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseEnv } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
-import { VIDEO_MAX_BYTES, bunnyDirectPlayUrl } from "@/lib/storage/filmVideos";
+import {
+  FILM_MIN_DURATION_SEC,
+  VIDEO_MAX_BYTES,
+  bunnyDirectPlayUrl,
+} from "@/lib/storage/filmVideos";
 import { hasBunnyEnv } from "@/lib/bunny/config";
 import { getBunnyVideo, pickMp4Resolution } from "@/lib/bunny/stream";
 import { POSTER_GRADIENTS, isPosterGradient } from "@/lib/data/gradients";
@@ -134,6 +138,15 @@ export async function POST(request: NextRequest) {
   ) {
     return NextResponse.json(
       { error: "Filens længde kunne ikke bruges" },
+      { status: 400 },
+    );
+  }
+  if (durationSec < FILM_MIN_DURATION_SEC) {
+    // Min 20 min (brugerens beslutning 21/11) — kortere film skal
+    // ikke bruge redaktionens tid. Klienten afviser allerede ved
+    // filvalget; dette er led 2 (klientens tal kan lyves om).
+    return NextResponse.json(
+      { error: "Filmen er under minimumet på 20 minutter — kortere film accepteres ikke" },
       { status: 400 },
     );
   }

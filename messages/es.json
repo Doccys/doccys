@@ -469,7 +469,8 @@
       "bunnyStart": "No se pudo preparar el video-CDN — intenta de nuevo.",
       "tusUpload": "La transferencia a video-CDN falló — intenta de nuevo (la carga se reanudará donde se detuvo).",
       "bunnyEncode": "La codificación de la película falló en video-CDN — intenta de nuevo.",
-      "bunnyEncodeTimeout": "La codificación tardó demasiado en video-CDN — intenta cargar de nuevo en un momento."
+      "bunnyEncodeTimeout": "La codificación tardó demasiado en video-CDN — intenta cargar de nuevo en un momento.",
+      "tooShort": "La película (aprox. {minutes} min) está por debajo del mínimo de 20 minutos — no se pueden subir películas más cortas."
     },
     "filmsHeading": "Tus películas",
     "statusDraft": "Borrador — pendiente de aprobación",

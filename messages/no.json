@@ -469,7 +469,8 @@
       "bunnyStart": "Video-CDN kunne ikke forberedes — prøv igjen.",
       "tusUpload": "Overføringen til video-CDN feilet — prøv igjen (opplastingen gjenopptas der den slapp).",
       "bunnyEncode": "Koding av filmen feilet i video-CDN — prøv igjen.",
-      "bunnyEncodeTimeout": "Koding tok for lang tid i video-CDN — prøv å laste opp igjen om litt."
+      "bunnyEncodeTimeout": "Koding tok for lang tid i video-CDN — prøv å laste opp igjen om litt.",
+      "tooShort": "Filmen (ca. {minutes} min) er under minimum på 20 minutter — kortere filmer kan ikke lastes opp."
     },
     "filmsHeading": "Filmene dine",
     "statusDraft": "Kladd — venter på godkjenning",

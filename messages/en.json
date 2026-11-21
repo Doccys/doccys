@@ -469,7 +469,8 @@
       "bunnyStart": "The video CDN could not be prepared — please try again.",
       "tusUpload": "The upload to video CDN failed — please try again (the upload will resume where it left off).",
       "bunnyEncode": "The encoding of the film failed in video CDN — please try again.",
-      "bunnyEncodeTimeout": "The encoding took too long in video CDN — please try uploading again shortly."
+      "bunnyEncodeTimeout": "The encoding took too long in video CDN — please try uploading again shortly.",
+      "tooShort": "The movie (approx. {minutes} min) is below the minimum of 20 minutes — shorter films cannot be uploaded."
     },
     "filmsHeading": "Your films",
     "statusDraft": "Draft — awaiting approval",

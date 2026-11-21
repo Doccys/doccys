@@ -18,6 +18,18 @@ export const FILM_VIDEOS_BUCKET = "film-videos";
 export const VIDEO_MAX_BYTES = 2 * 1024 * 1024 * 1024;
 
 /**
+ * MINIMUM 20 minutter (brugerens beslutning 21/11): kurateret niche —
+ * korteklip skal ikke belaste redaktionens manuelle afvisning. To
+ * steder som 2 GB-grænsen: ved filvalg i StudioUploadForm (metadata-
+ * proben koster ingenting) og på POST /api/films (tjekker den sendte
+ * durationSec igen server-side). NB durationSec er klient-probet
+ * metadata — en bevidst forfalskning kan stadig nå Bunny, men filmen
+ * bliver en kladde, som redaktionen ser i studiet (gate = upload-
+ * triage, ikke sikkerhed — publiceringskravet er redaktionens flip).
+ */
+export const FILM_MIN_DURATION_SEC = 20 * 60;
+
+/**
  * Bunny Stream (9/11-beslutningen, SKEMA sektion J): playback-URL'en
  * for en Bunny-video er {cdn-hostname}/{guid}/play_{res}.mp4 —
  * encoding-udvalget (availableResolutions) aflæses via Video-API'en

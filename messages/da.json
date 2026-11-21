@@ -494,6 +494,7 @@
     "errors": {
       "notMp4": "Kun video-filer (mp4, mov eller webm) kan uploades.",
       "videoTooBig": "Videoen er over 2 GB — komprimer den (fx 720p eller lavere bitrate) og vælg filen igen.",
+      "tooShort": "Filmen (ca. {minutes} min) er under minimumet på 20 minutter — kortere film kan ikke uploades.",
       "bunnyStart": "Video-CDN'en kunne ikke forberedes — prøv igen.",
       "tusUpload": "Overførslen til video-CDN fejlede — prøv igen (uploaden genoptages, hvor den slap).",
       "bunnyEncode": "Encodingen af filmen fejlede i video-CDN — prøv igen.",
