@@ -56,7 +56,7 @@ export default function Header() {
         <Link
           href="/"
           className="flex items-center gap-2.5"
-          aria-label="Doccys — forside"
+          aria-label="Doccys, forside"
         >
           <DoccysMark className="h-6 w-6" />
           {/* Ordmaerket er bredt (0,35em tracking) — paa mobil stikker det

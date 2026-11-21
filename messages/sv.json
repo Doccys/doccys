@@ -15,7 +15,7 @@
     "loginTitle": "Logga in",
     "loginSubtitle": "Välkommen tillbaka. Dina filmer väntar.",
     "signupTitle": "Skapa konto",
-    "signupSubtitle": "Ett konto för både tittare och skapare — aldrig reklam.",
+    "signupSubtitle": "Ett konto för både tittare och skapare, alltid utan reklam.",
     "passwordConfirm": "Upprepa lösenordet",
     "email": "E-post",
     "emailPlaceholder": "du@exempel.se",
@@ -46,26 +46,26 @@
       "invalidCredentials": "Ogiltig e-post eller lösenord.",
       "emailExists": "Det finns redan ett konto med den e-posten.",
       "emailNotConfirmed": "Bekräfta din e-post innan du loggar in.",
-      "weakPassword": "Lösenordet är för svagt — använd minst 6 tecken.",
+      "weakPassword": "Lösenordet är för svagt. Använd minst 6 tecken.",
       "passwordMismatch": "Lösenorden matchar inte.",
       "nameMissing": "Välj ditt användarnamn innan du skapar kontot.",
       "generic": "Något gick fel. Försök igen.",
-      "rateLimited": "För många försök — vänta lite och försök igen.",
+      "rateLimited": "För många försök. Vänta lite och försök igen.",
       "ageRequired": "Du måste bekräfta att du är minst 18 år innan kontot kan skapas.",
-      "handleInvalid": "Det @ tagget är inte giltigt — använd små bokstäver, siffror och bindestreck (3–40 tecken).",
-      "handleTaken": "Det @ tagget är redan taget — välj ett annat.",
-      "handleReserved": "Det @ tagget är reserverat — välj ett annat.",
-      "handleLocked": "Kontot har redan ett @ tagg — det kan inte ändras. Använd samma tagg och bekräfta din e-post."
+      "handleInvalid": "Det @ namnet är inte giltigt. Använd små bokstäver, siffror och bindestreck (3–40 tecken).",
+      "handleTaken": "Det @ namnet används redan. Välj ett annat.",
+      "handleReserved": "Det @ namnet är reserverat. Välj ett annat.",
+      "handleLocked": "Kontot har redan ett @ namn. Det kan inte ändras. Använd samma namn och bekräfta din e-post."
     },
     "confirmTitle": "Bekräftar din e-post",
-    "confirmWorking": "Ett ögonblick — din e-post bekräftas och du kommer in på din profil…",
-    "confirmError": "Länken har gått ut eller redan använts. Försök logga in — är din e-post bekräftad kommer du direkt till din profil.",
+    "confirmWorking": "Ett ögonblick. Din e-post bekräftas och du kommer in på din profil…",
+    "confirmError": "Länken har gått ut eller har redan använts. Försök att logga in. Om din e-post är bekräftad, kommer du direkt till din profil.",
     "showPassword": "Visa lösenord",
     "hidePassword": "Dölj lösenord",
-    "ageLabel": "Jag bekräftar att jag är minst 18 år — se",
+    "ageLabel": "Jag bekräftar att jag är minst 18 år. Se",
     "ageLink": "Handelsvillkoren, avsnitt 12",
     "handle": "@ tagg (valfritt)",
-    "handlePlaceholder": "t.ex. nordlys-film — blir ditt @-namn",
+    "handlePlaceholder": "t.ex. nordlys-film, blir ditt @-namn",
     "handleHint": "Små bokstäver, siffror och bindestreck (3–40 tecken). Reserverar din framtida skapare-adress och kan inte ändras senare.",
     "handleAvailable": "Tagget är tillgängligt!"
   },
@@ -82,11 +82,11 @@
       "sections": {
         "s1": {
           "title": "Skriv till oss",
-          "body": "Du kan alltid nå oss på contact@doccys.com. Skriv gärna vilken film och sida det gäller, och vilken enhet eller webbläsare du använder — då kan vi hjälpa snabbare."
+          "body": "Du kan alltid nå oss på contact@doccys.com. Skriv gärna vilken film och sida det handlar om, och vilken enhet eller webbläsare du använder, så kan vi hjälpa till snabbare."
         },
         "s2": {
           "title": "Vad du kan skriva om",
-          "body": "• Tekniska fel på webbplatsen\n• Köp av minuter och betalningar\n• Upphovsrätt — ska (eller bör inte) en film finnas här?\n• Dina personuppgifter, t.ex. radering av ditt konto\n• Samarbete med Doccys som upphovsperson"
+          "body": "• Tekniska fel på sajten\n• Köp av minuter och betalningar\n• Upphovsrätt: ska en film (inte) finnas här?\n• Dina personuppgifter, t.ex. radering av ditt konto\n• Samarbete med Doccys som skapare"
         },
         "s3": {
           "title": "Svarstid",
@@ -100,19 +100,19 @@
       "sections": {
         "s1": {
           "title": "Om Doccys",
-          "body": "Doccys är en strömtjänst för oberoende dokumentärer: du betalar bara för det du faktiskt ser, minut för minut. Tjänsten drivs av Doccys — organisationsnummer (CVR) 46804147."
+          "body": "Doccys är en streamingtjänst för oberoende dokumentärer: du betalar bara för det du faktiskt ser, minut för minut. Tjänsten drivs av Doccys, CVR-nr. 46804147."
         },
         "s2": {
           "title": "Skapa ett konto",
-          "body": "Det är gratis att skapa ett konto. Vid registrering måste du ange en giltig e-postadress och bekräfta den via länken i mejlet du får — först därefter kan kontot användas. Du ansvarar själv för att hålla dina inloggningsuppgifter hemliga och för all aktivitet som sker via ditt konto."
+          "body": "Det är gratis att skapa ett konto. Vid registreringen måste du ange en giltig e-postadress och bekräfta den via länken i det mail du får. Först därefter kan kontot användas. Du är själv ansvarig för att hålla dina inloggningsuppgifter hemliga och för all aktivitet som sker via ditt konto."
         },
         "s3": {
           "title": "Minuter och uppspelning",
-          "body": "Filmer spelas upp med minuterna på ditt konto. Förbrukningen mäts efter den tid du faktiskt spelar upp — stoppar du mitt i en film betalar du bara för tiden du såg. Minutpriset för en film framgår av filmens sida innan du startar uppspelningen.\nDin uppspelning registreras som mätt förbrukning (“beviset”) — se även integritetspolicyn. Beviset är avgörande om det är tveksamhet om vad du har sett och vad som har dragits från ditt saldo."
+          "body": "Filmer spelas upp mot minuter på ditt konto. Förbrukningen mäts efter den tid du faktiskt spelar upp. Om du stoppar mitt i en film betalar du bara för den tid du har sett. Minutpriset för en film framgår av filmens sida innan du startar uppspelningen.\nDin uppspelning registreras som en mätt förbrukning (”bevis”). Se även integritetspolicyn. Beviset är avgörande om det råder tvivel om vad du har sett och vad som har dragits från din saldo."
         },
         "s4": {
           "title": "Köp och betalning",
-          "body": "Minuter köps i paket till de priser som anges vid köpet. Betalningen hanteras av vår betalningspartner Stripe, och kvittot skickas till din e-post. Det angivna priset är inklusive moms: momsen beräknas av Stripe Tax baserat på ditt faktureringsland och dras från beloppet (momsen visas som en separat rad på betalningssidan).\nAlla belopp är i amerikanska dollar (USD) — se avsnitt 13."
+          "body": "Minuter köps som paket till de priser som anges vid köpet. Betalningen hanteras av vår betalningspartner Stripe, och kvittot skickas till din e-post. Det angivna priset är inklusive moms: momsen beräknas av Stripe Tax efter ditt faktureringsland och dras från beloppet (momsen framgår som en separat rad på betalningssidan).\nAlla belopp är i amerikanska dollar (USD). Se avsnitt 13."
         },
         "s5": {
           "title": "Minuternas giltighet",
@@ -120,7 +120,7 @@
         },
         "s6": {
           "title": "Ångerrätt och fel",
-          "body": "Minuter är digitalt innehåll: när uppspelningen har påbörjats upphör ångerrätten enligt danska konsumentköpslagens regler för digitalt innehåll. Har du inte påbörjat uppspelningen kan du inom 14 dagar efter köpet skriva till contact@doccys.com och få hela beloppet tillbaka.\nBlev du debiterad för något du inte kunde se på grund av ett tekniskt fel, eller gick betalningen igenom två gånger, skriv till oss — då rättar vi det."
+          "body": "Minuter är digitalt innehåll. När uppspelningen har påbörjats bortfaller ångerrätten enligt köplagens regler för digitalt innehåll. Har du inte påbörjat uppspelningen kan du inom 14 dagar efter köpet skriva till contact@doccys.com och få hela beloppet tillbaka.\nBlev du debiterad för något du inte kunde se på grund av ett tekniskt fel, eller gick betalningen igenom två gånger, så skriv till oss så rättar vi till det."
         },
         "s7": {
           "title": "Upphovspersonernas rättigheter",
@@ -128,7 +128,7 @@
         },
         "s8": {
           "title": "Ansvar och innehåll",
-          "body": "Doccys är inte utgivare av filmerna — innehållet och åsikterna i filmerna är upphovspersonernas. Tjänsten levereras “som den är”. Vi ansvarar inte för indirekta förluster eller utebliven vinst, inklusive driftstörningar, men rättar naturligtvis fel så snabbt vi kan.\nVi kan ändra framtida priser med rimlig förvarning; ändringar påverkar aldrig minuter som redan är köpta."
+          "body": "Doccys är inte förlaget eller utgivaren av filmerna. Innehåll och åsikter i filmerna tillhör skaparna. Tjänsten tillhandahålls ”som den är”. Vi ansvarar inte för indirekta förluster eller utebliven vinst, inklusive driftstopp, men rättar naturligtvis till fel så snabbt vi kan.\nVi kan ändra kommande priser med rimligt varsel; ändringar påverkar aldrig redan köpta minuter."
         },
         "s9": {
           "title": "Ändringar av villkoren",
@@ -136,19 +136,19 @@
         },
         "s10": {
           "title": "Klagomål och kontakt",
-          "body": "Du kan alltid skriva till contact@doccys.com. Danska konsumenter kan dessutom kontakta Forbrugerklagenævnet vid köpsklagomål — se forbrugerklagenaevnet.dk. Dansk rätt gäller för dessa villkor."
+          "body": "Du kan alltid skriva till contact@doccys.com. Danska konsumenter kan dessutom kontakta Konsumentklagenämnden vid köpklagomål. Se forbrugerklagenaevnet.dk. Dansk rätt gäller för dessa villkor."
         },
         "s11": {
           "title": "Licens vid uppladdning av filmer (skapare)",
-          "body": "När du laddar upp en film till Doccys bekräftar du följande:\n• Du äger alla rättigheter till filmen — inklusive musik och arkivmaterial — och filmen kränker inte tredje parts rättigheter.\n• Du ger Doccys en icke-exklusiv, världsomfattande och tidsobestämd licens att strömma filmen på plattformen, skapa undertexter och trailers baserade på filmen samt marknadsföra filmen på plattformen.\n• Du kan när som helst be redaktionen ta bort din film — skriv till contact@doccys.com.\n• Ditt godkännande registreras med tidpunkt och versionsnummer vid varje uppladdning och gäller den film du laddar upp.\nVid oenighet mellan översättningar gäller den danska texten (se avsnitt 10)."
+          "body": "När du laddar upp en film till Doccys bekräftar du följande:\n• Du äger alla rättigheter till filmen, inklusive musik och arkivmaterial, och filmen kränker inte tredje parts rättigheter.\n• Du ger Doccys en icke-exklusiv, världsomspännande och tidsobestämd licens att strömma filmen på plattformen, skapa undertexter och trailers baserat på filmen samt marknadsföra filmen på plattformen.\n• Du kan när som helst be redaktionen att ta bort din film. Skriv till contact@doccys.com.\n• Din accept registreras med tidpunkt och versionsnummer vid varje uppladdning och gäller den film du laddar upp.\nVid oenighet mellan översättningar gäller den danska texten (jfr. avsnitt 10)."
         },
         "s12": {
           "title": "Åldersgräns på 18 år",
-          "body": "Doccys är en streamingtjänst för vuxna: för att skapa ett konto och använda plattformen måste du vara minst 18 år.\nVid skapandet av kontot bekräftar du genom att kryssa i att du är minst 18 år. Bekräftelsen registreras med tidpunkt och versionsnummer tillsammans med ditt konto.\nEtt konto får inte göras tillgängligt för unga under 18 år — innehållet på Doccys är inte utvalt eller åldersmärkt för barn och unga.\nOm vi blir medvetna om att en användare är under 18 år kan vi stänga kontot med omedelbar verkan (jfr. avsnitt 2 om ansvaret för ditt konto)."
+          "body": "Doccys är en streamingtjänst för vuxna. För att skapa ett konto och använda plattformen måste du vara minst 18 år.\nVid skapandet av kontot bekräftar du med en kryssruta att du är minst 18 år. Bekräftelsen registreras med tidpunkt och versionsnummer tillsammans med ditt konto.\nEtt konto får inte göras tillgängligt för unga under 18 år. Innehållet på Doccys är inte utvalt eller åldersmärkt för barn och unga.\nOm vi blir medvetna om att en användare är under 18 år kan vi stänga kontot med omedelbar verkan (jfr. avsnitt 2 om ansvaret för ditt konto)."
         },
         "s13": {
           "title": "Valuta",
-          "body": "Alla belopp på Doccys anges och debiteras i amerikanska dollar (USD). När betalningssidan och dessa villkor visar ett belopp med ”$”, betyder det amerikanska dollar (USD) — inte en annan valuta med dollartecken (till exempel mexikanska pesos (MXN), kanadensiska dollar (CAD) eller argentinska pesos (ARS)).\nMed ett kort denominerat i en annan valuta sker omräkningen hos din kortutgivare eller bank till deras kurs och eventuella avgifter — det ligger utanför Doccys' kontroll; beloppet på betalningssidan är alltid USD-beloppet.\nMomsen beräknas av Stripe Tax baserat på ditt faktureringsland och dras från det angivna priset — priset är inklusive moms (se avsnitt 4)."
+          "body": "Alla belopp på Doccys anges och debiteras i amerikanska dollar (USD). När betalningssidan och dessa villkor visar ett belopp med ”$” betyder det amerikanska dollar (USD), inte en annan valuta med dollartecken (t.ex. mexikanska pesos (MXN), kanadensiska dollar (CAD) eller argentinska pesos (ARS)).\nMed ett kort denominerat i en annan valuta sker omräkningen hos din kortutgivare eller bank till deras kurs och eventuella avgifter. Det ligger utanför Doccys kontroll; beloppet på betalningssidan är alltid USD-beloppet.\nMoms beräknas av Stripe Tax efter ditt faktureringsland och dras från det angivna priset. Priset är inklusive moms (se avsnitt 4)."
         }
       }
     },
@@ -158,19 +158,19 @@
       "sections": {
         "s1": {
           "title": "Personuppgiftsansvarig",
-          "body": "Doccys — organisationsnummer (CVR) 46804147. Kontakt: contact@doccys.com."
+          "body": "Doccys, CVR-nr. 46804147. Kontakt: contact@doccys.com."
         },
         "s2": {
           "title": "Vilka uppgifter vi behandlar",
-          "body": "• Konto: din e-postadress (och bekräftelsen av den) och ditt lösenord, som lagras krypterat.\n• Köp: vilka paket du har köpt, köptidpunkt och transaktions-id. Betalkort behandlas aldrig av oss — det sker hos Stripe.\n• Uppspelning: när du startar och stoppar, spolningar och använd tid per film. Den uppmätta forbrukningen (“beviset”) är det som drar minuter från ditt saldo och ersätter upphovspersonen.\n• Kommentarer: namnet du skriver under, dina kommentarer och gillanden samt moderering av dem.\n• Hänvisning: kommer du via en hänvisningslänk sparar vi koden i en cookie i upp till 30 dagar, så att den som hänvisade dig kan krediteras vid ditt första köp."
+          "body": "• Konto: din e-postadress (och bekräftelse av den) och ditt lösenord, som är lagrat krypterat.\n• Köp: vilka paket du har köpt, köptidpunkt och transaktions-id. Betalkort behandlas aldrig av oss. Det sker hos Stripe.\n• Uppspelning: när du startar och stoppar, spolningar och förbrukad tid per film. Den mätta förbrukningen (”beviset”) är det som drar minuter från din saldo och avräknar skaparen.\n• Kommentarer: det namn du skriver under, dina kommentarer och gillanden samt moderering av dessa.\n• Hänvisningar: kommer du via en hänvisningslänk, sparar vi koden i en cookie i upp till 30 dagar, så den som hänvisade dig kan krediteras vid ditt första köp."
         },
         "s3": {
           "title": "Syfte och grund",
-          "body": "Vi behandlar uppgifter för att leverera tjänsten — skapa ditt konto, dra minuter från ditt saldo och ersätta upphovspersonerna (avtalsgrund), hålla tjänsten säker och förhindra missbruk (legitimt intresse) och uppfylla bokförings- och skattskyldighet (rättslig förpliktelse). Vi säljer aldrig dina uppgifter och använder dem inte för annonsprofilering — Doccys visar inga annonser, någonsin."
+          "body": "Vi behandlar data för att leverera tjänsten: skapa ditt konto, dra minuter från din saldo och avräkna skaparna (avtalsgrund), hålla tjänsten säker och förhindra missbruk (legitimt intresse) och uppfylla bokförings- och skatteplikt (rättslig förpliktelse). Vi säljer aldrig dina data och använder dem inte för reklamprofilering. Doccys visar inga annonser, någonsin."
         },
         "s4": {
           "title": "Tredje parter",
-          "body": "Vi använder följande personuppgiftsbiträden:\n• Supabase — inloggning och databas\n• Stripe — betalningar och kvitton\n• Vercel — drift och hosting\nDe behandlar bara uppgifter på vårt vägnar och för de syften som nämns ovan."
+          "body": "Vi använder följande databehandlare:\n• Supabase: inloggning och databas\n• Stripe: betalningar och kvitton\n• Vercel: drift och hosting\nDe behandlar endast data på våra vägnar och för de syften som nämns ovan."
         },
         "s5": {
           "title": "Kakor",
@@ -178,15 +178,15 @@
         },
         "s6": {
           "title": "Lagring",
-          "body": "Konto- och kommentarsuppgifter raderas när du ber oss om det. Köpdata och bevis sparas i fem år så att redovisning och ersättning till upphovspersoner kan granskas — dansk bokföringslag kräver det."
+          "body": "Konto- och kommentardata raderas när du ber oss om det. Köpsdata och bevis sparas i fem år, så bokföring och avräkning till skapare kan efterprövas. Bokföringslagen kräver detta."
         },
         "s7": {
           "title": "Dina rättigheter",
-          "body": "Du har rätt till:\n• insyn i de uppgifter vi behandlar om dig\n• att få felaktiga uppgifter rättade\n• att få uppgifter raderade (med de undantag bokföringslagen kräver)\n• att få uppgifter utlämnade i ett läsbart format (dataportabilitet)\n• att invända mot behandlingen\nSkicka din begäran till contact@doccys.com — vi svarar senast en månad senare."
+          "body": "Du har rätt till:\n• insyn i de data vi behandlar om dig\n• att få felaktiga data rättade\n• att få data raderade (med de undantag som bokföringslagen föreskriver)\n• att få data utlämnade i ett läsbart format (dataportabilitet)\n• att göra invändningar mot behandlingen\nSkicka din förfrågan till contact@doccys.com. Vi svarar senast en månad efter."
         },
         "s8": {
           "title": "Klagomål",
-          "body": "Är du inte nöjd med vårt svar kan du klaga till Datatilsynet — se datatilsynet.dk."
+          "body": "Är du inte nöjd med vårt svar kan du klaga till Datainspektionen. Se datatilsynet.dk."
         },
         "s9": {
           "title": "Ändringar",
@@ -224,20 +224,20 @@
       },
       "payPerMinute": {
         "title": "Betalning per sedd minut",
-        "body": "Skaparen tjänar $0.30 per 100 giltiga visade minuter — endast inloggade uppspelningar, som anti-fraud-systemet validerar, räknas."
+        "body": "Skaparen tjänar $0.30 per 100 giltiga visade minuter. Endast inloggade uppspelningar, som anti-fraud-systemet validerar, räknas med."
       },
       "community": {
         "title": "Samtalet under filmen",
-        "body": "Varje film har sin egen diskussion. Inga algoritmer i vägen — bara människor som sett samma sak som du."
+        "body": "Varje film har sin egen diskussion. Inga algoritmer i vägen, bara människor som har sett samma som du."
       },
       "subtitles13": {
-        "title": "Undertexter på 13 språk — vi betalar",
-        "body": "Ett klick genererar undertexter för hela filmen: transkription av talspråket och översättning till alla plattformens språk. Vi täcker kostnaden — du betalar inget, någonsin."
+        "title": "Undertexter på 13 språk. Vi betalar",
+        "body": "Ett klick genererar undertexter till hela filmen: transkription av talat språk och översättning till alla plattformens språk. Vi täcker kostnaden. Du betalar inget, någonsin."
       }
     },
     "recruitment": {
       "eyebrow": "Doccys söker skapare",
-      "body": "Plattformen lanseras i december — ladda upp din dokumentär och tjäna $0,30 per 100 visade minuter, under filmens livstid, med utbetalning från $25. Och undertexter på 13 språk, gratis, med ett klick — vi täcker kostnaden.",
+      "body": "Plattformen lanseras i december. Ladda upp din dokumentär och tjäna $0.30 per 100 visade minuter, under filmens livstid, med utbetalning från $25. Och undertexter på 13 språk, gratis, med ett klick. Vi täcker kostnaden.",
       "cta": "Ansök som skapare"
     }
   },
@@ -249,7 +249,7 @@
     "views": "{count} visningar",
     "topEyebrow": "Topp 10",
     "topHeading": "De mest sedda skaparna",
-    "topIntro": "Rankad efter verkliga, giltiga sedda minuter de senaste 30 dagarna. Listan uppdaterar sig själv — endast publicerade filmer räknas med.",
+    "topIntro": "Rankad efter verkliga, giltiga visade minuter de senaste 30 dagarna. Listan uppdaterar sig själv, endast publicerade filmer räknas.",
     "topEmpty": "Inga sedda minuter att ranka efter denna månad ännu.",
     "topMinutes": "{minutes} giltiga min"
   },
@@ -259,7 +259,7 @@
   "collections": {
     "railTitle": "Samlingar",
     "indexTitle": "Kurerade samlingar",
-    "indexSubtitle": "Handplockade teman över hela katalogen — redaktionens egna räls.",
+    "indexSubtitle": "Handplockade teman över katalogen: redaktionens egna thrillers.",
     "filmCount": "{count} filmer",
     "empty": "Den här samlingen är tom just nu.",
     "viewAll": "Se alla samlingar"
@@ -284,7 +284,7 @@
   "earningsPanel": {
     "eyebrow": "Intäkter",
     "rate": "$0.30 per 100 visade minuter",
-    "explainer": "Du tjänar {rate} på Doccys. Endast inloggade visningar som anti-fraud-valideringen godkänner räknas — manipulation betalas aldrig ut.",
+    "explainer": "Du tjänar {rate} på Doccys. Endast inloggade uppspelningar som anti-fraud-valideringen godkänner räknas. Manipulation betalas aldrig ut.",
     "earned": "Intjänat totalt",
     "paidOut": "Utbetalt",
     "watchedMinutes": "Giltiga sedda minuter",
@@ -296,8 +296,8 @@
     "methodTitle": "Konto för utbetalning",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
-    "methodHint": "IBAN är ditt kontos internationella nummer — din nätbank visar det under kontouppgifterna.",
-    "bicHint": "BIC/SWIFT är valfritt — behövs bara för konton utanför SEPA.",
+    "methodHint": "IBAN är ditt kontos internationella nummer. Din internetbank visar det under kontouppgifter.",
+    "bicHint": "BIC/SWIFT är valfritt, endast nödvändigt för konton utanför SEPA.",
     "save": "Spara uppgifter",
     "saving": "Sparar…",
     "saved": "Dina uppgifter har sparats.",
@@ -305,7 +305,7 @@
     "payoutTitle": "Begär utbetalning",
     "locked": "Knappen låses upp när din tillgängliga saldo når $25.",
     "noMethod": "Spara dina bankuppgifter innan du begär utbetalning.",
-    "pending": "Du har redan en pågående begäran — redaktionen överför snart.",
+    "pending": "Du har redan en väntande begäran. Redaktionen kommer att betala ut snart.",
     "button": "Betala ut {amount}",
     "requesting": "Skickar…",
     "requestError": "Kunde inte skapa begäran.",
@@ -332,10 +332,10 @@
   },
   "watch": {
     "playerNote": "Visningsdata loggas strukturerat (pauser, spolningar, hjärtslag, enhetsmetadata och tidsstämplar) och valideras av Doccys anti-fraudsystem innan dina sedda minuter debiteras.",
-    "playerStartFailed": "Visningsdata kunde inte startas — uppspelningen fungerar fortfarande.",
-    "verdictValid": "✓ Visning validerad — dina sedda minuter räknas med i skaparens intäkter.",
+    "playerStartFailed": "Visningsdata kunde inte startas. Uppspelningen fungerar fortfarande.",
+    "verdictValid": "✓ Visning validerad. Dina sedda minuter räknas med i skaparnas intäkter.",
     "verdictSuspicious": "△ Visningen är markerad för manuell granskning av anti-fraudsystemet.",
-    "verdictInvalid": "✗ Visning avvisad — minuterna har debiterats ditt saldo, men räknas inte med i skaparens intäkter.",
+    "verdictInvalid": "✗ Visning avvisad. Minuterna har dragits från din saldo, men räknas inte med i skaparnas intäkter.",
     "verdictError": "Valideringen kunde inte slutföras just nu.",
     "proofEyebrow": "Stödkvitto",
     "proofMinutes": "Du såg {minutes} min totalt",
@@ -348,7 +348,7 @@
     "creator": "Skapare",
     "discussionEyebrow": "Gemenskapen",
     "discussionTitle": "Kommentarer och diskussion",
-    "discussionSubtitle": "Samtalet om filmen fortsätter direkt under spelaren."
+    "discussionSubtitle": "Fortsatt samtal om filmen, direkt under spelaren."
   },
   "saveButton": {
     "loginToSave": "Logga in för att spara filmen",
@@ -364,7 +364,7 @@
   },
   "comments": {
     "title": "Diskussion",
-    "subtitle": "Dela dina tankar om filmen med andra tittare — inga spoilers utan förvarning, tack.",
+    "subtitle": "Dela tankar om filmen med andra tittare. Inga spoilers utan varning, tack.",
     "postingAs": "Kommenterar som",
     "noNameShort": "Tittare",
     "nameMissing": "Välj ditt användarnamn på din profil innan du kommenterar.",
@@ -373,22 +373,22 @@
     "submitting": "Skickar…",
     "loggedInNote": "Din kommentar publiceras med din profil.",
     "loading": "Hämtar diskussionen…",
-    "empty": "Inga kommentarer än — var den första att sätta ord på filmen.",
+    "empty": "Inga kommentarer än. Var den första att sätta ord på filmen.",
     "loadError": "Kommentarerna kunde inte hämtas.",
     "submitError": "Kommentaren kunde inte skickas. Försök igen.",
     "likeAria": "Gilla den här kommentaren",
     "likeGuestHint": "Logga in för att gilla kommentarer.",
     "likeError": "Gillandet kunde inte registreras. Försök igen.",
     "gateLogin": "Logga in för att kommentera",
-    "gateLoginSuffix": "— bara tittare kan kommentera under filmen.",
-    "gateWatch": "Diskussionen öppnas när du har sett filmen — den är bara för tittare, så att den förblir värd att läsa.",
+    "gateLoginSuffix": "Endast tittare kan kommentera under filmen.",
+    "gateWatch": "Kommentarsfältet öppnas när du har sett filmen. Det är endast för tittare, så diskussionen förblir värd att läsa.",
     "pin": "Fäst",
     "unpin": "Lossa",
     "pinnedLabel": "Fäst av skaparen",
     "delete": "Radera",
     "deleteConfirm": "Radera kommentaren? Det går inte att ångra.",
     "deleteError": "Kommentaren kunde inte raderas. Försök igen.",
-    "pinError": "Kunde inte fästa kommentaren — en annan är redan fäst. Försök igen.",
+    "pinError": "Kunde inte fästa kommentaren. Det finns redan en fäst. Försök igen.",
     "reply": "Svara",
     "cancel": "Avbryt",
     "replyError": "Svaret kunde inte skickas. Försök igen."
@@ -396,7 +396,7 @@
   "creatorApply": {
     "eyebrow": "Skapare",
     "loginTitle": "Logga in för att ansöka",
-    "loginSubtitle": "Skaparansökningar kräver ett konto — det tar bara ett ögonblick att skapa ett.",
+    "loginSubtitle": "Skaparansökningar kräver ett konto. Det tar ett ögonblick att skapa ett.",
     "loginCta": "Logga in",
     "title": "Bli skapare på Doccys",
     "subtitle": "Doccys är kurerat: alla skapare godkänns av redaktionen innan deras filmer kan visas. Berätta vem ni är och vad ni gör.",
@@ -412,20 +412,20 @@
     "resubmit": "Skicka igen",
     "working": "Skickar…",
     "statusPending": "Din ansökan väntar på godkännande.",
-    "statusPendingSub": "Ansökt d. {date}. Redaktionen svarar här — statusen uppdateras automatiskt.",
-    "statusApproved": "Grattis — du är godkänd som skapare!",
+    "statusPendingSub": "Ansökt den {date}. Redaktionen återkommer här. Statusen uppdateras automatiskt.",
+    "statusApproved": "Grattis, du är godkänd som skapare!",
     "statusApprovedSub": "Din profil är skapad och studion är öppen. Du kan nu ladda upp filmer (de visas offentligt först när redaktionen godkänner dem).",
     "statusApprovedCta": "Öppna studion",
     "statusRejected": "Din ansökan blev inte godkänd den här gången.",
     "statusRejectedSub": "Avgjort d. {date}. Du kan ändra ansökan och skicka den igen.",
     "errors": {
-      "handleTaken": "Handlen är redan använd — välj en annan.",
-      "reserved": "Handlen är reserverad — välj en annan.",
-      "stale": "Ansökningens status har ändrats — ladda om sidan.",
+      "handleTaken": "Användarnamnet är redan taget. Välj ett annat.",
+      "reserved": "Användarnamnet är reserverat. Välj ett annat.",
+      "stale": "Ansökningens status har ändrats. Ladda om sidan.",
       "generic": "Kolla alla fält och försök igen."
     },
-    "subtitlesTitle": "Gratis undertexter på 13 språk — med ett klick",
-    "subtitlesBody": "Generera undertexter för hela filmen med ett klick: transkription av talspråket och översättning till alla plattformens språk. Vi täcker kostnaden — du betalar inget, någonsin."
+    "subtitlesTitle": "Gratis undertexter på 13 språk med ett klick",
+    "subtitlesBody": "Generera undertexter till hela filmen med ett klick: transkribering av talat språk och översättning till alla plattformens språk. Vi står för kostnaden, du betalar inget, någonsin."
   },
   "creatorStudio": {
     "eyebrow": "Skaparstudio",
@@ -433,14 +433,14 @@
     "loginSubtitle": "Studion är endast för godkända skapare.",
     "loginCta": "Logga in",
     "uploadHeading": "Ladda upp ny film",
-    "uploadSubtitle": "Filmen sparas som ett utkast och visas först offentligt när redaktionen godkänner den. Minst 20 minuter — det är gränsen för vad som upplevs som en fullständig dokumentärupplevelse.",
+    "uploadSubtitle": "Filmen sparas som ett utkast och visas först offentligt när redaktionen godkänner den. Minst 20 minuter är gränsen för vad som räknas som en fullständig dokumentärupplevelse.",
     "titleLabel": "Titel",
     "yearLabel": "Årtal",
     "genresLabel": "Genrer (välj upp till 5)",
     "synopsisLabel": "Synopsis",
     "posterLabel": "Omslagsbild",
     "requiredMark": "Obligatoriskt",
-    "posterHint": "Obligatoriskt (jpg/png/webp, max 10 MB, minst 640×360 pixlar) — filmens omslagsbild överallt på plattformen.",
+    "posterHint": "Obligatoriskt (jpg/png/webp, max 10 MB, minst 640×360 pixlar). Filmens omslagsbild överallt på plattformen.",
     "posterDetected": "Bild: {width}×{height} pixlar",
     "fileLabel": "Videofil (mp4/mov/webm, max 2 GB)",
     "durationDetected": "Filens längd: {seconds} sekunder",
@@ -454,75 +454,75 @@
     "errors": {
       "notMp4": "Endast videofiler (mp4, mov eller webm) kan laddas upp.",
       "notPoster": "Endast jpg-, png- och webp-bilder kan användas.",
-      "posterRequired": "Ladda upp en omslagsbild — filmen kan inte publiceras utan.",
-      "posterProbe": "Bilden kunde inte läsas — är det en giltig bild?",
-      "posterTooSmall": "Bilden är för liten — minst 640×360 pixlar.",
-      "posterTooBig": "Bilden är för stor — max 10 MB.",
-      "posterFailed": "Omslagsbilden kunde inte laddas upp — försök igen.",
-      "probe": "Filens metadata kunde inte läsas — är det en giltig videofil?",
+      "posterRequired": "Ladda upp en omslagsbild. Filmen kan inte publiceras utan.",
+      "posterProbe": "Bilden kunde inte läsas. Är det en giltig bild?",
+      "posterTooSmall": "Bilden är för liten. Minst 640×360 pixlar.",
+      "posterTooBig": "Bilden är för stor. Max 10 MB.",
+      "posterFailed": "Omslagsbilden kunde inte laddas upp. Försök igen.",
+      "probe": "Filens metadata kunde inte läsas. Är det en giltig videofil?",
       "missingFields": "Fyll i titel och synopsis, välj minst en genre och välj en videofil.",
-      "notLoggedIn": "Du är inte längre inloggad — logga in och försök igen.",
-      "uploadFailed": "Uppladdningen misslyckades — försök igen.",
-      "rowFailed": "Filmen kunde inte skapas — försök igen.",
+      "notLoggedIn": "Du är inte längre inloggad. Logga in och försök igen.",
+      "uploadFailed": "Uppladdningen misslyckades. Försök igen.",
+      "rowFailed": "Filmen kunde inte skapas. Försök igen.",
       "license": "Du måste bekräfta licensvillkoren innan du kan ladda upp.",
-      "videoTooBig": "Videon är över 2 GB — komprimera den (t.ex. 720p eller lägre bitrate) och välj filen igen.",
-      "bunnyStart": "Video-CDN kunde inte förberedas — försök igen.",
-      "tusUpload": "Överföringen till video-CDN misslyckades — försök igen (uppladdningen återupptas där den slutade).",
-      "bunnyEncode": "Kodningen av filmen misslyckades i video-CDN — försök igen.",
-      "bunnyEncodeTimeout": "Kodningen tog för lång tid i video-CDN — försök att ladda upp igen om en stund.",
-      "tooShort": "Filmen (ca. {minutes} min) är under minimikravet på 20 minuter — kortare filmer kan inte laddas upp."
+      "videoTooBig": "Videon är över 2 GB. Komprimera den (t.ex. 720p eller lägre bitrate) och välj filen igen.",
+      "bunnyStart": "Video-CDN kunde inte förberedas. Försök igen.",
+      "tusUpload": "Överföringen till video-CDN misslyckades. Försök igen (uppladdningen återupptas där den slutade).",
+      "bunnyEncode": "Kodningen av filmen misslyckades i video-CDN. Försök igen.",
+      "bunnyEncodeTimeout": "Kodningen tog för lång tid i video-CDN. Försök att ladda upp igen om en stund.",
+      "tooShort": "Filmen (ca. {minutes} min) är under minimum på 20 minuter. Kortare filmer kan inte laddas upp."
     },
     "filmsHeading": "Dina filmer",
-    "statusDraft": "Utkast — väntar på godkännande",
+    "statusDraft": "Utkast, väntar på godkännande",
     "statusPublished": "Publicerad",
     "draftNote": "Ett utkast kan raderas; en publicerad film tillhör redaktionen.",
     "publishGateNote": "Filmen kan först publiceras när undertexterna är klara på alla språk och trailern är färdig.",
     "requiredBadge": "Krävs",
     "delete": "Radera utkast",
     "deleteConfirm": "Radera det här utkastet? Videon tas också bort.",
-    "empty": "Inga filmer än — ladda upp din första ovan.",
+    "empty": "Inga filmer ännu. Ladda upp din första ovan.",
     "retentionHeading": "Retention",
-    "retentionIntro": "Hur långt dina tittare kom — andelen som nådde 10 %, 20 % … 100 % av filmen.",
+    "retentionIntro": "Hur långt dina tittare kom. Andelen som nådde 10 %, 20 % … 100 % av filmen.",
     "retentionEmpty": "Ännu inte tillräckligt många avslutade visningar för en retentionsgraf (minst 5).",
     "retentionSessions": "{count} avslutade visningar",
     "subtitlesHeading": "Undertexter",
     "subtitlesIntro": "AI skapar en utskrift av filmens ljud på {language} och översätter den till alla plattformsspråk.",
     "spokenLanguageLabel": "Filmens talspråk",
-    "spokenLanguageHint": "Språket som talas i filmen — undertexterna genereras utifrån det.",
+    "spokenLanguageHint": "Språket som talas i filmen. Undertexterna genereras utifrån det.",
     "subtitlesGenerate": "Generera undertexter",
     "subtitlesRegenerate": "Generera igen",
-    "subtitlesWorking": "Genererar undertexter — det kan ta flera minuter för långa filmer.",
+    "subtitlesWorking": "Genererar undertexter. Det kan ta flera minuter för långa filmer.",
     "subtitlesReady": "Klar",
     "subtitlesProcessing": "Genereras…",
     "subtitlesFailed": "Misslyckades",
     "subtitlesMissing": "Inte skapat",
-    "subtitlesError": "Undertexterna kunde inte genereras helt — försök igen. Språk som misslyckades kan prövas igen med samma knapp.",
+    "subtitlesError": "Undertexterna kunde inte genereras helt. Försök igen. Språk som misslyckades kan provas igen med samma knapp.",
     "trailerHeading": "Trailer",
-    "trailerIntro": "Klipp 90 sekunder av filmen som gratis smygtitt — gäster ser den bakom betalväggen, och delade länkar visar filmen som videokort.",
+    "trailerIntro": "Klipp 90 sekunder av filmen som gratis provsmakning. Gäster ser den bakom betalväggen, och delade länkar visar filmen som videokort.",
     "trailerStartLabel": "Starta vid sekund",
     "trailerGenerate": "Generera trailer",
     "trailerRegenerate": "Generera igen",
-    "trailerWorking": "Genererar trailern — det kan ta några minuter.",
+    "trailerWorking": "Genererar trailern. Det kan ta ett par minuter.",
     "trailerReady": "Klar",
     "trailerFailed": "Misslyckades",
     "trailerMissing": "Inte genererad",
-    "trailerError": "Trailern kunde inte genereras — försök igen.",
+    "trailerError": "Trailern kunde inte genereras. Försök igen.",
     "shareHeading": "Dela och bädda in",
     "copyWatchLink": "Kopiera fillänk",
     "copyEmbedCode": "Kopiera inbäddningskod",
-    "licenseLabel": "Jag bekräftar att jag äger alla rättigheter till filmen — inklusive musik och arkivmaterial — och ger Doccys en icke-exklusiv, världsomfattande och tidsobegränsad licens att strömma filmen, producera undertexter och trailers samt marknadsföra den.",
+    "licenseLabel": "Jag bekräftar att jag äger alla rättigheter till filmen, inklusive musik och arkivmaterial, och ger Doccys en icke-exklusiv, världsomspännande och tidsobestämd licens att strömma filmen, producera undertexter och trailers samt marknadsföra den.",
     "licenseLink": "Läs licensvillkoren i Handelsvillkoren, avsnitt 11.",
     "retentionAxisStart": "0 %",
     "retentionAxisEnd": "100 % av filmen",
     "talHeading": "Dina siffror",
     "talIntro": "Din intäkt är helt transparent: du tjänar {rate} per 100 giltiga tittade minuter per film, och varje siffra här kan spåras tillbaka till verkliga visningar.",
-    "talGuestNote": "Anonyma tittare räknas som visningar, men endast inloggade tittare med en giltig visning blir avräknade — det är dem, minuterna och beloppen nedan kommer ifrån.",
-    "talEmpty": "Inga tittare ännu. När en publicerad film ses av en inloggad användare, dyker minuterna och beloppen här — med hela beräkningen.",
+    "talGuestNote": "Anonyma tittare räknas som visningar, men endast inloggade tittare med en giltig visning blir avräknade. Det är dem, minuterna och beloppen nedan kommer ifrån.",
+    "talEmpty": "Inga tittare ännu. När en publicerad film ses av en inloggad användare, dyker minuterna och beloppen här, med hela beräkningen.",
     "talSummary30dKr": "Tjänat, senaste 30 dagarna",
     "talSummary30dMin": "Giltiga minuter, senaste 30 dagarna",
     "talSummaryTotalKr": "Tjänat totalt",
     "talSummaryTotalMin": "Giltiga minuter totalt",
-    "talChartHeading": "Daglig intäkt — senaste 30 dagarna",
+    "talChartHeading": "Daglig intäkt, senaste 30 dagarna",
     "talChartBar": "{date}: {amount}",
     "talSeereHeading": "Vem ser dina filmer",
     "talLanguage": "Språk",
@@ -546,14 +546,14 @@
     "fileNoneChosen": "Ingen fil vald",
     "talFollowers": "Följare",
     "visitHeading": "Ditt visitkort",
-    "visitIntro": "Ett kort med din profil och dina siffror – klart att dela på sociala medier, i e-post eller vid festivaler.",
+    "visitIntro": "Ett kort med din profil och dina siffror, klart att dela på sociala medier, i e-post eller vid festivaler.",
     "visitDownload": "Ladda ner visitkort (PNG)",
     "bunnyPrepare": "Förbereder video-CDN…",
     "bunnyUpload": "Överför till video-CDN: {percent} %",
     "bunnyEncode": "Kodning i video-CDN… (vänta lite)",
-    "reviewNote": "Redaktionen går igenom alla uppladdningar innan en film kan bli offentlig — typisk svarstid är ett par dagar. Väntetiden är kurateringsfiltreringen: den håller spam och reklam borta, så katalogen endast består av dokumentärer. Utkastet kan raderas här fram till publicering.",
-    "keepScreenOn": "Håll skärmen vaken medan arbetet pågår — om telefonen går i viloläge (t.ex. vid låg batterinivå) avbryts det. Sidan ber själv om att hålla skärmen vaken när telefonen tillåter det.",
-    "batteryLow": "Telefonen har bara ca. {percent} % batteri och laddar inte — anslut en laddare innan du laddar upp och genererar. En film kräver undertexter (13 språk) och en trailer innan den kan publiceras, och pipelinerna tar minuter i taget av batteriet."
+    "reviewNote": "Redaktionen granskar alla uppladdningar innan en film kan bli offentlig. Typisk svarstid är ett par dagar. Väntetiden är kurateringsfiltrering: den håller spam och annonser borta, så katalogen består endast av dokumentärer. Utkastet kan raderas här fram till publicering.",
+    "keepScreenOn": "Håll skärmen vaken medan arbetet pågår. Om telefonen går i viloläge (t.ex. vid låg batterinivå) avbryts det. Sidan ber själv om att hålla skärmen vaken när telefonen tillåter det.",
+    "batteryLow": "Telefonen har bara ca. {percent} % batteri och laddar inte. Anslut en laddare innan du laddar upp och genererar. En film kräver undertexter (13 språk) och en trailer innan den kan publiceras, och pipelinerna tar minuter i taget av batteriet."
   },
   "profile": {
     "loginTitle": "Logga in för att se din profil",
@@ -562,38 +562,38 @@
     "eyebrow": "Mitt konto",
     "memberSince": "Medlem sedan {date}",
     "historyHeading": "Min visningshistorik",
-    "historySubtitle": "Fortsätt där du slutade — eller se en gammal favorit igen.",
-    "historyEmpty": "Inga filmer tittade än. Se klart en dokumentär och den dyker upp här — endast giltiga fullföljda visningar registreras.",
+    "historySubtitle": "Fortsätt där du slutade, eller se om en gammal favorit.",
+    "historyEmpty": "Inga filmer sedda än. Avsluta en dokumentär, så dyker den upp här. Endast giltiga avslut registreras.",
     "savedHeading": "Sparade filmer",
     "savedSubtitle": "Din privata watchlist.",
     "savedEmpty": "Inga sparade filmer än. Tryck \"Spara film\" under en spelare, så hamnar filmen här.",
     "creatorHeading": "Skapare",
     "creatorSub": "Ansök om att bli skapare och få möjlighet att ladda upp dina dokumentärer.",
-    "creatorOwnedSub": "Du är en godkänd skapare — studion är öppen.",
+    "creatorOwnedSub": "Du är godkänd skapare. Studion är öppen.",
     "creatorApplyCta": "Bli skapare",
     "creatorStudioCta": "Öppna studion",
     "nameMissing": "Välj ditt användarnamn",
-    "nameMissingSub": "Din e-post visas aldrig för andra — välj namnet andra ska se vid dina kommentarer.",
+    "nameMissingSub": "Din e-post visas aldrig för andra. Välj det namn som andra ska se vid dina kommentarer.",
     "nameLabel": "Användarnamn",
     "nameSave": "Spara användarnamn",
     "nameSaved": "Ditt användarnamn har sparats.",
     "nameError": "Användarnamnet kunde inte sparas. Försök igen.",
     "deleteHeading": "Ta bort konto",
-    "deleteIntro": "Borttagningen är permanent: ditt konto, din visningshistorik och dina sparade filmer försvinner, och dina kommentarer raderas helt. Köpinformation lagras anonymiserad i fem år enligt bokföringslagen — utan koppling till dig.",
+    "deleteIntro": "Raderingen är permanent: ditt konto, din visningshistorik och dina sparade filmer försvinner, och dina kommentarer raderas helt. Köpsdata lagras anonymiserat i fem år enligt bokföringslagen, utan koppling till dig.",
     "deleteConfirmLabel": "Skriv ditt användarnamn (“{name}”) för att bekräfta",
     "deletePlaceholder": "Ditt användarnamn",
     "deleteButton": "Ta bort min konto permanent",
     "deleteWorking": "Tar bort…",
-    "deleteCreatorBlocked": "Ditt konto äger en skapareprofil med filmer, visningar och utbetalningar — den kan därför inte tas bort självbetjänat. Skriv till redaktionen så hjälper vi dig:",
+    "deleteCreatorBlocked": "Ditt konto äger en skapaprofil med filmer, uppspelningar och utbetalningar. Den kan därför inte raderas självbetjänat. Skriv till redaktionen, så hjälper vi dig.",
     "deleteContact": "contact@doccys.com",
-    "deleteNameMissing": "Välj först ditt användarnamn ovan — det är bekräftelsen vi ber om när kontot ska tas bort.",
+    "deleteNameMissing": "Välj först ditt användarnamn ovan. Det är bekräftelsen vi ber om när kontot ska raderas.",
     "deleteErrors": {
-      "generic": "Kontot kunde inte tas bort ännu. Försök igen — det gör inget fel att försöka flera gånger, och om felet kvarstår, skriv till contact@doccys.com.",
+      "generic": "Kontot kunde inte raderas ännu. Försök igen. Det gör inget fel att försöka flera gånger, och om felet kvarstår, skriv till contact@doccys.com.",
       "nameMismatch": "Namnet matchar inte ditt användarnamn. Kontrollera stavningen och försök igen.",
       "creatorBlocked": "Ditt konto äger en skapareprofil och kan inte tas bort här. Skriv till contact@doccys.com."
     },
     "followingHeading": "Skapare du följer",
-    "followingSubtitle": "Din privata lista — senast följd skapare högst upp.",
+    "followingSubtitle": "Din privata lista, senast följda skapare högst upp.",
     "followingEmpty": "Du följer inga skapare än. Tryck \"Följ\" på en skapareprofil så dyker skaparen upp här.",
     "unfollowButton": "Följ inte längre",
     "handleMissing": "Välj ditt @ tag",
@@ -603,8 +603,8 @@
     "handleSave": "Reservera @ tag",
     "handleSaved": "Ditt @ tag är reserverat.",
     "handleAvailable": "Tillgänglig!",
-    "handleTaken": "Det @ tag är redan använt — välj ett annat.",
-    "handleError": "Taggen kunde inte reserveras ännu — försök igen senare."
+    "handleTaken": "Det @ tagget används redan. Välj ett annat.",
+    "handleError": "Tagget kunde inte reserveras ännu. Försök igen senare."
   },
   "watchHistory": {
     "completed": "Färdigvisad",
@@ -612,7 +612,7 @@
   },
   "support": {
     "heading": "Ditt stöd",
-    "subtitle": "Vart dina minuter tog vägen — och vad som gick direkt till skaparna.",
+    "subtitle": "Där dina minuter slutade, och vad som gick direkt till skaparna.",
     "totalMinutes": "Du har sett {minutes} minuter",
     "totalAmount": "{amount} gick direkt till skaparna",
     "creatorFilms": "{count, plural, one {# film} other {# filmer}}",
@@ -644,31 +644,31 @@
     "placeholder": "Sök filmer, skapare, genrer…",
     "searchLabel": "Sök",
     "landingTitle": "Vad vill du se ikväll?",
-    "landingHint": "Sök bland filmer, skapare och genrer — eller utforska en genre direkt.",
+    "landingHint": "Sök i filmer, skapare och genrer, eller utforska en genre direkt.",
     "exploreGenres": "Utforska genrer",
     "resultsTitle": "Resultat för ”{q}”",
     "filmsSection": "Filmer",
     "creatorsSection": "Skapare",
     "noResults": "Inga resultat för ”{q}”.",
-    "noResultsHint": "Prova ett annat sökord — eller utforska genrerna nedan."
+    "noResultsHint": "Försök med ett annat sökord, eller utforska genrerna nedan."
   },
   "countries": {
     "Island": "Island",
     "Danmark": "Danmark"
   },
   "meta": {
-    "title": "Doccys — Oberoende dokumentärer utan annonser",
-    "description": "Doccys är en minimalistisk, annonsfri streamingtjänst för oberoende dokumentärer. Betala bara för minuterna du faktiskt ser — skaparen får sin del, du får stillheten."
+    "title": "Doccys: Oberoende dokumentärer utan reklam",
+    "description": "Doccys är en minimalistisk, reklamfri streamingtjänst för oberoende dokumentärer. Betala bara för de minuter du faktiskt ser. Skaparen får sin del, du får lugnet."
   },
   "paywall": {
     "loginTitle": "Logga in för att se filmen",
-    "loginBody": "Skapa ett konto eller logga in — och köp ett minutpaket när du är redo att titta.",
+    "loginBody": "Skapa ett konto eller logga in, och köp ett minutpaket när du är redo att titta.",
     "loginCta": "Logga in",
     "buyTitle": "Inte tillräckligt med minuter på saldot",
     "buyBody": "Filmen kräver {minutes} minuter och ditt saldo är {balance}. Köp ett paket för att starta uppspelningen.",
     "buyCta": "Köp minuter",
     "trailerLabel": "Trailer",
-    "priceLine": "ca. {price} för hela filmen — ser du den aldrig, kostar den $0."
+    "priceLine": "ca. {price} för hela filmen. Ser du den aldrig, kostar den $0."
   },
   "embed": {
     "cta": "Se hela filmen på Doccys",
@@ -683,7 +683,7 @@
     "vatNote": "inkl. lokal moms",
     "packBuy": "Köp",
     "purchaseSuccess": "Tack för ditt köp! Minuterna hamnar på ditt saldo så snart betalningen är bekräftad.",
-    "purchaseError": "Köpet kunde inte genomföras — försök igen.",
+    "purchaseError": "Köpet kunde inte genomföras. Försök igen.",
     "referralUnavailable": "Din hänvisningslänk kunde inte visas just nu."
   },
   "affiliate": {
@@ -711,11 +711,11 @@
     "pinnedLabel": "Fäst",
     "editedLabel": "Redigerat",
     "empty": "Skaparen har inte publicerat något än.",
-    "emptyOwner": "Publicera ditt första inlägg — dina tittare ser det här.",
+    "emptyOwner": "Lägg upp ditt första inlägg. Dina tittare ser det här.",
     "submitError": "Inlägget kunde inte skickas. Försök igen.",
     "updateError": "Inlägget kunde inte sparas. Försök igen.",
     "deleteError": "Inlägget kunde inte tas bort. Försök igen.",
-    "pinError": "Kunde inte fästa inlägget — ett annat är redan fäst. Försök igen."
+    "pinError": "Kunde inte fästa inlägget. Det finns redan ett fäst. Försök igen."
   },
   "mail": {
     "tagline": "Oberoende dokumentärer. Inga annonser. Någonsin.",
@@ -723,7 +723,7 @@
     "signup": {
       "subject": "Bekräfta din e-post för ditt Doccys-konto",
       "heading": "Välkommen till Doccys",
-      "body": "Hej {name} — klicka på knappen nedan för att bekräfta din e-post och komma igång.",
+      "body": "Hej {name}, klicka på knappen nedan för att bekräfta din e-post och komma igång.",
       "button": "Bekräfta min e-post",
       "expiry": "Länken utgår efter kort tid och kan endast användas en gång.",
       "ignore": "Har du inte skapat ett konto hos Doccys kan du lugnt ignorera detta mejl."
@@ -734,7 +734,7 @@
       "body": "Vi har mottagit en begäran om att återställa lösenordet för ditt Doccys-konto. Klicka på knappen nedan för att välja ett nytt.",
       "button": "Välj nytt lösenord",
       "expiry": "Länken utgår efter kort tid och kan endast användas en gång.",
-      "security": "Har du inte begärt detta kan du lugnt ignorera mejlet — ditt lösenord är oförändrat."
+      "security": "Har du inte begärt detta kan du lugnt ignorera mailet. Ditt lösenord är oförändrat."
     }
   },
   "visitkort": {
@@ -746,38 +746,38 @@
   },
   "viewerStatus": {
     "heading": "Tittarstatus",
-    "subtitle": "Din resa genom dokumentärernas värld — mätt i minuter.",
+    "subtitle": "Din resa genom dokumentärernas värld, mätt i minuter.",
     "minutesLine": "Du har sett {minutes} minuter",
     "tier1": "Nyfiken",
     "tier2": "Pionjär",
     "tier3": "Legend",
     "toNextTier": "{minutes} minuter kvar till att bli {title}",
-    "topTierReached": "Högsta nivå nådd — tack för alla minuter.",
+    "topTierReached": "Högsta nivå nådd. Tack för alla minuter.",
     "genreTitle": "{genre}-nörd",
     "genreSubtitle": "{minutes} minuter i genren",
     "badgesShelf": "Milstolpar",
     "tier0": "Upptäckare"
   },
   "installApp": {
-    "title": "Doccys som app — utan butik: helskärm, ingen webbläsarverktygsrad, och ditt förslag är klart direkt från startskärmen.",
+    "title": "Doccys som app, utan butik: helskärm, ingen webbläsarbar, och ditt förslag är klart direkt från startskärmen.",
     "button": "Installera appen",
-    "iosHint": "iPhone/iPad: Tryck på Dela i Safari och välj „Lägg till på hemskärmen“ — då blir Doccys en app utan App Store."
+    "iosHint": "iPhone/iPad: Tryck på Dela i Safari och välj „Lägg till på startskärmen“. Då blir Doccys en app utan App Store."
   },
   "viewerAarbog": {
     "heading": "Din årsbok",
-    "subtitle": "Årsboken öppnar vid 1.000 minuter — din tittarhistorik, månad för månad.",
+    "subtitle": "Årsboken öppnar vid 1.000 minuter. Din tittarhistorik, månad för månad.",
     "totalLine": "{minutes} minuter de senaste 12 månaderna",
-    "empty": "Inga avräknade minuter de senaste 12 månaderna — årsboken fylls medan du tittar.",
+    "empty": "Inga avräknade minuter de senaste 12 månaderna. Årsboken fylls på medan du tittar.",
     "topGenres": "Dina genrer",
     "topCreators": "Dina skapare",
     "topEmpty": "Inga filmer ännu"
   },
   "klub": {
     "heading": "Klubstugan",
-    "subtitle": "En liten plats för Legenderna — plattformens mest dedikerade tittare.",
+    "subtitle": "En liten plats för Legenderna, plattformens mest dedikerade tittare.",
     "lockLabel": "Låst",
     "doorTitle": "Klubstugan är stängd",
-    "doorIntro": "Bakom dörren finns en liten plats där Legenderna samlas. Legenderna är de som har sett 10.000 minuter — och dörren öppnas när du når dit.",
+    "doorIntro": "Bak dörren finns en liten plats där Legenderna samlas. Legenderna är de som har sett 10.000 minuter, och dörren öppnas när du når dit.",
     "doorRequirement": "Legend = 10.000 minuter",
     "doorMembers": "{count, plural, =1 {# medlem} other {# medlemmar}}",
     "doorPosts": "{count, plural, =1 {# inlägg} other {# inlägg}}",
@@ -788,15 +788,15 @@
     "submit": "Skriv",
     "submitting": "Skickar…",
     "submitError": "Inlägget kunde inte skickas. Försök igen.",
-    "empty": "Det är tyst i stugan — var den första Legenden som talar.",
+    "empty": "Det är tyst i rummet. Var den första Legenden som talar.",
     "authorFallback": "Legend"
   },
   "waitlist": {
-    "title": "Kuratering pågår — få besked när nya dokumentärer landar",
+    "title": "Kuratering pågår. Få meddelande när nya dokumentärer landar.",
     "body": "Nya dokumentärer läggs till kontinuerligt. Lämna din e-post, så får du ett enkelt mejl varje gång katalogen växer. Ingen spam.",
     "placeholder": "Din e-post",
     "submit": "Håll mig uppdaterad",
-    "submitted": "Anmäld ✓ — du hör från redaktionen.",
-    "error": "Något gick fel — försök igen."
+    "submitted": "Anmäld ✓. Du hör från redaktionen.",
+    "error": "Något gick fel. Försök igen."
   }
 }

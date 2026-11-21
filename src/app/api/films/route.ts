@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
     // ikke bruge redaktionens tid. Klienten afviser allerede ved
     // filvalget; dette er led 2 (klientens tal kan lyves om).
     return NextResponse.json(
-      { error: "Filmen er under minimumet på 20 minutter — kortere film accepteres ikke" },
+      { error: "Filmen er under minimumet på 20 minutter. Kortere film accepteres ikke" },
       { status: 400 },
     );
   }
@@ -191,7 +191,7 @@ export async function POST(request: NextRequest) {
       /^[0-9a-f-]{36}$/i.test(bunnyVideoId)) {
     if (!hasBunnyEnv()) {
       return NextResponse.json(
-        { error: "Video-CDN er ikke konfigureret — prøv igen" },
+        { error: "Video-CDN er ikke konfigureret, prøv igen" },
         { status: 503 },
       );
     }
@@ -209,7 +209,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Videoen er endnu ikke encodet færdig i video-CDN — prøv igen om lidt",
+            "Videoen er endnu ikke encodet færdig i video-CDN. Prøv igen om lidt",
         },
         { status: 400 },
       );
@@ -236,7 +236,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Encoding afvist af video-CDN — prøv igen, eller kontakt redaktionen",
+            "Encoding afvist af video-CDN. Prøv igen, eller kontakt redaktionen",
         },
         { status: 400 },
       );
@@ -246,7 +246,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Videoen er over 2 GB — komprimer den (fx 720p eller lavere bitrate) og prøv igen.",
+            "Videoen er over 2 GB. Komprimer den (fx 720p eller lavere bitrate) og prøv igen.",
         },
         { status: 400 },
       );
@@ -327,7 +327,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Videoen er over 2 GB — komprimer den (fx 720p eller lavere bitrate) og prøv igen.",
+            "Videoen er over 2 GB. Komprimer den (fx 720p eller lavere bitrate) og prøv igen.",
         },
         { status: 400 },
       );

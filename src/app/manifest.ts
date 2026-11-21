@@ -16,7 +16,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Doccys",
     short_name: "Doccys",
     description:
-      "Reklamefri streamingtjeneste for uafhængige dokumentarer — betal kun for de minutter, du faktisk ser.",
+      "Reklamefri streamingtjeneste for uafhængige dokumentarer. Betal kun for de minutter, du faktisk ser.",
     start_url: "/",
     scope: "/",
     display: "standalone",

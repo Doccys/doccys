@@ -47,7 +47,7 @@ export async function PUT(request: NextRequest) {
   // landkode + 2 tjekciffer + 11-30 tegn = samlet længde 15-34
   if (!/^[A-Z]{2}\d{2}[A-Z0-9]{11,30}$/.test(iban)) {
     return NextResponse.json(
-      { error: "IBAN-formatet ser forkert ud — tjek din netbank" },
+      { error: "IBAN-formatet ser forkert ud. Tjek din netbank" },
       { status: 400 },
     );
   }
@@ -57,7 +57,7 @@ export async function PUT(request: NextRequest) {
   const bic = body.bic?.trim().replace(/\s+/g, "").toUpperCase() || null;
   if (bic && !/^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}(?:[A-Z0-9]{3})?$/.test(bic)) {
     return NextResponse.json(
-      { error: "BIC/SWIFT-formatet ser forkert ud — 8 eller 11 tegn" },
+      { error: "BIC/SWIFT-formatet ser forkert ud, brug 8 eller 11 tegn" },
       { status: 400 },
     );
   }
@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
   if (rpcError || !earnings) {
     console.error("creator_indtjening ved udbetaling:", rpcError);
     return NextResponse.json(
-      { error: "Kunne ikke læse din saldo — prøv igen" },
+      { error: "Kunne ikke læse din saldo, prøv igen" },
       { status: 500 },
     );
   }

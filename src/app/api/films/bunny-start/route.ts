@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     console.error("bunny-start fejlede:", err);
     return NextResponse.json(
-      { error: "Videoen kunne ikke forberedes i video-CDN — prøv igen" },
+      { error: "Videoen kunne ikke forberedes i video-CDN. Prøv igen" },
       { status: 500 },
     );
   }

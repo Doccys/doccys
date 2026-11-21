@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     console.error("bunny-delete fejlede:", err);
     return NextResponse.json(
-      { error: "Sletning kunne ikke gennemføres — prøv igen" },
+      { error: "Sletning kunne ikke gennemføres, prøv igen" },
       { status: 500 },
     );
   }

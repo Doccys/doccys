@@ -37,7 +37,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
   }
   if (trimmedBody === undefined && body.pinned === undefined) {
     return NextResponse.json(
-      { error: "Intet at opdatere — angiv body eller pinned" },
+      { error: "Intet at opdatere, angiv body eller pinned" },
       { status: 400 },
     );
   }
@@ -61,7 +61,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
     });
     if (post === "konflikt") {
       return NextResponse.json(
-        { error: "Et andet opslag er allerede fastgjort — prøv igen" },
+        { error: "Et andet opslag er allerede fastgjort, prøv igen" },
         { status: 409 },
       );
     }

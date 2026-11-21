@@ -91,7 +91,7 @@ export default async function HomePage({ params }: HomePageProps) {
           title={t("catalog.title")}
           subtitle={
             documentaries.length >= FILM_COUNT_MINIMUM
-              ? `${t("catalog.count", { count: documentaries.length })} — ${t("catalog.subtitle")}`
+              ? `${t("catalog.count", { count: documentaries.length })} · ${t("catalog.subtitle")}`
               : t("catalog.subtitle")
           }
         />

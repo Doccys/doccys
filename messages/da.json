@@ -15,16 +15,16 @@
     "loginTitle": "Log ind",
     "loginSubtitle": "Velkommen tilbage. Dine film venter.",
     "signupTitle": "Opret konto",
-    "signupSubtitle": "Én konto til både seere og skabere — altid uden reklamer.",
+    "signupSubtitle": "Én konto til både seere og skabere, altid uden reklamer.",
     "passwordConfirm": "Gentag adgangskode",
-    "ageLabel": "Jeg bekræfter, at jeg er mindst 18 år — se",
+    "ageLabel": "Jeg bekræfter, at jeg er mindst 18 år. Se",
     "ageLink": "Handelsbetingelserne, afsnit 12",
     "email": "E-mail",
     "emailPlaceholder": "dig@eksempel.dk",
     "username": "Brugernavn",
     "usernamePlaceholder": "Det navn, andre ser ved dine kommentarer",
     "handle": "@ tag (valgfrit)",
-    "handlePlaceholder": "fx nordlys-film — bliver dit @-navn",
+    "handlePlaceholder": "fx nordlys-film, bliver dit @-navn",
     "handleHint": "Små bogstaver, tal og bindestreger (3–40 tegn). Reserverer din fremtidige skaber-adresse og kan ikke ændres senere.",
     "handleAvailable": "Tag'et er ledigt!",
     "password": "Adgangskode",
@@ -36,8 +36,8 @@
     "hasAccount": "Har du allerede en konto?",
     "checkEmail": "Kontoen er oprettet. Tjek din indbakke og bekræft din e-mail, før du logger ind.",
     "confirmTitle": "Bekræfter din e-mail",
-    "confirmWorking": "Et øjeblik — din e-mail bekræftes, og du kommer ind på din profil…",
-    "confirmError": "Linket er udløbet eller allerede brugt. Prøv at logge ind — er din e-mail bekræftet, kommer du direkte til din profil.",
+    "confirmWorking": "Et øjeblik. Din e-mail bekræftes, og du kommer ind på din profil…",
+    "confirmError": "Linket er udløbet eller allerede brugt. Prøv at logge ind. Er din e-mail bekræftet, kommer du direkte til din profil.",
     "forgotPassword": "Glemt adgangskode?",
     "resetTitle": "Nulstil adgangskode",
     "resetSubtitle": "Indtast din e-mail, så sender vi dig et link til at vælge en ny adgangskode.",
@@ -57,15 +57,15 @@
       "invalidCredentials": "Ugyldig e-mail eller adgangskode.",
       "emailExists": "Der findes allerede en konto med den e-mail.",
       "emailNotConfirmed": "Bekræft din e-mail, før du logger ind.",
-      "weakPassword": "Adgangskoden er for svag — brug mindst 6 tegn.",
+      "weakPassword": "Adgangskoden er for svag. Brug mindst 6 tegn.",
       "passwordMismatch": "Adgangskoderne er ikke ens.",
       "nameMissing": "Vælg dit brugernavn, før du opretter kontoen.",
       "ageRequired": "Du skal bekræfte, at du er mindst 18 år, før kontoen oprettes.",
-      "handleInvalid": "Det @ tag er ikke gyldigt — brug små bogstaver, tal og bindestreger (3–40 tegn).",
-      "handleTaken": "Det @ tag er allerede brugt — vælg et andet.",
-      "handleReserved": "Det @ tag er reserveret — vælg et andet.",
-      "handleLocked": "Kontoen har allerede et @ tag — det kan ikke ændres. Brug det samme tag og bekræft din e-mail.",
-      "rateLimited": "For mange forsøg — vent lidt og prøv igen.",
+      "handleInvalid": "Det @ tag er ikke gyldigt. Brug små bogstaver, tal og bindestreger (3–40 tegn).",
+      "handleTaken": "Det @ tag er allerede brugt. Vælg et andet.",
+      "handleReserved": "Det @ tag er reserveret. Vælg et andet.",
+      "handleLocked": "Kontoen har allerede et @ tag. Det kan ikke ændres. Brug det samme tag og bekræft din e-mail.",
+      "rateLimited": "For mange forsøg. Vent lidt og prøv igen.",
       "generic": "Noget gik galt. Prøv igen."
     }
   },
@@ -75,7 +75,7 @@
     "signup": {
       "subject": "Bekræft din e-mail til din Doccys-konto",
       "heading": "Velkommen til Doccys",
-      "body": "Hej {name} — klik på knappen herunder for at bekræfte din e-mail og komme i gang.",
+      "body": "Hej {name}, klik på knappen herunder for at bekræfte din e-mail og komme i gang.",
       "button": "Bekræft min e-mail",
       "expiry": "Linket udløber efter kort tid og kan kun bruges én gang.",
       "ignore": "Har du ikke oprettet en konto hos Doccys, kan du trygt ignorere denne mail."
@@ -86,7 +86,7 @@
       "body": "Vi har modtaget en forespørgsel om at nulstille adgangskoden til din Doccys-konto. Klik på knappen herunder for at vælge en ny.",
       "button": "Vælg ny adgangskode",
       "expiry": "Linket udløber efter kort tid og kan kun bruges én gang.",
-      "security": "Har du ikke bedt om dette, kan du roligt ignorere mailen — din adgangskode er uændret."
+      "security": "Har du ikke bedt om dette, kan du roligt ignorere mailen. Din adgangskode er uændret."
     }
   },
   "footer": {
@@ -102,11 +102,11 @@
       "sections": {
         "s1": {
           "title": "Skriv til os",
-          "body": "Du kan altid nå os på contact@doccys.com. Skriv gerne, hvilken film og side det handler om, og hvilken enhed eller browser du bruger — så kan vi hjælpe hurtigere."
+          "body": "Du kan altid nå os på contact@doccys.com. Skriv gerne, hvilken film og side det handler om, og hvilken enhed eller browser du bruger, så kan vi hjælpe hurtigere."
         },
         "s2": {
           "title": "Hvad du kan skrive om",
-          "body": "• Tekniske fejl på sitet\n• Køb af minutter og betalinger\n• Ophavsret — skal en film (ikke) være her?\n• Dine persondata, fx sletning af din konto\n• Samarbejde med Doccys som skaber"
+          "body": "• Tekniske fejl på sitet\n• Køb af minutter og betalinger\n• Ophavsret: skal en film (ikke) være her?\n• Dine persondata, fx sletning af din konto\n• Samarbejde med Doccys som skaber"
         },
         "s3": {
           "title": "Svartid",
@@ -120,19 +120,19 @@
       "sections": {
         "s1": {
           "title": "Om Doccys",
-          "body": "Doccys er en streamingtjeneste for uafhængige dokumentarer: du betaler kun for det, du faktisk ser, minut for minut. Tjenesten drives af Doccys — CVR-nr. 46804147."
+          "body": "Doccys er en streamingtjeneste for uafhængige dokumentarer: du betaler kun for det, du faktisk ser, minut for minut. Tjenesten drives af Doccys, CVR-nr. 46804147."
         },
         "s2": {
           "title": "Oprettelse af konto",
-          "body": "Det er gratis at oprette en konto. Ved oprettelse skal du oplyse en gyldig e-mailadresse og bekræfte den via linket i den mail, du får — først derefter kan kontoen bruges. Du er selv ansvarlig for at holde dine loginoplysninger hemmelige og for al aktivitet, der sker via din konto."
+          "body": "Det er gratis at oprette en konto. Ved oprettelse skal du oplyse en gyldig e-mailadresse og bekræfte den via linket i den mail, du får. Først derefter kan kontoen bruges. Du er selv ansvarlig for at holde dine loginoplysninger hemmelige og for al aktivitet, der sker via din konto."
         },
         "s3": {
           "title": "Minutter og afspilning",
-          "body": "Film afspilles mod minutter på din konto. Forbruget måles efter den tid, du faktisk afspiller — stopper du midt i en film, betaler du kun for den sete tid. Minutprisen for en film fremgår af filmens side, inden du starter afspilningen.\nDin afspilning registreres som et målt forbrug (”bevis”) — se også privatlivspolitikken. Beviset er afgørende, hvis der er tvivl om, hvad du har set, og hvad der er trukket fra din saldo."
+          "body": "Film afspilles mod minutter på din konto. Forbruget måles efter den tid, du faktisk afspiller. Stopper du midt i en film, betaler du kun for den sete tid. Minutprisen for en film fremgår af filmens side, inden du starter afspilningen.\nDin afspilning registreres som et målt forbrug (”bevis”). Se også privatlivspolitikken. Beviset er afgørende, hvis der er tvivl om, hvad du har set, og hvad der er trukket fra din saldo."
         },
         "s4": {
           "title": "Køb og betaling",
-          "body": "Minutter købes som pakker til de priser, der fremgår ved købet. Betalingen håndteres af vores betalingspartner Stripe, og kvitteringen sendes til din e-mail. Den angivne pris er inklusive moms: momsen beregnes af Stripe Tax efter dit faktureringsland og udredes af beløbet (momsen fremgår som særskilt linje på betalingssiden).\nAlle beløb er i amerikanske dollars (USD) — se afsnit 13."
+          "body": "Minutter købes som pakker til de priser, der fremgår ved købet. Betalingen håndteres af vores betalingspartner Stripe, og kvitteringen sendes til din e-mail. Den angivne pris er inklusive moms: momsen beregnes af Stripe Tax efter dit faktureringsland og udredes af beløbet (momsen fremgår som særskilt linje på betalingssiden).\nAlle beløb er i amerikanske dollars (USD). Se afsnit 13."
         },
         "s5": {
           "title": "Minutternes gyldighed",
@@ -140,7 +140,7 @@
         },
         "s6": {
           "title": "Fortrydelse og fejl",
-          "body": "Minutter er digitalt indhold: når afspilningen er påbegyndt, bortfalder fortrydelsesretten efter købsaftalelovens regler for digitalt indhold. Har du ikke påbegyndt afspilningen, kan du inden for 14 dage efter købet skrive til contact@doccys.com og få det fulde beløb tilbage.\nBlev du trukket for noget, du ikke kunne se på grund af en teknisk fejl, eller gik betalingen igennem to gange, så skriv til os — så retter vi det."
+          "body": "Minutter er digitalt indhold. Når afspilningen er påbegyndt, bortfalder fortrydelsesretten efter købsaftalelovens regler for digitalt indhold. Har du ikke påbegyndt afspilningen, kan du inden for 14 dage efter købet skrive til contact@doccys.com og få det fulde beløb tilbage.\nBlev du trukket for noget, du ikke kunne se på grund af en teknisk fejl, eller gik betalingen igennem to gange, så skriv til os, så retter vi det."
         },
         "s7": {
           "title": "Skabernes rettigheder",
@@ -148,7 +148,7 @@
         },
         "s8": {
           "title": "Ansvar og indhold",
-          "body": "Doccys er ikke forlaget eller udgiveren af filmene — indhold og holdninger i filmene er skabernes. Tjenesten leveres ”som den er”. Vi hæfter ikke for indirekte tab eller udebleven fordel, herunder nedetid, men retter naturligvis fejl, så hurtigt vi kan.\nVi kan ændre kommende priser med rimeligt varsel; ændringer rammer aldrig allerede købte minutter."
+          "body": "Doccys er ikke forlaget eller udgiveren af filmene. Indhold og holdninger i filmene er skabernes. Tjenesten leveres ”som den er”. Vi hæfter ikke for indirekte tab eller udebleven fordel, herunder nedetid, men retter naturligvis fejl, så hurtigt vi kan.\nVi kan ændre kommende priser med rimeligt varsel; ændringer rammer aldrig allerede købte minutter."
         },
         "s9": {
           "title": "Ændringer af betingelserne",
@@ -156,19 +156,19 @@
         },
         "s10": {
           "title": "Klage og kontakt",
-          "body": "Du kan altid skrive til contact@doccys.com. Danske forbrugere kan desuden kontakte Forbrugerklagenævnet ved købsklager — se forbrugerklagenaevnet.dk. Dansk ret gælder for disse betingelser."
+          "body": "Du kan altid skrive til contact@doccys.com. Danske forbrugere kan desuden kontakte Forbrugerklagenævnet ved købsklager. Se forbrugerklagenaevnet.dk. Dansk ret gælder for disse betingelser."
         },
         "s11": {
           "title": "Licens ved upload af film (skabere)",
-          "body": "Når du uploader en film til Doccys, bekræfter du følgende:\n• Du ejer alle rettigheder til filmen — herunder musik og arkivmateriale — og filmen krænker ikke tredjeparters rettigheder.\n• Du giver Doccys en ikke-eksklusiv, verdensomspændende og tidsubegrænset licens til at strømme filmen på platformen, fremstille undertekster og trailere på baggrund af filmen samt markedsføre filmen på platformen.\n• Du kan til enhver tid bede redaktionen fjerne din film — skriv til contact@doccys.com.\n• Din accept registreres med tidspunkt og versionsnummer ved hver upload og gælder den film, du uploader.\nVed uoverensstemmelse mellem oversættelser er den danske tekst gældende (jf. afsnit 10)."
+          "body": "Når du uploader en film til Doccys, bekræfter du følgende:\n• Du ejer alle rettigheder til filmen, herunder musik og arkivmateriale, og filmen krænker ikke tredjeparters rettigheder.\n• Du giver Doccys en ikke-eksklusiv, verdensomspændende og tidsubegrænset licens til at strømme filmen på platformen, fremstille undertekster og trailere på baggrund af filmen samt markedsføre filmen på platformen.\n• Du kan til enhver tid bede redaktionen fjerne din film. Skriv til contact@doccys.com.\n• Din accept registreres med tidspunkt og versionsnummer ved hver upload og gælder den film, du uploader.\nVed uoverensstemmelse mellem oversættelser er den danske tekst gældende (jf. afsnit 10)."
         },
         "s12": {
           "title": "Aldersgrænse på 18 år",
-          "body": "Doccys er en streamingtjeneste for voksne: for at oprette en konto og bruge platformen skal du være mindst 18 år.\nVed oprettelsen af kontoen bekræfter du med afkrydsning, at du er mindst 18 år. Bekræftelsen registreres med tidspunkt og versionsnummer sammen med din konto.\nEn konto må ikke stilles til rådighed for unge under 18 år — indholdet på Doccys er ikke udvalgt eller aldersmærket til børn og unge.\nBliver vi opmærksomme på, at en bruger er under 18 år, kan vi lukke kontoen med omgående virkning (jf. afsnit 2 om ansvaret for din konto)."
+          "body": "Doccys er en streamingtjeneste for voksne. For at oprette en konto og bruge platformen skal du være mindst 18 år.\nVed oprettelsen af kontoen bekræfter du med afkrydsning, at du er mindst 18 år. Bekræftelsen registreres med tidspunkt og versionsnummer sammen med din konto.\nEn konto må ikke stilles til rådighed for unge under 18 år. Indholdet på Doccys er ikke udvalgt eller aldersmærket til børn og unge.\nBliver vi opmærksomme på, at en bruger er under 18 år, kan vi lukke kontoen med omgående virkning (jf. afsnit 2 om ansvaret for din konto)."
         },
         "s13": {
           "title": "Valuta",
-          "body": "Alle beløb på Doccys er angivet og opkrævet i amerikanske dollars (USD). Når betalingssiden og disse betingelser viser et beløb med ”$”, betyder det amerikanske dollars (USD) — ikke en anden valuta med dollartegn (for eksempel mexicanske pesos (MXN), canadiske dollars (CAD) eller argentinske pesos (ARS)).\nMed et kort denomineret i en anden valuta sker omregningen hos din kortudsteder eller bank til deres kurs og eventuelle gebyrer — det ligger uden for Doccys' kontrol; beløbet på betalingssiden er altid USD-beløbet.\nMomsen beregnes af Stripe Tax efter dit faktureringsland og udredes af den angivne pris — prisen er inklusive moms (se afsnit 4)."
+          "body": "Alle beløb på Doccys er angivet og opkrævet i amerikanske dollars (USD). Når betalingssiden og disse betingelser viser et beløb med ”$”, betyder det amerikanske dollars (USD), ikke en anden valuta med dollartegn (for eksempel mexicanske pesos (MXN), canadiske dollars (CAD) eller argentinske pesos (ARS)).\nMed et kort denomineret i en anden valuta sker omregningen hos din kortudsteder eller bank til deres kurs og eventuelle gebyrer. Det ligger uden for Doccys' kontrol; beløbet på betalingssiden er altid USD-beløbet.\nMomsen beregnes af Stripe Tax efter dit faktureringsland og udredes af den angivne pris. Prisen er inklusive moms (se afsnit 4)."
         }
       }
     },
@@ -178,19 +178,19 @@
       "sections": {
         "s1": {
           "title": "Dataansvarlig",
-          "body": "Doccys — CVR-nr. 46804147. Kontakt: contact@doccys.com."
+          "body": "Doccys, CVR-nr. 46804147. Kontakt: contact@doccys.com."
         },
         "s2": {
           "title": "Hvilke data vi behandler",
-          "body": "• Konto: din e-mailadresse (og bekræftelse af den) og din adgangskode, som er gemt krypteret.\n• Køb: hvilke pakker du har købt, købstidspunkt og transaktions-id. Betalingskort behandles aldrig af os — det sker hos Stripe.\n• Afspilning: hvornår du starter og stopper, spolinger og forbrugt tid pr. film. Det målte forbrug (”beviset”) er det, der trækker minutter fra din saldo og afregner skaberen.\n• Kommentarer: det navn, du skriver under, dine kommentarer og likes samt moderering heraf.\n• Henvisninger: kommer du via et henvisningslink, gemmer vi koden i en cookie i op til 30 dage, så den, der henviste dig, kan krediters ved dit første køb."
+          "body": "• Konto: din e-mailadresse (og bekræftelse af den) og din adgangskode, som er gemt krypteret.\n• Køb: hvilke pakker du har købt, købstidspunkt og transaktions-id. Betalingskort behandles aldrig af os. Det sker hos Stripe.\n• Afspilning: hvornår du starter og stopper, spolinger og forbrugt tid pr. film. Det målte forbrug (”beviset”) er det, der trækker minutter fra din saldo og afregner skaberen.\n• Kommentarer: det navn, du skriver under, dine kommentarer og likes samt moderering heraf.\n• Henvisninger: kommer du via et henvisningslink, gemmer vi koden i en cookie i op til 30 dage, så den, der henviste dig, kan krediters ved dit første køb."
         },
         "s3": {
           "title": "Formål og grundlag",
-          "body": "Vi behandler data for at levere tjenesten — oprette din konto, trække minutter fra din saldo og afregne skaberne (aftalegrundlag), holde tjenesten sikker og forhindre misbrug (legitim interesse) og opfylde bogførings- og skattepligt (retlig forpligtelse). Vi sælger aldrig dine data og bruger dem ikke til reklameprofilering — Doccys viser ingen reklamer, nogensinde."
+          "body": "Vi behandler data for at levere tjenesten: oprette din konto, trække minutter fra din saldo og afregne skaberne (aftalegrundlag), holde tjenesten sikker og forhindre misbrug (legitim interesse) og opfylde bogførings- og skattepligt (retlig forpligtelse). Vi sælger aldrig dine data og bruger dem ikke til reklameprofilering. Doccys viser ingen reklamer, nogensinde."
         },
         "s4": {
           "title": "Tredjeparter",
-          "body": "Vi bruger følgende databehandlere:\n• Supabase — login og database\n• Stripe — betalinger og kvitteringer\n• Vercel — drift og hosting\nDe behandler kun data på vores vegne og til de formål, der er nævnt ovenfor."
+          "body": "Vi bruger følgende databehandlere:\n• Supabase: login og database\n• Stripe: betalinger og kvitteringer\n• Vercel: drift og hosting\nDe behandler kun data på vores vegne og til de formål, der er nævnt ovenfor."
         },
         "s5": {
           "title": "Cookies",
@@ -198,15 +198,15 @@
         },
         "s6": {
           "title": "Opbevaring",
-          "body": "Konto- og kommentardata slettes, når du beder os om det. Købsdata og beviser opbevares i fem år, så regnskab og afregning til skabere kan efterprøves — bogføringsloven kræver det."
+          "body": "Konto- og kommentardata slettes, når du beder os om det. Købsdata og beviser opbevares i fem år, så regnskab og afregning til skabere kan efterprøves. Bogføringsloven kræver det."
         },
         "s7": {
           "title": "Dine rettigheder",
-          "body": "Du har ret til:\n• indsigt i de data, vi behandler om dig\n• at få urigtige data rettet\n• at få data slettet (med de undtagelser, bogføringsloven påbyder)\n• at få data udleveret i et læsbart format (dataportabilitet)\n• at gøre indsigelse mod behandlingen\nSend din henvendelse til contact@doccys.com — vi svarer senest en måned efter."
+          "body": "Du har ret til:\n• indsigt i de data, vi behandler om dig\n• at få urigtige data rettet\n• at få data slettet (med de undtagelser, bogføringsloven påbyder)\n• at få data udleveret i et læsbart format (dataportabilitet)\n• at gøre indsigelse mod behandlingen\nSend din henvendelse til contact@doccys.com. Vi svarer senest en måned efter."
         },
         "s8": {
           "title": "Klage",
-          "body": "Er du ikke tilfreds med vores svar, kan du klage til Datatilsynet — se datatilsynet.dk."
+          "body": "Er du ikke tilfreds med vores svar, kan du klage til Datatilsynet. Se datatilsynet.dk."
         },
         "s9": {
           "title": "Ændringer",
@@ -216,9 +216,9 @@
     }
   },
   "installApp": {
-    "title": "Doccys som app — uden butik: fuldskærm, ingen browser-bar, og dit forslag står klar direkte fra startskærmen.",
+    "title": "Doccys som app, uden butik: fuldskærm, ingen browser-bar, og dit forslag står klar direkte fra startskærmen.",
     "button": "Installer appen",
-    "iosHint": "iPhone/iPad: Tryk Del i Safari og vælg „Føj til startskærm“ — så er Doccys en app uden App Store."
+    "iosHint": "iPhone/iPad: Tryk Del i Safari og vælg „Føj til startskærm“. Så er Doccys en app uden App Store."
   },
   "home": {
     "featured": {
@@ -234,7 +234,7 @@
     },
     "recruitment": {
       "eyebrow": "Doccys søger skabere",
-      "body": "Platformen lanceres i december — upload din dokumentar og optjen $0.30 pr. 100 sete minutter, i filmens levetid, med udbetaling fra $25. Og undertekster på 13 sprog, gratis, med ét klik — vi dækker omkostningen.",
+      "body": "Platformen lanceres i december. Upload din dokumentar og optjen $0.30 pr. 100 sete minutter, i filmens levetid, med udbetaling fra $25. Og undertekster på 13 sprog, gratis, med ét klik. Vi dækker omkostningen.",
       "cta": "Ansøg som skaber"
     },
     "catalog": {
@@ -254,15 +254,15 @@
       },
       "payPerMinute": {
         "title": "Betaling pr. set minut",
-        "body": "Skaberen optjener $0.30 pr. 100 gyldige sete minutter — kun loggede afspilninger, som anti-fraud-systemet validerer, tæller med."
+        "body": "Skaberen optjener $0.30 pr. 100 gyldige sete minutter. Kun loggede afspilninger, som anti-fraud-systemet validerer, tæller med."
       },
       "subtitles13": {
-        "title": "Undertekster på 13 sprog — vi betaler",
-        "body": "Ét klik genererer undertekster til hele filmen: transskription af talessproget og oversættelse til alle platformens sprog. Vi dækker omkostningen — du betaler intet, nogensinde."
+        "title": "Undertekster på 13 sprog. Vi betaler",
+        "body": "Ét klik genererer undertekster til hele filmen: transskription af talessproget og oversættelse til alle platformens sprog. Vi dækker omkostningen. Du betaler intet, nogensinde."
       },
       "community": {
         "title": "Samtale under filmen",
-        "body": "Hver film har sin egen diskussion. Ingen algoritmer i vejen — bare folk, der har set det samme som dig."
+        "body": "Hver film har sin egen diskussion. Ingen algoritmer i vejen, bare folk der har set det samme som dig."
       }
     }
   },
@@ -274,7 +274,7 @@
     "views": "{count} visninger",
     "topEyebrow": "Top 10",
     "topHeading": "De mest sete skabere",
-    "topIntro": "Rangeret efter reelle, gyldige sete minutter de seneste 30 dage. Listen opdaterer sig selv — kun publicerede film tæller med.",
+    "topIntro": "Rangeret efter reelle, gyldige sete minutter de seneste 30 dage. Listen opdaterer sig selv, kun publicerede film tæller med.",
     "topEmpty": "Endnu ingen sete minutter at rangere efter i denne måned.",
     "topMinutes": "{minutes} gyldige min"
   },
@@ -284,7 +284,7 @@
   "collections": {
     "railTitle": "Samlinger",
     "indexTitle": "Kuraterede samlinger",
-    "indexSubtitle": "Håndplukkede temaer på tværs af kataloget — redaktionens egne riller.",
+    "indexSubtitle": "Håndplukkede temaer på tværs af kataloget: redaktionens egne riller.",
     "filmCount": "{count} film",
     "empty": "Samlingen er tom lige nu.",
     "viewAll": "Se alle samlinger"
@@ -309,7 +309,7 @@
   "earningsPanel": {
     "eyebrow": "Indtjening",
     "rate": "$0.30 pr. 100 sete minutter",
-    "explainer": "Du optjener {rate} på Doccys. Kun loggede afspilninger, som anti-fraud-valideringen godkender, tæller med — manipulation udbetales aldrig.",
+    "explainer": "Du optjener {rate} på Doccys. Kun loggede afspilninger, som anti-fraud-valideringen godkender, tæller med. Manipulation udbetales aldrig.",
     "earned": "Optjent i alt",
     "paidOut": "Udbetalt",
     "watchedMinutes": "Gyldige sete minutter",
@@ -321,8 +321,8 @@
     "methodTitle": "Konto til udbetaling",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
-    "methodHint": "IBAN er din kontos internationale nummer — din netbank viser den under kontooplysninger.",
-    "bicHint": "BIC/SWIFT er valgfrit — kun nødvendigt for konti uden for SEPA.",
+    "methodHint": "IBAN er din kontos internationale nummer. Din netbank viser den under kontooplysninger.",
+    "bicHint": "BIC/SWIFT er valgfrit, kun nødvendigt for konti uden for SEPA.",
     "save": "Gem oplysninger",
     "saving": "Gemmer…",
     "saved": "Oplysningerne er gemt.",
@@ -330,7 +330,7 @@
     "payoutTitle": "Anmod om udbetaling",
     "locked": "Knappen låses op, når din tilgængelige saldo når $25.",
     "noMethod": "Gem dine udbetalingsoplysninger, før du anmoder om udbetaling.",
-    "pending": "Du har allerede en afventende anmodning — redaktionen udbetaler snarest.",
+    "pending": "Du har allerede en afventende anmodning. Redaktionens udbetaler snarest.",
     "button": "Udbetal {amount}",
     "requesting": "Sender…",
     "requestError": "Kunne ikke oprette anmodningen.",
@@ -356,19 +356,19 @@
     "earnings": "Optjent"
   },
   "waitlist": {
-    "title": "Kuratering pågår — få besked når nye dokumentarer lander",
+    "title": "Kuratering pågår. Få besked når nye dokumentarer lander.",
     "body": "Nye dokumentarer tilknyttes løbende. Efterlad din e-mail, så får du en enkel mail, hver gang kataloget vokser. Ingen spam.",
     "placeholder": "Din e-mail",
     "submit": "Hold mig opdateret",
-    "submitted": "Tilmeldt ✓ — du hører fra redaktionen.",
-    "error": "Noget gik galt — prøv igen."
+    "submitted": "Tilmeldt ✓. Du hører fra redaktionen.",
+    "error": "Noget gik galt. Prøv igen."
   },
   "watch": {
     "playerNote": "Visningsdata logges struktureret (pauser, spoling, hjerteslag, enhedsmetadata og tidsstempler) og valideres af Doccys' anti-fraud-system, før dine sete minutter afregnes.",
-    "playerStartFailed": "Visningsdata kunne ikke startes — afspilningen virker stadig.",
-    "verdictValid": "✓ Visning valideret — dine sete minutter tæller med til skaberens indtjening.",
+    "playerStartFailed": "Visningsdata kunne ikke startes. Afspilningen virker stadig.",
+    "verdictValid": "✓ Visning valideret. Dine sete minutter tæller med til skaberens indtjening.",
     "verdictSuspicious": "△ Visningen er markeret til manuel gennemgang af anti-fraud-systemet.",
-    "verdictInvalid": "✗ Visning afvist — minutterne er afregnet fra din saldo, men tæller ikke til skaberens indtjening.",
+    "verdictInvalid": "✗ Visning afvist. Minutterne er afregnet fra din saldo, men tæller ikke til skaberens indtjening.",
     "verdictError": "Valideringen kunne ikke gennemføres lige nu.",
     "proofEyebrow": "Støtte-bevis",
     "proofMinutes": "Du så {minutes} min i alt",
@@ -381,7 +381,7 @@
     "creator": "Skaber",
     "discussionEyebrow": "Fællesskabet",
     "discussionTitle": "Kommentarer & diskussion",
-    "discussionSubtitle": "Fortsat samtale om filmen — direkte under afspilleren."
+    "discussionSubtitle": "Fortsat samtale om filmen, direkte under afspilleren."
   },
   "saveButton": {
     "loginToSave": "Log ind for at gemme filmen",
@@ -397,7 +397,7 @@
   },
   "comments": {
     "title": "Diskussion",
-    "subtitle": "Del tanker om filmen med andre seere — ingen spoilers uden advarsel, tak.",
+    "subtitle": "Del tanker om filmen med andre seere. Ingen spoilers uden advarsel, tak.",
     "postingAs": "Kommenterer som",
     "noNameShort": "Seer",
     "nameMissing": "Vælg dit brugernavn på din profil, før du kommenterer.",
@@ -406,32 +406,32 @@
     "submitting": "Sender…",
     "loggedInNote": "Din kommentar postes med din profil.",
     "loading": "Henter diskussionen…",
-    "empty": "Endnu ingen kommentarer — vær den første til at sætte ord på filmen.",
+    "empty": "Endnu ingen kommentarer. Vær den første til at sætte ord på filmen.",
     "loadError": "Kommentarerne kunne ikke hentes.",
     "submitError": "Kommentaren kunne ikke sendes. Prøv igen.",
     "likeAria": "Giv kommentaren et like",
     "likeGuestHint": "Log ind for at like kommentarer.",
     "likeError": "Liket kunne ikke registreres. Prøv igen.",
     "gateLogin": "Log ind for at kommentere",
-    "gateLoginSuffix": "— kun seere kan kommentere under filmen.",
-    "gateWatch": "Kommentarfeltet åbner, når du har set filmen — det er kun for seere, så diskussionen forbliver værd at læse.",
+    "gateLoginSuffix": "Kun seere kan kommentere under filmen.",
+    "gateWatch": "Kommentarfeltet åbner, når du har set filmen. Det er kun for seere, så diskussionen forbliver værd at læse.",
     "pin": "Fastgør",
     "unpin": "Frigør",
     "pinnedLabel": "Fastgjort af skaberen",
     "delete": "Slet",
     "deleteConfirm": "Slet kommentaren? Det kan ikke fortrydes.",
     "deleteError": "Kommentaren kunne ikke slettes. Prøv igen.",
-    "pinError": "Kunne ikke fastgøre kommentaren — der er allerede én fastgjort. Prøv igen.",
+    "pinError": "Kunne ikke fastgøre kommentaren. Der er allerede én fastgjort. Prøv igen.",
     "reply": "Svar",
     "cancel": "Annullér",
     "replyError": "Svaret kunne ikke sendes. Prøv igen."
   },
   "creatorApply": {
     "eyebrow": "Skabere",
-    "subtitlesTitle": "Gratis undertekster på 13 sprog — med ét klik",
-    "subtitlesBody": "Generér undertekster til hele filmen med ét klik: transskription af talessproget og oversættelse til alle platformens sprog. Vi dækker omkostningen — du betaler intet, nogensinde.",
+    "subtitlesTitle": "Gratis undertekster på 13 sprog med ét klik",
+    "subtitlesBody": "Generér undertekster til hele filmen med ét klik: transskription af talessproget og oversættelse til alle platformens sprog. Vi dækker omkostningen, du betaler intet, nogensinde.",
     "loginTitle": "Log ind for at ansøge",
-    "loginSubtitle": "Skaber-ansøgninger kræver en konto — det tager et øjeblik at oprette en.",
+    "loginSubtitle": "Skaber-ansøgninger kræver en konto. Det tager et øjeblik at oprette en.",
     "loginCta": "Log ind",
     "title": "Bliv skaber på Doccys",
     "subtitle": "Doccys er kurateret: alle skabere godkendes af redaktionen, før deres film kan vises. Fortæl os hvem I er, og hvad I laver.",
@@ -447,16 +447,16 @@
     "resubmit": "Send igen",
     "working": "Sender…",
     "statusPending": "Din ansøgning afventer godkendelse.",
-    "statusPendingSub": "Ansøgt d. {date}. Redaktionen vender tilbage her — statussen opdaterer automatisk.",
-    "statusApproved": "Tillykke — du er godkendt som skaber!",
+    "statusPendingSub": "Ansøgt d. {date}. Redaktionens vender tilbage her. Statussen opdaterer automatisk.",
+    "statusApproved": "Tillykke, du er godkendt som skaber!",
     "statusApprovedSub": "Din profil er oprettet, og studiet er åbent. Du kan nu uploade film (de vises først offentligt, når redaktionen godkender dem).",
     "statusApprovedCta": "Åbn studiet",
     "statusRejected": "Din ansøgning blev ikke godkendt denne gang.",
     "statusRejectedSub": "Afgjort d. {date}. Du kan rette ansøgningen og sende den igen.",
     "errors": {
-      "handleTaken": "Handle er allerede brugt — vælg et andet.",
-      "reserved": "Handle er reserveret — vælg et andet.",
-      "stale": "Ansøgningens status er ændret — genindlæs siden.",
+      "handleTaken": "Handle er allerede brugt. Vælg et andet.",
+      "reserved": "Handle er reserveret. Vælg et andet.",
+      "stale": "Ansøgningens status er ændret. Genindlæs siden.",
       "generic": "Tjek alle felter og prøv igen."
     }
   },
@@ -466,15 +466,15 @@
     "loginSubtitle": "Studiet er kun for godkendte skabere.",
     "loginCta": "Log ind",
     "uploadHeading": "Upload ny film",
-    "uploadSubtitle": "Filmen gemmes som kladde og vises først offentligt, når redaktionen godkender den. Minimum 20 minutter — det er grænsen for, hvad der mærkes som en fuld dokumentaroplevelse.",
-    "batteryLow": "Telefonen har kun ca. {percent} % batteri og lader ikke — tilslut en oplader, før du uploader og genererer. En film kræver undertekster (13 sprog) og en trailer, før den kan publiceres, og pipelinerne tager minutter ad gangen af batteriet.",
+    "uploadSubtitle": "Filmen gemmes som kladde og vises først offentligt, når redaktionen godkender den. Minimum 20 minutter er grænsen for, hvad der mærkes som en fuld dokumentaroplevelse.",
+    "batteryLow": "Telefonen har kun ca. {percent} % batteri og lader ikke. Tilslut en oplader, før du uploader og genererer. En film kræver undertekster (13 sprog) og en trailer, før den kan publiceres, og pipelinerne tager minutter ad gangen af batteriet.",
     "titleLabel": "Titel",
     "yearLabel": "Årstal",
     "genresLabel": "Genrer (vælg op til 5)",
     "synopsisLabel": "Synopsis",
     "posterLabel": "Forsidebillede",
     "requiredMark": "Påkrævet",
-    "posterHint": "Påkrævet (jpg/png/webp, maks 10 MB, mindst 640×360 pixels) — filmens forsidebillede overalt på platformen.",
+    "posterHint": "Påkrævet (jpg/png/webp, maks 10 MB, mindst 640×360 pixels). Filmens forsidebillede overalt på platformen.",
     "posterDetected": "Billede: {width}×{height} pixels",
     "fileLabel": "Videofil (mp4/mov/webm, maks 2 GB)",
     "posterPickButton": "Vælg billede…",
@@ -493,67 +493,67 @@
     "creatorNote": "Filmen tilknyttes din skaber-profil @{handle}.",
     "errors": {
       "notMp4": "Kun video-filer (mp4, mov eller webm) kan uploades.",
-      "videoTooBig": "Videoen er over 2 GB — komprimer den (fx 720p eller lavere bitrate) og vælg filen igen.",
-      "tooShort": "Filmen (ca. {minutes} min) er under minimumet på 20 minutter — kortere film kan ikke uploades.",
-      "bunnyStart": "Video-CDN'en kunne ikke forberedes — prøv igen.",
-      "tusUpload": "Overførslen til video-CDN fejlede — prøv igen (uploaden genoptages, hvor den slap).",
-      "bunnyEncode": "Encodingen af filmen fejlede i video-CDN — prøv igen.",
-      "bunnyEncodeTimeout": "Encodingen tog for lang tid i video-CDN — prøv at uploade igen om lidt.",
+      "videoTooBig": "Videoen er over 2 GB. Komprimer den (fx 720p eller lavere bitrate) og vælg filen igen.",
+      "tooShort": "Filmen (ca. {minutes} min) er under minimumet på 20 minutter. Kortere film kan ikke uploades.",
+      "bunnyStart": "Video-CDN'en kunne ikke forberedes. Prøv igen.",
+      "tusUpload": "Overførslen til video-CDN fejlede. Prøv igen (uploaden genoptages, hvor den slap).",
+      "bunnyEncode": "Encodingen af filmen fejlede i video-CDN. Prøv igen.",
+      "bunnyEncodeTimeout": "Encodingen tog for lang tid i video-CDN. Prøv at uploade igen om lidt.",
       "notPoster": "Kun jpg-, png- og webp-billeder kan bruges.",
-      "posterRequired": "Upload et forsidebillede — filmen kan ikke offentliggøres uden.",
-      "posterProbe": "Billedet kunne ikke læses — er det et gyldigt billede?",
-      "posterTooSmall": "Billedet er for lille — mindst 640×360 pixels.",
-      "posterTooBig": "Billedet er for stort — maks 10 MB.",
-      "posterFailed": "Forsidebilledet kunne ikke uploades — prøv igen.",
-      "probe": "Filens metadata kunne ikke læses — er det en gyldig videofil?",
+      "posterRequired": "Upload et forsidebillede. Filmen kan ikke offentliggøres uden.",
+      "posterProbe": "Billedet kunne ikke læses. Er det et gyldigt billede?",
+      "posterTooSmall": "Billedet er for lille. Mindst 640×360 pixels.",
+      "posterTooBig": "Billedet er for stort. Maks 10 MB.",
+      "posterFailed": "Forsidebilledet kunne ikke uploades. Prøv igen.",
+      "probe": "Filens metadata kunne ikke læses. Er det en gyldig videofil?",
       "missingFields": "Udfyld titel og synopsis, vælg mindst én genre og vælg en videofil.",
-      "notLoggedIn": "Du er ikke længere logget ind — log ind og prøv igen.",
-      "uploadFailed": "Uploaden fejlede — prøv igen.",
-      "rowFailed": "Filmen kunne ikke oprettes — prøv igen.",
+      "notLoggedIn": "Du er ikke længere logget ind. Log ind og prøv igen.",
+      "uploadFailed": "Uploaden fejlede. Prøv igen.",
+      "rowFailed": "Filmen kunne ikke oprettes. Prøv igen.",
       "license": "Du skal bekræfte licensvilkårene, før du kan uploade."
     },
-    "licenseLabel": "Jeg bekræfter, at jeg ejer alle rettigheder til filmen — herunder musik og arkivmateriale — og giver Doccys en ikke-eksklusiv, verdensomspændende og tidsubegrænset licens til at strømme filmen, fremstille undertekster og trailere samt markedsførelse af den.",
+    "licenseLabel": "Jeg bekræfter, at jeg ejer alle rettigheder til filmen, herunder musik og arkivmateriale, og giver Doccys en ikke-eksklusiv, verdensomspændende og tidsubegrænset licens til at strømme filmen, fremstille undertekster og trailere samt markedsførelse af den.",
     "licenseLink": "Læs licensvilkårene i Handelsbetingelserne, afsnit 11.",
     "filmsHeading": "Dine film",
-    "statusDraft": "Kladde — afventer godkendelse",
+    "statusDraft": "Kladde, afventer godkendelse",
     "statusPublished": "Udgivet",
     "draftNote": "En kladde kan slettes; en udgivet film er redaktionens.",
-    "reviewNote": "Redaktionen gennemgår alle uploads, før en film kan blive offentlig — typisk svartid er et par dage. Ventetiden er kurateringens filter: den holder spam og reklamer ude, så kataloget kun består af dokumentarer. Kladden kan slettes her indtil publicering.",
+    "reviewNote": "Redaktionen gennemgår alle uploads, før en film kan blive offentlig. Typisk svartid er et par dage. Ventetiden er kurateringens filter: den holder spam og reklamer ude, så kataloget kun består af dokumentarer. Kladden kan slettes her indtil publicering.",
     "publishGateNote": "Filmen kan først udgives, når underteksterne er klar på alle sprog og traileren er færdig.",
     "requiredBadge": "Påkrævet",
     "delete": "Slet kladde",
     "deleteConfirm": "Slet denne kladde? Videoen fjernes også.",
-    "empty": "Ingen film endnu — upload din første ovenfor.",
+    "empty": "Ingen film endnu. Upload din første ovenfor.",
     "visitHeading": "Dit visitkort",
-    "visitIntro": "Et kort med din profil og dine tal — klart til at dele på sociale medier, i mails eller ved festivaler.",
+    "visitIntro": "Et kort med din profil og dine tal, klart til at dele på sociale medier, i mails eller ved festivaler.",
     "visitDownload": "Hent visitkort (PNG)",
     "retentionHeading": "Retention",
-    "retentionIntro": "Hvor langt dine seere kom — andelen der nåede hhv. 10 %, 20 % … 100 % af filmen.",
+    "retentionIntro": "Hvor langt dine seere kom. Andelen der nåede hhv. 10 %, 20 % … 100 % af filmen.",
     "retentionEmpty": "Endnu ikke nok afsluttede afspilninger til en retention-graf (mindst 5).",
     "retentionSessions": "{count} afsluttede afspilninger",
     "subtitlesHeading": "Undertekster",
     "subtitlesIntro": "AI genererer en udskrift af filmens lyd på {language} og oversætter den til alle platformssprog.",
     "spokenLanguageLabel": "Filmens talesprog",
-    "spokenLanguageHint": "Sproget der tales i filmen — underteksterne genereres ud fra det.",
+    "spokenLanguageHint": "Sproget der tales i filmen. Underteksterne genereres ud fra det.",
     "subtitlesGenerate": "Generér undertekster",
     "subtitlesRegenerate": "Generér igen",
-    "subtitlesWorking": "Genererer undertekster — det kan tage flere minutter for lange film.",
-    "keepScreenOn": "Hold skærmen vågen, mens arbejdet kører — lægger telefonen sig til at dvale (fx ved lavt batteri), afbrydes det. Siden beder selv om at holde skærmen vågen, når telefonen tillader det.",
+    "subtitlesWorking": "Genererer undertekster. Det kan tage flere minutter for lange film.",
+    "keepScreenOn": "Hold skærmen vågen, mens arbejdet kører. Lægger telefonen sig til at dvale (fx ved lavt batteri), afbrydes det. Siden beder selv om at holde skærmen vågen, når telefonen tillader det.",
     "subtitlesReady": "Klar",
     "subtitlesProcessing": "Genereres…",
     "subtitlesFailed": "Fejlede",
     "subtitlesMissing": "Ikke genereret",
-    "subtitlesError": "Underteksterne kunne ikke genereres helt — prøv igen. Sprog der fejlede, kan prøves igen med samme knap.",
+    "subtitlesError": "Underteksterne kunne ikke genereres helt. Prøv igen. Sprog der fejlede, kan prøves igen med samme knap.",
     "trailerHeading": "Trailer",
-    "trailerIntro": "Klip 90 sekunder af filmen som gratis smagsprøve — gæster ser den bag paywallen, og delte links viser filmen som video-kort.",
+    "trailerIntro": "Klip 90 sekunder af filmen som gratis smagsprøve. Gæster ser den bag paywallen, og delte links viser filmen som video-kort.",
     "trailerStartLabel": "Start ved sekund",
     "trailerGenerate": "Generér trailer",
     "trailerRegenerate": "Generér igen",
-    "trailerWorking": "Genererer traileren — det kan tage et par minutter.",
+    "trailerWorking": "Genererer traileren. Det kan tage et par minutter.",
     "trailerReady": "Klar",
     "trailerFailed": "Fejlede",
     "trailerMissing": "Ikke genereret",
-    "trailerError": "Traileren kunne ikke genereres — prøv igen.",
+    "trailerError": "Traileren kunne ikke genereres. Prøv igen.",
     "shareHeading": "Del & indlejr",
     "copyWatchLink": "Kopiér film-link",
     "copyEmbedCode": "Kopiér indlejringskode",
@@ -561,14 +561,14 @@
     "retentionAxisEnd": "100 % af filmen",
     "talHeading": "Dine tal",
     "talIntro": "Din indtjening er fuldt gennemsigtig: du optjener {rate} pr. 100 gyldigt sete minutter pr. film, og hvert tal her kan spores tilbage til reelle afspilninger.",
-    "talGuestNote": "Anonyme seere tælles som afspilninger, men kun loggede seere med en gyldig afspilning bliver afregnet — det er dem, minutterne og beløbene nedenfor kommer fra.",
-    "talEmpty": "Ingen seere endnu. Når en udgivet film bliver set af en logget bruger, dukker minutterne og beløbene her — med hele regnestykket.",
+    "talGuestNote": "Anonyme seere tælles som afspilninger, men kun loggede seere med en gyldig afspilning bliver afregnet. Det er dem, minutterne og beløbene nedenfor kommer fra.",
+    "talEmpty": "Ingen seere endnu. Når en udgivet film bliver set af en logget bruger, dukker minutterne og beløbene her, med hele regnestykket.",
     "talSummary30dKr": "Optjent, seneste 30 dage",
     "talSummary30dMin": "Gyldige minutter, seneste 30 dage",
     "talSummaryTotalKr": "Optjent i alt",
     "talSummaryTotalMin": "Gyldige minutter i alt",
     "talFollowers": "Følgere",
-    "talChartHeading": "Daglig indtjening — seneste 30 dage",
+    "talChartHeading": "Daglig indtjening, seneste 30 dage",
     "talChartBar": "{date}: {amount}",
     "talSeereHeading": "Hvem ser dine film",
     "talLanguage": "Sprog",
@@ -595,22 +595,22 @@
     "eyebrow": "Min konto",
     "memberSince": "Medlem siden {date}",
     "historyHeading": "Min seerhistorik",
-    "historySubtitle": "Fortsæt hvor du slap — eller gense en gammel favorit.",
-    "historyEmpty": "Ingen film set endnu. Færdigset en dokumentar, og den dukker op her — kun gyldige completions registreres.",
+    "historySubtitle": "Fortsæt hvor du slap, eller gense en gammel favorit.",
+    "historyEmpty": "Ingen film set endnu. Færdigset en dokumentar, og den dukker op her. Kun gyldige completions registreres.",
     "savedHeading": "Gemte film",
     "savedSubtitle": "Din private watchlist.",
     "savedEmpty": "Ingen gemte film endnu. Tryk \"Gem film\" under en afspiller, så lander filmen her.",
     "followingHeading": "Skabere du følger",
-    "followingSubtitle": "Din private liste — senest fulgte skaber øverst.",
+    "followingSubtitle": "Din private liste, senest fulgte skaber øverst.",
     "followingEmpty": "Du følger ingen skabere endnu. Tryk \"Følg\" på en skaberprofil, så dukker skaberen op her.",
     "unfollowButton": "Følg ikke længere",
     "creatorHeading": "Skaber",
     "creatorSub": "Ansøg om at blive skaber og få adgang til upload af dine dokumentarer.",
-    "creatorOwnedSub": "Du er godkendt skaber — studiet er åbent.",
+    "creatorOwnedSub": "Du er godkendt skaber. Studiet er åbent.",
     "creatorApplyCta": "Bliv skaber",
     "creatorStudioCta": "Åbn studiet",
     "nameMissing": "Vælg dit brugernavn",
-    "nameMissingSub": "Din e-mail vises aldrig til andre — vælg det navn, andre skal se ved dine kommentarer.",
+    "nameMissingSub": "Din e-mail vises aldrig til andre. Vælg det navn, andre skal se ved dine kommentarer.",
     "nameLabel": "Brugernavn",
     "nameSave": "Gem brugernavn",
     "nameSaved": "Dit brugernavn er gemt.",
@@ -622,19 +622,19 @@
     "handleSave": "Reservér @ tag",
     "handleSaved": "Dit @ tag er reserveret.",
     "handleAvailable": "Ledigt!",
-    "handleTaken": "Det @ tag er allerede brugt — vælg et andet.",
-    "handleError": "Tag'et kunne ikke reserveres endnu — prøv igen senere.",
+    "handleTaken": "Det @ tag er allerede brugt. Vælg et andet.",
+    "handleError": "Tag'et kunne ikke reserveres endnu. Prøv igen senere.",
     "deleteHeading": "Slet konto",
-    "deleteIntro": "Sletningen er permanent: din konto, din seerhistorik og dine gemte film forsvinder, og dine kommentarer slettes helt. Købsdata opbevares anonymiseret i fem år jf. bogføringsloven — uden kobling til dig.",
+    "deleteIntro": "Sletningen er permanent: din konto, din seerhistorik og dine gemte film forsvinder, og dine kommentarer slettes helt. Købsdata opbevares anonymiseret i fem år jf. bogføringsloven, uden kobling til dig.",
     "deleteConfirmLabel": "Skriv dit brugernavn (“{name}”) for at bekræfte",
     "deletePlaceholder": "Dit brugernavn",
     "deleteButton": "Slet min konto permanent",
     "deleteWorking": "Sletter…",
-    "deleteCreatorBlocked": "Din konto ejer en skaberprofil med film, afspilninger og udbetalinger — den kan derfor ikke slettes selvbetjent. Skriv til redaktionen, så hjælper vi dig:",
+    "deleteCreatorBlocked": "Din konto ejer en skaberprofil med film, afspilninger og udbetalinger. Den kan derfor ikke slettes selvbetjent. Skriv til redaktionen, så hjælper vi dig.",
     "deleteContact": "contact@doccys.com",
-    "deleteNameMissing": "Vælg først dit brugernavn ovenfor — det er bekræftelsen, vi beder om, når kontoen skal slettes.",
+    "deleteNameMissing": "Vælg først dit brugernavn ovenfor. Det er bekræftelsen, vi beder om, når kontoen skal slettes.",
     "deleteErrors": {
-      "generic": "Kontoen kunne ikke slettes endnu. Prøv igen — der sker ikke noget forkert ved at prøve flere gange, og holder fejlen ved, skriv til contact@doccys.com.",
+      "generic": "Kontoen kunne ikke slettes endnu. Prøv igen. Der sker ikke noget forkert ved at prøve flere gange, og holder fejlen ved, skriv til contact@doccys.com.",
       "nameMismatch": "Navnet matcher ikke dit brugernavn. Tjek stavemåden og prøv igen.",
       "creatorBlocked": "Din konto ejer en skaberprofil og kan ikke slettes her. Skriv til contact@doccys.com."
     }
@@ -645,7 +645,7 @@
   },
   "support": {
     "heading": "Din støtte",
-    "subtitle": "Hvor dine minutter endte — og hvad der gik direkte til skaberne.",
+    "subtitle": "Hvor dine minutter endte, og hvad der gik direkte til skaberne.",
     "totalMinutes": "Du har set {minutes} minutter",
     "totalAmount": "{amount} gik direkte til skaberne",
     "creatorFilms": "{count, plural, one {# film} other {# film}}",
@@ -655,7 +655,7 @@
   },
   "viewerStatus": {
     "heading": "Seer-status",
-    "subtitle": "Din rejse gennem dokumentarernes verden — målt i minutter.",
+    "subtitle": "Din rejse gennem dokumentarernes verden, målt i minutter.",
     "badgesShelf": "Milepæle",
     "minutesLine": "Du har set {minutes} minutter",
     "tier0": "Opdager",
@@ -663,25 +663,25 @@
     "tier2": "Pioner",
     "tier3": "Legende",
     "toNextTier": "{minutes} minutter til at blive {title}",
-    "topTierReached": "Højeste trin nået — tak for alle minutterne.",
+    "topTierReached": "Højeste trin nået. Tak for alle minutterne.",
     "genreTitle": "{genre}-nørd",
     "genreSubtitle": "{minutes} minutter i genren"
   },
   "viewerAarbog": {
     "heading": "Din årbog",
-    "subtitle": "Årbogen åbner ved 1.000 minutter — din seerhistorik, måned for måned.",
+    "subtitle": "Årbogen åbner ved 1.000 minutter. Din seerhistorik, måned for måned.",
     "totalLine": "{minutes} minutter i de seneste 12 måneder",
-    "empty": "Ingen afregnede minutter i de seneste 12 måneder — årbogen fyldes, mens du ser.",
+    "empty": "Ingen afregnede minutter i de seneste 12 måneder. Årbogen fyldes, mens du ser.",
     "topGenres": "Dine genrer",
     "topCreators": "Dine skabere",
     "topEmpty": "Ingen film endnu"
   },
   "klub": {
     "heading": "Klubstuen",
-    "subtitle": "Et lille sted for Legenderne — platformens mest dedikerede seere.",
+    "subtitle": "Et lille sted for Legenderne, platformens mest dedikerede seere.",
     "lockLabel": "Låst",
     "doorTitle": "Klubstuen er lukket",
-    "doorIntro": "Bag døren er et lille sted, hvor Legenderne mødes. Legenderne er dem, der har set 10.000 minutter — og døren åbner sig, når du når det.",
+    "doorIntro": "Bag døren er et lille sted, hvor Legenderne mødes. Legenderne er dem, der har set 10.000 minutter, og døren åbner sig, når du når det.",
     "doorRequirement": "Legende = 10.000 minutter",
     "doorMembers": "{count, plural, =1 {# medlem} other {# medlemmer}}",
     "doorPosts": "{count, plural, =1 {# indlæg} other {# indlæg}}",
@@ -692,7 +692,7 @@
     "submit": "Skriv",
     "submitting": "Sender…",
     "submitError": "Indlægget kunne ikke sendes. Prøv igen.",
-    "empty": "Der er stille i stuen — vær den første Legende, der taler.",
+    "empty": "Der er stille i stuen. Vær den første Legende, der taler.",
     "authorFallback": "Legende"
   },
   "genres": {
@@ -719,31 +719,31 @@
     "placeholder": "Søg film, skabere, genrer…",
     "searchLabel": "Søg",
     "landingTitle": "Hvad vil du se i aften?",
-    "landingHint": "Søg i film, skabere og genrer — eller udforsk en genre direkte.",
+    "landingHint": "Søg i film, skabere og genrer, eller udforsk en genre direkte.",
     "exploreGenres": "Udforsk genrer",
     "resultsTitle": "Resultater for “{q}”",
     "filmsSection": "Film",
     "creatorsSection": "Skabere",
     "noResults": "Ingen resultater for “{q}”.",
-    "noResultsHint": "Prøv et andet søgeord — eller udforsk genrerne nedenfor."
+    "noResultsHint": "Prøv et andet søgeord, eller udforsk genrerne nedenfor."
   },
   "countries": {
     "Island": "Island",
     "Danmark": "Danmark"
   },
   "meta": {
-    "title": "Doccys — Uafhængige dokumentarer uden reklamer",
-    "description": "Doccys er en minimalistisk, reklamefri streamingtjeneste for uafhængige dokumentarer. Betal kun for de minutter, du faktisk ser — skaberen får delen, du får roen."
+    "title": "Doccys: Uafhængige dokumentarer uden reklamer",
+    "description": "Doccys er en minimalistisk, reklamefri streamingtjeneste for uafhængige dokumentarer. Betal kun for de minutter, du faktisk ser. Skaberen får delen, du får roen."
   },
   "paywall": {
     "loginTitle": "Log ind for at se filmen",
-    "loginBody": "Opret en konto eller log ind — og køb en minutpakke, når du er klar til at se.",
+    "loginBody": "Opret en konto eller log ind, og køb en minutpakke, når du er klar til at se.",
     "loginCta": "Log ind",
     "buyTitle": "Ikke minutter nok på saldoen",
     "buyBody": "Filmen kræver {minutes} minutter, og din saldo er {balance}. Køb en pakke for at starte afspilningen.",
     "buyCta": "Køb minutter",
     "trailerLabel": "Trailer",
-    "priceLine": "ca. {price} for hele filmen — ser du den aldrig, koster den $0."
+    "priceLine": "ca. {price} for hele filmen. Ser du den aldrig, koster den $0."
   },
   "embed": {
     "cta": "Se hele filmen på Doccys",
@@ -758,7 +758,7 @@
     "vatNote": "inkl. lokal moms",
     "packBuy": "Køb",
     "purchaseSuccess": "Tak for købet! Minutterne lander på din saldo, så snart betalingen er bekræftet.",
-    "purchaseError": "Købet kunne ikke gennemføres — prøv igen.",
+    "purchaseError": "Købet kunne ikke gennemføres. Prøv igen.",
     "referralUnavailable": "Dit henvisningslink kunne ikke vises lige nu."
   },
   "affiliate": {
@@ -786,11 +786,11 @@
     "pinnedLabel": "Fastgjort",
     "editedLabel": "Redigeret",
     "empty": "Skaberen har endnu ikke slået noget op.",
-    "emptyOwner": "Slå dit første opslag op — dine seere ser det her.",
+    "emptyOwner": "Slå dit første opslag op. Dine seere ser det her.",
     "submitError": "Opslaget kunne ikke sendes. Prøv igen.",
     "updateError": "Opslaget kunne ikke gemmes. Prøv igen.",
     "deleteError": "Opslaget kunne ikke slettes. Prøv igen.",
-    "pinError": "Kunne ikke fastgøre opslaget — der er allerede ét fastgjort. Prøv igen."
+    "pinError": "Kunne ikke fastgøre opslaget. Der er allerede ét fastgjort. Prøv igen."
   },
   "visitkort": {
     "eyebrow": "Skaber på Doccys",

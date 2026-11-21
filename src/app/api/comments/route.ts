@@ -160,7 +160,7 @@ export async function POST(request: NextRequest) {
     }
     if (parent.parentId) {
       return NextResponse.json(
-        { error: "Svar på svar er ikke tilladt — maks ét niveau" },
+        { error: "Svar på svar er ikke tilladt, maks ét niveau" },
         { status: 400 },
       );
     }
@@ -202,7 +202,7 @@ export async function POST(request: NextRequest) {
   }
   if (!permission) {
     return NextResponse.json(
-      { error: "Se filmen først — kommentarfeltet er kun for seere" },
+      { error: "Se filmen først, kommentarfeltet er kun for seere" },
       { status: 403 },
     );
   }

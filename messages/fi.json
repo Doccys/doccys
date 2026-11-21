@@ -15,7 +15,7 @@
     "loginTitle": "Kirjaudu sisään",
     "loginSubtitle": "Tervetuloa takaisin. Elokuvasi odottavat.",
     "signupTitle": "Luo tili",
-    "signupSubtitle": "Yksi tili katsojille ja tekijöille — ei koskaan mainoksia.",
+    "signupSubtitle": "Yksi tili sekä katsojille että luojille, aina ilman mainoksia.",
     "passwordConfirm": "Vahvista salasana",
     "email": "Sähköposti",
     "emailPlaceholder": "sinä@esimerkki.fi",
@@ -46,26 +46,26 @@
       "invalidCredentials": "Virheellinen sähköposti tai salasana.",
       "emailExists": "Kyseisellä sähköpostilla on jo tili.",
       "emailNotConfirmed": "Vahvista sähköpostiosoitteesi ennen sisäänkirjautumista.",
-      "weakPassword": "Salasana on liian heikko — käytä vähintään 6 merkkiä.",
+      "weakPassword": "Salasana on liian heikko. Käytä vähintään 6 merkkiä.",
       "passwordMismatch": "Salasanat eivät täsmää.",
       "nameMissing": "Valitse käyttäjänimesi ennen tilin luomista.",
       "generic": "Jotain meni pieleen. Yritä uudelleen.",
-      "rateLimited": "Liian monta yritystä — odota hetki ja yritä uudelleen.",
+      "rateLimited": "Liian monta yritystä. Odota hetki ja yritä uudelleen.",
       "ageRequired": "Sinun on vahvistettava, että olet vähintään 18-vuotias ennen tilin luomista.",
-      "handleInvalid": "Tämä @ tunniste ei ole kelvollinen — käytä pieniä kirjaimia, numeroita ja väliviivoja (3–40 merkkiä).",
-      "handleTaken": "Tämä @ tunniste on jo käytössä — valitse toinen.",
-      "handleReserved": "Tämä @ tunniste on varattu — valitse toinen.",
-      "handleLocked": "Tilillä on jo @ tunniste — sitä ei voi muuttaa. Käytä samaa tunnistetta ja vahvista sähköpostisi."
+      "handleInvalid": "@-tagi ei ole voimassa. Käytä pieniä kirjaimia, numeroita ja viivoja (3–40 merkkiä).",
+      "handleTaken": "@-tagi on jo käytössä. Valitse toinen.",
+      "handleReserved": "@-tagi on varattu. Valitse toinen.",
+      "handleLocked": "Tilillä on jo @-tagi. Sitä ei voi muuttaa. Käytä samaa tagia ja vahvista sähköpostisi."
     },
     "confirmTitle": "Vahvistetaan sähköpostiasi",
-    "confirmWorking": "Hetkinen — sähköpostiasi vahvistetaan ja pääset profiiliisi…",
-    "confirmError": "Linkki on vanhentunut tai jo käytetty. Yritä kirjautua sisään — jos sähköpostisi on vahvistettu, pääset suoraan profiiliisi.",
+    "confirmWorking": "Hetkinen. Sähköpostisi vahvistetaan ja pääset profiiliisi…",
+    "confirmError": "Linkki on vanhentunut tai sitä on jo käytetty. Yritä kirjautua sisään. Jos sähköpostisi on vahvistettu, pääset suoraan profiiliisi.",
     "showPassword": "Näytä salasana",
     "hidePassword": "Piilota salasana",
-    "ageLabel": "Vahvistan, että olen vähintään 18-vuotias — katso",
+    "ageLabel": "Vahvistan, että olen vähintään 18-vuotias. Katso",
     "ageLink": "Käyttöehdot, luku 12",
     "handle": "@ tunniste (valinnainen)",
-    "handlePlaceholder": "esim. nordlys-film — tulee @-nimeksesi",
+    "handlePlaceholder": "esim. pohjoisvalo-elokuva, tulee @-nimeksesi",
     "handleHint": "Pienet kirjaimet, numerot ja väliviivat (3–40 merkkiä). Varaa tulevan luojan osoitteesi, eikä sitä voi muuttaa myöhemmin.",
     "handleAvailable": "Tunniste on saatavilla!"
   },
@@ -82,11 +82,11 @@
       "sections": {
         "s1": {
           "title": "Kirjoita meille",
-          "body": "Tavoitat meidät aina osoitteesta contact@doccys.com. Kerrothan, mistä elokuvasta ja sivusta on kyse ja mitä laitetta tai selainta käytät — niin voimme auttaa nopeammin."
+          "body": "Voit aina ottaa meihin yhteyttä osoitteessa contact@doccys.com. Kirjoita mielellään, mistä elokuvasta ja sivusta on kyse, sekä mikä laite tai selain käytössäsi on, niin voimme auttaa nopeammin."
         },
         "s2": {
           "title": "Aiheista, joista voit kirjoittaa",
-          "body": "• Sivuston tekniset virheet\n• Minuuttien ostaminen ja maksut\n• Tekijänoikeudet — pitäisikö (vai pitäisikö ei) jonkin elokuvan olla täällä?\n• Henkilötietosi, esim. tilisi poistaminen\n• Yhteistyö Doccysin kanssa tekijänä"
+          "body": "• Sivuston tekniset virheet\n• Minuuttien osto ja maksut\n• Tekijänoikeus: pitäisikö elokuvan olla täällä (vai ei)?\n• Henkilötietosi, esim. tilisi poistaminen\n• Yhteistyö Doccysin kanssa luojana"
         },
         "s3": {
           "title": "Vastausaika",
@@ -100,19 +100,19 @@
       "sections": {
         "s1": {
           "title": "Doccysistä",
-          "body": "Doccys on suoratoistopalvelu itsenäisille dokumenteille: maksat vain siitä, mitä todella katsot, minuutti minuutilta. Palvelua ylläpitää Doccys — y-tunnus (CVR) 46804147."
+          "body": "Doccys on itsenäisten dokumenttielokuvien suoratoistopalvelu: maksat vain siitä, mitä todella katsot, minuutti minuutilta. Palvelua ylläpitää Doccys, Y-tunnus 46804147."
         },
         "s2": {
           "title": "Tilin luominen",
-          "body": "Tilin luominen on ilmaista. Rekisteröityessäsi anna toimiva sähköpostiosoite ja vahvista se postista löytyvän linkin avulla — vasta sitten tiliä voi käyttää. Olet itse vastuussa kirjautumistietojesi salaamisesta ja kaikesta tilisi kautta tapahtuvasta toiminnasta."
+          "body": "Tilin luominen on ilmaista. Rekisteröitymisen yhteydessä sinun on annettava voimassa oleva sähköpostiosoite ja vahvistettava se linkin kautta saamassasi sähköpostissa. Vasta sitten tiliä voidaan käyttää. Olet itse vastuussa kirjautumistietojesi pitämisestä salassa ja kaikesta toiminnasta, joka tapahtuu tilisi kautta."
         },
         "s3": {
           "title": "Minuutit ja toisto",
-          "body": "Elokuvia katsotaan tilin minuuteilla. Kulutus mitataan todellisen katseluajan mukaan — jos keskeytät elokuvan keskeltä, maksat vain katsotun ajan. Elokuvan minuuttimaksu näkyy elokuvan sivulla ennen toiston aloittamista.\nKatselusi rekisteröidään mitattuna kulutuksena (“todiste”) — ks. myös tietosuojakäytäntö. Todiste on ratkaiseva, jos on epäselvyyttä siitä, mitä olet katsonut ja mitä saldostasi on vähennetty."
+          "body": "Elokuvia toistetaan minuuttien mukaan tililläsi. Kulutus mitataan sen ajan mukaan, jonka todella toistat. Jos keskeytät elokuvan kesken, maksat vain nähdystä ajasta. Elokuvan minuuttihinta näkyy elokuvan sivulla ennen toiston aloittamista.\nToistosi rekisteröidään mitattuna kulutuksena (”todistus”). Katso myös tietosuojakäytäntö. Todistus on ratkaiseva, jos on epäselvyyksiä siitä, mitä olet katsonut ja mitä on vähennetty saldostasi."
         },
         "s4": {
           "title": "Ostaminen ja maksaminen",
-          "body": "Minuutit ostetaan paketteina niihin hintoihin, jotka näkyvät oston yhteydessä. Maksun käsittelee maksukumppanimme Stripe, ja kuitti lähetetään sähköpostiisi. Ilmoitettu hinta sisältää arvonlisäveron: arvonlisävero lasketaan Stripe Taxin mukaan laskutusmaasi perusteella ja se vähennetään summasta (arvonlisävero näkyy erillisenä rivinä maksusivulla).\nKaikki summat ovat Yhdysvaltain dollareissa (USD) — katso jakso 13."
+          "body": "Minuutit ostetaan paketteina ostohetkellä näkyvillä hinnoilla. Maksun käsittelee maksukumppanimme Stripe, ja kuitti lähetetään sähköpostiisi. Ilmoitettu hinta sisältää arvonlisäveron: arvonlisävero lasketaan Stripe Taxin mukaan laskutusmaasi mukaan ja vähennetään summasta (arvonlisävero näkyy erillisenä rivinä maksusivulla).\nKaikki summat ovat Yhdysvaltain dollareissa (USD). Katso kohta 13."
         },
         "s5": {
           "title": "Minuuttien voimassaolo",
@@ -120,7 +120,7 @@
         },
         "s6": {
           "title": "Peruutusoikeus ja virheet",
-          "body": "Minuutit ovat digitaalista sisältöä: kun toisto on aloitettu, peruutusoikeus päättyy Tanskan kuluttajasopimuslain digitaalista sisältöä koskevien sääntöjen mukaan. Jos et ole aloittanut toistoa, voit kirjoittaa osoitteeseen contact@doccys.com 14 päivän kuluessa ostoista ja saada koko summan takaisin.\nJos sinulta veloitettiin jostakin, jota et teknisen vian vuoksi voinut katsoa, tai maksu meni läpi kahdesti, kirjoita meille — korjaamme asian."
+          "body": "Minuutit ovat digitaalista sisältöä. Kun toisto on aloitettu, peruutusoikeus raukeaa digitaalista sisältöä koskevien ostopäätösten sääntöjen mukaan. Jos et ole aloittanut toistoa, voit 14 päivän kuluessa ostopäivästä kirjoittaa osoitteeseen contact@doccys.com ja saada koko summan takaisin.\nJos sinulta on veloitettu jotain, mitä et voinut nähdä teknisen virheen vuoksi, tai maksu meni läpi kahdesti, kirjoita meille, niin korjaamme sen."
         },
         "s7": {
           "title": "Tekijöiden oikeudet",
@@ -128,7 +128,7 @@
         },
         "s8": {
           "title": "Vastuu ja sisältö",
-          "body": "Doccys ei ole elokuvien kustantaja — elokuvien sisältö ja näkemykset ovat tekijöiden. Palvelu tarjotaan “hnkönsä mukaisena”. Emme vastaa välillisistä vahingoista tai saamatta jääneistä hyödyistä, mukaan lukien palvelukatkoista, mutta korjaamme virheet tietysti niin nopeasti kuin pystymme.\nVoimme muuttaa tulevia hintoja kohtuullisella ilmoitusajalla; muutokset eivät koskaan koske jo ostettuja minuutteja."
+          "body": "Doccys ei ole elokuvien kustantaja tai julkaisija. Elokuvien sisältö ja mielipiteet ovat tekijöiden. Palvelu tarjotaan ”sellaisena kuin se on”. Emme ole vastuussa epäsuorista vahingoista tai menetetystä hyödyistä, mukaan lukien käyttökatkokset, mutta korjaamme virheet tietenkin mahdollisimman nopeasti.\nVoimme muuttaa tulevia hintoja kohtuullisella varoitusajalla; muutokset eivät koskaan koske jo ostettuja minuutteja."
         },
         "s9": {
           "title": "Ehtojen muutokset",
@@ -136,19 +136,19 @@
         },
         "s10": {
           "title": "Valitukset ja yhteystiedot",
-          "body": "Voit aina kirjoittaa osoitteeseen contact@doccys.com. Tanskalaiset kuluttajat voivat lisäksi ottaa yhteyttä Tanskan kuluttajavalituslautakuntaan ostovalitusten osalta — ks. forbrugerklagenaevnet.dk. Näihin ehtoihin sovelletaan Tanskan oikeutta."
+          "body": "Voit aina kirjoittaa osoitteeseen contact@doccys.com. Tanskalaiset kuluttajat voivat lisäksi ottaa yhteyttä Kuluttajariitalautakuntaan ostopalautteissa. Katso kuluttajariitalautakunta.dk. Tanskalaiset lait koskevat näitä ehtoja."
         },
         "s11": {
           "title": "Lisenssi elokuvan lataamiseen (tekijät)",
-          "body": "Kun lataat elokuvan Doccysiin, vahvistat seuraavat:\n• Omistat kaikki oikeudet elokuvaan — mukaan lukien musiikki ja arkistomateriaali — eikä elokuva loukkaa kolmansien osapuolten oikeuksia.\n• Annoit Doccysille ei-yksinomaisen, maailmanlaajuisen ja ajallisesti rajoittamattoman lisenssin suoratoistaa elokuvaa alustalla, valmistaa tekstityksiä ja trailereita elokuvan pohjalta sekä markkinoida elokuvaa alustalla.\n• Voit milloin tahansa pyytää toimitusta poistamaan elokuvasi — kirjoita osoitteeseen contact@doccys.com.\n• Hyväksyntäsi rekisteröidään ajankohdan ja versionumeron kanssa jokaisen latauksen yhteydessä ja koskee lataamaasi elokuvaa.\nKäännösten välisissä ristiriidoissa suomenkielinen teksti on ratkaiseva (ks. kohta 10)."
+          "body": "Kun lataat elokuvan Doccysiin, vahvistat seuraavat:\n• Omistat kaikki oikeudet elokuvaan, mukaan lukien musiikin ja arkistomateriaalin, eikä elokuva loukkaa kolmansien osapuolten oikeuksia.\n• Annet Doccysille ei-yksinomaisen, maailmanlaajuisen ja aikarajoittamattoman lisenssin elokuvan suoratoistoon alustalla, tekstitysten ja trailereiden laatimiseen elokuvan perusteella sekä elokuvan markkinointiin alustalla.\n• Voit milloin tahansa pyytää toimitusta poistamaan elokuvasi. Kirjoita osoitteeseen contact@doccys.com.\n• Hyväksyntäsi rekisteröidään ajankohdan ja versionumeron kanssa jokaisessa latauksessa ja se koskee lataamaasi elokuvaa.\nMikäli käännösten välillä on eroja, on tanskalainen teksti voimassa (ks. kohta 10)."
         },
         "s12": {
           "title": "Ikäraja 18 vuotta",
-          "body": "Doccys on aikuisille suunnattu suoratoistopalvelu: tilin luomiseksi ja alustan käyttämiseksi sinun on oltava vähintään 18-vuotias.\nTilin luomisen yhteydessä vahvistat rastittamalla, että olet vähintään 18-vuotias. Vahvistus rekisteröidään aikaleiman ja versionumeron kanssa tilisi yhteyteen.\nTiliä ei saa antaa alle 18-vuotiaiden käyttöön — Doccysissä oleva sisältö ei ole valikoitu tai ikämerkattu lapsille ja nuorille.\nJos huomaamme, että käyttäjä on alle 18-vuotias, voimme sulkea tilin välittömästi (ks. jakso 2 tilisi vastuusta)."
+          "body": "Doccys on aikuisille suunnattu suoratoistopalvelu. Tilin luomiseksi ja alustan käyttämiseksi sinun on oltava vähintään 18-vuotias.\nTilin luomisen yhteydessä vahvistat rastittamalla, että olet vähintään 18-vuotias. Vahvistus rekisteröidään ajankohdan ja versionumeron kanssa tilisi yhteydessä.\nTiliä ei saa antaa alle 18-vuotiaiden käyttöön. Doccysin sisältöä ei ole valittu tai ikärajattu lapsille ja nuorille.\nJos huomaamme, että käyttäjä on alle 18-vuotias, voimme sulkea tilin välittömästi (ks. kohta 2 tilisi vastuusta)."
         },
         "s13": {
           "title": "Valuutta",
-          "body": "Kaikki Doccysissä olevat summat on ilmoitettu ja veloitettu Yhdysvaltain dollareissa (USD). Kun maksusivulla ja näissä ehdoissa näkyy summa, jossa on ”$”, se tarkoittaa Yhdysvaltain dollareita (USD) — ei muuta valuuttaa, jossa on dollarimerkki (esimerkiksi meksikon pesot (MXN), kanadan dollarit (CAD) tai argentiinan pesot (ARS)).\nToisessa valuutassa nimetty kortti muuntaa summan kortin myöntäjän tai pankin kurssin ja mahdollisten maksujen mukaan — tämä on Doccysin hallinnan ulkopuolella; maksusivun summa on aina USD-summa.\nArvonlisävero lasketaan Stripe Taxin mukaan laskutusmaasi perusteella ja se vähennetään ilmoitetusta hinnasta — hinta sisältää arvonlisäveron (katso jakso 4)."
+          "body": "Kaikki summat Doccysissa on ilmoitettu ja veloitettu Yhdysvaltain dollareissa (USD). Kun maksusivulla ja näissä ehdoissa näkyy summa, jossa on ”$”, se tarkoittaa Yhdysvaltain dollareita (USD), ei muuta valuuttaa, jossa on dollarimerkki (esimerkiksi meksikon pesot (MXN), kanadan dollarit (CAD) tai argentiinan pesot (ARS)).\nToisessa valuutassa nimetty kortti muuntaa summan kortin myöntäjän tai pankin kurssin ja mahdollisten maksujen mukaan. Tämä on Doccysin kontrollin ulkopuolella; maksusivulla näkyvä summa on aina USD-summa.\nArvonlisävero lasketaan Stripe Taxin mukaan laskutusmaasi mukaan ja vähennetään ilmoitetusta hinnasta. Hinta sisältää arvonlisäveron (ks. kohta 4)."
         }
       }
     },
@@ -158,19 +158,19 @@
       "sections": {
         "s1": {
           "title": "Rekisterinpitäjä",
-          "body": "Doccys — y-tunnus (CVR) 46804147. Yhteystieto: contact@doccys.com."
+          "body": "Doccys, Y-tunnus 46804147. Ota yhteyttä: contact@doccys.com."
         },
         "s2": {
           "title": "Mitä tietoja käsittelemme",
-          "body": "• Tili: sähköpostiosoitteesi (ja sen vahvistus) sekä salasanasi, joka tallennetaan salattuna.\n• Ostot: mitkä paketit ostit, milloin ja tapahtumatunnus. Maksukortteja emme käsittele koskaan — se tapahtuu Stripellä.\n• Toisto: milloin aloitat ja lopetat, kelaus ja katsottu aika per elokuva. Mitattu kulutus (“todiste”) vähentää minuutteja saldostasi ja korvaa tekijän.\n• Kommentit: nimi, jolla kirjoitat, kommenttisi ja tykkäyksesi sekä niiden moderointi.\n• Suosittelut: jos tulet suosittelulinkin kautta, säilytämme koodin evästeessä enintään 30 päivää, jotta sinut suositellut henkilö saa hyvityksen ensimmäisestä ostostasi."
+          "body": "• Tili: sähköpostiosoitteesi (ja sen vahvistus) sekä salasanasi, joka on tallennettu salattuna.\n• Ostot: mitkä paketit olet ostanut, ostopäivämäärä ja transaktio-id. Maksukortteja ei käsitellä meillä. Se tapahtuu Stripesa.\n• Toisto: milloin aloitat ja lopetat, kelaus ja kulutettu aika per elokuva. Mitattu kulutus (”todistus”) on se, joka vähentää minuutteja saldostasi ja maksaa luojalle.\n• Kommentit: nimi, jonka allekirjoitat, kommenttisi ja tykkäyksesi sekä niiden moderointi.\n• Suositukset: jos tulet suosituslinkin kautta, tallennamme koodin evästeeseen jopa 30 päiväksi, jotta suosituksesi voi saada hyvityksen ensimmäisestä ostostasi."
         },
         "s3": {
           "title": "Tarkoitus ja peruste",
-          "body": "Käsittelemme tietoja palvelun tarjoamiseksi — tilin luominen, minuuttien vähentäminen saldostasi ja tekijöiden korvaaminen (sopimus), palvelun turvaaminen ja väärinkäytösten estäminen (oikeutettu etu) sekä kirjanpito- ja verovelvoitteiden täyttäminen (lakisääteinen velvoite). Emme koskaan myy tietojasi emmekä käytä niitä mainosprofilointiin — Doccys ei näytä mainoksia koskaan."
+          "body": "Käsittelemme tietoja palvelun tarjoamiseksi: tilisi luominen, minuuttien vähentäminen saldostasi ja luojien maksaminen (sopimusperuste), palvelun turvallisuuden ylläpitäminen ja väärinkäytön estäminen (legitiimi etu) sekä kirjanpito- ja verovelvoitteiden täyttäminen (laillinen velvoite). Emme koskaan myy tietojasi emmekä käytä niitä mainontaan. Doccys ei näytä koskaan mainoksia."
         },
         "s4": {
           "title": "Kolmannet osapuolet",
-          "body": "Käytämme seuraavia henkilötietojen käsittelijöitä:\n• Supabase — kirjautuminen ja tietokanta\n• Stripe — maksut ja kuitit\n• Vercel — ylläpito ja isännöinti\nNe käsittelevät tietoja vain puolestamme ja yllä mainittuihin tarkoituksiin."
+          "body": "Käytämme seuraavia tietojenkäsittelijöitä:\n• Supabase: kirjautuminen ja tietokanta\n• Stripe: maksut ja kuitit\n• Vercel: käyttö ja hosting\nHe käsittelevät tietoja vain meidän puolestamme ja yllä oleviin tarkoituksiin."
         },
         "s5": {
           "title": "Evästeet",
@@ -178,15 +178,15 @@
         },
         "s6": {
           "title": "Säilytys",
-          "body": "Tili- ja kommenttitiedot poistetaan, kun pyydät sitä. Ostotiedot ja todisteet säilytetään viisi vuotta, jotta kirjanpito ja tekijöille maksettavat korvaukset voidaan tarkistaa — Tanskan kirjanpitälaki edellyttää sitä."
+          "body": "Tili- ja kommenttidata poistetaan, kun pyydät meiltä sitä. Osto- ja todistustiedot säilytetään viisi vuotta, jotta kirjanpito ja luojien maksaminen voidaan tarkistaa. Kirjanpitolaki vaatii sen."
         },
         "s7": {
           "title": "Oikeutesi",
-          "body": "Sinulla on oikeus:\n• saada tietää, mitä tietoja sinusta käsitellään\n• saada virheelliset tiedot korjatuiksi\n• saada tietoja poistetuiksi (kirjanpitälain edellyttämin poikkeuksin)\n• saada tietosi luettavassa muodossa (siirrettävyys)\n• vastustaa käsittelyä\nLähetä pyyntösi osoitteeseen contact@doccys.com — vastaamme viimeistään kuukauden kuluttua."
+          "body": "Sinulla on oikeus:\n• saada tietoa käsittelemistämme tiedoista\n• saada virheelliset tiedot korjatuksi\n• saada tiedot poistettua (poikkeuksilla, joita kirjanpitolaki määrää)\n• saada tiedot luovutettua luettavassa muodossa (tietojen siirrettävyys)\n• vastustaa käsittelyä\nLähetä pyyntösi osoitteeseen contact@doccys.com. Vastaamme viimeistään kuukauden kuluessa."
         },
         "s8": {
           "title": "Valitukset",
-          "body": "Jos et ole tyytyväinen vastaukseemme, voit valittaa Tanskan tietosuojaviranomaiselle — ks. datatilsynet.dk."
+          "body": "Jos et ole tyytyväinen vastaukseemme, voit valittaa Tietosuojavaltuutetulle. Katso datatilsynet.dk."
         },
         "s9": {
           "title": "Muutokset",
@@ -224,20 +224,20 @@
       },
       "payPerMinute": {
         "title": "Maksu katsotusta minuutista",
-        "body": "Luojalle maksetaan $0.30 jokaista 100 voimassa olevaa katsottua minuuttia kohti — vain kirjautuneet toistot, jotka anti-petossysteemi validoi, lasketaan mukaan."
+        "body": "Luojalle maksetaan 0,30 $ jokaista 100 voimassa olevaa katsottua minuuttia kohti. Vain kirjautuneet toistot, jotka anti-petossysteemi validoi, lasketaan mukaan."
       },
       "community": {
         "title": "Keskustelu elokuvan alla",
-        "body": "Jokaisella elokuvalla on oma keskustelunsa. Ei algoritmeja tiellä — vain ihmisiä, jotka katsoivat saman kuin sinä."
+        "body": "Jokaisella elokuvalla on oma keskustelunsa. Ei algoritmeja tiellä, vain ihmisiä, jotka ovat katsoneet samaa kuin sinä."
       },
       "subtitles13": {
-        "title": "Tekstitykset 13 kielellä — me maksamme",
-        "body": "Yksi napsautus luo tekstitykset koko elokuvalle: puhekielen transkriptio ja käännös kaikille alustan kielille. Me kattamme kustannukset — sinä et maksa mitään, koskaan."
+        "title": "Tekstitykset 13 kielellä. Me maksamme",
+        "body": "Yksi napsautus luo tekstitykset koko elokuvalle: puheentallennus ja käännös kaikille alustan kielille. Me katamme kustannukset. Et maksa mitään, koskaan."
       }
     },
     "recruitment": {
       "eyebrow": "Doccys etsii luojia",
-      "body": "Alusta lanseerataan joulukuussa — lataa dokumenttisi ja ansaitse $0.30 per 100 katsottua minuuttia, elokuvan eliniän ajan, maksu alkaen $25. Ja tekstitykset 13 kielellä, ilmaiseksi, yhdellä klikkauksella — me kattamme kustannukset.",
+      "body": "Alusta julkaistaan joulukuussa. Lataa dokumenttisi ja ansaitse 0,30 $ jokaista 100 katsottua minuuttia kohti elokuvan elinkaaren aikana, maksut alkaen 25 $. Ja tekstitykset 13 kielellä, ilmaiseksi, yhdellä napsautuksella. Me katamme kustannukset.",
       "cta": "Hae luojaksi"
     }
   },
@@ -249,7 +249,7 @@
     "views": "{count} katselukertaa",
     "topEyebrow": "Top 10",
     "topHeading": "Katsotuimmat tekijät",
-    "topIntro": "Lajiteltu todellisten, kelvollisten katsottujen minuuttien mukaan viimeisten 30 päivän aikana. Lista päivittyy automaattisesti — vain julkaistut elokuvat lasketaan mukaan.",
+    "topIntro": "Luokiteltu todellisten, voimassa olevien katsottujen minuuttien mukaan viimeisten 30 päivän aikana. Lista päivittyy automaattisesti, vain julkaistut elokuvat lasketaan.",
     "topEmpty": "Ei vielä katsottuja minuutteja tälle kuukaudelle.",
     "topMinutes": "{minutes} kelvollista min"
   },
@@ -259,7 +259,7 @@
   "collections": {
     "railTitle": "Kokoelmat",
     "indexTitle": "Kuraatoidut kokoelmat",
-    "indexSubtitle": "Käsivalittuja teemoja koko valikoimasta — toimituksen omat kiskot.",
+    "indexSubtitle": "Käsin valitut teemat kokoelmat: toimituksen omat jännitykset.",
     "filmCount": "{count} elokuvaa",
     "empty": "Tämä kokoelma on tyhjä nyt.",
     "viewAll": "Katso kaikki kokoelmat"
@@ -284,7 +284,7 @@
   "earningsPanel": {
     "eyebrow": "Tulot",
     "rate": "$0.30 per 100 katsottua minuuttia",
-    "explainer": "Ansaitset {rate} Doccysissa. Vain kirjautuneiden katselut, jotka anti-fraud-tarkistus hyväksyy, lasketaan mukaan — manipulointia ei koskaan makseta.",
+    "explainer": "Ansaitset {rate} Doccysissä. Vain kirjautuneet toistot, jotka anti-fraud-vahvistus hyväksyy, lasketaan mukaan. Manipulointia ei koskaan makseta.",
     "earned": "Ansaittu yhteensä",
     "paidOut": "Maksettu",
     "watchedMinutes": "Kelvolliset katsotut minuutit",
@@ -296,8 +296,8 @@
     "methodTitle": "Maksutili",
     "iban": "IBAN",
     "bic": "BIC/SWIFT",
-    "methodHint": "IBAN on tilisi kansainvälinen numero — verkkopankkisi näyttää sen tilin tiedoissa.",
-    "bicHint": "BIC/SWIFT on valinnainen — tarvitaan vain SEPA-alueen ulkopuolisille tileille.",
+    "methodHint": "IBAN on tilisi kansainvälinen numero. Nettopankkisi näyttää sen tilitiedoissa.",
+    "bicHint": "BIC/SWIFT on valinnainen, tarvitaan vain SEPA:n ulkopuolisille tileille.",
     "save": "Tallenna tiedot",
     "saving": "Tallennetaan…",
     "saved": "Tietosi on tallennettu.",
@@ -305,7 +305,7 @@
     "payoutTitle": "Pyydä maksua",
     "locked": "Nappi avautuu, kun käytettävissä oleva saldo saavuttaa $25.",
     "noMethod": "Tallenna pankkitietosi ennen maksun pyytämistä.",
-    "pending": "Sinulla on jo käynnissä oleva pyyntö — toimitus siirtää rahat pian.",
+    "pending": "Sinulla on jo yksi odottava pyyntö. Toimitus maksaa pian.",
     "button": "Maksa {amount}",
     "requesting": "Lähetetään…",
     "requestError": "Pyyntöä ei voitu luoda.",
@@ -332,10 +332,10 @@
   },
   "watch": {
     "playerNote": "Katselutiedot kirjataan jäsennellysti (taukojen, kelailun, sykäysten, laitteiden metatietojen ja aikaleimojen osalta), ja Doccysin petostentorjuntajärjestelmä vahvistaa ne ennen katseltujen minuuttien veloittamista.",
-    "playerStartFailed": "Katselutietoja ei saatu käyntiin — toisto toimii silti.",
-    "verdictValid": "✓ Katselu vahvistettu — katsellut minuuttisi lasketaan tekijän tuloihin.",
+    "playerStartFailed": "Näyttötietoja ei voitu käynnistää. Toisto toimii silti.",
+    "verdictValid": "✓ Näyttö validoitu. Katsomasi minuutit lasketaan luojan tuloihin.",
     "verdictSuspicious": "△ Katselu on merkitty petostentorjuntajärjestelmän manuaaliseen tarkistukseen.",
-    "verdictInvalid": "✗ Katselu hylätty — minuutit on veloitettu saldostasi, mutta niitä ei lasketa tekijän tuloihin.",
+    "verdictInvalid": "✗ Näyttö hylätty. Minuutit on vähennetty saldostasi, mutta niitä ei lasketa luojan tuloihin.",
     "verdictError": "Vahvistusta ei voitu suorittaa juuri nyt.",
     "proofEyebrow": "Tukikuitti",
     "proofMinutes": "Katsoit yhteensä {minutes} min",
@@ -348,7 +348,7 @@
     "creator": "Tekijä",
     "discussionEyebrow": "Yhteisö",
     "discussionTitle": "Kommentit ja keskustelu",
-    "discussionSubtitle": "Keskustelu elokuvasta jatkuu suoraan soittimen alla."
+    "discussionSubtitle": "Jatka keskustelua elokuvasta suoraan soittimen alla."
   },
   "saveButton": {
     "loginToSave": "Kirjaudu sisään tallentaaksesi elokuvan",
@@ -364,7 +364,7 @@
   },
   "comments": {
     "title": "Keskustelu",
-    "subtitle": "Jaa ajatuksesi elokuvasta muiden katsojien kanssa — ei spoilereita ilman varoitusta, kiitos.",
+    "subtitle": "Jaa ajatuksia elokuvasta muiden katsojien kanssa. Ei spoilereita ilman varoitusta, kiitos.",
     "postingAs": "Kommentoijana",
     "noNameShort": "Katsoja",
     "nameMissing": "Valitse käyttäjänimesi profiilista ennen kommentointia.",
@@ -373,22 +373,22 @@
     "submitting": "Lähetetään…",
     "loggedInNote": "Kommenttisi julkaistaan profiilillasi.",
     "loading": "Ladataan keskustelua…",
-    "empty": "Ei vielä kommentteja — ole ensimmäinen, joka pukee elokuvan sanoiksi.",
+    "empty": "Ei vielä kommentteja. Ole ensimmäinen, joka sanoo sanottavansa elokuvasta.",
     "loadError": "Kommentteja ei voitu ladata.",
     "submitError": "Kommenttia ei voitu lähettää. Yritä uudelleen.",
     "likeAria": "Tykkää tästä kommentista",
     "likeGuestHint": "Kirjaudu sisään tykkätäksesi kommenteista.",
     "likeError": "Tykkäystä ei voitu tallentaa. Yritä uudelleen.",
     "gateLogin": "Kirjaudu sisään kommentoidaksesi",
-    "gateLoginSuffix": "— vain katsojat voivat kommentoida elokuvan alla.",
-    "gateWatch": "Keskustelu avautuu, kun olet katsonut elokuvan — se on vain katsojille, jotta se pysyy lukemisen arvoisena.",
+    "gateLoginSuffix": "Vain katsojat voivat kommentoida elokuvan alla.",
+    "gateWatch": "Kommenttikenttä avautuu, kun olet katsonut elokuvan. Se on vain katsojille, jotta keskustelu pysyy lukemisen arvoisena.",
     "pin": "Kiinnitä",
     "unpin": "Irrota",
     "pinnedLabel": "Tekijän kiinnittämä",
     "delete": "Poista",
     "deleteConfirm": "Poistetaanko kommentti? Tätä ei voi kumota.",
     "deleteError": "Kommenttia ei voitu poistaa. Yritä uudelleen.",
-    "pinError": "Kommenttia ei voitu kiinnittää — toinen on jo kiinnitetty. Yritä uudelleen.",
+    "pinError": "Kommenttia ei voitu kiinnittää. Yksi on jo kiinnitetty. Yritä uudelleen.",
     "reply": "Vastaa",
     "cancel": "Peruuta",
     "replyError": "Vastausta ei voitu lähettää. Yritä uudelleen."
@@ -396,7 +396,7 @@
   "creatorApply": {
     "eyebrow": "Tekijät",
     "loginTitle": "Kirjaudu sisään hakeaksesi",
-    "loginSubtitle": "Tekijähakemukset vaativat tilin — luominen vie vain hetken.",
+    "loginSubtitle": "Luojahakemukset vaativat tilin. Tilin luominen vie hetken.",
     "loginCta": "Kirjaudu sisään",
     "title": "Tule Doccys-tekijäksi",
     "subtitle": "Doccys on kuratoitu: jokainen tekijä hyväksytään toimituksen toimesta, ennen kuin heidän elokuvansa voidaan näyttää. Kerro meille, keitä olette ja mitä teette.",
@@ -412,20 +412,20 @@
     "resubmit": "Lähetä uudelleen",
     "working": "Lähetetään…",
     "statusPending": "Hakemuksesi odottaa hyväksyntää.",
-    "statusPendingSub": "Lähetetty {date}. Toimitus vastaa täällä — tila päivittyy automaattisesti.",
-    "statusApproved": "Onneksi olkoon — sinut on hyväksytty tekijäksi!",
+    "statusPendingSub": "Hakemus tehty {date}. Toimitus palaa tähän. Tila päivittyy automaattisesti.",
+    "statusApproved": "Onnittelut, olet hyväksytty luojaksi!",
     "statusApprovedSub": "Profiilisi on luotu ja studiosi on auki. Voit nyt ladata elokuvia (ne näkyvät julkisesti vasta, kun toimitus hyväksyy ne).",
     "statusApprovedCta": "Avaa studio",
     "statusRejected": "Hakemustasi ei hyväksytty tällä kertaa.",
     "statusRejectedSub": "Ratkaistu {date}. Voit muokata hakemusta ja lähettää sen uudelleen.",
     "errors": {
-      "handleTaken": "Handle on jo käytössä — valitse toinen.",
-      "reserved": "Handle on varattu — valitse toinen.",
-      "stale": "Hakemuksen tila on muuttunut — lataa sivu uudelleen.",
+      "handleTaken": "Käyttäjänimi on jo käytössä. Valitse toinen.",
+      "reserved": "Käyttäjänimi on varattu. Valitse toinen.",
+      "stale": "Hakemuksen tila on muuttunut. Lataa sivu uudelleen.",
       "generic": "Tarkista kaikki kentät ja yritä uudelleen."
     },
-    "subtitlesTitle": "Ilmaiset tekstitykset 13 kielellä — yhdellä klikkauksella",
-    "subtitlesBody": "Luo tekstitykset koko elokuvalle yhdellä klikkauksella: puheen transkriptio ja käännös kaikille alustan kielille. Me kattamme kustannukset — et maksa mitään, koskaan."
+    "subtitlesTitle": "Ilmaiset tekstitykset 13 kielellä yhdellä napsautuksella",
+    "subtitlesBody": "Luo tekstitykset koko elokuvasta yhdellä napsautuksella: puheentunnistus ja käännös kaikille alustan kielille. Me katamme kustannukset, et maksa mitään, koskaan."
   },
   "creatorStudio": {
     "eyebrow": "Tekijästudio",
@@ -433,14 +433,14 @@
     "loginSubtitle": "Studio on vain hyväksytyille tekijöille.",
     "loginCta": "Kirjaudu sisään",
     "uploadHeading": "Lataa uusi elokuva",
-    "uploadSubtitle": "Elokuva tallennetaan luonnoksena ja julkaistaan julkisesti vasta, kun toimitus hyväksyy sen. Vähintään 20 minuuttia — se on raja, jonka jälkeen koetaan täydellinen dokumenttikokemus.",
+    "uploadSubtitle": "Elokuva tallennetaan luonnoksena ja julkaistaan julkisesti vasta, kun toimitus hyväksyy sen. Vähintään 20 minuuttia on raja, jota pidetään täydellisenä dokumenttikokemuksena.",
     "titleLabel": "Nimi",
     "yearLabel": "Vuosi",
     "genresLabel": "Tyylilajit (valitse enintään 5)",
     "synopsisLabel": "Synopsis",
     "posterLabel": "Kansikuva",
     "requiredMark": "Vaaditaan",
-    "posterHint": "Vaaditaan (jpg/png/webp, enintään 10 Mt, vähintään 640×360 pikseliä) — elokuvan kansikuva kaikkialla alustalla.",
+    "posterHint": "Pakollinen (jpg/png/webp, enintään 10 MB, vähintään 640×360 pikseliä). Elokuvan kansikuva kaikkialla alustalla.",
     "posterDetected": "Kuva: {width}×{height} pikseliä",
     "fileLabel": "Videotiedosto (mp4/mov/webm, enintään 2 GB)",
     "durationDetected": "Elokuvan kesto: {seconds} sekuntia",
@@ -454,75 +454,75 @@
     "errors": {
       "notMp4": "Vain videotiedostoja (mp4, mov tai webm) voidaan ladata.",
       "notPoster": "Vain jpg-, png- ja webp-kuvia voi käyttää.",
-      "posterRequired": "Lataa kansikuva — elokuvaa ei voi julkaista ilman sitä.",
-      "posterProbe": "Kuvaa ei voitu lukea — onko se kelvollinen kuva?",
-      "posterTooSmall": "Kuva on liian pieni — vähintään 640×360 pikseliä.",
-      "posterTooBig": "Kuva on liian suuri — enintään 10 Mt.",
-      "posterFailed": "Kansikuvaa ei voitu ladata — yritä uudelleen.",
-      "probe": "Tiedoston metatietoja ei voitu lukea — onko se voimassa oleva videotiedosto?",
+      "posterRequired": "Lataa kansikuva. Elokuvaa ei voi julkaista ilman sitä.",
+      "posterProbe": "Kuvaa ei voitu lukea. Onko se voimassa oleva kuva?",
+      "posterTooSmall": "Kuva on liian pieni. Vähintään 640×360 pikseliä.",
+      "posterTooBig": "Kuva on liian suuri. Enintään 10 MB.",
+      "posterFailed": "Kansikuvaa ei voitu ladata. Yritä uudelleen.",
+      "probe": "Tiedoston metatietoja ei voitu lukea. Onko se voimassa oleva videotiedosto?",
       "missingFields": "Täytä nimi ja synopsis, valitse vähintään yksi tyylilaji ja videotiedosto.",
-      "notLoggedIn": "Et ole enää kirjautunut sisään — kirjaudu sisään ja yritä uudelleen.",
-      "uploadFailed": "Lataus epäonnistui — yritä uudelleen.",
-      "rowFailed": "Elokuvaa ei voitu luoda — yritä uudelleen.",
+      "notLoggedIn": "Et ole enää kirjautunut sisään. Kirjaudu sisään ja yritä uudelleen.",
+      "uploadFailed": "Lataus epäonnistui. Yritä uudelleen.",
+      "rowFailed": "Elokuvaa ei voitu luoda. Yritä uudelleen.",
       "license": "Sinun on vahvistettava lisenssiehdot ennen kuin voit ladata.",
-      "videoTooBig": "Video on yli 2 GB — pakkaa se (esim. 720p tai matalampi bittinopeus) ja valitse tiedosto uudelleen.",
-      "bunnyStart": "Video-CDN:ää ei voitu valmistella — yritä uudelleen.",
-      "tusUpload": "Siirto video-CDN:ään epäonnistui — yritä uudelleen (siirto jatkuu siitä, mihin se jäi).",
-      "bunnyEncode": "Elokuvan koodaus epäonnistui video-CDN:ssä — yritä uudelleen.",
-      "bunnyEncodeTimeout": "Koodaus kesti liian kauan video-CDN:ssä — yritä ladata uudelleen hetken kuluttua.",
-      "tooShort": "Elokuva (noin {minutes} min) on alle 20 minuutin minimirajan — lyhyempiä elokuvia ei voi ladata."
+      "videoTooBig": "Video on yli 2 GB. Pakkaa se (esim. 720p tai matalampi bittinopeus) ja valitse tiedosto uudelleen.",
+      "bunnyStart": "Video-CDN:ää ei voitu valmistella. Yritä uudelleen.",
+      "tusUpload": "Siirto video-CDN:ään epäonnistui. Yritä uudelleen (lataus jatkuu siitä, mihin se jäi).",
+      "bunnyEncode": "Elokuvan koodaus epäonnistui video-CDN:ssä. Yritä uudelleen.",
+      "bunnyEncodeTimeout": "Koodaus kesti liian kauan video-CDN:ssä. Yritä ladata uudelleen hetken kuluttua.",
+      "tooShort": "Elokuva (noin {minutes} min) on alle vähimmäisrajan 20 minuuttia. Lyhyempiä elokuvia ei voi ladata."
     },
     "filmsHeading": "Elokuvasi",
-    "statusDraft": "Luonnos — odottaa hyväksyntää",
+    "statusDraft": "Luonnos, odottaa hyväksyntää",
     "statusPublished": "Julkaistu",
     "draftNote": "Luonnoksen voi poistaa; julkaistu elokuva kuuluu toimitukselle.",
     "publishGateNote": "Elokuvan voi julkaista vasta, kun tekstitykset ovat valmiit kaikilla kielillä ja traileri on valmis.",
     "requiredBadge": "Vaadittu",
     "delete": "Poista luonnos",
     "deleteConfirm": "Poistetaanko tämä luonnos? Video poistetaan myös.",
-    "empty": "Ei vielä elokuvia — lataa ensimmäinen yllä.",
+    "empty": "Ei elokuvia vielä. Lataa ensimmäinen yllä.",
     "retentionHeading": "Pysyvyys",
-    "retentionIntro": "Kuinka pitkälle katsojasi pääsivät — osuus, joka saavutti 10 %, 20 % … 100 % elokuvasta.",
+    "retentionIntro": "Kuinka pitkälle katsojasi pääsivät. Osuus, joka saavutti 10 %, 20 % … 100 % elokuvasta.",
     "retentionEmpty": "Päättyneitä toistoja ei vielä tarpeeksi pysyvyyskuvaajan tekemiseen (vähintään 5).",
     "retentionSessions": "{count} päätynyttä toistoa",
     "subtitlesHeading": "Tekstitykset",
     "subtitlesIntro": "Tekoäly luo transkription elokuvan äänestä kielellä {language} ja kääntää sen kaikille alustan kielille.",
     "spokenLanguageLabel": "Puhuttu kieli",
-    "spokenLanguageHint": "Elokuvassa puhuttu kieli — tekstitykset luodaan sen pohjalta.",
+    "spokenLanguageHint": "Elokuvassa puhuttu kieli. Tekstitykset tuotetaan sen perusteella.",
     "subtitlesGenerate": "Luo tekstitykset",
     "subtitlesRegenerate": "Luo uudelleen",
-    "subtitlesWorking": "Luodaan tekstityksiä — pitkistä elokuvista voi mennä useita minuutteja.",
+    "subtitlesWorking": "Tuotetaan tekstityksiä. Pitkissä elokuvissa voi kestää useita minuutteja.",
     "subtitlesReady": "Valmis",
     "subtitlesProcessing": "Luodaan…",
     "subtitlesFailed": "Epäonnistui",
     "subtitlesMissing": "Ei luotu",
-    "subtitlesError": "Tekstityksiä ei saatu luotua kokonaan — yritä uudelleen. Epäonnistuneita kieliä voi yrittää uudelleen samalla painikkeella.",
+    "subtitlesError": "Tekstityksiä ei voitu tuottaa kokonaan. Yritä uudelleen. Kielet, jotka epäonnistuivat, voidaan kokeilla uudelleen samalla painikkeella.",
     "trailerHeading": "Traileri",
-    "trailerIntro": "Leikkaa elokuvasta 90 sekuntia ilmaisiksi maistiaisiksi — vieraat näkevät sen paywallin takana, ja jaetut linkit näyttävät elokuvan videokorttina.",
+    "trailerIntro": "Leikkaa 90 sekuntia elokuvasta ilmaiseksi maistiaiseksi. Vierailevat katsovat sen maksuseinän takana, ja jaetut linkit näyttävät elokuvan videokorttina.",
     "trailerStartLabel": "Alku sekunnista",
     "trailerGenerate": "Luo traileri",
     "trailerRegenerate": "Luo uudelleen",
-    "trailerWorking": "Traileria luodaan — se voi kestää muutaman minuutin.",
+    "trailerWorking": "Tuotetaan traileria. Se voi kestää muutaman minuutin.",
     "trailerReady": "Valmis",
     "trailerFailed": "Epäonnistui",
     "trailerMissing": "Ei luotu",
-    "trailerError": "Traileria ei voitu luoda — yritä uudelleen.",
+    "trailerError": "Traileri ei voitu tuottaa. Yritä uudelleen.",
     "shareHeading": "Jaa ja upota",
     "copyWatchLink": "Kopioi elokuvan linkki",
     "copyEmbedCode": "Kopioi upotuskoodi",
-    "licenseLabel": "Vahvistan, että omistan kaikki oikeudet elokuvaan — mukaan lukien musiikki ja arkistomateriaali — ja annan Doccysille ei-yksinomaisen, maailmanlaajuisen ja ajattoman lisenssin elokuvan suoratoistoon, tekstitysten ja trailereiden valmistamiseen sekä sen markkinointiin.",
+    "licenseLabel": "Vahvistan, että omistan kaikki oikeudet elokuvaan, mukaan lukien musiikin ja arkistomateriaalin, ja annan Doccysille ei-yksinomaisen, maailmanlaajuisen ja aikarajoittamattoman lisenssin elokuvan suoratoistoon, tekstitysten ja trailereiden tuottamiseen sekä sen markkinointiin.",
     "licenseLink": "Lue lisenssiehdot Käyttöehdoista, kohta 11.",
     "retentionAxisStart": "0 %",
     "retentionAxisEnd": "100 % elokuvasta",
     "talHeading": "Tilastosi",
     "talIntro": "Tulosi ovat täysin läpinäkyviä: ansaitset {rate} per 100 kelvollista katsottua minuuttia per elokuva, ja jokainen luku täällä voidaan jäljittää todellisiin toistoihin.",
-    "talGuestNote": "Anonyymit katsojat lasketaan katselukertoina, mutta vain kirjautuneet katsojat, joilla on voimassa oleva katselu, lasketaan mukaan — heistä, minuuteista ja summista alla on kyse.",
-    "talEmpty": "Ei katsojia vielä. Kun julkaistu elokuva katsotaan kirjautuneen käyttäjän toimesta, minuutit ja summat ilmestyvät tänne — koko laskelma.",
+    "talGuestNote": "Anonyymit katsojat lasketaan katselukertoina, mutta vain kirjautuneet katsojat, joilla on voimassa oleva katselu, saavat korvauksen. Heistä, minuuteista ja summista alla on kyse.",
+    "talEmpty": "Ei katsojia vielä. Kun julkaistu elokuva katsotaan kirjautuneen käyttäjän toimesta, minuutit ja summat näkyvät täällä, koko laskelma.",
     "talSummary30dKr": "Ansaittu, viimeiset 30 päivää",
     "talSummary30dMin": "Kelvolliset minuutit, viimeiset 30 päivää",
     "talSummaryTotalKr": "Ansaittu yhteensä",
     "talSummaryTotalMin": "Kelvolliset minuutit yhteensä",
-    "talChartHeading": "Päivittäiset tulot — viimeiset 30 päivää",
+    "talChartHeading": "Päivittäiset tulot, viimeiset 30 päivää",
     "talChartBar": "{date}: {amount}",
     "talSeereHeading": "Kuka katsoo elokuviasi",
     "talLanguage": "Kieli",
@@ -546,14 +546,14 @@
     "fileNoneChosen": "Ei tiedostoa valittu",
     "talFollowers": "Seuraajat",
     "visitHeading": "Käyntikorttisi",
-    "visitIntro": "Kortti, jossa on profiilisi ja tietosi — valmis jaettavaksi sosiaalisessa mediassa, sähköposteissa tai festivaaleilla.",
+    "visitIntro": "Lyhyt esittely profiilistasi ja numeroistasi, valmiina jaettavaksi sosiaalisessa mediassa, sähköposteissa tai festivaaleilla.",
     "visitDownload": "Lataa käyntikortti (PNG)",
     "bunnyPrepare": "Valmistellaan video-CDN:ää…",
     "bunnyUpload": "Siirretään video-CDN:ään: {percent} %",
     "bunnyEncode": "Koodataan video-CDN:ssä… (odota hetki)",
-    "reviewNote": "Toimitus tarkistaa kaikki lataukset ennen kuin elokuva voi tulla julkiseksi — tyypillinen vastausaika on muutama päivä. Odotusaika on kuratoinnin suodatin: se estää roskapostin ja mainokset, jotta katalogi koostuu vain dokumenteista. Luonnos voidaan poistaa täällä ennen julkaisua.",
-    "keepScreenOn": "Pidä näyttö hereillä työn aikana — jos puhelin siirtyy lepotilaan (esim. alhaisen akun vuoksi), se keskeytyy. Sivusto pyytää myös pitämään näytön hereillä, kun puhelin sen sallii.",
-    "batteryLow": "Puhelimessa on vain noin {percent} % akkua jäljellä, eikä se lataa — liitä laturi ennen kuin lataat ja tuotat. Elokuva vaatii tekstitykset (13 kieltä) ja trailerin ennen julkaisua, ja putkistot vievät minuutteja kerrallaan akkua."
+    "reviewNote": "Toimitus tarkistaa kaikki lataukset ennen kuin elokuva voi tulla julkiseksi. Tyypillinen vastausaika on muutama päivä. Odotusaika on kuratoinnin suodatin: se pitää roskapostin ja mainokset loitolla, jotta luettelo koostuu vain dokumenteista. Luonnos voidaan poistaa täällä ennen julkaisua.",
+    "keepScreenOn": "Pidä näyttö hereillä, kun työskentely on käynnissä. Jos puhelin siirtyy lepotilaan (esim. akun ollessa alhainen), se keskeytyy. Sivusto pyytää itse pitämään näytön hereillä, kun puhelin sen sallii.",
+    "batteryLow": "Puhelimessa on vain noin {percent} % akkua eikä se lataa. Liitä laturi ennen kuin lataat ja tuotat. Elokuva vaatii tekstitykset (13 kieltä) ja trailerin ennen kuin se voidaan julkaista, ja putkistot vievät minuutteja akusta."
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",
@@ -562,38 +562,38 @@
     "eyebrow": "Oma tili",
     "memberSince": "Jäsenenä {date} alkaen",
     "historyHeading": "Katseluhistoriani",
-    "historySubtitle": "Jatka siitä, mihin jäit — tai katu vanha suosikki.",
-    "historyEmpty": "Ei vielä katsottuja elokuvia. Katso dokumentti loppuun, niin se ilmestyy tähän — vain kelvolliset katsomiset tallennetaan.",
+    "historySubtitle": "Jatka siitä, mihin jäit, tai katso vanha suosikkisi uudelleen.",
+    "historyEmpty": "Ei elokuvia vielä nähty. Katso dokumentti loppuun, niin se ilmestyy tänne. Vain voimassa olevat katselutiedot rekisteröidään.",
     "savedHeading": "Tallennetut elokuvat",
     "savedSubtitle": "Yksityinen listasi.",
     "savedEmpty": "Ei vielä tallennettuja elokuvia. Paina \"Tallenna elokuva\" soittimen alla, niin elokuva ilmestyy tähän.",
     "creatorHeading": "Tekijä",
     "creatorSub": "Hae tekijäksi ja saat pääsyn dokumentariesi lataamiseen.",
-    "creatorOwnedSub": "Sinut on hyväksytty tekijäksi — studio on auki.",
+    "creatorOwnedSub": "Olet hyväksytty luoja. Studio on avoinna.",
     "creatorApplyCta": "Tule tekijäksi",
     "creatorStudioCta": "Avaa studio",
     "nameMissing": "Valitse käyttäjänimesi",
-    "nameMissingSub": "Sähköpostiasi ei koskaan näytetä muille — valitse nimi, jonka muut näkevät kommenteissasi.",
+    "nameMissingSub": "Sähköpostiosoitettasi ei koskaan näytetä muille. Valitse nimi, jonka haluat muiden näkevän kommenteissasi.",
     "nameLabel": "Käyttäjänimi",
     "nameSave": "Tallenna käyttäjänimi",
     "nameSaved": "Käyttäjänimesi on tallennettu.",
     "nameError": "Käyttäjänimen tallentaminen epäonnistui. Yritä uudelleen.",
     "deleteHeading": "Poista tili",
-    "deleteIntro": "Poisto on pysyvä: tilisi, katseluhistoriasi ja tallennetut elokuvat katoavat, ja kommenttisi poistetaan kokonaan. Ostotietoja säilytetään anonymisoituna viisi vuotta kirjanpitolain mukaan — ilman yhteyttä sinuun.",
+    "deleteIntro": "Poisto on pysyvä: tilisi, katseluhistoriasi ja tallennetut elokuvat katoavat, ja kommenttisi poistetaan kokonaan. Ostotietoja säilytetään anonymisoituna viisi vuotta kirjanpitolain mukaan, ilman yhteyttä sinuun.",
     "deleteConfirmLabel": "Kirjoita käyttäjänimesi (“{name}”) vahvistaaksesi",
     "deletePlaceholder": "Käyttäjänimesi",
     "deleteButton": "Poista tilini pysyvästi",
     "deleteWorking": "Poistetaan…",
-    "deleteCreatorBlocked": "Tilisi omistaa luojaprofiilin, jossa on elokuvia, toistoja ja maksusuorituksia — sitä ei voi siksi poistaa itsepalveluna. Ota yhteyttä toimitukseen, niin autamme sinua:",
+    "deleteCreatorBlocked": "Tilisi omistaa luojaprofiilin, jossa on elokuvia, esityksiä ja maksutietoja. Siksi sitä ei voi poistaa itse. Ota yhteyttä toimitukseen, niin autamme sinua.",
     "deleteContact": "contact@doccys.com",
-    "deleteNameMissing": "Valitse ensin käyttäjänimesi yllä — se on vahvistus, jota pyydämme, kun tiliä poistetaan.",
+    "deleteNameMissing": "Valitse ensin käyttäjänimesi yllä. Se on vahvistus, jota pyydämme, kun tiliäsi poistetaan.",
     "deleteErrors": {
-      "generic": "Tiliä ei voitu vielä poistaa. Yritä uudelleen — ei ole mitään väärää yrittää useita kertoja, ja jos virhe jatkuu, kirjoita osoitteeseen contact@doccys.com.",
+      "generic": "Tiliä ei voitu poistaa vielä. Yritä uudelleen. Useamman kerran yrittämisessä ei ole mitään väärää, ja jos virhe jatkuu, kirjoita osoitteeseen contact@doccys.com.",
       "nameMismatch": "Nimi ei vastaa käyttäjänimeäsi. Tarkista kirjoitusasu ja yritä uudelleen.",
       "creatorBlocked": "Tilisi omistaa luojaprofiilin eikä sitä voi poistaa täällä. Kirjoita osoitteeseen contact@doccys.com."
     },
     "followingHeading": "Seuraajat",
-    "followingSubtitle": "Yksityinen listasi — viimeksi seurattu luoja ylimpänä.",
+    "followingSubtitle": "Yksityinen listasi, viimeksi seuraamasi luoja ylimpänä.",
     "followingEmpty": "Et seuraa vielä yhtään luojaa. Paina \"Seuraa\" luojan profiilissa, niin luoja ilmestyy tänne.",
     "unfollowButton": "Älä seuraa enää",
     "handleMissing": "Valitse @ tunnuksesi",
@@ -603,8 +603,8 @@
     "handleSave": "Varaa @ tunnus",
     "handleSaved": "@ tunnuksesi on varattu.",
     "handleAvailable": "Vapaa!",
-    "handleTaken": "@ tunnus on jo käytössä — valitse toinen.",
-    "handleError": "Tunnusta ei voitu vielä varata — yritä myöhemmin uudelleen."
+    "handleTaken": "@-tagia käytetään jo. Valitse toinen.",
+    "handleError": "Tagia ei voitu varata vielä. Yritä myöhemmin uudelleen."
   },
   "watchHistory": {
     "completed": "Katsottu loppuun",
@@ -612,7 +612,7 @@
   },
   "support": {
     "heading": "Tukesi",
-    "subtitle": "Mihin minuttisi menivät — ja mikä meni suoraan tekijöille.",
+    "subtitle": "Missä minuutit päättyivät ja mitä meni suoraan luojille.",
     "totalMinutes": "Olet katsonut {minutes} minuuttia",
     "totalAmount": "{amount} meni suoraan tekijöille",
     "creatorFilms": "{count, plural, one {# elokuva} other {# elokuvaa}}",
@@ -644,31 +644,31 @@
     "placeholder": "Etsi elokuvia, tekijöitä, genrejä…",
     "searchLabel": "Hae",
     "landingTitle": "Mitä haluat katsoa tänään?",
-    "landingHint": "Etsi elokuvista, tekijöistä ja genreistä — tai tutustu genreen suoraan.",
+    "landingHint": "Etsi elokuvia, tekijöitä ja genrejä tai tutki genre suoraan.",
     "exploreGenres": "Tutustu genreihin",
     "resultsTitle": "Tulokset haulle ”{q}”",
     "filmsSection": "Elokuvat",
     "creatorsSection": "Tekijät",
     "noResults": "Ei tuloksia haulle ”{q}”.",
-    "noResultsHint": "Kokeile toista hakusanaa — tai tutustu genreihin alla."
+    "noResultsHint": "Kokeile toista hakusanaa tai tutki alla olevia genrejä."
   },
   "countries": {
     "Island": "Islanti",
     "Danmark": "Tanska"
   },
   "meta": {
-    "title": "Doccys — Itsenäiset dokumentit ilman mainoksia",
-    "description": "Doccys on minimalistinen, mainokseton suoratoistopalvelu itsenäisille dokumenteille. Maksat vain minuuteista, joita oikeasti katsot — tekijä saa osuutensa, sinä saat rauhan."
+    "title": "Doccys: Itsenäiset dokumenttielokuvat ilman mainoksia",
+    "description": "Doccys on minimalistinen, mainokseton suoratoistopalvelu itsenäisille dokumenttielokuville. Maksa vain niistä minuuteista, joita todella katsot. Luoja saa osan, sinä saat rauhan."
   },
   "paywall": {
     "loginTitle": "Kirjaudu sisään katsoaksesi elokuvan",
-    "loginBody": "Luo tili tai kirjaudu sisään — ja osta minuuttipaketti, kun olet valmis katsomaan.",
+    "loginBody": "Luo tili tai kirjaudu sisään, ja osta minuuttipaketti, kun olet valmis katsomaan.",
     "loginCta": "Kirjaudu sisään",
     "buyTitle": "Saldo ei riitä",
     "buyBody": "Elokuva vaatii {minutes} minuuttia ja saldosi on {balance} minuuttia. Osta paketti aloittaaksesi toiston.",
     "buyCta": "Osta minuutteja",
     "trailerLabel": "Traileri",
-    "priceLine": "noin {price} koko elokuvasta — jos et katso sitä koskaan, se maksaa $0."
+    "priceLine": "noin {price} koko elokuvasta. Jos et koskaan katso sitä, se maksaa $0."
   },
   "embed": {
     "cta": "Katso koko elokuva Doccys-palvelussa",
@@ -683,7 +683,7 @@
     "vatNote": "sis. paikallinen arvonlisävero",
     "packBuy": "Osta",
     "purchaseSuccess": "Kiitos ostosta! Minuutit ilmestyvät saldoillesi, kun maksu on vahvistettu.",
-    "purchaseError": "Osto ei onnistunut — yritä uudelleen.",
+    "purchaseError": "Ostosta ei voitu suorittaa. Yritä uudelleen.",
     "referralUnavailable": "Suosittelulinkkiäsi ei voi nyt näyttää."
   },
   "affiliate": {
@@ -711,11 +711,11 @@
     "pinnedLabel": "Kiinnitetty",
     "editedLabel": "Muokattu",
     "empty": "Tekijä ei ole vielä julkaissut mitään.",
-    "emptyOwner": "Julkaise ensimmäinen viestisi — katsojasi näkevät sen täällä.",
+    "emptyOwner": "Julkaise ensimmäinen ilmoituksesi. Katsojasi näkevät sen täällä.",
     "submitError": "Viestiä ei voitu julkaista. Yritä uudelleen.",
     "updateError": "Viestiä ei voitu tallentaa. Yritä uudelleen.",
     "deleteError": "Viestiä ei voitu poistaa. Yritä uudelleen.",
-    "pinError": "Viestiä ei voitu kiinnittää — toinen on jo kiinnitetty. Yritä uudelleen."
+    "pinError": "Ilmoitusta ei voitu kiinnittää. Yksi on jo kiinnitetty. Yritä uudelleen."
   },
   "mail": {
     "tagline": "Itsenäisiä dokumentteja. Ei mainoksia. Koskaan.",
@@ -723,7 +723,7 @@
     "signup": {
       "subject": "Vahvista sähköpostiosoitteesi Doccys-tiliäsi varten",
       "heading": "Tervetuloa Doccysiin",
-      "body": "Hei {name} — napsauta alla olevaa painiketta vahvistaaksesi sähköpostiosoitteesi ja aloittaaksesi.",
+      "body": "Hei {name}, klikk på knappen nedenfor for å bekrefte e-posten din og komme i gang.",
       "button": "Vahvista sähköpostiosoitteeni",
       "expiry": "Linkki vanhenee lyhyen ajan kuluttua ja sitä voi käyttää vain kerran.",
       "ignore": "Jos et ole luonut tiliä Doccysissa, voit huoletta jättää tämän sähköpostin huomiotta."
@@ -734,7 +734,7 @@
       "body": "Olemme vastaanottaneet pyynnön nollata Doccys-tilisi salasana. Napsauta alla olevaa painiketta valitaksesi uuden.",
       "button": "Valitse uusi salasana",
       "expiry": "Linkki vanhenee lyhyen ajan kuluttua ja sitä voi käyttää vain kerran.",
-      "security": "Jos et ole pyytänyt tätä, voit huoletta jättää sähköpostin huomiotta — salasanasi on ennallaan."
+      "security": "Hvis du ikke har bedt om dette, kan du trygt ignorere e-posten. Passordet ditt er uendret."
     }
   },
   "visitkort": {
@@ -746,38 +746,38 @@
   },
   "viewerStatus": {
     "heading": "Katselijan tila",
-    "subtitle": "Matkasi dokumenttimaailmassa — mitattuna minuutteina.",
+    "subtitle": "Matkasi dokumenttien maailmassa, mitattuna minuutteina.",
     "minutesLine": "Olet katsonut {minutes} minuuttia",
     "tier1": "Uteliaskas",
     "tier2": "Pioneer",
     "tier3": "Legenda",
     "toNextTier": "{minutes} minuuttia päästäksesi {title}",
-    "topTierReached": "Korkein taso saavutettu — kiitos kaikista minuuteista.",
+    "topTierReached": "Korkein taso saavutettu. Kiitos kaikista minuuteista.",
     "genreTitle": "{genre}-nörtti",
     "genreSubtitle": "{minutes} minuuttia genressä",
     "badgesShelf": "Virstanot",
     "tier0": "Löytää"
   },
   "installApp": {
-    "title": "Doccys sovelluksena — ilman kauppaa: koko näyttö, ei selainpalkkia, ja ehdotuksesi on valmis suoraan aloitusnäytöltä.",
+    "title": "Doccys sovelluksena, ilman kauppaa: koko näyttö, ei selainpalkkia, ja ehdotuksesi on valmiina suoraan aloitusnäytöltä.",
     "button": "Asenna sovellus",
-    "iosHint": "iPhone/iPad: Napauta Jaa Safarissa ja valitse „Lisää aloitusnäytölle“ — näin Doccys on sovellus ilman App Storea."
+    "iosHint": "iPhone/iPad: Napauta Jaa Safarissa ja valitse „Lisää aloitusnäyttöön“. Näin Doccys on sovellus ilman App Storea."
   },
   "viewerAarbog": {
     "heading": "Vuosiarkistosi",
-    "subtitle": "Vuosiarkisto avautuu 1.000 minuutin kohdalla — katseluhistoriasi, kuukausi kuukaudelta.",
+    "subtitle": "Vuosikirja avautuu 1 000 minuutin kohdalla. Katseluhistoriasi, kuukausi kuukaudelta.",
     "totalLine": "{minutes} minuuttia viimeisten 12 kuukauden aikana",
-    "empty": "Ei laskutettuja minuutteja viimeisten 12 kuukauden aikana — vuosiarkistosi täyttyy katsellessasi.",
+    "empty": "Ei laskutettuja minuutteja viimeisten 12 kuukauden aikana. Vuosikirja täyttyy katsellessasi.",
     "topGenres": "Genresi",
     "topCreators": "Luojasi",
     "topEmpty": "Ei elokuvia vielä"
   },
   "klub": {
     "heading": "Klubihuone",
-    "subtitle": "Pieni paikka Legendoille — alustan omistautuneimmille katsojille.",
+    "subtitle": "Pieni paikka Legendoille, alustan omistautuneimmille katsojille.",
     "lockLabel": "Lukittu",
     "doorTitle": "Klubihuone on suljettu",
-    "doorIntro": "Oven takana on pieni paikka, jossa Legendat kokoontuvat. Legendat ovat niitä, jotka ovat katsoneet 10.000 minuuttia — ja ovi avautuu, kun saavutat sen.",
+    "doorIntro": "Oven takana on pieni paikka, jossa Legendat kokoontuvat. Legendat ovat niitä, jotka ovat katsoneet 10 000 minuuttia, ja ovi avautuu, kun saavutat sen.",
     "doorRequirement": "Legenda = 10.000 minuuttia",
     "doorMembers": "{count, plural, one {# jäsen} other {# jäsentä}}",
     "doorPosts": "{count, plural, one {# viesti} other {# viestiä}}",
@@ -788,15 +788,15 @@
     "submit": "Lähetä",
     "submitting": "Lähetetään…",
     "submitError": "Viestiä ei voitu lähettää. Yritä uudelleen.",
-    "empty": "Huoneessa on hiljaista — ole ensimmäinen Legenda, joka puhuu.",
+    "empty": "Olohuoneessa on hiljaista. Ole ensimmäinen Legenda, joka puhuu.",
     "authorFallback": "Legenda"
   },
   "waitlist": {
-    "title": "Kuratoidaan parhaillaan — saat ilmoituksen, kun uusia dokumentteja saapuu",
+    "title": "Kuraatio käynnissä. Saat ilmoituksen, kun uusia dokumentteja julkaistaan.",
     "body": "Uusia dokumentteja lisätään jatkuvasti. Jätä sähköpostiosoitteesi, niin saat yksinkertaisen viestin aina, kun luettelo kasvaa. Ei roskapostia.",
     "placeholder": "Sähköpostiosoitteesi",
     "submit": "Pidä minut ajan tasalla",
-    "submitted": "Rekisteröity ✓ — toimitus ottaa sinuun yhteyttä.",
-    "error": "Jokin meni pieleen — yritä uudelleen."
+    "submitted": "Ilmoittautunut ✓. Kuulemme sinusta toimitukselta.",
+    "error": "Jotain meni pieleen. Yritä uudelleen."
   }
 }

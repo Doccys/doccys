@@ -230,7 +230,7 @@ export async function POST(request: NextRequest, context: RouteContext) {
   }
 
   if (segments.length === 0) {
-    const message = "Transskriptionen var tom — har filmen talt indhold?";
+    const message = "Transskriptionen var tom, har filmen talt indhold?";
     await Promise.all(
       ALL_LOCALES.map((locale) =>
         updateSubtitleRow(supabase, slug, locale, { status: "failed", error: message }),

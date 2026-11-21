@@ -51,7 +51,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
     });
     if (comment === "konflikt") {
       return NextResponse.json(
-        { error: "Et andet indlæg er allerede fastgjort — prøv igen" },
+        { error: "Et andet indlæg er allerede fastgjort, prøv igen" },
         { status: 409 },
       );
     }

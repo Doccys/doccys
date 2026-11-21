@@ -102,7 +102,7 @@ export default async function StudioRetentionChart({
       {/* x-akse-forklaringen: decilerne er positionen i filmen —
           gør kurven læsbar uden at genlæse intro-teksten */}
       <p className="text-xs text-ash/70">
-        {t("retentionAxisStart")} — {t("retentionAxisEnd")}
+        {t("retentionAxisStart")} til {t("retentionAxisEnd")}
       </p>
     </div>
   );

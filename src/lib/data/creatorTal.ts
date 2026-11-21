@@ -69,7 +69,7 @@ export async function getCreatorTal(
 
     const seere: CreatorTalSeere = {
       languages: (json.seere?.sprog ?? []).map((l) => ({
-        name: String(l.navn ?? "—"),
+        name: String(l.navn ?? "(ukendt)"),
         count: Number(l.antal ?? 0),
       })),
       devices: {

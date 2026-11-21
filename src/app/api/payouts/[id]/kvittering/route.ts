@@ -68,8 +68,8 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
   ]);
 
   const pdf = bygKvitteringPdf({
-    creatorName: creator?.name ?? "—",
-    creatorHandle: creator?.handle ?? "—",
+    creatorName: creator?.name ?? "(ukendt)",
+    creatorHandle: creator?.handle ?? "(ukendt)",
     amountUsd: Number(payoutRequest.amount_usd), // numeric → string fra Postgres
     iban: method?.iban ?? null,
     requestId: payoutRequest.id,

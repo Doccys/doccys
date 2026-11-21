@@ -56,7 +56,7 @@ export default async function AarbogSection({
                 <div
                   key={m.key}
                   className="flex h-full flex-1 flex-col justify-end"
-                  title={`${label} — ${formatNumber(m.minutes, locale)} min`}
+                  title={`${label}: ${formatNumber(m.minutes, locale)} min`}
                 >
                   <div
                     className={

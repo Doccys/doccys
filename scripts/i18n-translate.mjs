@@ -166,7 +166,8 @@ const SYSTEM_PROMPT = (target) =>
     "Efterlad brandnavne og tekniske termer uændret: Doccys, Stripe, Supabase, Vercel, DKK, e-mail-adresser, URL'er.",
     "Bevar eventuel HTML/notation i strengene (fx <strong>…) uændret i oversættelsen.",
     "Gentag en tom streng som en tom streng — og oversæt aldrig en værdi til tom, medmindre kilden er tom.",
-    "Ton: kort, præcis, indbydende UI-tekst; juridiske tekster (legal-namespace) skal være nøjagtige og formelle.",
+        "TONSTREG-REGLEN: brug aldrig tankestreger (—, U+2014) i oversættelsen — skriv i stedet en naturlig sætningsstruktur med komma, kolon eller punktum (kun når målsproget er japansk eller kinesisk må — bruges, hvis det er naturligt der).",
+"Ton: kort, præcis, indbydende UI-tekst; juridiske tekster (legal-namespace) skal være nøjagtige og formelle.",
   ].join(" ");
 
 async function translateChunk(flat, target) {
@@ -206,6 +207,16 @@ async function translateChunk(flat, target) {
     throw new Error('OpenAI-svaret mangler {"translations": {...}}.');
   }
 
+  // TONSTREG-REGLEN: afvis (og genskriv ved forsøg) svar der bruger
+  // tankestreger (—) — medmindre målsproget er ja/zh, hvor — er et
+  // almindelig sprogtegn. Da-kilden er dash-fri; oversættelserne følger.
+  if (target !== "ja" && target !== "zh") {
+    for (const [k, v] of Object.entries(translations)) {
+      if (typeof v === "string" && v.includes("—")) {
+        throw new Error(`Svaret bruger en tankestreg (—)`);
+      }
+    }
+  }
   // Strukturvalidering: nøglesæt, pladsholdere og tom-ud-af-tomt.
   const sourceKeys = new Set(Object.keys(flat));
   const outKeys = new Set(Object.keys(translations));

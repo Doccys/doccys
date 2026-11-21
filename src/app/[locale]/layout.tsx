@@ -33,7 +33,7 @@ export async function generateMetadata({
   return {
     title: {
       default: t("title"),
-      template: "%s — Doccys",
+      template: "%s · Doccys",
     },
     description: t("description"),
     // PWA-installation: manifestet gør siden "Føj til startskærm"-bar

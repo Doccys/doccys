@@ -150,7 +150,7 @@ export async function POST(request: NextRequest) {
             // USD → øre (brutto-priserne giver heltals-øre)
             unit_amount: Math.round(pack.priceUsd * 100),
             product_data: {
-              name: `${pack.minutes} minutter — Doccys`,
+              name: `${pack.minutes} minutter · Doccys`,
             },
             // moms beregnes pr. land af Stripe Tax, inclusive (ude af
             // prisen, ikke oveni)

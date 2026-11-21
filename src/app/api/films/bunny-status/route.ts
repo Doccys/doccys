@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
   } catch (err) {
     console.error("bunny-status fejlede:", err);
     return NextResponse.json(
-      { error: "Status kunne ikke hentes — prøv igen" },
+      { error: "Status kunne ikke hentes, prøv igen" },
       { status: 500 },
     );
   }
