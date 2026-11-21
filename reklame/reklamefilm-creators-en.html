@@ -459,12 +459,13 @@ body {
     }
     var sec = Math.floor(t / 1000);
     // Chapter 4: minutter og dollars taelles SAMTIDIGT — dollars
-    // afledes live af minutterne (minutter x $0.30/100), saa
-    // sammenhengen er synlig for hvert tal: flere sete minutter =
-    // flere dollars. Taellerne klaerer kapitlets foerste 85 % og
-    // holder endetallet (74400 / $223) resten af scenen.
+    // afledes live af minutterne (minutter x $0.30/100). NB: fill-
+    // loopen ovenfor efterlader lokal på 0 (sidste iteration, i >
+    // idx) — kapitel-taelleren beregner SIN EGEN lokal her, den
+    // klassiske var-omfangs-fejlen.
     if (idx === 3) {
-      var p = Math.min(1, local / 0.85);
+      var local4 = (t - starts[3]) / durs[3];
+      var p = Math.min(1, local4 / 0.85);
       var mins = Math.round(p * monthMinutes);
       meterMin.textContent = thousands(mins);
       var usd = Math.round((mins * ratePerHundred) / 100);
