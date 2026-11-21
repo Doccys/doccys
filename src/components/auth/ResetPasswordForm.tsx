@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { erLaegetAdgangskode } from "@/lib/auth/leaked";
 import PasswordInput from "./PasswordInput";
 
 type Phase = "request" | "sent" | "new" | "done";
@@ -135,6 +136,14 @@ export default function ResetPasswordForm() {
     setErrorKey(null);
     if (password !== confirm) {
       setErrorKey("passwordMismatch");
+      return;
+    }
+
+    // Lækket-adgangskode-tjek, samme som signup-ruten — her klient-side
+    // (k-anonymitet: kun 5 SHA-1-tegn forlader browseren; failopen).
+    const laeket = await erLaegetAdgangskode(password);
+    if (laeket === true) {
+      setErrorKey("weakPassword");
       return;
     }
 

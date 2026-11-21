@@ -46,7 +46,7 @@
       "invalidCredentials": "无效的电子邮件或密码。",
       "emailExists": "该电子邮件已存在账户。",
       "emailNotConfirmed": "请确认您的电子邮件，然后登录。",
-      "weakPassword": "密码太弱。请使用至少6个字符。",
+      "weakPassword": "密码太弱。请使用至少 8 个字符。",
       "passwordMismatch": "密码不匹配。",
       "nameMissing": "请选择您的用户名，然后创建账户。",
       "generic": "出了点问题。请再试一次。",

@@ -4,6 +4,7 @@ import { sendAuthMail } from "@/lib/mail";
 import { hitRateLimit, recentlySent, markSent } from "@/lib/rateLimit";
 import { routing } from "@/i18n/routing";
 import { normalizeHandle, validateHandleSyntax } from "@/lib/handles";
+import { erLaegetAdgangskode } from "@/lib/auth/leaked";
 
 export const dynamic = "force-dynamic";
 
@@ -65,11 +66,22 @@ export async function POST(request: NextRequest) {
   const name = body.name?.trim() ?? "";
 
   // Håndlavet validering à la comments-ruten (ingen zod i projektet):
-  // 6 = Supabases minimum, 72 = bcrypt-grænsen.
+  // 8 = projektets minimum (brugerens beslutning 21/11, NIST: længde
+  // slår kræfterede sammensatte tegn), 72 = bcrypt-grænsen. NB: supabase-
+  // dashboardets "Minimum password length" skal sættes til 8 samtidig
+  // (leaked-password-check lever separat i dashboardet).
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: "generic" }, { status: 400 });
   }
-  if (password.length < 6 || password.length > 72) {
+  if (password.length < 8 || password.length > 72) {
+    return NextResponse.json({ error: "weakPassword" }, { status: 422 });
+  }
+
+  // Lækket-adgangskode-tjek (HaveIBeenPwned k-anonymitet) — erstatter
+  // dashboardets Pro-gated "Leaked password protection" på HEDEN-tier.
+  // Failopen (null = slippes igennem), se lib/auth/leaked.ts.
+  const laeket = await erLaegetAdgangskode(password);
+  if (laeket === true) {
     return NextResponse.json({ error: "weakPassword" }, { status: 422 });
   }
   if (name.length < 1 || name.length > 120) {

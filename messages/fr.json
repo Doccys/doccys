@@ -46,7 +46,7 @@
       "invalidCredentials": "E-mail ou mot de passe incorrect.",
       "emailExists": "Un compte avec cet e-mail existe déjà.",
       "emailNotConfirmed": "Confirmez votre e-mail avant de vous connecter.",
-      "weakPassword": "Le mot de passe est trop faible. Utilisez au moins 6 caractères.",
+      "weakPassword": "Le mot de passe est trop faible. Utilisez au moins 8 caractères.",
       "passwordMismatch": "Les mots de passe ne correspondent pas.",
       "nameMissing": "Choisissez votre nom d'utilisateur avant de créer le compte.",
       "generic": "Une erreur est survenue. Réessayez.",

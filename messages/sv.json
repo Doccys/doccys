@@ -46,7 +46,7 @@
       "invalidCredentials": "Ogiltig e-post eller lösenord.",
       "emailExists": "Det finns redan ett konto med den e-posten.",
       "emailNotConfirmed": "Bekräfta din e-post innan du loggar in.",
-      "weakPassword": "Lösenordet är för svagt. Använd minst 6 tecken.",
+      "weakPassword": "Lösenordet är för svagt. Använd minst 8 tecken.",
       "passwordMismatch": "Lösenorden matchar inte.",
       "nameMissing": "Välj ditt användarnamn innan du skapar kontot.",
       "generic": "Något gick fel. Försök igen.",

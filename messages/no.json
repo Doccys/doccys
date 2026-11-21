@@ -46,7 +46,7 @@
       "invalidCredentials": "Ugyldig e-post eller passord.",
       "emailExists": "Det finnes allerede en konto med denne e-posten.",
       "emailNotConfirmed": "Bekreft e-posten din før du logger inn.",
-      "weakPassword": "Passordet er for svakt. Bruk minst 6 tegn.",
+      "weakPassword": "Passordet er for svakt. Bruk minst 8 tegn.",
       "passwordMismatch": "Passordene er ikke like.",
       "nameMissing": "Velg brukernavnet ditt før du oppretter kontoen.",
       "generic": "Noe gikk galt. Prøv igjen.",

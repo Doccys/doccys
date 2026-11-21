@@ -46,7 +46,7 @@
       "invalidCredentials": "Invalid email or password.",
       "emailExists": "An account with that email already exists.",
       "emailNotConfirmed": "Confirm your email before signing in.",
-      "weakPassword": "The password is too weak. Use at least 6 characters.",
+      "weakPassword": "The password is too weak. Use at least 8 characters.",
       "passwordMismatch": "The passwords don't match.",
       "nameMissing": "Choose your username before creating the account.",
       "generic": "Something went wrong. Please try again.",

@@ -46,7 +46,7 @@
       "invalidCredentials": "E-Mail oder Passwort ungültig.",
       "emailExists": "Mit dieser E-Mail existiert bereits ein Konto.",
       "emailNotConfirmed": "Bestätige deine E-Mail, bevor du dich anmeldest.",
-      "weakPassword": "Das Passwort ist zu schwach. Verwenden Sie mindestens 6 Zeichen.",
+      "weakPassword": "Das Passwort ist zu schwach. Verwenden Sie mindestens 8 Zeichen.",
       "passwordMismatch": "Die Passwörter stimmen nicht überein.",
       "nameMissing": "Wähle deinen Benutzernamen, bevor du das Konto erstellst.",
       "generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",

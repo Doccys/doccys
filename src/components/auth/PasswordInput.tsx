@@ -15,7 +15,7 @@ interface PasswordInputProps {
  * (især ved ny-adgangskode-formularer, hvor gen-indtastningen skal
  * stemme). Knappen flipper kun type lokalt; autoComplete sætter
  * forælderen, så browserens adgangskode-hukommelse stadig virker.
- * Alle adgangskode-felter i projektet er required med minLength 6,
+ * Alle adgangskode-felter i projektet er required med minLength 8,
  * så det er bagt ind her.
  */
 export default function PasswordInput({
@@ -33,7 +33,7 @@ export default function PasswordInput({
         id={id}
         type={visible ? "text" : "password"}
         required
-        minLength={6}
+        minLength={8}
         autoComplete={autoComplete}
         value={value}
         onChange={(e) => onChange(e.target.value)}

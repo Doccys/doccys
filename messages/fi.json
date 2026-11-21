@@ -46,7 +46,7 @@
       "invalidCredentials": "Virheellinen sähköposti tai salasana.",
       "emailExists": "Kyseisellä sähköpostilla on jo tili.",
       "emailNotConfirmed": "Vahvista sähköpostiosoitteesi ennen sisäänkirjautumista.",
-      "weakPassword": "Salasana on liian heikko. Käytä vähintään 6 merkkiä.",
+      "weakPassword": "Salasanasi on liian heikko. Käytä vähintään 8 merkkiä.",
       "passwordMismatch": "Salasanat eivät täsmää.",
       "nameMissing": "Valitse käyttäjänimesi ennen tilin luomista.",
       "generic": "Jotain meni pieleen. Yritä uudelleen.",

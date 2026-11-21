@@ -46,7 +46,7 @@
       "invalidCredentials": "E-mail ou senha inválidos.",
       "emailExists": "Já existe uma conta com esse e-mail.",
       "emailNotConfirmed": "Confirme seu e-mail antes de entrar.",
-      "weakPassword": "A senha é muito fraca. Use pelo menos 6 caracteres.",
+      "weakPassword": "A senha é muito fraca. Use pelo menos 8 caracteres.",
       "passwordMismatch": "As senhas não coincidem.",
       "nameMissing": "Escolha seu nome de usuário antes de criar a conta.",
       "generic": "Algo deu errado. Tente novamente.",
