@@ -43,7 +43,7 @@ export default function PasswordInput({
         type="button"
         onClick={() => setVisible(!visible)}
         aria-label={visible ? t("hidePassword") : t("showPassword")}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-ash transition-colors hover:text-bone"
+        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 touch-manipulation p-3 text-ash transition-colors hover:text-bone"
       >
         {visible ? (
           <svg
