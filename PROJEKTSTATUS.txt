@@ -75,6 +75,19 @@ BREDDETES til "arbejdet" (gælder nu upload + generering): da-kilden
 (627 nøgler ×13 paritet, tsc grøn). NB: låsen dækker også probe-
 faseren ved filvalg (sekunder, harmløst).
 
+MINIMUM 20 MINUTTER PÅ UPLOAD (21/11) — brugerens ønske: undgå at
+sidde manuelt og afvise film under 20 min. FILM_MIN_DURATION_SEC =
+1200 i filmVideos.ts (én kilde, præcedens: VIDEO_MAX_BYTES), håndhævet
+i BEGGE led: 1) StudioUploadForm afviser ved FILVALG efter metadata-
+proben (koster ingenting) med errors.tooShort — "Filmen (ca. {minutes}
+min) er under minimumet på 20 minutter" — durationSec forbliver null,
+så formularen ikke kan indsendes; 2) POST /api/films afviser duration-
+Sec < 1200 med dansk 400 (led 2 — klientens tal kan lyves om; samme
+mønster som 2 GB-tjekket NB: File.size-lyvet-talen). Eksisterende
+kladder røres IKKE (gate = upload-triage, ikke publiceringskravet —
+redaktionen kan stadig tvinge en film gennem via dashboardet).
+628 nøgler ×13 fuld paritet, tsc grøn.
+
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
 **1000 min krediteret MINUTTE saldoen** (brugerens bevi-st): live-
