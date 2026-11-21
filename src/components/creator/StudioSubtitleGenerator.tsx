@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
+import { holdSkarmenVagen, slipSkarmenVagen } from "@/lib/screenWake";
 
 /**
  * "Generér undertekster"-knappen i studiet.
@@ -34,6 +35,9 @@ export default function StudioSubtitleGenerator({
     if (busy) return;
     setBusy(true);
     setError(null);
+    // Synkron pipeline: sover telefonen ind, kasseres anmodningen.
+    // Bed om skærm-vaagn-lås mens jobbet kører (graceful — se filen).
+    holdSkarmenVagen();
     try {
       const res = await fetch(`/api/films/${slug}/subtitles`, { method: "POST" });
       if (!res.ok) {
@@ -51,6 +55,7 @@ export default function StudioSubtitleGenerator({
       setError(t("subtitlesError"));
     } finally {
       setBusy(false);
+      slipSkarmenVagen();
     }
   };
 
@@ -75,7 +80,10 @@ export default function StudioSubtitleGenerator({
         )}
       </div>
       {busy && (
-        <p className="mt-2 text-xs text-ash/70">{t("subtitlesWorking")}</p>
+        <p className="mt-2 text-xs text-ash/70">
+          {t("subtitlesWorking")}{" "}
+          <span className="font-medium text-champagne">{t("keepScreenOn")}</span>
+        </p>
       )}
       {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
     </div>

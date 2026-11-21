@@ -550,7 +550,8 @@
     "bunnyPrepare": "Valmistellaan video-CDN:ää…",
     "bunnyUpload": "Siirretään video-CDN:ään: {percent} %",
     "bunnyEncode": "Koodataan video-CDN:ssä… (odota hetki)",
-    "reviewNote": "Toimitus tarkistaa kaikki lataukset ennen kuin elokuva voi tulla julkiseksi — tyypillinen vastausaika on muutama päivä. Odotusaika on kuratoinnin suodatin: se estää roskapostin ja mainokset, jotta katalogi koostuu vain dokumenteista. Luonnos voidaan poistaa täällä ennen julkaisua."
+    "reviewNote": "Toimitus tarkistaa kaikki lataukset ennen kuin elokuva voi tulla julkiseksi — tyypillinen vastausaika on muutama päivä. Odotusaika on kuratoinnin suodatin: se estää roskapostin ja mainokset, jotta katalogi koostuu vain dokumenteista. Luonnos voidaan poistaa täällä ennen julkaisua.",
+    "keepScreenOn": "Pidä näyttö hereillä — jos puhelin siirtyy lepotilaan, generointi keskeytyy. Sivusto pyytää myös pitämään näytön hereillä, kun puhelin sen sallii."
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",

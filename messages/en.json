@@ -550,7 +550,8 @@
     "bunnyPrepare": "Preparing video CDN…",
     "bunnyUpload": "Uploading to video CDN: {percent} %",
     "bunnyEncode": "Encoding in video CDN… (please wait)",
-    "reviewNote": "The editorial team reviews all uploads before a film can go public — typical response time is a couple of days. The waiting period is the curation filter: it keeps spam and advertisements out, so the catalog consists only of documentaries. The draft can be deleted here until publication."
+    "reviewNote": "The editorial team reviews all uploads before a film can go public — typical response time is a couple of days. The waiting period is the curation filter: it keeps spam and advertisements out, so the catalog consists only of documentaries. The draft can be deleted here until publication.",
+    "keepScreenOn": "Keep the screen awake — if the phone goes to sleep, the generation will be interrupted. The page requests to keep the screen awake whenever the phone allows it."
   },
   "profile": {
     "loginTitle": "Log in to see your profile",

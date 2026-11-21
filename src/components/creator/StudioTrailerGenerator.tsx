@@ -6,6 +6,7 @@ import { useRouter } from "@/i18n/navigation";
 // typen ligger i types.ts (ikke data/trailers) — den importerer
 // supabase-server-klienten og må aldrig ind i en klient-komponent
 import type { FilmTrailerStatus } from "@/lib/types";
+import { holdSkarmenVagen, slipSkarmenVagen } from "@/lib/screenWake";
 
 /**
  * "Generér trailer"-knappen i studiet — med valgfrit start-tidspunkt.
@@ -38,6 +39,9 @@ export default function StudioTrailerGenerator({
     if (busy) return;
     setBusy(true);
     setError(null);
+    // Synkron pipeline: sover telefonen ind, kasseres anmodningen.
+    // Bed om skærm-vaagn-lås mens jobbet kører (graceful — se filen).
+    holdSkarmenVagen();
     try {
       const res = await fetch(`/api/films/${slug}/trailer`, {
         method: "POST",
@@ -57,6 +61,7 @@ export default function StudioTrailerGenerator({
       setError(t("trailerError"));
     } finally {
       setBusy(false);
+      slipSkarmenVagen();
     }
   };
 
@@ -121,7 +126,10 @@ export default function StudioTrailerGenerator({
           )}
         </div>
         {busy && (
-          <p className="mt-2 text-xs text-ash/70">{t("trailerWorking")}</p>
+          <p className="mt-2 text-xs text-ash/70">
+            {t("trailerWorking")}{" "}
+            <span className="font-medium text-champagne">{t("keepScreenOn")}</span>
+          </p>
         )}
         {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
       </div>

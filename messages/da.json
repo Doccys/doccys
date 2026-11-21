@@ -536,6 +536,7 @@
     "subtitlesGenerate": "Generér undertekster",
     "subtitlesRegenerate": "Generér igen",
     "subtitlesWorking": "Genererer undertekster — det kan tage flere minutter for lange film.",
+    "keepScreenOn": "Hold skærmen vågen — lægger telefonen sig til at dvale, afbrydes genereringen. Siden beder selv om at holde skærmen vågen, når telefonen tillader det.",
     "subtitlesReady": "Klar",
     "subtitlesProcessing": "Genereres…",
     "subtitlesFailed": "Fejlede",
