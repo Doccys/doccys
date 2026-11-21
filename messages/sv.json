@@ -551,7 +551,7 @@
     "bunnyUpload": "Överför till video-CDN: {percent} %",
     "bunnyEncode": "Kodning i video-CDN… (vänta lite)",
     "reviewNote": "Redaktionen går igenom alla uppladdningar innan en film kan bli offentlig — typisk svarstid är ett par dagar. Väntetiden är kurateringsfiltreringen: den håller spam och reklam borta, så katalogen endast består av dokumentärer. Utkastet kan raderas här fram till publicering.",
-    "keepScreenOn": "Håll skärmen vaken — om telefonen går i viloläge avbryts genereringen. Sidan ber själv om att hålla skärmen vaken när telefonen tillåter det.",
+    "keepScreenOn": "Håll skärmen vaken medan arbetet pågår — om telefonen går i viloläge (t.ex. vid låg batterinivå) avbryts det. Sidan ber själv om att hålla skärmen vaken när telefonen tillåter det.",
     "batteryLow": "Telefonen har bara ca. {percent} % batteri och laddar inte — anslut en laddare innan du laddar upp och genererar. En film kräver undertexter (13 språk) och en trailer innan den kan publiceras, och pipelinerna tar minuter i taget av batteriet."
   },
   "profile": {

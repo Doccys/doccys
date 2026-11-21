@@ -1,9 +1,16 @@
 "use client";
 
-import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+} from "react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { holdSkarmenVagen, slipSkarmenVagen } from "@/lib/screenWake";
 import {
   FILM_VIDEOS_BUCKET,
   VIDEO_MAX_BYTES,
@@ -281,6 +288,17 @@ export default function StudioUploadForm({
   const [bunnyPercent, setBunnyPercent] = useState(0);
 
   const busy = phase !== "idle" && phase !== "done";
+
+  // Skærm-vaagn-lås gennem hele den tunge kæde (fil-probe → poster →
+  // TUS-upload → encode-venten → gem): sover telefonen ind, dør
+  // anmodningen — samme rodsorg som generator-pipelinerne. Effekten
+  // på busy-tilstanden dækker ALLE fejl-stier (hver sætter phase
+  // tilbage til idle) uden at refaktorere handleSubmit; referencetæll-
+  // ingen gør overlap med generator-jobs harmløst.
+  useEffect(() => {
+    if (busy) holdSkarmenVagen();
+    return () => slipSkarmenVagen();
+  }, [busy]);
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     setError(null);
@@ -839,6 +857,14 @@ export default function StudioUploadForm({
                     ? t("probing")
                     : t("creatorNote", { handle: creatorHandle })}
       </p>
+
+      {/* Varselet står så længe noget kører (upload inklusive — samme
+          skærm-fare som generator-pipelinerne). */}
+      {busy && (
+        <p className="mt-1.5 text-xs font-medium text-champagne">
+          {t("keepScreenOn")}
+        </p>
+      )}
 
       <div className="mt-6">
         <button

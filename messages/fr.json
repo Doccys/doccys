@@ -551,7 +551,7 @@
     "bunnyUpload": "Transfert vers le CDN vidéo : {percent} %",
     "bunnyEncode": "Encodage dans le CDN vidéo… (veuillez patienter)",
     "reviewNote": "L'équipe examine tous les téléchargements avant qu'un film puisse être rendu public — le délai typique est de quelques jours. Le temps d'attente est le filtre de la curation : il empêche le spam et les publicités, de sorte que le catalogue ne contienne que des documentaires. Le brouillon peut être supprimé ici jusqu'à la publication.",
-    "keepScreenOn": "Maintenez l'écran éveillé — si le téléphone se met en veille, la génération est interrompue. La page demande elle-même de maintenir l'écran éveillé lorsque le téléphone le permet.",
+    "keepScreenOn": "Gardez l'écran allumé pendant que le travail est en cours — si le téléphone se met en veille (par exemple, en cas de faible batterie), cela sera interrompu. La page demande elle-même de garder l'écran allumé lorsque le téléphone le permet.",
     "batteryLow": "Le téléphone n'a plus qu'environ {percent} % de batterie et ne se charge pas — connectez un chargeur avant de télécharger et de générer. Un film nécessite des sous-titres (13 langues) et une bande-annonce avant de pouvoir être publié, et les pipelines prennent des minutes à la fois sur la batterie."
   },
   "profile": {
