@@ -433,7 +433,7 @@
     "loginSubtitle": "Das Studio ist nur für zugelassene Schöpfer.",
     "loginCta": "Anmelden",
     "uploadHeading": "Neuen Film hochladen",
-    "uploadSubtitle": "Der Film wird als Entwurf gespeichert und erscheint erst öffentlich, wenn das Redaktionsteam ihn freigibt.",
+    "uploadSubtitle": "Der Film wird als Entwurf gespeichert und erst öffentlich angezeigt, wenn die Redaktion ihn genehmigt. Mindestens 20 Minuten – das ist die Grenze, was als volles Dokumentarerlebnis wahrgenommen wird.",
     "titleLabel": "Titel",
     "yearLabel": "Jahr",
     "genresLabel": "Genres (bis zu 5 wählen)",

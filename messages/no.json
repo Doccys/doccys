@@ -433,7 +433,7 @@
     "loginSubtitle": "Studioet er kun for godkjente skapere.",
     "loginCta": "Logg inn",
     "uploadHeading": "Last opp ny film",
-    "uploadSubtitle": "Filmen lagres som kladd og vises offentlig først når redaksjonen godkjenner den.",
+    "uploadSubtitle": "Filmen lagres som utkast og vises først offentlig når redaksjonen godkjenner den. Minimum 20 minutter — det er grensen for hva som oppleves som en full dokumentaropplevelse.",
     "titleLabel": "Tittel",
     "yearLabel": "Årstall",
     "genresLabel": "Sjanger (velg opptil 5)",

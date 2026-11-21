@@ -433,7 +433,7 @@
     "loginSubtitle": "工作室仅限于已批准的创作者。",
     "loginCta": "登录",
     "uploadHeading": "上传新电影",
-    "uploadSubtitle": "电影将保存为草稿，并在编辑批准后公开显示。",
+    "uploadSubtitle": "影片将作为草稿保存，只有在编辑批准后才会公开显示。最低20分钟——这是被视为完整纪录片体验的界限。",
     "titleLabel": "标题",
     "yearLabel": "年份",
     "genresLabel": "类型（最多选择5个）",

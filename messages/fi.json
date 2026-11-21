@@ -433,7 +433,7 @@
     "loginSubtitle": "Studio on vain hyväksytyille tekijöille.",
     "loginCta": "Kirjaudu sisään",
     "uploadHeading": "Lataa uusi elokuva",
-    "uploadSubtitle": "Elokuva tallennetaan luonnoksena ja näkyy julkisesti vasta, kun toimitus hyväksyy sen.",
+    "uploadSubtitle": "Elokuva tallennetaan luonnoksena ja julkaistaan julkisesti vasta, kun toimitus hyväksyy sen. Vähintään 20 minuuttia — se on raja, jonka jälkeen koetaan täydellinen dokumenttikokemus.",
     "titleLabel": "Nimi",
     "yearLabel": "Vuosi",
     "genresLabel": "Tyylilajit (valitse enintään 5)",

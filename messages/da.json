@@ -466,7 +466,7 @@
     "loginSubtitle": "Studiet er kun for godkendte skabere.",
     "loginCta": "Log ind",
     "uploadHeading": "Upload ny film",
-    "uploadSubtitle": "Filmen gemmes som kladde og vises først offentligt, når redaktionen godkender den.",
+    "uploadSubtitle": "Filmen gemmes som kladde og vises først offentligt, når redaktionen godkender den. Minimum 20 minutter — det er grænsen for, hvad der mærkes som en fuld dokumentaroplevelse.",
     "batteryLow": "Telefonen har kun ca. {percent} % batteri og lader ikke — tilslut en oplader, før du uploader og genererer. En film kræver undertekster (13 sprog) og en trailer, før den kan publiceres, og pipelinerne tager minutter ad gangen af batteriet.",
     "titleLabel": "Titel",
     "yearLabel": "Årstal",

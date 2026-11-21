@@ -433,7 +433,7 @@
     "loginSubtitle": "Studion är endast för godkända skapare.",
     "loginCta": "Logga in",
     "uploadHeading": "Ladda upp ny film",
-    "uploadSubtitle": "Filmen sparas som utkast och visas offentligt först när redaktionen godkänner den.",
+    "uploadSubtitle": "Filmen sparas som ett utkast och visas först offentligt när redaktionen godkänner den. Minst 20 minuter — det är gränsen för vad som upplevs som en fullständig dokumentärupplevelse.",
     "titleLabel": "Titel",
     "yearLabel": "Årtal",
     "genresLabel": "Genrer (välj upp till 5)",

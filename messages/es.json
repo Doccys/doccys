@@ -433,7 +433,7 @@
     "loginSubtitle": "El estudio es solo para creadores aprobados.",
     "loginCta": "Iniciar sesión",
     "uploadHeading": "Subir una nueva película",
-    "uploadSubtitle": "La película se guarda como borrador y solo se publica cuando el equipo editorial la aprueba.",
+    "uploadSubtitle": "La película se guarda como borrador y se mostrará públicamente solo cuando la edición la apruebe. Mínimo 20 minutos: ese es el límite de lo que se considera una experiencia completa de documental.",
     "titleLabel": "Título",
     "yearLabel": "Año",
     "genresLabel": "Géneros (elige hasta 5)",

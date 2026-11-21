@@ -433,7 +433,7 @@
     "loginSubtitle": "Le studio est réservé aux créateurs approuvés.",
     "loginCta": "Se connecter",
     "uploadHeading": "Envoyer un nouveau film",
-    "uploadSubtitle": "Le film est enregistré comme brouillon et ne devient public qu'après approbation par l'équipe éditoriale.",
+    "uploadSubtitle": "Le film est enregistré en tant que brouillon et sera rendu public uniquement après approbation de la rédaction. Minimum 20 minutes — c'est la limite de ce qui est perçu comme une expérience documentaire complète.",
     "titleLabel": "Titre",
     "yearLabel": "Année",
     "genresLabel": "Genres (choisissez jusqu'à 5)",
