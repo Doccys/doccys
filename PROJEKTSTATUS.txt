@@ -109,6 +109,24 @@ kendelighedstegn). Gennemført i tre led:
    src er UDVIKLER-log/kommentarer (ikke brugersynligt) + talrække-
    en-dashes (– i fx 3–40 tegn, almindelig typografi).
 
+ADGANGSKODE-SIKKERHEDEN (21/11) — spam-konto-hvervsundersøgelsen + Supabase
+Attack Protection-panelet førte til to forstærkninger:
+1) MINIMUM 8 TEGN (brugerens beslutning, NIST-praksis: længde > kræforte
+   sammensatte tegn): minLength 6 → 8 i PasswordInput + signup-rutens
+   server-tjek ("mindst 8 tegn"-teksten ×13 gen-oversat). NB: hvis
+   Supabase-dashboardets "Minimum password length" findes som fri
+   indstilling, sættes den til 8 samtidig.
+2) LAEGET-ADGANGSKODE-CHEK (src/lib/auth/leaked.ts): HaveIBeenPwned
+   k-anonymitets-API — SHA-1, kun de første 5 tegn sendes (aldrig
+   adgangskoden), 1,5 s tidsbudget, FAILOPEN (null = slippes igennem).
+   Baggrund: dashboardets "Leaked password protection" er PRO-GATED
+   (brugerens opdagelse 21/11) — checken lever i appen i stedet i TO
+   led: signup-ruten (server) + ResetPasswordForm (før updateUser).
+   Supabase-CAPTCHA-toggle: bevidst IKKE sat — den ville afvise alle
+   signInWithPassword-login (frontend sender intet token endnu);
+   Turnstile-build (c) er præconditionen før togglen rykkes.
+   STAK-TILSTAND: CAPTCHA af, leaked-check fanges af appen (HEDEN-tier).
+
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
 **1000 min krediteret MINUTTE saldoen** (brugerens bevi-st): live-
