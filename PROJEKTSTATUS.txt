@@ -2282,6 +2282,15 @@ RESTERENDE PUNKTER (i prioriteret rækkefølge)
     og viewerStatus-namespacet — redigeres ét sted.
 
 GOD ARBEJDSGANG I DETTE PROJEKT
+- PLANSTREG-REGLEN (brugerens beslutning 21/11): tankestreger (—)
+  er et AI-genkendelighedstegn og SKRÆMMER brugerne — NÅR EN
+  SKRIVELSE ER FULDFØRT (UI-tekst, oversættelse, mail, plakat,
+  pitch, dokument), gennemgås den og alle — fjernes (flere
+  naturlige punktur-valg: komma/kolon/punktum). En-dashes (–) i
+  talrækkefølger er normal typografi og bliver. Oversættelses- og
+  reklame-teksternes reglen er allerede indbygget (TONSTREG-REGLEN i
+  scripts/i18n-translate.mjs + alle 13 messages-filer må ALDRIG
+  indeholde — igen).
 - Plan-mode + Plan-agent ved større features; små trin, commit pr. trin,
   dansk commit-beskeder og danske kommentarer i koden.
 - Kør npx tsc --noEmit + node scripts/i18n-verify.mjs efter ændringer
