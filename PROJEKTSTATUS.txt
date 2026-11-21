@@ -23,6 +23,29 @@ b4555f4: trykflade p-3 (40 px) + z-10 + touch-manipulation; ikonet og
 desktop uendret. Gælder ALLE 4 adgangskode-felter (login/opret/reset x2,
 delt komponent).
 
+SKÆRM-VAAGN-LÅS + VARSPL PÅ GENERATOR-KNAPPERNE (21/11)
+Brugerens ønske efter skærm-lås-triagen: "advar om at lade skærmen gå
+i dvale?" — bygget i to led på undertekster- OG trailer-generatoren:
+1) WAKE LOCK (src/lib/screenWake.ts): klienten beder telefonen om at
+   holde skærmen vågen, mens den synkrone pipeline kører (holdSkarmen-
+   Vagen()/slipSkarmenVagen() i finally + referencetælling, så over-
+   lappende jobs ikke slipper hinandens lås). Graceful overalt: API
+   mangler/afvises/skjult fane → no-op; browseren frigiver selv ved
+   skjul, re-ansøg ved visibilitychange ved retur. Den synkrone
+   pipelines RODSORG er altså MILDNET (telefonen tillader ofte låsen),
+   ikke løst — longfilm-baggrunds-job-arkitekturen står fortsat som
+   den reelle løsning ved skala.
+2) VARSPL NÅR BUSY: keepScreenOn-nøglen (champagne-farvet) efter
+   subtitlesWorking/trailerWorking — "Hold skærmen vågen — lægger
+   telefonen sig til at dvale, afbrydes genereringen. Siden beder
+   selv om at holde skærmen vågen, når telefonen tillader det."
+   626 nøgler ×13 fuld paritet (translate-scriptet fyldte hullerne;
+   hi ramte i anden kørsel), tsc grøn.
+NB NB i18n-verify 21/11: 3/12 tjek FEJLER pga. seed-flippet (et tomt
+katalog — "Klima/Porträt"-chips + kommentar-sektion på /watch kan
+ikke findes): tjekkerne forventer filmindhold der ikke længere er
+publiceret. IKKE en regression — justeres når reelt indhold er live.
+
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
 **1000 min krediteret MINUTTE saldoen** (brugerens bevi-st): live-
