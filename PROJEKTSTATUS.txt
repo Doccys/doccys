@@ -126,6 +126,13 @@ Attack Protection-panelet førte til to forstærkninger:
    signInWithPassword-login (frontend sender intet token endnu);
    Turnstile-build (c) er præconditionen før togglen rykkes.
    STAK-TILSTAND: CAPTCHA af, leaked-check fanges af appen (HEDEN-tier).
+   NB CLARIFICE (brugerens spørgsmaal): "Password requirements — lower/
+   upcase/symbols"-teksten paa Supabases EMAIL-PROVIDER-side gaelder
+   SMTP-CREDENTIAL-feltet (mail-infrastrukturens adgangskode), IKKE
+   seer-konti — Doccys haandhaevver KUN min 8 + laeget-chek; ingen
+   sammensatte krav (NIST + konvertering). Verifikation: signup m.
+   8 smaa bogstaver skal gennemfoeres foer charset-reglen kan kaldes
+   skjult.
 
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
