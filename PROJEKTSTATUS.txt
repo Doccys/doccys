@@ -61,6 +61,18 @@ en spærring) der kun dukker op, når den reelt er relevant:
 - Tjek: tsc grøn · 627 nøgler ×13 fuld paritet · i18n-verify samme
   3 kendte seed-flip-fejl (ingen nye).
 
+VAAGN-LÅS PÅ HELE UPLOAD-KÆDEN (21/11) — tredje led i skærm-forsvaret,
+brugerens ønske: "sikre de kan komme hele vejen igennem". useEffect på
+busy-tilstanden i StudioUploadForm: holdSkarmenVagen() mens NOGET
+kører (fil-probe → poster → bunny-start → TUS-upload → encode-venten
+→ gem) og slip i cleanup — dækker ALLE fejl-stier (hver sætter phase
+tilbage til idle) uden at refaktorere handleSubmit. Samme champagne-
+keepScreenOn-værselet står under statuslinjen for alle faser. Teksten
+BREDDETES til "arbejdet" (gælder nu upload + generering): da-kilden
+ændret → de 12 andre tømt → translate-scriptet fyldte hullerne igen
+(627 nøgler ×13 paritet, tsc grøn). NB: låsen dækker også probe-
+faseren ved filvalg (sekunder, harmløst).
+
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
 **1000 min krediteret MINUTTE saldoen** (brugerens bevi-st): live-
