@@ -46,6 +46,21 @@ katalog — "Klima/Porträt"-chips + kommentar-sektion på /watch kan
 ikke findes): tjekkerne forventer filmindhold der ikke længere er
 publiceret. IKKE en regression — justeres når reelt indhold er live.
 
+BATTERI-ADVARS I STUDIET (21/11) — brugerens spørgsmål: "advar om at
+holde et bestemt batteri % ved filmupload?" Bygget som ADVARS (ikken
+en spærring) der kun dukker op, når den reelt er relevant:
+- MAALING (src/lib/battery.ts): Battery Status API (navigator.get-
+  Battery) → level/charging; grænsen BATTERI_ADVARSGRAENSE = 0.25
+  (én kilde). GRACEFUL: iOS Safari leverer ALDI batteri-API'en af
+  privatlivshensyn → null → ingen linje (ingen blind advarsel).
+- UI (StudioBatteryHint): champagne-boks med batteryLow-teksten —
+  {percent} pladsholder — kun når level < 25 % OG ikke lader. Én
+  forekomst øverst i studiet (over upload-formularen) dækker HELE
+  arbejdsgangen: upload (TUS) → undertekster ×13 → trailer
+  (publiceringskravet) — der opstår IKKE et varsel pr. film-række.
+- Tjek: tsc grøn · 627 nøgler ×13 fuld paritet · i18n-verify samme
+  3 kendte seed-flip-fejl (ingen nye).
+
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
 **1000 min krediteret MINUTTE saldoen** (brugerens bevi-st): live-
