@@ -29,8 +29,9 @@ type BatteriNavigator = Navigator & {
   getBattery?: () => Promise<BatteriManager>;
 };
 
-/** Advar når under 25 % og ikke lader — grænsen er én kilde. */
-export const BATTERI_ADVARSGRAENSE = 0.25;
+/** Advar når under 40 % og ikke lader (brugerens sikre margin 21/11 —
+ *  nok plads til den fulde arbejdsgang: upload → undertekster → trailer). */
+export const BATTERI_ADVARSGRAENSE = 0.4;
 
 /** Batteri-niveau + lader-status, eller null når API'en mangler/fejler. */
 export async function laesBatteri(): Promise<BatteriInfo | null> {
