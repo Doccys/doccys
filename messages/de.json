@@ -551,7 +551,8 @@
     "bunnyUpload": "Übertrage zu Video-CDN: {percent} %",
     "bunnyEncode": "Kodierung in Video-CDN… (bitte warten)",
     "reviewNote": "Die Redaktion überprüft alle Uploads, bevor ein Film veröffentlicht werden kann – die typische Bearbeitungszeit beträgt ein paar Tage. Die Wartezeit ist der Filter der Kuratierung: Sie hält Spam und Werbung fern, sodass das Katalog nur aus Dokumentarfilmen besteht. Der Entwurf kann hier bis zur Veröffentlichung gelöscht werden.",
-    "keepScreenOn": "Halten Sie den Bildschirm wach — wenn das Telefon in den Ruhezustand wechselt, wird die Generierung unterbrochen. Die Seite bittet selbst darum, den Bildschirm wach zu halten, wenn das Telefon dies zulässt."
+    "keepScreenOn": "Halten Sie den Bildschirm wach — wenn das Telefon in den Ruhezustand wechselt, wird die Generierung unterbrochen. Die Seite bittet selbst darum, den Bildschirm wach zu halten, wenn das Telefon dies zulässt.",
+    "batteryLow": "Das Telefon hat nur noch ca. {percent} % Akku und lädt nicht — schließe ein Ladegerät an, bevor du hochlädst und generierst. Ein Film benötigt Untertitel (13 Sprachen) und einen Trailer, bevor er veröffentlicht werden kann, und die Pipelines verbrauchen Minuten an Akkulaufzeit."
   },
   "profile": {
     "loginTitle": "Melde dich an, um dein Profil zu sehen",

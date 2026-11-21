@@ -5,6 +5,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import StudioUploadForm from "@/components/creator/StudioUploadForm";
 import StudioFilmList from "@/components/creator/StudioFilmList";
 import StudioStatsSection from "@/components/creator/StudioStatsSection";
+import StudioBatteryHint from "@/components/creator/StudioBatteryHint";
 import { createClient } from "@/lib/supabase/server";
 import {
   getCreatorFilmsIncludingDrafts,
@@ -88,6 +89,10 @@ export default async function CreatorStudioPage({ params }: StudioPageProps) {
       <section className="mt-12">
         <h2 className="font-display text-2xl text-bone">{t("uploadHeading")}</h2>
         <p className="mt-2 max-w-2xl text-sm text-ash">{t("uploadSubtitle")}</p>
+        {/* Batteri-varsel: KUN når batteriet er lavt og ikke lader
+            (måles i klienten; iOS → ingen linje). Én forekomst her
+            dækker upload + undertekster + trailer sammen. */}
+        <StudioBatteryHint />
         <div className="mt-5">
           <StudioUploadForm creatorHandle={creator.handle} />
         </div>

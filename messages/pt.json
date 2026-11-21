@@ -551,7 +551,8 @@
     "bunnyUpload": "Transferindo para video-CDN: {percent} %",
     "bunnyEncode": "Codificando no video-CDN… (aguarde um momento)",
     "reviewNote": "A equipe editorial revisa todos os uploads antes que um filme possa ser publicado — o tempo de resposta típico é de alguns dias. O tempo de espera é o filtro da curadoria: ele mantém spam e anúncios fora, para que o catálogo consista apenas em documentários. O rascunho pode ser excluído aqui até a publicação.",
-    "keepScreenOn": "Mantenha a tela ligada — se o telefone entrar em modo de espera, a geração será interrompida. A página pede para manter a tela ligada quando o telefone permitir."
+    "keepScreenOn": "Mantenha a tela ligada — se o telefone entrar em modo de espera, a geração será interrompida. A página pede para manter a tela ligada quando o telefone permitir.",
+    "batteryLow": "O telefone tem apenas cerca de {percent} % de bateria e não está carregando — conecte um carregador antes de fazer o upload e gerar. Um filme requer legendas (13 idiomas) e um trailer antes de ser publicado, e os pipelines consomem minutos de bateria."
   },
   "profile": {
     "loginTitle": "Faça login para ver seu perfil",

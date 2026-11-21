@@ -551,7 +551,8 @@
     "bunnyUpload": "Siirretään video-CDN:ään: {percent} %",
     "bunnyEncode": "Koodataan video-CDN:ssä… (odota hetki)",
     "reviewNote": "Toimitus tarkistaa kaikki lataukset ennen kuin elokuva voi tulla julkiseksi — tyypillinen vastausaika on muutama päivä. Odotusaika on kuratoinnin suodatin: se estää roskapostin ja mainokset, jotta katalogi koostuu vain dokumenteista. Luonnos voidaan poistaa täällä ennen julkaisua.",
-    "keepScreenOn": "Pidä näyttö hereillä — jos puhelin siirtyy lepotilaan, generointi keskeytyy. Sivusto pyytää myös pitämään näytön hereillä, kun puhelin sen sallii."
+    "keepScreenOn": "Pidä näyttö hereillä — jos puhelin siirtyy lepotilaan, generointi keskeytyy. Sivusto pyytää myös pitämään näytön hereillä, kun puhelin sen sallii.",
+    "batteryLow": "Puhelimessa on vain noin {percent} % akkua jäljellä, eikä se lataa — liitä laturi ennen kuin lataat ja tuotat. Elokuva vaatii tekstitykset (13 kieltä) ja trailerin ennen julkaisua, ja putkistot vievät minuutteja kerrallaan akkua."
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",

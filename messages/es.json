@@ -551,7 +551,8 @@
     "bunnyUpload": "Transfiriendo a video-CDN: {percent} %",
     "bunnyEncode": "Codificando en video-CDN… (por favor espera)",
     "reviewNote": "El equipo editorial revisa todas las subidas antes de que una película pueda hacerse pública; el tiempo de respuesta típico es de un par de días. El tiempo de espera es el filtro de la curaduría: mantiene fuera el spam y la publicidad, de modo que el catálogo consista únicamente en documentales. El borrador se puede eliminar aquí hasta la publicación.",
-    "keepScreenOn": "Mantén la pantalla activa — si el teléfono se pone en reposo, se interrumpe la generación. La página solicita mantener la pantalla activa cuando el teléfono lo permite."
+    "keepScreenOn": "Mantén la pantalla activa — si el teléfono se pone en reposo, se interrumpe la generación. La página solicita mantener la pantalla activa cuando el teléfono lo permite.",
+    "batteryLow": "El teléfono solo tiene aproximadamente un {percent} % de batería y no se está cargando — conecta un cargador antes de subir y generar. Una película requiere subtítulos (13 idiomas) y un tráiler antes de poder publicarse, y los pipelines consumen minutos de batería a la vez."
   },
   "profile": {
     "loginTitle": "Inicia sesión para ver tu perfil",
