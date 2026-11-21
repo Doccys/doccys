@@ -1,6 +1,19 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-11-15
+Sidst opdateret: 2026-11-21
 ==========================================================
+
+SMTP PAA VERCEL-ENV — LANCERINGS-PUNKT FULDFORT (21/11)
+De fire noegler SMTP_HOST/PORT/USER/PASS oprettet i Vercel-env
+(projekt "doccys") via MCP create_project_env — type SENSITIVE,
+target production + preview, vaerdierne laest fra .env.local uden
+PowerShell-roer (BOM-fælden, memory). Redeploy trigget fra d577fd4
+(dpl_GFtciaDeQ8WySESe3fHgUTEVm2fZ) — READY, alias www.doccys.com ✓
+(/da → 200). E2E VERIFICERET af brugeren 21/11: password-reset-mail
+modtaget fra Doccys paa produktion + nyt password sat. Dermed er
+Lancerings-checklisten HELT fuldfort: Stripe LIVE ✓ · robots-aaben ✓
+· Search Console + indeksering ✓ · vercel.app-redirect ✓ ·
+fangst-listen ✓ · SMTP ✓ — lancerings-datoen 1/12 (sammen med
+afrejsen til Mexico) har ingen tekniske blokeringer igen.
 
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
@@ -41,16 +54,12 @@ Afbørdet bevis-punkter (brugeren kan tjekke kvarters visning):
   18/11 (bevi-stit: SELECT viser de 6 som draft) — kataloget er da
   tyndt, og fangst-listen er fangsten. REELT indhold = brugerens egne
   film (pipeline bevi-st, 15 min/film) eller DR Sales/UACH-aansager.
-- LAUNCING-CHECKLISTEN FULDFORT (18/11) — robots-aaben koert + ægte
-  transaktion koerende; KUN SMTP til Vercel-env er tilbage (signup/
-  reset-mails gaar via Supabases standardafsender indtil da) —
-  PLANLAGT TIL VIKENDEN (brugerens beslutning 18/11). Runbook:
-  SMTP_Host/Port/User/Pass hentes fra Supabase-dashboardet's
-  SMTP-opsætning (smtp.privateemail.com:465, contact@doccys.com —
-  sat 21/9), de fire noegler skrives til Vercel via MCP-værdi-set
-  (ALDRIG PowerShell-roer — BOM-fælden, se BUNNY-sektionen) +
-  redeploy; derefter tester en signup-mail og tjekker afsenderen
-  er contact@doccys.com.
+- LAUNCING-CHECKLISTEN fuldfort i tre led: robots-aaben + aegte
+  transaktion (18/11/15/11) · SMTP til Vercel-env (21/11, se
+  sektionen oe verst — E2E-verified af brugeren: reset-mail fra
+  contact@doccys.com modtaget paa produktion) · indeksering anmodet
+  (18/11). LAUNCINGEN 1/12 har dermed INGEN tekniske blokeringer
+  igen.
 
 FFMPEG PÅ VERCELS SERVERLØSE — STATISK BINARY + KANDIDATGATE (15/11)
 Skaber-upload-pipelinen er nu FULDT bevist paa produktion (film
