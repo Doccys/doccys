@@ -55,7 +55,8 @@
       "handleInvalid": "Das @-Tag ist ungültig. Verwenden Sie Kleinbuchstaben, Zahlen und Bindestriche (3–40 Zeichen).",
       "handleTaken": "Das @-Tag wird bereits verwendet. Wählen Sie ein anderes.",
       "handleReserved": "Das @-Tag ist reserviert. Wählen Sie ein anderes.",
-      "handleLocked": "Das Konto hat bereits ein @-Tag. Es kann nicht geändert werden. Verwenden Sie dasselbe Tag und bestätigen Sie Ihre E-Mail."
+      "handleLocked": "Das Konto hat bereits ein @-Tag. Es kann nicht geändert werden. Verwenden Sie dasselbe Tag und bestätigen Sie Ihre E-Mail.",
+      "captchaFailed": "Die CAPTCHA-Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut."
     },
     "confirmTitle": "Bestätigen Sie Ihre E-Mail",
     "confirmWorking": "Einen Moment bitte. Ihre E-Mail wird bestätigt und Sie gelangen zu Ihrem Profil…",

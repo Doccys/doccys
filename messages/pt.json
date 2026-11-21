@@ -55,7 +55,8 @@
       "handleInvalid": "A tag @ não é válida. Use letras minúsculas, números e hífens (3–40 caracteres).",
       "handleTaken": "A tag @ já está em uso. Escolha outra.",
       "handleReserved": "A tag @ está reservada. Escolha outra.",
-      "handleLocked": "A conta já possui uma tag @. Ela não pode ser alterada. Use a mesma tag e confirme seu e-mail."
+      "handleLocked": "A conta já possui uma tag @. Ela não pode ser alterada. Use a mesma tag e confirme seu e-mail.",
+      "captchaFailed": "A verificação CAPTCHA falhou. Tente novamente."
     },
     "confirmTitle": "Confirmando seu e-mail",
     "confirmWorking": "Um momento. Seu e-mail está sendo confirmado e você será direcionado para seu perfil…",

@@ -134,6 +134,32 @@ Attack Protection-panelet førte til to forstærkninger:
    8 smaa bogstaver skal gennemfoeres foer charset-reglen kan kaldes
    skjult.
 
+TURNSTIILE (APP-LEVEL CAPTCHA) PA PLADS (21/11) — spam-signuppunkt
+(c) bygget EFTER brugerens "måske vi skal tilføje en captcha?":
+- ARKITEKTUR: Cloudflare-Turnstile (gratis, usynlig/managed) på APP-
+  niveau i stedet for Supabase-dashboardets toggle (som ville afvise
+  ALLE signInWithPassword-logins — frontend sender intet token til
+  Supabase-direct-ruterne). VORES ruter er nu de spærrede: signup +
+  reset verificerer token via siteverify (engangs-token, 4 s budget).
+- GRACEFUL-BY-CONFIG: featuren er til KUN når begge nøgler er sat
+  (NEXT_PUBLIC_TURNSTILE_SITE_KEY + TURNSTILE_SECRET_KEY i Vercel-env
+  — deploymentet kan lægge, nøglerne tændes bagefter; brugerens
+  opgave: Cloudflare-dashboard → Turnstile → Add site, "Managed" →
+  Site Key + Secret Key til Vercel-env). Uden nøgler: ingen widget,
+  ruter uændret.
+- TESSEN (client src/components/auth/Turnstile.tsx): renderes kun
+  i signup-mode (AuthForm) + reset-anmodnings-fasen (ResetPassword-
+  Form); script loades on-demand (render=explicit+onload); engangs-
+  token → nonce-remount efter hver server-afvisning; switchMode
+  resetter.
+- SERVEREN (src/lib/auth/turnstile.ts): verificeret EFTER rate-
+  limitten og FØR generateLink/HIBP — de billige felt-afvisninger
+  bruger tokenet op ikke; fejl → captchaFailed ×13 ("CAPTCHA-
+  kontrolen fejlede. Prøv igen." — 629 nøgler ×13 fuld paritet,
+  tsc grøn). Reset-rutens afvisning afslører ingen konto-tilstand.
+- Lås (login/brugere ramt): ingen — login er signInWithPassword
+  uændret; kun mail-udsendendes ruter er spærret.
+
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
 **1000 min krediteret MINUTTE saldoen** (brugerens bevi-st): live-

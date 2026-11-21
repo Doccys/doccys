@@ -55,7 +55,8 @@
       "handleInvalid": "@-tagi ei ole voimassa. Käytä pieniä kirjaimia, numeroita ja viivoja (3–40 merkkiä).",
       "handleTaken": "@-tagi on jo käytössä. Valitse toinen.",
       "handleReserved": "@-tagi on varattu. Valitse toinen.",
-      "handleLocked": "Tilillä on jo @-tagi. Sitä ei voi muuttaa. Käytä samaa tagia ja vahvista sähköpostisi."
+      "handleLocked": "Tilillä on jo @-tagi. Sitä ei voi muuttaa. Käytä samaa tagia ja vahvista sähköpostisi.",
+      "captchaFailed": "CAPTCHA-tarkistus epäonnistui. Yritä uudelleen."
     },
     "confirmTitle": "Vahvistetaan sähköpostiasi",
     "confirmWorking": "Hetkinen. Sähköpostisi vahvistetaan ja pääset profiiliisi…",

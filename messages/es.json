@@ -55,7 +55,8 @@
       "handleInvalid": "La etiqueta @ no es válida. Usa letras minúsculas, números y guiones (3–40 caracteres).",
       "handleTaken": "La etiqueta @ ya está en uso. Elige otra.",
       "handleReserved": "La etiqueta @ está reservada. Elige otra.",
-      "handleLocked": "La cuenta ya tiene una etiqueta @. No se puede cambiar. Usa la misma etiqueta y confirma tu correo electrónico."
+      "handleLocked": "La cuenta ya tiene una etiqueta @. No se puede cambiar. Usa la misma etiqueta y confirma tu correo electrónico.",
+      "captchaFailed": "La verificación de CAPTCHA falló. Inténtalo de nuevo."
     },
     "confirmTitle": "Confirmando tu correo electrónico",
     "confirmWorking": "Un momento. Se está confirmando tu correo electrónico y accederás a tu perfil…",

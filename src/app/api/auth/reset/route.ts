@@ -3,6 +3,7 @@ import { createServiceClient } from "@/lib/supabase/service";
 import { sendAuthMail } from "@/lib/mail";
 import { hitRateLimit, recentlySent, markSent } from "@/lib/rateLimit";
 import { routing } from "@/i18n/routing";
+import { turnstileGodkendt } from "@/lib/auth/turnstile";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +23,7 @@ export const dynamic = "force-dynamic";
  * fejlmeddelelse afsløre, at kontoen findes.
  */
 export async function POST(request: NextRequest) {
-  let body: { email?: string; locale?: string };
+  let body: { email?: string; locale?: string; captchaToken?: unknown };
   try {
     body = await request.json();
   } catch {
@@ -46,6 +47,15 @@ export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   if (hitRateLimit(`reset:${ip}`, 5, 10 * 60_000) || recentlySent(email)) {
     return NextResponse.json({ error: "rateLimited" }, { status: 429 });
+  }
+
+  // Turnstile (app-CAPTCHA, til når begge nøgler er sat): efter rate-
+  // limitten, før generateLink. Svarformat: afvisningen handler om
+  // tokenet, ikke om e-mailen — den afslører ingen konto-tilstand.
+  // Feature fra → altid godkendt (graceful).
+  const captchaOk = await turnstileGodkendt(body.captchaToken, ip);
+  if (!captchaOk) {
+    return NextResponse.json({ error: "captchaFailed" }, { status: 400 });
   }
 
   const supabase = createServiceClient();

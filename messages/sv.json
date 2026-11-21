@@ -55,7 +55,8 @@
       "handleInvalid": "Det @ namnet är inte giltigt. Använd små bokstäver, siffror och bindestreck (3–40 tecken).",
       "handleTaken": "Det @ namnet används redan. Välj ett annat.",
       "handleReserved": "Det @ namnet är reserverat. Välj ett annat.",
-      "handleLocked": "Kontot har redan ett @ namn. Det kan inte ändras. Använd samma namn och bekräfta din e-post."
+      "handleLocked": "Kontot har redan ett @ namn. Det kan inte ändras. Använd samma namn och bekräfta din e-post.",
+      "captchaFailed": "CAPTCHA-kontrollen misslyckades. Försök igen."
     },
     "confirmTitle": "Bekräftar din e-post",
     "confirmWorking": "Ett ögonblick. Din e-post bekräftas och du kommer in på din profil…",

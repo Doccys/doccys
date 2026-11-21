@@ -11,6 +11,7 @@ import {
   validateHandleSyntax,
 } from "@/lib/handles";
 import PasswordInput from "./PasswordInput";
+import Turnstile from "./Turnstile";
 
 type Mode = "login" | "signup";
 
@@ -61,6 +62,10 @@ export default function AuthForm() {
   const [errorKey, setErrorKey] = useState<string | null>(null);
   const [showConfirmNotice, setShowConfirmNotice] = useState(false);
   const [busy, setBusy] = useState(false);
+  // Turnstile (app-CAPTCHA, kun til når nøglerne er sat i env): token
+  // er engangs — nonce'en remounter widgetten efter en server-afvisning.
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaNonce, setCaptchaNonce] = useState(0);
 
   const switchMode = (next: Mode) => {
     setMode(next);
@@ -70,6 +75,8 @@ export default function AuthForm() {
     setHandleStatus("idle");
     setErrorKey(null);
     setShowConfirmNotice(false);
+    setCaptchaToken(null);
+    setCaptchaNonce((n) => n + 1);
   };
 
   const handleError = (code: string | undefined) => {
@@ -173,6 +180,9 @@ export default function AuthForm() {
             handle: tag,
             locale,
             ageAccepted: true,
+            // Turnstile-token (serveren verificerer kun når featuren
+            // er slået til med nøgler; ellers ignoreres feltet)
+            captchaToken,
           }),
         });
         if (!res.ok) {
@@ -180,6 +190,9 @@ export default function AuthForm() {
             error?: string;
           } | null;
           setErrorKey(data?.error ?? "generic");
+          // Tokenet er engangs — frisk widget til næste forsøg.
+          setCaptchaToken(null);
+          setCaptchaNonce((n) => n + 1);
         } else {
           // Bekræftelses-mail er afsendt — sessionen udstedes først
           // efter klikket på linket i mailen.
@@ -376,6 +389,14 @@ export default function AuthForm() {
               <p className="text-sm text-red-400">
                 {t(`errors.${errorKey}`)}
               </p>
+            )}
+
+            {/* Turnstile (app-CAPTCHA): renderes kun i signup-mode og
+                kun når NEXT_PUBLIC_TURNSTILE_SITE_KEY er sat — ellers
+                ingenting. key-remount efter server-afvisning giver et
+                friskt engangs-token. */}
+            {mode === "signup" && (
+              <Turnstile key={captchaNonce} onToken={setCaptchaToken} />
             )}
 
             <button

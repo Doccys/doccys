@@ -6,6 +6,7 @@ import { useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { erLaegetAdgangskode } from "@/lib/auth/leaked";
 import PasswordInput from "./PasswordInput";
+import Turnstile from "./Turnstile";
 
 type Phase = "request" | "sent" | "new" | "done";
 
@@ -44,6 +45,10 @@ export default function ResetPasswordForm() {
   const [confirm, setConfirm] = useState("");
   const [errorKey, setErrorKey] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  // Turnstile i anmodnings-fasen (den trin der sender mailen): engangs-
+  // token, nonce-remount efter server-afvisning, reset ved fase-skift.
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaNonce, setCaptchaNonce] = useState(0);
 
   // Dev/strict mode kalder effekten to gange — ref-vagten sikrer, at
   // token-vekslingen kun sættes i gang én gang (et andet kald ville
@@ -114,15 +119,23 @@ export default function ResetPasswordForm() {
       const res = await fetch("/api/auth/reset", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), locale }),
+        body: JSON.stringify({
+          email: email.trim(),
+          locale,
+          captchaToken,
+        }),
       });
       if (res.ok) {
         setPhase("sent");
+        setCaptchaToken(null);
       } else {
         const data = (await res.json().catch(() => null)) as {
           error?: string;
         } | null;
-        setErrorKey(data?.error === "rateLimited" ? "rateLimited" : "generic");
+        setErrorKey(data?.error === "rateLimited" ? "rateLimited" : data?.error === "captchaFailed" ? "captchaFailed" : "generic");
+        // Tokenet er engangs — frisk widget til næste forsøg.
+        setCaptchaToken(null);
+        setCaptchaNonce((n) => n + 1);
       }
     } catch {
       setErrorKey("generic");
@@ -212,6 +225,10 @@ export default function ResetPasswordForm() {
                 {t(`errors.${errorKey}`)}
               </p>
             )}
+
+            {/* Turnstile (app-CAPTCHA): kun når NEXT_PUBLIC_TURNSTILE_
+                SITE_KEY er sat — ellers ingenting (graceful). */}
+            <Turnstile key={captchaNonce} onToken={setCaptchaToken} />
 
             <button
               type="submit"

@@ -55,7 +55,8 @@
       "handleInvalid": "Det @-tagget er ikke gyldig. Bruk små bokstaver, tall og bindestreker (3–40 tegn).",
       "handleTaken": "Det @-tagget er allerede i bruk. Velg et annet.",
       "handleReserved": "Det @-tagget er reservert. Velg et annet.",
-      "handleLocked": "Kontoen har allerede et @-tag. Det kan ikke endres. Bruk det samme tagget og bekreft e-posten din."
+      "handleLocked": "Kontoen har allerede et @-tag. Det kan ikke endres. Bruk det samme tagget og bekreft e-posten din.",
+      "captchaFailed": "CAPTCHA-kontrollen feilet. Prøv igjen."
     },
     "confirmTitle": "Bekrefter din e-post",
     "confirmWorking": "Et øyeblikk. Din e-post bekreftes, og du logger inn på profilen din…",

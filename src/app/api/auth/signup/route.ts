@@ -5,6 +5,7 @@ import { hitRateLimit, recentlySent, markSent } from "@/lib/rateLimit";
 import { routing } from "@/i18n/routing";
 import { normalizeHandle, validateHandleSyntax } from "@/lib/handles";
 import { erLaegetAdgangskode } from "@/lib/auth/leaked";
+import { turnstileGodkendt } from "@/lib/auth/turnstile";
 
 export const dynamic = "force-dynamic";
 
@@ -54,6 +55,8 @@ export async function POST(request: NextRequest) {
     ageAccepted?: boolean;
     /** valgfrit @ tag — normaliseres og reserveres i user_handles */
     handle?: string;
+    /** Turnstile engangs-token — verificeres kun når featuren er til */
+    captchaToken?: unknown;
   };
   try {
     body = await request.json();
@@ -122,6 +125,16 @@ export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   if (hitRateLimit(`signup:${ip}`, 5, 10 * 60_000) || recentlySent(email)) {
     return NextResponse.json({ error: "rateLimited" }, { status: 429 });
+  }
+
+  // Turnstile (app-CAPTCHA, til når begge nøgler er sat): verificeres
+  // efter rate-limitten (bottene stoppes først) og før generateLink —
+  // de billige felt-afvisninger ovenfor har allerede fundet sted og
+  // bruger ikke tokenet op. Feature fra → altid godkendt (graceful:
+  // deployet kan ligge, nøglerne tændes bagefter).
+  const captchaOk = await turnstileGodkendt(body.captchaToken, ip);
+  if (!captchaOk) {
+    return NextResponse.json({ error: "captchaFailed" }, { status: 400 });
   }
 
   // Ledigheds-FOR-TJEK: stopper friske racer FØR kontoen oprettes, så
