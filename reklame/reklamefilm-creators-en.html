@@ -155,20 +155,31 @@ body {
 }
 .pack strong { color: var(--bone); font-weight: 600; }
 
-/* Chapter 4 — the money */
-.meter {
+/* Chapter 4 — the money: minutes and dollars counted in sync */
+.duo { margin-top: 8px; }
+.duo-num {
   font-variant-numeric: tabular-nums;
-  font-size: clamp(52px, 10.5vw, 124px);
+  font-size: clamp(48px, 9.5vw, 112px);
   font-weight: 600;
   line-height: 1;
   color: var(--champagne);
 }
+.duo-num.usd {
+  font-size: clamp(30px, 6vw, 72px);
+  color: var(--bone);
+  margin-top: 10px;
+  font-weight: 600;
+}
+.duo-num.usd strong { color: var(--champagne); font-weight: 600; }
+/* Payoff: når tællerne havner, kipper dollars'ene til champagne */
+.duo-num.usd.done { color: var(--champagne); }
+.duo-num.usd.done strong { color: var(--bone); }
 .meter-label {
   font-size: clamp(11px, 1.8vw, 15px);
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--ash);
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 /* Chapter 5 — CC badges */
@@ -299,12 +310,16 @@ body {
       </div>
     </section>
 
-    <!-- 4 · Your earnings (the hook) -->
+    <!-- 4 · Your earnings (the hook): minutes and dollars count in sync -->
     <section class="scene" data-i="3">
       <div class="eyebrow">Your earnings</div>
       <p class="sub" style="margin:0">One 62-minute film · 1,200 viewers this month</p>
-      <div class="meter" id="meter">0</div>
-      <div class="meter-label" id="meterLabel">Watched minutes</div>
+      <div class="duo">
+        <div class="duo-num" id="meterMin">0</div>
+        <div class="meter-label">watched minutes — rising</div>
+        <div class="duo-num usd" id="meterUsd"><strong>$</strong>0</div>
+        <div class="meter-label">your dollars, right behind them</div>
+      </div>
     </section>
 
     <!-- 5 · For you: 13 languages -->
@@ -389,8 +404,8 @@ body {
   var playBtn = document.getElementById("play");
   var loopBtn = document.getElementById("loop");
   var timeEl = document.getElementById("time");
-  var meter = document.getElementById("meter");
-  var meterLabel = document.getElementById("meterLabel");
+  var meterMin = document.getElementById("meterMin");
+  var meterUsd = document.getElementById("meterUsd");
   var badges = document.getElementById("badges");
   var badgeCodes = ["DA", "EN", "DE", "ES", "FR", "FI", "NO", "SV", "JA", "ZH", "IT", "PT", "HI"];
   for (var k = 0; k < badgeCodes.length; k++) {
@@ -422,11 +437,11 @@ body {
     }
   }
 
-  // Earnings example — one source of truth, both figures derive from it:
-  // 74,400 watched minutes × $0.30/100 = $223.20 → shown as $223.
+  // Earnings example — one source of truth: both synced counters
+  // derive from it live (minutes × $0.30/100 → the top month ends
+  // at 74,400 watched minutes / $223).
   var monthMinutes = 74400;
   var ratePerHundred = 0.3;
-  var monthDollars = Math.round((monthMinutes * ratePerHundred) / 100);
 
   function thousands(x) {
     return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -443,16 +458,18 @@ body {
       fills[i].style.width = (Math.max(0, Math.min(1, local)) * 100) + "%";
     }
     var sec = Math.floor(t / 1000);
-    // Chapter 4: minutes tick first (40 % af kapitlet), så dollars
+    // Chapter 4: minutter og dollars taelles SAMTIDIGT — dollars
+    // afledes live af minutterne (minutter x $0.30/100), saa
+    // sammenhengen er synlig for hvert tal: flere sete minutter =
+    // flere dollars. Taellerne klaerer kapitlets foerste 85 % og
+    // holder endetallet (74400 / $223) resten af scenen.
     if (idx === 3) {
-      if (local < 0.4) {
-        meter.textContent = thousands(Math.round((local / 0.4) * monthMinutes));
-        meterLabel.textContent = "Watched minutes";
-      } else {
-        var p = (local - 0.4) / 0.6;
-        meter.textContent = "$" + Math.max(1, Math.round(p * monthDollars));
-        meterLabel.textContent = "Your month, in dollars";
-      }
+      var p = Math.min(1, local / 0.85);
+      var mins = Math.round(p * monthMinutes);
+      meterMin.textContent = thousands(mins);
+      var usd = Math.round((mins * ratePerHundred) / 100);
+      meterUsd.innerHTML = "<strong>$</strong>" + usd;
+      meterUsd.classList.toggle("done", p >= 1);
     }
     // Chapter 5: CC badges light up in sequence
     if (idx === 4) {
