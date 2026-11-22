@@ -28,6 +28,7 @@ export default async function FilmographyGrid({
   earningsBySlug,
 }: FilmographyGridProps) {
   const t = await getTranslations("filmography");
+  const aiT = await getTranslations("aiBadge");
   const locale = await getLocale();
 
   return (
@@ -54,6 +55,17 @@ export default async function FilmographyGrid({
               {!film.posterUrl && (
                 <span className="absolute left-3 top-2 select-none font-display text-3xl text-bone/10">
                   {film.title[0]}
+                </span>
+              )}
+              {/* +AI-mærkningen (22/11): samme som DocumentaryCard —
+                  konsistent hvor en filmplakat vises; champagne (info-
+                  mærkning, ikke advarsel — se farvpsykologi-reglen) */}
+              {film.aiDeclared && (
+                <span
+                  title={aiT("title")}
+                  className="absolute left-2 top-2 rounded-full border border-champagne/60 bg-noir/80 px-2 py-0.5 text-[10px] font-semibold text-champagne"
+                >
+                  +AI
                 </span>
               )}
               <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-noir via-noir/80 to-transparent p-2.5 pt-6">
