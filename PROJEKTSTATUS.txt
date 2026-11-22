@@ -227,7 +227,11 @@ eftersyn ved lanceringen står fortsat):
   ai_policy_version='2026-11-22' where slug='<slug>'; — chippen
   dukker automatisk op (katalog + filmografi). ai_flagged_by-kolonnen
   (skaber vs. redaktion) bevidst DROPPET: redaktions-mærkning er
-  stærkere end erklæring og kolonnen røres kun ved brok.
+  stærkere end erklæring og kolonnen røres kun ved brok. +AI-læren
+  er UNIVERSAL (ikke +IA på es/fr/it/pt — mærkefamilien 2.21-consistent,
+  brugerens beslutning: "de ved godt hvad AI betyder også") og 18+-
+  graensen (terms s12, bevisført 28/9) holder platformens AI-act-
+  forpligtelser i den enkle ende (børn-kravene er forbi i signup).
 
 RKORREKTION 22/11 (brugerens pg_policies-udlaesning): arkets aeldre
 NB ("documentaries-RLS er select using(true) — kladder skjules kun i
