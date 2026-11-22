@@ -86,6 +86,14 @@ export type DocumentaryRow = {
   license_accepted_at: string | null;
   /** licens-tekstversion ved accept ('2026-09-23' — følger terms-datoen) */
   license_version: string | null;
+  /** AI-erklæring (20261122_ai_deklaration): true = filmens indhold
+   *  indeholder AI-genereret materiale — skaberens egen erklæring,
+   *  drevet af upload-formens checkbox */
+  ai_declared: boolean;
+  /** bevisets servertid — gemmes i BEGGE stater (false er også en erklæring) */
+  ai_declared_at: string | null;
+  /** erklæringens tekstversion ('2026-11-22' — følger AI_POLICY_VERSION) */
+  ai_policy_version: string | null;
   created_at: string;
 };
 
@@ -115,6 +123,10 @@ export type DocumentaryInsert = {
   spoken_language?: string;
   /** RLS tvinger 'draft' for skaber-oprettede rækker */
   status?: string;
+  /** AI-erklæring pr. film (20261122_ai_deklaration) — POST /api/films gemmer beviset */
+  ai_declared?: boolean;
+  ai_declared_at?: string | null;
+  ai_policy_version?: string | null;
   /** sættes af POST /api/films ved licens-accept (insert-policyn kræver den) */
   license_accepted_at?: string;
   license_version?: string;

@@ -14,6 +14,7 @@ export default async function DocumentaryCard({
 }) {
   const locale = await getLocale();
   const badgeT = await getTranslations("finishBadge");
+  const aiT = await getTranslations("aiBadge");
   const genres = await localizedGenres(documentary.genres, locale);
 
   // Genoptagelses-position: seekFromUrlParam kræver et HELTAL > 0,
@@ -46,6 +47,17 @@ export default async function DocumentaryCard({
         {!documentary.posterUrl && (
           <span className="absolute left-3 top-2 select-none font-display text-4xl text-bone/10">
             {documentary.title[0]}
+          </span>
+        )}
+        {/* +AI-mærkningen (brugerens beslutning 22/11 — EU AI Act-
+            praksis): skaberens erklæring ved upload, afslørende gul
+            chip i venstre kant; finishRate-badge bevarer højre kant */}
+        {documentary.aiDeclared && (
+          <span
+            title={aiT("title")}
+            className="absolute left-2 top-2 rounded-full border border-champagne/60 bg-noir/80 px-2 py-0.5 text-[10px] font-semibold text-champagne"
+          >
+            +AI
           </span>
         )}
         {/* færdigheds-badge — reelle sessioner, kun ved >= 5 afsluttede

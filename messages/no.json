@@ -556,7 +556,8 @@
     "bunnyEncode": "Koder i video-CDN… (vent litt)",
     "reviewNote": "Redaksjonen gjennomgår alle opplastinger før en film kan bli offentlig. Typisk svartid er et par dager. Ventetiden er kurateringsfilteret: det holder spam og reklame ute, slik at katalogen kun består av dokumentarer. Kladde kan slettes her inntil publisering.",
     "keepScreenOn": "Hold skjermen våken mens arbeidet pågår. Hvis telefonen går i dvale (f.eks. ved lavt batteri), avbrytes det. Siden ber selv om å holde skjermen våken når telefonen tillater det.",
-    "batteryLow": "Telefonen har bare ca. {percent} % batteri og lader ikke. Koble til en lader før du laster opp og genererer. En film krever undertekster (13 språk) og en trailer før den kan publiseres, og pipelinene tar minutter av batteriet."
+    "batteryLow": "Telefonen har bare ca. {percent} % batteri og lader ikke. Koble til en lader før du laster opp og genererer. En film krever undertekster (13 språk) og en trailer før den kan publiseres, og pipelinene tar minutter av batteriet.",
+    "aiLabel": "Filmens innhold inneholder AI-generert materiale (f.eks. bilder, stemmer eller musikk)."
   },
   "profile": {
     "loginTitle": "Logg inn for å se profilen din",
@@ -801,5 +802,8 @@
     "submit": "Hold meg oppdatert",
     "submitted": "Registrert ✓. Du hører fra redaksjonen.",
     "error": "Noe gikk galt. Prøv igjen."
+  },
+  "aiBadge": {
+    "title": "Inneholder AI-generert materiale"
   }
 }

@@ -72,6 +72,8 @@ function toDocumentary(row: DocumentaryRow, locale?: string): Documentary {
     bunnyVideoId: row.bunny_video_id ?? null,
     videoFileSizeBytes: row.video_file_size_bytes ?? null,
     status: row.status as Documentary["status"],
+    // pre-migration (kolonne mangler i svaret) = undefined → false
+    aiDeclared: row.ai_declared === true,
     createdAt: row.created_at,
     finishRate: null,
     // numeric → string fra Postgres — satsen pr. 100 sete minutter

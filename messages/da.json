@@ -589,7 +589,8 @@
     "talThFinish": "Færdigsået",
     "talThComments": "Kommentarer",
     "talThLikes": "Likes",
-    "talNoSessions": "Ingen afspilninger endnu"
+    "talNoSessions": "Ingen afspilninger endnu",
+    "aiLabel": "Filmens indhold indeholder AI-genereret materiale (fx billeder, stemmer eller musik)."
   },
   "profile": {
     "loginTitle": "Log ind for at se din profil",
@@ -801,5 +802,8 @@
     "memberSince": "Medlem siden {date}",
     "films": "{count, plural, one {# film} other {# film}}",
     "followers": "{count, plural, one {# følger} other {# følgere}}"
+  },
+  "aiBadge": {
+    "title": "Indeholder AI-genereret materiale"
   }
 }

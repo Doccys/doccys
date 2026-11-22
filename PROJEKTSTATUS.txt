@@ -178,6 +178,37 @@ adgangskode er kendt fra tidligere datalæk. Vælg et helt unikt
 kodeord.") i stedet for den generiske weakPassword ("for svag") —
 signup-ruten + ResetPasswordForm. 631 nøgler ×13 paritet.
 
+AI-DEKLARATION PR. FILM (22/11) — brugerens ønske: "tickboks ved
+upload om AI-brug ... +AI med guldtekst på katalogbilledet ... for at
+overholde EU's AI-act; hvis de ikke ticker, er det ikke længere mit
+ansvar". Bygget som film-licens-mønsteret (erklæring = gemt bevis +
+synlig håndtering; NB juridisk-ærlighed en-linje: checkboxen skifter
+bevisbyrden, ER IKKE en fuld AI Act-undtagelse — endelige juridiske
+eftersyn ved lanceringen står fortsat):
+- MIGRATION 20261122_ai_deklaration.sql (KØRES AF BRUGEREN): documen-
+  taries.ai_declared boolean not null default false + ai_declared_at
+  timestamptz + ai_policy_version text. BEVIS I BEGGE STATER: servertid
+  + version gemmes også ved false ("intet AI-genereret indhold").
+  Ingen backfill (falsk bevisføring udebliver — samme mønster som
+  licens-kolonnerne); redaktionen kan flippe i dashboardet pr. film.
+- UPLOAD-FORMEN: checkbox efter licens-boxen (creatorStudio.aiLabel
+  ×13), KUN hvis true vises mærkningen; reset ved success som licens;
+  submit sender altid aiDeclared — API'en afviser 400 hvis feltet
+  ikke er eksplisit boolean ("Angiv om filmens indhold indeholder
+  AI-genereret materiale").
+- API POST /api/films: ai_declared + ai_declared_at (servertid) +
+  ai_policy_version ('2026-11-22', AI_POLICY_VERSION-konstanten).
+  GRACEFUL PRE-MIGRATION: insert genføres uden AI-felter hvis PostgREST
+  nævner kolonnen (20261122 ikke kørt) — uploaden gennemførs, kun
+  erklæringen udebliver indtil migreringen.
+- BADGE: DocumentaryCard viser "+AI" (champagne-chip, VENSTRE kant —
+  finishRate-badge bevarer højre) med title-tooltip (aiBadge-namespace
+  ×13, "Indeholder AI-genereret materiale"). Kortet er server-renderet
+  — badge dukker op med ISR-refresh.
+- 633 nøgler ×13 fuld paritet, tsc grøn. UDELUKKET (bevidst): AI-
+  klausul i legal.terms (overvejes ved endelige juridiske eftersyn),
+  badge på OG-billeder/visitkort, watch-side-linje.
+
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
 **1000 min krediteret MINUTTE saldoen** (brugerens bevi-st): live-

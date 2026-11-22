@@ -6,6 +6,10 @@ import {
   VIDEO_MAX_BYTES,
   bunnyDirectPlayUrl,
 } from "@/lib/storage/filmVideos";
+
+/** AI-erklærings tekstversion — bumpes sammen med migrationens
+ *  20261122_ai_deklaration og checkbox-teksten i studiet. */
+const AI_POLICY_VERSION = "2026-11-22";
 import { hasBunnyEnv } from "@/lib/bunny/config";
 import { getBunnyVideo, pickMp4Resolution } from "@/lib/bunny/stream";
 import { POSTER_GRADIENTS, isPosterGradient } from "@/lib/data/gradients";
@@ -89,6 +93,14 @@ export async function POST(request: NextRequest) {
   // + version) skrives af SERVEREN her, aldrig fra klient-ur.
   const licenseAccepted = body.licenseAccepted === true;
 
+  // AI-erklæring (20261122_ai_deklaration): KRÆVER en eksplisit boolsk
+  // værdi — udeladt/forkert type = 400, så en fil aldrig kan oprettes
+  // uden at skaberen har svaret på AI-spørgsmålet (false er gyldigt —
+  // det er erklæringen "intet AI-genereret indhold" og gemmes som bevis).
+  const aiDeclared = body.aiDeclared === true;
+  const aiDeclaredErBolsk =
+    body.aiDeclared === true || body.aiDeclared === false;
+
   // Talesprog: valgfrit felt, default 'da' (databasen). Kun de 8
   // platformssprog accepteres — pipelinen skal kunne levere alle
   // undertekst-sprog ud fra kilden, og check-constrainten i
@@ -153,6 +165,12 @@ export async function POST(request: NextRequest) {
   if (!licenseAccepted) {
     return NextResponse.json(
       { error: "Du skal bekræfte licensvilkårene, før filmen uploades" },
+      { status: 400 },
+    );
+  }
+  if (!aiDeclaredErBolsk) {
+    return NextResponse.json(
+      { error: "Angiv om filmens indhold indeholder AI-genereret materiale" },
       { status: 400 },
     );
   }
@@ -337,32 +355,70 @@ export async function POST(request: NextRequest) {
   // sort_order 1000: default 0 ville straks overtage HeroBannerens
   // "Månedens udvalgte" (forsiden tager laveste sort_order).
   // Redaktionen sætter den endelige position ved publicering.
+  const insertBody = {
+    id: crypto.randomUUID(),
+    slug,
+    title: title.trim(),
+    synopsis: synopsis.trim(),
+    year,
+    duration_sec: durationSec,
+    genres: genres.map((g) => g.trim()),
+    creator_handle: owned.handle,
+    spoken_language: spoken,
+    gradient,
+    video_url: resolvedVideoUrl,
+    bunny_video_id: bunnyVideoGuid,
+    video_file_size_bytes: videoFileBytes,
+    poster_url: posterUrl,
+    status: "draft" as const,
+    sort_order: 1000,
+    license_accepted_at: new Date().toISOString(),
+    license_version: FILM_LICENSE_VERSION,
+    // AI-erklæring (bevis i begge stater): hvad skaberen svarede,
+    // hvornår (servertid) og i hvilken tekstversion.
+    ai_declared: aiDeclared,
+    ai_declared_at: new Date().toISOString(),
+    ai_policy_version: AI_POLICY_VERSION,
+  };
+
   const { data: row, error: insertError } = await supabase
     .from("documentaries")
-    .insert({
-      id: crypto.randomUUID(),
-      slug,
-      title: title.trim(),
-      synopsis: synopsis.trim(),
-      year,
-      duration_sec: durationSec,
-      genres: genres.map((g) => g.trim()),
-      creator_handle: owned.handle,
-      spoken_language: spoken,
-      gradient,
-      video_url: resolvedVideoUrl,
-      bunny_video_id: bunnyVideoGuid,
-      video_file_size_bytes: videoFileBytes,
-      poster_url: posterUrl,
-      status: "draft",
-      sort_order: 1000,
-      license_accepted_at: new Date().toISOString(),
-      license_version: FILM_LICENSE_VERSION,
-    })
+    .insert(insertBody)
     .select("*")
     .single();
 
   if (insertError || !row) {
+    // GRACEFUL pre-migration: kolonnerne fra 20261122_ai_deklaration
+    // findes endnu ikke → PostgREST nævner kolonnen i fejlmeddelelsen.
+    // Genforsøg uden AI-felterne, så uploaden gennemføres (erklæringen
+    // udebliver, indtil migreringen er kørt).
+    if (insertError && insertError.message && /ai_(declared|policy_version)/i.test(insertError.message)) {
+      console.warn(
+        "POST /api/films: ai-kolonner mangler (migration 20261122 ikke kørte) — insert uden AI-felter.",
+      );
+      const {
+        ai_declared: _aiDeclared,
+        ai_declared_at: _aiDeclaredAt,
+        ai_policy_version: _aiPolicyVersion,
+        ...udenAi
+      } = insertBody;
+      const retry = await supabase
+        .from("documentaries")
+        .insert(udenAi)
+        .select("*")
+        .single();
+      if (retry.error || !retry.data) {
+        console.warn("POST /api/films (retry):", retry.error?.message);
+        return NextResponse.json(
+          { error: "Filmen kunne ikke oprettes" },
+          { status: 500 },
+        );
+      }
+      return NextResponse.json(
+        { id: (retry.data as DocumentaryRow).id, slug },
+        { status: 201 },
+      );
+    }
     console.warn("POST /api/films:", insertError?.message);
     return NextResponse.json(
       { error: "Filmen kunne ikke oprettes" },

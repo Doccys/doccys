@@ -79,6 +79,14 @@ export interface Documentary {
    * vises først offentligt, når redaktionen godkender dem.
    */
   status: DocumentaryStatus;
+  /**
+   * AI-erklæring (20261122_ai_deklaration): true = skaberen har
+   * bekræftet ved upload, at filmens indhold indeholder AI-genereret
+   * materiale (billeder, stemmer, musik). Kataloget viser "+AI"-
+   * mærkningen på plakaten, når den er true (EU AI Act-praksis:
+   * synlig mærkning + gemt bevis med servertid og version).
+   */
+  aiDeclared: boolean;
   stats: DocumentaryStats;
   /**
    * "Så X % den færdig" fra film_faedighedsstats-RPC'en — null når

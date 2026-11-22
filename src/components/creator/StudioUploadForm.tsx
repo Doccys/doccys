@@ -282,6 +282,10 @@ export default function StudioUploadForm({
   // Licens-accept pr. film (Handelsbetingelserne afsnit 11): resettes
   // ved success, så hver ny upload bekræftes individuelt.
   const [licenseAccepted, setLicenseAccepted] = useState(false);
+  // AI-erklæring pr. film (22/11): true = indholdet indeholder AI-
+  // genereret materiale; false (default) er også en erklæring og
+  // gemmes som bevis. Resettes ved success som licensen.
+  const [aiDeclared, setAiDeclared] = useState(false);
 
   const [phase, setPhase] = useState<Phase>("idle");
   const [error, setError] = useState<string | null>(null);
@@ -596,6 +600,9 @@ export default function StudioUploadForm({
           spokenLanguage,
           posterUrl,
           licenseAccepted: true,
+          // AI-erklæring: altid eksplicit — serveren afviser hvis feltet
+          // ikke er en boolean (beviset gemmes i begge stater)
+          aiDeclared,
         }),
       });
       if (!res.ok) {
@@ -614,6 +621,7 @@ export default function StudioUploadForm({
       setFile(null);
       setDurationSec(null);
       setLicenseAccepted(false);
+      setAiDeclared(false);
       setBunnyPercent(0);
       clearPoster();
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -835,6 +843,24 @@ export default function StudioUploadForm({
           >
             {t("licenseLink")}
           </Link>
+        </span>
+      </label>
+
+      {/* AI-erklæring (brugerens beslutning 22/11 — EU AI Act-praksis):
+          skaberen svarer eksplicit Ja/nej; svaret gemmes som bevis med
+          servertid + version, og 'ja' giver "+AI"-mærkningen på
+          filmens plakat i kataloget. false er også en erklæring
+          ("intet AI-genereret indhold"). */}
+      <label className="mt-5 flex items-start gap-3">
+        <input
+          type="checkbox"
+          checked={aiDeclared}
+          onChange={(event) => setAiDeclared(event.target.checked)}
+          disabled={busy}
+          className="mt-0.5 h-4 w-4 shrink-0 accent-champagne"
+        />
+        <span className="text-sm leading-relaxed text-ash">
+          {t("aiLabel")}
         </span>
       </label>
 

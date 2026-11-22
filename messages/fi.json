@@ -556,7 +556,8 @@
     "bunnyEncode": "Koodataan video-CDN:ssä… (odota hetki)",
     "reviewNote": "Toimitus tarkistaa kaikki lataukset ennen kuin elokuva voi tulla julkiseksi. Tyypillinen vastausaika on muutama päivä. Odotusaika on kuratoinnin suodatin: se pitää roskapostin ja mainokset loitolla, jotta luettelo koostuu vain dokumenteista. Luonnos voidaan poistaa täällä ennen julkaisua.",
     "keepScreenOn": "Pidä näyttö hereillä, kun työskentely on käynnissä. Jos puhelin siirtyy lepotilaan (esim. akun ollessa alhainen), se keskeytyy. Sivusto pyytää itse pitämään näytön hereillä, kun puhelin sen sallii.",
-    "batteryLow": "Puhelimessa on vain noin {percent} % akkua eikä se lataa. Liitä laturi ennen kuin lataat ja tuotat. Elokuva vaatii tekstitykset (13 kieltä) ja trailerin ennen kuin se voidaan julkaista, ja putkistot vievät minuutteja akusta."
+    "batteryLow": "Puhelimessa on vain noin {percent} % akkua eikä se lataa. Liitä laturi ennen kuin lataat ja tuotat. Elokuva vaatii tekstitykset (13 kieltä) ja trailerin ennen kuin se voidaan julkaista, ja putkistot vievät minuutteja akusta.",
+    "aiLabel": "Elokuvan sisältö sisältää tekoälyn tuottamaa materiaalia (esim. kuvia, ääniä tai musiikkia)."
   },
   "profile": {
     "loginTitle": "Kirjaudu sisään nähdäksesi profiilisi",
@@ -801,5 +802,8 @@
     "submit": "Pidä minut ajan tasalla",
     "submitted": "Ilmoittautunut ✓. Kuulemme sinusta toimitukselta.",
     "error": "Jotain meni pieleen. Yritä uudelleen."
+  },
+  "aiBadge": {
+    "title": "Sisältää AI:lla luotua materiaalia"
   }
 }

@@ -556,7 +556,8 @@
     "bunnyEncode": "Encodage dans le CDN vidéo… (veuillez patienter)",
     "reviewNote": "La rédaction examine tous les téléchargements avant qu'un film puisse devenir public. Le délai de réponse typique est de quelques jours. Le temps d'attente est le filtre de la curation : il empêche le spam et la publicité, de sorte que le catalogue ne contient que des documentaires. Le brouillon peut être supprimé ici jusqu'à la publication.",
     "keepScreenOn": "Gardez l'écran allumé pendant que le travail est en cours. Si le téléphone entre en veille (par exemple, en cas de faible batterie), cela sera interrompu. La page demande elle-même de garder l'écran allumé lorsque le téléphone le permet.",
-    "batteryLow": "Le téléphone n'a plus qu'environ {percent} % de batterie et ne se recharge pas. Branchez un chargeur avant de télécharger et de générer. Un film nécessite des sous-titres (13 langues) et une bande-annonce avant de pouvoir être publié, et les pipelines prennent des minutes à chaque fois sur la batterie."
+    "batteryLow": "Le téléphone n'a plus qu'environ {percent} % de batterie et ne se recharge pas. Branchez un chargeur avant de télécharger et de générer. Un film nécessite des sous-titres (13 langues) et une bande-annonce avant de pouvoir être publié, et les pipelines prennent des minutes à chaque fois sur la batterie.",
+    "aiLabel": "Le contenu du film contient du matériel généré par l'IA (par exemple, des images, des voix ou de la musique)."
   },
   "profile": {
     "loginTitle": "Connectez-vous pour voir votre profil",
@@ -801,5 +802,8 @@
     "submit": "Tenez-moi informé",
     "submitted": "Inscrit ✓. Vous entendrez parler de la rédaction.",
     "error": "Quelque chose a mal tourné. Veuillez réessayer."
+  },
+  "aiBadge": {
+    "title": "Contient du matériel généré par l'IA"
   }
 }
