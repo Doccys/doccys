@@ -206,8 +206,19 @@ eftersyn ved lanceringen står fortsat):
   ×13, "Indeholder AI-genereret materiale"). Kortet er server-renderet
   — badge dukker op med ISR-refresh.
 - 633 nøgler ×13 fuld paritet, tsc grøn. UDELUKKET (bevidst): AI-
-  klausul i legal.terms (overvejes ved endelige juridiske eftersyn),
-   watch-side-linje.
+  klausul i legal.terms (overvejes ved endelige juridiske eftersyn)
+  og badge på OG-billeder/visitkort.
+  E2E (22/11, bruger-verificeret med en SQL-klonet "AI-Test"-film
+  publiceret + ai_declared=true, slettet bagefter): chip set — men
+  FØRST i FILMOGRAFIEN, ikke kataloget — filmografien var en anden
+  komponent. Konsistens-fix 614edaf: FilmographyGrid (skaberprofilen)
+  fik samme champagne-chip som DocumentaryCard (kataloget havde den
+  allerede, verificeret i live HTML; studiets rå <video>-visning
+  udeladt bevidst — skaberen kender sin egen erklæring).
+  FARVPSYKOLOGI (brugerens princip, gemt i memory): informations-
+  mærkninger (+AI, bevis-kort) = CHAMPAGNE, aldrig rød — rød er
+  psykologisk advarsel, mærkninger er ærlighed ("substansen er det
+  der betyder noget i sidste ende").
 
 RKORREKTION 22/11 (brugerens pg_policies-udlaesning): arkets aeldre
 NB ("documentaries-RLS er select using(true) — kladder skjules kun i
