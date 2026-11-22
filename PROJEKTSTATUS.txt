@@ -207,7 +207,19 @@ eftersyn ved lanceringen står fortsat):
   — badge dukker op med ISR-refresh.
 - 633 nøgler ×13 fuld paritet, tsc grøn. UDELUKKET (bevidst): AI-
   klausul i legal.terms (overvejes ved endelige juridiske eftersyn),
-  badge på OG-billeder/visitkort, watch-side-linje.
+   watch-side-linje.
+
+RKORREKTION 22/11 (brugerens pg_policies-udlaesning): arkets aeldre
+NB ("documentaries-RLS er select using(true) — kladder skjules kun i
+KODEN") er FORAELDET/FORKERT. Den reelle SELECT-politik
+(offentligt_katalog) = status='published' ELLER ejerens egne kladder
+(owner_user_id = auth.uid()). Dvs.: KLADDER ER SKJULTE I RLS
+(dobbeltforsvar med kodens status-filter), og anon-seere/CRAWLERS
+ser kun publicerede film — derfor svaraered anon-GET []
+med 6 draft-raekker i tabellen (22/11-probe). BEGRENSNING TIL FRAEM-
+TID: en teaser-rille (kommer-snart-kladder offentligt) krcæver en
+RLS-aendring (fx status='draft' AND teaser_flag) — brug kun pg_
+policies som sandheden om filmes laesbarhed.
 
 STRIPE LIVE KØRENDE — FÐRESTE ÆGTE TRANSAKTION (15/11)
 Brugeren købte en ægte pakke fra PWA'en på telefonen (LIVE mode) —
