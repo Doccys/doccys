@@ -220,6 +220,15 @@ eftersyn ved lanceringen står fortsat):
   psykologisk advarsel, mærkninger er ærlighed ("substansen er det
   der betyder noget i sidste ende").
 
+  REDAKTIONS-ARBEJDGANG (brugerens beslutning 22/11: "frihed under
+  eget ansvar — jeg redigerer til true hvis der kommer brok"): kol-
+  onnen flips manuelt i dashboardet ved brokr over umærket AI-indhold:
+  update documentaries set ai_declared=true, ai_declared_at=now(),
+  ai_policy_version='2026-11-22' where slug='<slug>'; — chippen
+  dukker automatisk op (katalog + filmografi). ai_flagged_by-kolonnen
+  (skaber vs. redaktion) bevidst DROPPET: redaktions-mærkning er
+  stærkere end erklæring og kolonnen røres kun ved brok.
+
 RKORREKTION 22/11 (brugerens pg_policies-udlaesning): arkets aeldre
 NB ("documentaries-RLS er select using(true) — kladder skjules kun i
 KODEN") er FORAELDET/FORKERT. Den reelle SELECT-politik
