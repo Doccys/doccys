@@ -1,5 +1,5 @@
 <!--
-  Doccys reklamefilm — selvspillende HTML-reklame (55 s, 7 kapitler).
+  Doccys reklamefilm, selvspillende HTML-reklame (55 s, 7 kapitler).
   Selvstændig fil: åbn i en fuldskærms-browser (F11), optag skærmen
   for at gøre den til en rigtig videofil. Kapitlerne er klikbare;
   klik på filmbilledet pauser. Loop er tilslået som standard.
@@ -56,7 +56,7 @@ body {
   cursor: pointer;
 }
 
-/* Filmkorn — statisk, diskret */
+/* Filmkorn, statisk, diskret */
 .film::after {
   content: "";
   position: absolute;
@@ -131,7 +131,7 @@ body {
 }
 .gold { color: var(--champagne); }
 
-/* Kapitel 1 — mærket */
+/* Kapitel 1, mærket */
 .logomark { width: clamp(64px, 9vw, 110px); height: auto; }
 .wordmark {
   font-family: "Inter", system-ui, sans-serif;
@@ -142,7 +142,7 @@ body {
   margin-top: 18px;
 }
 
-/* Kapitel 2 — abonnementet */
+/* Kapitel 2, abonnementet */
 .strike { position: relative; display: inline-block; }
 .strike::after {
   content: "";
@@ -156,7 +156,7 @@ body {
 }
 .scene.on .strike::after { transform: scaleX(1); }
 
-/* Kapitel 3 — minut-tælleren */
+/* Kapitel 3, minut-tælleren */
 .counter {
   font-variant-numeric: tabular-nums;
   font-size: clamp(54px, 11vw, 130px);
@@ -176,7 +176,7 @@ body {
 }
 .pack strong { color: var(--bone); font-weight: 600; }
 
-/* Kapitel 4 — bevis-kortet */
+/* Kapitel 4, bevis-kortet */
 .stagewatch {
   position: relative;
   width: min(92vw, 720px);
@@ -220,7 +220,7 @@ body {
 .proofline { font-size: clamp(12px, 2vw, 16px); color: var(--ash); }
 .proofline strong { color: var(--champagne); font-weight: 600; }
 
-/* Kapitel 5 —_CC-badges */
+/* Kapitel 5: CC-badges */
 .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 560px; }
 .badge {
   border: 1px solid var(--smoke);
@@ -235,7 +235,7 @@ body {
 .scene.on .badge { animation: rise 0.5s ease both; }
 .badge.on2 { border-color: var(--champagne-dim); color: var(--champagne); }
 
-/* Kapitel 6 — satstallet */
+/* Kapitel 6, satstallet */
 .ratebig {
   font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(44px, 9.5vw, 110px);
@@ -251,7 +251,7 @@ body {
 .barcol:nth-child(4) { height: 94%; animation-delay: 1.05s; }
 @keyframes grow { from { transform: scaleY(0); } to { transform: none; } }
 
-/* Kapitel 7 — CTA */
+/* Kapitel 7, CTA */
 .url {
   font-family: "Inter", system-ui, sans-serif;
   font-weight: 600;
@@ -365,7 +365,7 @@ body {
           <p class="proofline"><strong>$0,19</strong> gik direkte til skaberen</p>
         </div>
       </div>
-      <p class="sub">Efter hver film et kvittering. Ikke et abonnement — et bevis.</p>
+      <p class="sub">Efter hver film et kvittering. Ikke et abonnement, et bevis.</p>
     </section>
 
     <!-- 5 · Skabere: 13 sprog -->
@@ -380,7 +380,7 @@ body {
     <section class="scene" data-i="5">
       <div class="eyebrow">Udbetaling</div>
       <div class="ratebig gold">$0,30</div>
-      <p class="sub">pr. 100 sete minutter — direkte til dig.</p>
+      <p class="sub">pr. 100 sete minutter, direkte til dig.</p>
       <div class="bars" aria-hidden="true">
         <div class="barcol"></div>
         <div class="barcol"></div>

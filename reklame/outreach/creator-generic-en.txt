@@ -1,4 +1,4 @@
-GENERIC CREATOR OUTREACH (EN) — 100+-udsendelsen
+GENERIC CREATOR OUTREACH (EN), 100+-udsendelsen
 =================================================
 Send fra contact@doccys.com · BULK-REGLER (se bunden): max 20-30/dag,
 ALDRIG vedhæftelser (kun links), første linje personaliseret pr. modtager.
@@ -9,14 +9,14 @@ Subject: Your documentary, paid per watched minute
 Hi {name},
 
 I ran a documentary platform for films that don't fit the algorithm:
-{1-2 linjer personaliseret — deres film, tema, region, hvor du fandt dem}.
+{1-2 linjer personaliseret, deres film, tema, region, hvor du fandt dem}.
 
 Doccys is a curated catalog where viewers buy minutes and you earn
-$0.30 per 100 watched minutes — non-exclusive, with proof after every
+$0.30 per 100 watched minutes, non-exclusive, with proof after every
 screening. I think your work fits.
 
 A rate per minute sounds small, so here is the long-term picture:
-one full 60-minute watch pays you about $0.18 — several times what
+one full 60-minute watch pays you about $0.18, several times what
 ad platforms pay a documentary creator for the same viewer. And your
 film keeps earning as the catalog grows: 30,000,000 watched minutes
 across a library over a few years is roughly $90,000, from work you
@@ -32,6 +32,6 @@ one click, and you can take your film down any time. Films from
 Want early placement? Apply: https://www.doccys.com/en/creator/apply
 
 {Jesper}
-Doccys — documentary, minute by minute
+Doccys, documentary, minute by minute
 contact@doccys.com
 ---

@@ -1,18 +1,18 @@
-UTSENDHEDS-REGLER — 100+ MAILS FRA EN UNG DOMAINEE (Mexico-plan)
+UTSENDHEDS-REGLER, 100+ MAILS FRA EN UNG DOMAINEE (Mexico-plan)
 =================================================================
 1. VOLUME/TEMPO
    - Max ca. 20-30 udsendte pr. dag i første uger (domænet er ~2
-     mdr. gammelt — masse på én dag er den hurtigeste vej til
+     mdr. gammelt, masse på én dag er den hurtigeste vej til
      spam-filter). Efter første uge med lav afvisning: øg roligt.
    - Spred sendetiderne (ikke 30 på 4 minutter).
 
 2. INDHOLD
    - ALDRIG vedhæftelser (PDF ~190 KB × hundrede = spam-score).
      Link i stedet: reklamerne ligger nu på eget domæne
-     (public/reklame — URL'er herunder, live efter næste bygning).
+     (public/reklame, URL'er herunder, live efter næste bygning).
    - Personaliseret første linje PR. MAIL (spam-filterne hasher
      identiske templates; én ændret linje er nok).
-   - Én CTA pr. mail (film-link eller apply-link — ikke begge som
+   - Én CTA pr. mail (film-link eller apply-link, ikke begge som
      lige vægtige).
 
 3. LINKS (live efter bygning):

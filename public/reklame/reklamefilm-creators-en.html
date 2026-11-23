@@ -1,5 +1,5 @@
 <!--
-  Doccys filmmaker ad (EN) — self-contained HTML ad, ~55 s / 7 chapters.
+  Doccys filmmaker ad (EN), self-contained HTML ad, ~55 s / 7 chapters.
   Creator-recruitment cut: leads with the earnings example and payout
   terms ("payout", "non-exclusive", "cash out from $25"), ends on the
   apply-CTA (poster-en's QR-destination: /en/creator/apply). Shares the
@@ -131,7 +131,7 @@ body {
 }
 .gold { color: var(--champagne); }
 
-/* Chapter 1 — the mark */
+/* Chapter 1, the mark */
 .logomark { width: clamp(64px, 9vw, 110px); height: auto; }
 .wordmark {
   font-family: "Inter", system-ui, sans-serif;
@@ -142,7 +142,7 @@ body {
   margin-top: 18px;
 }
 
-/* Chapter 3 — the packs */
+/* Chapter 3, the packs */
 .packrow { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .pack {
   border: 1px solid var(--smoke);
@@ -155,7 +155,7 @@ body {
 }
 .pack strong { color: var(--bone); font-weight: 600; }
 
-/* Chapter 4 — the money: minutes and dollars counted in sync */
+/* Chapter 4, the money: minutes and dollars counted in sync */
 .duo { margin-top: 8px; }
 .duo-num {
   font-variant-numeric: tabular-nums;
@@ -182,7 +182,7 @@ body {
   margin-top: 12px;
 }
 
-/* Chapter 5 — CC badges */
+/* Chapter 5, CC badges */
 .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 560px; }
 .badge {
   border: 1px solid var(--smoke);
@@ -197,7 +197,7 @@ body {
 .scene.on .badge { animation: rise 0.5s ease both; }
 .badge.on2 { border-color: var(--champagne-dim); color: var(--champagne); }
 
-/* Chapter 6 — the terms, as chips */
+/* Chapter 6, the terms, as chips */
 .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 640px; }
 .chip {
   border: 1px solid var(--champagne-dim);
@@ -209,7 +209,7 @@ body {
 }
 .chip strong { color: var(--champagne); font-weight: 600; }
 
-/* Chapter 7 — CTA */
+/* Chapter 7, CTA */
 .url {
   font-family: "Inter", system-ui, sans-serif;
   font-weight: 600;
@@ -295,14 +295,14 @@ body {
     <section class="scene" data-i="1">
       <div class="eyebrow">The old deal</div>
       <h1 class="headline">You deliver the views.</h1>
-      <p class="sub">Ad-funded platforms pay a fraction of a cent per view — if they pay at all.</p>
+      <p class="sub">Ad-funded platforms pay a fraction of a cent per view, if they pay at all.</p>
     </section>
 
     <!-- 3 · How Doccys pays -->
     <section class="scene" data-i="2">
       <div class="eyebrow">How Doccys works</div>
       <h1 class="headline">Viewers buy minutes.</h1>
-      <p class="sub">No subscription. Viewers top up minutes and spend them on films — documentary cinema, counted by the minute.</p>
+      <p class="sub">No subscription. Viewers top up minutes and spend them on films, documentary cinema, counted by the minute.</p>
       <div class="packrow">
         <span class="pack"><strong>$6.99</strong> · 1,000 min</span>
         <span class="pack"><strong>$10.99</strong> · 2,000 min</span>
@@ -316,7 +316,7 @@ body {
       <p class="sub" style="margin:0">One 62-minute film · 1,200 viewers this month</p>
       <div class="duo">
         <div class="duo-num" id="meterMin">0</div>
-        <div class="meter-label">watched minutes — rising</div>
+        <div class="meter-label">watched minutes, rising</div>
         <div class="duo-num usd" id="meterUsd"><strong>$</strong>0</div>
         <div class="meter-label">your dollars, right behind them</div>
       </div>
@@ -334,11 +334,11 @@ body {
     <section class="scene" data-i="5">
       <div class="eyebrow">The terms</div>
       <h1 class="headline">Non-exclusive.</h1>
-      <p class="sub">$0.30 per 100 watched minutes, counted honestly — every receipt is shown to the viewer.</p>
+      <p class="sub">$0.30 per 100 watched minutes, counted honestly, every receipt is shown to the viewer.</p>
       <div class="chips">
         <span class="chip"><strong>$25</strong> to cash out</span>
         <span class="chip">Take it down <strong>any time</strong></span>
-        <span class="chip">Curated catalog — <strong>placements can't be bought</strong></span>
+        <span class="chip">Curated catalog, <strong>placements can't be bought</strong></span>
       </div>
     </section>
 
@@ -437,7 +437,7 @@ body {
     }
   }
 
-  // Earnings example — one source of truth: both synced counters
+  // Earnings example, one source of truth: both synced counters
   // derive from it live (minutes × $0.30/100 → the top month ends
   // at 74,400 watched minutes / $223).
   var monthMinutes = 74400;
@@ -458,10 +458,10 @@ body {
       fills[i].style.width = (Math.max(0, Math.min(1, local)) * 100) + "%";
     }
     var sec = Math.floor(t / 1000);
-    // Chapter 4: minutter og dollars taelles SAMTIDIGT — dollars
+    // Chapter 4: minutter og dollars taelles SAMTIDIGT, dollars
     // afledes live af minutterne (minutter x $0.30/100). NB: fill-
     // loopen ovenfor efterlader lokal på 0 (sidste iteration, i >
-    // idx) — kapitel-taelleren beregner SIN EGEN lokal her, den
+    // idx), kapitel-taelleren beregner SIN EGEN lokal her, den
     // klassiske var-omfangs-fejlen.
     if (idx === 3) {
       var local4 = (t - starts[3]) / durs[3];
