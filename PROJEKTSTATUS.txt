@@ -1,6 +1,34 @@
 DOCCYS — PROJEKTSTATUS TIL CLAUDE CODE
-Sidst opdateret: 2026-11-21
+Sidst opdateret: 2026-11-23
 ==========================================================
+
+HAR VI SLAP 23/11 — KORT RESUME (denne blok opdateres ved afslutning)
+Lancerings-checklisten 100 % (Stripe LIVE, SMTP, indeksering, robots).
+Seneste kapitler (alle bevist + committet): adgangskode-sikkerhed
+(8 tegn + fire kategorier + HIBP-laekket-tekst), Turnstile-CAPTCHA
+(noegler i Vercel-env og LIVE — brugerens PWA-test), AI-deklaration
+(+AI chip, E2E med klon-test-film, slettet), DMARC trin 1 live
+(p=none, verificeret via 1.1.1.1/9.9.9.9).
+DEN NÆSTE UGE (brugerens plan):
+1) DMARC-opgradering ca. 1/12: p=none → p=quarantine i _dmarc
+   TXT-record (brugerens Namecheap-edit, 30 sekunder).
+2) SPAM-HULLERNE KLAAR TIL GO: (b) disposabel-domæne-filter +
+   (d) waitlist-rute med rate-limit (sidste to huller — Turnstile
+   dækkene botstegne, disse dækkert temp-mail + liste-spam).
+3) SEER-FANGST FOER 1/12 (brugerens prioriterede valg diskuteret
+   22/11): teaser-rille (kommer-snart, kræver migration + RLS-flag-
+   gren i offentligt_katalog-policyn — se RLS-korrektionen
+   22/11) + delings-venten (placering i kø + deles-link); gratis
+   start-minutter BEVIDST droppet (brugerens begrundelse: ukont-
+   roleret per-bruger-omkostning — pengene bruges kontrolleret
+   på fysisk tilstedeværelse + reklame).
+4) PITCH-MAILS: DR Sales / ZDF Studios / UACH (EN + es-MX;
+   reklamefilm-creators-en + doccys eng.pdf som bilag).
+5) 1/12-FORBEREDELSER (Mexico): laptop primaer, .env.local +
+   .claude flyttet før afrejse, Supabase opvågen-check før demoer,
+   iPhone-.MOV-testen, MX-checkout/adaptive pricing-observation.
+   NB: 1/12 er SAMME dag som lancerings-datoen.
+Git: master, alt pushed (7ef5864), arbejdsmappes ren.
 
 SMTP PAA VERCEL-ENV — LANCERINGS-PUNKT FULDFORT (21/11)
 De fire noegler SMTP_HOST/PORT/USER/PASS oprettet i Vercel-env
