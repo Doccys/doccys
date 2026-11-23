@@ -1,0 +1,198 @@
+<!--
+  Creator economics (EN) — visuel matematik-side for outreach.
+  Alle tal afledes af satsen $0.30/100 watched minutes (én kilde).
+  Serveres fra https://www.doccys.com/reklame/creator-economics-en.html
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Creator economics — Doccys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root {
+  color-scheme: dark;
+  --noir: #0a0a0c;
+  --onyx: #131316;
+  --smoke: #26262b;
+  --ash: #8f8a80;
+  --bone: #ece7dd;
+  --champagne: #d8b56d;
+  --champagne-dim: rgba(216, 181, 109, 0.35);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--noir);
+  color: var(--bone);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(28px, 6vw, 64px) max(16px, env(safe-area-inset-left, 0px)) 72px max(16px, env(safe-area-inset-right, 0px));
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--ash);
+  margin: 0;
+}
+h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 800;
+  font-size: clamp(28px, 5.6vw, 48px);
+  line-height: 1.1;
+  margin: 14px 0 0;
+  text-wrap: balance;
+}
+.lede { color: var(--ash); line-height: 1.6; max-width: 36em; margin: 14px 0 0; }
+.gold { color: var(--champagne); }
+.card {
+  background: var(--onyx);
+  border: 1px solid var(--smoke);
+  border-radius: 14px;
+  padding: clamp(18px, 3.4vw, 32px);
+  margin-top: 28px;
+}
+.card h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(19px, 3.2vw, 26px);
+  margin: 0 0 4px;
+}
+.note { color: var(--ash); font-size: 13px; line-height: 1.55; margin: 6px 0 0; }
+.raterow { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-top: 10px; }
+.rate {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(44px, 9vw, 84px);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--champagne);
+}
+table { width: 100%; border-collapse: collapse; margin-top: 14px; font-variant-numeric: tabular-nums; }
+th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ash);
+  padding: 10px 10px 10px 0;
+  border-bottom: 1px solid var(--smoke);
+}
+td { padding: 12px 10px 12px 0; border-bottom: 1px solid var(--smoke); font-size: 15px; }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; padding-right: 0; }
+.win { color: var(--champagne); font-weight: 600; }
+.barwrap { position: relative; background: var(--smoke); border-radius: 999px; height: 8px; width: 100%; overflow: hidden; }
+.barfill { position: absolute; inset: 0 auto 0 0; border-radius: inherit; background: var(--champagne); }
+.cta {
+  display: inline-block;
+  margin-top: 18px;
+  background: var(--champagne);
+  color: var(--noir);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 12px 26px;
+}
+.cta:hover { background: #e6c884; }
+footer {
+  margin-top: 40px;
+  color: var(--ash);
+  font-size: 12px;
+  line-height: 1.6;
+}
+footer a { color: var(--champagne); }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">For filmmakers</p>
+  <h1>The long-term math</h1>
+  <p class="lede">A rate per minute sounds small. The library you build is not.
+  Every table on this page is derived from the same single rate — nothing is estimated.</p>
+
+  <section class="card">
+    <h2>The rate</h2>
+    <div class="raterow">
+      <span class="rate">$0.30</span>
+      <span class="lede" style="margin:0">per 100 watched minutes, paid continuously —
+      <span class="gold">non-exclusive</span>, cash out from $25, take your film down any time.</span>
+    </div>
+    <p class="note">Counted on exact watched seconds, with a receipt shown to the viewer after every film. Validated sessions only — a curated catalog can't be gamed.</p>
+  </section>
+
+  <section class="card">
+    <h2>Per dedicated viewer, Doccys pays several times more than ads</h2>
+    <table>
+      <thead>
+        <tr><th scope="col">One full 60-minute watch</th><th class="num" scope="col">Creator earns</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Doccys — viewers buy minutes</td><td class="num win">≈ $0.18</td></tr>
+        <tr><td>Ad-funded platforms (long-form CPM range)</td><td class="num">$0.01 – $0.05</td></tr>
+        <tr><td><strong>Difference</strong></td><td class="num"><strong>3–18×</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="note">Documentary viewers are the audience that watches to the end — and paying viewers watch more than ad-skippers.</p>
+  </section>
+
+  <section class="card">
+    <h2>The library compounds</h2>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Watched minutes (library, lifetime)</th>
+          <th class="num" scope="col">≈ Earnings</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1,000,000</td><td class="num winsel"><span class="win">$3,000</span></td>
+            <td><div class="barwrap"><span class="barfill" style="width: 3.3%"></span></div></td></tr>
+        <tr><td>5,000,000</td><td class="num"><span class="win">$15,000</span></td>
+            <td><div class="barwrap"><span class="barfill" style="width: 16.7%"></span></div></td></tr>
+        <tr><td>10,000,000</td><td class="num"><span class="win">$30,000</span></td>
+            <td><div class="barwrap"><span class="barfill" style="width: 33.3%"></span></div></td></tr>
+        <tr><td>30,000,000</td><td class="num"><span class="win">$90,000</span></td>
+            <td><div class="barwrap"><span class="barfill" style="width: 100%"></span></div></td></tr>
+      </tbody>
+    </table>
+    <p class="note">Work you made once, earning while the catalog grows — from one documentary or across your whole library.</p>
+  </section>
+
+  <section class="card">
+    <h2>A realistic month</h2>
+    <div class="raterow">
+      <span class="rate gold" style="font-size: clamp(34px, 7vw, 60px)">$223</span>
+      <span class="lede" style="margin:0">one 62-minute film · 1,200 viewers this month · 74,400 watched minutes</span>
+    </div>
+    <p class="note">74,400 × $0.30 / 100 = $223. The same film keeps paying next month — and every month after.</p>
+  </section>
+
+  <section class="card">
+    <h2>Thirteen markets. One click.</h2>
+    <p class="note" style="font-size:14px">Upload once and subtitles plus trailer generate automatically — your film reaches
+    Japanese, Portuguese, Hindi and Spanish viewers without a translator, a designer or a
+    festival travel budget.</p>
+  </section>
+
+  <a class="cta" href="https://www.doccys.com/en/creator/apply">Apply as a filmmaker</a>
+
+  <footer>
+    Terms: <a href="https://www.doccys.com/en/terms">doccys.com/en/terms</a> —
+    a rate per minute, counted honestly, shown as proof. Questions: contact@doccys.com
+  </footer>
+</main>
+</body>
+</html>
