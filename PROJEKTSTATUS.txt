@@ -27,7 +27,7 @@ DEN NÆSTE UGE (brugerens plan):
 5) 1/12-FORBEREDELSER (Mexico): laptop primaer, .env.local +
    .claude flyttet før afrejse, Supabase opvågen-check før demoer,
    iPhone-.MOV-testen, MX-checkout/adaptive pricing-observation.
-   NB: 1/12 er SAMME dag som lancerings-datoen. BRUGEREN REJER
+   NB: 1/12 er SAMME dag som lancerings-datoen. BRUGEREN REJSER
    1/12 — lanceringen/DMARC-opgraderingen sker fra Mexico efter
    landing (checklisten er teknisk færdig; intet skal ske på
    selve datoen). FASE-SKIFTE (brugerens beslutning 23/11):
