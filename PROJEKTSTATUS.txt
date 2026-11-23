@@ -38,6 +38,12 @@ DEN NÆSTE UGE (brugerens plan):
    ovenfor er de sidste pre-fangst byggerier.
 Git: master, alt pushed (7ef5864), arbejdsmappes ren.
 
+INDEKSERING BEKRÆFTET 23/11 (brugerens egne site:-søgning):
+site:doccys.com viser siderne på ALLE 13 sprog — Google har crawl+-
+indekseret platformen (hreflang-sitemap virker). Brand-søgning
+("doccys" i søgefeltet) følger naturligt med tilhængende + reel
+katolog-indhold; site:-værdien var den reelle test.
+
 SMTP PAA VERCEL-ENV — LANCERINGS-PUNKT FULDFORT (21/11)
 De fire noegler SMTP_HOST/PORT/USER/PASS oprettet i Vercel-env
 (projekt "doccys") via MCP create_project_env — type SENSITIVE,
