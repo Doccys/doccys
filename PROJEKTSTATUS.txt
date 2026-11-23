@@ -233,6 +233,24 @@ eftersyn ved lanceringen står fortsat):
   graensen (terms s12, bevisført 28/9) holder platformens AI-act-
   forpligtelser i den enkle ende (børn-kravene er forbi i signup).
 
+EMAIL-BRANDING: DMARC NU, BIMI PAA SKALKE-TRIN (23/11, brugerens BIMI-
+onske "blive set pa e-mails"; DNS-tjek: SPF ✓, _dmarc MANGLER, BIMI
+MANGLER):
+- TRIN 1 (NU, brugerens Namecheap-DNS): TXT "_dmarc" =
+  "v=DMARC1; p=none; rua=mailto:dmarc@doccys.com" (overvågning; efter
+  en uge → p=quarantine, hvilket er BIMI's forudsætning). Gratis og
+  anti-phishing (kun Doccys kan sende som @doccys.com). Nodemailer's
+  envelope-from = contact@doccys.com → SPF-alignment passer via
+  include:spf.privateemail.com; DKIM-selector fra Private Email-
+  panelet er den robuste sti. Rapport-XML'erne lander i catch-all —
+  filtrer/kassér.
+- TRIN 2 (SKALKE-BACKLOG, bevidst parkeret): BIMI-logo kræver
+  (a) p=quarantine, (b) logo i SVG Tiny 1.2 PS (~12 KB, kvadratisk —
+  bygges fra Doccys-mark), (c) VMC (Verified Mark Certificate,
+  DigiCert/Entrust) — GMAIL's hårde krav, ca. $1.000-1.500/ÅR; Yahoo
+  accepterer billigere CMC. Ikke nu med 0 brugere; genovervejes ved
+  volumen (samme mønster som Supabase Pro-beslutningen).
+
 RKORREKTION 22/11 (brugerens pg_policies-udlaesning): arkets aeldre
 NB ("documentaries-RLS er select using(true) — kladder skjules kun i
 KODEN") er FORAELDET/FORKERT. Den reelle SELECT-politik
