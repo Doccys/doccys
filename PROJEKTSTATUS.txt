@@ -236,14 +236,12 @@ eftersyn ved lanceringen står fortsat):
 EMAIL-BRANDING: DMARC NU, BIMI PAA SKALKE-TRIN (23/11, brugerens BIMI-
 onske "blive set pa e-mails"; DNS-tjek: SPF ✓, _dmarc MANGLER, BIMI
 MANGLER):
-- TRIN 1 (NU, brugerens Namecheap-DNS): TXT "_dmarc" =
-  "v=DMARC1; p=none; rua=mailto:dmarc@doccys.com" (overvågning; efter
-  en uge → p=quarantine, hvilket er BIMI's forudsætning). Gratis og
-  anti-phishing (kun Doccys kan sende som @doccys.com). Nodemailer's
-  envelope-from = contact@doccys.com → SPF-alignment passer via
-  include:spf.privateemail.com; DKIM-selector fra Private Email-
-  panelet er den robuste sti. Rapport-XML'erne lander i catch-all —
-  filtrer/kassér.
+- TRIN 1 FULDFORT (23/11, brugerens Namecheap-DNS + DNS-verificering:
+  _dmarc.doccys.com TXT "v=DMARC1; p=none; rua=mailto:dmarc@doccys.com"
+  live via 1.1.1.1/9.9.9.9; 8.8.8.8 hang i negativ-cache, rydder sig
+  selv). Overvågningstilstand en uge → brugeren opgraderer til
+  "p=quarantine" (BIMI's forudsætning + anti-phishing-håndhævelse).
+  Rapport-XML'erne lander i contact@ via catch-all — filtrer/kassér.
 - TRIN 2 (SKALKE-BACKLOG, bevidst parkeret): BIMI-logo kræver
   (a) p=quarantine, (b) logo i SVG Tiny 1.2 PS (~12 KB, kvadratisk —
   bygges fra Doccys-mark), (c) VMC (Verified Mark Certificate,
