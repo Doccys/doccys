@@ -1,0 +1,27 @@
+ALCANCE A CREADORES (ES-MX) — creadores individuales / UACH
+============================================================
+Enviar desde contact@doccys.com. Personaliza la primera línea por cada
+destinatario ({tema/región/dónde los encontraste}). Sin adjuntos, solo enlaces.
+
+---
+Asunto: Tu documental, pagado por minuto visto
+
+Hola {name},
+
+Estoy construyendo un catálogo curado para documentales que no encajan
+en el algoritmo: {1-2 líneas personalizadas sobre su trabajo}.
+
+En Doccys los espectadores compran minutos y tú ganas $0.30 USD por
+cada 100 minutos vistos. Sin exclusividad, con comprobante después de
+cada proyección, y subtitulado en 13 idiomas con un clic.
+
+Véelo en 55 segundos:
+https://www.doccys.com/reklame/reklamefilm-creators-en.html
+
+¿Quieres un puesto entre los primeros? Aplica aquí:
+https://www.doccys.com/es/creator/apply
+
+{Jesper}
+Doccys — documental, minuto a minuto
+contact@doccys.com
+---
