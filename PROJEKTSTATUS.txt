@@ -43,6 +43,11 @@ site:doccys.com viser siderne på ALLE 13 sprog — Google har crawl+-
 indekseret platformen (hreflang-sitemap virker). Brand-søgning
 ("doccys" i søgefeltet) følger naturligt med tilhængende + reel
 katolog-indhold; site:-værdien var den reelle test.
+INDEKSERINGS-FASERNE 26/11 (Search Console): 189 fundet · 142
+indekseret · 47 ikke (hreflang-alternater i Googles bølge-fase +
+apex-omledning i henhold til design + 2 robots-blokeret /api/).
+NORMAL — venter til midt-dec for brand-søgning; handling først
+efter 3-4 ugent hvis tallet ændret (Sider-rapporten sammen).
 
 SMTP PAA VERCEL-ENV — LANCERINGS-PUNKT FULDFORT (21/11)
 De fire noegler SMTP_HOST/PORT/USER/PASS oprettet i Vercel-env
